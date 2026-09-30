@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dawn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2Verse — Mobile App Screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root,[data-theme="dawn"]{
+  --bg:#F6F0E6; --bg-alt:#EDE3D3; --surface:#FFFDF9; --surface-2:#F6F0E6;
+  --ink:#1D2A2C; --ink-2:#4A5657; --muted:#8A8680; --line:rgba(47,83,88,.12);
+  --primary:#2F5358; --primary-deep:#1E3A3E; --on-primary:#FFFDF9;
+  --accent:#C0704F; --accent-deep:#A55A3B; --on-accent:#FFFDF9; --gold:#C9A45C;
+  --soft-a:#E8EEE5; --soft-b:#F5E3DA; --soft-c:#F4EAD6; --soft-d:#E6EFF3;
+  --deep:#1E3A3E; --deep-2:#16292C; --deep-ink:#FFFDF9;
+  --glass:rgba(255,253,249,.72); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(201,164,92,.30); --glow-2:rgba(192,112,79,.16);
+  --orb1:#C0704F; --orb2:#E8C27E; --orb3:#2F5358;
+  --sky1:#F4DDB8; --sky2:#EFC9A0; --sky3:#E7B48C; --sun:#FBEBC8;
+  --hill1:#8FA68E; --hill2:#5E7F6F; --hill3:#2F5358; --river1:#A9C6D3; --river2:#5E8A93;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:500;
+  --shadow-c:30,58,62;
+}
+[data-theme="night"]{
+  --bg:#0A0F1E; --bg-alt:#0F1629; --surface:#121A31; --surface-2:#18213D;
+  --ink:#F3EEE4; --ink-2:#B8BCCB; --muted:#7D849B; --line:rgba(255,255,255,.08);
+  --primary:#E0BC76; --primary-deep:#C79E55; --on-primary:#0A0F1E;
+  --accent:#9AA6FF; --accent-deep:#7C89F0; --on-accent:#0A0F1E; --gold:#E6C27A;
+  --soft-a:#1A2442; --soft-b:#221F45; --soft-c:#262236; --soft-d:#172A43;
+  --deep:#060A15; --deep-2:#04070F; --deep-ink:#F3EEE4;
+  --glass:rgba(18,26,49,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(154,166,255,.22); --glow-2:rgba(230,194,122,.14);
+  --orb1:#6F7BFF; --orb2:#E6C27A; --orb3:#1B2356;
+  --sky1:#1A2250; --sky2:#2B2C63; --sky3:#4A3A70; --sun:#F2E3B8;
+  --hill1:#2F3A6C; --hill2:#1E2750; --hill3:#111833; --river1:#34427A; --river2:#1A2348;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:0,0,0;
+}
+[data-theme="saffron"]{
+  --bg:#FBF3E7; --bg-alt:#F4E3CB; --surface:#FFFAF2; --surface-2:#FBF3E7;
+  --ink:#2B140F; --ink-2:#5E4238; --muted:#9A7E70; --line:rgba(122,31,31,.12);
+  --primary:#7A1F1F; --primary-deep:#5A1414; --on-primary:#FFF7EA;
+  --accent:#E0892E; --accent-deep:#C06F18; --on-accent:#FFF7EA; --gold:#C99A3B;
+  --soft-a:#F7E6CF; --soft-b:#FBE0C4; --soft-c:#F6E7C2; --soft-d:#F3DDD6;
+  --deep:#3A0F10; --deep-2:#2A0A0B; --deep-ink:#FFF4E4;
+  --glass:rgba(255,250,242,.74); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(224,137,46,.30); --glow-2:rgba(122,31,31,.12);
+  --orb1:#E0892E; --orb2:#F6CF7A; --orb3:#7A1F1F;
+  --sky1:#FBD9A8; --sky2:#F4B77A; --sky3:#E48E55; --sun:#FFF1D0;
+  --hill1:#C9875A; --hill2:#9A4E36; --hill3:#6E2320; --river1:#E9B98A; --river2:#B8704A;
+  --serif:'Marcellus', Georgia, serif; --serif-w:400;
+  --shadow-c:90,20,20;
+}
+[data-theme="forest"]{
+  --bg:#EEF0E8; --bg-alt:#E1E6D8; --surface:#FAFBF6; --surface-2:#EEF0E8;
+  --ink:#16231B; --ink-2:#43524A; --muted:#7F8B82; --line:rgba(31,61,43,.12);
+  --primary:#1F3D2B; --primary-deep:#142A1D; --on-primary:#F6F7F0;
+  --accent:#B5733C; --accent-deep:#985B29; --on-accent:#F6F7F0; --gold:#B89A5A;
+  --soft-a:#DDE6D3; --soft-b:#EFDCCB; --soft-c:#EDE4CC; --soft-d:#D9E4E0;
+  --deep:#122419; --deep-2:#0C1911; --deep-ink:#F2F3EA;
+  --glass:rgba(250,251,246,.72); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(110,155,106,.28); --glow-2:rgba(181,115,60,.14);
+  --orb1:#6E9B6A; --orb2:#D9BE82; --orb3:#1F3D2B;
+  --sky1:#E6EBD9; --sky2:#CFDCC2; --sky3:#B6C9A9; --sun:#F6F1DA;
+  --hill1:#87A781; --hill2:#4F7552; --hill3:#1F3D2B; --river1:#A9C2B8; --river2:#5F857A;
+  --serif:'Fraunces', Georgia, serif; --serif-w:400;
+  --shadow-c:18,36,25;
+}
+[data-theme="pearl"]{
+  --bg:#F8F5F7; --bg-alt:#EFE8EE; --surface:#FFFFFF; --surface-2:#F8F5F7;
+  --ink:#231B2B; --ink-2:#5A4E63; --muted:#948A9C; --line:rgba(74,53,99,.1);
+  --primary:#4A3563; --primary-deep:#35244A; --on-primary:#FFFFFF;
+  --accent:#D9899B; --accent-deep:#C06C80; --on-accent:#FFFFFF; --gold:#C7A26A;
+  --soft-a:#EDE6F3; --soft-b:#F8E3E8; --soft-c:#F3EBDD; --soft-d:#E4EBF4;
+  --deep:#241A33; --deep-2:#1A1226; --deep-ink:#FBF7FA;
+  --glass:rgba(255,255,255,.7); --glass-line:rgba(255,255,255,.85);
+  --glow:rgba(217,137,155,.26); --glow-2:rgba(74,53,99,.12);
+  --orb1:#D9899B; --orb2:#F2D5C4; --orb3:#6A4F8C;
+  --sky1:#F6E4EC; --sky2:#E9D3E6; --sky3:#D7C5E4; --sun:#FFF5F0;
+  --hill1:#BBA7CE; --hill2:#8C75A8; --hill3:#4A3563; --river1:#D7E0EE; --river2:#9AA9C9;
+  --serif:'Fraunces', Georgia, serif; --serif-w:300;
+  --shadow-c:50,30,70;
+}
+
+[data-theme="rose"]{
+  --bg:#FBF4F1; --bg-alt:#F4E6E0; --surface:#FFFCFA; --surface-2:#FBF4F1;
+  --ink:#2E1C1C; --ink-2:#6A4E4B; --muted:#A08884; --line:rgba(120,60,60,.11);
+  --primary:#8C4A4A; --primary-deep:#6E3434; --on-primary:#FFF9F6;
+  --accent:#D98E73; --accent-deep:#C0735A; --on-accent:#FFF9F6; --gold:#C9A27A;
+  --soft-a:#F6E3DC; --soft-b:#FBE3D8; --soft-c:#F5E9DA; --soft-d:#EFE3E8;
+  --deep:#3A1F22; --deep-2:#2A1517; --deep-ink:#FFF5F1;
+  --glass:rgba(255,252,250,.72); --glass-line:rgba(255,255,255,.75);
+  --glow:rgba(217,142,115,.30); --glow-2:rgba(140,74,74,.12);
+  --orb1:#E7A08A; --orb2:#FFE0CF; --orb3:#8C4A4A;
+  --sky1:#FBE1D6; --sky2:#F5C7B8; --sky3:#E9A99A; --sun:#FFF4EC;
+  --hill1:#D9A3A0; --hill2:#B06F6D; --hill3:#7A3E3F; --river1:#EBC8C4; --river2:#C08F8C;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:400;
+  --shadow-c:90,40,40;
+}
+[data-theme="ivory"]{
+  --bg:#F7F4EE; --bg-alt:#EEE9DF; --surface:#FFFFFF; --surface-2:#F7F4EE;
+  --ink:#141414; --ink-2:#4B4945; --muted:#8F8B83; --line:rgba(20,20,20,.1);
+  --primary:#141414; --primary-deep:#000000; --on-primary:#F7F4EE;
+  --accent:#B08D57; --accent-deep:#947444; --on-accent:#FFFFFF; --gold:#B08D57;
+  --soft-a:#EFEBE3; --soft-b:#F3EDE2; --soft-c:#F1E9D8; --soft-d:#ECEAE6;
+  --deep:#141414; --deep-2:#0A0A0A; --deep-ink:#F7F4EE;
+  --glass:rgba(255,255,255,.74); --glass-line:rgba(255,255,255,.85);
+  --glow:rgba(176,141,87,.24); --glow-2:rgba(20,20,20,.06);
+  --orb1:#B08D57; --orb2:#F5E6C4; --orb3:#1C1C1C;
+  --sky1:#F1ECE2; --sky2:#E6DDCC; --sky3:#D6C8AE; --sun:#FFFBF0;
+  --hill1:#BDB3A2; --hill2:#8A8173; --hill3:#3A3631; --river1:#D8D2C6; --river2:#9E978B;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:20,20,20;
+}
+[data-theme="amethyst"]{
+  --bg:#120B1F; --bg-alt:#180F29; --surface:#1D1330; --surface-2:#251A3D;
+  --ink:#F5EEF7; --ink-2:#C7B9D2; --muted:#8D7FA0; --line:rgba(255,255,255,.08);
+  --primary:#EDBBA5; --primary-deep:#D9A088; --on-primary:#120B1F;
+  --accent:#B98CFF; --accent-deep:#9E6BF0; --on-accent:#120B1F; --gold:#E8C08E;
+  --soft-a:#2A1D45; --soft-b:#34203F; --soft-c:#2E2336; --soft-d:#221F48;
+  --deep:#0B0614; --deep-2:#07040D; --deep-ink:#F5EEF7;
+  --glass:rgba(29,19,48,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(185,140,255,.26); --glow-2:rgba(237,187,165,.14);
+  --orb1:#9E6BF0; --orb2:#F2C6B4; --orb3:#2A1260;
+  --sky1:#2A1650; --sky2:#4A2466; --sky3:#7A3C73; --sun:#F6D7C8;
+  --hill1:#4A2E78; --hill2:#301D55; --hill3:#1A0F33; --river1:#5A3E8A; --river2:#2A1A4D;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:0,0,0;
+}
+[data-theme="moonlit"]{
+  --bg:#07161A; --bg-alt:#0B1E23; --surface:#0F262C; --surface-2:#143038;
+  --ink:#EAF4F2; --ink-2:#A9C2C0; --muted:#6F8C8A; --line:rgba(255,255,255,.08);
+  --primary:#9FE3D6; --primary-deep:#7FCABC; --on-primary:#07161A;
+  --accent:#F0A868; --accent-deep:#DB8F4E; --on-accent:#07161A; --gold:#E3CB92;
+  --soft-a:#12323A; --soft-b:#2A2A24; --soft-c:#223029; --soft-d:#123041;
+  --deep:#040E11; --deep-2:#020A0C; --deep-ink:#EAF4F2;
+  --glass:rgba(15,38,44,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(159,227,214,.20); --glow-2:rgba(240,168,104,.14);
+  --orb1:#3FB8A8; --orb2:#F3DFB0; --orb3:#0B3440;
+  --sky1:#0E2A3A; --sky2:#123A48; --sky3:#1F4F57; --sun:#EFE6C8;
+  --hill1:#1B4A52; --hill2:#113540; --hill3:#0A2229; --river1:#1F5E66; --river2:#0D3038;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:400;
+  --shadow-c:0,0,0;
+}
+[data-theme="aurora"]{
+  --bg:#06110F; --bg-alt:#0A1916; --surface:#0E1F1B; --surface-2:#132924;
+  --ink:#ECF5F0; --ink-2:#A8C2B8; --muted:#6E8A80; --line:rgba(255,255,255,.08);
+  --primary:#7CF0C2; --primary-deep:#5FD8A9; --on-primary:#06110F;
+  --accent:#C59BFF; --accent-deep:#A97CF2; --on-accent:#06110F; --gold:#E4D08A;
+  --soft-a:#12302A; --soft-b:#241F3D; --soft-c:#262B22; --soft-d:#10283A;
+  --deep:#030A08; --deep-2:#020605; --deep-ink:#ECF5F0;
+  --glass:rgba(14,31,27,.6); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(124,240,194,.20); --glow-2:rgba(197,155,255,.18);
+  --orb1:#2FD49A; --orb2:#C59BFF; --orb3:#0B2E3A;
+  --sky1:#0B2230; --sky2:#133A3A; --sky3:#2A2F58; --sun:#E6F7EC;
+  --hill1:#1E4A48; --hill2:#123433; --hill3:#081E1D; --river1:#1C4F55; --river2:#0B2A2E;
+  --serif:'Fraunces', Georgia, serif; --serif-w:300;
+  --shadow-c:0,0,0;
+}
+
+
+:root{
+  --sans:'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-sm:0 2px 10px rgba(var(--shadow-c),.06);
+  --shadow:0 14px 40px -12px rgba(var(--shadow-c),.22);
+  --shadow-lg:0 30px 80px -20px rgba(var(--shadow-c),.35);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .6s,color .6s}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:var(--serif-w);line-height:1.15;letter-spacing:-.01em}
+em{font-style:italic;color:var(--accent)}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.i.f{fill:currentColor;stroke:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ================= PAGE CHROME ================= */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar .in{max-width:1580px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:18px;justify-content:space-between;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:24px;font-weight:600;color:var(--primary)}
+.logo small{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-left:6px}
+.logo .v{color:var(--accent)}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.filter{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px}
+.filter button{padding:8px 16px;border-radius:999px;font-size:13.5px;font-weight:600;color:var(--muted);transition:.25s}
+.filter button.on{background:var(--primary);color:var(--on-primary)}
+.ctl-btn{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:13px;font-weight:600}
+.ctl-btn .sw{width:20px;height:20px;border-radius:50%;background:conic-gradient(var(--primary) 0 33%,var(--accent) 0 66%,var(--gold) 0)}
+.ctl-btn.off{opacity:.55}
+.theme-wrap{position:relative}
+.theme-panel{position:absolute;right:0;top:calc(100% + 10px);width:520px;padding:10px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.3s var(--ease);z-index:60}
+.theme-wrap.open .theme-panel{opacity:1;visibility:visible;transform:none}
+.theme-panel h6{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:8px 10px;font-weight:600}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.topt{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;text-align:left}
+.topt:hover,.topt.on{background:var(--surface-2)}
+.topt .ch{display:flex}.topt .ch i{width:20px;height:20px;border-radius:50%;margin-left:-6px;border:2px solid var(--surface)}.topt .ch i:first-child{margin-left:0}
+.topt b{font-size:13.5px;display:block}.topt small{font-size:11.5px;color:var(--muted)}
+
+.hero{max-width:1580px;margin:0 auto;padding:70px 24px 40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;position:relative}
+.hero::before{content:"";position:absolute;right:0;top:0;width:60%;height:100%;background:radial-gradient(circle at 60% 50%,var(--glow),transparent 60%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:24px;height:1px;background:currentColor}
+.hero-title{font-size:clamp(40px,5vw,68px);margin:18px 0}
+.hero-lead{font-size:17px;color:var(--ink-2);max-width:520px}
+.legend{display:flex;gap:26px;margin-top:30px;flex-wrap:wrap}
+.legend div b{display:block;font-family:var(--serif);font-size:36px;color:var(--primary);line-height:1}
+.legend div span{font-size:13px;color:var(--muted)}
+.fan{position:relative;height:640px;perspective:1600px}
+.fan-stage{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s var(--ease)}
+.fan .phone{position:absolute;left:50%;top:50%;transition:transform .8s var(--ease)}
+.fan .p1{transform:translate(-50%,-50%) translateX(-230px) translateZ(-120px) rotateY(24deg) scale(.82)}
+.fan .p2{transform:translate(-50%,-50%) translateZ(40px) scale(.86);z-index:2}
+.fan .p3{transform:translate(-50%,-50%) translateX(230px) translateZ(-120px) rotateY(-24deg) scale(.82)}
+.fan .phone *{pointer-events:none}
+
+.group{max-width:1580px;margin:0 auto;padding:50px 24px 20px}
+.group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:10px}
+.group-head h2{font-size:clamp(30px,3.6vw,46px)}
+.group-head p{color:var(--ink-2);max-width:560px}
+.app-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;background:var(--soft-a);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.flow{margin-top:44px}
+.flow h3{font-size:22px;display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.flow h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.shots{display:flex;flex-wrap:wrap;gap:48px 28px;justify-content:flex-start}
+.shot{width:360px;perspective:1400px}
+.shot figcaption{margin-top:18px;padding:0 6px}
+.shot figcaption .num{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:18px;margin-right:8px}
+.shot figcaption b{font-size:15.5px}
+.shot figcaption small{display:block;color:var(--muted);font-size:13px;margin-top:4px;line-height:1.5}
+[hidden]{display:none!important}
+.foot{max-width:1580px;margin:60px auto 0;padding:34px 24px 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* ================= PHONE ================= */
+.phone{width:360px;height:760px;border-radius:54px;padding:11px;background:linear-gradient(145deg,#2d2d31,#0b0b0d);box-shadow:0 50px 100px -34px rgba(var(--shadow-c),.5),inset 0 0 0 1.5px rgba(255,255,255,.1);position:relative;transform-style:preserve-3d;transition:transform .5s var(--ease)}
+.screen{width:100%;height:100%;border-radius:43px;overflow:hidden;position:relative;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;font-size:14px;line-height:1.45;isolation:isolate}
+.island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:104px;height:31px;border-radius:20px;background:#000;z-index:40}
+.sb{height:50px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:8px 26px 0 34px;font-size:14.5px;font-weight:600;position:relative;z-index:30}
+.sb .ic{display:flex;gap:5px;align-items:center}
+.sb .ic svg{height:11px;fill:currentColor}
+.home-ind{position:absolute;bottom:8px;left:50%;width:124px;height:5px;border-radius:3px;background:currentColor;opacity:.35;transform:translateX(-50%);z-index:40}
+.screen.dark{background:var(--deep);color:var(--deep-ink)}
+.body{flex:1;overflow-y:auto;overflow-x:hidden;padding:6px 20px 24px;scrollbar-width:none;position:relative}
+.body::-webkit-scrollbar{display:none}
+
+/* components */
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.muted{color:var(--muted)}.small{font-size:12px}.tiny{font-size:11px}
+.t-xl{font-size:31px}.t-l{font-size:25px}.t-m{font-size:19px}
+.eyb{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow-sm)}
+.card.deep{background:var(--deep);color:var(--deep-ink);border-color:transparent}
+.card.prim{background:var(--primary);color:var(--on-primary);border-color:transparent}
+.card.soft{background:var(--soft-a);border-color:transparent;box-shadow:none}
+.btn{height:52px;border-radius:17px;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px;width:100%;transition:transform .2s}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--primary);color:var(--on-primary);box-shadow:0 12px 24px -14px var(--primary)}
+.btn.a{background:var(--accent);color:var(--on-accent);box-shadow:0 12px 24px -14px var(--accent)}
+.btn.g{border:1px solid var(--line);color:var(--primary);background:var(--surface)}
+.btn.sm{height:36px;width:auto;padding:0 14px;border-radius:999px;font-size:13px}
+.btn .i{width:18px;height:18px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:999px;border:1px solid var(--line);font-size:12.5px;font-weight:500;background:var(--surface);white-space:nowrap;transition:.2s}
+.chip.on{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.chip .i{width:14px;height:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.hs{display:flex;gap:12px;overflow-x:auto;margin:0 -20px;padding:4px 20px 10px;scrollbar-width:none}
+.hs::-webkit-scrollbar{display:none}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:18px;flex-shrink:0}
+.av.s{width:34px;height:34px;font-size:14px}.av.l{width:84px;height:84px;font-size:34px;border:4px solid var(--bg)}
+.vf{width:17px;height:17px;color:var(--gold);fill:currentColor;flex-shrink:0}
+.icon-btn{width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;position:relative;flex-shrink:0}
+.icon-btn .i{width:18px;height:18px}
+.icon-btn.glass{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.25);color:#fff;backdrop-filter:blur(10px)}
+.dot-n{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 12px}
+.sec h3{font-size:19px}.sec a{font-size:12.5px;color:var(--accent);font-weight:600}
+.seg{display:flex;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:4px}
+.seg button{flex:1;height:34px;border-radius:10px;font-size:13px;font-weight:500;color:var(--ink-2);transition:.2s}
+.seg button.on{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm);font-weight:600}
+.input{height:52px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 16px;color:var(--muted);font-size:14px}
+.li{display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}
+.li:last-child{border-bottom:none}
+.li .grow{flex:1;min-width:0}
+.li b{font-size:14.5px;font-weight:600;display:block}
+.li small{font-size:12.5px;color:var(--muted)}
+.tg{width:46px;height:28px;border-radius:99px;background:var(--line);position:relative;flex-shrink:0;transition:.25s;cursor:pointer}
+.tg::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.25);transition:.25s var(--ease)}
+.tg.on{background:var(--primary)}.tg.on::after{transform:translateX(18px)}
+.pill-s{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:7px;background:var(--soft-a);color:var(--primary)}
+.pill-s .i{width:12px;height:12px}
+.pill-s.warn{background:var(--soft-c);color:var(--gold)}.pill-s.act{background:var(--soft-b);color:var(--accent-deep)}
+.topnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 16px}
+.topnav h2{font-size:19px;font-family:var(--sans);font-weight:600}
+.pbar{height:4px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px}
+.ring{--p:40;width:56px;height:56px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--line) 0);display:grid;place-items:center;flex-shrink:0}
+.ring > span{width:44px;height:44px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--primary)}
+.bottom-bar{flex-shrink:0;padding:14px 20px 30px;background:var(--surface);border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}
+
+/* tab bar */
+.tabbar{flex-shrink:0;height:86px;padding:8px 14px 28px;display:flex;justify-content:space-around;align-items:center;background:var(--surface);border-top:1px solid var(--line);position:relative;z-index:5}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:500;color:var(--muted);width:56px}
+.tab .i{width:22px;height:22px}
+.tab.on{color:var(--primary);font-weight:600}
+.tab.orb{margin-top:-34px}
+.tab.orb .mini-orb{width:54px;height:54px;border:4px solid var(--surface);box-shadow:0 10px 24px -8px var(--accent)}
+
+/* orbs */
+.mini-orb{width:30px;height:30px;border-radius:50%;flex-shrink:0;position:relative;background:conic-gradient(from 0deg,var(--orb1),var(--orb2),var(--accent),var(--orb1));animation:spin 5s linear infinite;box-shadow:0 0 16px var(--glow)}
+.mini-orb::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.85),transparent 62%)}
+.voice-orb{position:relative;width:210px;height:210px;display:grid;place-items:center}
+.vo-core{position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orb2),var(--orb1) 45%,var(--orb3) 100%);box-shadow:0 0 70px var(--glow),inset 0 -16px 30px rgba(0,0,0,.25);animation:br 1.4s ease-in-out infinite}
+.vo-core::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.4),transparent 40%);animation:spin 4s linear infinite;mix-blend-mode:overlay}
+.vo-ring{position:absolute;inset:22%;border-radius:50%;border:1px solid var(--accent);opacity:0;animation:rip 2.2s ease-out infinite}
+.vo-ring:nth-child(2){animation-delay:.7s}.vo-ring:nth-child(3){animation-delay:1.4s}
+@keyframes br{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes rip{0%{transform:scale(1);opacity:.7}100%{transform:scale(2);opacity:0}}
+.bars{display:flex;align-items:center;gap:3px;height:34px}
+.bars i{width:3px;border-radius:3px;background:var(--gold);animation:bar 1s ease-in-out infinite}
+@keyframes bar{0%,100%{height:6px;opacity:.5}50%{height:30px;opacity:1}}
+
+/* ================= SCREEN SPECIFIC ================= */
+/* splash */
+.splash{background:radial-gradient(circle at 50% 38%,var(--glow),transparent 62%),var(--deep)}
+.splash-3d{position:absolute;inset:30px 0 38% 0;z-index:1}
+.splash-3d canvas{width:100%!important;height:100%!important}
+.splash-3d.fallback::before{content:"";position:absolute;left:50%;top:50%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orb2),var(--orb1) 45%,var(--orb3));box-shadow:0 0 90px var(--glow);animation:br 5s ease-in-out infinite}
+.splash-c{position:absolute;left:0;right:0;bottom:130px;text-align:center;z-index:2}
+.splash-c .wm{font-family:var(--serif);font-size:44px;font-weight:500;margin-top:8px}
+.splash-c .wm span{color:var(--accent)}
+.splash-c p{font-family:var(--serif);font-style:italic;font-size:18px;opacity:.75}
+.splash-f{position:absolute;left:0;right:0;bottom:52px;text-align:center;z-index:2;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.ldots{display:flex;gap:6px;justify-content:center;margin-bottom:14px}
+.ldots i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bl 1.2s infinite}
+.ldots i:nth-child(2){animation-delay:.2s}.ldots i:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,80%,100%{opacity:.25}40%{opacity:1}}
+
+/* onboarding mandala */
+.onb-art{height:350px;position:relative;perspective:900px;overflow:hidden;background:radial-gradient(circle at 50% 55%,var(--glow),transparent 65%)}
+.mstage{position:absolute;left:50%;top:52%;width:420px;height:420px;margin:-210px 0 0 -210px;transform-style:preserve-3d;transform:rotateX(55deg);animation:tilt 10s ease-in-out infinite}
+@keyframes tilt{0%,100%{transform:rotateX(55deg) rotateZ(-6deg)}50%{transform:rotateX(62deg) rotateZ(6deg)}}
+.m-layer{position:absolute;inset:0;transform-style:preserve-3d}
+.m-layer svg{width:100%;height:100%;animation:spin 60s linear infinite}
+.m-layer.l2 svg{animation-duration:45s;animation-direction:reverse}.m-layer.l3 svg{animation-duration:35s}.m-layer.l4 svg{animation-duration:25s;animation-direction:reverse}
+.onb-core{position:absolute;left:50%;top:46%;width:92px;height:92px;margin:-46px 0 0 -46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orb2),var(--orb1) 50%,var(--orb3));box-shadow:0 0 60px var(--glow),0 20px 40px -10px rgba(0,0,0,.3);animation:float 5s ease-in-out infinite}
+.pdots{display:flex;gap:6px;margin:20px 0}
+.pdots i{width:7px;height:7px;border-radius:99px;background:var(--line)}
+.pdots i.on{width:24px;background:var(--accent)}
+
+/* sign in */
+.otp{display:flex;gap:8px;margin:12px 0 16px}
+.otp span{flex:1;height:52px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;font-size:20px;font-weight:600}
+.otp span.on{border-color:var(--primary);box-shadow:0 0 0 3px var(--soft-a)}
+.divider{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:12px;margin:18px 0}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* intention tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{border:1px solid var(--line);border-radius:18px;padding:13px;background:var(--surface);display:flex;flex-direction:column;gap:8px;font-size:13.5px;font-weight:500;text-align:left;position:relative;transition:.2s}
+.tile .ti{width:34px;height:34px;border-radius:11px;background:var(--soft-a);display:grid;place-items:center;color:var(--primary)}
+.tile .ti .i{width:18px;height:18px}
+.tile.on{border-color:var(--primary);background:var(--soft-a);box-shadow:inset 0 0 0 1px var(--primary)}
+.tile.on::after{content:"✓";position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;background:var(--primary);color:var(--on-primary);font-size:11px;display:grid;place-items:center}
+
+/* home */
+.hc{width:150px;flex-shrink:0;border-radius:20px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.hc .top{height:74px;position:relative}
+.hc .top .av{position:absolute;left:12px;bottom:-18px;border:3px solid var(--surface)}
+.hc .bd{padding:24px 12px 12px}
+.hc b{font-size:13.5px;display:flex;align-items:center;gap:4px}
+.hc small{font-size:11.5px;color:var(--muted);display:block}
+.hc .m{margin-top:8px;font-size:11.5px;font-weight:700;color:var(--accent)}
+
+/* veda screen */
+.veda-top{display:flex;flex-direction:column;align-items:center;padding-top:6px}
+.bub{max-width:84%;padding:11px 14px;border-radius:18px;font-size:13.5px;line-height:1.5;margin-bottom:10px}
+.bub.u{margin-left:auto;background:rgba(255,255,255,.94);color:#1d2a2c;border-bottom-right-radius:6px}
+.bub.a{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-bottom-left-radius:6px}
+.mm{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+.mm b{font-size:13.5px;display:block}.mm small{font-size:11.5px;opacity:.65}
+.mm .pc{margin-left:auto;font-weight:700;color:var(--gold)}
+.mic-xl{width:74px;height:74px;border-radius:50%;background:#E5484D;color:#fff;display:grid;place-items:center;box-shadow:0 0 0 10px rgba(229,72,77,.18),0 0 0 22px rgba(229,72,77,.07)}
+.mic-xl .i{width:28px;height:28px}
+
+/* discover map */
+.map{height:132px;border-radius:20px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.map svg{width:100%;height:100%}
+.pin{position:absolute;display:grid;place-items:center;width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--primary);color:var(--on-primary);box-shadow:var(--shadow)}
+.pin span{transform:rotate(45deg);font-family:var(--serif);font-size:12px}
+.pin.hot{background:var(--accent);width:36px;height:36px}
+
+/* profile */
+.cover{height:190px;position:relative;flex-shrink:0;margin:-50px 0 0;z-index:3}
+.cover > svg{position:absolute;inset:0;width:100%;height:100%}
+.cover > .row{position:absolute;z-index:2;left:18px;right:18px;top:56px;justify-content:space-between}
+.stats3{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;margin:16px 0;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.stats3 b{font-family:var(--serif);font-size:21px;display:block;color:var(--primary)}
+.stats3 small{font-size:11.5px;color:var(--muted)}
+.svc{display:flex;gap:12px;align-items:center;padding:14px;border-radius:18px;border:1px solid var(--line);background:var(--surface);margin-bottom:10px}
+.svc .grow{flex:1}.svc b{font-size:14px;display:block}.svc small{font-size:12px;color:var(--muted)}
+.svc .pr{font-weight:700;color:var(--primary);font-size:15px}
+
+/* booking */
+.dates{display:flex;gap:8px;overflow-x:auto;margin:0 -20px;padding:2px 20px 6px;scrollbar-width:none}
+.dates::-webkit-scrollbar{display:none}
+.date{width:54px;flex-shrink:0;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:10px 0;text-align:center;transition:.2s}
+.date small{display:block;font-size:11px;color:var(--muted)}
+.date b{font-size:19px;font-family:var(--serif)}
+.date.on{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.date.on small{color:inherit;opacity:.75}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{height:42px;border-radius:13px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;transition:.2s}
+.slot.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.slot.off{opacity:.35;text-decoration:line-through}
+.textarea{min-height:74px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line);padding:12px 14px;color:var(--muted);font-size:13.5px}
+
+/* checkout */
+.pay{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;border:1px solid var(--line);background:var(--surface);margin-bottom:8px}
+.pay.on{border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
+.pay .lg{width:42px;height:28px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-weight:800;flex-shrink:0}
+.pay .rd{margin-left:auto;width:20px;height:20px;border-radius:50%;border:2px solid var(--line)}
+.pay.on .rd{border:6px solid var(--primary)}
+.sum{display:flex;justify-content:space-between;font-size:14px;padding:6px 0}
+.sum.t{border-top:1px dashed var(--line);margin-top:6px;padding-top:12px;font-weight:700;font-size:16px}
+
+/* confirmed medal */
+.medal-zone{height:230px;display:grid;place-items:center;position:relative;perspective:800px}
+.medal-zone .rp{position:absolute;width:130px;height:130px;border-radius:50%;border:1px solid var(--gold);animation:rip 3s ease-out infinite}
+.medal-zone .rp:nth-child(2){animation-delay:1s}.medal-zone .rp:nth-child(3){animation-delay:2s}
+.medal{width:130px;height:130px;position:relative;transform-style:preserve-3d;animation:coin 6s ease-in-out infinite}
+.medal .face{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orb2),var(--gold) 55%,var(--accent-deep));display:grid;place-items:center;box-shadow:inset 0 0 0 6px rgba(255,255,255,.35),inset 0 -12px 20px rgba(0,0,0,.18),0 24px 50px -16px var(--gold);backface-visibility:hidden}
+.medal .face .i{width:54px;height:54px;color:#fff;stroke-width:2.6}
+.medal .face.b{transform:rotateY(180deg)}
+.medal .edge{position:absolute;inset:0;border-radius:50%;background:var(--accent-deep);transform:translateZ(-6px)}
+@keyframes coin{0%,100%{transform:rotateY(-25deg) rotateX(10deg)}50%{transform:rotateY(25deg) rotateX(-6deg)}}
+
+/* session room */
+.video{position:absolute;inset:0;background:linear-gradient(160deg,var(--hill2),var(--hill3) 55%,var(--deep-2));overflow:hidden}
+.video .person{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:300px;opacity:.9}
+.video .person svg{width:100%}
+.ov{position:absolute;z-index:3;color:#fff}
+.live{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);font-size:12px;font-weight:600}
+.live i{width:7px;height:7px;border-radius:50%;background:#FF5A5F;animation:bl 1.4s infinite}
+.pip{position:absolute;right:16px;bottom:170px;width:96px;height:132px;border-radius:18px;background:linear-gradient(160deg,var(--sky2),var(--accent-deep));border:2px solid rgba(255,255,255,.4);z-index:3;display:grid;place-items:center;font-family:var(--serif);font-size:30px;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.glass{background:rgba(20,20,26,.42);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#fff}
+.ctrls{position:absolute;left:16px;right:16px;bottom:34px;z-index:3;border-radius:28px;padding:12px;display:flex;justify-content:space-around}
+.ctrls button{width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;color:#fff}
+.ctrls button.end{background:#E5484D;width:62px}
+.ctrls .i{width:20px;height:20px}
+.cue{position:absolute;left:16px;bottom:124px;z-index:3;border-radius:18px;padding:10px 14px;display:flex;gap:10px;align-items:center}
+.cue .ring{width:42px;height:42px}.cue .ring > span{width:32px;height:32px;background:rgba(0,0,0,.5);color:#fff;font-size:11px}
+
+/* breathe */
+.lotus-box{height:330px;margin:0 -20px;position:relative;background:radial-gradient(ellipse at 50% 70%,var(--glow),transparent 65%)}
+.lotus-box > div{position:absolute;inset:0}
+.lotus-box canvas{width:100%!important;height:100%!important}
+.lotus-box .fallback::before{content:"";position:absolute;left:50%;top:50%;width:170px;height:170px;margin:-85px 0 0 -85px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--orb2),var(--accent) 55%,transparent 72%);transform:scale(calc(.75 + var(--o,.5) * .45))}
+.br-phase{font-family:var(--serif);font-weight:var(--serif-w);font-size:36px;text-align:center}
+
+/* journey */
+.streak{height:190px;display:grid;place-items:center;perspective:700px;position:relative}
+.streak .r3d{width:150px;height:150px;border-radius:50%;background:conic-gradient(var(--gold) 0 80%,rgba(255,255,255,.1) 0);transform:rotateX(58deg);animation:spin3 14s linear infinite;box-shadow:0 0 50px var(--glow);position:absolute}
+.streak .r3d::after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--deep)}
+@keyframes spin3{to{transform:rotateX(58deg) rotateZ(360deg)}}
+.streak .val{position:relative;text-align:center;transform:translateY(-14px)}
+.streak .val b{font-family:var(--serif);font-size:54px;line-height:1;color:var(--gold);display:block;text-shadow:0 10px 30px var(--glow)}
+.streak .val small{font-size:12px;opacity:.7;letter-spacing:.1em;text-transform:uppercase}
+.wk{display:flex;align-items:flex-end;gap:10px;height:110px;padding-top:10px}
+.wk div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.wk i{width:100%;border-radius:8px;background:linear-gradient(180deg,var(--accent),var(--gold))}
+.wk i.lo{background:var(--line)}
+.wk span{font-size:11px;color:var(--muted)}
+.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.mini-stats div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px;text-align:center}
+.mini-stats b{font-family:var(--serif);font-size:22px;color:var(--primary);display:block}
+.mini-stats small{font-size:11px;color:var(--muted)}
+
+/* chat */
+.day{text-align:center;font-size:11.5px;color:var(--muted);margin:6px 0 12px}
+.cm{max-width:80%;padding:11px 14px;border-radius:18px;font-size:13.5px;margin-bottom:8px}
+.cm.h{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px}
+.cm.me{margin-left:auto;background:var(--primary);color:var(--on-primary);border-bottom-right-radius:6px}
+.att{display:flex;gap:10px;align-items:center;padding:12px;border-radius:18px;background:var(--soft-a);max-width:82%;margin-bottom:8px}
+.att .pl{width:40px;height:40px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;flex-shrink:0}
+.att .pl .i{width:16px;height:16px}
+.wave{display:flex;align-items:center;gap:2px;height:22px;margin-top:4px}
+.wave i{width:3px;border-radius:2px;background:var(--primary);opacity:.6}
+
+/* settings themes */
+.tdots{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tdot{aspect-ratio:1;border-radius:50%;position:relative;border:2px solid transparent;transition:.2s}
+.tdot.on{border-color:var(--primary);box-shadow:0 0 0 3px var(--surface) inset}
+
+/* healer */
+.draft{border:1px dashed var(--accent);background:var(--soft-b);border-radius:20px;padding:14px}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl-i{position:relative;padding:10px 0 14px}
+.tl-i::before{content:"";position:absolute;left:-22px;top:14px;width:12px;height:12px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 4px var(--bg)}
+.tl-i.rev::before{background:var(--gold)}.tl-i.act::before{background:var(--accent)}
+.tl-i b{font-size:14.5px}
+.qa{padding:10px 0;border-bottom:1px solid var(--line)}
+.qa small{display:block;color:var(--muted);font-size:12px}
+.qa p{font-size:13.5px}
+.cal{position:relative;height:330px;border-left:1px solid var(--line);margin-left:40px}
+.cal .hr{position:absolute;left:-40px;font-size:10.5px;color:var(--muted)}
+.cal .hr::after{content:"";position:absolute;left:40px;top:6px;width:280px;height:1px;background:var(--line)}
+.cal .ev{position:absolute;left:8px;right:0;border-radius:12px;padding:6px 10px;font-size:12px;overflow:hidden}
+.cal .ev b{display:block;font-size:12.5px}
+.cal .ev.s{background:var(--primary);color:var(--on-primary)}
+.cal .ev.p{background:var(--soft-c);color:var(--ink-2);border:1px dashed var(--gold)}
+.cal .ev.b{background:repeating-linear-gradient(45deg,var(--surface-2) 0 8px,var(--line) 8px 9px);color:var(--muted)}
+.cal .now{position:absolute;left:-6px;right:0;height:2px;background:var(--accent)}
+.cal .now::before{content:"";position:absolute;left:0;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.chart{height:130px;display:flex;align-items:flex-end;gap:7px}
+.chart i{flex:1;border-radius:6px 6px 3px 3px;background:linear-gradient(180deg,var(--gold),var(--accent))}
+.chart i.dim{opacity:.35}
+.split{height:10px;border-radius:99px;overflow:hidden;display:flex}
+.post-img{height:220px;border-radius:0;position:relative;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(160deg,var(--sky1),var(--sky3) 55%,var(--hill2))}
+.post-img::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:var(--sun);top:30px;opacity:.9;box-shadow:0 0 60px var(--sun)}
+.post-img svg{position:absolute;left:0;right:0;bottom:0;width:100%}
+.post-img p{position:relative;font-family:var(--serif);font-size:24px;color:#fff;text-shadow:0 2px 20px rgba(0,0,0,.35);padding:0 30px;line-height:1.2;margin-top:40px}
+.src{display:flex;align-items:center;gap:10px;margin:10px 0}
+.src span{width:88px;font-size:12.5px}
+.src div{flex:1;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.src div i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px}
+.src b{width:34px;text-align:right;font-size:12.5px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kpis div{padding:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.kpis b{font-family:var(--serif);font-size:24px;display:block;color:var(--primary)}
+.kpis small{font-size:12px;color:var(--muted)}
+.kpis em{font-style:normal;font-size:11.5px;font-weight:700;color:var(--primary);background:var(--soft-a);padding:2px 6px;border-radius:6px;margin-left:4px}
+
+@media (max-width:1100px){.hero{grid-template-columns:1fr}.fan{height:600px}}
+@media (max-width:640px){
+  .theme-panel{width:min(92vw,340px)}.tgrid{grid-template-columns:1fr}
+  .fan{height:520px;overflow:hidden;margin:0 -24px}
+  .fan .p1{transform:translate(-50%,-50%) translateX(-120px) translateZ(-140px) rotateY(24deg) scale(.62)}
+  .fan .p2{transform:translate(-50%,-50%) translateZ(20px) scale(.66)}
+  .fan .p3{transform:translate(-50%,-50%) translateX(120px) translateZ(-140px) rotateY(-24deg) scale(.62)}
+  .shots{justify-content:center}
+  .shot{width:100%;max-width:360px;display:flex;flex-direction:column;align-items:center}
+  .shot .phone{transform-origin:top center}
+  .logo small{display:none}
+}
+@media (max-width:380px){.shot .phone{transform:scale(.9);margin-bottom:-76px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10.5A4 4 0 0112 7a4 4 0 017 2.5C19 15.5 12 20 12 20z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3M8 7l4-4 4 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-end" viewBox="0 0 24 24"><path d="M3 14c5-5 13-5 18 0l-2 3-4-1v-3a10 10 0 00-6 0v3l-4 1z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2M3 10h18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c1-3.5 3.5-5 7-5s6 1.5 7 5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 15c2 .6 3.4 2.2 4 5"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 10-3-3M3 14h15a3 3 0 11-3 3M3 19h7"/></symbol>
+  <symbol id="i-body" viewBox="0 0 24 24"><circle cx="12" cy="4.5" r="2"/><path d="M12 7v7M6 10l6 2 6-2M9 21l3-7 3 7"/></symbol>
+  <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M3 12a9 6 0 0018 0z"/><path d="M6 20h12M9 7c.7-1.3.7-2.7 0-4M14 7c.7-1.3.7-2.7 0-4"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24"><path d="M12 21c-4 0-6-2.7-6-6 0-4 4-6 4-10 3 1.5 6 5 6 8 1-1 1.5-2 1.5-3 1.5 1.5 2.5 3.4 2.5 5 0 3.5-3 6-8 6z"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></symbol>
+  <symbol id="i-verified" viewBox="0 0 24 24"><path d="M12 1l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.2 3.2 1.2 3.2-3 1.7-.9 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-.9-3.3-3-1.7L3.3 13 2.1 9.8l3-1.7.9-3.3 3.4.4z"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8 2.2-1.3 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="in">
+    <div class="logo">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" style="stroke:var(--primary)" stroke-width="1.5"/><path d="M20 8c-4 5-4 11 0 16 4-5 4-11 0-16z" style="fill:var(--accent)"/><path d="M9 22c5-1 9 1 11 6-5 1-9-1-11-6zM31 22c-5-1-9 1-11 6 5 1 9-1 11-6z" style="fill:var(--primary)"/></svg>
+      <span>2<span class="v">V</span>erse</span><small>App screens</small>
+    </div>
+    <div class="controls">
+      <div class="filter" role="group" aria-label="Show app">
+        <button class="on" data-f="all">Both apps</button><button data-f="seeker">Seeker</button><button data-f="healer">Healer</button>
+      </div>
+      <button class="ctl-btn" id="tiltBtn" aria-pressed="true">3D tilt</button>
+      <div class="theme-wrap" id="themeWrap">
+        <button class="ctl-btn" id="themeBtn"><span class="sw"></span><span id="themeName">Ganga Dawn</span></button>
+        <div class="theme-panel" id="themePanel"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <span class="eyebrow">2Verse mobile · iOS &amp; Android</span>
+    <h1 class="hero-title">Two apps. One <em>healing</em> journey.</h1>
+    <p class="hero-lead">The Seeker app helps people find, book and continue their healing. The Healer app helps practitioners run their whole practice from their phone. Both share one account, one design language and ten themes.</p>
+    <div class="legend">
+      <div><b>16</b><span>Seeker screens</span></div>
+      <div><b>10</b><span>Healer screens</span></div>
+      <div><b>10</b><span>Themes</span></div>
+    </div>
+  </div>
+  <div class="fan" id="fan"><div class="fan-stage" id="fanStage"></div></div>
+</section>
+
+<!-- =================================================================== SEEKER APP -->
+<section class="group" data-app="seeker">
+  <div class="group-head">
+    <div><span class="app-tag">Seeker app</span><h2>For <em>seekers</em></h2></div>
+    <p>From the first breath of the splash screen to a daily practice at home: discovery, Veda AI matching, booking in your own time zone, live sessions and your healing journey.</p>
+  </div>
+
+  <div class="flow"><h3>Welcome</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen dark splash" id="scr-splash">
+      <div class="splash-3d" id="hero3d"></div>
+      <div class="splash-c">
+        <svg width="54" height="54" viewBox="0 0 40 40" fill="none" style="margin:0 auto"><circle cx="20" cy="20" r="19" style="stroke:var(--gold)" stroke-width="1.2"/><path d="M20 8c-4 5-4 11 0 16 4-5 4-11 0-16z" style="fill:var(--accent)"/><path d="M9 22c5-1 9 1 11 6-5 1-9-1-11-6zM31 22c-5-1-9 1-11 6 5 1 9-1 11-6z" style="fill:var(--gold)"/></svg>
+        <div class="wm">2<span>V</span>erse</div>
+        <p>Healing from the source</p>
+      </div>
+      <div class="splash-f"><div class="ldots"><i></i><i></i><i></i></div>Invite-only · Verified · Rishikesh</div>
+    </div></div><figcaption><span class="num">01</span><b>Splash</b><small>A live 3D energy orb breathes while the app loads. Drag it to spin.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-onb">
+      <div class="onb-art" style="margin-top:-50px"><div class="mstage" data-mandala></div><div class="onb-core"></div></div>
+      <div class="body">
+        <span class="eyb">01 / 03</span>
+        <h1 class="t-xl" style="margin:10px 0 10px">Healers chosen <em>by hand</em></h1>
+        <p class="muted">Every healer on 2Verse is invited or personally reviewed, then verified for each practice they offer.</p>
+        <div class="pdots"><i class="on"></i><i></i><i></i></div>
+        <button class="btn p">Continue</button>
+        <button class="btn g" style="margin-top:10px">I have an invite code</button>
+      </div>
+    </div></div><figcaption><span class="num">02</span><b>Onboarding</b><small>A 3D mandala of four layers tilts gently, introducing the 2Verse promise.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-signin">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><span class="small muted">Step 1 of 3</span></div>
+        <h1 class="t-xl">Welcome to <em>2Verse</em></h1>
+        <p class="muted" style="margin:8px 0 22px">Sign in to find your healer and keep your practice in one calm place.</p>
+        <button class="btn" style="background:#111;color:#fff"><svg class="i f"><use href="#i-apple"/></svg>Continue with Apple</button>
+        <button class="btn g" style="margin-top:10px;color:var(--ink)"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.6a4.8 4.8 0 01-2.1 3.1v2.6h3.4c2-1.8 3.1-4.5 3.1-7.5z"/><path fill="#34A853" d="M12 22c2.8 0 5.2-.9 6.9-2.5l-3.4-2.6c-.9.6-2.1 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.7v2.7A10 10 0 0012 22z"/><path fill="#FBBC05" d="M6.2 13.6a6 6 0 010-3.8V7.1H2.7a10 10 0 000 9.2z"/><path fill="#EA4335" d="M12 6c1.5 0 2.9.5 4 1.5l3-3A10 10 0 002.7 7.1l3.5 2.7C7 7.8 9.3 6 12 6z"/></svg>Continue with Google</button>
+        <div class="divider">or use your phone</div>
+        <div class="input" style="color:var(--ink)"><b style="font-weight:600">+44</b><span style="width:1px;height:22px;background:var(--line)"></span>7700 900 461</div>
+        <div class="otp"><span class="on">4</span><span class="on">8</span><span class="on">2</span><span class="on">9</span><span></span><span></span></div>
+        <button class="btn p">Verify &amp; continue</button>
+        <div class="row between" style="margin-top:16px"><span class="small">Use Face ID next time</span><span class="tg on"></span></div>
+        <p class="tiny muted" style="margin-top:16px;text-align:center">By continuing you agree to our Terms and Privacy Policy.</p>
+      </div>
+    </div></div><figcaption><span class="num">03</span><b>Sign in</b><small>Apple, Google or phone OTP, with Face ID for the next visit.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-intent">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><div class="pbar" style="flex:1;margin:0 14px"><i style="width:66%"></i></div><span class="small muted">2/3</span></div>
+        <h1 class="t-l">What brings you <em>here</em>?</h1>
+        <p class="muted small" style="margin:6px 0 16px">Choose as many as you like. Veda uses this to suggest healers.</p>
+        <div class="tiles" data-multi>
+          <button class="tile on"><span class="ti"><svg class="i"><use href="#i-wind"/></svg></span>Calm &amp; less stress</button>
+          <button class="tile on"><span class="ti"><svg class="i"><use href="#i-moon"/></svg></span>Better sleep</button>
+          <button class="tile"><span class="ti"><svg class="i"><use href="#i-spark"/></svg></span>Clarity &amp; focus</button>
+          <button class="tile"><span class="ti"><svg class="i"><use href="#i-heart"/></svg></span>Emotional release</button>
+          <button class="tile"><span class="ti"><svg class="i"><use href="#i-sun"/></svg></span>Energy</button>
+          <button class="tile on"><span class="ti"><svg class="i"><use href="#i-body"/></svg></span>Reconnect with body</button>
+        </div>
+        <p class="small" style="font-weight:600;margin:18px 0 8px">How would you like to meet?</p>
+        <div class="seg" data-seg><button>In person</button><button class="on">Online</button><button>Both</button></div>
+        <button class="btn p" style="margin-top:18px">Continue</button>
+      </div>
+    </div></div><figcaption><span class="num">04</span><b>Your intentions</b><small>Personalisation in one screen. Tap tiles to select.</small></figcaption></figure>
+  </div></div>
+
+  <div class="flow"><h3>Discover &amp; match</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-home">
+      <div class="body">
+        <div class="row between" style="margin:4px 0 18px">
+          <div><small class="muted small">Wednesday, 30 September</small><h1 class="t-l">Good evening, <em>Sarah</em></h1></div>
+          <span class="icon-btn"><svg class="i"><use href="#i-bell"/></svg><i class="dot-n"></i></span>
+        </div>
+        <div class="card deep row" style="gap:12px">
+          <span class="mini-orb" style="width:46px;height:46px"></span>
+          <div style="flex:1"><b style="font-size:15px">Talk to Veda</b><small style="display:block;font-size:12px;opacity:.7">Tell me how you feel. I'll find your healer.</small></div>
+          <span style="width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center"><svg class="i" style="width:18px"><use href="#i-mic"/></svg></span>
+        </div>
+        <div class="card prim" style="margin-top:12px">
+          <div class="row between"><span class="tiny" style="letter-spacing:.14em;text-transform:uppercase;opacity:.75">Next session · Today</span><span class="chip" style="background:rgba(255,255,255,.18);border:none;color:inherit;padding:5px 10px"><svg class="i"><use href="#i-video"/></svg>Online</span></div>
+          <h3 style="font-size:21px;margin:8px 0 10px">Breath for deep sleep</h3>
+          <div class="row"><span class="av s" style="background:var(--hill2);border:2px solid rgba(255,255,255,.4)">A</span><div style="flex:1"><b style="font-size:13.5px">Ananya Rawat</b><small style="display:block;font-size:12px;opacity:.75">7:30 PM your time · 60 min</small></div><span class="btn sm" style="background:var(--gold);color:#141414">Opens in 2h</span></div>
+        </div>
+        <div class="sec"><h3>Today's practice</h3><a>See all</a></div>
+        <div class="card row" style="gap:14px"><span class="ring" style="--p:40"><span>40%</span></span><div style="flex:1"><b style="font-size:14.5px">Box breathing</b><small class="muted small" style="display:block">5 min · Shared by Ananya</small></div><span class="icon-btn" style="background:var(--primary);color:var(--on-primary);border:none"><svg class="i f"><use href="#i-play"/></svg></span></div>
+        <div class="sec"><h3>Healers for you</h3><a>Ask Veda</a></div>
+        <div class="hs">
+          <div class="hc"><div class="top" style="background:linear-gradient(135deg,var(--hill1),var(--hill3))"><span class="av s" style="background:var(--hill2)">D</span></div><div class="bd"><b>Dev Prakash<svg class="vf"><use href="#i-verified"/></svg></b><small>Sound Healing</small><div class="m">92% match</div></div></div>
+          <div class="hc"><div class="top" style="background:linear-gradient(135deg,var(--sky3),var(--accent-deep))"><span class="av s" style="background:var(--accent-deep)">K</span></div><div class="bd"><b>Kavya Iyer<svg class="vf"><use href="#i-verified"/></svg></b><small>Meditation</small><div class="m">89% match</div></div></div>
+          <div class="hc"><div class="top" style="background:linear-gradient(135deg,var(--river1),var(--primary-deep))"><span class="av s" style="background:var(--primary-deep)">M</span></div><div class="bd"><b>Meera Joshi<svg class="vf"><use href="#i-verified"/></svg></b><small>Somatic</small><div class="m">86% match</div></div></div>
+        </div>
+      </div>
+      <nav class="tabbar" data-tabs="seeker" data-on="home"></nav>
+    </div></div><figcaption><span class="num">05</span><b>Home</b><small>Veda first, then the next session, today's practice and matched healers.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen dark" id="scr-veda" style="background:radial-gradient(circle at 50% 22%,var(--glow),transparent 55%),var(--deep)">
+      <div class="body">
+        <div class="row between" style="margin-bottom:4px"><span class="icon-btn glass"><svg class="i"><use href="#i-x"/></svg></span><div style="text-align:center"><b style="font-family:var(--serif);font-size:20px">Veda</b><small style="display:block;font-size:11px;opacity:.6">AI healing guide</small></div><span class="icon-btn glass"><svg class="i"><use href="#i-dots"/></svg></span></div>
+        <div class="veda-top">
+          <div class="voice-orb"><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-core"></span></div>
+          <div class="bars" data-bars></div>
+          <p style="font-family:var(--serif);font-size:20px;margin:6px 0 14px">Listening…</p>
+        </div>
+        <div class="bub u">I've been so anxious at work, and I can't switch off at night.</div>
+        <div class="bub a">That sounds heavy. Breath and stillness can help your body settle. Would you like to meet online, or in Rishikesh?</div>
+        <div class="mm"><span class="av s" style="background:var(--hill2)">A</span><div><b>Ananya Rawat</b><small>Breathwork · Meditation · Online</small></div><span class="pc">94%</span></div>
+      </div>
+      <div style="flex-shrink:0;padding:10px 0 40px;display:flex;flex-direction:column;align-items:center;gap:10px">
+        <span class="mic-xl"><svg class="i"><use href="#i-mic"/></svg></span>
+        <small style="font-size:12px;opacity:.6">Tap to pause · <u>Type instead</u></small>
+      </div>
+    </div></div><figcaption><span class="num">06</span><b>Veda · voice AI</b><small>Seekers speak freely. Veda listens, asks gently and suggests healers with reasons.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-discover">
+      <div class="body">
+        <h1 class="t-l" style="margin:4px 0 14px">Discover</h1>
+        <div class="row"><div class="input" style="flex:1;height:48px"><svg class="i"><use href="#i-search"/></svg>Healers, practices, goals</div><span class="icon-btn" style="width:48px;height:48px;border-radius:16px;background:var(--primary);color:var(--on-primary);border:none"><svg class="i"><use href="#i-filter"/></svg></span></div>
+        <div class="hs" style="margin-top:12px" data-multi>
+          <button class="chip on">Online</button><button class="chip on">Breathwork</button><button class="chip">In person</button><button class="chip">Under $60</button><button class="chip">Speaks Hindi</button><button class="chip">Available now</button>
+        </div>
+        <div class="map" style="margin-top:4px">
+          <svg viewBox="0 0 320 132" preserveAspectRatio="xMidYMid slice"><rect width="320" height="132" style="fill:var(--soft-a)"/><path d="M-10 90 C 60 70, 90 110, 160 80 S 260 40, 340 60" fill="none" style="stroke:var(--river1)" stroke-width="16" stroke-linecap="round"/><path d="M-10 90 C 60 70, 90 110, 160 80 S 260 40, 340 60" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-dasharray="6 8"/><g style="stroke:var(--line)" stroke-width="1"><path d="M40 0v132M120 0v132M200 0v132M280 0v132M0 30h320M0 110h320"/></g><text x="200" y="118" style="fill:var(--muted)" font-size="10" font-family="Inter">Tapovan</text><text x="30" y="40" style="fill:var(--muted)" font-size="10" font-family="Inter">Laxman Jhula</text></svg>
+          <span class="pin hot" style="left:140px;top:34px"><span>A</span></span><span class="pin" style="left:70px;top:58px"><span>D</span></span><span class="pin" style="left:230px;top:20px"><span>R</span></span>
+        </div>
+        <p class="small muted" style="margin:14px 0 2px">12 healers · sorted by match</p>
+        <div class="li"><span class="av" style="background:var(--hill2)">A</span><div class="grow"><b class="row" style="gap:4px">Ananya Rawat<svg class="vf"><use href="#i-verified"/></svg></b><small>Breathwork · Meditation · 11 yrs</small><div class="row small" style="gap:6px;margin-top:3px"><svg class="i f" style="width:13px;color:var(--gold)"><use href="#i-star"/></svg><b style="font-size:12px;display:inline">4.9</b><span class="muted">(38) · from $65</span></div></div><svg class="i" style="color:var(--accent)"><use href="#i-heart"/></svg></div>
+        <div class="li"><span class="av" style="background:var(--accent-deep)">R</span><div class="grow"><b class="row" style="gap:4px">Rohan Bhatt<svg class="vf"><use href="#i-verified"/></svg></b><small>Somatic · Breathwork · 10 yrs</small><div class="row small" style="gap:6px;margin-top:3px"><svg class="i f" style="width:13px;color:var(--gold)"><use href="#i-star"/></svg><b style="font-size:12px;display:inline">4.8</b><span class="muted">(24) · from $90</span></div></div><svg class="i muted"><use href="#i-heart"/></svg></div>
+        <div class="li"><span class="av" style="background:var(--primary-deep)">I</span><div class="grow"><b class="row" style="gap:4px">Isha Kapoor<svg class="vf"><use href="#i-verified"/></svg></b><small>Yoga · Breathwork · 6 yrs</small></div><svg class="i muted"><use href="#i-heart"/></svg></div>
+      </div>
+      <nav class="tabbar" data-tabs="seeker" data-on="discover"></nav>
+    </div></div><figcaption><span class="num">07</span><b>Discover</b><small>Filters, a map of Tapovan and healers sorted by match. Chips toggle.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-profile">
+      <div class="cover"><svg viewBox="0 0 360 190" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--hill1)"/><stop offset="1" style="stop-color:var(--hill3)"/></linearGradient></defs><rect width="360" height="190" fill="url(#cg)"/><g fill="none" stroke="#fff" stroke-opacity=".16"><circle cx="290" cy="60" r="30"/><circle cx="290" cy="60" r="60"/><circle cx="290" cy="60" r="90"/><circle cx="290" cy="60" r="120"/></g></svg>
+        <div class="row"><span class="icon-btn glass"><svg class="i"><use href="#i-back"/></svg></span><div class="row"><span class="icon-btn glass"><svg class="i"><use href="#i-share"/></svg></span><span class="icon-btn glass"><svg class="i"><use href="#i-heart"/></svg></span></div></div>
+        <span class="av l" style="background:var(--hill2);position:absolute;left:20px;bottom:-42px;z-index:3">A</span>
+      </div>
+      <div class="body" style="padding-top:0">
+        <div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn sm p" data-follow>+ Follow</button></div>
+        <h1 class="t-l row" style="gap:6px;margin-top:10px">Ananya Rawat<svg class="vf" style="width:22px;height:22px"><use href="#i-verified"/></svg></h1>
+        <p class="small muted">Breathwork &amp; Meditation · Tapovan, Rishikesh</p>
+        <div class="stats3"><div><b>11</b><small>Years</small></div><div><b>640</b><small>Sessions</small></div><div><b>4.9</b><small>38 reviews</small></div></div>
+        <div class="chips"><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Identity</span><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Breathwork</span><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Meditation</span><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Lineage</span></div>
+        <div class="card soft" style="margin:14px 0"><span class="eyb">Why people come to me</span><p style="font-family:var(--serif);font-style:italic;font-size:16px;margin-top:6px">"When the mind won't switch off, we begin with the breath. It is always with you."</p></div>
+        <div class="seg" data-seg style="margin-bottom:12px"><button>About</button><button class="on">Services</button><button>Reviews</button></div>
+        <div class="svc"><div class="grow"><b>Breath for deep sleep</b><small>60 min · Online or in person</small></div><span class="pr">$65</span></div>
+        <div class="svc"><div class="grow"><b>Free intro call</b><small>15 min · Online</small></div><span class="pr" style="color:var(--accent)">Free</span></div>
+      </div>
+      <div class="bottom-bar"><div style="flex:1"><small class="muted small">From</small><b style="display:block;font-size:20px;color:var(--primary)">$65</b></div><button class="btn p" style="flex:2">Book a session</button></div>
+    </div></div><figcaption><span class="num">08</span><b>Healer profile</b><small>Story-led, with per-modality verification, lineage and clear services.</small></figcaption></figure>
+  </div></div>
+
+  <div class="flow"><h3>Book &amp; attend</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-book">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><h2>Book a session</h2><span style="width:40px"></span></div>
+        <div class="card row" style="gap:12px"><span class="av" style="background:var(--hill2)">A</span><div><b style="font-size:14.5px">Breath for deep sleep</b><small class="muted small" style="display:block">with Ananya · 60 min</small></div></div>
+        <div class="seg" data-seg style="margin:14px 0"><button class="on">Online · Video</button><button>In person</button></div>
+        <div class="row between" style="margin-bottom:10px"><b style="font-size:15px">October 2026</b><span class="small muted">This week</span></div>
+        <div class="dates" data-single><button class="date"><small>Thu</small><b>1</b></button><button class="date on"><small>Fri</small><b>2</b></button><button class="date"><small>Sat</small><b>3</b></button><button class="date"><small>Sun</small><b>4</b></button><button class="date"><small>Mon</small><b>5</b></button><button class="date"><small>Tue</small><b>6</b></button></div>
+        <div class="row between" style="margin:16px 0 10px"><span class="row small" style="gap:6px;font-weight:600"><svg class="i" style="width:16px"><use href="#i-globe"/></svg>Your time · London</span><a class="small" style="color:var(--accent);font-weight:600">Change</a></div>
+        <div class="slots" data-single><button class="slot off">6:30 AM</button><button class="slot">7:00 AM</button><button class="slot on">8:30 AM</button><button class="slot">12:00 PM</button><button class="slot">1:30 PM</button><button class="slot off">5:00 PM</button></div>
+        <p class="tiny muted" style="margin:10px 0 16px">8:30 AM in London is 1:00 PM in Rishikesh.</p>
+        <p class="small" style="font-weight:600;margin-bottom:8px">Anything Ananya should know?</p>
+        <div class="textarea">I've had trouble sleeping for about a month…</div>
+      </div>
+      <div class="bottom-bar"><button class="btn p">Continue · $65</button></div>
+    </div></div><figcaption><span class="num">09</span><b>Choose a time</b><small>Slots in the seeker's time zone, with Rishikesh time alongside. Tap dates and slots.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-pay">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><h2>Review &amp; pay</h2><span style="width:40px"></span></div>
+        <div class="card"><div class="row" style="gap:12px"><span class="av" style="background:var(--hill2)">A</span><div><b style="font-size:14.5px">Breath for deep sleep</b><small class="muted small" style="display:block">Ananya Rawat · Online video</small></div></div>
+          <div class="row small" style="gap:8px;margin-top:12px"><svg class="i" style="width:16px;color:var(--accent)"><use href="#i-cal"/></svg>Fri 2 Oct · 8:30 AM London</div></div>
+        <div class="row between" style="margin:18px 0 8px"><b style="font-size:15px">Price</b><div class="seg" data-seg style="padding:3px"><button class="on" style="height:28px;padding:0 10px">USD</button><button style="height:28px;padding:0 10px">INR</button></div></div>
+        <div class="sum"><span class="muted">Session · 60 min</span><span>$65.00</span></div>
+        <div class="sum t"><span>Total</span><span>$65.00</span></div>
+        <b style="font-size:15px;display:block;margin:18px 0 10px">Pay with</b>
+        <div data-single>
+          <div class="pay on"><span class="lg" style="background:#111;color:#fff"><svg class="i f" style="width:14px"><use href="#i-apple"/></svg>Pay</span><b style="font-size:14px">Apple Pay</b><span class="rd"></span></div>
+          <div class="pay"><span class="lg" style="background:#1A1F71;color:#fff">VISA</span><b style="font-size:14px">•••• 4417</b><span class="rd"></span></div>
+          <div class="pay"><span class="lg" style="background:var(--soft-a);color:var(--primary)">UPI</span><b style="font-size:14px">UPI <small class="muted" style="font-weight:400">(India)</small></b><span class="rd"></span></div>
+        </div>
+        <div class="card soft row" style="gap:10px;margin-top:10px;align-items:flex-start"><svg class="i" style="color:var(--primary)"><use href="#i-shield"/></svg><p class="small">Free cancellation up to 24 hours before your session.</p></div>
+      </div>
+      <div class="bottom-bar" style="flex-direction:column;gap:8px"><button class="btn a"><svg class="i"><use href="#i-lock"/></svg>Pay $65.00</button><small class="tiny muted">Secure payment · Charged in your currency</small></div>
+    </div></div><figcaption><span class="num">10</span><b>Review &amp; pay</b><small>Clear price, USD or INR, Apple Pay, cards and UPI, and the cancellation policy up front.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-done">
+      <div class="body" style="text-align:center">
+        <div class="medal-zone"><span class="rp"></span><span class="rp"></span><span class="rp"></span><div class="medal"><div class="edge"></div><div class="face"><svg class="i"><use href="#i-check"/></svg></div><div class="face b"><svg class="i"><use href="#i-check"/></svg></div></div></div>
+        <h1 class="t-xl">You're <em>booked</em></h1>
+        <p class="muted" style="margin:8px 12px 18px">Ananya will meet you on Friday 2 October at 8:30 AM your time.</p>
+        <div class="card" style="text-align:left">
+          <div class="li"><svg class="i" style="color:var(--accent)"><use href="#i-cal"/></svg><div class="grow"><b>Fri 2 Oct · 8:30 AM</b><small>London · 1:00 PM in Rishikesh</small></div></div>
+          <div class="li"><svg class="i" style="color:var(--accent)"><use href="#i-video"/></svg><div class="grow"><b>Video, in the app</b><small>The room opens 10 min before</small></div></div>
+          <div class="li"><svg class="i" style="color:var(--accent)"><use href="#i-bell"/></svg><div class="grow"><b>Reminders on</b><small>1 day and 15 min before</small></div></div>
+        </div>
+        <div class="row" style="margin-top:14px"><button class="btn g" style="font-size:14px"><svg class="i"><use href="#i-cal"/></svg>Calendar</button><button class="btn g" style="font-size:14px"><svg class="i"><use href="#i-chat"/></svg>Message</button></div>
+        <button class="btn p" style="margin-top:10px">Back to home</button>
+      </div>
+    </div></div><figcaption><span class="num">11</span><b>Booking confirmed</b><small>A 3D gold medallion turns in the light, with ripples of calm.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen dark" id="scr-room" style="background:#000">
+      <div class="video"><div class="person"><svg viewBox="0 0 300 330"><defs><radialGradient id="hl" cx=".5" cy=".3" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><ellipse cx="150" cy="130" rx="130" ry="130" fill="url(#hl)"/><circle cx="150" cy="120" r="58" fill="rgba(0,0,0,.28)"/><path d="M30 330c10-90 60-130 120-130s110 40 120 130z" fill="rgba(0,0,0,.3)"/></svg></div></div>
+      <div class="ov" style="left:18px;right:18px;top:58px"><div class="row between"><span class="live"><i></i>Live · 24:18</span><span class="icon-btn glass"><svg class="i"><use href="#i-dots"/></svg></span></div><b style="display:block;margin-top:12px;font-size:17px">Ananya Rawat</b><small style="opacity:.75;font-size:12.5px">Breath for deep sleep</small></div>
+      <div class="pip">S</div>
+      <div class="cue glass"><span class="ring" style="--p:60"><span>4s</span></span><div><b style="font-size:13.5px;display:block">Box breathing</b><small style="font-size:12px;opacity:.75">Inhale slowly for four</small></div></div>
+      <div class="ctrls glass"><button><svg class="i"><use href="#i-mic"/></svg></button><button><svg class="i"><use href="#i-video"/></svg></button><button class="end"><svg class="i"><use href="#i-end"/></svg></button><button><svg class="i"><use href="#i-chat"/></svg></button><button><svg class="i"><use href="#i-dots"/></svg></button></div>
+    </div></div><figcaption><span class="num">12</span><b>Live session</b><small>A calm, full-screen room with a guided breathing cue from the healer.</small></figcaption></figure>
+  </div></div>
+
+  <div class="flow"><h3>Practice &amp; grow</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-breathe">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-x"/></svg></span><h2>Evening practice</h2><span class="icon-btn"><svg class="i"><use href="#i-dots"/></svg></span></div>
+        <div class="lotus-box"><div id="lotus3d"></div></div>
+        <p class="br-phase" id="brPhase">Breathe in</p>
+        <p class="small muted" style="text-align:center;margin:4px 0 12px" id="brCount">4s · breath 1 of 8</p>
+        <div class="pbar" style="margin:0 10px 16px"><i id="brBar" style="width:0"></i></div>
+        <div class="chips" style="justify-content:center" data-single-chip><button class="chip">Calm</button><button class="chip on">Box</button><button class="chip">Sleep</button></div>
+        <p class="tiny muted" style="text-align:center;margin-top:14px">Shared by Ananya for your evenings</p>
+      </div>
+    </div></div><figcaption><span class="num">13</span><b>Breathe with the singing bowl</b><small>A live 3D Himalayan singing bowl. The striker circles as you breathe in; sound ripples across the water as you breathe out.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-journey">
+      <div class="body">
+        <h1 class="t-l" style="margin:4px 0 14px">Your <em>journey</em></h1>
+        <div class="card deep" style="padding:0;overflow:hidden"><div class="streak"><div class="r3d"></div><div class="val"><b>12</b><small>day streak</small></div></div></div>
+        <div class="mini-stats" style="margin-top:12px"><div><b>9</b><small>Sessions</small></div><div><b>214</b><small>Minutes</small></div><div><b>3</b><small>Healers</small></div></div>
+        <div class="sec"><h3>This week</h3><a>Minutes practised</a></div>
+        <div class="card"><div class="wk"><div><i style="height:40%"></i><span>M</span></div><div><i style="height:70%"></i><span>T</span></div><div><i style="height:55%"></i><span>W</span></div><div><i style="height:90%"></i><span>T</span></div><div><i style="height:30%"></i><span>F</span></div><div><i class="lo" style="height:12%"></i><span>S</span></div><div><i class="lo" style="height:12%"></i><span>S</span></div></div></div>
+        <div class="sec"><h3>From your healers</h3></div>
+        <div class="card row" style="align-items:flex-start;gap:12px"><span class="av s" style="background:var(--hill2)">A</span><p class="small">"Lovely progress, Sarah. Try a two-minute long exhale before bed this week."<small class="muted" style="display:block;margin-top:4px">Ananya · 2 days ago</small></p></div>
+      </div>
+      <nav class="tabbar" data-tabs="seeker" data-on="journey"></nav>
+    </div></div><figcaption><span class="num">14</span><b>Your journey</b><small>A 3D streak ring, weekly practice and notes from healers.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-chat">
+      <div class="body" style="display:flex;flex-direction:column">
+        <div class="row" style="gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin:0 -20px 10px;padding-left:20px;padding-right:20px"><span class="icon-btn" style="width:36px;height:36px"><svg class="i"><use href="#i-back"/></svg></span><span class="av s" style="background:var(--hill2)">A</span><div style="flex:1"><b style="font-size:14.5px">Ananya Rawat</b><small class="muted tiny" style="display:block">Usually replies within a few hours</small></div><span class="icon-btn" style="width:36px;height:36px"><svg class="i"><use href="#i-video"/></svg></span></div>
+        <p class="day">Today</p>
+        <div class="cm h">Thank you for today's session, Sarah. Here is the evening practice we talked about.</div>
+        <div class="att"><span class="pl"><svg class="i f"><use href="#i-play"/></svg></span><div><b style="font-size:13.5px">Evening exhale · 6 min</b><div class="wave" data-wave></div></div></div>
+        <div class="cm me">This is perfect. Should I do it every night?</div>
+        <div class="cm h">Yes, ideally at the same time. Even three minutes counts.</div>
+      </div>
+      <div class="bottom-bar" style="padding-bottom:30px"><span class="icon-btn"><svg class="i"><use href="#i-plus"/></svg></span><div class="input" style="flex:1;height:44px;border-radius:99px">Message…</div><span class="icon-btn" style="background:var(--primary);color:var(--on-primary);border:none"><svg class="i"><use href="#i-mic"/></svg></span></div>
+    </div></div><figcaption><span class="num">15</span><b>Messages</b><small>Healers can share audio practices and follow-ups between sessions.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-settings">
+      <div class="body">
+        <h1 class="t-l" style="margin:4px 0 14px">Profile</h1>
+        <div class="card row" style="gap:12px"><span class="av" style="background:var(--accent)">S</span><div style="flex:1"><b style="font-size:15px">Sarah Mitchell</b><small class="muted small" style="display:block">London · Seeker since 2026</small></div><span class="icon-btn"><svg class="i"><use href="#i-edit"/></svg></span></div>
+        <div class="sec"><h3>Appearance</h3><a id="appThemeName">Ganga Dawn</a></div>
+        <div class="card"><div class="tdots" id="appThemes"></div></div>
+        <div class="sec"><h3>Preferences</h3></div>
+        <div class="card" style="padding:4px 16px">
+          <div class="li"><div class="grow"><b>Session reminders</b></div><span class="tg on" data-tg></span></div>
+          <div class="li"><div class="grow"><b>Face ID</b></div><span class="tg on" data-tg></span></div>
+          <div class="li"><div class="grow"><b>Currency</b></div><small>USD</small><svg class="i muted"><use href="#i-right"/></svg></div>
+          <div class="li"><div class="grow"><b>Time zone</b></div><small>London (auto)</small><svg class="i muted"><use href="#i-right"/></svg></div>
+          <div class="li"><div class="grow"><b>Privacy &amp; data</b></div><svg class="i muted"><use href="#i-right"/></svg></div>
+        </div>
+      </div>
+      <nav class="tabbar" data-tabs="seeker" data-on="profile"></nav>
+    </div></div><figcaption><span class="num">16</span><b>Profile &amp; themes</b><small>Seekers pick their theme in the app. Tap a colour to change this whole page.</small></figcaption></figure>
+  </div></div>
+</section>
+
+<!-- =================================================================== HEALER APP -->
+<section class="group" data-app="healer">
+  <div class="group-head">
+    <div><span class="app-tag">Healer app</span><h2>For <em>healers</em></h2></div>
+    <p>Everything a healer needs to run their practice: AI-assisted onboarding, verification, their day, requests, calendar, clients, earnings and social media.</p>
+  </div>
+
+  <div class="flow"><h3>Join &amp; verify</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-onb">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><div class="pbar" style="flex:1;margin:0 14px"><i style="width:43%"></i></div><span class="small muted">3/7</span></div>
+        <h1 class="t-l">Tell us your <em>story</em></h1>
+        <p class="muted small" style="margin:6px 0 4px">Speak freely about your path. We'll draft your profile for you to review.</p>
+        <div style="display:flex;flex-direction:column;align-items:center"><div class="voice-orb" style="width:170px;height:170px"><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-core"></span></div><div class="bars" data-bars></div></div>
+        <p class="small" style="font-style:italic;color:var(--ink-2);margin:10px 0 14px">"I grew up in Rishikesh and began pranayama with my teacher at sixteen. Most people come to me when their mind won't rest…"</p>
+        <div class="draft"><div class="row" style="gap:6px;margin-bottom:6px"><svg class="i" style="width:16px;color:var(--accent)"><use href="#i-spark"/></svg><b style="font-size:13px">Draft bio</b></div><p class="small">Ananya has guided breath and meditation in Tapovan for 11 years, helping people with anxious minds find calm and deep sleep.</p><div class="chips" style="margin-top:8px"><span class="pill-s">Anxiety</span><span class="pill-s">Sleep</span><span class="pill-s">Focus</span></div></div>
+        <div class="row" style="margin-top:12px"><button class="btn g">Edit</button><button class="btn p">Looks good</button></div>
+      </div>
+    </div></div><figcaption><span class="num">H1</span><b>AI-assisted onboarding</b><small>Healers speak their story. AI drafts the bio and areas they help with.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-verify">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><h2>Verification</h2><span style="width:40px"></span></div>
+        <div class="card deep row" style="gap:14px"><span class="ring" style="--p:75;width:64px;height:64px"><span style="background:var(--deep);color:var(--gold);width:52px;height:52px">75%</span></span><div><b style="font-size:15px">3 of 4 checks complete</b><small style="display:block;font-size:12px;opacity:.7">Only approved modalities appear on your public profile.</small></div></div>
+        <div class="tl" style="margin-top:16px">
+          <div class="tl-i"><div class="row between"><b>Identity</b><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Verified</span></div><small class="muted small">Government ID checked · 18 Sep</small></div>
+          <div class="tl-i"><div class="row between"><b>Breathwork</b><span class="pill-s"><svg class="i"><use href="#i-check"/></svg>Approved</span></div><small class="muted small">500-hr pranayama certificate</small></div>
+          <div class="tl-i rev"><div class="row between"><b>Meditation</b><span class="pill-s warn"><svg class="i"><use href="#i-clock"/></svg>In review</span></div><small class="muted small">Usually 2 to 3 days</small></div>
+          <div class="tl-i act"><div class="row between"><b>Sound Healing</b><span class="pill-s act">Action needed</span></div><small class="muted small">Please upload your training certificate</small><button class="btn sm a" style="margin-top:8px"><svg class="i"><use href="#i-upload"/></svg>Upload certificate</button></div>
+        </div>
+        <div class="card soft row" style="gap:10px"><svg class="i" style="color:var(--gold)"><use href="#i-shield"/></svg><div class="grow"><b style="font-size:13.5px">Liability insurance</b><small class="muted small" style="display:block">Expires in 30 days</small></div><button class="btn sm g">Renew</button></div>
+      </div>
+    </div></div><figcaption><span class="num">H2</span><b>Verification</b><small>Per-modality status, what's needed next, and expiry reminders.</small></figcaption></figure>
+  </div></div>
+
+  <div class="flow"><h3>Run your day</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-dash">
+      <div class="body">
+        <div class="row between" style="margin:4px 0 16px"><div><small class="muted small">Wednesday, 30 September</small><h1 class="t-l">Namaste, <em>Ananya</em></h1></div><span class="icon-btn"><svg class="i"><use href="#i-bell"/></svg><i class="dot-n"></i></span></div>
+        <div class="card row between"><div><b style="font-size:14.5px">Available now</b><small class="muted small" style="display:block">Accept instant consultations</small></div><span class="tg on" data-tg></span></div>
+        <div class="mini-stats" style="margin-top:12px"><div><b>4</b><small>Today</small></div><div><b>$820</b><small>This week</small></div><div><b>4.9</b><small>Rating</small></div></div>
+        <div class="card prim" style="margin-top:12px"><span class="tiny" style="letter-spacing:.14em;text-transform:uppercase;opacity:.75">Up next · in 12 min</span><div class="row" style="margin-top:10px"><span class="av s" style="background:var(--accent);border:2px solid rgba(255,255,255,.4)">S</span><div style="flex:1"><b style="font-size:14.5px">Sarah M. · London</b><small style="display:block;font-size:12px;opacity:.75">Breath for deep sleep · Video</small></div><span class="btn sm" style="background:var(--gold);color:#141414">Join</span></div></div>
+        <div class="sec"><h3>Requests <span class="pill-s act" style="vertical-align:middle">2</span></h3><a>View all</a></div>
+        <div class="card" style="padding:4px 16px">
+          <div class="li"><span class="av s" style="background:var(--hill1)">J</span><div class="grow"><b>James R. · Toronto</b><small>Sat 7:00 AM · First session</small></div><span class="icon-btn" style="width:34px;height:34px;background:var(--primary);color:var(--on-primary);border:none"><svg class="i" style="width:16px"><use href="#i-check"/></svg></span></div>
+          <div class="li"><span class="av s" style="background:var(--river2)">P</span><div class="grow"><b>Priya S. · Mumbai</b><small>Sun 6:30 PM · In person</small></div><span class="icon-btn" style="width:34px;height:34px;background:var(--primary);color:var(--on-primary);border:none"><svg class="i" style="width:16px"><use href="#i-check"/></svg></span></div>
+        </div>
+      </div>
+      <nav class="tabbar" data-tabs="healer" data-on="today"></nav>
+    </div></div><figcaption><span class="num">H3</span><b>Today</b><small>Availability toggle, the next session, weekly earnings and quick request approvals.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-req">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><h2>Booking request</h2><span style="width:40px"></span></div>
+        <div class="card row" style="gap:12px"><span class="av" style="background:var(--hill1)">J</span><div style="flex:1"><b style="font-size:15px">James R.</b><small class="muted small" style="display:block">Toronto · First session</small></div><span class="pill-s warn">New seeker</span></div>
+        <div class="card" style="margin-top:10px">
+          <div class="li"><svg class="i" style="color:var(--accent)"><use href="#i-leaf"/></svg><div class="grow"><b>Breath for deep sleep</b><small>60 min · Video · $65</small></div></div>
+          <div class="li"><svg class="i" style="color:var(--accent)"><use href="#i-clock"/></svg><div class="grow"><b>Sat 3 Oct · 7:00 AM IST</b><small>Fri 9:30 PM for James in Toronto</small></div></div>
+        </div>
+        <div class="sec"><h3>Intake</h3></div>
+        <div class="qa"><small>What would you like help with?</small><p>Racing thoughts at night, trouble falling asleep.</p></div>
+        <div class="qa"><small>Tried breathwork before?</small><p>A little, through apps.</p></div>
+        <div class="card soft row" style="gap:10px;margin-top:12px"><svg class="i" style="color:var(--primary)"><use href="#i-shield"/></svg><p class="small"><b>Health check complete.</b> No contraindications noted for this service.</p></div>
+      </div>
+      <div class="bottom-bar" style="flex-direction:column;gap:8px"><button class="btn p">Accept booking</button><div class="row" style="width:100%"><button class="btn g" style="height:44px;font-size:14px">Suggest a time</button><button class="btn" style="height:44px;font-size:14px;color:var(--muted)">Decline</button></div></div>
+    </div></div><figcaption><span class="num">H4</span><b>Booking request</b><small>Both time zones, intake answers and the safety screen before accepting.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-cal">
+      <div class="body">
+        <div class="row between" style="margin:4px 0 12px"><h1 class="t-l">Calendar</h1><span class="icon-btn" style="background:var(--primary);color:var(--on-primary);border:none"><svg class="i"><use href="#i-plus"/></svg></span></div>
+        <div class="dates" data-single><button class="date"><small>Mon</small><b>28</b></button><button class="date"><small>Tue</small><b>29</b></button><button class="date on"><small>Wed</small><b>30</b></button><button class="date"><small>Thu</small><b>1</b></button><button class="date"><small>Fri</small><b>2</b></button><button class="date"><small>Sat</small><b>3</b></button></div>
+        <div class="cal" style="margin-top:14px">
+          <span class="hr" style="top:0">6 AM</span><span class="hr" style="top:66px">8 AM</span><span class="hr" style="top:132px">10 AM</span><span class="hr" style="top:198px">12 PM</span><span class="hr" style="top:264px">2 PM</span>
+          <div class="ev s" style="top:6px;height:52px"><b>Sunrise group · Tapovan</b>6:00 · 8 seekers</div>
+          <div class="ev p" style="top:70px;height:24px">Prep · 15 min</div>
+          <div class="ev s" style="top:100px;height:52px"><b>Sarah M. · Video</b>8:00 · Breath for sleep</div>
+          <div class="ev b" style="top:170px;height:60px"><b>Blocked</b>Personal practice</div>
+          <div class="ev s" style="top:250px;height:50px"><b>Instant call</b>1:30 · 15 min</div>
+          <div class="now" style="top:92px"></div>
+        </div>
+        <div class="card row" style="gap:10px;margin-top:6px"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3" fill="#fff" stroke="#4285F4" stroke-width="1.6"/><path d="M3 9h18" stroke="#4285F4" stroke-width="1.6"/><text x="12" y="18" font-size="8" text-anchor="middle" fill="#4285F4" font-family="Inter" font-weight="700">30</text></svg><div class="grow"><b style="font-size:13.5px">Google Calendar synced</b><small class="muted small" style="display:block">No double bookings</small></div><span class="tg on" data-tg></span></div>
+      </div>
+      <nav class="tabbar" data-tabs="healer" data-on="calendar"></nav>
+    </div></div><figcaption><span class="num">H5</span><b>Calendar</b><small>Sessions, prep time and blocked time on one day view, synced two ways.</small></figcaption></figure>
+  </div></div>
+
+  <div class="flow"><h3>Grow your practice</h3><div class="shots">
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-clients">
+      <div class="body">
+        <h1 class="t-l" style="margin:4px 0 12px">Clients</h1>
+        <div class="input" style="height:46px"><svg class="i"><use href="#i-search"/></svg>Search 48 seekers</div>
+        <div class="hs" style="margin-top:10px" data-single-chip><button class="chip on">All 48</button><button class="chip">Active</button><button class="chip">New</button><button class="chip">Follow-up due</button></div>
+        <div class="li"><span class="av" style="background:var(--accent)">S</span><div class="grow"><b>Sarah M.</b><small>7 sessions · last Tuesday</small></div><span class="pill-s act">Follow-up</span></div>
+        <div class="li"><span class="av" style="background:var(--hill1)">J</span><div class="grow"><b>James R.</b><small>New · first session Sat</small></div><span class="pill-s warn">New</span></div>
+        <div class="li"><span class="av" style="background:var(--river2)">P</span><div class="grow"><b>Priya S.</b><small>12 sessions · in person</small></div><svg class="i muted"><use href="#i-right"/></svg></div>
+        <div class="card" style="margin-top:14px"><div class="row between"><b style="font-size:15px">Sarah M.</b><span class="small muted">Private notes</span></div>
+          <p class="small" style="margin:8px 0">Goals: sleep, anxiety. Responds well to long exhales. Prefers evenings.</p>
+          <div class="att" style="max-width:100%;margin:0"><span class="pl"><svg class="i f"><use href="#i-play"/></svg></span><div><b style="font-size:13px">Last shared: Evening exhale</b><small class="muted tiny" style="display:block">Listened 5 times</small></div></div>
+          <button class="btn p" style="margin-top:10px;height:44px;font-size:14px"><svg class="i"><use href="#i-send"/></svg>Send a practice</button></div>
+      </div>
+      <nav class="tabbar" data-tabs="healer" data-on="clients"></nav>
+    </div></div><figcaption><span class="num">H6</span><b>Clients</b><small>A gentle CRM with private notes and practices shared between sessions.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-earn">
+      <div class="body">
+        <h1 class="t-l" style="margin:4px 0 14px">Earnings</h1>
+        <div class="card deep"><small style="font-size:12px;opacity:.7">Available for payout</small><div class="row between" style="margin-top:4px"><b style="font-family:var(--serif);font-size:34px;color:var(--gold)">₹68,400</b><button class="btn sm" style="background:var(--gold);color:#141414">Withdraw</button></div><small style="font-size:12px;opacity:.6">About $820 · Next payout Monday</small></div>
+        <div class="seg" data-seg style="margin:14px 0"><button>Week</button><button class="on">Month</button><button>Year</button></div>
+        <div class="card"><div class="chart"><i style="height:35%" class="dim"></i><i style="height:52%" class="dim"></i><i style="height:44%" class="dim"></i><i style="height:60%" class="dim"></i><i style="height:48%"></i><i style="height:72%"></i><i style="height:64%"></i><i style="height:88%"></i><i style="height:70%"></i><i style="height:95%"></i></div>
+          <div class="row between" style="margin-top:14px"><small class="small">International <b>62%</b></small><small class="small">India <b>38%</b></small></div>
+          <div class="split" style="margin-top:6px"><i style="width:62%;background:var(--accent)"></i><i style="width:38%;background:var(--primary)"></i></div></div>
+        <div class="sec"><h3>Payouts</h3><a>Tax invoices</a></div>
+        <div class="card" style="padding:4px 16px"><div class="li"><svg class="i" style="color:var(--primary)"><use href="#i-wallet"/></svg><div class="grow"><b>HDFC •••• 2291</b><small>28 Sep</small></div><b style="display:inline;font-size:14px">₹52,000</b></div><div class="li"><svg class="i" style="color:var(--primary)"><use href="#i-wallet"/></svg><div class="grow"><b>HDFC •••• 2291</b><small>14 Sep</small></div><b style="display:inline;font-size:14px">₹47,500</b></div></div>
+      </div>
+      <nav class="tabbar" data-tabs="healer" data-on="earnings"></nav>
+    </div></div><figcaption><span class="num">H7</span><b>Earnings</b><small>Balance, trend, the India vs international split and payouts.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-social">
+      <div class="body">
+        <div class="topnav"><span class="icon-btn"><svg class="i"><use href="#i-back"/></svg></span><h2>Approve post</h2><span class="small muted">1 of 3</span></div>
+        <div class="card" style="padding:0;overflow:hidden">
+          <div class="row" style="padding:12px 14px"><span class="av s" style="background:var(--hill2)">A</span><div style="flex:1"><b style="font-size:13.5px">ananya.breath</b><small class="muted tiny" style="display:block">Scheduled · Fri 7:00 PM</small></div><svg class="i muted"><use href="#i-dots"/></svg></div>
+          <div class="post-img"><svg viewBox="0 0 320 90" preserveAspectRatio="none"><path d="M0 50 L60 20 L120 45 L190 10 L260 40 L320 25 V90 H0Z" style="fill:var(--hill3)" opacity=".85"/></svg><p>Your breath is always with you.</p></div>
+          <p class="small" style="padding:12px 14px">Three slow breaths before sleep can change how your whole night feels. Save this for tonight. 🌙</p>
+        </div>
+        <p class="tiny muted" style="margin:10px 2px">Created by the 2Verse content team for you</p>
+        <div class="card" style="padding:4px 16px">
+          <div class="li"><span class="lg" style="width:28px;height:28px;border-radius:8px;background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF);display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800">IG</span><div class="grow"><b>Instagram</b></div><span class="tg on" data-tg></span></div>
+          <div class="li"><span style="width:28px;height:28px;border-radius:8px;background:#FF0000;display:grid;place-items:center;color:#fff"><svg class="i f" style="width:12px"><use href="#i-play"/></svg></span><div class="grow"><b>YouTube Shorts</b></div><span class="tg on" data-tg></span></div>
+          <div class="li"><span style="width:28px;height:28px;border-radius:8px;background:#0A66C2;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800">in</span><div class="grow"><b>LinkedIn</b></div><span class="tg" data-tg></span></div>
+        </div>
+      </div>
+      <div class="bottom-bar"><button class="btn g" style="font-size:14px">Request changes</button><button class="btn p" style="font-size:14px">Approve</button></div>
+    </div></div><figcaption><span class="num">H8</span><b>Social approvals</b><small>Posts made by the 2Verse team, published to the healer's own accounts once approved.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen dark" id="scr-h-live" style="background:#000">
+      <div class="video" style="background:linear-gradient(160deg,var(--sky2),var(--accent-deep) 60%,var(--deep-2))"><div class="person"><svg viewBox="0 0 300 330"><circle cx="150" cy="120" r="58" fill="rgba(0,0,0,.25)"/><path d="M30 330c10-90 60-130 120-130s110 40 120 130z" fill="rgba(0,0,0,.28)"/></svg></div></div>
+      <div class="ov" style="left:18px;right:18px;top:58px"><div class="row between"><span class="live"><i></i>24:18 · Sarah M.</span><span class="live">London</span></div></div>
+      <div class="pip" style="background:linear-gradient(160deg,var(--hill1),var(--hill3))">A</div>
+      <div class="ov glass" style="left:16px;right:130px;top:120px;border-radius:18px;padding:12px 14px"><b style="font-size:13px;display:block;margin-bottom:6px">Session notes</b><p style="font-size:12px;opacity:.85;line-height:1.5">Shoulders softer after round 2. Try a 4-7-8 pattern next time.</p><button class="btn sm" style="margin-top:10px;background:var(--gold);color:#141414;height:32px"><svg class="i" style="width:14px"><use href="#i-send"/></svg>Share practice</button></div>
+      <div class="ctrls glass"><button><svg class="i"><use href="#i-mic"/></svg></button><button><svg class="i"><use href="#i-video"/></svg></button><button class="end"><svg class="i"><use href="#i-end"/></svg></button><button><svg class="i"><use href="#i-edit"/></svg></button><button><svg class="i"><use href="#i-dots"/></svg></button></div>
+    </div></div><figcaption><span class="num">H9</span><b>Healer in session</b><small>Private notes and one-tap practice sharing, right inside the call.</small></figcaption></figure>
+
+    <figure class="shot"><div class="phone"><div class="screen" id="scr-h-insights">
+      <div class="body">
+        <div class="row between" style="margin:4px 0 14px"><h1 class="t-l">Insights</h1><span class="chip">Last 30 days</span></div>
+        <div class="kpis"><div><small>Profile views</small><b>1,284</b><em>+18%</em></div><div><small>Bookings</small><b>42</b><em>+9%</em></div><div><small>Conversion</small><b>3.3%</b></div><div><small>Followers</small><b>312</b><em>+26</em></div></div>
+        <div class="card" style="margin-top:12px"><b style="font-size:14px">Profile views</b><svg viewBox="0 0 300 80" style="width:100%;height:80px;margin-top:6px"><defs><linearGradient id="sp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--accent);stop-opacity:.35"/><stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/></linearGradient></defs><path d="M0 62 L30 58 L60 60 L90 48 L120 52 L150 40 L180 44 L210 30 L240 34 L270 20 L300 14 V80 H0Z" fill="url(#sp)"/><path d="M0 62 L30 58 L60 60 L90 48 L120 52 L150 40 L180 44 L210 30 L240 34 L270 20 L300 14" fill="none" style="stroke:var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="sec"><h3>How seekers found you</h3></div>
+        <div class="card"><div class="src"><span>Veda AI</span><div><i style="width:41%"></i></div><b>41%</b></div><div class="src"><span>Search</span><div><i style="width:33%"></i></div><b>33%</b></div><div class="src"><span>Instagram</span><div><i style="width:18%"></i></div><b>18%</b></div><div class="src"><span>Direct link</span><div><i style="width:8%"></i></div><b>8%</b></div></div>
+      </div>
+      <nav class="tabbar" data-tabs="healer" data-on="more"></nav>
+    </div></div><figcaption><span class="num">H10</span><b>Insights</b><small>Views, bookings and followers, including how many seekers came from Veda.</small></figcaption></figure>
+  </div></div>
+</section>
+
+<footer class="foot"><span>2Verse · Mobile app screens · Design preview with sample healers and seekers</span><span>Seeker app + Healer app · iOS &amp; Android (Flutter)</span></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const root = document.documentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cssVar = name => getComputedStyle(root).getPropertyValue(name).trim();
+  const DARK = new Set(['night','amethyst','moonlit','aurora']);
+  const THEMES = [
+    ['dawn','Ganga Dawn','Warm sand & river teal',['#2F5358','#C0704F','#F6F0E6'],0],
+    ['saffron','Saffron Sanctum','Saffron & temple maroon',['#7A1F1F','#E0892E','#FBF3E7'],0],
+    ['forest','Tapovan Forest','Deep moss & copper',['#1F3D2B','#B5733C','#EEF0E8'],0],
+    ['pearl','Lotus Pearl','Plum & lotus pink',['#4A3563','#D9899B','#F8F5F7'],0],
+    ['rose','Rose Quartz','Rosewood & soft peach',['#8C4A4A','#D98E73','#FBF4F1'],0],
+    ['ivory','Ivory & Gold','Quiet, minimal luxury',['#141414','#B08D57','#F7F4EE'],0],
+    ['night','Himalayan Night','Midnight sky & gold',['#0A0F1E','#E0BC76','#9AA6FF'],1],
+    ['amethyst','Amethyst Aura','Violet & rose gold',['#120B1F','#EDBBA5','#B98CFF'],1],
+    ['moonlit','Moonlit Ganga','Deep river & diya amber',['#07161A','#9FE3D6','#F0A868'],1],
+    ['aurora','Aurora Chakra','Emerald & violet light',['#06110F','#7CF0C2','#C59BFF'],1]
+  ];
+
+  /* ---------- Phone chrome: island, status bar, home indicator, tab bars ---------- */
+  const SB = '<div class="island"></div><div class="sb"><span>9:41</span><span class="ic"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2.5" width="3" height="9.5" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 2.5c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 008 .6 10.6 10.6 0 00.5 3.7L1.8 5A8.7 8.7 0 018 2.5zm0 3.7c1.4 0 2.6.5 3.6 1.4l1.3-1.3A7 7 0 008 4.3a7 7 0 00-4.9 2l1.3 1.3c1-.9 2.2-1.4 3.6-1.4zM8 12l2.2-2.2A3 3 0 008 8.9a3 3 0 00-2.2.9z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3" fill="none" stroke="currentColor" stroke-opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="2"/><rect x="24.5" y="4" width="1.8" height="4" rx="1" opacity=".4"/></svg></span></div>';
+  document.querySelectorAll('.screen').forEach(s => { s.insertAdjacentHTML('afterbegin', SB); s.insertAdjacentHTML('beforeend', '<div class="home-ind"></div>'); });
+  const TABS = {
+    seeker:[['home','Home','i-home'],['discover','Discover','i-compass'],['veda','Veda',null],['journey','Journey','i-leaf'],['profile','Profile','i-user']],
+    healer:[['today','Today','i-home'],['calendar','Calendar','i-cal'],['clients','Clients','i-users'],['earnings','Earnings','i-wallet'],['more','Insights','i-spark']]
+  };
+  document.querySelectorAll('[data-tabs]').forEach(nav => {
+    nav.innerHTML = TABS[nav.dataset.tabs].map(([k, label, ic]) => ic
+      ? `<span class="tab${k === nav.dataset.on ? ' on' : ''}"><svg class="i"><use href="#${ic}"/></svg>${label}</span>`
+      : `<span class="tab orb"><span class="mini-orb"></span>${label}</span>`).join('');
+  });
+
+  /* ---------- Generated details: voice bars, audio waves, mandala ---------- */
+  document.querySelectorAll('[data-bars]').forEach(b => { for (let i = 0; i < 26; i++){ const s = document.createElement('i'); s.style.animationDelay = (Math.random() * -1).toFixed(2) + 's'; s.style.animationDuration = (.7 + Math.random() * .7).toFixed(2) + 's'; b.appendChild(s); } });
+  document.querySelectorAll('[data-wave]').forEach(w => { for (let i = 0; i < 30; i++){ const s = document.createElement('i'); s.style.height = (4 + Math.abs(Math.sin(i * .7)) * 16 + Math.random() * 4).toFixed(0) + 'px'; w.appendChild(s); } });
+  document.querySelectorAll('[data-mandala]').forEach(stage => {
+    [{z:-90,n:30,r1:170,r2:192,c:'gold'},{z:-30,n:20,r1:118,r2:162,c:'accent'},{z:30,n:14,r1:70,r2:112,c:'primary'},{z:80,n:10,r1:30,r2:64,c:'gold'}].forEach((L, i) => {
+      let p = ''; const w = (L.r2 - L.r1) * .5, mid = 200 - (L.r1 + L.r2) / 2;
+      for (let k = 0; k < L.n; k++) p += `<path d="M200 ${200 - L.r1} Q ${200 + w} ${mid} 200 ${200 - L.r2} Q ${200 - w} ${mid} 200 ${200 - L.r1}Z" transform="rotate(${k * 360 / L.n} 200 200)"/>`;
+      const d = document.createElement('div'); d.className = 'm-layer l' + (i + 1); d.style.transform = `translateZ(${L.z}px)`;
+      d.innerHTML = `<svg viewBox="0 0 400 400" fill="none" style="stroke:var(--${L.c})" stroke-width="1.2" stroke-opacity=".8"><circle cx="200" cy="200" r="${L.r2 + 6}" stroke-opacity=".35"/>${p}</svg>`;
+      stage.appendChild(d);
+    });
+  });
+
+  /* ---------- In-screen interactions ---------- */
+  document.querySelectorAll('[data-multi] > button').forEach(b => b.addEventListener('click', () => b.classList.toggle('on')));
+  document.querySelectorAll('[data-seg]').forEach(seg => seg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { seg.querySelectorAll('button').forEach(x => x.classList.remove('on')); b.classList.add('on'); })));
+  document.querySelectorAll('[data-single], [data-single-chip]').forEach(g => g.querySelectorAll('.date:not(.off), .slot:not(.off), .pay, .chip').forEach(b => b.addEventListener('click', () => {
+    g.querySelectorAll(b.classList.contains('date') ? '.date' : b.classList.contains('slot') ? '.slot' : b.classList.contains('pay') ? '.pay' : '.chip').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  })));
+  document.querySelectorAll('[data-tg]').forEach(t => t.addEventListener('click', () => t.classList.toggle('on')));
+  document.querySelectorAll('[data-follow]').forEach(b => b.addEventListener('click', () => { const on = b.classList.toggle('g'); b.classList.toggle('p', !on); b.textContent = on ? '✓ Following' : '+ Follow'; }));
+
+  /* ---------- Hero: 3D fan of three live screens ---------- */
+  const fanStage = document.getElementById('fanStage');
+  ['scr-home','scr-veda','scr-h-dash'].forEach((id, i) => {
+    const ph = document.getElementById(id).closest('.phone').cloneNode(true);
+    ph.classList.add('p' + [1, 2, 3][[1, 0, 2][i]]);
+    ph.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+    fanStage.appendChild(ph);
+  });
+  const fan = document.getElementById('fan');
+  if (!reduceMotion){
+    fan.addEventListener('mousemove', e => { const r = fan.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; fanStage.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 8}deg)`; });
+    fan.addEventListener('mouseleave', () => fanStage.style.transform = '');
+  }
+
+  /* ---------- 3D tilt on every phone ---------- */
+  let tiltOn = true;
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  const tiltBtn = document.getElementById('tiltBtn');
+  tiltBtn.addEventListener('click', () => { tiltOn = !tiltOn; tiltBtn.classList.toggle('off', !tiltOn); tiltBtn.setAttribute('aria-pressed', tiltOn); if (!tiltOn) document.querySelectorAll('.shot .phone').forEach(p => p.style.transform = ''); });
+  if (canHover && !reduceMotion){
+    document.querySelectorAll('.shot').forEach(shot => {
+      const ph = shot.querySelector('.phone');
+      shot.addEventListener('mousemove', e => {
+        if (!tiltOn) return;
+        const r = ph.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        ph.style.transition = 'transform .12s linear'; ph.style.transform = `rotateY(${x * 12}deg) rotateX(${-y * 8}deg) translateZ(20px)`;
+      });
+      shot.addEventListener('mouseleave', () => { ph.style.transition = ''; ph.style.transform = ''; });
+    });
+  }
+
+  /* ---------- App filter ---------- */
+  document.querySelectorAll('.filter button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filter button').forEach(x => x.classList.remove('on')); b.classList.add('on');
+    document.querySelectorAll('.group').forEach(g => g.hidden = b.dataset.f !== 'all' && g.dataset.app !== b.dataset.f);
+  }));
+
+  /* ---------- Breathing driver for the lotus ---------- */
+  const breath = (function(){
+    const phaseEl = document.getElementById('brPhase'), cntEl = document.getElementById('brCount'), bar = document.getElementById('brBar');
+    const seq = ['Breathe in','Hold','Breathe out','Rest'], ease = p => .5 - Math.cos(Math.PI * p) / 2;
+    let last = -1, n = 1;
+    return { tick(now){
+      const t = now / 1000, p = t % 16, i = Math.floor(p / 4), e = (p % 4) / 4;
+      const v = i === 0 ? ease(e) : i === 1 ? 1 : i === 2 ? 1 - ease(e) : 0;
+      if (i !== last){ phaseEl.textContent = seq[i]; if (i === 0 && last !== -1) n = n % 8 + 1; last = i; }
+      cntEl.textContent = Math.ceil(4 - (p % 4)) + 's · breath ' + n + ' of 8';
+      bar.style.width = (e * 100) + '%';
+      return v;
+    }};
+  })();
+
+  const hero3d = { setColors(){} };
+  (function initHero3D(){
+    const wrap = document.getElementById('hero3d');
+    if (!window.THREE){ wrap.classList.add('fallback'); return; }
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'}); }
+    catch(e){ wrap.classList.add('fallback'); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    wrap.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+    camera.position.set(0, 0, 8.2);
+    const world = new THREE.Group(); scene.add(world);
+
+    // Orb with displacement + fresnel shader
+    const orbUniforms = { uTime:{value:0}, uC1:{value:new THREE.Color()}, uC2:{value:new THREE.Color()}, uC3:{value:new THREE.Color()} };
+    const orb = new THREE.Mesh(
+      new THREE.SphereGeometry(1.35, 160, 160),
+      new THREE.ShaderMaterial({
+        uniforms: orbUniforms,
+        vertexShader: `
+          uniform float uTime; varying vec3 vN; varying vec3 vV; varying float vD;
+          void main(){
+            vec3 p = position;
+            float d = sin(p.x*2.1 + uTime*.9) * sin(p.y*2.5 + uTime*.7) * sin(p.z*1.9 + uTime*1.1);
+            d += .5 * sin(p.y*5.0 + uTime*1.6) * sin(p.x*4.0 - uTime);
+            p += normal * d * .11;
+            vD = d;
+            vN = normalize(normalMatrix * normal);
+            vec4 mv = modelViewMatrix * vec4(p, 1.0);
+            vV = -mv.xyz;
+            gl_Position = projectionMatrix * mv;
+          }`,
+        fragmentShader: `
+          uniform vec3 uC1; uniform vec3 uC2; uniform vec3 uC3; varying vec3 vN; varying vec3 vV; varying float vD;
+          void main(){
+            vec3 v = normalize(vV);
+            float f = pow(1.0 - max(dot(vN, v), 0.0), 2.4);
+            float t = clamp(vD * .55 + .5, 0.0, 1.0);
+            vec3 c = mix(uC3, uC1, t);
+            c = mix(c, uC2, smoothstep(.55, 1.0, t) * .8);
+            c += uC2 * f * .9;
+            float light = max(dot(vN, normalize(vec3(-.4, .6, .8))), 0.0);
+            c *= .72 + light * .45;
+            gl_FragColor = vec4(c, 1.0);
+          }`
+      })
+    );
+    world.add(orb);
+
+    // Glow sprite behind orb
+    const glowCanvas = document.createElement('canvas'); glowCanvas.width = glowCanvas.height = 256;
+    const gctx = glowCanvas.getContext('2d');
+    const drawGlow = col => {
+      gctx.clearRect(0,0,256,256);
+      const g = gctx.createRadialGradient(128,128,0,128,128,128);
+      g.addColorStop(0, col); g.addColorStop(.35, col.replace(/rgb\((.*)\)/, 'rgba($1,.35)')); g.addColorStop(1, 'rgba(0,0,0,0)');
+      gctx.fillStyle = g; gctx.fillRect(0,0,256,256);
+    };
+    const glowTex = new THREE.CanvasTexture(glowCanvas);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, opacity:.55}));
+    glow.scale.set(6.4, 6.4, 1); glow.position.z = -1; world.add(glow);
+
+    // Sacred-geometry wire shell
+    const shellMat = new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.22});
+    const shell = new THREE.Mesh(new THREE.IcosahedronGeometry(2.05, 1), shellMat);
+    world.add(shell);
+    const shell2 = new THREE.Mesh(new THREE.OctahedronGeometry(2.45, 0), new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.1}));
+    world.add(shell2);
+
+    // Orbit rings with beads
+    const rings = [], beads = [];
+    const ringCfg = [
+      {r:2.45, tilt:[1.25, .2, 0], speed:.35},
+      {r:2.75, tilt:[.3, 1.0, .4], speed:-.25},
+      {r:3.05, tilt:[-.6, .5, 1.1], speed:.18}
+    ];
+    ringCfg.forEach((cfg, i) => {
+      const g = new THREE.Group(); g.rotation.set(...cfg.tilt);
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(cfg.r, i === 1 ? .018 : .011, 12, 240), new THREE.MeshBasicMaterial({transparent:true, opacity: i === 1 ? .75 : .45}));
+      g.add(ring);
+      const bead = new THREE.Mesh(new THREE.SphereGeometry(i === 1 ? .085 : .06, 24, 24), new THREE.MeshBasicMaterial());
+      g.add(bead);
+      world.add(g); rings.push({g, ring, cfg}); beads.push({bead, cfg, a: i * 2});
+    });
+
+    // Particles
+    const pCount = 900, pos = new Float32Array(pCount * 3), seeds = new Float32Array(pCount);
+    for (let i = 0; i < pCount; i++){
+      const r = 2.4 + Math.random() * 3.2, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      pos[i*3] = r * Math.sin(ph) * Math.cos(th); pos[i*3+1] = r * Math.sin(ph) * Math.sin(th) * .8; pos[i*3+2] = r * Math.cos(ph);
+      seeds[i] = Math.random() * 10;
+    }
+    const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const dot = document.createElement('canvas'); dot.width = dot.height = 64;
+    const dctx = dot.getContext('2d'); const dg = dctx.createRadialGradient(32,32,0,32,32,32);
+    dg.addColorStop(0,'rgba(255,255,255,1)'); dg.addColorStop(.4,'rgba(255,255,255,.6)'); dg.addColorStop(1,'rgba(255,255,255,0)');
+    dctx.fillStyle = dg; dctx.fillRect(0,0,64,64);
+    const pMat = new THREE.PointsMaterial({size:.07, map:new THREE.CanvasTexture(dot), transparent:true, depthWrite:false, opacity:.9, sizeAttenuation:true});
+    const particles = new THREE.Points(pGeo, pMat); world.add(particles);
+
+    // Colors from active theme
+    function setColors(){
+      const c1 = cssVar('--orb1'), c2 = cssVar('--orb2'), c3 = cssVar('--orb3'), gold = cssVar('--gold'), acc = cssVar('--accent');
+      orbUniforms.uC1.value.set(c1); orbUniforms.uC2.value.set(c2); orbUniforms.uC3.value.set(c3);
+      shellMat.color.set(gold); shell2.material.color.set(cssVar('--primary'));
+      rings.forEach((r, i) => r.ring.material.color.set(i === 1 ? acc : gold));
+      beads.forEach((b, i) => b.bead.material.color.set(i === 1 ? gold : acc));
+      pMat.color.set(gold);
+      const gc = new THREE.Color(c1);
+      drawGlow(`rgb(${Math.round(gc.r*255)},${Math.round(gc.g*255)},${Math.round(gc.b*255)})`); glowTex.needsUpdate = true;
+      const dark = DARK.has(root.dataset.theme);
+      glow.material.opacity = dark ? .7 : .45;
+      pMat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending; pMat.needsUpdate = true;
+    }
+    hero3d.setColors = setColors; setColors();
+
+    // Size
+    function resize(){
+      const w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h;
+      camera.position.z = w < 500 ? 10.5 : 9.6;
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(wrap); resize();
+
+    // Interaction: pointer parallax + drag to spin
+    let tx = 0, ty = 0, rx = 0, ry = 0, dragging = false, lastX = 0, lastY = 0, spinY = 0, spinX = 0, velY = 0;
+    window.addEventListener('pointermove', e => {
+      tx = (e.clientX / window.innerWidth - .5); ty = (e.clientY / window.innerHeight - .5);
+      if (dragging){ velY = (e.clientX - lastX) * .006; spinY += velY; spinX += (e.clientY - lastY) * .004; lastX = e.clientX; lastY = e.clientY; }
+    }, {passive:true});
+    wrap.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; wrap.style.cursor = 'grabbing'; });
+    window.addEventListener('pointerup', () => { dragging = false; wrap.style.cursor = ''; });
+
+    // Visibility-aware loop
+    let visible = true, running = true;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(wrap);
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; });
+
+    const clock = new THREE.Clock();
+    function frame(){
+      requestAnimationFrame(frame);
+      if (!visible || !running) return;
+      const t = clock.getElapsedTime();
+      orbUniforms.uTime.value = t;
+      const breathe = 1 + Math.sin(t * .8) * .035;
+      orb.scale.setScalar(breathe);
+      shell.rotation.y = t * .12; shell.rotation.x = t * .07;
+      shell2.rotation.y = -t * .06; shell2.rotation.z = t * .05;
+      rings.forEach(r => { r.ring.rotation.z = t * r.cfg.speed; });
+      beads.forEach(b => { const a = b.a + t * b.cfg.speed * 2.2; b.bead.position.set(Math.cos(a) * b.cfg.r, Math.sin(a) * b.cfg.r, 0); });
+      particles.rotation.y = t * .03; particles.rotation.x = Math.sin(t * .1) * .1;
+      if (!dragging){ velY *= .95; spinY += velY; spinX *= .96; }
+      rx += (ty * .35 + spinX - rx) * .05; ry += (tx * .5 + spinY - ry) * .05;
+      world.rotation.x = rx; world.rotation.y = ry;
+      world.position.y = Math.sin(t * .6) * .08;
+      renderer.render(scene, camera);
+    }
+    if (reduceMotion){ renderer.render(scene, camera); } else { frame(); }
+    hero3d.render = () => renderer.render(scene, camera);
+  })();
+
+  const lotus = { setColors(){} };   /* Breathing scene: 3D Himalayan singing bowl (kept under this name for the theme hook) */
+  (function initSingingBowl(){
+    const wrap = document.getElementById('lotus3d');
+    let visible = false;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(wrap);
+    const fallbackLoop = () => { requestAnimationFrame(fallbackLoop); if (!visible) return; wrap.style.setProperty('--o', breath.tick(performance.now()).toFixed(3)); };
+    if (!window.THREE){ wrap.classList.add('fallback'); fallbackLoop(); return; }
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true}); } catch(e){ wrap.classList.add('fallback'); fallbackLoop(); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setClearColor(0, 0);
+    wrap.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    let envTex = null;
+
+    /* Soft studio environment so the metal has real reflections */
+    function buildEnv(){
+      const es = new THREE.Scene();
+      const top = new THREE.Color(cssVar('--sun')), mid = new THREE.Color(cssVar('--orb2')), bot = new THREE.Color(cssVar('--orb3'));
+      const g = new THREE.SphereGeometry(10, 32, 16), p = g.attributes.position, cols = [];
+      for (let i = 0; i < p.count; i++){ const y = p.getY(i) / 10; const c = y > 0 ? mid.clone().lerp(top, y) : mid.clone().lerp(bot, -y); cols.push(c.r, c.g, c.b); }
+      g.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
+      es.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({vertexColors:true, side:THREE.BackSide})));
+      const panel = new THREE.MeshBasicMaterial({color:0xffffff, side:THREE.DoubleSide});
+      [[0, 8, 1, 7, 5], [7, 3, 4, 3, 6], [-7, 2, -3, 2.5, 5], [-3, 4, 7, 2, 2]].forEach(([x, y, z, w, h]) => { const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), panel); m.position.set(x, y, z); m.lookAt(0, 0, 0); es.add(m); });
+      if (envTex) envTex.dispose();
+      envTex = pmrem.fromScene(es, .03).texture;
+      return envTex;
+    }
+
+    scene.add(new THREE.AmbientLight(0xffffff, .35));
+    const key = new THREE.DirectionalLight(0xffffff, .9); key.position.set(3, 6, 4); scene.add(key);
+    const rimL = new THREE.DirectionalLight(0xffffff, .55); rimL.position.set(-4, 3, -4); scene.add(rimL);
+    const warm = new THREE.PointLight(0xffd9a0, .6, 5); warm.position.set(0, 1.4, 0); scene.add(warm);
+
+    const rig = new THREE.Group(); scene.add(rig);
+
+    /* The bowl: lathe-turned bronze with a thick rim */
+    const prof = [[0,0],[.7,0],[.95,.03],[1.2,.15],[1.4,.38],[1.52,.65],[1.56,.9],[1.55,1.05],[1.51,1.11],[1.47,1.07],[1.46,.92],[1.42,.66],[1.3,.42],[1.11,.24],[.86,.14],[.5,.11],[0,.1]].map(([x, y]) => new THREE.Vector2(x, y));
+    const bowlMat = new THREE.MeshStandardMaterial({metalness:.92, roughness:.26, side:THREE.DoubleSide, envMapIntensity:1.15});
+    const bowl = new THREE.Mesh(new THREE.LatheGeometry(prof, 160), bowlMat);
+    bowl.position.y = .18; rig.add(bowl);
+
+    /* Engraved bands */
+    const bandMat = new THREE.MeshStandardMaterial({metalness:1, roughness:.18, envMapIntensity:1.3});
+    [[.34, 1.365], [.78, 1.548], [.98, 1.565]].forEach(([y, r]) => { const b = new THREE.Mesh(new THREE.TorusGeometry(r, .014, 10, 180), bandMat); b.rotation.x = Math.PI / 2; b.position.y = y; bowl.add(b); });
+    const dotGeo = new THREE.SphereGeometry(.022, 8, 8);
+    for (let i = 0; i < 48; i++){ const a = i / 48 * Math.PI * 2; const d = new THREE.Mesh(dotGeo, bandMat); d.position.set(Math.cos(a) * 1.5, .56, Math.sin(a) * 1.5); bowl.add(d); }
+
+    /* Water inside the bowl, dancing in cymatic patterns */
+    const waterU = {uTime:{value:0}, uAmp:{value:.3}, uC1:{value:new THREE.Color()}, uC2:{value:new THREE.Color()}, uC3:{value:new THREE.Color()}};
+    const water = new THREE.Mesh(new THREE.CircleGeometry(1.4, 128), new THREE.ShaderMaterial({
+      uniforms:waterU, transparent:true, depthWrite:false,
+      vertexShader:`varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+      fragmentShader:`
+        uniform float uTime; uniform float uAmp; uniform vec3 uC1; uniform vec3 uC2; uniform vec3 uC3; varying vec2 vUv;
+        void main(){
+          vec2 p = vUv * 2.0 - 1.0; float r = length(p); float a = atan(p.y, p.x);
+          float w = sin(r * 26.0 - uTime * 3.2) * cos(a * 6.0 + sin(uTime * .4) * .6);
+          float w2 = sin(r * 14.0 - uTime * 2.1) * .7 + cos(a * 12.0 - uTime * .5) * sin(r * 20.0) * .35;
+          float v = (w * .55 + w2 * .45) * uAmp * (1.0 - r * .55);
+          float ridge = smoothstep(.18, .62, abs(v));
+          vec3 col = mix(uC3, uC2, smoothstep(0.0, 1.0, r));
+          col = mix(col, uC1, ridge * .9);
+          col += uC1 * pow(max(0.0, 1.0 - r * 2.2), 3.0) * .5 * uAmp;
+          float alpha = (.78 + ridge * .22) * smoothstep(1.0, .94, r);
+          gl_FragColor = vec4(col, alpha);
+        }`
+    }));
+    water.rotation.x = -Math.PI / 2; water.position.y = .18 + .6; rig.add(water);
+
+    /* Cushion */
+    const cushionMat = new THREE.MeshStandardMaterial({roughness:1, metalness:0});
+    const cushion = new THREE.Mesh(new THREE.TorusGeometry(1.02, .3, 28, 80), cushionMat);
+    cushion.rotation.x = Math.PI / 2; cushion.position.y = .02; cushion.scale.z = .75; rig.add(cushion);
+    const tasselMat = new THREE.MeshStandardMaterial({roughness:.8});
+    const tassel = new THREE.Mesh(new THREE.ConeGeometry(.07, .3, 12), tasselMat);
+    tassel.position.set(1.28, -.1, .2); rig.add(tassel);
+
+    /* Soft contact shadow */
+    const sc = document.createElement('canvas'); sc.width = sc.height = 128; const sx = sc.getContext('2d');
+    const sg = sx.createRadialGradient(64, 64, 0, 64, 64, 64); sg.addColorStop(0, 'rgba(0,0,0,.45)'); sg.addColorStop(1, 'rgba(0,0,0,0)');
+    sx.fillStyle = sg; sx.fillRect(0, 0, 128, 128);
+    const shadow = new THREE.Mesh(new THREE.CircleGeometry(2.4, 48), new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(sc), transparent:true, depthWrite:false}));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.26; rig.add(shadow);
+
+    /* Wooden striker, suede-wrapped, circling the rim */
+    const strikerPivot = new THREE.Group(); rig.add(strikerPivot);
+    const striker = new THREE.Group();
+    const woodMat = new THREE.MeshStandardMaterial({roughness:.55, metalness:.05});
+    const suedeMat = new THREE.MeshStandardMaterial({roughness:.95});
+    const handle = new THREE.Mesh(new THREE.CylinderGeometry(.05, .06, 1.25, 20), woodMat); handle.position.y = .35; striker.add(handle);
+    const wrapM = new THREE.Mesh(new THREE.CylinderGeometry(.08, .08, .42, 20), suedeMat); wrapM.position.y = -.35; striker.add(wrapM);
+    const cap = new THREE.Mesh(new THREE.SphereGeometry(.085, 16, 12, 0, Math.PI * 2, 0, Math.PI / 2), suedeMat); cap.position.y = -.56; cap.rotation.x = Math.PI; striker.add(cap);
+    striker.position.set(1.6, 1.62, 0); striker.rotation.z = -.32; striker.rotation.x = .12;
+    strikerPivot.add(striker);
+
+    /* Glow behind */
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256; const gx = gc.getContext('2d');
+    const glowTex = new THREE.CanvasTexture(gc);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
+    glow.scale.set(5.4, 5.4, 1); glow.position.set(0, 1.1, -1.2); scene.add(glow);
+
+    /* Sound waves rippling out from the rim */
+    const waveMatBase = () => new THREE.MeshBasicMaterial({transparent:true, depthWrite:false, side:THREE.DoubleSide, opacity:0});
+    const waves = [];
+    for (let i = 0; i < 9; i++){
+      const m = new THREE.Mesh(new THREE.RingGeometry(.985, 1, 128), waveMatBase());
+      m.rotation.x = -Math.PI / 2 + (Math.random() - .5) * .22; m.rotation.y = (Math.random() - .5) * .2;
+      m.position.y = 1.28; m.visible = false; scene.add(m); waves.push({m, born:-99, peak:0});
+    }
+    let lastSpawn = 0, wi = 0;
+
+    /* Rising light motes */
+    const N = 140, mp = new Float32Array(N * 3), seeds = [];
+    for (let i = 0; i < N; i++) seeds.push({a:Math.random() * Math.PI * 2, rr:.2 + Math.random() * 1.6, sp:.15 + Math.random() * .3, ph:Math.random() * 4});
+    const mGeo = new THREE.BufferGeometry(); mGeo.setAttribute('position', new THREE.BufferAttribute(mp, 3));
+    const dot = document.createElement('canvas'); dot.width = dot.height = 64; const dx = dot.getContext('2d');
+    const dg = dx.createRadialGradient(32, 32, 0, 32, 32, 32); dg.addColorStop(0, 'rgba(255,255,255,1)'); dg.addColorStop(.4, 'rgba(255,255,255,.5)'); dg.addColorStop(1, 'rgba(255,255,255,0)');
+    dx.fillStyle = dg; dx.fillRect(0, 0, 64, 64);
+    const mMat = new THREE.PointsMaterial({size:.07, map:new THREE.CanvasTexture(dot), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending});
+    scene.add(new THREE.Points(mGeo, mMat));
+
+    function setColors(){
+      const env = buildEnv();
+      const gold = new THREE.Color(cssVar('--gold')), acc = new THREE.Color(cssVar('--accent')), accD = new THREE.Color(cssVar('--accent-deep')),
+            o1 = new THREE.Color(cssVar('--orb1')), o2 = new THREE.Color(cssVar('--orb2')), o3 = new THREE.Color(cssVar('--orb3')), prim = new THREE.Color(cssVar('--primary'));
+      bowlMat.envMap = env; bowlMat.color.copy(gold.clone().lerp(new THREE.Color('#b07a3c'), .45)); bowlMat.needsUpdate = true;
+      bandMat.envMap = env; bandMat.color.copy(gold.clone().lerp(new THREE.Color('#ffe2a8'), .3)); bandMat.needsUpdate = true;
+      cushionMat.color.copy(accD.clone().lerp(o3, .45).lerp(new THREE.Color('#1c1612'), .35)); tasselMat.color.copy(gold);
+      woodMat.color.set('#7a4f30'); suedeMat.color.copy(accD.clone().lerp(new THREE.Color('#3a2a22'), .4));
+      waterU.uC1.value.copy(o2.clone().lerp(new THREE.Color('#ffffff'), .35)); waterU.uC2.value.copy(o1); waterU.uC3.value.copy(o3.clone().lerp(prim, .25));
+      warm.color.copy(o2); rimL.color.copy(o1);
+      waves.forEach(({m}, i) => m.material.color.copy(i % 2 ? gold : acc));
+      mMat.color.copy(gold);
+      gx.clearRect(0, 0, 256, 256);
+      const g = gx.createRadialGradient(128, 128, 0, 128, 128, 128);
+      const c = `${Math.round(o1.r * 255)},${Math.round(o1.g * 255)},${Math.round(o1.b * 255)}`;
+      g.addColorStop(0, `rgba(${c},.5)`); g.addColorStop(.45, `rgba(${c},.14)`); g.addColorStop(1, 'rgba(0,0,0,0)');
+      gx.fillStyle = g; gx.fillRect(0, 0, 256, 256); glowTex.needsUpdate = true;
+    }
+    lotus.setColors = setColors; setColors();
+
+    function resize(){
+      const w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h;
+      const dist = w < 500 ? 11 : 9.2;
+      camera.position.set(0, dist * .52, dist); camera.lookAt(0, .55, 0); camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(wrap); resize();
+
+    let mx = 0, my = 0;
+    wrap.addEventListener('pointermove', e => { const r = wrap.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; });
+    wrap.addEventListener('pointerleave', () => { mx = my = 0; });
+
+    let o = .5, prevO = .5, strikeAngle = 0;
+    const clock = new THREE.Clock();
+    function frame(){
+      requestAnimationFrame(frame);
+      if (!visible || document.hidden) return;
+      const t = clock.getElapsedTime(), dt = .016;
+      prevO = o; o += (breath.tick(performance.now()) - o) * .12;
+      const rising = o - prevO > .0005;
+
+      /* striker circles the rim while breathing in */
+      strikeAngle += (rising ? .9 : .18) * dt * 2.2;
+      strikerPivot.rotation.y = -strikeAngle;
+
+      /* the bowl sings: water patterns, glow and a tiny shimmer */
+      const amp = .22 + o * .95;
+      waterU.uTime.value = t; waterU.uAmp.value = amp;
+      const shimmer = 1 + Math.sin(t * 46) * .0018 * amp;
+      bowl.scale.set(shimmer, 1, shimmer);
+      warm.intensity = .15 + o * .45;
+      glow.material.opacity = (DARK.has(root.dataset.theme) ? .4 : .16) + o * (DARK.has(root.dataset.theme) ? .4 : .2);
+
+      /* sound rings ripple out, strongest as you breathe out */
+      if (t - lastSpawn > (rising ? 1.4 : .75) && o > .12){
+        lastSpawn = t; const w = waves[wi++ % waves.length];
+        w.born = t; w.peak = .25 + o * .5; w.m.visible = true;
+      }
+      waves.forEach(w => {
+        const k = (t - w.born) / 3.4;
+        if (k > 1){ w.m.visible = false; return; }
+        w.m.scale.setScalar(1.55 + k * 3.4);
+        w.m.material.opacity = w.peak * (1 - k) * Math.min(1, k * 8);
+      });
+
+      rig.rotation.y = mx * .5 + Math.sin(t * .25) * .12;
+      rig.rotation.x = my * .12;
+
+      const arr = mGeo.attributes.position.array;
+      seeds.forEach((s, i) => {
+        const y = ((t * s.sp + s.ph) % 3.4);
+        arr[i * 3] = Math.cos(s.a + t * .12) * s.rr * (1 + y * .08);
+        arr[i * 3 + 1] = .9 + y;
+        arr[i * 3 + 2] = Math.sin(s.a + t * .12) * s.rr * (1 + y * .08);
+      });
+      mGeo.attributes.position.needsUpdate = true;
+      mMat.opacity = .35 + o * .5;
+      renderer.render(scene, camera);
+    }
+    frame();
+  })();
+
+
+  /* ---------- Themes ---------- */
+  const panel = document.getElementById('themePanel'), wrap = document.getElementById('themeWrap'), appThemes = document.getElementById('appThemes');
+  const opt = t => `<button class="topt" data-t="${t[0]}"><span class="ch">${t[3].map(c => `<i style="background:${c}"></i>`).join('')}</span><span><b>${t[1]}</b><small>${t[2]}</small></span></button>`;
+  panel.innerHTML = '<h6>Light themes</h6><div class="tgrid">' + THEMES.filter(t => !t[4]).map(opt).join('') + '</div><h6>Dark themes</h6><div class="tgrid">' + THEMES.filter(t => t[4]).map(opt).join('') + '</div>';
+  appThemes.innerHTML = THEMES.map(t => `<button class="tdot" data-t="${t[0]}" title="${t[1]}" style="background:conic-gradient(${t[3][0]} 0 50%,${t[3][1]} 0)"></button>`).join('');
+  function applyTheme(name){
+    const t = THEMES.find(x => x[0] === name) || THEMES[0];
+    root.dataset.theme = t[0];
+    document.getElementById('themeName').textContent = t[1];
+    document.getElementById('appThemeName').textContent = t[1];
+    document.querySelectorAll('[data-t]').forEach(b => b.classList.toggle('on', b.dataset.t === t[0]));
+    requestAnimationFrame(() => { hero3d.setColors(); lotus.setColors(); });
+    try { localStorage.setItem('2verse-app-theme', t[0]); } catch(e){}
+  }
+  document.getElementById('themeBtn').addEventListener('click', e => { e.stopPropagation(); wrap.classList.toggle('open'); });
+  document.addEventListener('click', e => { if (!wrap.contains(e.target)) wrap.classList.remove('open'); });
+  document.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => { applyTheme(b.dataset.t); wrap.classList.remove('open'); }));
+  let initial = new URLSearchParams(location.search).get('theme');
+  if (!initial){ try { initial = localStorage.getItem('2verse-app-theme'); } catch(e){} }
+  applyTheme(initial || 'dawn');
+})();
+</script>
+</body>
+</html>

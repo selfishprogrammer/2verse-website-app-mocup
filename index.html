@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dawn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>2Verse — Verified Healers from Rishikesh, for the World</title>
+<meta name="description" content="2Verse is a curated, invite-only marketplace for yoga, breathwork, meditation, somatic and sound healing. Meet verified healers from Tapovan, Rishikesh — in person or online." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Marcellus&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   THEME TOKENS — 5 THEMES
+   1. dawn    Ganga Dawn       (warm sand + river teal)
+   2. night   Himalayan Night  (midnight + gold)
+   3. saffron Saffron Sanctum  (saffron + temple maroon)
+   4. forest  Tapovan Forest   (moss + copper)
+   5. pearl   Lotus Pearl      (plum + lotus pink)
+   ========================================================= */
+:root,[data-theme="dawn"]{
+  --bg:#F6F0E6; --bg-alt:#EDE3D3; --surface:#FFFDF9; --surface-2:#F6F0E6;
+  --ink:#1D2A2C; --ink-2:#4A5657; --muted:#8A8680; --line:rgba(47,83,88,.12);
+  --primary:#2F5358; --primary-deep:#1E3A3E; --on-primary:#FFFDF9;
+  --accent:#C0704F; --accent-deep:#A55A3B; --on-accent:#FFFDF9; --gold:#C9A45C;
+  --soft-a:#E8EEE5; --soft-b:#F5E3DA; --soft-c:#F4EAD6; --soft-d:#E6EFF3;
+  --deep:#1E3A3E; --deep-2:#16292C; --deep-ink:#FFFDF9;
+  --glass:rgba(255,253,249,.72); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(201,164,92,.30); --glow-2:rgba(192,112,79,.16);
+  --orb1:#C0704F; --orb2:#E8C27E; --orb3:#2F5358;
+  --sky1:#F4DDB8; --sky2:#EFC9A0; --sky3:#E7B48C; --sun:#FBEBC8;
+  --hill1:#8FA68E; --hill2:#5E7F6F; --hill3:#2F5358; --river1:#A9C6D3; --river2:#5E8A93;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:500;
+  --shadow-c:30,58,62;
+}
+[data-theme="night"]{
+  --bg:#0A0F1E; --bg-alt:#0F1629; --surface:#121A31; --surface-2:#18213D;
+  --ink:#F3EEE4; --ink-2:#B8BCCB; --muted:#7D849B; --line:rgba(255,255,255,.08);
+  --primary:#E0BC76; --primary-deep:#C79E55; --on-primary:#0A0F1E;
+  --accent:#9AA6FF; --accent-deep:#7C89F0; --on-accent:#0A0F1E; --gold:#E6C27A;
+  --soft-a:#1A2442; --soft-b:#221F45; --soft-c:#262236; --soft-d:#172A43;
+  --deep:#060A15; --deep-2:#04070F; --deep-ink:#F3EEE4;
+  --glass:rgba(18,26,49,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(154,166,255,.22); --glow-2:rgba(230,194,122,.14);
+  --orb1:#6F7BFF; --orb2:#E6C27A; --orb3:#1B2356;
+  --sky1:#1A2250; --sky2:#2B2C63; --sky3:#4A3A70; --sun:#F2E3B8;
+  --hill1:#2F3A6C; --hill2:#1E2750; --hill3:#111833; --river1:#34427A; --river2:#1A2348;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:0,0,0;
+}
+[data-theme="saffron"]{
+  --bg:#FBF3E7; --bg-alt:#F4E3CB; --surface:#FFFAF2; --surface-2:#FBF3E7;
+  --ink:#2B140F; --ink-2:#5E4238; --muted:#9A7E70; --line:rgba(122,31,31,.12);
+  --primary:#7A1F1F; --primary-deep:#5A1414; --on-primary:#FFF7EA;
+  --accent:#E0892E; --accent-deep:#C06F18; --on-accent:#FFF7EA; --gold:#C99A3B;
+  --soft-a:#F7E6CF; --soft-b:#FBE0C4; --soft-c:#F6E7C2; --soft-d:#F3DDD6;
+  --deep:#3A0F10; --deep-2:#2A0A0B; --deep-ink:#FFF4E4;
+  --glass:rgba(255,250,242,.74); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(224,137,46,.30); --glow-2:rgba(122,31,31,.12);
+  --orb1:#E0892E; --orb2:#F6CF7A; --orb3:#7A1F1F;
+  --sky1:#FBD9A8; --sky2:#F4B77A; --sky3:#E48E55; --sun:#FFF1D0;
+  --hill1:#C9875A; --hill2:#9A4E36; --hill3:#6E2320; --river1:#E9B98A; --river2:#B8704A;
+  --serif:'Marcellus', Georgia, serif; --serif-w:400;
+  --shadow-c:90,20,20;
+}
+[data-theme="forest"]{
+  --bg:#EEF0E8; --bg-alt:#E1E6D8; --surface:#FAFBF6; --surface-2:#EEF0E8;
+  --ink:#16231B; --ink-2:#43524A; --muted:#7F8B82; --line:rgba(31,61,43,.12);
+  --primary:#1F3D2B; --primary-deep:#142A1D; --on-primary:#F6F7F0;
+  --accent:#B5733C; --accent-deep:#985B29; --on-accent:#F6F7F0; --gold:#B89A5A;
+  --soft-a:#DDE6D3; --soft-b:#EFDCCB; --soft-c:#EDE4CC; --soft-d:#D9E4E0;
+  --deep:#122419; --deep-2:#0C1911; --deep-ink:#F2F3EA;
+  --glass:rgba(250,251,246,.72); --glass-line:rgba(255,255,255,.7);
+  --glow:rgba(110,155,106,.28); --glow-2:rgba(181,115,60,.14);
+  --orb1:#6E9B6A; --orb2:#D9BE82; --orb3:#1F3D2B;
+  --sky1:#E6EBD9; --sky2:#CFDCC2; --sky3:#B6C9A9; --sun:#F6F1DA;
+  --hill1:#87A781; --hill2:#4F7552; --hill3:#1F3D2B; --river1:#A9C2B8; --river2:#5F857A;
+  --serif:'Fraunces', Georgia, serif; --serif-w:400;
+  --shadow-c:18,36,25;
+}
+[data-theme="pearl"]{
+  --bg:#F8F5F7; --bg-alt:#EFE8EE; --surface:#FFFFFF; --surface-2:#F8F5F7;
+  --ink:#231B2B; --ink-2:#5A4E63; --muted:#948A9C; --line:rgba(74,53,99,.1);
+  --primary:#4A3563; --primary-deep:#35244A; --on-primary:#FFFFFF;
+  --accent:#D9899B; --accent-deep:#C06C80; --on-accent:#FFFFFF; --gold:#C7A26A;
+  --soft-a:#EDE6F3; --soft-b:#F8E3E8; --soft-c:#F3EBDD; --soft-d:#E4EBF4;
+  --deep:#241A33; --deep-2:#1A1226; --deep-ink:#FBF7FA;
+  --glass:rgba(255,255,255,.7); --glass-line:rgba(255,255,255,.85);
+  --glow:rgba(217,137,155,.26); --glow-2:rgba(74,53,99,.12);
+  --orb1:#D9899B; --orb2:#F2D5C4; --orb3:#6A4F8C;
+  --sky1:#F6E4EC; --sky2:#E9D3E6; --sky3:#D7C5E4; --sun:#FFF5F0;
+  --hill1:#BBA7CE; --hill2:#8C75A8; --hill3:#4A3563; --river1:#D7E0EE; --river2:#9AA9C9;
+  --serif:'Fraunces', Georgia, serif; --serif-w:300;
+  --shadow-c:50,30,70;
+}
+
+[data-theme="rose"]{
+  --bg:#FBF4F1; --bg-alt:#F4E6E0; --surface:#FFFCFA; --surface-2:#FBF4F1;
+  --ink:#2E1C1C; --ink-2:#6A4E4B; --muted:#A08884; --line:rgba(120,60,60,.11);
+  --primary:#8C4A4A; --primary-deep:#6E3434; --on-primary:#FFF9F6;
+  --accent:#D98E73; --accent-deep:#C0735A; --on-accent:#FFF9F6; --gold:#C9A27A;
+  --soft-a:#F6E3DC; --soft-b:#FBE3D8; --soft-c:#F5E9DA; --soft-d:#EFE3E8;
+  --deep:#3A1F22; --deep-2:#2A1517; --deep-ink:#FFF5F1;
+  --glass:rgba(255,252,250,.72); --glass-line:rgba(255,255,255,.75);
+  --glow:rgba(217,142,115,.30); --glow-2:rgba(140,74,74,.12);
+  --orb1:#E7A08A; --orb2:#FFE0CF; --orb3:#8C4A4A;
+  --sky1:#FBE1D6; --sky2:#F5C7B8; --sky3:#E9A99A; --sun:#FFF4EC;
+  --hill1:#D9A3A0; --hill2:#B06F6D; --hill3:#7A3E3F; --river1:#EBC8C4; --river2:#C08F8C;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:400;
+  --shadow-c:90,40,40;
+}
+[data-theme="ivory"]{
+  --bg:#F7F4EE; --bg-alt:#EEE9DF; --surface:#FFFFFF; --surface-2:#F7F4EE;
+  --ink:#141414; --ink-2:#4B4945; --muted:#8F8B83; --line:rgba(20,20,20,.1);
+  --primary:#141414; --primary-deep:#000000; --on-primary:#F7F4EE;
+  --accent:#B08D57; --accent-deep:#947444; --on-accent:#FFFFFF; --gold:#B08D57;
+  --soft-a:#EFEBE3; --soft-b:#F3EDE2; --soft-c:#F1E9D8; --soft-d:#ECEAE6;
+  --deep:#141414; --deep-2:#0A0A0A; --deep-ink:#F7F4EE;
+  --glass:rgba(255,255,255,.74); --glass-line:rgba(255,255,255,.85);
+  --glow:rgba(176,141,87,.24); --glow-2:rgba(20,20,20,.06);
+  --orb1:#B08D57; --orb2:#F5E6C4; --orb3:#1C1C1C;
+  --sky1:#F1ECE2; --sky2:#E6DDCC; --sky3:#D6C8AE; --sun:#FFFBF0;
+  --hill1:#BDB3A2; --hill2:#8A8173; --hill3:#3A3631; --river1:#D8D2C6; --river2:#9E978B;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:20,20,20;
+}
+[data-theme="amethyst"]{
+  --bg:#120B1F; --bg-alt:#180F29; --surface:#1D1330; --surface-2:#251A3D;
+  --ink:#F5EEF7; --ink-2:#C7B9D2; --muted:#8D7FA0; --line:rgba(255,255,255,.08);
+  --primary:#EDBBA5; --primary-deep:#D9A088; --on-primary:#120B1F;
+  --accent:#B98CFF; --accent-deep:#9E6BF0; --on-accent:#120B1F; --gold:#E8C08E;
+  --soft-a:#2A1D45; --soft-b:#34203F; --soft-c:#2E2336; --soft-d:#221F48;
+  --deep:#0B0614; --deep-2:#07040D; --deep-ink:#F5EEF7;
+  --glass:rgba(29,19,48,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(185,140,255,.26); --glow-2:rgba(237,187,165,.14);
+  --orb1:#9E6BF0; --orb2:#F2C6B4; --orb3:#2A1260;
+  --sky1:#2A1650; --sky2:#4A2466; --sky3:#7A3C73; --sun:#F6D7C8;
+  --hill1:#4A2E78; --hill2:#301D55; --hill3:#1A0F33; --river1:#5A3E8A; --river2:#2A1A4D;
+  --serif:'Cormorant Garamond', Georgia, serif; --serif-w:500;
+  --shadow-c:0,0,0;
+}
+[data-theme="moonlit"]{
+  --bg:#07161A; --bg-alt:#0B1E23; --surface:#0F262C; --surface-2:#143038;
+  --ink:#EAF4F2; --ink-2:#A9C2C0; --muted:#6F8C8A; --line:rgba(255,255,255,.08);
+  --primary:#9FE3D6; --primary-deep:#7FCABC; --on-primary:#07161A;
+  --accent:#F0A868; --accent-deep:#DB8F4E; --on-accent:#07161A; --gold:#E3CB92;
+  --soft-a:#12323A; --soft-b:#2A2A24; --soft-c:#223029; --soft-d:#123041;
+  --deep:#040E11; --deep-2:#020A0C; --deep-ink:#EAF4F2;
+  --glass:rgba(15,38,44,.62); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(159,227,214,.20); --glow-2:rgba(240,168,104,.14);
+  --orb1:#3FB8A8; --orb2:#F3DFB0; --orb3:#0B3440;
+  --sky1:#0E2A3A; --sky2:#123A48; --sky3:#1F4F57; --sun:#EFE6C8;
+  --hill1:#1B4A52; --hill2:#113540; --hill3:#0A2229; --river1:#1F5E66; --river2:#0D3038;
+  --serif:'Playfair Display', Georgia, serif; --serif-w:400;
+  --shadow-c:0,0,0;
+}
+[data-theme="aurora"]{
+  --bg:#06110F; --bg-alt:#0A1916; --surface:#0E1F1B; --surface-2:#132924;
+  --ink:#ECF5F0; --ink-2:#A8C2B8; --muted:#6E8A80; --line:rgba(255,255,255,.08);
+  --primary:#7CF0C2; --primary-deep:#5FD8A9; --on-primary:#06110F;
+  --accent:#C59BFF; --accent-deep:#A97CF2; --on-accent:#06110F; --gold:#E4D08A;
+  --soft-a:#12302A; --soft-b:#241F3D; --soft-c:#262B22; --soft-d:#10283A;
+  --deep:#030A08; --deep-2:#020605; --deep-ink:#ECF5F0;
+  --glass:rgba(14,31,27,.6); --glass-line:rgba(255,255,255,.08);
+  --glow:rgba(124,240,194,.20); --glow-2:rgba(197,155,255,.18);
+  --orb1:#2FD49A; --orb2:#C59BFF; --orb3:#0B2E3A;
+  --sky1:#0B2230; --sky2:#133A3A; --sky3:#2A2F58; --sun:#E6F7EC;
+  --hill1:#1E4A48; --hill2:#123433; --hill3:#081E1D; --river1:#1C4F55; --river2:#0B2A2E;
+  --serif:'Fraunces', Georgia, serif; --serif-w:300;
+  --shadow-c:0,0,0;
+}
+
+:root{
+  --sans:'Inter', system-ui, -apple-system, sans-serif;
+  --radius:18px; --radius-lg:28px;
+  --shadow-sm:0 2px 10px rgba(var(--shadow-c),.06);
+  --shadow:0 14px 40px -12px rgba(var(--shadow-c),.2);
+  --shadow-lg:0 30px 80px -20px rgba(var(--shadow-c),.32);
+  --max:1200px; --ease:cubic-bezier(.22,.61,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .6s var(--ease), color .6s var(--ease);
+}
+/* film grain for a premium print feel */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:200;opacity:.035;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:is([data-theme="night"],[data-theme="amethyst"],[data-theme="moonlit"],[data-theme="aurora"]) body::after{mix-blend-mode:screen;opacity:.05}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,select{font:inherit;color:inherit}
+.container{width:100%;max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.eyebrow::before{content:"";width:24px;height:1px;background:currentColor}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:var(--serif-w);line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(32px,4.2vw,50px);margin:14px 0 16px}
+h1 em,h2 em{font-style:italic;color:var(--accent)}
+.lead{font-size:17px;color:var(--ink-2);max-width:620px}
+section{padding:120px 0;position:relative}
+.section-head{margin-bottom:60px}
+.section-head.center{text-align:center}
+.section-head.center .lead{margin:0 auto}
+.fill-primary{fill:var(--primary)} .fill-accent{fill:var(--accent)} .fill-gold{fill:var(--gold)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:500;font-size:15px;transition:transform .3s var(--ease),background .3s,box-shadow .3s,color .3s,border-color .3s;white-space:nowrap;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:0 12px 26px -12px var(--primary)}
+.btn-primary:hover{background:var(--primary-deep)}
+.btn-accent{background:var(--accent);color:var(--on-accent);box-shadow:0 12px 26px -12px var(--accent)}
+.btn-accent:hover{background:var(--accent-deep)}
+.btn-ghost{border:1px solid var(--line);color:var(--primary);background:transparent}
+.btn-ghost:hover{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.btn-light{background:#FFFDF9;color:#1D2A2C}
+.btn svg{width:18px;height:18px}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.28) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s var(--ease)}
+.btn:hover::after{transform:translateX(120%)}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,box-shadow .4s,padding .4s;padding:20px 0}
+.header.scrolled{background:var(--bg);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line);padding:12px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:27px;font-weight:600;color:var(--primary)}
+.logo-mark{width:38px;height:38px}
+.logo .wordmark{display:inline}
+.logo .wordmark span{color:var(--accent)}
+.nav-links{display:flex;gap:30px;font-size:14.5px;font-weight:500;color:var(--ink-2)}
+.nav-links a{position:relative;padding:4px 0;transition:color .2s}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--accent);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--primary)}
+.nav-links a:hover::after{width:100%}
+.nav-actions{display:flex;align-items:center;gap:14px}
+.nav-actions .login{font-size:14.5px;font-weight:500;color:var(--primary)}
+.nav-actions .btn{padding:11px 20px;font-size:14px}
+.menu-toggle{display:none;width:44px;height:44px;border-radius:50%;background:var(--surface);box-shadow:var(--shadow-sm);align-items:center;justify-content:center}
+.menu-toggle span{display:block;width:18px;height:1.5px;background:var(--primary);position:relative;transition:.3s}
+.menu-toggle span::before,.menu-toggle span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--primary);transition:.3s}
+.menu-toggle span::before{top:-6px}.menu-toggle span::after{top:6px}
+.menu-open .menu-toggle span{background:transparent}
+.menu-open .menu-toggle span::before{top:0;transform:rotate(45deg)}
+.menu-open .menu-toggle span::after{top:0;transform:rotate(-45deg)}
+.mobile-menu{position:fixed;inset:0;z-index:40;background:var(--bg);padding:100px 28px 40px;display:flex;flex-direction:column;gap:4px;overflow-y:auto;transform:translateY(-100%);visibility:hidden;transition:transform .5s var(--ease),visibility 0s linear .5s}
+.menu-open .mobile-menu{transform:translateY(0);visibility:visible;transition:transform .5s var(--ease),visibility 0s}
+.mobile-menu a{font-family:var(--serif);font-size:26px;padding:10px 0;border-bottom:1px solid var(--line);flex-shrink:0}
+.mobile-menu .btn{align-self:flex-start;margin-top:24px;padding:14px 34px;font-family:var(--sans);font-size:16px;border:none}
+@media (min-width:961px){.mobile-menu{display:none}}
+
+/* =========================================================
+   HERO WITH 3D ORB
+   ========================================================= */
+.hero{padding:150px 0 70px;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-bg .b1{position:absolute;right:-10%;top:-20%;width:70vw;height:70vw;max-width:900px;max-height:900px;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 62%)}
+.hero-bg .b2{position:absolute;left:-15%;bottom:-30%;width:55vw;height:55vw;max-width:700px;max-height:700px;border-radius:50%;background:radial-gradient(circle,var(--glow-2),transparent 65%)}
+.hero-bg .grid-lines{position:absolute;inset:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:80px 80px;mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 60%);-webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000 0%,transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(42px,5.8vw,78px);margin:22px 0 22px}
+.hero .lead{font-size:18px;margin-bottom:34px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(10px);font-size:13px;color:var(--ink-2);box-shadow:var(--shadow-sm)}
+.pill svg{width:15px;height:15px;color:var(--primary)}
+
+.finder{background:var(--surface);border-radius:var(--radius-lg);padding:10px;box-shadow:var(--shadow-lg);border:1px solid var(--line);position:relative;z-index:2}
+.finder-tabs{display:flex;gap:4px;padding:4px;background:var(--surface-2);border-radius:16px;margin-bottom:10px}
+.finder-tab{flex:1;padding:10px 12px;border-radius:12px;font-size:13.5px;font-weight:500;color:var(--ink-2);transition:.25s}
+.finder-tab.active{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm)}
+.finder-fields{display:grid;grid-template-columns:1fr 1fr auto;gap:8px}
+.field{display:flex;flex-direction:column;gap:2px;padding:12px 16px;border-radius:14px;background:var(--surface-2);transition:background .2s}
+.field:focus-within{background:var(--soft-a)}
+.field label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.field select{border:none;background:transparent;font-size:15px;font-weight:500;outline:none;appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:16px;color:var(--ink)}
+.field select option{background:var(--surface);color:var(--ink)}
+.field .sel{position:relative}
+.field .sel::after{content:"";position:absolute;right:2px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--primary);border-bottom:1.5px solid var(--primary);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.finder .btn{border-radius:14px;padding:0 24px}
+.finder-note{font-size:12.5px;color:var(--muted);padding:10px 8px 4px;display:flex;align-items:center;gap:6px}
+.finder-note svg{width:14px;height:14px;color:var(--gold)}
+
+.hero-visual{position:relative;height:640px;margin-right:-60px}
+.hero3d{position:absolute;inset:-40px;cursor:grab}
+.hero3d canvas{width:100%!important;height:100%!important;display:block}
+.hero3d.fallback::before{content:"";position:absolute;left:50%;top:50%;width:340px;height:340px;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--orb2),var(--orb1) 45%,var(--orb3) 100%);box-shadow:0 0 120px var(--glow);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.05)}}
+.orb-label{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.orb-label i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 var(--accent)}70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.float-card{position:absolute;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;animation:float 7s ease-in-out infinite;z-index:2}
+.float-card.one{left:0;bottom:20%}
+.float-card.two{right:70px;top:12%;animation-delay:-3s}
+.float-card.three{right:40px;bottom:12%;animation-delay:-5s}
+.float-card .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft-c)}
+.float-card .ic svg{width:20px;height:20px;color:var(--primary)}
+.float-card strong{display:block;font-size:14px;font-weight:600}
+.float-card small{font-size:12px;color:var(--muted)}
+.float-card .avs{display:flex}
+.float-card .avs span{width:28px;height:28px;border-radius:50%;border:2px solid var(--surface);margin-left:-8px;display:grid;place-items:center;font-size:11px;color:#fff;font-weight:600}
+.float-card .avs span:first-child{margin-left:0}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.scroll-cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);width:26px;height:42px;border-radius:14px;border:1.5px solid var(--line);z-index:2}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:8px;border-radius:2px;background:var(--accent);transform:translateX(-50%);animation:cue 2s infinite}
+@keyframes cue{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,14px)}}
+
+/* =========================================================
+   MARQUEE + STATS
+   ========================================================= */
+.marquee{padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:48px;animation:marq 38s linear infinite;font-family:var(--serif);font-style:italic;font-size:28px;color:var(--ink-2)}
+.marquee-track span{display:inline-flex;align-items:center;gap:48px}
+.marquee-track span::after{content:"✦";font-style:normal;font-size:14px;color:var(--gold)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+.stats{padding:70px 0 0}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);background:var(--deep);color:var(--deep-ink);border-radius:var(--radius-lg);padding:44px 20px;position:relative;overflow:hidden}
+.stats-inner::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 0%,var(--glow),transparent 55%),radial-gradient(ellipse at 90% 100%,var(--glow-2),transparent 55%)}
+.stat{text-align:center;padding:0 16px;border-right:1px solid rgba(255,255,255,.12);position:relative;z-index:1}
+.stat:last-child{border:none}
+.stat .num{font-family:var(--serif);font-size:48px;line-height:1;color:var(--gold)}
+.stat p{font-size:14px;opacity:.8;margin-top:12px}
+
+/* =========================================================
+   GOALS
+   ========================================================= */
+.goals-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.goal-chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{padding:14px 22px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;transition:.3s var(--ease)}
+.chip .dot{width:8px;height:8px;border-radius:50%}
+.chip:hover{border-color:var(--primary);transform:translateY(-2px)}
+.chip.active{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.goal-result{margin-top:28px;padding:24px 26px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);box-shadow:var(--shadow-sm);min-height:116px}
+.goal-result h4{font-size:21px;margin-bottom:6px}
+.goal-result p{font-size:14.5px;color:var(--ink-2)}
+.goal-result .mods{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.goal-result .mods span{font-size:12px;padding:5px 11px;border-radius:999px;background:var(--soft-a);color:var(--primary);font-weight:500}
+
+/* =========================================================
+   3D TILT CARDS
+   ========================================================= */
+[data-tilt]{transform-style:preserve-3d;transition:transform .5s var(--ease),box-shadow .5s;will-change:transform;position:relative}
+[data-tilt] .tilt-pop{transform:translateZ(40px)}
+[data-tilt] .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.35),transparent 55%);mix-blend-mode:soft-light;z-index:3}
+[data-tilt]:hover .glare{opacity:1}
+
+/* MODALITIES */
+.modalities{background:var(--surface)}
+.mod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;perspective:1200px}
+.mod-card{border-radius:var(--radius);padding:30px 22px 26px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;min-height:340px;display:flex;flex-direction:column}
+.mod-card:hover{box-shadow:var(--shadow-lg)}
+.mod-card .mod-icon{width:66px;height:66px;border-radius:20px;display:grid;place-items:center;margin-bottom:26px}
+.mod-card .mod-icon svg{width:32px;height:32px;color:var(--primary)}
+.mod-card h3{font-size:25px;margin-bottom:10px}
+.mod-card p{font-size:14px;color:var(--ink-2);flex:1}
+.mod-card .more{margin-top:20px;font-size:13.5px;font-weight:600;color:var(--primary);display:flex;align-items:center;gap:6px}
+.mod-card .more svg{width:14px;height:14px;transition:transform .3s}
+.mod-card:hover .more svg{transform:translateX(4px)}
+.mod-card .bg-ring{position:absolute;right:-50px;bottom:-50px;width:170px;height:170px;border-radius:50%;opacity:.16}
+
+/* HOW */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.steps::before{content:"";position:absolute;top:38px;left:10%;right:10%;height:1px;background:repeating-linear-gradient(90deg,var(--muted) 0 6px,transparent 6px 12px);opacity:.4}
+.step{text-align:center;position:relative;padding:0 8px}
+.step-num{width:76px;height:76px;border-radius:50%;margin:0 auto 22px;display:grid;place-items:center;background:var(--surface);box-shadow:var(--shadow-sm);font-family:var(--serif);font-size:28px;color:var(--accent);position:relative;z-index:1;border:1px solid var(--line)}
+.step-num::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px dashed var(--gold);opacity:.5;animation:spin 20s linear infinite}
+.step h3{font-size:22px;margin-bottom:8px}
+.step p{font-size:14.5px;color:var(--ink-2)}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* =========================================================
+   PRACTITIONERS
+   ========================================================= */
+.practitioners{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-alt) 100%)}
+.prac-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.currency-toggle{display:inline-flex;background:var(--surface);border-radius:999px;padding:4px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.currency-toggle button{padding:8px 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted);transition:.25s}
+.currency-toggle button.active{background:var(--primary);color:var(--on-primary)}
+.prac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;perspective:1400px}
+.prac-card{background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);border:1px solid var(--line);display:flex;flex-direction:column}
+.prac-card:hover{box-shadow:var(--shadow-lg)}
+.prac-top{height:180px;position:relative;display:flex;align-items:flex-end;padding:18px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;overflow:visible}
+.prac-top .ptn{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;overflow:hidden}
+.avatar{width:80px;height:80px;border-radius:50%;border:4px solid var(--surface);position:relative;z-index:2;display:grid;place-items:center;font-family:var(--serif);font-size:30px;color:#fff;margin-bottom:-54px;box-shadow:var(--shadow)}
+.follow{position:absolute;top:16px;right:16px;z-index:2;padding:7px 14px;border-radius:999px;background:rgba(255,253,249,.92);font-size:12.5px;font-weight:600;color:#1D2A2C;display:flex;align-items:center;gap:6px;transition:.25s}
+.follow svg{width:13px;height:13px}
+.follow.following{background:var(--gold);color:#1D2A2C}
+.format-tag{position:absolute;top:16px;left:16px;z-index:2;font-size:11.5px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(10,15,30,.45);color:#fff;backdrop-filter:blur(6px)}
+.prac-body{padding:64px 24px 24px;display:flex;flex-direction:column;flex:1}
+.prac-name{display:flex;align-items:center;gap:8px;font-size:23px}
+.verified{width:20px;height:20px;color:var(--gold);flex-shrink:0}
+.prac-meta{font-size:13px;color:var(--muted);margin:4px 0 14px}
+.prac-quote{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink-2);margin-bottom:16px;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.tags span{font-size:12px;padding:5px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
+.trust-row{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.trust-row span{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:var(--primary);background:var(--soft-a);padding:4px 9px;border-radius:6px}
+.trust-row svg{width:12px;height:12px}
+.prac-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid var(--line)}
+.price small{display:block;font-size:11.5px;color:var(--muted)}
+.price strong{font-size:21px;font-weight:600;color:var(--primary)}
+.price strong span{font-size:13px;font-weight:400;color:var(--muted)}
+.prac-foot .btn{padding:10px 18px;font-size:13.5px}
+.sample-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:28px}
+
+/* =========================================================
+   TRUST WITH 3D GYROSCOPE
+   ========================================================= */
+.trust{background:var(--deep);color:var(--deep-ink);overflow:hidden}
+.trust::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,var(--glow),transparent 50%)}
+.trust .eyebrow{color:var(--gold)}
+.trust h2 em{color:var(--gold)}
+.trust .lead{color:var(--deep-ink);opacity:.72}
+.trust-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;position:relative}
+.gyro{position:relative;width:100%;max-width:460px;aspect-ratio:1;margin:0 auto;perspective:1100px}
+.gyro-stage{position:absolute;inset:0;transform-style:preserve-3d;animation:gyroTilt 18s ease-in-out infinite}
+.ring{position:absolute;border-radius:50%;border:1.5px solid var(--gold);transform-style:preserve-3d}
+.ring::before{content:"";position:absolute;top:-6px;left:50%;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)}
+.ring.r1{inset:0;opacity:.55;animation:ringA 16s linear infinite}
+.ring.r2{inset:9%;opacity:.7;border-color:var(--accent);animation:ringB 12s linear infinite}
+.ring.r2::before{background:var(--gold);box-shadow:0 0 18px var(--gold)}
+.ring.r3{inset:18%;opacity:.5;border-style:dashed;animation:ringC 20s linear infinite}
+.ring.r4{inset:4%;opacity:.25;border-width:1px;animation:ringD 26s linear infinite}
+@keyframes ringA{from{transform:rotateX(70deg) rotateZ(0)}to{transform:rotateX(70deg) rotateZ(360deg)}}
+@keyframes ringB{from{transform:rotateY(65deg) rotateZ(0)}to{transform:rotateY(65deg) rotateZ(-360deg)}}
+@keyframes ringC{from{transform:rotateX(-35deg) rotateY(40deg) rotateZ(0)}to{transform:rotateX(-35deg) rotateY(40deg) rotateZ(360deg)}}
+@keyframes ringD{from{transform:rotateX(20deg) rotateY(-60deg) rotateZ(0)}to{transform:rotateX(20deg) rotateY(-60deg) rotateZ(360deg)}}
+@keyframes gyroTilt{0%,100%{transform:rotateY(-12deg) rotateX(8deg)}50%{transform:rotateY(12deg) rotateX(-6deg)}}
+.gyro-core{position:absolute;inset:30%;display:grid;place-items:center;transform:translateZ(60px);animation:float 6s ease-in-out infinite}
+.gyro-core::before{content:"";position:absolute;inset:-10%;border-radius:50%;background:radial-gradient(circle,var(--glow),transparent 70%)}
+.gyro-core svg{position:relative;width:100%;height:100%;filter:drop-shadow(0 20px 40px rgba(0,0,0,.35))}
+.badge-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px;perspective:1000px}
+.badge-item{padding:24px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
+.badge-item:hover{background:rgba(255,255,255,.09)}
+.badge-item .b-ic{width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.08);display:grid;place-items:center;margin-bottom:16px}
+.badge-item .b-ic svg{width:22px;height:22px;color:var(--gold)}
+.badge-item h4{font-size:20px;margin-bottom:6px}
+.badge-item p{font-size:14px;opacity:.68}
+
+/* =========================================================
+   RISHIKESH
+   ========================================================= */
+.place-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px}
+.place-feature{border-radius:var(--radius-lg);overflow:hidden;position:relative;min-height:540px;color:#FFFDF9;display:flex;flex-direction:column;justify-content:flex-end;padding:44px}
+.place-feature svg.scene{position:absolute;inset:0;width:100%;height:100%;transition:transform 1.2s var(--ease)}
+.place-feature:hover svg.scene{transform:scale(1.04)}
+.place-feature::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,15,20,.8))}
+.place-feature > *:not(svg){position:relative;z-index:1}
+.place-feature h3{font-size:clamp(28px,3.2vw,42px);margin:12px 0}
+.place-feature p{max-width:440px;opacity:.9;margin-bottom:24px}
+.place-feature .eyebrow{color:#F2D39B}
+.place-side{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.place-card{border-radius:var(--radius-lg);padding:34px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;border:1px solid var(--line)}
+.place-card h4{font-size:26px;margin-bottom:8px}
+.place-card p{font-size:14.5px;color:var(--ink-2)}
+.place-card .row{display:flex;gap:10px;flex-wrap:wrap}
+.place-card .row span{font-size:12.5px;padding:6px 12px;border-radius:999px;background:var(--surface);font-weight:500}
+
+/* JOURNAL */
+.journal{background:var(--surface)}
+.journal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.journal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post{cursor:pointer}
+.post-img{aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;margin-bottom:18px;position:relative}
+.post-img svg{width:100%;height:100%;transition:transform .8s var(--ease)}
+.post:hover .post-img svg{transform:scale(1.07)}
+.post-type{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(8px);color:var(--primary);display:flex;align-items:center;gap:6px}
+.post-type svg{width:12px;height:12px}
+.post small{font-size:12.5px;color:var(--accent);font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.post h3{font-size:23px;margin:8px 0;transition:color .2s}
+.post:hover h3{color:var(--primary)}
+.post p{font-size:14.5px;color:var(--ink-2)}
+
+/* JOIN */
+.join{padding:0 0 120px;background:var(--surface)}
+.join-card{border-radius:var(--radius-lg);background:var(--soft-c);padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;overflow:hidden;border:1px solid var(--line)}
+.join-card::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;border:1px solid var(--accent);opacity:.25;right:-120px;top:-170px}
+.join-card::after{content:"";position:absolute;width:270px;height:270px;border-radius:50%;border:1px solid var(--accent);opacity:.25;right:-50px;top:-95px}
+.join-list{display:grid;gap:14px;position:relative;z-index:1}
+.join-list li{list-style:none;display:flex;gap:14px;align-items:flex-start;background:var(--surface);padding:16px 18px;border-radius:14px;box-shadow:var(--shadow-sm);border:1px solid var(--line);transition:transform .35s var(--ease)}
+.join-list li:hover{transform:translateX(6px)}
+.join-list .ck{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;flex-shrink:0}
+.join-list .ck svg{width:14px;height:14px}
+.join-list strong{display:block;font-size:15px;font-weight:600}
+.join-list span{font-size:13.5px;color:var(--ink-2)}
+.join-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.cohort{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:13.5px;color:var(--ink-2)}
+.cohort .bar{width:140px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.cohort .bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width 1.6s var(--ease)}
+
+/* APPS (3D phones) */
+.apps{background:var(--bg);overflow:hidden}
+.apps-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.app-options{display:grid;gap:16px;margin:34px 0}
+.app-opt{display:flex;gap:18px;align-items:center;padding:20px;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);transition:.3s;cursor:pointer}
+.app-opt:hover,.app-opt.active{border-color:var(--primary);box-shadow:var(--shadow)}
+.app-opt .a-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;flex-shrink:0}
+.app-opt .a-ic svg{width:26px;height:26px}
+.app-opt h4{font-family:var(--sans);font-size:16px;font-weight:600}
+.app-opt p{font-size:13.5px;color:var(--ink-2)}
+.store-btns{display:flex;gap:12px;flex-wrap:wrap}
+.store{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:12px;background:var(--ink);color:var(--bg);transition:transform .25s}
+.store:hover{transform:translateY(-2px)}
+.store svg{width:22px;height:22px}
+.store small{display:block;font-size:10px;opacity:.7;line-height:1}
+.store b{font-size:15px;font-weight:600;line-height:1.2}
+.phones{position:relative;height:580px;display:flex;justify-content:center;align-items:center;perspective:1400px}
+.phones-stage{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s var(--ease)}
+.phone{width:252px;height:516px;border-radius:42px;background:linear-gradient(145deg,#2a2a2e,#0d0d10);padding:10px;box-shadow:var(--shadow-lg),inset 0 0 0 1.5px rgba(255,255,255,.08);position:absolute;left:50%;top:50%;margin:-258px 0 0 -126px;transition:transform .8s var(--ease),opacity .6s;transform-style:preserve-3d}
+.phone .screen{width:100%;height:100%;border-radius:32px;overflow:hidden;background:var(--bg);position:relative}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:90px;height:24px;border-radius:14px;background:#0d0d10;z-index:3}
+.phone.front{z-index:2;transform:translateX(-70px) translateZ(60px) rotateY(18deg)}
+.phone.back{z-index:1;transform:translateX(90px) translateZ(-80px) rotateY(-22deg) scale(.94)}
+.phones.swap .phone.front{transform:translateX(90px) translateZ(-80px) rotateY(-22deg) scale(.94);z-index:1}
+.phones.swap .phone.back{transform:translateX(-70px) translateZ(60px) rotateY(18deg);z-index:2}
+.scr{padding:46px 16px 16px;height:100%;display:flex;flex-direction:column;gap:10px;font-size:11px;color:var(--ink)}
+.scr .s-top{display:flex;justify-content:space-between;align-items:center}
+.scr .s-hi{font-family:var(--serif);font-size:19px}
+.scr .s-av{width:28px;height:28px;border-radius:50%}
+.scr .s-card{background:var(--surface);border-radius:14px;padding:12px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+.scr .s-card b{font-size:12px;display:block;margin-bottom:2px}
+.scr .s-bar{height:6px;border-radius:99px;background:var(--line);margin-top:8px;overflow:hidden}
+.scr .s-bar i{display:block;height:100%;border-radius:99px}
+.scr .s-row{display:flex;gap:8px}
+.scr .s-mini{flex:1;border-radius:12px;padding:10px}
+.scr .s-mini b{font-size:17px;display:block;font-family:var(--serif)}
+.scr .s-btn{margin-top:auto;border-radius:12px;padding:12px;text-align:center;font-weight:600}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;text-align:left;font-family:var(--serif);font-weight:var(--serif-w);font-size:21px}
+.faq-q .plus{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;flex-shrink:0;transition:.3s}
+.faq-q .plus svg{width:14px;height:14px;transition:transform .3s}
+.faq-item.open .plus{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.faq-item.open .plus svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.faq-a p{padding:0 50px 24px 0;color:var(--ink-2);font-size:15px}
+
+/* FOOTER */
+.footer{background:var(--deep-2);color:var(--deep-ink);padding:80px 0 30px}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer .logo{color:var(--deep-ink);margin-bottom:16px}
+.footer p{font-size:14px;max-width:320px;opacity:.72}
+.footer h5{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;font-weight:600}
+.footer ul{list-style:none;display:grid;gap:10px;font-size:14px;opacity:.72}
+.footer ul a:hover{color:var(--gold)}
+.newsletter{display:flex;margin-top:24px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:5px;max-width:360px}
+.newsletter input{flex:1;background:none;border:none;outline:none;padding:0 16px;color:var(--deep-ink);font-size:14px;min-width:0}
+.newsletter input::placeholder{color:var(--deep-ink);opacity:.45}
+.newsletter button{padding:10px 18px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-size:13.5px;font-weight:600}
+.footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:13px;opacity:.72}
+.socials{display:flex;gap:10px}
+.socials a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;transition:.25s}
+.socials a:hover{background:var(--gold);border-color:var(--gold);color:#111}
+.socials svg{width:15px;height:15px}
+
+/* =========================================================
+   THEME SWITCHER
+   ========================================================= */
+.theme-dock{position:fixed;right:20px;bottom:20px;z-index:90}
+.theme-btn{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow);font-size:13px;font-weight:600;color:var(--ink)}
+.theme-btn .sw{width:28px;height:28px;border-radius:50%;background:conic-gradient(var(--primary) 0 33%,var(--accent) 0 66%,var(--gold) 0);box-shadow:inset 0 0 0 3px var(--surface)}
+.theme-panel{position:absolute;right:0;bottom:calc(100% + 12px);width:300px;padding:10px;border-radius:22px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(10px) scale(.98);transform-origin:bottom right;transition:.35s var(--ease)}
+.theme-dock.open .theme-panel{opacity:1;visibility:visible;transform:none}
+.theme-panel h6{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:8px 10px 10px;font-weight:600}
+.theme-opt{width:100%;display:flex;align-items:center;gap:12px;padding:10px;border-radius:14px;text-align:left;transition:background .2s}
+.theme-opt:hover{background:var(--surface-2)}
+.theme-opt.active{background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--line)}
+.theme-opt .chips{display:flex;flex-shrink:0}
+.theme-opt .chips i{width:22px;height:22px;border-radius:50%;margin-left:-7px;border:2px solid var(--surface)}
+.theme-opt .chips i:first-child{margin-left:0}
+.theme-opt b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.theme-opt small{font-size:12px;color:var(--muted)}
+.theme-opt .tick{margin-left:auto;width:18px;height:18px;color:var(--accent);opacity:0}
+.theme-opt.active .tick{opacity:1}
+.theme-flash{position:fixed;inset:0;z-index:150;pointer-events:none;background:var(--bg);opacity:0;transition:opacity .35s}
+.theme-flash.on{opacity:.55}
+
+/* Toast */
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--ink);color:var(--bg);padding:14px 22px;border-radius:14px;font-size:14px;box-shadow:var(--shadow-lg);z-index:100;transition:transform .45s var(--ease),opacity .3s,visibility .3s;opacity:0;visibility:hidden;display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px)}
+.toast.show{transform:translate(-50%,0);opacity:1;visibility:visible}
+.toast svg{width:18px;height:18px;color:var(--gold);flex-shrink:0}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* RESPONSIVE */
+@media (max-width:1080px){.mod-grid{grid-template-columns:repeat(3,1fr)}.nav-links{gap:20px}}
+@media (max-width:960px){
+  section{padding:84px 0}
+  .nav-links,.nav-actions .login,.nav-actions .btn{display:none}
+  .menu-toggle{display:flex}
+  .hero{padding:120px 0 60px;min-height:auto}
+  .hero-grid,.goals-wrap,.trust-grid,.apps-grid,.faq-grid,.join-card,.place-grid{grid-template-columns:1fr}
+  .hero-visual{height:460px;margin:10px 0 0}
+  .float-card.two{right:0}.float-card.three{right:10px}
+  .scroll-cue{display:none}
+  .stats-inner{grid-template-columns:repeat(2,1fr);gap:30px 0}
+  .stat:nth-child(2){border:none}
+  .prac-grid,.journal-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:44px 24px}
+  .steps::before{display:none}
+  .gyro{max-width:340px}
+  .join-card{padding:44px 32px}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .phones{height:540px}
+}
+@media (max-width:640px){
+  .container{padding:0 16px}
+  .finder-fields{grid-template-columns:1fr}
+  .finder .btn{padding:16px}
+  .mod-grid,.prac-grid,.journal-grid,.badge-list,.steps{grid-template-columns:1fr}
+  .mod-card{min-height:auto}
+  .hero-visual{height:380px}
+  .float-card.two,.float-card.three{display:none}
+  .float-card.one{left:0;bottom:6%}
+  .stats-inner{padding:32px 10px}
+  .stat .num{font-size:34px}
+  .marquee-track{font-size:22px}
+  .place-feature{min-height:460px;padding:28px}
+  .footer-top{grid-template-columns:1fr}
+  .phone{width:210px;height:430px;margin:-215px 0 0 -105px;border-radius:36px}
+  .phones{height:470px}
+  .phone.front,.phones.swap .phone.back{transform:translateX(-44px) translateZ(40px) rotateY(16deg)}
+  .phone.back,.phones.swap .phone.front{transform:translateX(56px) translateZ(-60px) rotateY(-20deg) scale(.9)}
+  .faq-a p{padding-right:0}
+  .theme-dock{right:auto;left:50%;transform:translateX(-50%);bottom:14px}
+  .theme-panel{right:auto;left:50%;transform:translate(-50%,10px) scale(.98);transform-origin:bottom center;width:290px}
+  .theme-dock.open .theme-panel{transform:translate(-50%,0)}
+  .toast{bottom:80px}
+}
+
+/* =========================================================
+   V3 ADDITIONS
+   ========================================================= */
+/* Theme panel, grouped grid */
+.theme-panel{width:560px;max-height:min(72vh,640px);overflow:auto}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:6px}
+
+/* Ask Veda (hero) + mini orb */
+.mini-orb{width:30px;height:30px;border-radius:50%;flex-shrink:0;position:relative;
+  background:conic-gradient(from 0deg,var(--orb1),var(--orb2),var(--accent),var(--orb1));animation:spin 5s linear infinite;box-shadow:0 0 16px var(--glow)}
+.mini-orb::after{content:"";position:absolute;inset:4px;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.85),transparent 62%)}
+.ask-veda{display:inline-flex;align-items:center;gap:12px;margin-top:16px;padding:8px 18px 8px 8px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);font-size:14px;color:var(--ink-2);box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s;text-align:left}
+.ask-veda b{color:var(--ink);font-weight:600}
+.ask-veda:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.ask-veda svg{width:16px;height:16px;color:var(--accent);flex-shrink:0}
+
+/* Manifesto + 3D mandala */
+.manifesto{padding:150px 0;text-align:center;overflow:hidden}
+.mandala3d{position:absolute;left:50%;top:50%;width:820px;height:820px;margin:-410px 0 0 -410px;perspective:1400px;pointer-events:none;opacity:.34}
+.mandala-stage{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(58deg);transition:transform 1.2s var(--ease)}
+.m-layer{position:absolute;inset:0;transform-style:preserve-3d}
+.m-layer svg{width:100%;height:100%;animation:spin 120s linear infinite}
+.m-layer.l2 svg{animation-duration:90s;animation-direction:reverse}
+.m-layer.l3 svg{animation-duration:70s}
+.m-layer.l4 svg{animation-duration:50s;animation-direction:reverse}
+.manifesto .container{position:relative}
+.manifesto blockquote{font-family:var(--serif);font-weight:var(--serif-w);font-size:clamp(30px,4.4vw,60px);line-height:1.18;max-width:1000px;margin:26px auto 0;letter-spacing:-.01em}
+.manifesto blockquote em{font-style:italic;color:var(--accent)}
+.manifesto .sig{margin-top:30px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:96px;text-align:left}
+.pillar{padding-top:26px;border-top:1px solid var(--line);background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 70%,transparent),transparent)}
+.pillar .pn{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--accent)}
+.pillar h4{font-size:26px;margin:8px 0 10px}
+.pillar p{font-size:15px;color:var(--ink-2)}
+
+/* Voice orb (shared) */
+.voice-orb{position:relative;width:260px;height:260px;display:grid;place-items:center}
+.vo-core{position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orb2),var(--orb1) 45%,var(--orb3) 100%);box-shadow:0 0 90px var(--glow),inset 0 -20px 40px rgba(0,0,0,.25);animation:breathe2 6s ease-in-out infinite}
+.vo-core::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(255,255,255,.4),transparent 40%);animation:spin 6s linear infinite;mix-blend-mode:overlay}
+.vo-ring{position:absolute;inset:22%;border-radius:50%;border:1px solid var(--gold);opacity:0;animation:ripple 4.5s ease-out infinite}
+.vo-ring:nth-child(2){animation-delay:1.5s}.vo-ring:nth-child(3){animation-delay:3s}
+@keyframes breathe2{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes ripple{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.9);opacity:0}}
+.is-listening .vo-ring{animation-duration:1.5s;border-color:var(--accent)}
+.is-listening .vo-core{animation:breathe2 1.1s ease-in-out infinite}
+.is-thinking .vo-core::after{animation-duration:1.1s}
+.is-speaking .vo-core{animation:breathe2 .8s ease-in-out infinite}
+.vo-wave{position:absolute;left:0;top:50%;width:100%;height:150px;transform:translateY(-50%);pointer-events:none}
+
+/* Veda section */
+.veda{background:var(--deep);color:var(--deep-ink);overflow:hidden}
+.veda::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 78% 45%,var(--glow),transparent 55%),radial-gradient(ellipse at 8% 95%,var(--glow-2),transparent 50%)}
+.veda .eyebrow{color:var(--gold)}
+.veda h2 em{color:var(--gold)}
+.veda .lead{color:var(--deep-ink);opacity:.75}
+.veda-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative}
+.veda-points{list-style:none;display:grid;gap:18px;margin:34px 0}
+.veda-points li{display:flex;gap:16px;align-items:flex-start}
+.vp-ic{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:grid;place-items:center;flex-shrink:0;color:var(--gold)}
+.vp-ic svg{width:20px;height:20px}
+.veda-points b{display:block;font-size:16px;font-weight:600}
+.veda-points small{font-size:14px;opacity:.68}
+.veda-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn-veda{background:linear-gradient(135deg,var(--accent),var(--gold));color:#141414;box-shadow:0 16px 34px -14px var(--accent)}
+.btn-ghost-light{border:1px solid rgba(255,255,255,.22);color:var(--deep-ink)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.08)}
+.veda-fine{font-size:12.5px;opacity:.55;margin-top:18px}
+.veda-visual{position:relative;height:540px;display:grid;place-items:center}
+.veda-visual .voice-orb{width:360px;height:360px}
+.v-bub{position:absolute;max-width:300px;padding:14px 18px;border-radius:20px;font-size:14px;line-height:1.5;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:float 7s ease-in-out infinite;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.v-bub.user{right:0;top:6%;background:rgba(255,255,255,.93);color:#1D2A2C;border-bottom-right-radius:6px}
+.v-bub.ai{left:0;bottom:24%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-bottom-left-radius:6px;animation-delay:-2s}
+.v-bub .who{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:4px}
+.v-match{position:absolute;right:4%;bottom:4%;display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);animation:float 7s ease-in-out infinite;animation-delay:-4s}
+.v-match .avatar-s{width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:18px}
+.v-match b{display:block;font-size:14px}
+.v-match small{font-size:12px;opacity:.65}
+.v-match .pct{margin-left:8px;font-weight:700;color:var(--gold);font-size:15px}
+
+/* Breathe with the lotus */
+.breathe{background:linear-gradient(180deg,var(--bg),var(--bg-alt));overflow:hidden}
+.breathe-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.lotus-wrap{position:relative;height:580px;border-radius:var(--radius-lg);overflow:hidden;background:radial-gradient(ellipse at 50% 68%,var(--glow),transparent 62%)}
+.lotus3d{position:absolute;inset:0;--o:.5}
+.lotus3d canvas{width:100%!important;height:100%!important;display:block}
+.lotus3d.fallback::before{content:"";position:absolute;left:50%;top:50%;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;background:radial-gradient(circle at 40% 35%,var(--orb2),var(--accent) 55%,transparent 72%);transform:scale(calc(.75 + var(--o) * .45));transition:transform .2s linear}
+.lotus-hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.breath-card{margin-top:30px;padding:28px;border-radius:var(--radius-lg);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow)}
+.bp-patterns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.bp-patterns button{padding:8px 14px;border-radius:999px;font-size:13px;font-weight:500;border:1px solid var(--line);color:var(--ink-2);transition:.25s}
+.bp-patterns button.active{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.bp-phase{font-family:var(--serif);font-weight:var(--serif-w);font-size:clamp(34px,4vw,50px);line-height:1.1;min-height:1.2em}
+.bp-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin:14px 0 10px}
+.bp-bar{height:4px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:24px}
+.bp-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--gold));border-radius:99px}
+
+/* Floating Veda button */
+.veda-fab{position:fixed;left:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px;background:var(--deep);color:var(--deep-ink);font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.12);transition:transform .3s var(--ease)}
+.veda-fab{opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .4s,visibility .4s,transform .4s var(--ease)}
+.veda-fab.show{opacity:1;visibility:visible;transform:none}
+.veda-fab.show:hover{transform:translateY(-3px)}
+
+/* Veda modal */
+.veda-modal{position:fixed;inset:0;z-index:130;display:grid;place-items:center;padding:20px;background:rgba(5,8,15,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s}
+.veda-modal.open{opacity:1;visibility:visible}
+.vm-panel{width:min(1080px,100%);height:min(720px,100%);display:grid;grid-template-columns:360px 1fr;border-radius:28px;overflow:hidden;background:var(--surface);box-shadow:0 40px 120px -20px rgba(0,0,0,.55);transform:translateY(24px) scale(.98);transition:transform .5s var(--ease)}
+.veda-modal.open .vm-panel{transform:none}
+.vm-left{position:relative;background:var(--deep);color:var(--deep-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 26px;gap:14px;overflow:hidden;text-align:center}
+.vm-left::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,var(--glow),transparent 60%)}
+.vm-left > *{position:relative}
+.orb-zone{position:relative;width:100%;height:250px;display:grid;place-items:center}
+.orb-zone .voice-orb{width:230px;height:230px}
+.vm-status{font-family:var(--serif);font-weight:var(--serif-w);font-size:21px;min-height:30px}
+.vm-mic{width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--gold));color:#141414;display:grid;place-items:center;box-shadow:0 14px 30px -10px var(--accent);transition:transform .3s var(--ease),background .3s}
+.vm-mic:hover{transform:scale(1.06)}
+.vm-mic svg{width:28px;height:28px}
+.is-listening .vm-mic{background:#E5484D;color:#fff;box-shadow:0 0 0 10px rgba(229,72,77,.18),0 0 0 22px rgba(229,72,77,.08)}
+.vm-toggle{display:flex;align-items:center;gap:10px;font-size:13px;opacity:.85;cursor:pointer}
+.vm-toggle input{position:absolute;opacity:0;pointer-events:none}
+.vm-toggle span{width:38px;height:22px;border-radius:99px;background:rgba(255,255,255,.2);position:relative;transition:.25s}
+.vm-toggle span::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.25s}
+.vm-toggle input:checked + span{background:var(--accent)}
+.vm-toggle input:checked + span::after{transform:translateX(16px)}
+.vm-fine{font-size:11.5px;opacity:.5;max-width:290px;margin-top:auto}
+.vm-right{display:flex;flex-direction:column;min-height:0;background:var(--surface)}
+.vm-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line)}
+.vm-id{display:flex;align-items:center;gap:12px}
+.vm-id b{font-family:var(--serif);font-weight:var(--serif-w);font-size:22px;display:block;line-height:1.1}
+.vm-id small{font-size:12px;color:var(--muted)}
+.vm-head-actions{display:flex;gap:8px}
+.vm-head-actions button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-2);transition:.2s}
+.vm-head-actions button:hover{background:var(--surface-2)}
+.vm-head-actions svg{width:16px;height:16px}
+.vm-chat{flex:1;overflow-y:auto;padding:24px 22px;display:flex;flex-direction:column;gap:14px}
+.msg-row{display:flex;gap:10px;align-items:flex-end;animation:msgIn .45s var(--ease) both}
+@keyframes msgIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.msg-row.user{justify-content:flex-end}
+.msg-row .mini-orb{width:26px;height:26px}
+.msg{max-width:82%;padding:12px 16px;border-radius:18px;font-size:15px;line-height:1.55}
+.msg-row.ai .msg{background:var(--surface-2);border:1px solid var(--line);border-bottom-left-radius:6px;color:var(--ink)}
+.msg-row.user .msg{background:var(--primary);color:var(--on-primary);border-bottom-right-radius:6px}
+.msg a{color:var(--accent);text-decoration:underline}
+.quick{display:flex;flex-wrap:wrap;gap:8px;padding-left:36px;animation:msgIn .45s var(--ease) both}
+.quick button{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13.5px;color:var(--ink);transition:.2s}
+.quick button:hover{border-color:var(--primary);background:var(--soft-a)}
+.typing{display:inline-flex;gap:4px;padding:14px 16px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.matches{display:grid;gap:10px;padding-left:36px;animation:msgIn .5s var(--ease) both}
+.match-card{display:flex;gap:14px;padding:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.mc-av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:var(--serif);font-size:20px;flex-shrink:0}
+.mc-body{flex:1;min-width:0}
+.mc-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mc-top b{font-size:15.5px}
+.mc-pct{width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--accent) calc(var(--p) * 1%),var(--line) 0);display:grid;place-items:center;flex-shrink:0}
+.mc-pct i{width:38px;height:38px;border-radius:50%;background:var(--surface);display:grid;place-items:center;font-style:normal;font-size:11.5px;font-weight:700;color:var(--primary)}
+.match-card small{display:block;font-size:12.5px;color:var(--muted);margin:2px 0 6px}
+.match-card p{font-size:13.5px;color:var(--ink-2)}
+.mc-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.mc-btn{padding:7px 13px;border-radius:999px;font-size:12.5px;font-weight:600;border:1px solid var(--line);color:var(--primary);cursor:pointer}
+.mc-btn.primary{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.vm-input{display:flex;gap:8px;padding:14px 16px;border-top:1px solid var(--line);background:var(--surface)}
+.vm-input input{flex:1;min-width:0;padding:13px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);outline:none;font-size:15px;color:var(--ink)}
+.vm-input input:focus{border-color:var(--primary)}
+.vm-mic-s,.vm-send{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:.2s}
+.vm-mic-s{border:1px solid var(--line);color:var(--primary)}
+.is-listening .vm-mic-s{background:#E5484D;color:#fff;border-color:#E5484D}
+.vm-send{background:var(--primary);color:var(--on-primary)}
+.vm-mic-s svg,.vm-send svg{width:18px;height:18px}
+body.modal-open{overflow:hidden}
+
+@media (max-width:960px){
+  .veda-grid,.breathe-grid{grid-template-columns:1fr}
+  .veda-visual{height:440px}
+  .veda-visual .voice-orb{width:280px;height:280px}
+  .pillars{grid-template-columns:1fr;gap:28px;margin-top:60px}
+  .lotus-wrap{height:430px}
+  .mandala3d{width:620px;height:620px;margin:-310px 0 0 -310px}
+  .manifesto{padding:100px 0}
+}
+@media (max-width:760px){
+  .veda-modal{padding:0}
+  .vm-panel{grid-template-columns:1fr;grid-template-rows:auto 1fr;height:100%;border-radius:0}
+  .vm-left{flex-direction:row;padding:12px 16px;gap:12px;justify-content:flex-start;text-align:left}
+  .orb-zone{width:60px;height:60px;flex-shrink:0}
+  .orb-zone .voice-orb{width:60px;height:60px}
+  .orb-zone .vo-wave,.vm-fine,.vm-toggle{display:none}
+  .vm-status{font-size:16px;flex:1}
+  .vm-mic{width:52px;height:52px}
+  .vm-mic svg{width:22px;height:22px}
+  .quick,.matches{padding-left:0}
+}
+@media (max-width:640px){
+  .v-bub{max-width:230px;font-size:13px}
+  .v-match{right:0}
+  .lotus-wrap{height:360px}
+  .veda-fab{left:14px;bottom:14px}
+  .theme-dock{left:auto;right:14px;transform:none}
+  .theme-btn{padding:8px}
+  .theme-btn #themeName{display:none}
+  .theme-panel{left:auto;right:0;width:min(92vw,340px);transform:translateY(10px) scale(.98);transform-origin:bottom right}
+  .theme-dock.open .theme-panel{transform:none}
+  .theme-grid{grid-template-columns:1fr}
+  .ask-veda{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header" id="header">
+  <div class="container nav">
+    <a href="#" class="logo" aria-label="2Verse home">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" style="stroke:var(--primary)" stroke-width="1.5"/>
+        <path d="M20 8c-4 5-4 11 0 16 4-5 4-11 0-16z" class="fill-accent"/>
+        <path d="M9 22c5-1 9 1 11 6-5 1-9-1-11-6zM31 22c-5-1-9 1-11 6 5 1 9-1 11-6z" class="fill-primary"/>
+        <circle cx="20" cy="31" r="1.6" class="fill-gold"/>
+      </svg>
+      <span class="wordmark">2<span>V</span>erse</span>
+    </a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#finder">Find a Healer</a>
+      <a href="#modalities">Modalities</a>
+      <a href="#veda">Veda AI</a>
+      <a href="#trust">Trust</a>
+      <a href="#journal">Journal</a>
+      <a href="#join">For Healers</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="login">Log in</a>
+      <a href="#finder" class="btn btn-primary">Find your healer</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#finder">Find a Healer</a>
+  <a href="#modalities">Modalities</a>
+  <a href="#veda">Speak to Veda (AI)</a>
+  <a href="#goals">Wellness Goals</a>
+  <a href="#trust">Trust &amp; Verification</a>
+  <a href="#journal">Journal</a>
+  <a href="#join">For Healers</a>
+  <a href="#" class="btn btn-primary">Log in</a>
+</div>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="finder">
+  <div class="hero-bg"><div class="b1"></div><div class="b2"></div><div class="grid-lines"></div></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow reveal">Invite-only · Verified · Rooted in Rishikesh</span>
+      <h1 class="reveal d1">Healing from the source, <em>wherever</em> you are.</h1>
+      <p class="lead reveal d2">Hand-chosen yoga, breathwork, meditation, somatic and sound healers from Tapovan, Rishikesh, where these traditions have been practised for generations. Sit with them by the Ganga, or meet them from anywhere in the world.</p>
+
+      <form class="finder reveal d3" id="finderForm">
+        <div class="finder-tabs" role="tablist">
+          <button type="button" class="finder-tab active" data-format="inperson">In person · Rishikesh</button>
+          <button type="button" class="finder-tab" data-format="online">Online</button>
+        </div>
+        <div class="finder-fields">
+          <div class="field">
+            <label for="goal">I'm looking for</label>
+            <div class="sel"><select id="goal">
+              <option>Calm &amp; less stress</option><option>Better sleep</option><option>Clarity &amp; focus</option>
+              <option>Emotional release</option><option>Energy &amp; vitality</option><option>Feeling stuck</option>
+            </select></div>
+          </div>
+          <div class="field">
+            <label for="modality">Modality</label>
+            <div class="sel"><select id="modality">
+              <option>Any modality</option><option>Yoga</option><option>Breathwork</option>
+              <option>Meditation</option><option>Somatic healing</option><option>Sound healing</option>
+            </select></div>
+          </div>
+          <button class="btn btn-accent" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            Search
+          </button>
+        </div>
+        <p class="finder-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          Every healer is verified for each modality they offer.
+        </p>
+      </form>
+
+      <button type="button" class="ask-veda reveal d4" data-open-veda>
+        <span class="mini-orb"></span>
+        <span><b>Not sure where to begin?</b> Speak to Veda, our AI healing guide</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+
+      <div class="hero-badges reveal d4">
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Your time zone, your currency</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>Secure payments</span>
+        <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a4 4 0 017-2.6A4 4 0 0119 10c0 6.5-7 11-7 11z"/></svg>Reviews only from real sessions</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal d2">
+      <div class="hero3d" id="hero3d" aria-hidden="true"></div>
+      <div class="float-card one">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div><strong>Verified per modality</strong><small>Identity, credentials &amp; lineage</small></div>
+      </div>
+      <div class="float-card two">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <div><strong>Sunrise sound bath</strong><small>Tomorrow · 6:00 AM · Tapovan</small></div>
+      </div>
+      <div class="float-card three">
+        <div class="avs"><span style="background:var(--hill2)">A</span><span style="background:var(--accent)">D</span><span style="background:var(--primary-deep)">M</span></div>
+        <div><strong>Founding cohort</strong><small>100 healers from Tapovan</small></div>
+      </div>
+      <div class="orb-label"><i></i>Drag to explore</div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Yoga</span><span>Breathwork</span><span>Meditation</span><span>Somatic Healing</span><span>Sound Healing</span><span>Tapovan, Rishikesh</span><span>In person &amp; online</span>
+    <span>Yoga</span><span>Breathwork</span><span>Meditation</span><span>Somatic Healing</span><span>Sound Healing</span><span>Tapovan, Rishikesh</span><span>In person &amp; online</span>
+  </div>
+</div>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="container">
+    <div class="stats-inner reveal">
+      <div class="stat"><div class="num" data-count="100">100</div><p>Founding healers from Tapovan</p></div>
+      <div class="stat"><div class="num" data-count="5">5</div><p>Healing modalities at launch</p></div>
+      <div class="stat"><div class="num">1:1</div><p>Private sessions, groups &amp; classes</p></div>
+      <div class="stat"><div class="num">24/7</div><p>Book across every time zone</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MANIFESTO ================= -->
+<section class="manifesto" id="manifesto">
+  <div class="mandala3d" aria-hidden="true"><div class="mandala-stage" id="mandalaStage"></div></div>
+  <div class="container">
+    <span class="eyebrow reveal">The 2Verse philosophy</span>
+    <blockquote class="reveal d1">Healing is not a transaction. It is a <em>return</em>, to your breath, your body, and the quiet place beneath the noise.</blockquote>
+    <p class="sig reveal d2">The 2Verse promise</p>
+    <div class="pillars">
+      <div class="pillar reveal"><span class="pn">i.</span><h4>Chosen by hand</h4><p>Every healer is invited or personally reviewed by our team. We would rather know a hundred remarkable healers well than list thousands we have never met.</p></div>
+      <div class="pillar reveal d1"><span class="pn">ii.</span><h4>Rooted in lineage</h4><p>We honour where each practice comes from: the teacher, the school and the tradition that stand behind every healer on 2Verse.</p></div>
+      <div class="pillar reveal d2"><span class="pn">iii.</span><h4>Held with care</h4><p>Clear pricing, honest reviews and a team that looks after you before, during and after every session.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VEDA AI ================= -->
+<section class="veda" id="veda">
+  <div class="container veda-grid">
+    <div>
+      <span class="eyebrow reveal">Meet Veda · Your AI healing guide</span>
+      <h2 class="reveal d1">Speak freely. <em>Be matched</em> thoughtfully.</h2>
+      <p class="lead reveal d2">Not sure whether you need breathwork or sound, movement or stillness? Tell Veda how you have been feeling, in your own words. Veda listens, asks a few gentle questions, and introduces you to the healers best suited to you.</p>
+      <ul class="veda-points reveal d3">
+        <li><span class="vp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></span><div><b>Speak or type</b><small>Talk the way you would to a trusted friend. No forms and no jargon.</small></div></li>
+        <li><span class="vp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></svg></span><div><b>Understands what you need</b><small>Veda considers how you feel, how you would like to meet, your language and your budget.</small></div></li>
+        <li><span class="vp-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></span><div><b>Explains every suggestion</b><small>See why each healer was chosen for you before you book.</small></div></li>
+      </ul>
+      <div class="veda-cta reveal d4">
+        <button class="btn btn-veda" data-open-veda><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg> Speak to Veda</button>
+        <button class="btn btn-ghost-light" data-open-veda data-veda-mode="type">Type instead</button>
+      </div>
+      <p class="veda-fine reveal d4">Veda helps you find a healer. It is not a substitute for medical or mental-health care.</p>
+    </div>
+    <div class="veda-visual reveal d2">
+      <div class="voice-orb" id="vedaSectionOrb"><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-core"></span></div>
+      <canvas class="vo-wave" id="vedaWaveSection"></canvas>
+      <div class="v-bub user"><span class="who">Seeker</span>I haven't slept properly in weeks, and my mind won't stop racing.</div>
+      <div class="v-bub ai"><span class="who">Veda</span>That sounds exhausting. Breath and sound can help your body settle. Would you like to meet in Rishikesh, or online?</div>
+      <div class="v-match"><span class="avatar-s">A</span><div><b>Ananya Rawat</b><small>Breathwork · Meditation</small></div><span class="pct">94%</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GOALS ================= -->
+<section id="goals">
+  <div class="container goals-wrap">
+    <div class="reveal">
+      <span class="eyebrow">Start with how you feel</span>
+      <h2>What would you like to <em>heal</em>?</h2>
+      <p class="lead">You don't need to know the difference between pranayama and somatic release. Tell us what you're carrying, and we'll show you the practices and healers that help with it.</p>
+    </div>
+    <div class="reveal d2">
+      <div class="goal-chips" id="goalChips">
+        <button class="chip active" data-goal="calm"><i class="dot" style="background:var(--hill1)"></i>Calm &amp; less stress</button>
+        <button class="chip" data-goal="sleep"><i class="dot" style="background:var(--river1)"></i>Better sleep</button>
+        <button class="chip" data-goal="clarity"><i class="dot" style="background:var(--gold)"></i>Clarity &amp; focus</button>
+        <button class="chip" data-goal="release"><i class="dot" style="background:var(--accent)"></i>Emotional release</button>
+        <button class="chip" data-goal="energy"><i class="dot" style="background:var(--sky3)"></i>Energy &amp; vitality</button>
+        <button class="chip" data-goal="stuck"><i class="dot" style="background:var(--primary)"></i>Feeling stuck</button>
+        <button class="chip" data-goal="body"><i class="dot" style="background:var(--hill2)"></i>Reconnect with body</button>
+      </div>
+      <div class="goal-result" id="goalResult" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MODALITIES ================= -->
+<section class="modalities" id="modalities">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Five paths, one platform</span>
+      <h2>Ancient practices, <em>carefully</em> offered</h2>
+      <p class="lead">Each modality has its own verification standard. A healer approved for yoga is not automatically approved for breathwork.</p>
+    </div>
+    <div class="mod-grid">
+      <a href="#" class="mod-card reveal" data-tilt>
+        <div class="mod-icon tilt-pop" style="background:var(--soft-a)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="6" r="2.5"/><path d="M16 9v8M9 13l7 3 7-3M12 27l4-10 4 10M6 27h20"/></svg></div>
+        <h3 class="tilt-pop">Yoga</h3>
+        <p>Hatha, Ashtanga, Iyengar and Kundalini, taught in the town where many of these lineages took root.</p>
+        <span class="more">Explore yoga <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <span class="bg-ring" style="background:var(--hill1)"></span>
+      </a>
+      <a href="#" class="mod-card reveal d1" data-tilt>
+        <div class="mod-icon tilt-pop" style="background:var(--soft-d)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 12h14a4 4 0 10-4-4M4 17h20a4 4 0 11-4 4M4 22h9"/></svg></div>
+        <h3 class="tilt-pop">Breathwork</h3>
+        <p>Pranayama and modern breath techniques to calm the nervous system and restore energy.</p>
+        <span class="more">Explore breathwork <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <span class="bg-ring" style="background:var(--river1)"></span>
+      </a>
+      <a href="#" class="mod-card reveal d2" data-tilt>
+        <div class="mod-icon tilt-pop" style="background:var(--soft-c)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="16" cy="16" r="3"/><circle cx="16" cy="16" r="8" stroke-dasharray="2 3"/><circle cx="16" cy="16" r="13"/></svg></div>
+        <h3 class="tilt-pop">Meditation</h3>
+        <p>Vipassana, yoga nidra, mantra and guided practice, from a first session to a daily ritual.</p>
+        <span class="more">Explore meditation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <span class="bg-ring" style="background:var(--gold)"></span>
+      </a>
+      <a href="#" class="mod-card reveal d3" data-tilt>
+        <div class="mod-icon tilt-pop" style="background:var(--soft-b)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M16 28c-6-4-10-8-10-13a5 5 0 0110-1 5 5 0 0110 1c0 5-4 9-10 13z"/><path d="M11 16h3l2-3 2 6 2-3h2"/></svg></div>
+        <h3 class="tilt-pop">Somatic Healing</h3>
+        <p>Body-based practices that help release stress and emotion stored in the body.</p>
+        <span class="more">Explore somatic <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <span class="bg-ring" style="background:var(--accent)"></span>
+      </a>
+      <a href="#" class="mod-card reveal d4" data-tilt>
+        <div class="mod-icon tilt-pop" style="background:var(--soft-a)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 20a10 6 0 0020 0z"/><path d="M8 24h16"/><path d="M11 13c1-2 1-4 0-6M16 12c1.5-2.5 1.5-5 0-7M21 13c1-2 1-4 0-6"/></svg></div>
+        <h3 class="tilt-pop">Sound Healing</h3>
+        <p>Singing bowls, gongs and nada yoga for deep rest, in intimate groups or one to one.</p>
+        <span class="more">Explore sound <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        <span class="bg-ring" style="background:var(--primary)"></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">How 2Verse works</span>
+      <h2>From intention to <em>session</em> in minutes</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="step-num">1</div><h3>Share your intention</h3><p>Pick a goal, modality, format and budget. You can change any filter without starting over.</p></div>
+      <div class="step reveal d1"><div class="step-num">2</div><h3>Meet your healer</h3><p>Read their story, lineage and training. Watch their intro video and see reviews from real sessions.</p></div>
+      <div class="step reveal d2"><div class="step-num">3</div><h3>Book with confidence</h3><p>Times show in your time zone and prices in your currency. Payment is secure and the cancellation policy is clear.</p></div>
+      <div class="step reveal d3"><div class="step-num">4</div><h3>Heal, then continue</h3><p>Join in person in Tapovan or by video from home. Afterwards, get your healer's guidance and track your progress.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BREATHE ================= -->
+<section class="breathe" id="breathe">
+  <div class="container breathe-grid">
+    <div class="lotus-wrap reveal">
+      <div class="lotus3d" id="lotus3d" aria-hidden="true"></div>
+      <span class="lotus-hint">Follow the lotus</span>
+    </div>
+    <div>
+      <span class="eyebrow reveal">A moment for you</span>
+      <h2 class="reveal d1">Breathe with the <em>lotus</em></h2>
+      <p class="lead reveal d2">Before you choose a healer, take one quiet minute for yourself. Breathe in as the lotus opens, and let go as it closes.</p>
+      <div class="breath-card reveal d3">
+        <div class="bp-patterns" role="group" aria-label="Breathing pattern">
+          <button class="active" data-pattern="calm">Calm · 4-2-6</button>
+          <button data-pattern="box">Box · 4-4-4-4</button>
+          <button data-pattern="sleep">Sleep · 4-7-8</button>
+        </div>
+        <div class="bp-phase" id="breathPhase" aria-live="polite">Ready when you are</div>
+        <div class="bp-meta"><span id="breathCount">Press begin</span><span id="breathCycles">0 breaths</span></div>
+        <div class="bp-bar"><i id="breathBar"></i></div>
+        <button class="btn btn-primary" id="breathBtn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5l11 7-11 7z"/></svg><span>Begin</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRACTITIONERS ================= -->
+<section class="practitioners" id="healers">
+  <div class="container">
+    <div class="prac-head">
+      <div class="reveal">
+        <span class="eyebrow">Founding healers</span>
+        <h2>Healers, not <em>listings</em></h2>
+        <p class="lead">Every healer shares their own story: the teacher who shaped them, the seekers they serve best, and the way they hold a session.</p>
+      </div>
+      <div class="currency-toggle reveal d2" role="group" aria-label="Currency">
+        <button class="active" data-cur="USD">USD $</button>
+        <button data-cur="INR">INR ₹</button>
+      </div>
+    </div>
+
+    <div class="prac-grid">
+      <article class="prac-card reveal" data-tilt>
+        <div class="prac-top" style="background:linear-gradient(135deg,var(--hill1),var(--hill3))">
+          <svg class="ptn" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-opacity=".16"><circle cx="240" cy="40" r="30"/><circle cx="240" cy="40" r="55"/><circle cx="240" cy="40" r="80"/><circle cx="240" cy="40" r="105"/></g></svg>
+          <span class="format-tag">In person · Online</span>
+          <button class="follow" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg><span>Follow</span></button>
+          <div class="avatar tilt-pop" style="background:var(--hill2)">A</div>
+        </div>
+        <div class="prac-body">
+          <h3 class="prac-name">Ananya Rawat <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.2 3.2 1.2 3.2-3 1.7-.9 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-.9-3.3-3-1.7L3.3 13 2.1 9.8l3-1.7.9-3.3 3.4.4z"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg></h3>
+          <p class="prac-meta">Breathwork &amp; Meditation · Tapovan · 11 yrs</p>
+          <p class="prac-quote">"People come to me when their mind won't switch off. We start with the breath."</p>
+          <div class="trust-row"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Identity</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Breathwork</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Lineage</span></div>
+          <div class="tags"><span>Anxiety</span><span>Sleep</span><span>English · Hindi</span></div>
+          <div class="prac-foot">
+            <div class="price"><small>60 min session from</small><strong data-usd="65" data-inr="2500">$65 <span>/ session</span></strong></div>
+            <a href="#" class="btn btn-primary">Book</a>
+          </div>
+        </div>
+      </article>
+      <article class="prac-card reveal d1" data-tilt>
+        <div class="prac-top" style="background:linear-gradient(135deg,var(--sky3),var(--accent-deep))">
+          <svg class="ptn" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-opacity=".18"><path d="M0 140 Q75 100 150 140 T300 140"/><path d="M0 115 Q75 75 150 115 T300 115"/><path d="M0 90 Q75 50 150 90 T300 90"/><path d="M0 65 Q75 25 150 65 T300 65"/></g></svg>
+          <span class="format-tag">In person · Tapovan</span>
+          <button class="follow" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg><span>Follow</span></button>
+          <div class="avatar tilt-pop" style="background:var(--accent-deep)">D</div>
+        </div>
+        <div class="prac-body">
+          <h3 class="prac-name">Dev Prakash <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.2 3.2 1.2 3.2-3 1.7-.9 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-.9-3.3-3-1.7L3.3 13 2.1 9.8l3-1.7.9-3.3 3.4.4z"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg></h3>
+          <p class="prac-meta">Sound Healing · Tapovan · 15 yrs</p>
+          <p class="prac-quote">"Sunrise sessions by the river with Himalayan bowls and gongs, in small groups."</p>
+          <div class="trust-row"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Identity</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Sound Healing</span></div>
+          <div class="tags"><span>Deep rest</span><span>Groups of 8</span><span>English · Hindi</span></div>
+          <div class="prac-foot">
+            <div class="price"><small>Group sound bath from</small><strong data-usd="30" data-inr="1200">$30 <span>/ seat</span></strong></div>
+            <a href="#" class="btn btn-primary">Book</a>
+          </div>
+        </div>
+      </article>
+      <article class="prac-card reveal d2" data-tilt>
+        <div class="prac-top" style="background:linear-gradient(135deg,var(--river1),var(--primary-deep))">
+          <svg class="ptn" viewBox="0 0 300 180" preserveAspectRatio="xMidYMid slice"><g fill="none" stroke="#fff" stroke-opacity=".18"><path d="M150 20 l30 50 h-60z"/><path d="M150 40 l50 85 h-100z"/><path d="M150 60 l70 115 h-140z"/></g></svg>
+          <span class="format-tag">Online · Worldwide</span>
+          <button class="follow" aria-pressed="false"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3v10M3 8h10"/></svg><span>Follow</span></button>
+          <div class="avatar tilt-pop" style="background:var(--hill3)">M</div>
+        </div>
+        <div class="prac-body">
+          <h3 class="prac-name">Meera Joshi <svg class="verified" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.6 2.2 3.4-.4.9 3.3 3 1.7-1.2 3.2 1.2 3.2-3 1.7-.9 3.3-3.4-.4L12 23l-2.6-2.2-3.4.4-.9-3.3-3-1.7L3.3 13 2.1 9.8l3-1.7.9-3.3 3.4.4z"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" fill="none"/></svg></h3>
+          <p class="prac-meta">Yoga &amp; Somatic Healing · Rishikesh · 9 yrs</p>
+          <p class="prac-quote">"For people who feel disconnected from their body after years of stress or burnout."</p>
+          <div class="trust-row"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Identity</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Yoga</span><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8l3 3 5-6"/></svg>Somatic</span></div>
+          <div class="tags"><span>Burnout</span><span>Free 15-min call</span><span>English</span></div>
+          <div class="prac-foot">
+            <div class="price"><small>75 min session from</small><strong data-usd="80" data-inr="3000">$80 <span>/ session</span></strong></div>
+            <a href="#" class="btn btn-primary">Book</a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="sample-note">Sample profiles for design preview. Replace with real founding-cohort healers before launch.</p>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="trust" id="trust">
+  <div class="container trust-grid">
+    <div class="gyro reveal" id="gyro">
+      <div class="gyro-stage" id="gyroStage">
+        <div class="ring r4"></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+        <div class="gyro-core">
+          <svg viewBox="0 0 200 220" fill="none">
+            <defs><linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--primary)"/><stop offset="1" style="stop-color:var(--deep-2)"/></linearGradient></defs>
+            <path d="M100 8l82 34v60c0 52-35 94-82 110-47-16-82-58-82-110V42z" fill="url(#shieldG)" style="stroke:var(--gold)" stroke-width="3"/>
+            <path d="M100 28l64 26v48c0 41-27 74-64 87-37-13-64-46-64-87V54z" fill="none" style="stroke:var(--gold)" stroke-opacity=".35"/>
+            <path d="M66 108l24 24 46-54" style="stroke:var(--gold)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Trust &amp; verification</span>
+      <h2 class="reveal d1">Invite-only. Quality over <em>quantity</em>.</h2>
+      <p class="lead reveal d2">2Verse is gated on purpose. Healers join by invitation or application and are verified for each modality before they appear publicly. We never push you toward one healer. You choose based on credentials, story and real reviews.</p>
+      <div class="badge-list">
+        <div class="badge-item reveal d1" data-tilt><div class="b-ic tilt-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg></div><h4>Identity verified</h4><p>Government ID is checked before any profile goes live.</p></div>
+        <div class="badge-item reveal d2" data-tilt><div class="b-ic tilt-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12l3 3 5-6"/></svg></div><h4>Credentials, per modality</h4><p>Certificates, training hours and expiry dates are reviewed separately for each modality.</p></div>
+        <div class="badge-item reveal d3" data-tilt><div class="b-ic tilt-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18M12 8c-3 0-5-2-5-5M12 8c3 0 5-2 5-5M12 14c-4 0-7-2-7-5M12 14c4 0 7-2 7-5"/></svg></div><h4>Lineage &amp; training</h4><p>The guru, school or tradition each healer trained in is recorded and checked.</p></div>
+        <div class="badge-item reveal d4" data-tilt><div class="b-ic tilt-pop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div><h4>Honest reviews</h4><p>Only clients who attended a session can leave a review, and healers can't remove them.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RISHIKESH ================= -->
+<section id="rishikesh">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">In person first</span>
+      <h2>Come to <em>Tapovan</em>, or bring it home</h2>
+    </div>
+    <div class="place-grid">
+      <div class="place-feature reveal">
+        <svg class="scene" viewBox="0 0 600 540" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sc-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--sky1)"/><stop offset=".55" style="stop-color:var(--sky2)"/><stop offset="1" style="stop-color:var(--sky3)"/></linearGradient>
+            <linearGradient id="sc-river" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--river1)"/><stop offset="1" style="stop-color:var(--river2)"/></linearGradient>
+            <radialGradient id="sc-sun"><stop offset="0" style="stop-color:var(--sun)"/><stop offset="1" style="stop-color:var(--sun);stop-opacity:0"/></radialGradient>
+          </defs>
+          <rect width="600" height="540" fill="url(#sc-sky)"/>
+          <circle cx="410" cy="210" r="150" fill="url(#sc-sun)"/>
+          <circle cx="410" cy="210" r="56" style="fill:var(--sun)"/>
+          <path d="M0 300 L90 220 L170 270 L260 190 L350 262 L440 210 L520 262 L600 232 V540 H0Z" style="fill:var(--hill1)" opacity=".85"/>
+          <path d="M0 350 L110 290 L210 336 L320 280 L430 340 L600 300 V540 H0Z" style="fill:var(--hill2)"/>
+          <path d="M0 390 L120 346 L230 380 L340 340 L460 384 L600 350 V540 H0Z" style="fill:var(--hill3)"/>
+          <g style="fill:var(--hill3)"><rect x="470" y="330" width="36" height="44"/><path d="M468 330 L488 290 L508 330Z"/><rect x="486" y="276" width="4" height="16"/></g>
+          <path d="M490 276 l11 4 -11 4z" style="fill:var(--accent)"/>
+          <path d="M0 430 Q300 400 600 440 V540 H0Z" fill="url(#sc-river)"/>
+          <g style="fill:var(--sun)"><circle cx="120" cy="462" r="3"/><circle cx="160" cy="472" r="2.5"/><circle cx="210" cy="460" r="3"/><circle cx="260" cy="476" r="2.5"/><circle cx="330" cy="464" r="3"/><circle cx="380" cy="478" r="2.5"/></g>
+        </svg>
+        <span class="eyebrow">Ganga Aarti · Retreats · Sunrise sessions</span>
+        <h3>Heal where the practices began</h3>
+        <p>Book verified healers in Tapovan for private sessions, small group classes and multi-day stays. Venues, directions and what to bring are listed on every booking.</p>
+        <div><a href="#finder" class="btn btn-light">Explore in-person healing</a></div>
+      </div>
+      <div class="place-side">
+        <div class="place-card reveal d1" style="background:var(--soft-a)">
+          <div><h4>Online, in your time zone</h4><p>Live video sessions in the browser or the app. Times always show in your local time, with reminders before every session.</p></div>
+          <div class="row"><span>1:1 video</span><span>Group classes</span><span>Audio-only</span></div>
+        </div>
+        <div class="place-card reveal d2" style="background:var(--soft-b)">
+          <div><h4>Continue between sessions</h4><p>Your healer can share personal practices, recordings and next steps after each session, so progress continues at home.</p></div>
+          <div class="row"><span>Personal practices</span><span>Follow healers</span><span>Journeys</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= JOURNAL ================= -->
+<section class="journal" id="journal">
+  <div class="container">
+    <div class="journal-head">
+      <div class="reveal"><span class="eyebrow">Wellness journal</span><h2>Watch, listen, read, <em>practice</em></h2></div>
+      <a href="#" class="btn btn-ghost reveal d2">Visit the journal</a>
+    </div>
+    <div class="journal-grid">
+      <article class="post reveal">
+        <div class="post-img">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" style="fill:var(--soft-d)"/><g fill="none" style="stroke:var(--primary)" stroke-width="2"><path d="M40 150 Q100 90 160 150 T280 150 T400 150" stroke-opacity=".55"/><path d="M40 180 Q100 120 160 180 T280 180 T400 180" stroke-opacity=".3"/><path d="M40 120 Q100 60 160 120 T280 120 T400 120" stroke-opacity=".2"/></g></svg>
+          <span class="post-type"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M3 2l7 4-7 4z"/></svg>Video · 8 min</span>
+        </div>
+        <small>Breathwork</small><h3>A 4-7-8 breath practice for restless nights</h3><p>A short guided practice to help your body settle before sleep.</p>
+      </article>
+      <article class="post reveal d1">
+        <div class="post-img">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" style="fill:var(--soft-c)"/><g fill="none" style="stroke:var(--accent)" stroke-opacity=".5"><circle cx="200" cy="150" r="30"/><circle cx="200" cy="150" r="60"/><circle cx="200" cy="150" r="90"/><circle cx="200" cy="150" r="120"/><circle cx="200" cy="150" r="150"/></g><circle cx="200" cy="150" r="14" style="fill:var(--gold)"/></svg>
+          <span class="post-type"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6v2M5 4v6M8 3v7M11 5v3"/></svg>Podcast · 24 min</span>
+        </div>
+        <small>Sound Healing</small><h3>What actually happens in a sound bath?</h3><p>A Tapovan sound healer explains the bowls, the rest, and what people often feel.</p>
+      </article>
+      <article class="post reveal d2">
+        <div class="post-img">
+          <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" style="fill:var(--soft-a)"/><path d="M0 210 L80 140 L150 180 L230 110 L310 170 L400 130 V300 H0Z" style="fill:var(--hill1)" opacity=".7"/><path d="M0 240 L100 190 L200 230 L300 180 L400 220 V300 H0Z" style="fill:var(--hill3)" opacity=".8"/><circle cx="300" cy="80" r="26" style="fill:var(--sun)"/></svg>
+          <span class="post-type"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h8v8H2zM4 5h4M4 7h3"/></svg>Guide · 6 min read</span>
+        </div>
+        <small>Rishikesh</small><h3>Your first week of healing in Tapovan</h3><p>Where to stay, when to arrive, and how to plan sessions around the Ganga Aarti.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOR PRACTITIONERS ================= -->
+<section class="join" id="join">
+  <div class="container">
+    <div class="join-card reveal">
+      <div style="position:relative;z-index:1">
+        <span class="eyebrow">For healers</span>
+        <h2>Share your practice with the <em>world</em></h2>
+        <p class="lead">2Verse handles bookings, payments, scheduling across time zones and your social media, so you can focus on healing.</p>
+        <div class="join-actions"><a href="#" class="btn btn-accent">Apply to join</a><a href="#" class="btn btn-ghost">I have an invite code</a></div>
+        <div class="cohort"><span class="bar"><i id="cohortBar"></i></span>Founding Tapovan cohort · limited to 100 healers</div>
+      </div>
+      <ul class="join-list">
+        <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></span><div><strong>AI-assisted profile</strong><span>Speak or type your story and we draft your bio and services for you to review.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></span><div><strong>Global clients, local pricing</strong><span>Set separate India and international prices, with payouts to your bank.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></span><div><strong>Managed social media</strong><span>Our content team creates posts and publishes them to your own Instagram, YouTube and LinkedIn.</span></div></li>
+        <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></span><div><strong>Your practice in one app</strong><span>Calendar, bookings, sessions, messages and earnings in the 2Verse Healers app.</span></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APPS ================= -->
+<section class="apps" id="apps">
+  <div class="container apps-grid">
+    <div class="reveal">
+      <span class="eyebrow">Two apps, one account</span>
+      <h2>Your healing, in your <em>pocket</em></h2>
+      <p class="lead">A dedicated app for seekers and another for healers. Both are on iOS and Android.</p>
+      <div class="app-options">
+        <div class="app-opt active" data-app="0"><div class="a-ic" style="background:var(--primary);color:var(--on-primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-11a4 4 0 017-2.6A4 4 0 0119 10c0 6.5-7 11-7 11z"/></svg></div><div><h4>2Verse for Seekers</h4><p>Find healers, book, join sessions and keep your practice going.</p></div></div>
+        <div class="app-opt" data-app="1"><div class="a-ic" style="background:var(--accent);color:var(--on-accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><div><h4>2Verse for Healers</h4><p>Accept bookings, run sessions, approve social posts and track earnings.</p></div></div>
+      </div>
+      <div class="store-btns">
+        <a href="#" class="store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8s2 .8 3.4.8 2.2-1.3 3.1-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><span><small>Download on the</small><b>App Store</b></span></a>
+        <a href="#" class="store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8c-.3.3-.4.7-.4 1.2v18c0 .5.2.9.4 1.2l10-10.2zM14.6 13l2.8 2.9-11.8 6.7 9-9.6zM20.3 10.6c.6.4.9.9.9 1.4s-.3 1-.9 1.4l-2.4 1.4-3-3 3-3zM5.6 1.4l11.8 6.7-2.8 2.9z"/></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+      </div>
+    </div>
+    <div class="phones reveal d2" id="phones">
+      <div class="phones-stage" id="phonesStage">
+        <div class="phone front"><div class="screen"><div class="notch"></div>
+          <div class="scr">
+            <div class="s-top"><span class="s-hi">Good morning</span><span class="s-av" style="background:var(--hill1)"></span></div>
+            <div class="s-card" style="background:var(--primary);color:var(--on-primary);border:none"><b>Next session</b>Sound bath with Dev · Tomorrow 6:00 AM<div class="s-bar" style="background:rgba(255,255,255,.2)"><i style="width:70%;background:var(--gold)"></i></div></div>
+            <div class="s-card"><b>Your practice today</b>Box breathing · 5 min<div class="s-bar"><i style="width:40%;background:var(--accent)"></i></div></div>
+            <div class="s-row"><div class="s-mini" style="background:var(--soft-a)"><b>12</b>day streak</div><div class="s-mini" style="background:var(--soft-b)"><b>3</b>healers</div></div>
+            <div class="s-card"><b>For better sleep</b>4 healers near Tapovan</div>
+            <div class="s-btn" style="background:var(--accent);color:var(--on-accent)">Find a healer</div>
+          </div>
+        </div></div>
+        <div class="phone back"><div class="screen"><div class="notch"></div>
+          <div class="scr">
+            <div class="s-top"><span class="s-hi">Namaste, Dev</span><span class="s-av" style="background:var(--accent)"></span></div>
+            <div class="s-row"><div class="s-mini" style="background:var(--primary);color:var(--on-primary)"><b>6</b>bookings today</div><div class="s-mini" style="background:var(--soft-c)"><b>$420</b>this week</div></div>
+            <div class="s-card"><b>New booking request</b>Sarah (London) · 1:1 · Fri 7 AM IST</div>
+            <div class="s-card"><b>Post ready to approve</b>Sunrise reel · Instagram</div>
+            <div class="s-card"><b>Credential reminder</b>Renew certificate in 30 days</div>
+            <div class="s-btn" style="background:var(--primary);color:var(--on-primary)">Open calendar</div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="container faq-grid">
+    <div class="reveal">
+      <span class="eyebrow">Questions</span>
+      <h2>Good to <em>know</em></h2>
+      <p class="lead">Can't find an answer? Our team is happy to help you find the right healer.</p>
+      <a href="#" class="btn btn-ghost" style="margin-top:24px">Contact us</a>
+    </div>
+    <div class="faq-list reveal d2">
+      <div class="faq-item open"><button class="faq-q">What does "Verified" mean on 2Verse?<span class="plus"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></span></button><div class="faq-a"><p>We check each healer's identity, and then check their credentials, training and experience separately for every modality they offer. Credentials with expiry dates are re-checked when they renew.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I book sessions from outside India?<span class="plus"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></span></button><div class="faq-a"><p>Yes. Most of our seekers are international. Times show in your time zone, prices show in your currency, and you can pay with international cards.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do sessions happen in person or online?<span class="plus"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></span></button><div class="faq-a"><p>Both. Many healers offer in-person sessions in Tapovan, Rishikesh, as well as online sessions by video. Each service shows its format clearly before you book.</p></div></div>
+      <div class="faq-item"><button class="faq-q">What if I need to cancel or reschedule?<span class="plus"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></span></button><div class="faq-a"><p>Every service shows its cancellation policy before you pay. You can reschedule or cancel from your bookings in the web app or mobile app.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How do I join as a healer?<span class="plus"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></span></button><div class="faq-a"><p>2Verse is invite-only. If you have an invite code, use it to start onboarding. Otherwise, apply and our team will review your practice for an upcoming cohort.</p></div></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#" class="logo">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" style="stroke:var(--gold)" stroke-width="1.5"/><path d="M20 8c-4 5-4 11 0 16 4-5 4-11 0-16z" class="fill-accent"/><path d="M9 22c5-1 9 1 11 6-5 1-9-1-11-6zM31 22c-5-1-9 1-11 6 5 1 9-1 11-6z" style="fill:var(--hill1)"/></svg>
+          <span class="wordmark">2Verse</span>
+        </a>
+        <p>A curated home for verified healers from Rishikesh, and for seekers everywhere.</p>
+        <form class="newsletter" id="newsletter"><input type="email" placeholder="Your email for the journal" required aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div><h5>Explore</h5><ul><li><a href="#finder">Find a Healer</a></li><li><a href="#modalities">Modalities</a></li><li><a href="#goals">Wellness Goals</a></li><li><a href="#journal">Journal</a></li></ul></div>
+      <div><h5>Healers</h5><ul><li><a href="#join">Become a Healer</a></li><li><a href="#trust">Verification</a></li><li><a href="#apps">Healer App</a></li><li><a href="#">Healer Login</a></li></ul></div>
+      <div><h5>2Verse</h5><ul><li><a href="#">About</a></li><li><a href="#faq">FAQs</a></li><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 2Verse. Made with care in Rishikesh.</span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9h3v11H4zM5.5 4a1.8 1.8 0 110 3.6 1.8 1.8 0 010-3.6zM10 9h3v1.6c.5-.9 1.7-1.9 3.5-1.9 3.5 0 4 2.2 4 5V20h-3v-5.5c0-1.4 0-3-1.9-3s-2.1 1.4-2.1 2.9V20h-3z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= VEDA MODAL ================= -->
+<div class="veda-modal" id="vedaModal" role="dialog" aria-modal="true" aria-labelledby="vedaTitle" aria-hidden="true">
+  <div class="vm-panel">
+    <aside class="vm-left">
+      <div class="orb-zone">
+        <div class="voice-orb"><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-ring"></span><span class="vo-core"></span></div>
+        <canvas class="vo-wave" id="vedaWaveModal"></canvas>
+      </div>
+      <p class="vm-status" id="vmStatus">Tap the microphone and speak</p>
+      <button class="vm-mic" id="vmMic" aria-label="Start speaking"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
+      <label class="vm-toggle"><input type="checkbox" id="vmVoice"><span></span>Veda speaks replies aloud</label>
+      <p class="vm-fine">Veda helps you find a healer. It isn't medical or mental-health care. In an emergency, please contact your local emergency number.</p>
+    </aside>
+    <div class="vm-right">
+      <header class="vm-head">
+        <div class="vm-id"><span class="mini-orb"></span><div><b id="vedaTitle">Veda</b><small>AI healing guide · Preview with sample healers</small></div></div>
+        <div class="vm-head-actions">
+          <button id="vmRestart" aria-label="Start over" title="Start over"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8"/><path d="M3 3v5h5"/></svg></button>
+          <button id="vmClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+      </header>
+      <div class="vm-chat" id="vmChat" aria-live="polite"></div>
+      <form class="vm-input" id="vmForm">
+        <input id="vmText" type="text" placeholder="Tell Veda how you've been feeling…" autocomplete="off" aria-label="Message Veda" />
+        <button type="button" class="vm-mic-s" id="vmMicSmall" aria-label="Speak"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3"/></svg></button>
+        <button type="submit" class="vm-send" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+    </div>
+  </div>
+</div>
+<button class="veda-fab" data-open-veda aria-label="Speak to Veda, AI healing guide"><span class="mini-orb"></span><span>Speak to Veda</span></button>
+
+<!-- ================= THEME SWITCHER ================= -->
+<div class="theme-dock" id="themeDock">
+  <div class="theme-panel" id="themePanel" role="menu">
+    <h6>Light themes</h6><div class="theme-grid"><button class="theme-opt" data-t="dawn"><span class="chips"><i style="background:#2F5358"></i><i style="background:#C0704F"></i><i style="background:#F6F0E6"></i></span><span><b>Ganga Dawn</b><small>Warm sand & river teal</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="saffron"><span class="chips"><i style="background:#7A1F1F"></i><i style="background:#E0892E"></i><i style="background:#FBF3E7"></i></span><span><b>Saffron Sanctum</b><small>Saffron & temple maroon</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="forest"><span class="chips"><i style="background:#1F3D2B"></i><i style="background:#B5733C"></i><i style="background:#EEF0E8"></i></span><span><b>Tapovan Forest</b><small>Deep moss & copper</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="pearl"><span class="chips"><i style="background:#4A3563"></i><i style="background:#D9899B"></i><i style="background:#F8F5F7"></i></span><span><b>Lotus Pearl</b><small>Plum & lotus pink</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="rose"><span class="chips"><i style="background:#8C4A4A"></i><i style="background:#D98E73"></i><i style="background:#FBF4F1"></i></span><span><b>Rose Quartz</b><small>Rosewood & soft peach</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="ivory"><span class="chips"><i style="background:#141414"></i><i style="background:#B08D57"></i><i style="background:#F7F4EE"></i></span><span><b>Ivory & Gold</b><small>Quiet, minimal luxury</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button></div>
+    <h6>Dark themes</h6><div class="theme-grid"><button class="theme-opt" data-t="night"><span class="chips"><i style="background:#0A0F1E"></i><i style="background:#E0BC76"></i><i style="background:#9AA6FF"></i></span><span><b>Himalayan Night</b><small>Midnight sky & gold</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="amethyst"><span class="chips"><i style="background:#120B1F"></i><i style="background:#EDBBA5"></i><i style="background:#B98CFF"></i></span><span><b>Amethyst Aura</b><small>Violet & rose gold</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="moonlit"><span class="chips"><i style="background:#07161A"></i><i style="background:#9FE3D6"></i><i style="background:#F0A868"></i></span><span><b>Moonlit Ganga</b><small>Deep river & diya amber</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button><button class="theme-opt" data-t="aurora"><span class="chips"><i style="background:#06110F"></i><i style="background:#7CF0C2"></i><i style="background:#C59BFF"></i></span><span><b>Aurora Chakra</b><small>Emerald & violet light</small></span><svg class="tick" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 8l3 3 7-7"/></svg></button></div>
+  </div>
+  <button class="theme-btn" id="themeBtn" aria-expanded="false" aria-controls="themePanel"><span class="sw"></span><span id="themeName">Ganga Dawn</span></button>
+</div>
+<div class="theme-flash" id="themeFlash"></div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5 9-10"/></svg><span id="toastMsg"></span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const root = document.documentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cssVar = name => getComputedStyle(root).getPropertyValue(name).trim();
+  const DARK = new Set(['night','amethyst','moonlit','aurora']);
+
+  /* ---------- Header ---------- */
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  const toggle = document.getElementById('menuToggle');
+  toggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('menu-open')));
+
+  /* ---------- Toast ---------- */
+  const toast = document.getElementById('toast'), toastMsg = document.getElementById('toastMsg');
+  let tTimer;
+  function showToast(msg){ toastMsg.textContent = msg; toast.classList.add('show'); clearTimeout(tTimer); tTimer = setTimeout(() => toast.classList.remove('show'), 2600); }
+
+  /* ---------- Finder ---------- */
+  let format = 'inperson';
+  document.querySelectorAll('.finder-tab').forEach(tab => tab.addEventListener('click', () => {
+    document.querySelectorAll('.finder-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active'); format = tab.dataset.format;
+  }));
+  document.getElementById('finderForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const goal = document.getElementById('goal').value, mod = document.getElementById('modality').value;
+    showToast(`Finding healers for "${goal}" · ${mod} · ${format === 'inperson' ? 'in Tapovan' : 'online'}`);
+    document.getElementById('healers').scrollIntoView({behavior:'smooth'});
+  });
+
+  /* ---------- Goals ---------- */
+  const goals = {
+    calm:{t:'Calm & less stress',d:'Slow the nervous system down with breath and stillness. A good place to start if your mind rarely rests.',m:['Breathwork','Meditation','Sound Healing']},
+    sleep:{t:'Better sleep',d:'Evening breath practices, yoga nidra and sound help the body move from alert to rest.',m:['Meditation','Sound Healing','Breathwork']},
+    clarity:{t:'Clarity & focus',d:'Build steady attention through daily meditation and pranayama, guided by a teacher who checks your progress.',m:['Meditation','Breathwork','Yoga']},
+    release:{t:'Emotional release',d:'Body-based practices to let go of what talk alone hasn’t moved, in a safe, paced way.',m:['Somatic Healing','Breathwork']},
+    energy:{t:'Energy & vitality',d:'Active yoga and energising breath to rebuild strength and lift fatigue.',m:['Yoga','Breathwork']},
+    stuck:{t:'Feeling stuck',d:'When life feels on pause, a mix of movement, breath and reflection can help you shift.',m:['Somatic Healing','Meditation','Yoga']},
+    body:{t:'Reconnect with your body',d:'Gentle, trauma-aware practices to feel at home in your body again.',m:['Somatic Healing','Yoga']}
+  };
+  const result = document.getElementById('goalResult');
+  const renderGoal = key => { const g = goals[key]; result.innerHTML = `<h4>${g.t}</h4><p>${g.d}</p><div class="mods">${g.m.map(x=>`<span>${x}</span>`).join('')}</div>`; };
+  document.querySelectorAll('#goalChips .chip').forEach(chip => chip.addEventListener('click', () => {
+    document.querySelectorAll('#goalChips .chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active'); renderGoal(chip.dataset.goal);
+  }));
+  renderGoal('calm');
+
+  /* ---------- Currency ---------- */
+  document.querySelectorAll('.currency-toggle button').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.currency-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cur = btn.dataset.cur;
+    document.querySelectorAll('.price strong').forEach(el => {
+      const unit = el.querySelector('span').outerHTML;
+      el.innerHTML = (cur === 'USD' ? '$' + el.dataset.usd : '₹' + Number(el.dataset.inr).toLocaleString('en-IN')) + ' ' + unit;
+    });
+  }));
+
+  /* ---------- Follow ---------- */
+  document.querySelectorAll('.follow').forEach(btn => btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const on = btn.classList.toggle('following');
+    btn.setAttribute('aria-pressed', on);
+    btn.querySelector('span').textContent = on ? 'Following' : 'Follow';
+    btn.querySelector('svg').innerHTML = on ? '<path d="M3 8l3 3 7-7"/>' : '<path d="M8 3v10M3 8h10"/>';
+  }));
+
+  /* ---------- App switcher + 3D phones follow mouse ---------- */
+  const phones = document.getElementById('phones'), stage = document.getElementById('phonesStage');
+  document.querySelectorAll('.app-opt').forEach(opt => opt.addEventListener('click', () => {
+    document.querySelectorAll('.app-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active'); phones.classList.toggle('swap', opt.dataset.app === '1');
+  }));
+  if (!reduceMotion){
+    phones.addEventListener('mousemove', e => {
+      const r = phones.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      stage.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 10}deg)`;
+    });
+    phones.addEventListener('mouseleave', () => stage.style.transform = '');
+  }
+
+  /* ---------- FAQ ---------- */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const a = item.querySelector('.faq-a');
+    if (item.classList.contains('open')) a.style.maxHeight = a.scrollHeight + 'px';
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
+      if (!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+
+  /* ---------- Newsletter ---------- */
+  document.getElementById('newsletter').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); showToast('Thank you. The next journal letter is on its way.'); });
+
+  /* ---------- 3D tilt cards with glare ---------- */
+  const canHover = window.matchMedia('(hover: hover)').matches;
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    const glare = document.createElement('span'); glare.className = 'glare'; card.appendChild(glare);
+    if (!canHover || reduceMotion) return;
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      card.style.transition = 'transform .1s linear, box-shadow .5s';
+      card.style.transform = `perspective(900px) rotateX(${(.5 - y) * 12}deg) rotateY(${(x - .5) * 14}deg) translateZ(10px)`;
+      card.style.setProperty('--gx', x * 100 + '%'); card.style.setProperty('--gy', y * 100 + '%');
+    });
+    card.addEventListener('mouseleave', () => { card.style.transition = ''; card.style.transform = ''; });
+  });
+
+  /* ---------- Gyroscope follows mouse ---------- */
+  const gyro = document.getElementById('gyro');
+  if (canHover && !reduceMotion){
+    gyro.addEventListener('mousemove', e => {
+      const r = gyro.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      gyro.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg)`;
+    });
+    gyro.addEventListener('mouseleave', () => gyro.style.transform = '');
+    gyro.style.transition = 'transform .6s cubic-bezier(.22,.61,.36,1)';
+  }
+
+  /* ---------- Count-up + reveal ---------- */
+  function countUp(el){
+    const target = +el.dataset.count, dur = 1400, start = performance.now();
+    const step = now => { const p = Math.min((now - start) / dur, 1); el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('in');
+      entry.target.querySelectorAll('[data-count]').forEach(countUp);
+      if (entry.target.classList.contains('join-card')) document.getElementById('cohortBar').style.width = '64%';
+      io.unobserve(entry.target);
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* =========================================================
+     THREE.JS HERO — breathing energy orb, sacred-geometry shell,
+     orbit rings (singing-bowl halos) and drifting particles
+     ========================================================= */
+  const hero3d = { setColors(){} };
+  (function initHero3D(){
+    const wrap = document.getElementById('hero3d');
+    if (!window.THREE){ wrap.classList.add('fallback'); return; }
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'}); }
+    catch(e){ wrap.classList.add('fallback'); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    wrap.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
+    camera.position.set(0, 0, 8.2);
+    const world = new THREE.Group(); scene.add(world);
+
+    // Orb with displacement + fresnel shader
+    const orbUniforms = { uTime:{value:0}, uC1:{value:new THREE.Color()}, uC2:{value:new THREE.Color()}, uC3:{value:new THREE.Color()} };
+    const orb = new THREE.Mesh(
+      new THREE.SphereGeometry(1.35, 160, 160),
+      new THREE.ShaderMaterial({
+        uniforms: orbUniforms,
+        vertexShader: `
+          uniform float uTime; varying vec3 vN; varying vec3 vV; varying float vD;
+          void main(){
+            vec3 p = position;
+            float d = sin(p.x*2.1 + uTime*.9) * sin(p.y*2.5 + uTime*.7) * sin(p.z*1.9 + uTime*1.1);
+            d += .5 * sin(p.y*5.0 + uTime*1.6) * sin(p.x*4.0 - uTime);
+            p += normal * d * .11;
+            vD = d;
+            vN = normalize(normalMatrix * normal);
+            vec4 mv = modelViewMatrix * vec4(p, 1.0);
+            vV = -mv.xyz;
+            gl_Position = projectionMatrix * mv;
+          }`,
+        fragmentShader: `
+          uniform vec3 uC1; uniform vec3 uC2; uniform vec3 uC3; varying vec3 vN; varying vec3 vV; varying float vD;
+          void main(){
+            vec3 v = normalize(vV);
+            float f = pow(1.0 - max(dot(vN, v), 0.0), 2.4);
+            float t = clamp(vD * .55 + .5, 0.0, 1.0);
+            vec3 c = mix(uC3, uC1, t);
+            c = mix(c, uC2, smoothstep(.55, 1.0, t) * .8);
+            c += uC2 * f * .9;
+            float light = max(dot(vN, normalize(vec3(-.4, .6, .8))), 0.0);
+            c *= .72 + light * .45;
+            gl_FragColor = vec4(c, 1.0);
+          }`
+      })
+    );
+    world.add(orb);
+
+    // Glow sprite behind orb
+    const glowCanvas = document.createElement('canvas'); glowCanvas.width = glowCanvas.height = 256;
+    const gctx = glowCanvas.getContext('2d');
+    const drawGlow = col => {
+      gctx.clearRect(0,0,256,256);
+      const g = gctx.createRadialGradient(128,128,0,128,128,128);
+      g.addColorStop(0, col); g.addColorStop(.35, col.replace(/rgb\((.*)\)/, 'rgba($1,.35)')); g.addColorStop(1, 'rgba(0,0,0,0)');
+      gctx.fillStyle = g; gctx.fillRect(0,0,256,256);
+    };
+    const glowTex = new THREE.CanvasTexture(glowCanvas);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, opacity:.55}));
+    glow.scale.set(6.4, 6.4, 1); glow.position.z = -1; world.add(glow);
+
+    // Sacred-geometry wire shell
+    const shellMat = new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.22});
+    const shell = new THREE.Mesh(new THREE.IcosahedronGeometry(2.05, 1), shellMat);
+    world.add(shell);
+    const shell2 = new THREE.Mesh(new THREE.OctahedronGeometry(2.45, 0), new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.1}));
+    world.add(shell2);
+
+    // Orbit rings with beads
+    const rings = [], beads = [];
+    const ringCfg = [
+      {r:2.45, tilt:[1.25, .2, 0], speed:.35},
+      {r:2.75, tilt:[.3, 1.0, .4], speed:-.25},
+      {r:3.05, tilt:[-.6, .5, 1.1], speed:.18}
+    ];
+    ringCfg.forEach((cfg, i) => {
+      const g = new THREE.Group(); g.rotation.set(...cfg.tilt);
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(cfg.r, i === 1 ? .018 : .011, 12, 240), new THREE.MeshBasicMaterial({transparent:true, opacity: i === 1 ? .75 : .45}));
+      g.add(ring);
+      const bead = new THREE.Mesh(new THREE.SphereGeometry(i === 1 ? .085 : .06, 24, 24), new THREE.MeshBasicMaterial());
+      g.add(bead);
+      world.add(g); rings.push({g, ring, cfg}); beads.push({bead, cfg, a: i * 2});
+    });
+
+    // Particles
+    const pCount = 900, pos = new Float32Array(pCount * 3), seeds = new Float32Array(pCount);
+    for (let i = 0; i < pCount; i++){
+      const r = 2.4 + Math.random() * 3.2, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+      pos[i*3] = r * Math.sin(ph) * Math.cos(th); pos[i*3+1] = r * Math.sin(ph) * Math.sin(th) * .8; pos[i*3+2] = r * Math.cos(ph);
+      seeds[i] = Math.random() * 10;
+    }
+    const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    const dot = document.createElement('canvas'); dot.width = dot.height = 64;
+    const dctx = dot.getContext('2d'); const dg = dctx.createRadialGradient(32,32,0,32,32,32);
+    dg.addColorStop(0,'rgba(255,255,255,1)'); dg.addColorStop(.4,'rgba(255,255,255,.6)'); dg.addColorStop(1,'rgba(255,255,255,0)');
+    dctx.fillStyle = dg; dctx.fillRect(0,0,64,64);
+    const pMat = new THREE.PointsMaterial({size:.07, map:new THREE.CanvasTexture(dot), transparent:true, depthWrite:false, opacity:.9, sizeAttenuation:true});
+    const particles = new THREE.Points(pGeo, pMat); world.add(particles);
+
+    // Colors from active theme
+    function setColors(){
+      const c1 = cssVar('--orb1'), c2 = cssVar('--orb2'), c3 = cssVar('--orb3'), gold = cssVar('--gold'), acc = cssVar('--accent');
+      orbUniforms.uC1.value.set(c1); orbUniforms.uC2.value.set(c2); orbUniforms.uC3.value.set(c3);
+      shellMat.color.set(gold); shell2.material.color.set(cssVar('--primary'));
+      rings.forEach((r, i) => r.ring.material.color.set(i === 1 ? acc : gold));
+      beads.forEach((b, i) => b.bead.material.color.set(i === 1 ? gold : acc));
+      pMat.color.set(gold);
+      const gc = new THREE.Color(c1);
+      drawGlow(`rgb(${Math.round(gc.r*255)},${Math.round(gc.g*255)},${Math.round(gc.b*255)})`); glowTex.needsUpdate = true;
+      const dark = DARK.has(root.dataset.theme);
+      glow.material.opacity = dark ? .7 : .45;
+      pMat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending; pMat.needsUpdate = true;
+    }
+    hero3d.setColors = setColors; setColors();
+
+    // Size
+    function resize(){
+      const w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h;
+      camera.position.z = w < 500 ? 10.5 : 9.6;
+      camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(wrap); resize();
+
+    // Interaction: pointer parallax + drag to spin
+    let tx = 0, ty = 0, rx = 0, ry = 0, dragging = false, lastX = 0, lastY = 0, spinY = 0, spinX = 0, velY = 0;
+    window.addEventListener('pointermove', e => {
+      tx = (e.clientX / window.innerWidth - .5); ty = (e.clientY / window.innerHeight - .5);
+      if (dragging){ velY = (e.clientX - lastX) * .006; spinY += velY; spinX += (e.clientY - lastY) * .004; lastX = e.clientX; lastY = e.clientY; }
+    }, {passive:true});
+    wrap.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; wrap.style.cursor = 'grabbing'; });
+    window.addEventListener('pointerup', () => { dragging = false; wrap.style.cursor = ''; });
+
+    // Visibility-aware loop
+    let visible = true, running = true;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(wrap);
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; });
+
+    const clock = new THREE.Clock();
+    function frame(){
+      requestAnimationFrame(frame);
+      if (!visible || !running) return;
+      const t = clock.getElapsedTime();
+      orbUniforms.uTime.value = t;
+      const breathe = 1 + Math.sin(t * .8) * .035;
+      orb.scale.setScalar(breathe);
+      shell.rotation.y = t * .12; shell.rotation.x = t * .07;
+      shell2.rotation.y = -t * .06; shell2.rotation.z = t * .05;
+      rings.forEach(r => { r.ring.rotation.z = t * r.cfg.speed; });
+      beads.forEach(b => { const a = b.a + t * b.cfg.speed * 2.2; b.bead.position.set(Math.cos(a) * b.cfg.r, Math.sin(a) * b.cfg.r, 0); });
+      particles.rotation.y = t * .03; particles.rotation.x = Math.sin(t * .1) * .1;
+      if (!dragging){ velY *= .95; spinY += velY; spinX *= .96; }
+      rx += (ty * .35 + spinX - rx) * .05; ry += (tx * .5 + spinY - ry) * .05;
+      world.rotation.x = rx; world.rotation.y = ry;
+      world.position.y = Math.sin(t * .6) * .08;
+      renderer.render(scene, camera);
+    }
+    if (reduceMotion){ renderer.render(scene, camera); } else { frame(); }
+    hero3d.render = () => renderer.render(scene, camera);
+  })();
+
+  /* =========================================================
+     3D MANDALA (manifesto)
+     ========================================================= */
+  (function buildMandala(){
+    const stage = document.getElementById('mandalaStage'); if (!stage) return;
+    const layers = [{z:-150,n:36,r1:178,r2:196,c:'gold'},{z:-55,n:24,r1:120,r2:168,c:'accent'},{z:40,n:16,r1:70,r2:118,c:'primary'},{z:135,n:12,r1:28,r2:68,c:'gold'}];
+    layers.forEach((L, i) => {
+      let petals = '';
+      const w = (L.r2 - L.r1) * .5, mid = 200 - (L.r1 + L.r2) / 2;
+      for (let k = 0; k < L.n; k++){
+        petals += `<path d="M200 ${200 - L.r1} Q ${200 + w} ${mid} 200 ${200 - L.r2} Q ${200 - w} ${mid} 200 ${200 - L.r1}Z" transform="rotate(${k * 360 / L.n} 200 200)"/>`;
+      }
+      const div = document.createElement('div');
+      div.className = 'm-layer l' + (i + 1);
+      div.style.transform = `translateZ(${L.z}px)`;
+      div.innerHTML = `<svg viewBox="0 0 400 400" fill="none" style="stroke:var(--${L.c})" stroke-width="1" stroke-opacity=".75"><circle cx="200" cy="200" r="${L.r2 + 6}" stroke-opacity=".35"/><circle cx="200" cy="200" r="${Math.max(L.r1 - 4, 6)}" stroke-opacity=".25"/>${petals}</svg>`;
+      stage.appendChild(div);
+    });
+    const sec = document.getElementById('manifesto');
+    if (canHover && !reduceMotion){
+      sec.addEventListener('mousemove', e => {
+        const r = sec.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        stage.style.transform = `rotateX(${58 - y * 18}deg) rotateZ(${x * 24}deg)`;
+      });
+      sec.addEventListener('mouseleave', () => stage.style.transform = '');
+    }
+  })();
+
+  /* =========================================================
+     VOICE WAVES (Veda section + modal)
+     ========================================================= */
+  let waveCols = [];
+  function refreshWaveColors(){ waveCols = [cssVar('--gold'), cssVar('--accent'), cssVar('--deep-ink')]; }
+  refreshWaveColors();
+  function makeWave(canvas, getLevel){
+    const ctx = canvas.getContext('2d'); let w = 0, h = 0, lv = .1;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const size = () => { w = canvas.clientWidth; h = canvas.clientHeight; canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    new ResizeObserver(size).observe(canvas); size();
+    return t => {
+      if (!w || !h) return;
+      lv += (getLevel(t) - lv) * .08;
+      ctx.clearRect(0, 0, w, h);
+      for (let k = 0; k < 3; k++){
+        ctx.beginPath(); ctx.lineWidth = k === 2 ? 1 : 1.6; ctx.strokeStyle = waveCols[k]; ctx.globalAlpha = k === 2 ? .22 : .7;
+        for (let x = 0; x <= w; x += 4){
+          const nx = x / w, env = Math.pow(Math.sin(Math.PI * nx), 1.5);
+          const y = h / 2 + Math.sin(nx * (9 + k * 3) + t * (2.2 + k * .7) + k) * env * lv * h * .42 * (1 - k * .18);
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+    };
+  }
+
+  /* =========================================================
+     BREATHING GUIDE (drives the lotus)
+     ========================================================= */
+  const breath = (function(){
+    const P = {calm:[['in',4],['hold',2],['out',6]], box:[['in',4],['hold',4],['out',4],['rest',4]], sleep:[['in',4],['hold',7],['out',8]]};
+    const LABEL = {in:'Breathe in', hold:'Hold', out:'Breathe out', rest:'Rest'};
+    const phaseEl = document.getElementById('breathPhase'), countEl = document.getElementById('breathCount'),
+          cyclesEl = document.getElementById('breathCycles'), bar = document.getElementById('breathBar'), btn = document.getElementById('breathBtn');
+    let pattern = 'calm', running = false, idx = 0, start = 0, cycles = 0, level = 0, value = .5;
+    const ease = p => .5 - Math.cos(Math.PI * p) / 2;
+    function setBtn(){ btn.querySelector('span').textContent = running ? 'Pause' : (cycles ? 'Resume' : 'Begin');
+      btn.querySelector('svg').innerHTML = running ? '<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>' : '<path d="M8 5l11 7-11 7z"/>'; }
+    function tick(now){
+      if (!running){ value = .5 + .12 * Math.sin(now / 1000 * .8); return value; }
+      const seq = P[pattern];
+      let [ph, d] = seq[idx], el = (now - start) / 1000;
+      if (el >= d){
+        level = ph === 'in' ? 1 : ph === 'out' ? 0 : level;
+        idx = (idx + 1) % seq.length; start = now; el = 0;
+        if (idx === 0){ cycles++; cyclesEl.textContent = cycles + (cycles === 1 ? ' breath' : ' breaths'); }
+        [ph, d] = seq[idx]; phaseEl.textContent = LABEL[ph];
+      }
+      const p = Math.min(el / d, 1);
+      value = ph === 'in' ? ease(p) : ph === 'out' ? 1 - ease(p) : level;
+      countEl.textContent = Math.max(1, Math.ceil(d - el)) + 's';
+      bar.style.width = (p * 100) + '%';
+      return value;
+    }
+    btn.addEventListener('click', () => {
+      running = !running;
+      if (running){ idx = 0; level = 0; start = performance.now(); phaseEl.textContent = LABEL[P[pattern][0][0]]; }
+      else { phaseEl.textContent = 'Paused'; countEl.textContent = 'Press resume'; }
+      setBtn();
+    });
+    document.querySelectorAll('.bp-patterns button').forEach(b => b.addEventListener('click', () => {
+      document.querySelectorAll('.bp-patterns button').forEach(x => x.classList.remove('active'));
+      b.classList.add('active'); pattern = b.dataset.pattern; idx = 0; start = performance.now();
+      if (running) phaseEl.textContent = LABEL[P[pattern][0][0]];
+    }));
+    return { tick, get value(){ return value; } };
+  })();
+
+  /* =========================================================
+     THREE.JS LOTUS — petals open and close with the breath,
+     glowing heart, rising light and water ripples
+     ========================================================= */
+  const lotus = { setColors(){} };
+  (function initLotus(){
+    const wrap = document.getElementById('lotus3d');
+    let visible = false;
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(wrap);
+    const fallbackLoop = () => { requestAnimationFrame(fallbackLoop); if (!visible) return; wrap.style.setProperty('--o', breath.tick(performance.now()).toFixed(3)); };
+    if (!window.THREE){ wrap.classList.add('fallback'); fallbackLoop(); return; }
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({antialias:true, alpha:true}); } catch(e){ wrap.classList.add('fallback'); fallbackLoop(); return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); renderer.setClearColor(0, 0);
+    wrap.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(34, 1, .1, 100);
+    const lookY = .75;
+    scene.add(new THREE.AmbientLight(0xffffff, .5));
+    const fill = new THREE.DirectionalLight(0xffffff, .55); fill.position.set(0, 2.5, 8); scene.add(fill);
+    const under = new THREE.DirectionalLight(0xffffff, .3); under.position.set(0, -3, 4); scene.add(under);
+    const key = new THREE.DirectionalLight(0xffffff, .7); key.position.set(3, 6, 5); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, .35); rim.position.set(-4, 2, -4); scene.add(rim);
+    const heartLight = new THREE.PointLight(0xffd9a0, 1.2, 7); heartLight.position.set(0, 1.1, 0); scene.add(heartLight);
+
+    const flower = new THREE.Group(); scene.add(flower);
+
+    function petalGeo(len, wid){
+      const sh = new THREE.Shape(); sh.moveTo(0, 0);
+      sh.bezierCurveTo(wid, len * .22, wid * .95, len * .72, 0, len);
+      sh.bezierCurveTo(-wid * .95, len * .72, -wid, len * .22, 0, 0);
+      const g = new THREE.ShapeGeometry(sh, 28);
+      const p = g.attributes.position;
+      for (let i = 0; i < p.count; i++){
+        const x = p.getX(i), y = p.getY(i);
+        const v = y / len; p.setZ(i, -(x * x) * 1.25 / wid - Math.pow(v, 2.2) * .42 * len);
+      }
+      g.computeVertexNormals();
+      g.setAttribute('color', new THREE.BufferAttribute(new Float32Array(p.count * 3), 3));
+      g.userData.len = len; return g;
+    }
+    const layerCfg = [
+      {n:9, len:1.9, wid:.64, open:[.55, 1.2], rot:0},
+      {n:9, len:1.55, wid:.55, open:[.3, .85], rot:Math.PI / 9},
+      {n:7, len:1.15, wid:.44, open:[.08, .45], rot:0}
+    ];
+    const petals = [], layerMats = [];
+    layerCfg.forEach((L, li) => {
+      const geo = petalGeo(L.len, L.wid);
+      const mat = new THREE.MeshStandardMaterial({vertexColors:true, side:THREE.DoubleSide, roughness:.42, metalness:.04, emissive:new THREE.Color(0x000000)});
+      layerMats.push({geo, mat, li});
+      for (let i = 0; i < L.n; i++){
+        const pivot = new THREE.Group(); pivot.rotation.y = L.rot + i * Math.PI * 2 / L.n;
+        const m = new THREE.Mesh(geo, mat); m.position.z = .1 + (2 - li) * .05;
+        pivot.add(m); flower.add(pivot); petals.push({m, L, i});
+      }
+    });
+
+    // Heart: glowing core + stamens
+    const coreMat = new THREE.MeshStandardMaterial({roughness:.3, emissiveIntensity:.9});
+    const core = new THREE.Mesh(new THREE.SphereGeometry(.3, 40, 40), coreMat); core.scale.set(1, .62, 1); core.position.y = .16; flower.add(core);
+    const stamenMat = new THREE.MeshStandardMaterial({roughness:.3, emissiveIntensity:1});
+    for (let i = 0; i < 14; i++){
+      const a = i / 14 * Math.PI * 2, st = new THREE.Mesh(new THREE.SphereGeometry(.045, 12, 12), stamenMat);
+      st.position.set(Math.cos(a) * .26, .36 + Math.sin(i * 1.7) * .03, Math.sin(a) * .26); flower.add(st);
+    }
+
+    // Glow sprite
+    const gc = document.createElement('canvas'); gc.width = gc.height = 256; const gx = gc.getContext('2d');
+    const glowTex = new THREE.CanvasTexture(gc);
+    const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, blending:THREE.AdditiveBlending}));
+    glow.scale.set(4.6, 4.6, 1); glow.position.y = .6; scene.add(glow);
+
+    // Water ripples
+    const ripples = [];
+    for (let i = 0; i < 4; i++){
+      const r = new THREE.Mesh(new THREE.RingGeometry(.98, 1, 96), new THREE.MeshBasicMaterial({transparent:true, side:THREE.DoubleSide, depthWrite:false}));
+      r.rotation.x = -Math.PI / 2; r.position.y = -.02; scene.add(r); ripples.push({r, off:i * 1.6});
+    }
+
+    // Lily pads on the water
+    const padMat = new THREE.MeshStandardMaterial({side:THREE.DoubleSide, roughness:.6, transparent:true, opacity:.92});
+    [[2.3, .4, .75], [-2.1, 1.3, .6], [.6, -2.4, .5], [-1.2, -1.9, .42]].forEach(([x, z, sc], i) => {
+      const pad = new THREE.Mesh(new THREE.CircleGeometry(1, 48, .35, Math.PI * 2 - .5), padMat);
+      pad.rotation.x = -Math.PI / 2; pad.rotation.z = i * 1.7; pad.position.set(x, -.03, z); pad.scale.setScalar(sc); scene.add(pad);
+    });
+
+    // Rising light motes
+    const N = 160, mp = new Float32Array(N * 3), seeds = [];
+    for (let i = 0; i < N; i++){ const a = Math.random() * Math.PI * 2, rr = .2 + Math.random() * 1.9; seeds.push({a, rr, sp:.15 + Math.random() * .35, ph:Math.random() * 4}); }
+    const mGeo = new THREE.BufferGeometry(); mGeo.setAttribute('position', new THREE.BufferAttribute(mp, 3));
+    const dot = document.createElement('canvas'); dot.width = dot.height = 64; const dx = dot.getContext('2d');
+    const dg = dx.createRadialGradient(32, 32, 0, 32, 32, 32); dg.addColorStop(0, 'rgba(255,255,255,1)'); dg.addColorStop(.4, 'rgba(255,255,255,.5)'); dg.addColorStop(1, 'rgba(255,255,255,0)');
+    dx.fillStyle = dg; dx.fillRect(0, 0, 64, 64);
+    const mMat = new THREE.PointsMaterial({size:.08, map:new THREE.CanvasTexture(dot), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending});
+    scene.add(new THREE.Points(mGeo, mMat));
+
+    function setColors(){
+      const acc = new THREE.Color(cssVar('--accent')), o2 = new THREE.Color(cssVar('--orb2')), o1 = new THREE.Color(cssVar('--orb1')),
+            o3 = new THREE.Color(cssVar('--orb3')), gold = new THREE.Color(cssVar('--gold')), white = new THREE.Color('#fff8ef');
+      const pairs = [[o3.clone().lerp(o1, .35), o1.clone().lerp(o2, .45)], [o1.clone().lerp(acc, .35), o2.clone().lerp(acc, .25)], [acc.clone().lerp(o1, .3), o2.clone().lerp(gold, .3)]];
+      layerMats.forEach(({geo, mat, li}) => {
+        const [c0, c1] = pairs[li], p = geo.attributes.position, col = geo.attributes.color, len = geo.userData.len;
+        for (let i = 0; i < p.count; i++){ const t = Math.min(1, Math.max(0, p.getY(i) / len)); const c = c0.clone().lerp(c1, Math.pow(t, .75)); col.setXYZ(i, c.r, c.g, c.b); }
+        col.needsUpdate = true; mat.emissive.copy(c0.clone().lerp(c1, .4)).multiplyScalar(.28);
+      });
+      coreMat.color.copy(gold); coreMat.emissive.copy(gold);
+      stamenMat.color.copy(o2); stamenMat.emissive.copy(gold);
+      heartLight.color.copy(o2);
+      ripples.forEach(({r}) => r.material.color.copy(gold));
+      padMat.color.copy(new THREE.Color(cssVar('--hill2')).lerp(new THREE.Color(cssVar('--primary')), .25)); padMat.emissive.copy(padMat.color).multiplyScalar(.15);
+      mMat.color.copy(gold);
+      gx.clearRect(0, 0, 256, 256);
+      const g = gx.createRadialGradient(128, 128, 0, 128, 128, 128);
+      const c = `${Math.round(o1.r * 255)},${Math.round(o1.g * 255)},${Math.round(o1.b * 255)}`;
+      g.addColorStop(0, `rgba(${c},.55)`); g.addColorStop(.45, `rgba(${c},.16)`); g.addColorStop(1, 'rgba(0,0,0,0)');
+      gx.fillStyle = g; gx.fillRect(0, 0, 256, 256); glowTex.needsUpdate = true;
+    }
+    lotus.setColors = setColors; setColors();
+
+    function resize(){
+      const w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
+      renderer.setSize(w, h, false); camera.aspect = w / h;
+      const dist = w < 500 ? 9.2 : 7.6;
+      camera.position.set(0, dist * .44, dist); camera.lookAt(0, lookY, 0); camera.updateProjectionMatrix();
+    }
+    new ResizeObserver(resize).observe(wrap); resize();
+
+    let mx = 0, my = 0;
+    wrap.addEventListener('pointermove', e => { const r = wrap.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width - .5; my = (e.clientY - r.top) / r.height - .5; });
+    wrap.addEventListener('pointerleave', () => { mx = my = 0; });
+
+    let o = .5; const clock = new THREE.Clock();
+    function frame(){
+      requestAnimationFrame(frame);
+      if (!visible || document.hidden) return;
+      const t = clock.getElapsedTime();
+      o += (breath.tick(performance.now()) - o) * .12;
+      petals.forEach(({m, L, i}) => { m.rotation.x = L.open[0] + (L.open[1] - L.open[0]) * o + Math.sin(t * 1.3 + i) * .015; });
+      flower.rotation.y = t * .08 + mx * .6;
+      flower.rotation.x = my * .2;
+      flower.scale.setScalar(1 + o * .05);
+      flower.position.y = Math.sin(t * .9) * .03;
+      heartLight.intensity = .35 + o * .55;
+      coreMat.emissiveIntensity = .35 + o * .45;
+      glow.material.opacity = (DARK.has(root.dataset.theme) ? .45 : .18) + o * (DARK.has(root.dataset.theme) ? .4 : .18);
+      ripples.forEach(({r, off}) => { const k = ((t + off) % 6.4) / 6.4; r.scale.setScalar(.7 + k * 3.2); r.material.opacity = (1 - k) * .45; });
+      const arr = mGeo.attributes.position.array;
+      seeds.forEach((s, i) => {
+        const y = ((t * s.sp + s.ph) % 3.6);
+        arr[i * 3] = Math.cos(s.a + t * .1) * s.rr * (1 - y * .12);
+        arr[i * 3 + 1] = y + .1;
+        arr[i * 3 + 2] = Math.sin(s.a + t * .1) * s.rr * (1 - y * .12);
+      });
+      mGeo.attributes.position.needsUpdate = true;
+      mMat.opacity = .5 + o * .5;
+      renderer.render(scene, camera);
+    }
+    frame();
+  })();
+
+  /* =========================================================
+     VEDA — AI HEALING GUIDE
+     Voice in (Web Speech API), voice out (speechSynthesis),
+     guided conversation and explainable healer matching.
+     Matching here runs in the browser on sample healers; in
+     production this calls the 2Verse matching API / LLM.
+     ========================================================= */
+  const Veda = (function(){
+    const modal = document.getElementById('vedaModal'), chat = document.getElementById('vmChat'), form = document.getElementById('vmForm'),
+          input = document.getElementById('vmText'), statusEl = document.getElementById('vmStatus'), voiceChk = document.getElementById('vmVoice'),
+          micBig = document.getElementById('vmMic'), micSmall = document.getElementById('vmMicSmall');
+
+    const HEALERS = [
+      {name:'Ananya Rawat', init:'A', color:'var(--hill2)', mods:['Breathwork','Meditation'], needs:['anxiety','stress','sleep','focus'], format:['inperson','online'], lang:['English','Hindi'], price:65, place:'Tapovan', years:11},
+      {name:'Dev Prakash', init:'D', color:'var(--accent-deep)', mods:['Sound Healing'], needs:['sleep','stress','burnout','grief'], format:['inperson'], lang:['English','Hindi'], price:30, place:'Tapovan', years:15},
+      {name:'Meera Joshi', init:'M', color:'var(--hill3)', mods:['Yoga','Somatic Healing'], needs:['burnout','body','release','stress'], format:['online'], lang:['English'], price:80, place:'Rishikesh', years:9},
+      {name:'Arjun Negi', init:'Ar', color:'var(--primary-deep)', mods:['Yoga'], needs:['body','energy','begin','stress'], format:['inperson','online'], lang:['English','Hindi'], price:50, place:'Tapovan', years:12},
+      {name:'Kavya Iyer', init:'K', color:'var(--sky3)', mods:['Meditation'], needs:['focus','begin','sleep','anxiety','stuck'], format:['online'], lang:['English'], price:55, place:'Rishikesh', years:8},
+      {name:'Rohan Bhatt', init:'R', color:'var(--hill1)', mods:['Somatic Healing','Breathwork'], needs:['release','grief','stuck','anxiety'], format:['inperson','online'], lang:['English','Hindi'], price:90, place:'Tapovan', years:10},
+      {name:'Tara Sharma', init:'T', color:'var(--river2)', mods:['Sound Healing','Meditation'], needs:['grief','release','sleep','stuck'], format:['online'], lang:['English'], price:60, place:'Rishikesh', years:7},
+      {name:'Isha Kapoor', init:'I', color:'var(--accent)', mods:['Yoga','Breathwork'], needs:['energy','stress','anxiety','begin'], format:['inperson'], lang:['English','Hindi'], price:45, place:'Tapovan', years:6}
+    ];
+    const NEED_WORDS = {
+      sleep:['sleep','slept','insomnia','restless night','awake at night','wake up at'],
+      anxiety:['anxious','anxiety','panic','worry','worried','overthink','racing','nervous','fear','on edge'],
+      stress:['stress','pressure','overwhelm','tense','tension','frazzled'],
+      burnout:['burnout','burnt out','burned out','drained','exhausted','work is','my job'],
+      grief:['grief','griev','loss','lost my','passed away','died','mourning','bereave'],
+      release:['emotion','cry','crying','anger','angry','heartbreak','breakup','break up','hurt','sad','lonely','heavy'],
+      stuck:['stuck','direction','purpose','confused','lost','meaning','unmotivated','numb'],
+      body:['back','pain','stiff','posture','body','disconnected','neck','shoulder','tight','ache'],
+      energy:['energy','lethargic','vitality','fatigue','sluggish','tired all',' low '],
+      focus:['focus','concentrat','clarity','distract','scattered','productive'],
+      begin:['beginner','start meditating','new to','never tried','first time','learn to meditate','get started','start a practice']
+    };
+    const NEED_LABEL = {sleep:'restful sleep', anxiety:'an anxious, busy mind', stress:'stress', burnout:'burnout', grief:'grief', release:'heavy emotions', stuck:'feeling stuck', body:'tension held in the body', energy:'low energy', focus:'focus and clarity', begin:'beginning a practice'};
+    const NEED_SHORT = {sleep:'sleep', anxiety:'anxiety', stress:'stress', burnout:'burnout', grief:'grief', release:'emotional release', stuck:'feeling stuck', body:'body tension', energy:'energy', focus:'focus', begin:'beginners'};
+    const MOD_WORDS = {'Yoga':['yoga','asana','movement','stretch'], 'Breathwork':['breath','pranayama'], 'Meditation':['meditat','stillness','mindful','nidra'], 'Sound Healing':[' sound ','sound heal','sound bath','bowl','gong'], 'Somatic Healing':['somatic','body-based','trauma']};
+    const CRISIS = ['suicid','kill myself','end my life','want to die','self harm','self-harm','hurt myself','no reason to live','better off dead'];
+    const INTRO_CHIPS = ["I can't sleep well", "I'm anxious and overthinking", "I feel burnt out", "I'm grieving a loss", "My body feels tense", "I want to start meditating"];
+
+    let state, voiceUsed = false, mode = 'idle', greeted = false, pending = 0;
+    const esc = t => t.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function reset(){ state = {needs:new Set(), mods:new Set(), format:null, hindi:false, budget:null, step:'intro', askedMod:false}; chat.innerHTML = ''; pending++; }
+    reset();
+
+    function setMode(m){
+      mode = m;
+      modal.classList.toggle('is-listening', m === 'listening');
+      modal.classList.toggle('is-thinking', m === 'thinking');
+      modal.classList.toggle('is-speaking', m === 'speaking');
+      statusEl.textContent = {idle:'Tap the microphone and speak', listening:'Listening…', thinking:'Veda is reflecting…', speaking:'Veda is speaking…'}[m];
+      micBig.setAttribute('aria-label', m === 'listening' ? 'Stop listening' : 'Start speaking');
+    }
+    const scroll = () => { chat.scrollTop = chat.scrollHeight; };
+    function addRow(role, html){
+      const row = document.createElement('div'); row.className = 'msg-row ' + role;
+      row.innerHTML = (role === 'ai' ? '<span class="mini-orb"></span>' : '') + `<div class="msg">${html}</div>`;
+      chat.appendChild(row); scroll(); return row;
+    }
+    function addQuick(labels){
+      const q = document.createElement('div'); q.className = 'quick';
+      labels.forEach(l => { const b = document.createElement('button'); b.type = 'button'; b.textContent = l; b.addEventListener('click', () => { q.remove(); send(l); }); q.appendChild(b); });
+      chat.appendChild(q); scroll();
+    }
+    const clearQuick = () => chat.querySelectorAll('.quick').forEach(q => q.remove());
+
+    function speak(text){
+      if (!voiceChk.checked || !('speechSynthesis' in window)) { setMode('idle'); return; }
+      try {
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        const vs = speechSynthesis.getVoices();
+        u.voice = vs.find(v => /en-IN/i.test(v.lang)) || vs.find(v => /Samantha|Serena|Google UK English Female|Karen|Moira/i.test(v.name)) || vs.find(v => /^en/i.test(v.lang)) || null;
+        u.rate = .96; u.pitch = 1.02;
+        u.onstart = () => setMode('speaking'); u.onend = () => setMode('idle'); u.onerror = () => setMode('idle');
+        speechSynthesis.speak(u);
+      } catch(e){ setMode('idle'); }
+    }
+
+    function reply(html, opts = {}){
+      const token = pending;
+      setMode('thinking');
+      const typing = document.createElement('div'); typing.className = 'msg-row ai';
+      typing.innerHTML = '<span class="mini-orb"></span><div class="msg"><span class="typing"><i></i><i></i><i></i></span></div>';
+      chat.appendChild(typing); scroll();
+      setTimeout(() => {
+        if (token !== pending) return;
+        typing.remove();
+        addRow('ai', html);
+        if (opts.matches) chat.appendChild(opts.matches);
+        if (opts.after) addRow('ai', opts.after);
+        if (opts.quick) addQuick(opts.quick);
+        scroll();
+        const plain = (opts.say || html + (opts.after ? ' ' + opts.after : '')).replace(/<[^>]+>/g, '');
+        speak(plain);
+      }, 700 + Math.min(900, html.length * 6));
+    }
+
+    function reflect(){
+      const keys = [...state.needs], labels = keys.map(k => NEED_LABEL[k]);
+      if (!labels.length){
+        const m = [...state.mods];
+        return m.length ? `Lovely, ${m.join(' and ').toLowerCase()} can be a beautiful place to begin.` : 'Thank you for sharing that with me.';
+      }
+      const list = labels.length === 1 ? labels[0] : labels.slice(0, -1).join(', ') + ' and ' + labels[labels.length - 1];
+      const openers = {grief:"I'm so sorry you're carrying this.", burnout:'That sounds like a lot to hold.', sleep:"Rest matters so much, and it's hard when it won't come.", anxiety:"A mind that won't quiet down can be exhausting.", release:'Thank you for trusting me with that.'};
+      const first = keys.find(k => openers[k]);
+      return `${first ? openers[first] + ' ' : ''}I hear that you're looking for support with ${list}.`;
+    }
+
+    function results(prefix){
+      const ranked = HEALERS.map(h => {
+        let s = 0; const why = [];
+        const nm = h.needs.filter(n => state.needs.has(n)); s += nm.length * 3;
+        if (nm.length) why.push('Works with ' + nm.slice(0, 2).map(n => NEED_SHORT[n]).join(' and '));
+        const mm = h.mods.filter(m => state.mods.has(m)); s += mm.length * 4;
+        if (mm.length) why.push('Teaches ' + mm.join(' and '));
+        if (state.format === 'inperson'){ if (h.format.includes('inperson')){ s += 2; why.push('Meets seekers in person in ' + h.place); } else s -= 5; }
+        if (state.format === 'online'){ if (h.format.includes('online')){ s += 2; why.push('Offers online sessions'); } else s -= 5; }
+        if (state.hindi){ if (h.lang.includes('Hindi')){ s += 2; why.push('Speaks Hindi'); } else s -= 2; }
+        if (state.budget){ if (h.price <= state.budget){ s += 1; why.push('Within your budget'); } else s -= 3; }
+        return {h, s, why};
+      }).sort((a, b) => b.s - a.s).slice(0, 3);
+
+      const wrapEl = document.createElement('div'); wrapEl.className = 'matches';
+      ranked.forEach(({h, s, why}, i) => {
+        const pct = Math.max(68, Math.min(97, 72 + s * 2.6 - i * 2)) | 0;
+        const fmt = h.format.length === 2 ? 'In person & online' : h.format[0] === 'inperson' ? 'In person · ' + h.place : 'Online';
+        const card = document.createElement('div'); card.className = 'match-card';
+        card.innerHTML = `<div class="mc-av" style="background:${h.color}">${h.init}</div>
+          <div class="mc-body"><div class="mc-top"><b>${h.name}</b><span class="mc-pct" style="--p:${pct}" title="Match"><i>${pct}%</i></span></div>
+          <small>${h.mods.join(' & ')} · ${fmt} · from $${h.price} · ${h.years} yrs</small>
+          <p>${(why.length ? why : ['A gentle, experienced healer for first-timers']).slice(0, 3).join(' · ')}</p>
+          <div class="mc-actions"><a class="mc-btn primary" data-go="healers">View profile</a><a class="mc-btn" data-book="${h.name}">Book a session</a></div></div>`;
+        wrapEl.appendChild(card);
+      });
+      wrapEl.querySelectorAll('[data-go]').forEach(a => a.addEventListener('click', () => { close(); document.getElementById('healers').scrollIntoView({behavior:'smooth'}); }));
+      wrapEl.querySelectorAll('[data-book]').forEach(a => a.addEventListener('click', () => showToast(`Booking with ${a.dataset.book} opens here in the full app.`)));
+
+      const intro = (prefix ? prefix + ' ' : '') + 'Here are three healers I think you would connect with. Each suggestion shows why I chose them.';
+      const bodyNote = state.needs.has('body') ? ' If your pain is sharp or ongoing, please check with a doctor too.' : '';
+      reply(intro, {matches:wrapEl, after:'Would you like me to refine these? You can tell me more, or choose an option below.' + bodyNote,
+        quick:['Online only','In person in Rishikesh','Someone who speaks Hindi','Under $60','Start over'],
+        say:intro + ' Would you like me to refine these?' + bodyNote});
+      state.step = 'results';
+    }
+
+    function process(text){
+      const t = ' ' + text.toLowerCase() + ' ';
+      if (/start over|restart|begin again/.test(t)){ restart(); return; }
+      if (CRISIS.some(w => t.includes(w))){
+        const html = "I'm really glad you told me, and I'm sorry you're in so much pain. I'm not able to support you safely with this, and you deserve real help right now. If you are in immediate danger, please contact your local emergency number. You can find a free, confidential helpline in your country at <a href=\"https://findahelpline.com\" target=\"_blank\" rel=\"noopener\">findahelpline.com</a>. Whenever you feel ready, I'm here to help you find a gentle healer too.";
+        reply(html, {say:"I'm really glad you told me, and I'm sorry you're in so much pain. You deserve real help right now. If you are in immediate danger, please contact your local emergency number, or find a free helpline in your country at find a helpline dot com."});
+        return;
+      }
+      const before = JSON.stringify([[...state.needs], [...state.mods], state.format, state.hindi, state.budget]);
+      for (const [k, ws] of Object.entries(NEED_WORDS)) if (ws.some(w => t.includes(w))) state.needs.add(k);
+      for (const [m, ws] of Object.entries(MOD_WORDS)) if (ws.some(w => t.includes(w))) state.mods.add(m);
+      if (/in[- ]person|rishikesh|tapovan|visit|travel|come to india|retreat/.test(t)) state.format = 'inperson';
+      else if (/online|from home|video|remote|zoom|virtual/.test(t)) state.format = 'online';
+      else if (state.step === 'format' && /either|both|any|no preference|doesn.?t matter|not sure|whatever/.test(t)) state.format = 'any';
+      if (/hindi/.test(t)) state.hindi = true;
+      const b = t.match(/(?:under|below|less than|budget|max|upto|up to)?\s*\$\s?(\d{2,4})|(\d{2,4})\s?(?:\$|usd|dollars)/);
+      if (b) state.budget = +(b[1] || b[2]);
+      const youChoose = state.step === 'mod' && /you choose|choose for me|not sure|no idea|surprise|anything|any /.test(t);
+      const changed = JSON.stringify([[...state.needs], [...state.mods], state.format, state.hindi, state.budget]) !== before;
+
+      if (state.step === 'results'){
+        if (changed){ results('Of course, I have updated your suggestions.'); }
+        else reply('Tell me a little more, perhaps how you would like to feel after a session, or what you would prefer in a healer, and I will refine your suggestions.', {quick:['Online only','In person in Rishikesh','Start over']});
+        return;
+      }
+      if (!state.needs.size && !state.mods.size){
+        state.step = 'intro';
+        reply('Thank you for sharing. Could you tell me a little more about what you would like help with? For example, feeling calmer, sleeping better, lighter emotionally, or more at home in your body.', {quick:INTRO_CHIPS});
+        return;
+      }
+      if (!state.format){
+        state.step = 'format';
+        reply(`${reflect()} Would you like to meet your healer in person in Rishikesh, or online from wherever you are?`, {quick:['In person in Rishikesh','Online from home','Either is fine']});
+        return;
+      }
+      if (!state.mods.size && !state.askedMod && !youChoose){
+        state.step = 'mod'; state.askedMod = true;
+        reply('Lovely. Is there a kind of practice you feel drawn to, or shall I choose for you?', {quick:['Breath','Movement','Stillness','Sound','Somatic','You choose']});
+        return;
+      }
+      results(state.step === 'mod' && youChoose ? 'Leave it with me.' : '');
+    }
+
+    function send(text){
+      text = (text || '').trim(); if (!text) return;
+      clearQuick(); addRow('user', esc(text)); input.value = '';
+      process(text);
+    }
+
+    function greet(){
+      reply("Namaste, I'm Veda. I'm here to help you find the healer who feels right for you. In your own words, how have you been feeling lately, and what would you like help with?", {quick:INTRO_CHIPS});
+      greeted = true;
+    }
+    function restart(){
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+      reset(); setMode('idle'); greet();
+    }
+
+    /* ----- Speech recognition ----- */
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let rec = null;
+    function toggleListening(){
+      if (mode === 'listening' && rec){ rec.stop(); return; }
+      if (!SR){ showToast('Voice input is not supported in this browser. You can type to Veda instead.'); input.focus(); return; }
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+      if (!voiceUsed){ voiceUsed = true; voiceChk.checked = true; }
+      rec = new SR(); rec.lang = navigator.language || 'en-IN'; rec.interimResults = true; rec.continuous = false;
+      let finalText = '';
+      rec.onresult = e => {
+        let interim = '';
+        for (let i = e.resultIndex; i < e.results.length; i++){ const tr = e.results[i][0].transcript; if (e.results[i].isFinal) finalText += tr; else interim += tr; }
+        input.value = (finalText + interim).trim();
+      };
+      rec.onerror = e => { setMode('idle'); if (e.error === 'not-allowed' || e.error === 'service-not-allowed') statusEl.textContent = 'Microphone access is off. You can type instead.'; };
+      rec.onend = () => { if (mode === 'listening') setMode('idle'); const tx = input.value.trim(); if (tx) send(tx); rec = null; };
+      try { rec.start(); setMode('listening'); } catch(e){ setMode('idle'); }
+    }
+    micBig.addEventListener('click', toggleListening);
+    micSmall.addEventListener('click', toggleListening);
+    form.addEventListener('submit', e => { e.preventDefault(); send(input.value); });
+    document.getElementById('vmRestart').addEventListener('click', restart);
+
+    /* ----- Open / close ----- */
+    let lastFocus = null;
+    function open(typeMode){
+      lastFocus = document.activeElement;
+      modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-open');
+      if (!greeted) greet();
+      setTimeout(() => input.focus({preventScroll:true}), typeMode ? 350 : 500);
+    }
+    function close(){
+      if (rec) try { rec.abort(); } catch(e){}
+      if ('speechSynthesis' in window) speechSynthesis.cancel();
+      setMode('idle');
+      modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open');
+      if (lastFocus) lastFocus.focus({preventScroll:true});
+    }
+    const fab = document.querySelector('.veda-fab');
+    const fabCheck = () => fab.classList.toggle('show', window.scrollY > window.innerHeight * .7);
+    window.addEventListener('scroll', fabCheck, {passive:true}); fabCheck();
+    document.querySelectorAll('[data-open-veda]').forEach(b => b.addEventListener('click', () => open(b.dataset.vedaMode === 'type')));
+    document.getElementById('vmClose').addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+
+    /* ----- Voice waves ----- */
+    const levelFor = t => mode === 'listening' ? .75 + Math.sin(t * 9) * .2 + Math.random() * .15 : mode === 'speaking' ? .55 + Math.sin(t * 6) * .25 : mode === 'thinking' ? .28 : .12;
+    const drawModal = makeWave(document.getElementById('vedaWaveModal'), levelFor);
+    const drawSection = makeWave(document.getElementById('vedaWaveSection'), t => .35 + Math.sin(t * 1.3) * .2);
+    let secVisible = false;
+    new IntersectionObserver(([en]) => { secVisible = en.isIntersecting; }).observe(document.getElementById('veda'));
+    (function loop(){
+      requestAnimationFrame(loop);
+      const t = performance.now() / 1000;
+      if (modal.classList.contains('open')) drawModal(t);
+      if (secVisible && !reduceMotion) drawSection(t);
+    })();
+
+    return {open, close, send};
+  })();
+
+  /* =========================================================
+     THEME SWITCHER
+     ========================================================= */
+  const THEMES = {dawn:'Ganga Dawn', saffron:'Saffron Sanctum', forest:'Tapovan Forest', pearl:'Lotus Pearl', rose:'Rose Quartz', ivory:'Ivory & Gold', night:'Himalayan Night', amethyst:'Amethyst Aura', moonlit:'Moonlit Ganga', aurora:'Aurora Chakra'};
+  const dock = document.getElementById('themeDock'), themeBtn = document.getElementById('themeBtn'), flash = document.getElementById('themeFlash');
+  function applyTheme(name, animate){
+    if (!THEMES[name]) name = 'dawn';
+    const doIt = () => {
+      root.dataset.theme = name;
+      document.getElementById('themeName').textContent = THEMES[name];
+      document.querySelectorAll('.theme-opt').forEach(o => o.classList.toggle('active', o.dataset.t === name));
+      requestAnimationFrame(() => { hero3d.setColors(); lotus.setColors(); refreshWaveColors(); if (reduceMotion && hero3d.render) hero3d.render(); });
+      try { localStorage.setItem('2verse-theme', name); } catch(e){}
+    };
+    if (animate && !reduceMotion){ flash.classList.add('on'); setTimeout(() => { doIt(); flash.classList.remove('on'); }, 220); }
+    else doIt();
+  }
+  themeBtn.addEventListener('click', e => { e.stopPropagation(); const open = dock.classList.toggle('open'); themeBtn.setAttribute('aria-expanded', open); });
+  document.querySelectorAll('.theme-opt').forEach(o => o.addEventListener('click', () => { applyTheme(o.dataset.t, true); dock.classList.remove('open'); themeBtn.setAttribute('aria-expanded', false); }));
+  document.addEventListener('click', e => { if (!dock.contains(e.target)){ dock.classList.remove('open'); themeBtn.setAttribute('aria-expanded', false); } });
+
+  let initial = new URLSearchParams(location.search).get('theme');
+  if (!initial){ try { initial = localStorage.getItem('2verse-theme'); } catch(e){} }
+  applyTheme(initial || 'dawn', false);
+})();
+</script>
+</body>
+</html>
