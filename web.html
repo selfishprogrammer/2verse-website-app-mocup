@@ -1292,9 +1292,13 @@ window.addEventListener('hashchange', render);
 /* =====================================================================
    Shell: theme, currency, badges, notifications, account menu
    ===================================================================== */
+/* one theme across landing, app screens, web app and healer dashboard */
+const THEME_KEY = '2verse-theme';
+function sharedTheme(){ let t = null; try { t = new URLSearchParams(location.search).get('theme') || localStorage.getItem(THEME_KEY); } catch(e){} return t && window.TV_THEMES.some(x => x.id === t) ? t : null; }
+function storeTheme(){ try { localStorage.setItem(THEME_KEY, S.theme); } catch(e){} }
 function applyTheme(){
   if (!window.TV_THEMES.some(t => t.id === S.theme)) S.theme = 'dawn';
-  root.dataset.theme = S.theme; root.dataset.mode = tvMode(S.theme);
+  root.dataset.theme = S.theme; root.dataset.mode = tvMode(S.theme); storeTheme();
   const nm = window.TV_THEMES.find(t => t.id === S.theme).name;
   ['#themeBtn','#aTheme'].forEach(s => { $(s).innerHTML = ico('i-palette'); $(s).setAttribute('aria-label', `Theme: ${nm}. Change theme`); $(s).setAttribute('aria-haspopup', 'dialog'); });
 }
@@ -2487,6 +2491,8 @@ $('#vedaBtn').onclick = () => openVeda();
 /* =====================================================================
    Init
    ===================================================================== */
+const st0 = sharedTheme(); if (st0) S.theme = st0;
+window.addEventListener('storage', e => { if (e.key === THEME_KEY && e.newValue && e.newValue !== S.theme){ S.theme = e.newValue; save(); applyTheme(); } });
 applyTheme();
 render();
 })();

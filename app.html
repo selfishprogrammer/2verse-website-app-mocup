@@ -1562,13 +1562,14 @@ em{font-style:italic;color:var(--accent)}
     document.getElementById('appThemeName').textContent = t[1];
     document.querySelectorAll('[data-t]').forEach(b => b.classList.toggle('on', b.dataset.t === t[0]));
     requestAnimationFrame(() => { hero3d.setColors(); lotus.setColors(); });
-    try { localStorage.setItem('2verse-app-theme', t[0]); } catch(e){}
+    try { localStorage.setItem('2verse-theme', t[0]); } catch(e){}
   }
   document.getElementById('themeBtn').addEventListener('click', e => { e.stopPropagation(); wrap.classList.toggle('open'); });
   document.addEventListener('click', e => { if (!wrap.contains(e.target)) wrap.classList.remove('open'); });
   document.querySelectorAll('[data-t]').forEach(b => b.addEventListener('click', () => { applyTheme(b.dataset.t); wrap.classList.remove('open'); }));
+  window.addEventListener('storage', e => { if (e.key === '2verse-theme' && e.newValue && e.newValue !== root.dataset.theme) applyTheme(e.newValue); });
   let initial = new URLSearchParams(location.search).get('theme');
-  if (!initial){ try { initial = localStorage.getItem('2verse-app-theme'); } catch(e){} }
+  if (!initial){ try { initial = localStorage.getItem('2verse-theme'); } catch(e){} }
   applyTheme(initial || 'dawn');
 })();
 </script>

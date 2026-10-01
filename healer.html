@@ -1049,7 +1049,7 @@ $('#scrim').addEventListener('click', () => document.body.classList.remove('nav-
 $('#copyLink').addEventListener('click', () => { try { navigator.clipboard.writeText('https://2verse.com/p/ananya'); } catch(e){} toast('Profile link copied'); });
 $('#meBtn').addEventListener('click', e => { e.stopPropagation(); $('#meMenu').classList.toggle('open'); });
 document.addEventListener('click', e => { if (!e.target.closest('.me')) $('#meMenu').classList.remove('open'); });
-$('#resetDemo').addEventListener('click', () => confirmBox('Reset demo data?', 'This restores the original sample bookings, services, messages and reviews.', 'Reset', true, () => { S = clone(DEF); save(); applyTheme(); badges(); go('overview'); toast('Demo data restored'); }));
+$('#resetDemo').addEventListener('click', () => confirmBox('Reset demo data?', 'This restores the original sample bookings, services, messages and reviews.', 'Reset', true, () => { const th = S.theme; S = clone(DEF); S.theme = th; save(); applyTheme(); badges(); go('overview'); toast('Demo data restored'); }));
 $('#globalSearch').addEventListener('keydown', e => { if (e.key === 'Enter'){ bkF.q = e.target.value.trim(); go('bookings'); } });
 
 function badges(){
@@ -1066,14 +1066,20 @@ $('#bellBtn').addEventListener('click', () => {
 });
 
 /* theme & availability */
+/* one theme across landing, app screens, web app and healer dashboard */
+const THEME_KEY = '2verse-theme';
+function sharedTheme(){ let t = null; try { t = new URLSearchParams(location.search).get('theme') || localStorage.getItem(THEME_KEY); } catch(e){} return t && window.TV_THEMES.some(x => x.id === t) ? t : null; }
+function storeTheme(){ try { localStorage.setItem(THEME_KEY, S.theme); } catch(e){} }
 function applyTheme(){
   root.dataset.theme = S.theme;
   if (!window.TV_THEMES.some(t => t.id === S.theme)) S.theme = 'dawn';
-  root.dataset.mode = tvMode(S.theme);
+  root.dataset.mode = tvMode(S.theme); storeTheme();
   $('#themeBtn').innerHTML = ico('i-palette', 'i');
   $('#themeBtn').setAttribute('aria-label', 'Theme: ' + window.TV_THEMES.find(t => t.id === S.theme).name + '. Change theme');
   $('#availTg').setAttribute('aria-checked', S.available); $('#avail').classList.toggle('on', S.available);
 }
+{ const st0 = sharedTheme(); if (st0) S.theme = st0; }
+window.addEventListener('storage', e => { if (e.key === THEME_KEY && e.newValue && e.newValue !== S.theme){ S.theme = e.newValue; save(); applyTheme(); RENDER[current]({keep:true}); } });
 $('#themeBtn').addEventListener('click', e => { e.stopPropagation(); tvThemePicker(e.currentTarget, S.theme, id => { S.theme = id; save(); applyTheme(); RENDER[current]({keep:true}); }); });
 $('#availTg').addEventListener('click', () => { S.available = !S.available; save(); applyTheme(); toast(S.available ? 'You are available for instant consultations' : 'Instant consultations paused'); });
 

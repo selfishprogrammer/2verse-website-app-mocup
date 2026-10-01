@@ -2358,6 +2358,7 @@ body.modal-open{overflow:hidden}
   document.querySelectorAll('.theme-opt').forEach(o => o.addEventListener('click', () => { applyTheme(o.dataset.t, true); dock.classList.remove('open'); themeBtn.setAttribute('aria-expanded', false); }));
   document.addEventListener('click', e => { if (!dock.contains(e.target)){ dock.classList.remove('open'); themeBtn.setAttribute('aria-expanded', false); } });
 
+  window.addEventListener('storage', e => { if (e.key === '2verse-theme' && e.newValue && e.newValue !== root.dataset.theme) applyTheme(e.newValue, true); });
   let initial = new URLSearchParams(location.search).get('theme');
   if (!initial){ try { initial = localStorage.getItem('2verse-theme'); } catch(e){} }
   applyTheme(initial || 'dawn', false);
