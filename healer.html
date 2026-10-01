@@ -630,6 +630,109 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 .tpick .topt.on .tick{display:grid}
 @media (max-width:640px){.tpick{left:12px!important;right:12px!important;top:auto!important;bottom:12px;width:auto;max-height:75vh}}
 [data-mode="dark"] .ev.g,[data-mode="dark"] .ev.e{color:#0a0f1e}
+
+/* ===== location picker ===== */
+.loc{display:flex;flex-direction:column;gap:12px}
+.loc-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.loc-search{position:relative;flex:1;min-width:220px;display:flex;align-items:center;gap:8px;height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line-strong);background:var(--surface);color:var(--muted)}
+.loc-search input{flex:1;border:none;outline:none;background:none;color:var(--ink);min-width:0;font-size:14px}
+.loc-res{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:1001;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow-md);padding:6px;display:flex;flex-direction:column;max-height:260px;overflow-y:auto}
+.loc-res[hidden]{display:none}
+.loc-res button{text-align:left;padding:9px 10px;border-radius:10px;font-size:13px;color:var(--ink)}
+.loc-res button:hover{background:var(--surface-2)}
+.loc-res .none{padding:10px;font-size:13px;color:var(--muted)}
+.loc-map{height:300px;border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative;z-index:0;background:
+  linear-gradient(var(--line) 1px,transparent 1px) 0 0/34px 34px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/34px 34px,var(--surface-2)}
+.loc-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:20px;color:var(--ink-2)}
+.loc-fallback small{font-size:12.5px;color:var(--muted);max-width:320px}
+.loc-fallback .btn{margin-top:6px}
+.loc-pin{width:44px;height:44px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent-strong);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-md);margin-bottom:6px}
+.loc-pin .i{transform:rotate(45deg)}
+.loc-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:12.5px}
+.loc-coords{font-weight:600;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.loc-tznow{color:var(--muted)}
+.loc .inp.flash{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 35%,transparent);border-color:var(--accent)}
+.leaflet-container{font-family:var(--font-sans)}
+
+/* ===== Veda writing help ===== */
+.vw{margin-top:6px}
+.vw-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.vw-btn{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 4px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);font-size:12px;font-weight:600;color:var(--ink-2)}
+.vw-btn:hover,.vw-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent-strong)}
+.vw-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--orb-2),var(--orb-1) 55%,var(--orb-3));flex-shrink:0}
+.vw-acts{display:inline-flex;gap:4px;flex-wrap:wrap}
+.vw-acts[hidden]{display:none}
+.vw-acts button{height:28px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--surface)}
+.vw-acts button:hover{border-color:var(--primary);color:var(--primary)}
+.vw-out{margin-top:8px;border-radius:14px;border:1px solid var(--line);background:linear-gradient(160deg,var(--soft-clay),var(--soft-gold));padding:10px 12px;font-size:13.5px;color:var(--ink)}
+.vw-out[hidden]{display:none}
+.vw-h{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-strong);margin-bottom:6px}
+.vw-x{font-size:18px;line-height:1;color:var(--muted);padding:0 4px}
+.vw-opt{background:var(--surface);border-radius:12px;padding:10px 12px;margin-bottom:8px;border:1px solid var(--line)}
+.vw-opt p{line-height:1.55;color:var(--ink-2)}
+.vw-use{display:flex;gap:6px;margin-top:8px}
+.vw-note{font-size:11.5px;color:var(--muted)}
+.vw-typing{display:flex;align-items:center;gap:4px;color:var(--muted);font-size:12.5px}
+.vw-typing i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:vwb 1.2s infinite}
+.vw-typing i:nth-child(2){animation-delay:.2s}.vw-typing i:nth-child(3){animation-delay:.4s;margin-right:6px}
+@keyframes vwb{0%,80%,100%{opacity:.25}40%{opacity:1}}
+
+/* ===== service creation: sections, cover, package, preparation ===== */
+.sm-sec{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding-top:16px;border-top:1px solid var(--line)}
+.fgrid > .sm-sec:first-child{margin-top:0;padding-top:0;border-top:none}
+.sm-n{width:28px;height:28px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-size:13px;font-weight:700;flex-shrink:0}
+.sm-sec h3{font-size:17px;font-family:var(--font-sans);font-weight:600;letter-spacing:0}
+.sm-sec p{font-size:13px;color:var(--muted);margin-top:2px}
+.cov-wrap{display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start}
+.cp-card{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-sm)}
+.cp-cov{height:160px;position:relative;background:var(--surface-2)}
+.cp-cov svg,.cp-cov img{width:100%;height:100%;display:block;object-fit:cover}
+.cp-empty{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted);font-size:13px;background:repeating-linear-gradient(135deg,var(--surface-2) 0 12px,var(--bg-alt) 12px 24px)}
+.cp-badge{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:99px}
+.cp-in{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.cp-in small{font-size:11.5px;color:var(--muted)}
+.cp-in b{font-size:16px;font-weight:600;line-height:1.3}
+.cp-price{display:flex;align-items:baseline;gap:6px;margin-top:4px}
+.cp-price span{font-weight:700;font-size:17px}
+.cp-pk{font-size:12px;color:var(--primary);font-weight:600;display:flex;gap:4px;align-items:center}
+.cov-ctrl{display:flex;flex-direction:column;gap:10px;min-width:0}
+.cov-vars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.cov-var{height:72px;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--surface-2)}
+.cov-var svg{width:100%;height:100%;display:block}
+.cov-var.on{border-color:var(--primary);box-shadow:0 0 0 2px color-mix(in srgb,var(--primary) 30%,transparent)}
+.cov-load{height:72px;border-radius:12px;background:linear-gradient(90deg,var(--surface-2),var(--bg-alt),var(--surface-2));background-size:200% 100%;animation:shim 1.1s linear infinite}
+@keyframes shim{to{background-position:-200% 0}}
+.spin-s{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;animation:rot .8s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.pkg-tg{display:flex;gap:12px;align-items:center;padding:14px 16px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface-2);cursor:pointer}
+.pkg-tg input{width:20px;height:20px;accent-color:var(--primary);flex-shrink:0}
+.pkg-tg b{display:block;font-size:14.5px}.pkg-tg small{font-size:12.5px;color:var(--muted)}
+.pkg-tg:has(input:checked){border-color:var(--primary)}
+.pkg-box{padding:16px;border-radius:16px;border:1px dashed var(--line-strong)}
+.svc .cov{height:130px;margin:-22px -22px 14px;border-radius:22px 22px 0 0;overflow:hidden;position:relative;background:var(--surface-2)}
+.svc .cov svg,.svc .cov img{width:100%;height:100%;object-fit:cover;display:block}
+.svc .cov .cp-badge{top:10px;left:10px}
+.pill.pk{background:var(--soft-gold);color:var(--gold-strong)}
+/* preparation in booking */
+.prep{margin-top:16px;border-radius:16px;border:1px solid var(--line);overflow:hidden}
+.prep-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:var(--surface-2);font-size:13.5px}
+.prep-h b{font-size:14px}
+.prep-b{padding:12px 14px;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.prep-item{display:flex;gap:8px;align-items:flex-start}
+.prep-item .ck{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line-strong);display:grid;place-items:center;flex-shrink:0;margin-top:1px}
+.prep-item.done .ck{background:var(--primary);border-color:var(--primary);color:var(--on-primary)}
+.prep-item.done span{color:var(--muted)}
+.prep-qa{padding:8px 10px;border-radius:10px;background:var(--surface-2)}
+.prep-qa small{display:block;color:var(--muted);font-size:12px}
+.hp-check{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.hp-check input{width:17px;height:17px;accent-color:var(--primary);margin-top:1px;flex-shrink:0}
+.upnext .prep-s{margin-top:12px;background:rgba(255,255,255,.12);border-radius:12px;padding:10px 12px;font-size:13px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.upnext .prep-s button{color:inherit;font-weight:600;text-decoration:underline;font-size:12.5px}
+@media (max-width:720px){.cov-wrap{grid-template-columns:1fr}}
+.upnext::after{pointer-events:none}.upnext .prep-s{position:relative;z-index:1}
+.loc-mk{background:none;border:none}.loc-mk .loc-pin{margin:0;cursor:grab}
+.modal-box{max-width:100vw}.fgrid > *,.cov-wrap > *{min-width:0}.modal-f{flex-wrap:wrap}.cov-ctrl .seg{flex-wrap:wrap}
+@media (max-width:720px){.modal-f .btn{flex:1 1 auto}}
 </style>
 </head>
 <body>
@@ -781,6 +884,247 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 })();
 </script>
 <script>
+/* =====================================================================
+   2Verse location picker: map + search + current location + detailed address + time zone
+   Map: Leaflet + OpenStreetMap. Address lookup: Nominatim (OSM).
+   Production: swap for Google Places / Mapbox with an API key.
+   ===================================================================== */
+(function(){
+  var TZ = [['Asia/Kolkata','India · IST (UTC+5:30)'],['Asia/Kathmandu','Nepal (UTC+5:45)'],['Asia/Dubai','UAE (UTC+4)'],['Europe/London','UK (UTC+0/+1)'],['Europe/Berlin','Central Europe (UTC+1/+2)'],['America/New_York','US East (UTC−5/−4)'],['America/Los_Angeles','US West (UTC−8/−7)'],['Asia/Singapore','Singapore (UTC+8)'],['Australia/Sydney','Sydney (UTC+10/+11)']];
+  var CC_TZ = {in:'Asia/Kolkata', np:'Asia/Kathmandu', ae:'Asia/Dubai', gb:'Europe/London', de:'Europe/Berlin', fr:'Europe/Berlin', ch:'Europe/Berlin', us:'America/New_York', sg:'Asia/Singapore', au:'Australia/Sydney'};
+  var FIELDS = [['venue','Studio or venue name','For example: Shanti Studio',''],['building','House, flat & building','For example: Shanti Kutir, 2nd floor',''],['street','Street or road','For example: Tapovan Road',''],['area','Area or locality','For example: Tapovan',''],['landmark','Landmark','For example: Near Laxman Jhula','opt'],['city','City or town','',''],['district','District','','opt'],['state','State or region','',''],['pin','PIN or postal code','',''],['country','Country','','']];
+  var DEMO = {venue:'Tapovan studio', building:'Shanti Kutir, 2nd floor', street:'Tapovan Road', area:'Tapovan', landmark:'Near Laxman Jhula', city:'Rishikesh', district:'Tehri Garhwal', state:'Uttarakhand', pin:'249192', country:'India', lat:30.1290, lng:78.3262, tz:'Asia/Kolkata'};
+  var leafletP = null;
+  function loadLeaflet(){
+    if (window.L) return Promise.resolve(window.L);
+    if (leafletP) return leafletP;
+    leafletP = new Promise(function(res, rej){
+      var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'; document.head.appendChild(css);
+      var s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js';
+      s.onload = function(){ window.L ? res(window.L) : rej(); }; s.onerror = function(){ leafletP = null; rej(); };
+      document.head.appendChild(s); setTimeout(function(){ if (!window.L){ leafletP = null; rej(); } }, 8000);
+    });
+    return leafletP;
+  }
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function tzNow(tz){ try { return new Intl.DateTimeFormat('en-IN', {timeZone:tz, hour:'numeric', minute:'2-digit', hour12:true, weekday:'short'}).format(new Date()); } catch(e){ return ''; } }
+  function fromOSM(a){
+    a = a || {};
+    return {building:[a.house_number, a.building || a.amenity || a.house_name].filter(Boolean).join(', '), street:a.road || a.pedestrian || a.footway || '', area:a.suburb || a.neighbourhood || a.quarter || a.hamlet || a.village || '',
+      city:a.city || a.town || a.village || a.municipality || '', district:a.state_district || a.county || '', state:a.state || '', pin:a.postcode || '', country:a.country || '', cc:(a.country_code || '').toLowerCase()};
+  }
+  window.tvLocation = {
+    DEMO: DEMO,
+    html: function(d){
+      d = d || {};
+      return '<div class="loc">' +
+        '<div class="loc-tools"><label class="loc-search"><svg class="i s"><use href="#i-search"/></svg><input type="search" class="loc-q" placeholder="Search your studio, street or area" aria-label="Search for a place" autocomplete="off"><span class="loc-res" hidden></span></label>' +
+        '<button type="button" class="btn g sm loc-me"><svg class="i s"><use href="#i-pin"/></svg>Use my current location</button></div>' +
+        '<div class="loc-map" role="application" aria-label="Map. Drag the pin to your exact entrance."><div class="loc-fallback"><span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span><b>Map is loading…</b></div></div>' +
+        '<div class="loc-meta"><span class="loc-coords">' + (d.lat ? 'Pin: ' + (+d.lat).toFixed(5) + ', ' + (+d.lng).toFixed(5) : 'No pin yet') + '</span><span class="small muted">Drag the pin to your exact entrance. Seekers see the exact address only after they book.</span></div>' +
+        '<div class="fgrid loc-fields">' + FIELDS.map(function(f){ return '<label class="field' + (f[0] === 'venue' ? ' full' : '') + '"><span>' + f[1] + (f[3] ? ' <small>(optional)</small>' : '') + '</span><input class="inp" name="loc_' + f[0] + '" value="' + esc(d[f[0]]) + '" placeholder="' + esc(f[2]) + '"></label>'; }).join('') +
+        '<label class="field"><span>Time zone</span><select class="sel" name="loc_tz">' + TZ.map(function(t){ return '<option value="' + t[0] + '"' + ((d.tz || 'Asia/Kolkata') === t[0] ? ' selected' : '') + '>' + t[1] + '</option>'; }).join('') + '</select><small class="loc-tznow"></small></label>' +
+        '<label class="field full"><span>Directions for seekers <small>(shared after booking)</small></span><textarea class="ta" name="loc_directions" data-veda="directions" placeholder="For example: 5 minutes walk from Laxman Jhula. Take the lane next to the chai stall, blue gate on the left.">' + esc(d.directions) + '</textarea></label>' +
+        '<label class="check full"><input type="checkbox" name="loc_private" ' + (d.private === false ? '' : 'checked') + '><span>Show only the area on my public profile. Share the full address after booking.</span></label>' +
+        '</div><input type="hidden" name="loc_lat" value="' + esc(d.lat) + '"><input type="hidden" name="loc_lng" value="' + esc(d.lng) + '"></div>';
+    },
+    read: function(fd){ var o = {}; FIELDS.forEach(function(f){ o[f[0]] = (fd.get('loc_' + f[0]) || '').trim(); }); o.tz = fd.get('loc_tz'); o.directions = fd.get('loc_directions') || ''; o.private = !!fd.get('loc_private'); o.lat = parseFloat(fd.get('loc_lat')) || null; o.lng = parseFloat(fd.get('loc_lng')) || null; return o; },
+    missing: function(o){ return ['building','street','city','state','pin','country'].filter(function(k){ return !o[k]; }); },
+    tzLabel: function(tz){ var t = TZ.filter(function(x){ return x[0] === tz; })[0]; return t ? t[1] : tz; },
+    wire: function(root, d, toast){
+      d = d || {};
+      var q = function(s){ return root.querySelector(s); };
+      var map = null, marker = null, timer = null;
+      var showTz = function(){ q('.loc-tznow').textContent = 'Local time there now: ' + tzNow(q('[name=loc_tz]').value); };
+      q('[name=loc_tz]').addEventListener('change', showTz); showTz();
+      function setPin(lat, lng, pan){
+        q('[name=loc_lat]').value = lat.toFixed(6); q('[name=loc_lng]').value = lng.toFixed(6);
+        q('.loc-coords').textContent = 'Pin: ' + lat.toFixed(5) + ', ' + lng.toFixed(5);
+        if (map){ if (!marker){ marker = L.marker([lat, lng], {draggable:true, autoPan:true, icon:L.divIcon({className:'loc-mk', html:'<span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span>', iconSize:[44,50], iconAnchor:[22,48]})}).addTo(map); marker.on('dragend', function(){ var p = marker.getLatLng(); setPin(p.lat, p.lng, false); reverse(p.lat, p.lng); }); } else marker.setLatLng([lat, lng]); if (pan) map.setView([lat, lng], 16); }
+      }
+      function fill(o, keepVenue){
+        ['building','street','area','city','district','state','pin','country'].forEach(function(k){ if (o[k]) { var el = q('[name=loc_' + k + ']'); el.value = o[k]; el.classList.add('flash'); setTimeout(function(){ el.classList.remove('flash'); }, 900); } });
+        if (o.cc && CC_TZ[o.cc]){ q('[name=loc_tz]').value = CC_TZ[o.cc]; showTz(); }
+      }
+      function reverse(lat, lng){
+        q('.loc-coords').textContent = 'Finding the address…';
+        fetch('https://nominatim.openstreetmap.org/reverse?format=jsonv2&addressdetails=1&zoom=18&lat=' + lat + '&lon=' + lng, {headers:{'Accept-Language':'en'}})
+          .then(function(r){ return r.json(); }).then(function(j){ fill(fromOSM(j.address)); q('.loc-coords').textContent = 'Pin: ' + lat.toFixed(5) + ', ' + lng.toFixed(5); toast && toast('Address filled from the map. Check the details.'); })
+          .catch(function(){ q('.loc-coords').textContent = 'Pin: ' + lat.toFixed(5) + ', ' + lng.toFixed(5) + ' · address lookup unavailable, please type it'; });
+      }
+      function fallback(){
+        var fb = q('.loc-fallback'); if (!fb) return;
+        fb.innerHTML = '<span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span><b>Map could not load here</b><small>You can still type the address below, or use the demo studio.</small><button type="button" class="btn sm g loc-demo">Use demo studio in Tapovan</button>';
+        fb.querySelector('.loc-demo').onclick = function(){ fill({building:DEMO.building, street:DEMO.street, area:DEMO.area, city:DEMO.city, district:DEMO.district, state:DEMO.state, pin:DEMO.pin, country:DEMO.country, cc:'in'}); q('[name=loc_venue]').value = q('[name=loc_venue]').value || DEMO.venue; q('[name=loc_landmark]').value = q('[name=loc_landmark]').value || DEMO.landmark; setPin(DEMO.lat, DEMO.lng, false); toast && toast('Demo address filled'); };
+      }
+      loadLeaflet().then(function(L){
+        if (!document.body.contains(root)) return;
+        var el = q('.loc-map'); el.innerHTML = '';
+        var lat = +d.lat || DEMO.lat, lng = +d.lng || DEMO.lng;
+        map = L.map(el, {scrollWheelZoom:false}).setView([lat, lng], d.lat ? 16 : 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+        if (d.lat) setPin(lat, lng, false);
+        map.on('click', function(e){ setPin(e.latlng.lat, e.latlng.lng, false); reverse(e.latlng.lat, e.latlng.lng); });
+        setTimeout(function(){ map.invalidateSize(); }, 200);
+      }).catch(fallback);
+      q('.loc-me').onclick = function(){
+        var b = this; if (!navigator.geolocation) return toast && toast('Location is not available in this browser');
+        b.disabled = true; b.lastChild.textContent = 'Finding you…';
+        navigator.geolocation.getCurrentPosition(function(p){ b.disabled = false; b.lastChild.textContent = 'Use my current location'; setPin(p.coords.latitude, p.coords.longitude, true); reverse(p.coords.latitude, p.coords.longitude); try { var z = Intl.DateTimeFormat().resolvedOptions().timeZone; if (TZ.some(function(t){ return t[0] === z; })){ q('[name=loc_tz]').value = z; showTz(); } } catch(e){} },
+          function(){ b.disabled = false; b.lastChild.textContent = 'Use my current location'; toast && toast('Allow location access, or search for your address instead'); }, {enableHighAccuracy:true, timeout:10000});
+      };
+      var inp = q('.loc-q'), res = q('.loc-res');
+      inp.addEventListener('input', function(){
+        clearTimeout(timer); var v = inp.value.trim(); if (v.length < 3){ res.hidden = true; return; }
+        timer = setTimeout(function(){
+          fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=5&q=' + encodeURIComponent(v), {headers:{'Accept-Language':'en'}}).then(function(r){ return r.json(); }).then(function(list){
+            res.hidden = false;
+            res.innerHTML = list.length ? list.map(function(x, i){ return '<button type="button" data-i="' + i + '">' + esc(x.display_name) + '</button>'; }).join('') : '<span class="none">No places found. Try a nearby landmark.</span>';
+            Array.prototype.forEach.call(res.querySelectorAll('[data-i]'), function(btn){ btn.onclick = function(){ var x = list[+btn.dataset.i]; res.hidden = true; inp.value = x.display_name.split(',').slice(0, 2).join(','); var lat = +x.lat, lng = +x.lon; setPin(lat, lng, true); fill(fromOSM(x.address)); if (!q('[name=loc_venue]').value && x.name) q('[name=loc_venue]').value = x.name; }; });
+          }).catch(function(){ res.hidden = false; res.innerHTML = '<span class="none">Search is unavailable right now. Please type the address below.</span>'; });
+        }, 450);
+      });
+      inp.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); } });
+      document.addEventListener('click', function h(e){ if (!document.body.contains(root)) return document.removeEventListener('click', h); if (!root.querySelector('.loc-search').contains(e.target)) res.hidden = true; });
+    }
+  };
+})();
+</script>
+<script>
+/* =====================================================================
+   Veda writing help for every bio / description / note field.
+   Mark a field with data-veda="<kind>"; call tvVeda.attach(scope, ctxFn).
+   Rule-based in this prototype; production calls the 2Verse LLM endpoint
+   with the same kind + context and returns 2 options.
+   ===================================================================== */
+(function(){
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function lc(s){ return String(s || '').toLowerCase(); }
+  function list(a){ a = (a || []).filter(Boolean); return a.length < 2 ? (a[0] || '') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1]; }
+  var CONTRA = {'Breathwork':'Late pregnancy, epilepsy, recent chest or abdominal surgery, uncontrolled high blood pressure', 'Sound Healing':'Pacemaker or other implanted device, epilepsy, first trimester of pregnancy', 'Meditation':'Active psychosis or severe dissociation without professional support', 'Yoga':'Recent injury or surgery, acute disc problems, late pregnancy without prenatal guidance', 'Somatic Healing':'Acute mental health crisis (please contact local services first), recent trauma without other support'};
+  var PREP = {
+    'Breathwork':['Eat lightly; avoid a heavy meal 2 hours before','Wear loose, comfortable clothes','Keep a glass of water and a blanket nearby','Have a mat, or a firm chair with back support'],
+    'Sound Healing':['Use over-ear headphones for online sessions','Lie down somewhere you will not be disturbed','Keep an eye pillow or scarf for your eyes','Avoid caffeine for 2 hours before'],
+    'Meditation':['Find a quiet corner and silence your phone','Sit on a cushion or chair with a straight back','Arrive 5 minutes early to settle'],
+    'Yoga':['Do not eat for 2 hours before','Have a mat and two cushions or blocks','Tell us about any injury in the questions below'],
+    'Somatic Healing':['Choose a private, quiet room','Keep water and a blanket close','Have something comforting nearby, like a shawl or a cup of tea']};
+  var GEN = {
+    bio:function(c){ return [ (c.name || 'This healer') + ' has guided ' + lc(list(c.practices)) + ' in ' + (c.city || 'Tapovan, Rishikesh') + ' for ' + (c.years || 'many') + ' years. Sessions are calm, practical and paced for you, with one simple practice to keep doing at home. People come for help with ' + lc(list(c.areas && c.areas.length ? c.areas.slice(0, 3) : ['stress','sleep','focus'])) + '.',
+      'I have practised ' + lc(list(c.practices)) + ' for ' + (c.years || 'many') + ' years, learning in the traditional way in ' + (c.city || 'Rishikesh') + '. I work with people whose minds rarely switch off. We go slowly, start with the breath and the body, and build a short routine that fits your real life.' ]; },
+    why:function(c){ return ['People come to me when their mind will not switch off. We start with the breath, because it is always with you.', 'Most people arrive tired of trying hard. Here you can stop trying, and let your body show you how to rest.']; },
+    lineage:function(c){ return ['Trained for ' + (c.years || 'many') + ' years under ' + (c.teacher || 'my teacher') + ', in a traditional lineage of ' + lc(list(c.practices)) + ' in Tapovan. I still practise with my teacher every winter.', 'I learned ' + lc(list(c.practices)) + ' in the guru–shishya tradition, by living and practising with ' + (c.teacher || 'my teacher') + ' before teaching on my own.']; },
+    tagline:function(c){ return [(c.practices && c.practices[0] || 'Holistic healing') + ' for ' + lc(list((c.areas || ['sleep','stress']).slice(0, 2))) + ' and steady calm', 'Gentle ' + lc(c.practices && c.practices[0] || 'healing') + ' for busy minds']; },
+    svcdesc:function(c){ var s = c.service || {}, kind = s.type === '1:1' ? 'one-to-one' : s.type === 'Workshop' ? 'workshop' : 'small-group', fmt = s.format === 'Online' ? 'online' : s.format === 'In person' ? 'in person in Tapovan' : 'online or in person';
+      var pk = s.pkg ? ' The package includes ' + s.pkg + ' sessions, so we can build the practice week by week.' : '';
+      return ['A ' + (s.dur || 60) + '-minute ' + kind + ' ' + lc(s.modality || 'healing') + ' session, ' + fmt + '. We begin with a short conversation about what you need, move into guided practice, and finish with one simple routine you can repeat at home.' + pk,
+        (s.name || 'This session') + ' is a gentle, ' + kind + ' practice for people who want to feel calmer and sleep better. No experience needed. You will leave with a 10-minute routine and a recording to use between sessions.' + pk]; },
+    contra:function(c){ var m = (c.service && c.service.modality) || (c.practices || [])[0]; return [CONTRA[m] || 'Pregnancy, recent surgery, or any condition your doctor has asked you to be careful with', (CONTRA[m] || 'Recent surgery') + '. If unsure, please message me before booking.']; },
+    prep:function(c){ var m = (c.service && c.service.modality) || 'Breathwork', base = (PREP[m] || PREP.Breathwork).slice(); if ((c.service && c.service.format) !== 'In person') base.push('Test your camera and sound 10 minutes before'); else base.push('Arrive 10 minutes early; the studio door opens 15 minutes before'); return [base.join('\n'), base.slice(0, 3).join('\n')]; },
+    hprep:function(c){ var online = (c.service && c.service.format) !== 'In person'; var a = ['Read the seeker\'s intake answers and safety notes', online ? 'Test the room, camera and audio 10 minutes before' : 'Prepare the studio: mats, blankets and fresh water', 'Check notes from your last session together', 'Keep the practice recording ready to share after']; return [a.join('\n'), a.slice(0, 3).join('\n')]; },
+    questions:function(c){ return ['What would you most like help with in this session?\nHave you done ' + lc((c.service && c.service.modality) || 'this practice') + ' before?\nIs there anything about your health I should know?', 'How have you been sleeping this week?\nWhat would make this session feel like a success for you?']; },
+    excerpt:function(c){ return ['A short, practical guide to ' + lc(c.title || 'this practice') + ', with one exercise you can try tonight.', 'What ' + lc(c.title || 'this') + ' really means, why it works, and how to start in five minutes a day.']; },
+    article:function(c){ var t = c.title || 'this practice'; return [t + '.\n\nMost of us know we should slow down, but very few of us are shown how. In this piece I share what I teach in my first session, in plain words.\n\nWhy it works: when the breath slows, the body follows. Your heart rate settles and attention becomes easier.\n\nTry this tonight: sit or lie down, breathe in for four counts and out for six. Ten rounds is enough. Do it at the same time every day for a week and notice what changes.', 'In my sessions in Tapovan, people often ask about ' + lc(t) + '. Here is the simplest way I know to begin, and the mistakes to avoid.']; },
+    eventdesc:function(c){ return ['Join ' + (c.name || 'us') + ' for ' + (c.title || 'an evening of practice') + (c.venue ? ' at ' + c.venue : '') + '. We begin with gentle movement, settle into guided breath, and close in silence. Mats, blankets and herbal tea are provided. No experience needed.', 'A small, unhurried gathering. Come as you are, leave a little lighter. Seats are limited so everyone has space.']; },
+    directions:function(c){ var l = c.loc || {}; return ['Look for ' + (l.venue || 'the studio') + (l.building ? ', ' + l.building : '') + ' on ' + (l.street || 'the main road') + (l.landmark ? ', ' + lc(l.landmark) : '') + '. Taxis and autos can drop you at the gate. Please remove shoes at the entrance.', (l.landmark ? l.landmark + '. ' : '') + 'Call or message me on 2Verse if you are lost; I am happy to guide you.']; },
+    intent:function(c){ var n = list((c.needs || []).map(lc)); return ['I would like help with ' + (n || 'stress and sleep') + '. Lately my mind keeps racing in the evening and I wake up tired. I want a simple routine I can keep.', 'I am new to this and would like to start gently. My main goal is ' + (n || 'to feel calmer') + '.']; },
+    review:function(c){ return [(c.name || 'My healer') + ' was patient, clear and kind. I left with a short practice I am still using, and I feel calmer already.', 'Gentle and practical. ' + (c.name || 'The session') + ' explained everything first, so I felt safe the whole time.']; },
+    reply:function(c){ return ['Thank you, ' + (c.first || 'friend') + '. It was lovely practising with you. Keep the evening exhale going, and I will see you next time.', 'Thank you for your kind words, ' + (c.first || 'friend') + '. I am glad the practice is helping.']; },
+    note:function(c){ return ['Responds well to long exhales. Prefers evening sessions. Follow up on sleep in one week.', 'Focus next time: shoulders and jaw tension. Shared the 6-minute audio.']; },
+    message:function(c){ return ['Hi ' + (c.first || 'there') + ', thank you for booking. Before we meet, please read the preparation notes. I look forward to our session.', 'Hi ' + (c.first || 'there') + ', just checking in. How have you been feeling since our last session?']; }
+  };
+  var LABEL = {bio:'bio', why:'quote', lineage:'lineage', tagline:'headline', svcdesc:'description', contra:'safety note', prep:'preparation list', hprep:'checklist', questions:'questions', excerpt:'summary', article:'article', eventdesc:'description', directions:'directions', intent:'note', review:'review', reply:'reply', note:'note', message:'message'};
+  function sentences(t){ return (t.match(/[^.!?\n]+[.!?]*/g) || []).map(function(s){ return s.trim(); }).filter(Boolean); }
+  var TF = {
+    warmer:function(t){ t = t.trim(); if (!t) return t; return (/^(welcome|you are|come)/i.test(t) ? '' : 'You are welcome here, just as you are. ') + t.replace(/\byou will\b/gi, 'together we will').replace(/\bmust\b/g, 'can') + (/come as you are/i.test(t) ? '' : ' Come as you are.'); },
+    shorter:function(t){ if (t.indexOf('\n') > -1 && !/[.!?]\s/.test(t)) return t.split('\n').filter(Boolean).slice(0, 3).join('\n'); var s = sentences(t); return s.slice(0, Math.max(1, Math.ceil(s.length / 2))).join(' ').replace(/\b(very|really|truly|simply|just)\s/gi, ''); },
+    detail:function(t, kind, c){ var more = {bio:' Sessions happen in person by the Ganga in Tapovan or online, in ' + list(c.langs || ['English','Hindi']) + '.', svcdesc:' You will receive a short recording afterwards to practise with at home.', eventdesc:' Please arrive 10 minutes early to settle in.', directions:' Parking is available near the main road.', article:'\n\nA note of care: if anything feels uncomfortable, stop and breathe normally. Practice should never strain.'}; return t.trim() + (more[kind] || ' I am happy to answer any questions before we begin.'); },
+    fix:function(t){ return t.replace(/\s+([,.!?])/g, '$1').replace(/[ \t]{2,}/g, ' ').replace(/\bi\b/g, 'I').replace(/(^|[.!?]\s+|\n)([a-z])/g, function(m, a, b){ return a + b.toUpperCase(); }).replace(/([^.!?\n])$/, '$1.').trim(); }
+  };
+  function wrap(field){
+    if (field.dataset.vedaReady) return; field.dataset.vedaReady = 1;
+    var kind = field.dataset.veda, box = document.createElement('div'); box.className = 'vw';
+    box.innerHTML = '<div class="vw-bar"><button type="button" class="vw-btn" aria-expanded="false"><span class="vw-orb"></span>Veda</button>' +
+      '<span class="vw-acts" hidden><button type="button" data-a="write">Write for me</button><button type="button" data-a="warmer">Warmer</button><button type="button" data-a="shorter">Shorter</button><button type="button" data-a="detail">More detail</button><button type="button" data-a="fix">Fix grammar</button></span></div><div class="vw-out" hidden></div>';
+    field.insertAdjacentElement('afterend', box);
+    return box;
+  }
+  function put(field, text, mode){ field.value = mode === 'add' && field.value.trim() ? field.value.trim() + (field.tagName === 'TEXTAREA' ? '\n\n' : ' ') + text : text; field.dispatchEvent(new Event('input', {bubbles:true})); field.focus(); }
+  window.tvVeda = {
+    attach:function(scope, ctxFn, toast){
+      Array.prototype.forEach.call((scope || document).querySelectorAll('[data-veda]'), function(field){
+        var box = wrap(field); if (!box) return;
+        var acts = box.querySelector('.vw-acts'), out = box.querySelector('.vw-out'), btn = box.querySelector('.vw-btn');
+        btn.onclick = function(){ var open = acts.hidden; acts.hidden = !open; btn.setAttribute('aria-expanded', open); if (!open) out.hidden = true; };
+        Array.prototype.forEach.call(acts.querySelectorAll('[data-a]'), function(a){ a.onclick = function(){
+          var kind = field.dataset.veda, c = (ctxFn && ctxFn(kind, field)) || {}, cur = field.value.trim(), act = a.dataset.a, opts;
+          if (act !== 'write' && !cur){ act = 'write'; }
+          out.hidden = false; out.innerHTML = '<div class="vw-typing"><i></i><i></i><i></i> Veda is writing…</div>';
+          setTimeout(function(){
+            if (act === 'write') opts = (GEN[kind] || GEN.note)(c);
+            else opts = [TF[act](cur, kind, c)];
+            out.innerHTML = '<div class="vw-h">' + (act === 'write' ? 'Suggested ' + (LABEL[kind] || 'text') : {warmer:'Warmer version', shorter:'Shorter version', detail:'With more detail', fix:'Grammar fixed'}[act]) + '<button type="button" class="vw-x" aria-label="Close suggestions">×</button></div>' +
+              opts.map(function(o, i){ return '<div class="vw-opt"><p>' + esc(o).replace(/\n/g, '<br>') + '</p><div class="vw-use"><button type="button" class="btn xs p" data-use="' + i + '">Use this</button>' + (act === 'write' && cur ? '<button type="button" class="btn xs g" data-add="' + i + '">Add to mine</button>' : '') + '</div></div>'; }).join('') +
+              '<p class="vw-note">Suggestions are a starting point. Make sure it sounds like you.</p>';
+            out.querySelector('.vw-x').onclick = function(){ out.hidden = true; };
+            Array.prototype.forEach.call(out.querySelectorAll('[data-use]'), function(u){ u.onclick = function(){ put(field, opts[+u.dataset.use]); out.hidden = true; toast && toast('Added. Edit anything you like.'); }; });
+            Array.prototype.forEach.call(out.querySelectorAll('[data-add]'), function(u){ u.onclick = function(){ put(field, opts[+u.dataset.add], 'add'); out.hidden = true; toast && toast('Added to your text'); }; });
+          }, 650);
+        }; });
+      });
+    }
+  };
+})();
+</script>
+<script>
+/* =====================================================================
+   Service cover art: upload, or "generate with Veda".
+   The prototype draws a seeded SVG scene (no network). Production sends the
+   prompt + practice to an image model and stores the returned image.
+   ===================================================================== */
+(function(){
+  var PALS = {
+    dawn:['#f4ddb8','#e7a77c','#c0704f','Ganga dawn'], ganga:['#a9c6d3','#5e8a93','#2f5358','River teal'], saffron:['#fbd9a8','#e0892e','#7a1f1f','Saffron'],
+    forest:['#cfdcc2','#6e9b6a','#1f3d2b','Forest'], dusk:['#d7c5e4','#8c75a8','#3a2a5c','Dusk violet'], night:['#2b2c63','#1a2250','#e6c27a','Night sky'], rose:['#fbe1d6','#e7a08a','#8c4a4a','Rose']};
+  function rng(seed){ var a = seed >>> 0; return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function fromPrompt(p, motif){
+    p = (p || '').toLowerCase();
+    var pal = /night|moon|star/.test(p) ? 'night' : /forest|green|tree/.test(p) ? 'forest' : /saffron|fire|warm|orange/.test(p) ? 'saffron' : /river|ganga|water|calm|blue/.test(p) ? 'ganga' : /dusk|violet|purple|evening/.test(p) ? 'dusk' : /rose|pink|heart/.test(p) ? 'rose' : /sun|dawn|morning/.test(p) ? 'dawn' : null;
+    var scene = /mountain|himalaya|hill/.test(p) ? 'mountains' : /river|ganga|water|wave/.test(p) ? 'river' : /night|moon|star/.test(p) ? 'stars' : /sun|dawn|morning/.test(p) ? 'sunrise' : null;
+    if (!pal) pal = {Breathwork:'dawn', 'Sound Healing':'dusk', Meditation:'ganga', Yoga:'saffron', 'Somatic Healing':'rose'}[motif] || 'dawn';
+    if (!scene) scene = {Breathwork:'river', 'Sound Healing':'stars', Meditation:'mountains', Yoga:'sunrise', 'Somatic Healing':'river'}[motif] || 'mountains';
+    return {pal:pal, scene:scene};
+  }
+  function svg(c, w, h){
+    c = c || {}; var P = PALS[c.pal] || PALS.dawn, r = rng(c.seed || 7), W = 800, H = 420, id = 'g' + (c.seed || 7) + (c.pal || '') + Math.floor(r() * 1e6), out = [];
+    var dark = c.pal === 'night';
+    out.push('<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cover art" style="width:' + (w || '100%') + ';height:' + (h || '100%') + ';display:block">');
+    out.push('<defs><linearGradient id="' + id + 'b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P[0] + '"/><stop offset="1" stop-color="' + P[1] + '"/></linearGradient><radialGradient id="' + id + 's"><stop offset="0" stop-color="' + (dark ? '#fff6dc' : '#fff7e6') + '"/><stop offset=".55" stop-color="' + (dark ? P[2] : P[0]) + '" stop-opacity=".9"/><stop offset="1" stop-color="' + P[1] + '" stop-opacity="0"/></radialGradient></defs>');
+    out.push('<rect width="' + W + '" height="' + H + '" fill="url(#' + id + 'b)"/>');
+    var sx = 220 + r() * 360, sy = c.scene === 'sunrise' ? 300 : 120 + r() * 80, sr = 70 + r() * 50;
+    if (c.scene === 'stars') for (var i = 0; i < 70; i++) out.push('<circle cx="' + (r() * W).toFixed(0) + '" cy="' + (r() * H * .7).toFixed(0) + '" r="' + (r() * 1.6 + .4).toFixed(1) + '" fill="#fff" opacity="' + (r() * .6 + .2).toFixed(2) + '"/>');
+    out.push('<circle cx="' + sx.toFixed(0) + '" cy="' + sy.toFixed(0) + '" r="' + (sr * 2.2).toFixed(0) + '" fill="url(#' + id + 's)" opacity=".85"/>');
+    out.push('<circle cx="' + sx.toFixed(0) + '" cy="' + sy.toFixed(0) + '" r="' + (sr * .55).toFixed(0) + '" fill="' + (dark ? '#f6e7c1' : '#fff4dc') + '" opacity=".95"/>');
+    if (c.motif === 'Sound Healing' || c.motif === 'Breathwork') for (var k = 1; k < 6; k++) out.push('<circle cx="' + sx.toFixed(0) + '" cy="' + sy.toFixed(0) + '" r="' + (sr * .55 + k * 26).toFixed(0) + '" fill="none" stroke="#fff" stroke-opacity="' + (.42 - k * .06).toFixed(2) + '" stroke-width="1.4"/>');
+    if (c.scene === 'mountains' || c.scene === 'stars' || c.scene === 'sunrise'){
+      for (var m = 0; m < 3; m++){ var base = 260 + m * 45, pts = '0,' + H + ' 0,' + base; for (var x = 0; x <= W; x += 80) pts += ' ' + x + ',' + (base - r() * (110 - m * 25)).toFixed(0); pts += ' ' + W + ',' + base + ' ' + W + ',' + H;
+        out.push('<polygon points="' + pts + '" fill="' + P[2] + '" opacity="' + (.35 + m * .22).toFixed(2) + '"/>'); }
+    }
+    if (c.scene === 'river' || c.scene === 'sunrise' || c.motif === 'Somatic Healing'){
+      for (var v = 0; v < 6; v++){ var y = 300 + v * 20, a = 8 + r() * 10, d = 'M0 ' + y; for (var xx = 0; xx <= W; xx += 100) d += ' Q' + (xx + 50) + ' ' + (y + (v % 2 ? a : -a)).toFixed(0) + ' ' + (xx + 100) + ' ' + y; out.push('<path d="' + d + '" fill="none" stroke="' + (v < 2 ? '#fff' : P[2]) + '" stroke-opacity="' + (v < 2 ? .55 : .5) + '" stroke-width="' + (v < 2 ? 2 : 10 + v * 3) + '" stroke-linecap="round"/>'); }
+    }
+    if (c.motif === 'Meditation' || c.motif === 'Yoga'){ var cx = sx, cy = 330; out.push('<g fill="' + (dark ? '#f6e7c1' : '#fffaf0') + '" opacity=".9"><ellipse cx="' + cx.toFixed(0) + '" cy="' + cy + '" rx="46" ry="12"/><path d="M' + (cx - 30).toFixed(0) + ' ' + cy + ' Q' + cx.toFixed(0) + ' ' + (cy - 70) + ' ' + (cx + 30).toFixed(0) + ' ' + cy + 'Z"/><circle cx="' + cx.toFixed(0) + '" cy="' + (cy - 78) + '" r="13"/></g>'); }
+    out.push('</svg>');
+    return out.join('');
+  }
+  window.tvCover = {
+    PALS:PALS, svg:svg, fromPrompt:fromPrompt,
+    variations:function(prompt, motif, n){ var b = fromPrompt(prompt, motif), keys = Object.keys(PALS), res = []; for (var i = 0; i < (n || 3); i++){ var pal = i === 0 ? b.pal : keys[(keys.indexOf(b.pal) + i * 2) % keys.length]; res.push({kind:'ai', seed:Math.floor(Math.random() * 1e9), pal:pal, scene:i === 2 ? (b.scene === 'river' ? 'mountains' : 'river') : b.scene, motif:motif, prompt:prompt || ''}); } return res; },
+    html:function(cover, alt){ if (!cover) return ''; if (cover.kind === 'img') return '<img src="' + cover.src + '" alt="' + (alt || '') + '" style="width:100%;height:100%;object-fit:cover;display:block">'; return svg(cover); },
+    compress:function(file, cb){ var r = new FileReader(); r.onload = function(){ var im = new Image(); im.onload = function(){ var W = 1000, s = Math.min(1, W / im.width), cv = document.createElement('canvas'); cv.width = Math.round(im.width * s); cv.height = Math.round(im.height * s); cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height); cb(cv.toDataURL('image/jpeg', .78)); }; im.onerror = function(){ cb(null); }; im.src = r.result; }; r.readAsDataURL(file); }
+  };
+})();
+</script>
+<script>
 (function(){
 'use strict';
 /* =====================================================================
@@ -821,7 +1165,7 @@ const stars = (n, cls = '') => `<span class="stars ${cls}" aria-label="${n} out 
    Seed data (a realistic week for healer Ananya Rawat)
    ===================================================================== */
 const DEF = {
-  v: 3,
+  v: 4,
   theme: 'dawn', available: true,
   seekers: [
     {id:'sarah', name:'Sarah Mitchell', short:'Sarah M.', city:'London', tz:1, col:'--accent-strong', goals:'Sleep, anxiety', notes:'Responds well to long exhales. Prefers evening sessions. Shoulder tension eases after round two.'},
@@ -835,17 +1179,17 @@ const DEF = {
     {id:'lucas', name:'Lucas Meyer', short:'Lucas M.', city:'Munich', tz:2, col:'--chart-1', goals:'Sleep', notes:'Missed his last session.'}
   ],
   services: [
-    {id:'s1', name:'Breath for deep sleep', modality:'Breathwork', type:'1:1', format:'Both', duration:60, inr:2500, usd:65, capacity:1, cutoff:120, status:'active', schedule:{kind:'availability'}, intensity:'Gentle', desc:'A calming pranayama session that helps your body move from alert to rest.', contra:'Not advised in late pregnancy without a doctor\'s approval.', created:'2026-06-12', history:[['2026-06-12','Created'],['2026-08-02','Price updated to ₹2,500 / $65']]},
-    {id:'s2', name:'Pranayama for focus', modality:'Breathwork', type:'1:1', format:'Online', duration:45, inr:1900, usd:55, capacity:1, cutoff:30, status:'active', schedule:{kind:'availability'}, intensity:'Moderate', desc:'Energising breath practices for clear, steady attention.', contra:'Avoid with uncontrolled high blood pressure.', created:'2026-06-20', history:[['2026-06-20','Created']]},
+    {id:'s1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, pkg:{on:true, sessions:5, inr:10500, usd:275, valid:60, only:false}, prep:{seeker:'Eat lightly; no heavy meal 2 hours before\nWear loose, comfortable clothes\nKeep water and a blanket nearby\nTest your camera and sound 10 minutes before', questions:'What would you most like help with?\nHow many hours do you usually sleep?\nAnything about your health I should know?', healer:'Read the intake answers and safety notes\nTest the room, camera and audio\nKeep the evening exhale recording ready to share', remind:24, required:true},  name:'Breath for deep sleep', modality:'Breathwork', type:'1:1', format:'Both', duration:60, inr:2500, usd:65, capacity:1, cutoff:120, status:'active', schedule:{kind:'availability'}, intensity:'Gentle', desc:'A calming pranayama session that helps your body move from alert to rest.', contra:'Not advised in late pregnancy without a doctor\'s approval.', created:'2026-06-12', history:[['2026-06-12','Created'],['2026-08-02','Price updated to ₹2,500 / $65']]},
+    {id:'s2', cover:{kind:'ai', seed:77, pal:'saffron', scene:'sunrise', motif:'Breathwork'}, prep:{seeker:'Sit on a firm chair or cushion\nEmpty stomach, or a light snack only', questions:'What do you need focus for this week?', healer:'Check notes from last time', remind:12, required:false},  name:'Pranayama for focus', modality:'Breathwork', type:'1:1', format:'Online', duration:45, inr:1900, usd:55, capacity:1, cutoff:30, status:'active', schedule:{kind:'availability'}, intensity:'Moderate', desc:'Energising breath practices for clear, steady attention.', contra:'Avoid with uncontrolled high blood pressure.', created:'2026-06-20', history:[['2026-06-20','Created']]},
     {id:'s3', name:'Free intro call', modality:'Breathwork', type:'1:1', format:'Online', duration:15, inr:0, usd:0, capacity:1, cutoff:30, status:'active', schedule:{kind:'availability'}, intensity:'Gentle', desc:'A short call to understand what you need and whether we are a good fit.', contra:'', created:'2026-06-12', history:[['2026-06-12','Created']]},
-    {id:'s4', name:'Evening yoga nidra', modality:'Meditation', type:'Group', format:'Online', duration:60, inr:1200, usd:25, capacity:20, cutoff:0, status:'active', schedule:{kind:'weekly', days:['Wed'], time:'18:30'}, intensity:'Gentle', desc:'Guided deep rest for the whole body, every Wednesday evening.', contra:'', created:'2026-07-01', history:[['2026-07-01','Created'],['2026-08-15','Capacity raised to 20']]},
-    {id:'s5', name:'Sunrise breath circle', modality:'Breathwork', type:'Group', format:'In person', venue:'Tapovan riverside', duration:90, inr:1200, usd:30, capacity:10, cutoff:720, status:'active', schedule:{kind:'weekly', days:['Mon','Tue','Wed','Thu','Fri'], time:'06:00'}, intensity:'Moderate', desc:'Breathwork by the Ganga at sunrise, in a small group.', contra:'', created:'2026-06-15', history:[['2026-06-15','Created']]},
-    {id:'s6', name:'Weekend workshop: Breath & sleep', modality:'Breathwork', type:'Workshop', format:'In person', venue:'Tapovan studio', duration:120, inr:3500, usd:90, capacity:12, cutoff:720, status:'completed', schedule:{kind:'once', date:'2026-09-19', time:'09:00'}, intensity:'Gentle', desc:'A two-hour workshop on breath practices for better sleep.', contra:'', created:'2026-08-20', stats:{seats:11, revenue:'₹38,500', rating:4.9}, history:[['2026-08-20','Created'],['2026-09-19','Held · 11 of 12 seats']]},
-    {id:'s7', name:'Full moon sound meditation', modality:'Meditation', type:'Group', format:'In person', venue:'Tapovan riverside', duration:90, inr:1500, usd:35, capacity:15, cutoff:120, status:'completed', schedule:{kind:'once', date:'2026-09-07', time:'19:00'}, intensity:'Gentle', desc:'Meditation with singing bowls under the full moon.', contra:'', created:'2026-08-10', stats:{seats:14, revenue:'₹21,000', rating:4.6}, history:[['2026-08-10','Created'],['2026-09-07','Held · 14 of 15 seats']]},
+    {id:'s4', cover:{kind:'ai', seed:902, pal:'night', scene:'stars', motif:'Meditation'},  name:'Evening yoga nidra', modality:'Meditation', type:'Group', format:'Online', duration:60, inr:1200, usd:25, capacity:20, cutoff:0, status:'active', schedule:{kind:'weekly', days:['Wed'], time:'18:30'}, intensity:'Gentle', desc:'Guided deep rest for the whole body, every Wednesday evening.', contra:'', created:'2026-07-01', history:[['2026-07-01','Created'],['2026-08-15','Capacity raised to 20']]},
+    {id:'s5', cover:{kind:'ai', seed:31, pal:'ganga', scene:'river', motif:'Breathwork'}, prep:{seeker:'Arrive by 5:50 AM at the riverside steps\nBring a shawl; mornings are cold\nNo food for 2 hours before', questions:'', healer:'Carry mats and the bell\nCheck the river level and weather', remind:12, required:false},  name:'Sunrise breath circle', modality:'Breathwork', type:'Group', format:'In person', venue:'Tapovan riverside', duration:90, inr:1200, usd:30, capacity:10, cutoff:720, status:'active', schedule:{kind:'weekly', days:['Mon','Tue','Wed','Thu','Fri'], time:'06:00'}, intensity:'Moderate', desc:'Breathwork by the Ganga at sunrise, in a small group.', contra:'', created:'2026-06-15', history:[['2026-06-15','Created']]},
+    {id:'s6', cover:{kind:'ai', seed:551, pal:'dusk', scene:'mountains', motif:'Breathwork'},  name:'Weekend workshop: Breath & sleep', modality:'Breathwork', type:'Workshop', format:'In person', venue:'Tapovan studio', duration:120, inr:3500, usd:90, capacity:12, cutoff:720, status:'completed', schedule:{kind:'once', date:'2026-09-19', time:'09:00'}, intensity:'Gentle', desc:'A two-hour workshop on breath practices for better sleep.', contra:'', created:'2026-08-20', stats:{seats:11, revenue:'₹38,500', rating:4.9}, history:[['2026-08-20','Created'],['2026-09-19','Held · 11 of 12 seats']]},
+    {id:'s7', cover:{kind:'ai', seed:208, pal:'night', scene:'stars', motif:'Sound Healing'},  name:'Full moon sound meditation', modality:'Meditation', type:'Group', format:'In person', venue:'Tapovan riverside', duration:90, inr:1500, usd:35, capacity:15, cutoff:120, status:'completed', schedule:{kind:'once', date:'2026-09-07', time:'19:00'}, intensity:'Gentle', desc:'Meditation with singing bowls under the full moon.', contra:'', created:'2026-08-10', stats:{seats:14, revenue:'₹21,000', rating:4.6}, history:[['2026-08-10','Created'],['2026-09-07','Held · 14 of 15 seats']]},
     {id:'s8', name:'Breath & journaling', modality:'Breathwork', type:'1:1', format:'Online', duration:75, inr:2800, usd:70, capacity:1, cutoff:120, status:'draft', schedule:{kind:'availability'}, intensity:'Gentle', desc:'Breath practice followed by guided reflective writing.', contra:'', created:'2026-09-26', history:[['2026-09-26','Draft created']]}
   ],
   bookings: [
-    {id:'BK-1051', seeker:'sarah', service:'s1', date:'2026-09-30', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-24'},
+    {id:'BK-1051', seeker:'sarah', service:'s1', date:'2026-09-30', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-24', prep:{done:[0,1,2], answers:['Falling asleep. My mind keeps planning tomorrow.','About 5 hours on work nights.','Mild asthma, well controlled.'], at:'2026-09-29 21:40'}, hdone:[0]},
     {id:'BK-1047', seeker:'priya', service:'s1', date:'2026-09-30', time:'11:30', format:'In person', cur:'INR', amount:2500, status:'completed', pay:'Paid', booked:'2026-09-25'},
     {id:'BK-1050', seeker:null, seats:12, service:'s4', date:'2026-09-30', time:'18:30', format:'Online', cur:'INR', amount:14400, status:'upcoming', pay:'Paid', booked:'2026-09-21'},
     {id:'BK-1049', seeker:null, seats:8, service:'s5', date:'2026-09-30', time:'06:00', format:'In person', cur:'INR', amount:9600, status:'completed', pay:'Paid', booked:'2026-09-26'},
@@ -855,7 +1199,7 @@ const DEF = {
     {id:'BK-1041', seeker:'rohan', service:'s2', date:'2026-09-28', time:'19:00', format:'Online', cur:'INR', amount:1900, status:'cancelled', pay:'Refunded', booked:'2026-09-20'},
     {id:'BK-1052', seeker:'daniel', service:'s3', date:'2026-10-01', time:'19:30', format:'Online', cur:'USD', amount:0, status:'upcoming', pay:'Free', booked:'2026-09-28'},
     {id:'BK-1053', seeker:'anika', service:'s1', date:'2026-10-01', time:'10:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-27'},
-    {id:'BK-1055', seeker:'james', service:'s1', date:'2026-10-03', time:'07:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-30'},
+    {id:'BK-1055', seeker:'james', service:'s1', date:'2026-10-03', time:'07:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-30', prep:{done:[1], answers:['Racing thoughts at night.','',''], at:'2026-09-30 22:05'}},
     {id:'BK-1056', seeker:'mira', service:'s2', date:'2026-10-04', time:'17:30', format:'Online', cur:'USD', amount:55, status:'upcoming', pay:'Paid', booked:'2026-09-27'},
     {id:'BK-1057', seeker:'emma', service:'s2', date:'2026-10-05', time:'13:00', format:'Online', cur:'USD', amount:55, status:'upcoming', pay:'Paid', booked:'2026-09-29'},
     {id:'BK-1058', seeker:'sarah', service:'s1', date:'2026-10-07', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', pay:'Paid', booked:'2026-09-29'},
@@ -909,9 +1253,6 @@ const DEF = {
       {f:'out', at:'2026-09-29 14:00', t:'Hi Lucas, we missed you today. Book another time whenever you are ready.'}]}
   ],
   blocks: [
-    {id:'bl1', date:'2026-09-29', time:'15:00', dur:120, label:'Personal practice', kind:'block'},
-    {id:'bl2', date:'2026-10-02', time:'16:00', dur:180, label:'Travel', kind:'block'},
-    {id:'bl3', date:'2026-10-04', time:'08:00', dur:120, label:'Day off', kind:'block'},
     {id:'bl4', date:'2026-09-30', time:'15:00', dur:90, label:'Instant consultations', kind:'instant'}
   ],
   articles: [
@@ -944,11 +1285,11 @@ const DEF = {
     why:'People come to me when their mind won\'t switch off. We start with the breath, because it is always with you.',
     areas:['Anxiety','Sleep','Focus','Burnout'], video:'intro-ananya.mp4',
     venue:'Tapovan studio, near Laxman Jhula, Rishikesh', delivery:['In person','Online'], defCutoff:120, cancel:'Moderate · free cancellation up to 24 hours before',
-    insurance:{file:'liability-2025.pdf', expires:'2026-10-30', status:'rev'},
+    loc:{venue:'Tapovan studio', building:'Shanti Kutir, 2nd floor', street:'Tapovan Road', area:'Tapovan', landmark:'Near Laxman Jhula', city:'Rishikesh', district:'Tehri Garhwal', state:'Uttarakhand', pin:'249192', country:'India', lat:30.129, lng:78.3262, tz:'Asia/Kolkata', directions:'5 minutes walk from Laxman Jhula towards Tapovan. Blue gate on the left after the chai stall; studio on the 2nd floor.', private:true},
     declared:true, lastSaved:'2026-09-18'
   }
 };
-const KEY = '2verse-healer-v3';
+const KEY = '2verse-healer-v4';
 let S;
 try { S = JSON.parse(localStorage.getItem(KEY)); } catch(e){}
 if (!S || S.v !== DEF.v) S = clone(DEF);
@@ -1111,14 +1452,14 @@ function occurrences(from, to){
     }
   });
   S.events.filter(e => e.status === 'Published' && inR(e.date)).forEach(e => out.push({kind:'event', id:e.id, date:e.date, time:e.time, dur:e.duration, cls:'e', title:e.title, sub:`Event · ${e.reg}/${e.cap}`, e}));
-  S.blocks.filter(b => inR(b.date)).forEach(b => out.push({kind:'block', id:b.id, date:b.date, time:b.time, dur:b.dur, cls:b.kind === 'instant' ? 'pp' : 'bl', title:b.label, sub:b.kind === 'instant' ? '15 min calls' : 'Blocked', bl:b}));
+  S.blocks.filter(b => b.kind === 'instant' && inR(b.date)).forEach(b => out.push({kind:'block', id:b.id, date:b.date, time:b.time, dur:b.dur, cls:b.kind === 'instant' ? 'pp' : 'bl', title:b.label, sub:b.kind === 'instant' ? '15 min calls' : 'Blocked', bl:b}));
   return out.sort((a, b) => k(a.date, a.time).localeCompare(k(b.date, b.time)));
 }
 function openOccurrence(o){
   if (o.kind === 'booking') return bookingModal(o.b.id);
   if (o.kind === 'service') return serviceModal(o.s.id);
   if (o.kind === 'event') return eventModal(o.e.id);
-  if (o.kind === 'block') return confirmBox('Remove this block?', `${esc(o.bl.label)} · ${fDate(o.bl.date)} · ${f12(o.bl.time)}. Seekers will be able to book this time again.`, 'Remove block', true, () => { S.blocks = S.blocks.filter(x => x.id !== o.bl.id); commit(); toast('Time is open for booking again'); });
+  if (o.kind === 'block') return toast('Instant consultations follow your "Available now" switch in the top bar.');
 }
 
 /* =====================================================================
@@ -1136,7 +1477,6 @@ RENDER.overview = () => {
   const pfAct = pfSteps().filter(s => s.st === 'act');
   const needs = [
     ...pfAct.map(s => ({ic:'i-upload', bg:'--soft-clay', c:'--accent-strong', t:s.title, d:s.hint, go:'profile', opt:{step:s.n}, cta:'Fix'})),
-    ...(S.profile.insurance.status !== 'ok' ? [{ic:'i-shield', bg:'--soft-gold', c:'--gold-strong', t:'Liability insurance', d:`Expires ${fDate(S.profile.insurance.expires)}`, go:'profile', opt:{step:7}, cta:'Renew'}] : []),
     ...S.threads.filter(x => x.followUp && !x.archived).map(x => ({ic:'i-send', bg:'--soft-sage', c:'--primary', t:`Follow up with ${seeker(x.seeker).short}`, d:seeker(x.seeker).notes || 'Marked for follow-up', go:'messages', opt:{thread:x.id}, cta:'Open'})),
     ...(S.posts.length ? [{ic:'i-share', bg:'--soft-sky', c:'--primary', t:`${S.posts.length} social posts`, d:'Ready for your approval', go:'social', cta:'Review'}] : [])
   ];
@@ -1146,7 +1486,7 @@ RENDER.overview = () => {
   $('#v-overview').innerHTML = `
   <div class="head">
     <div><span class="eyebrow">${fDate(TODAY)} · Tapovan</span><h1>Namaste, <em>Ananya</em></h1><p>You have ${sessToday} sessions today, ${unreadThreads.length} unread message${unreadThreads.length === 1 ? '' : 's'} and ${toReply.length} review${toReply.length === 1 ? '' : 's'} waiting for a reply.</p></div>
-    <div class="head-actions"><button class="btn g" id="ovBlock">${ico('i-plus')}Block time</button><button class="btn p" id="ovNewSvc">${ico('i-leaf')}New service</button></div>
+    <div class="head-actions"><button class="btn p" id="ovNewSvc">${ico('i-leaf')}New service</button></div>
   </div>
   <div class="kpis">
     <div class="card kpi"><div class="lbl"><span class="ic" style="background:var(--soft-sage)">${ico('i-wallet')}</span>Earnings this week</div><div class="val">₹68,400</div><div class="sub"><span class="delta">+12%</span>about $820 · vs last week</div><svg class="spark" data-spark="42,46,41,51,53,54,60,59,65,66,65,68" aria-hidden="true"></svg></div>
@@ -1160,6 +1500,7 @@ RENDER.overview = () => {
       <h3>${esc(nextS.name)}</h3><span style="font-size:13.5px;opacity:.8">${nextS.duration} min · ${rel(next.date)} ${f12(next.time)} IST</span>
       ${nextP ? `<div class="who"><span class="av l" style="background:var(${nextP.col})">${nextP.name[0]}</span><div><b>${esc(nextP.name)}</b><small>${esc(nextP.city)} · ${local(next.date, next.time, nextP.tz)} her time</small></div></div>
       ${nextP.notes ? `<div class="unote"><b>Your note from last time</b>${esc(nextP.notes)}</div>` : ''}` : ''}
+      ${nextS.prep && linesOf(nextS.prep.seeker).length && next.seeker ? `<div class="prep-s"><span>${ico('i-check','i xs')} Preparation: ${next.prep ? `${next.prep.done.length} of ${linesOf(nextS.prep.seeker).length} done · answers ready` : 'not started yet'}</span><button type="button" id="prepNext">View</button></div>` : ''}
       <div class="cd"><div class="t"><span id="countdown">${mins > 0 && next.date === TODAY ? `${mins}:00` : rel(next.date)}</span><small>${next.date === TODAY ? 'minutes to go' : f12(next.time)}</small></div><button class="btn gold" id="openRoom">${ico('i-video')}Open room</button></div>
     </div>` : '<div class="card empty">No upcoming sessions.</div>'}
     <div class="card">
@@ -1209,8 +1550,9 @@ RENDER.overview = () => {
     </div>
   </div>`;
   $$('#v-overview [data-occ]').forEach(el => el.addEventListener('click', () => { const [kind, id] = el.dataset.occ.split('|'); const o = today.find(x => x.kind === kind && x.id === id); o && openOccurrence(o); }));
+  $('#prepNext') && ($('#prepNext').onclick = () => bookingModal(next.id));
   $('#openRoom') && ($('#openRoom').onclick = () => toast('The room opens 10 minutes before the session.'));
-  $('#ovBlock').onclick = blockModal; $('#ovNewSvc').onclick = () => serviceModal(); $('#insSvc').onclick = () => serviceModal(null, {name:'Sleep reset', modality:'Breathwork', type:'1:1', duration:45, schedule:{kind:'availability'}});
+  $('#ovNewSvc').onclick = () => serviceModal(); $('#insSvc').onclick = () => serviceModal(null, {name:'Sleep reset', modality:'Breathwork', type:'1:1', duration:45, schedule:{kind:'availability'}});
   $('#earnTblBtn').onclick = e => {
     const show = $('#earnTable').hidden; $('#earnTable').hidden = !show; $('#earnChart').hidden = show;
     e.currentTarget.textContent = show ? 'View as chart' : 'View as table'; e.currentTarget.setAttribute('aria-pressed', show);
@@ -1230,10 +1572,10 @@ RENDER.calendar = () => {
   const days = Array.from({length:7}, (_, i) => addDays(weekStart, i));
   $('#v-calendar').innerHTML = `
   <div class="head">
-    <div><span class="eyebrow">${fShort(weekStart)} – ${fShort(end)} ${pd(end).getUTCFullYear()} · Times in IST</span><h1>Calendar</h1><p>Bookings, group sessions, events and blocked time. Synced both ways with Google Calendar; seekers see times in their own time zone.</p></div>
-    <div class="head-actions"><button class="icon-btn" id="wkPrev" aria-label="Previous week">${ico('i-back')}</button><button class="btn sm g" id="wkToday">This week</button><button class="icon-btn" id="wkNext" aria-label="Next week" style="transform:scaleX(-1)">${ico('i-back')}</button><button class="btn g" id="calBlock">${ico('i-plus')}Block time</button></div>
+    <div><span class="eyebrow">${fShort(weekStart)} – ${fShort(end)} ${pd(end).getUTCFullYear()} · Times in IST</span><h1>Calendar</h1><p>Bookings, group sessions, events and instant consultation windows. Synced both ways with Google Calendar; seekers see times in their own time zone.</p></div>
+    <div class="head-actions"><button class="icon-btn" id="wkPrev" aria-label="Previous week">${ico('i-back')}</button><button class="btn sm g" id="wkToday">This week</button><button class="icon-btn" id="wkNext" aria-label="Next week" style="transform:scaleX(-1)">${ico('i-back')}</button></div>
   </div>
-  <div class="legend"><span><i style="background:var(--primary)"></i>1:1 session</span><span><i style="background:var(--chart-1)"></i>Group or workshop</span><span><i style="background:var(--chart-2)"></i>Event</span><span><i style="background:var(--soft-gold);border:1px dashed var(--gold-strong)"></i>Instant consultations</span><span><i style="background:var(--surface-2);border:1px solid var(--line-strong)"></i>Blocked</span></div>
+  <div class="legend"><span><i style="background:var(--primary)"></i>1:1 session</span><span><i style="background:var(--chart-1)"></i>Group or workshop</span><span><i style="background:var(--chart-2)"></i>Event</span><span><i style="background:var(--soft-gold);border:1px dashed var(--gold-strong)"></i>Instant consultations</span></div>
   <div class="week-scroll"><div class="week">
     <div class="corner"></div>${days.map(d => `<div class="dh${d === TODAY ? ' today' : ''}">${dow(d)}<b>${pd(d).getUTCDate()}</b></div>`).join('')}
     <div class="hours">${Array.from({length:stop - start}, (_, i) => { const h = start + i; return `<div>${h % 12 || 12} ${h < 12 ? 'AM' : 'PM'}</div>`; }).join('')}</div>
@@ -1247,23 +1589,7 @@ RENDER.calendar = () => {
   $('#wkPrev').onclick = () => { weekStart = addDays(weekStart, -7); RENDER.calendar(); };
   $('#wkNext').onclick = () => { weekStart = addDays(weekStart, 7); RENDER.calendar(); };
   $('#wkToday').onclick = () => { weekStart = '2026-09-28'; RENDER.calendar(); };
-  $('#calBlock').onclick = blockModal;
 };
-function blockModal(){
-  openModal({title:'Block time', size:'narrow', body:`<div class="fgrid">
-    <label class="field full"><span>Label</span><input class="inp" name="label" value="Personal time"></label>
-    <label class="field"><span>Date</span><input class="inp" type="date" name="date" value="${TODAY}" min="${TODAY}"></label>
-    <label class="field"><span>Start (IST)</span><input class="inp" type="time" name="time" value="16:00"></label>
-    <label class="field"><span>Length</span><select class="sel" name="dur"><option value="60">1 hour</option><option value="120" selected>2 hours</option><option value="180">3 hours</option><option value="720">Whole day</option></select></label>
-    <label class="field"><span>Type</span><select class="sel" name="kind"><option value="block">Blocked (no bookings)</option><option value="instant">Instant consultation window</option></select></label></div>`,
-    foot:'<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn p">Add to calendar</button>',
-    onSubmit:(fd, _, f) => {
-      if (!fd.get('date') || !fd.get('time')) return fieldErr(f, 'date', 'Choose a date and time');
-      const dur = +fd.get('dur');
-      S.blocks.push({id:uid('bl'), date:fd.get('date'), time:dur === 720 ? '06:00' : fd.get('time'), dur:dur === 720 ? 960 : dur, label:fd.get('label') || 'Blocked', kind:fd.get('kind')});
-      weekStart = mondayOf(fd.get('date')); commit(); toast('Added to your calendar');
-    }});
-}
 const mondayOf = d => { const x = pd(d).getUTCDay(); return addDays(d, -((x + 6) % 7)); };
 
 /* =====================================================================
@@ -1328,6 +1654,19 @@ function bkBody(){
   $('#bkCount').textContent = `Showing ${rows.length} of ${S.bookings.length} bookings`;
   $$('#bkBody tr[data-id]').forEach(tr => { tr.onclick = () => bookingModal(tr.dataset.id); tr.onkeydown = e => { if (e.key === 'Enter') bookingModal(tr.dataset.id); }; });
 }
+function prepBlock(b, s){
+  const pr = s.prep || {}, steps = linesOf(pr.seeker), qs = linesOf(pr.questions), hs = linesOf(pr.healer), p = b.prep, done = p ? p.done : [];
+  const sk = b.seeker && (steps.length || qs.length) ? `<div class="prep"><div class="prep-h"><b>Seeker preparation</b><span class="pill ${p ? (done.length === steps.length && (!qs.length || p.answers.every(Boolean)) ? 'ok' : 'rev') : 'act'}">${p ? `${done.length} of ${steps.length} done` : 'Not started yet'}</span></div><div class="prep-b">
+    ${steps.map((t, i) => `<div class="prep-item ${done.includes(i) ? 'done' : ''}"><span class="ck">${done.includes(i) ? ico('i-check','i xs') : ''}</span><span>${esc(t)}</span></div>`).join('')}
+    ${qs.map((q, i) => `<div class="prep-qa"><small>${esc(q)}</small>${p && p.answers[i] ? esc(p.answers[i]) : '<span class="muted">No answer yet</span>'}</div>`).join('')}
+    ${p ? `<span class="small muted">Last updated ${rel(p.at.split(' ')[0])}, ${f12(p.at.split(' ')[1])}</span>` : b.status === 'upcoming' ? `<div><button type="button" class="btn xs g" data-remind>${ico('i-send','i xs')}Send a reminder</button> <span class="small muted">Automatic reminder: ${pr.remind || 24} hours before</span></div>` : ''}</div></div>` : '';
+  const hp = hs.length && b.status === 'upcoming' ? `<div class="prep"><div class="prep-h"><b>Your checklist</b><small class="muted">Only you see this</small></div><div class="prep-b">${hs.map((t, i) => `<label class="hp-check"><input type="checkbox" data-hp="${i}" ${(b.hdone || []).includes(i) ? 'checked' : ''}><span>${esc(t)}</span></label>`).join('')}</div></div>` : '';
+  return sk + hp;
+}
+function wirePrep(body, b, s){
+  const r = body.querySelector('[data-remind]'); r && (r.onclick = () => { const p = seeker(b.seeker), t = thread(p.id) || newThread(p.id); t.msgs.push({f:'sys', at:`${TODAY} ${NOW_T}`, t:`Preparation reminder sent for ${s.name} · ${fDate(b.date)}`}); save(); r.disabled = true; r.textContent = 'Reminder sent'; toast(`Reminder sent to ${p.short} by email and WhatsApp`); });
+  body.querySelectorAll('[data-hp]').forEach(c => c.onchange = () => { b.hdone = [...body.querySelectorAll('[data-hp]:checked')].map(x => +x.dataset.hp); save(); });
+}
 function bookingModal(id){
   const b = booking(id), s = service(b.service), p = b.seeker && seeker(b.seeker), r = S.reviews.find(x => x.booking === id), st = stPill[b.status];
   const future = !isPast(b.date, b.time);
@@ -1339,12 +1678,15 @@ function bookingModal(id){
     <div class="ctx-row"><span class="d">Payment</span><span>${money(b.cur, b.amount)} · ${b.pay}</span></div>
     <div class="ctx-row"><span class="d">Booked</span><span>${fDate(b.booked)} · confirmed instantly</span></div>
     ${r ? `<div class="ctx-row"><span class="d">Review</span><span>${stars(r.rating)} <button type="button" class="lnk small" style="color:var(--accent-strong);font-weight:600" data-rv="${r.id}">View review</button></span></div>` : ''}
+    ${b.pkgOf ? `<div class="ctx-row"><span class="d">Package</span><span>Session ${b.pkgOf}</span></div>` : ''}
+    ${prepBlock(b, s)}
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px">
       ${p ? `<button type="button" class="btn sm g" data-msg="${p.id}">${ico('i-chat')}Message</button>` : ''}
       ${b.status === 'upcoming' && !future ? `<button type="button" class="btn sm p" data-set="completed">Mark completed</button><button type="button" class="btn sm g" data-set="no-show">Mark no-show</button>` : ''}
       ${b.status === 'upcoming' && future ? `<button type="button" class="btn sm d" data-cancel>Cancel &amp; refund</button>` : ''}
     </div>`, foot:'<button type="button" class="btn g" data-close>Close</button>',
     onOpen:body => {
+      wirePrep(body, b, s);
       const m = body.querySelector('[data-msg]'); m && (m.onclick = () => { closeModal(); openThreadFor(p.id); });
       const rv = body.querySelector('[data-rv]'); rv && (rv.onclick = () => { closeModal(); go('reviews', {focus:rv.dataset.rv}); });
       body.querySelectorAll('[data-set]').forEach(x => x.onclick = () => { b.status = x.dataset.set; closeModal(); commit(); toast(`Marked as ${b.status === 'completed' ? 'completed' : 'no-show'}`); });
@@ -1377,9 +1719,12 @@ function svcCard(s){
   const done = s.status === 'completed';
   const stp = {active:['ok','Active'], paused:['rev','Paused'], draft:['done','Draft'], completed:['done','Completed']}[s.status];
   return `<div class="card svc" id="svc-${s.id}">
+    ${s.cover ? `<div class="cov">${tvCover.html(s.cover, s.name)}${s.pkg && s.pkg.on ? `<span class="cp-badge">${s.pkg.sessions}-session package</span>` : ''}</div>` : ''}
     <div class="svc-top"><span class="ico-box" style="background:var(${s.type === '1:1' ? '--soft-sage' : s.type === 'Group' ? '--soft-sky' : '--soft-gold'})">${ico(typeIco(s.type), 'i')}</span><div style="flex:1;min-width:0"><h3>${esc(s.name)}</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="pill ${stp[0]}">${stp[1]}</span><span class="pill sky">${esc(s.modality)}</span><span class="pill sky">${s.type}</span></div></div></div>
     <div class="meta"><span>${ico('i-clock')}${s.duration} min</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video')}${s.format}${s.venue ? ' · ' + esc(s.venue) : ''}</span>${s.type !== '1:1' ? `<span>${ico('i-group')}Up to ${s.capacity}</span>` : ''}<span>${ico('i-cal')}${schedTxt(s)}</span><span>${ico('i-lock')}${cutoffTxt(s.cutoff)}</span></div>
-    <div class="price"><b>${money('INR', s.inr)}</b><span class="small muted">${s.inr ? `India · ${money('USD', s.usd)} international` : 'for every seeker'}</span></div>
+    <div class="price">${s.pkg && s.pkg.on && s.pkg.only ? `<b>${money('INR', s.pkg.inr)}</b><span class="small muted">for ${s.pkg.sessions} sessions · ${money('USD', s.pkg.usd)} international</span>` : `<b>${money('INR', s.inr)}</b><span class="small muted">${s.inr ? `India · ${money('USD', s.usd)} international` : 'for every seeker'}</span>`}</div>
+    ${s.pkg && s.pkg.on && !s.pkg.only ? `<div><span class="pill pk">${ico('i-wallet')}Package: ${s.pkg.sessions} sessions · ${money('INR', s.pkg.inr)}${pkgSave(s) > 0 ? ` · save ${pkgSave(s)}%` : ''}</span></div>` : ''}
+    ${s.prep && (s.prep.seeker || s.prep.questions) ? `<div class="small muted">${ico('i-check','i xs')} Preparation: ${linesOf(s.prep.seeker).length} steps · ${linesOf(s.prep.questions).length} question${linesOf(s.prep.questions).length === 1 ? '' : 's'}</div>` : ''}
     ${done ? `<div class="small" style="color:var(--ink-2)"><b>${s.stats.seats}</b> of ${s.capacity} seats · <b>${s.stats.revenue}</b> earned · ${stars(Math.round(s.stats.rating))} ${s.stats.rating}</div>` : `<div class="small muted">${up} upcoming booking${up === 1 ? '' : 's'}</div>`}
     <details><summary class="small" style="cursor:pointer;color:var(--accent-strong);font-weight:600">History</summary><div class="hist">${s.history.slice().reverse().map(h => `<div>${fShort(h[0])} · ${esc(h[1])}</div>`).join('')}</div></details>
     <div class="foot">
@@ -1409,44 +1754,117 @@ function svcAction(act, id){
     return confirmBox('Delete this service?', `${esc(s.name)} will be removed from your profile. Past bookings and reviews are kept.`, 'Delete service', true, () => { S.services = S.services.filter(x => x.id !== id); commit(); toast('Service deleted'); });
   }
 }
+const linesOf = t => String(t || '').split('\n').map(x => x.trim()).filter(Boolean);
+const pkgPer = (s) => s.pkg && s.pkg.on && s.pkg.sessions ? Math.round(s.pkg.inr / s.pkg.sessions) : 0;
+const pkgSave = (s) => s.pkg && s.pkg.on && s.inr ? Math.round((1 - s.pkg.inr / (s.inr * s.pkg.sessions)) * 100) : 0;
+function vedaCtx(kind, field){
+  const P = S.profile, f = field && field.form;
+  const val = n => f && f.querySelector(`[name="${n}"]`) ? f.querySelector(`[name="${n}"]`).value : '';
+  const svcCtx = f && f.querySelector('[name=modality]') ? {name:val('name'), modality:val('modality'), type:val('type'), format:val('format'), dur:+val('duration') || 60, pkg:f.querySelector('[name=pkg_on]') && f.querySelector('[name=pkg_on]').checked ? +val('pkg_sessions') : 0} : null;
+  const loc = f && f.querySelector('[name=loc_city]') ? {venue:val('loc_venue'), building:val('loc_building'), street:val('loc_street'), landmark:val('loc_landmark'), city:val('loc_city')} : P.loc;
+  return {name:P.display, first:(field && field.dataset.first) || P.display.split(' ')[0], practices:approvedMods().length ? approvedMods() : Object.keys(P.modalities), years:P.years, city:(P.loc && P.loc.city) ? `${P.loc.area ? P.loc.area + ', ' : ''}${P.loc.city}` : P.city, teacher:P.teacher, areas:P.areas, langs:P.langs, service:svcCtx, title:val('title'), venue:val('venue'), loc};
+}
+const attachVeda = scope => window.tvVeda && tvVeda.attach(scope, vedaCtx, toast);
 function serviceModal(id, preset, rerun){
-  const s = id ? service(id) : Object.assign({name:'', modality:approvedMods()[0], type:'1:1', format:'Online', duration:60, inr:'', usd:'', capacity:10, cutoff:S.profile.defCutoff, schedule:{kind:'availability'}, intensity:'Gentle', desc:'', contra:'', venue:''}, preset || {});
+  const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', duration:60, inr:'', usd:'', capacity:10, cutoff:S.profile.defCutoff, schedule:{kind:'availability'}, intensity:'Gentle', desc:'', contra:'', venue:'', cover:null,
+    pkg:{on:false, sessions:5, inr:'', usd:'', valid:60, only:false}, prep:{seeker:'', questions:'', healer:'', remind:24, required:true}};
+  const s = id ? service(id) : Object.assign(clone(base), preset || {});
+  const pk = Object.assign(clone(base.pkg), s.pkg || {}), pr = Object.assign(clone(base.prep), s.prep || {});
+  let cover = s.cover ? clone(s.cover) : null, variants = [];
   const sch = rerun ? {kind:'once', date:'', time:s.schedule.time || '09:00'} : s.schedule;
   const mods = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
   const opt = (v, cur, label) => `<option value="${esc(v)}" ${String(v) === String(cur) ? 'selected' : ''}>${label || esc(v)}</option>`;
+  const sec = (n, t, d) => `<div class="sm-sec full"><span class="sm-n">${n}</span><div><h3>${t}</h3>${d ? `<p>${d}</p>` : ''}</div></div>`;
+  const defVenue = S.profile.loc && S.profile.loc.venue ? `${S.profile.loc.venue}, ${S.profile.loc.area || S.profile.loc.city}` : S.profile.venue;
   openModal({title:rerun ? `Run again: ${s.name}` : id ? 'Edit service' : 'New service', size:'wide', body:`
     ${rerun ? `<div class="note info" style="margin-bottom:16px">${ico('i-repeat')}<span>Set a new date and time. Everything else is copied from last time and can be changed. Bookings open as soon as you save.</span></div>` : ''}
     <div class="fgrid">
+      ${sec(1, 'The basics')}
       <label class="field full"><span>Service name</span><input class="inp" name="name" value="${esc(s.name)}" placeholder="For example: Breath for deep sleep" required></label>
       <label class="field"><span>Practice <small>(only verified practices)</small></span><select class="sel" name="modality">${mods.map(m => { const st = S.profile.modalities[m]; return `<option value="${m}" ${m === s.modality ? 'selected' : ''} ${st !== 'ok' ? 'disabled' : ''}>${m}${st === 'act' ? ' · needs certificate' : st === 'rev' ? ' · in review' : !st ? ' · not on your profile' : ''}</option>`; }).join('')}</select></label>
       <label class="field"><span>Type</span><select class="sel" name="type">${['1:1','Group','Workshop'].map(t => opt(t, s.type, t === '1:1' ? '1:1 session' : t)).join('')}</select></label>
       <label class="field"><span>Format</span><select class="sel" name="format">${['Online','In person','Both'].map(t => opt(t, s.format, t === 'Both' ? 'Online or in person' : t)).join('')}</select></label>
-      <label class="field" data-show="venue"><span>Venue</span><input class="inp" name="venue" value="${esc(s.venue || S.profile.venue)}"></label>
-      <label class="field"><span>Duration</span><select class="sel" name="duration">${[15,30,45,60,75,90,120,180].map(d => opt(d, s.duration, d + ' min')).join('')}</select></label>
+      <label class="field" data-show="venue"><span>Venue</span><input class="inp" name="venue" value="${esc(s.venue || defVenue)}"><small>From your saved location (Profile info, step 7)</small></label>
+      <label class="field"><span>Session length</span><select class="sel" name="duration">${[15,30,45,60,75,90,120,180].map(d => opt(d, s.duration, d + ' min')).join('')}</select></label>
       <label class="field" data-show="cap"><span>Seats</span><input class="inp" type="number" min="2" max="200" name="capacity" value="${s.capacity}"></label>
-      <label class="field"><span>Price for seekers in India (₹)</span><input class="inp" type="number" min="0" name="inr" value="${s.inr}" placeholder="0 for free"></label>
-      <label class="field"><span>Price for international seekers ($)</span><input class="inp" type="number" min="0" name="usd" value="${s.usd}" placeholder="0 for free"></label>
-      <div class="field full"><span>When can seekers book?</span><div class="choice" id="schKind">
+
+      ${sec(2, 'Cover image', 'Shown on your profile, in search and when seekers book. Upload your own or let Veda create one.')}
+      <div class="full cov-wrap">
+        <div class="cov-prev" id="covPrev"></div>
+        <div class="cov-ctrl">
+          <div class="seg" id="covMode"><button type="button" data-m="ai" class="on">${ico('i-spark')}Generate with Veda</button><button type="button" data-m="up">${ico('i-upload')}Upload</button></div>
+          <div id="covAi"><label class="field"><span>Describe the mood <small>(optional)</small></span><input class="inp" id="covPrompt" placeholder="For example: sunrise by the Ganga, calm and warm" value="${esc(cover && cover.prompt || '')}"></label>
+            <div class="row" style="margin-top:8px;gap:8px"><button type="button" class="btn sm a" id="covGen">${ico('i-spark')}Generate 3 options</button><span class="small muted">Uses the practice and your words</span></div>
+            <div class="cov-vars" id="covVars"></div></div>
+          <div id="covUp" hidden>${drop('coverfile', 'Upload a cover photo', 'JPG or PNG · landscape works best', 'image/*')}<p class="small muted" style="margin-top:6px">Use your own photo, with permission from anyone in it.</p></div>
+          ${cover ? '<button type="button" class="lnk small" id="covRm" style="margin-top:8px;color:var(--danger)">Remove cover</button>' : ''}
+        </div>
+      </div>
+
+      ${sec(3, 'Price & packages', 'Seekers in India see the rupee price; everyone else sees the dollar price.')}
+      <label class="field"><span>Single session · India (₹)</span><input class="inp" type="number" min="0" name="inr" value="${s.inr}" placeholder="0 for free"></label>
+      <label class="field"><span>Single session · international ($)</span><input class="inp" type="number" min="0" name="usd" value="${s.usd}" placeholder="0 for free"></label>
+      <label class="pkg-tg full"><input type="checkbox" name="pkg_on" ${pk.on ? 'checked' : ''}><span><b>Offer a package</b><small>A set of sessions bought together, used within a time limit</small></span></label>
+      <div class="full pkg-box" data-show="pkg"><div class="fgrid">
+        <label class="field"><span>Sessions in package</span><select class="sel" name="pkg_sessions">${[2,3,4,5,6,8,10,12].map(n => opt(n, pk.sessions, n + ' sessions')).join('')}</select></label>
+        <label class="field"><span>Use within</span><select class="sel" name="pkg_valid">${[[30,'30 days'],[45,'45 days'],[60,'60 days'],[90,'3 months'],[180,'6 months']].map(([v, l]) => opt(v, pk.valid, l)).join('')}</select></label>
+        <label class="field"><span>Total package price · India (₹)</span><input class="inp" type="number" min="0" name="pkg_inr" value="${pk.inr}"></label>
+        <label class="field"><span>Total package price · international ($)</span><input class="inp" type="number" min="0" name="pkg_usd" value="${pk.usd}"></label>
+        <div class="field full"><span>Sell as</span><div class="choice"><label><input type="radio" name="pkg_only" value="0" ${!pk.only ? 'checked' : ''}><span>Single sessions and package</span></label><label><input type="radio" name="pkg_only" value="1" ${pk.only ? 'checked' : ''}><span>Package only</span></label></div></div>
+        <div class="full note info" id="pkgCalc"></div></div></div>
+
+      ${sec(4, 'When seekers can book')}
+      <div class="field full"><div class="choice" id="schKind">
         ${[['availability','Any time I am available'],['once','One date'],['weekly','Every week']].map(([v, l]) => `<label><input type="radio" name="kind" value="${v}" ${sch.kind === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div></div>
       <label class="field" data-show="date"><span>Date</span><input class="inp" type="date" name="date" value="${sch.date || ''}" min="${TODAY}"></label>
       <label class="field" data-show="time"><span>Start time (IST)</span><input class="inp" type="time" name="time" value="${sch.time || '09:00'}"></label>
       <div class="field full" data-show="days"><span>Days</span><div class="choice">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d => `<label><input type="checkbox" name="days" value="${d}" ${(sch.days || []).includes(d) ? 'checked' : ''}><span>${d}</span></label>`).join('')}</div></div>
       <div class="field full"><span>Booking closes</span><div class="choice">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => `<label><input type="radio" name="cutoff" value="${v}" ${+s.cutoff === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div><small>Seekers can book open slots until this point. Bookings are confirmed instantly, with no approval step.</small></div>
-      <label class="field"><span>Intensity</span><select class="sel" name="intensity">${['Gentle','Moderate','Intense'].map(t => opt(t, s.intensity)).join('')}</select></label>
-      <label class="field full"><span>Description</span><textarea class="ta" name="desc" placeholder="What seekers can expect, in two or three sentences.">${esc(s.desc)}</textarea></label>
-      <label class="field full"><span>Not suitable for <small>(safety note shown before booking)</small></span><input class="inp" name="contra" value="${esc(s.contra)}" placeholder="For example: late pregnancy, recent surgery"></label>
+
+      ${sec(5, 'Description & safety')}
+      <label class="field"><span>Intensity</span><select class="sel" name="intensity">${['Gentle','Moderate','Intense'].map(t => opt(t, s.intensity)).join('')}</select></label><span></span>
+      <label class="field full"><span>Description</span><textarea class="ta" name="desc" data-veda="svcdesc" placeholder="What seekers can expect, in two or three sentences.">${esc(s.desc)}</textarea></label>
+      <label class="field full"><span>Not suitable for <small>(safety note shown before booking)</small></span><input class="inp" name="contra" data-veda="contra" value="${esc(s.contra)}" placeholder="For example: late pregnancy, recent surgery"></label>
+
+      ${sec(6, 'Preparation', 'Sent to the seeker as soon as they book, with a reminder before the session. Their answers appear in the booking for you.')}
+      <label class="field full"><span>What the seeker should do before the session <small>(one per line)</small></span><textarea class="ta" name="prep_seeker" data-veda="prep" placeholder="Eat lightly 2 hours before&#10;Wear loose clothes&#10;Keep water and a blanket nearby">${esc(pr.seeker)}</textarea></label>
+      <label class="field full"><span>Questions to answer before the session <small>(one per line)</small></span><textarea class="ta" name="prep_questions" data-veda="questions" placeholder="What would you like help with?&#10;Have you tried breathwork before?">${esc(pr.questions)}</textarea></label>
+      <label class="field"><span>Send a preparation reminder</span><select class="sel" name="prep_remind">${[[48,'48 hours before'],[24,'24 hours before'],[12,'12 hours before'],[2,'2 hours before']].map(([v, l]) => opt(v, pr.remind, l)).join('')}</select></label>
+      <label class="check" style="align-self:end;padding-bottom:10px"><input type="checkbox" name="prep_required" ${pr.required ? 'checked' : ''}><span>Ask seekers to answer before joining</span></label>
+      <label class="field full"><span>Your own checklist before each session <small>(private, one per line)</small></span><textarea class="ta" name="prep_healer" data-veda="hprep" placeholder="Read the seeker's answers&#10;Test audio 10 minutes before">${esc(pr.healer)}</textarea></label>
     </div>`,
     foot:`<button type="button" class="btn g" data-close>Cancel</button>${!rerun && (!id || s.status === 'draft') ? '<button type="submit" class="btn g" value="draft">Save as draft</button>' : ''}<button type="submit" class="btn p" value="save">${rerun ? 'Open bookings' : id && s.status !== 'draft' ? 'Save changes' : 'Publish service'}</button>`,
     onOpen:body => {
+      const f = modalBox;
+      const preview = () => {
+        const name = f.name.value.trim() || 'Your service name', modality = f.modality.value, inr = +f.inr.value || 0, usd = +f.usd.value || 0;
+        const pkOn = f.pkg_on.checked, pkInr = +f.pkg_inr.value || 0, n = +f.pkg_sessions.value;
+        $('#covPrev').innerHTML = `<div class="cp-card"><div class="cp-cov">${cover ? tvCover.html(cover, name) : `<div class="cp-empty">${ico('i-spark','i')}<span>No cover yet</span></div>`}${pkOn ? `<span class="cp-badge">${n}-session package</span>` : ''}</div>
+          <div class="cp-in"><small>${esc(modality)} · ${f.type.value === '1:1' ? '1:1' : f.type.value} · ${f.duration.value} min · ${f.format.value === 'Both' ? 'Online or in person' : f.format.value}</small><b>${esc(name)}</b>
+          <div class="cp-price">${pkOn && f.pkg_only.value === '1' ? `<span>${money('INR', pkInr)}</span><small>for ${n} sessions</small>` : `<span>${money('INR', inr)}</span><small>${inr ? 'per session · ' + money('USD', usd) + ' intl' : ''}</small>`}</div>
+          ${pkOn && f.pkg_only.value !== '1' && pkInr ? `<div class="cp-pk">${ico('i-check','i xs')} Package of ${n}: ${money('INR', pkInr)}</div>` : ''}</div></div>
+          <p class="small muted" style="margin-top:8px;text-align:center">${ico('i-eye','i xs')} Preview: how seekers see this service</p>`;
+        const calc = $('#pkgCalc'); if (calc){ const single = inr * n; const per = n ? Math.round(pkInr / n) : 0, save = single && pkInr ? Math.round((1 - pkInr / single) * 100) : 0;
+          calc.innerHTML = pkInr ? `${ico('i-wallet')}<span><b>${money('INR', per)} per session</b> in the package${save > 0 ? ` · seekers save <b>${save}%</b> compared with ${n} single sessions (${money('INR', single)})` : save < 0 ? ' · this is more than single sessions; check the price' : ''}. Valid for ${f.pkg_valid.selectedOptions[0].text} after purchase.</span>` : `${ico('i-alert')}<span>Add the total price for ${n} sessions. Tip: packages usually cost 10–20% less than single sessions.</span>`; }
+      };
       const sync = () => {
-        const f = modalBox, kind = f.querySelector('[name=kind]:checked').value, type = f.type.value, fmt = f.format.value;
+        const kind = f.querySelector('[name=kind]:checked').value, type = f.type.value, fmt = f.format.value;
         body.querySelector('[data-show=date]').hidden = kind !== 'once';
         body.querySelector('[data-show=time]').hidden = kind === 'availability';
         body.querySelector('[data-show=days]').hidden = kind !== 'weekly';
         body.querySelector('[data-show=cap]').hidden = type === '1:1';
         body.querySelector('[data-show=venue]').hidden = fmt === 'Online';
+        body.querySelector('[data-show=pkg]').hidden = !f.pkg_on.checked;
+        preview();
       };
-      body.addEventListener('change', sync); sync();
+      body.addEventListener('change', sync); body.addEventListener('input', preview); sync();
+      const drawVars = () => { $('#covVars').innerHTML = variants.map((v, i) => `<button type="button" class="cov-var ${cover && cover.seed === v.seed ? 'on' : ''}" data-v="${i}" aria-label="Use option ${i + 1}">${tvCover.svg(v)}</button>`).join(''); $$('#covVars [data-v]').forEach(b => b.onclick = () => { cover = variants[+b.dataset.v]; drawVars(); preview(); toast('Cover selected'); }); };
+      $('#covGen').onclick = () => { const b = $('#covGen'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is painting…'; $('#covVars').innerHTML = '<div class="cov-load"></div><div class="cov-load"></div><div class="cov-load"></div>';
+        setTimeout(() => { variants = tvCover.variations($('#covPrompt').value, f.modality.value, 3); cover = Object.assign({}, variants[0]); cover.seed = variants[0].seed; drawVars(); preview(); b.disabled = false; b.innerHTML = `${ico('i-repeat')}Generate again`; }, 1100); };
+      $$('#covMode button').forEach(b => b.onclick = () => { $$('#covMode button').forEach(x => x.classList.toggle('on', x === b)); $('#covAi').hidden = b.dataset.m !== 'ai'; $('#covUp').hidden = b.dataset.m !== 'up'; });
+      const fi = body.querySelector('[name=coverfile]'); fi.addEventListener('change', () => { const file = fi.files[0]; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); cover = {kind:'img', src}; preview(); toast('Cover uploaded'); }); fi.closest('.drop').querySelector('b').textContent = file.name; });
+      const rm = $('#covRm'); rm && (rm.onclick = () => { cover = null; preview(); rm.remove(); });
+      attachVeda(body);
     },
     onSubmit:(fd, btn, f) => {
       const name = (fd.get('name') || '').trim();
@@ -1454,18 +1872,25 @@ function serviceModal(id, preset, rerun){
       const kind = fd.get('kind'), date = fd.get('date'), time = fd.get('time'), days = fd.getAll('days');
       if (kind === 'once' && (!date || date < TODAY)) return fieldErr(f, 'date', 'Choose a date from today onwards');
       if (kind === 'weekly' && !days.length) return (toast('Choose at least one day'), false);
-      if (fd.get('inr') === '' || fd.get('usd') === '') return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free service)');
+      const pkOn = !!fd.get('pkg_on'), pkOnly = pkOn && fd.get('pkg_only') === '1';
+      if (!pkOnly && (fd.get('inr') === '' || fd.get('usd') === '')) return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free service)');
+      if (pkOn && (!+fd.get('pkg_inr') || !+fd.get('pkg_usd'))) return fieldErr(f, !+fd.get('pkg_inr') ? 'pkg_inr' : 'pkg_usd', 'Add the total package price in ₹ and $');
       const data = {name, modality:fd.get('modality'), type:fd.get('type'), format:fd.get('format'), venue:fd.get('format') === 'Online' ? '' : fd.get('venue'), duration:+fd.get('duration'),
-        capacity:fd.get('type') === '1:1' ? 1 : Math.max(2, +fd.get('capacity') || 10), inr:+fd.get('inr'), usd:+fd.get('usd'), cutoff:+fd.get('cutoff'),
-        schedule:kind === 'availability' ? {kind} : kind === 'once' ? {kind, date, time} : {kind, days, time}, intensity:fd.get('intensity'), desc:fd.get('desc'), contra:fd.get('contra')};
+        capacity:fd.get('type') === '1:1' ? 1 : Math.max(2, +fd.get('capacity') || 10), inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, cutoff:+fd.get('cutoff'),
+        schedule:kind === 'availability' ? {kind} : kind === 'once' ? {kind, date, time} : {kind, days, time}, intensity:fd.get('intensity'), desc:fd.get('desc'), contra:fd.get('contra'), cover,
+        pkg:{on:pkOn, sessions:+fd.get('pkg_sessions'), inr:+fd.get('pkg_inr') || 0, usd:+fd.get('pkg_usd') || 0, valid:+fd.get('pkg_valid'), only:pkOnly},
+        prep:{seeker:fd.get('prep_seeker'), questions:fd.get('prep_questions'), healer:fd.get('prep_healer'), remind:+fd.get('prep_remind'), required:!!fd.get('prep_required')}};
       if (rerun){
         Object.assign(s, data, {status:'active'}); delete s.stats; s.history.push([TODAY, `Run again for ${fDate(date)} · bookings opened`]);
         svcTab = 'active'; commit(); toast(`${name} is open for booking on ${fDate(date)}`); return;
       }
       if (id){
         const changed = ['inr','usd','cutoff','duration','capacity'].filter(x => s[x] !== data[x]);
+        if (JSON.stringify(s.pkg || {}) !== JSON.stringify(data.pkg)) changed.push('pkg');
+        if (JSON.stringify(s.cover || null) !== JSON.stringify(data.cover)) changed.push('cover');
+        if (JSON.stringify(s.prep || {}) !== JSON.stringify(data.prep)) changed.push('prep');
         Object.assign(s, data); if (btn === 'save' && s.status === 'draft') s.status = 'active';
-        s.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => ({inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'duration', capacity:'seats'}[x])).join(', ')}` : 'Details updated']);
+        s.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => ({inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'duration', capacity:'seats', pkg:'package', cover:'cover image', prep:'preparation'}[x])).join(', ')}` : 'Details updated']);
         commit(); toast('Service updated'); return;
       }
       S.services.unshift(Object.assign({id:uid('s'), status:btn === 'draft' ? 'draft' : 'active', created:TODAY, history:[[TODAY, btn === 'draft' ? 'Draft created' : 'Created and published']]}, data));
@@ -1585,11 +2010,12 @@ RENDER.seekers = (o = {}) => {
   <div class="head"><div><span class="eyebrow">Your seekers</span><h1>Seekers</h1><p>Private notes, session history and follow-ups. Only you can see your notes.</p></div></div>
   <div class="cl-grid"><div class="card"><div class="card-h"><h2>${list.length} seekers</h2></div>${list.map(x => `<button class="cl-item${x.p.id === p.id ? ' on' : ''}" data-id="${x.p.id}"><span class="av" style="background:var(${x.p.col})">${x.p.name[0]}</span><div><b>${esc(x.p.name)}</b><small>${x.n} session${x.n === 1 ? '' : 's'} · ${esc(x.p.city)}</small></div>${x.fu ? '<span class="pill rev">Follow-up</span>' : x.next ? '<span class="pill ok">Upcoming</span>' : x.n ? '<span class="pill done">Past</span>' : '<span class="pill sky">New</span>'}</button>`).join('')}</div>
   <div class="card"><div style="display:flex;gap:14px;align-items:center;margin-bottom:16px;flex-wrap:wrap"><span class="av l" style="background:var(${p.col})">${p.name[0]}</span><div style="flex:1"><h2 style="font-size:24px">${esc(p.name)}</h2><p class="small muted">${esc(p.city)} · ${c.n} sessions · Goals: ${esc(p.goals)}</p></div><button class="btn sm g" id="clMsg">${ico('i-chat')}Message</button></div>
-    <label class="field"><span>Private notes</span><textarea class="ta" id="clNotes">${esc(p.notes)}</textarea></label>
+    <label class="field"><span>Private notes</span><textarea class="ta" id="clNotes" data-veda="note">${esc(p.notes)}</textarea></label>
     <div style="display:flex;gap:8px;margin:12px 0 20px;flex-wrap:wrap"><button class="btn sm p" id="clSave">Save note</button><button class="btn sm g" id="clFu">${ico('i-flag','i xs')}${c.fu ? 'Clear follow-up' : 'Mark follow-up'}</button></div>
     <p class="small" style="font-weight:600;margin-bottom:4px">Sessions</p>${hist.map(b => `<div class="tl-row"><span class="d">${fShort(b.date)}</span><span style="flex:1">${esc(service(b.service).name)}</span><span class="pill ${stPill[b.status][0]}">${stPill[b.status][2]}</span></div>`).join('') || '<p class="small muted">No sessions yet.</p>'}</div></div>`;
   $$('#v-seekers .cl-item').forEach(b => b.onclick = () => { clCur = b.dataset.id; RENDER.seekers(); });
   $('#clMsg').onclick = () => openThreadFor(p.id);
+  attachVeda($('#v-seekers'));
   $('#clSave').onclick = () => { p.notes = $('#clNotes').value; save(); toast('Note saved. Only you can see it.'); };
   $('#clFu').onclick = () => { const t = thread(p.id) || newThread(p.id); t.followUp = !t.followUp; commit(); toast(t.followUp ? 'Marked for follow-up' : 'Follow-up cleared'); };
 };
@@ -1642,13 +2068,14 @@ function rvList(focus){
       <p class="body">"${esc(r.text)}"</p>
       <div class="tag-cloud" style="gap:6px">${r.tags.map(x => `<span style="font-size:12px;padding:3px 9px">${esc(x)}</span>`).join('')}</div>
       ${r.reply ? `<div class="reply"><b>Your reply · ${fShort(r.reply.date)}</b>${esc(r.reply.text)}</div>` : ''}
-      <div class="reply-form" hidden><textarea class="ta" placeholder="Thank ${esc(p.name.split(' ')[0])} and keep it short. Your reply is public." aria-label="Reply to ${esc(p.name)}">${r.reply ? esc(r.reply.text) : ''}</textarea><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm p" data-post="${r.id}">Post reply</button><button class="btn sm t" data-cancel>Cancel</button></div></div>
+      <div class="reply-form" hidden><textarea class="ta" data-veda="reply" data-first="${esc(p.name.split(' ')[0])}" placeholder="Thank ${esc(p.name.split(' ')[0])} and keep it short. Your reply is public." aria-label="Reply to ${esc(p.name)}">${r.reply ? esc(r.reply.text) : ''}</textarea><div style="display:flex;gap:8px;margin-top:8px"><button class="btn sm p" data-post="${r.id}">Post reply</button><button class="btn sm t" data-cancel>Cancel</button></div></div>
       <div class="acts">${r.reply ? `<button class="btn xs g" data-reply="${r.id}">${ico('i-edit','i xs')}Edit reply</button><button class="btn xs t" data-delreply="${r.id}">Delete reply</button>` : `<button class="btn xs p" data-reply="${r.id}">${ico('i-chat','i xs')}Reply</button>`}
         <button class="btn xs t" data-open="${b.id}">View booking</button>${r.reported ? '' : `<button class="btn xs t" data-report="${r.id}">${ico('i-flag','i xs')}Report</button>`}</div>
     </div></div>`;
   }).join('') || `<div class="empty">${ico('i-star','i')}No reviews match these filters.</div>`;
   $('#rvCount').textContent = `Showing ${rows.length} of ${S.reviews.length} reviews from the last 30 days`;
   $$('#rvList [data-reply]').forEach(b => b.onclick = () => { const rv = b.closest('.rv'); rv.querySelector('.reply-form').hidden = false; rv.querySelector('.acts').hidden = true; rv.querySelector('textarea').focus(); });
+  attachVeda($('#rvList'));
   $$('#rvList [data-cancel]').forEach(b => b.onclick = () => { const rv = b.closest('.rv'); rv.querySelector('.reply-form').hidden = true; rv.querySelector('.acts').hidden = false; });
   $$('#rvList [data-post]').forEach(b => b.onclick = () => { const r = S.reviews.find(x => x.id === b.dataset.post), txt = b.closest('.rv').querySelector('textarea').value.trim(); if (!txt) return toast('Write a short reply first'); r.reply = {text:txt, date:TODAY}; save(); badges(); rvList(); toast('Reply posted on your profile'); });
   $$('#rvList [data-delreply]').forEach(b => b.onclick = () => confirmBox('Delete your reply?', 'The review stays; only your reply is removed.', 'Delete reply', true, () => { S.reviews.find(x => x.id === b.dataset.delreply).reply = null; save(); badges(); rvList(); toast('Reply deleted'); }));
@@ -1676,7 +2103,7 @@ function pfSteps(){
     {n:4, title:'Qualifications', hint:credMissing.length ? `Upload a certificate for ${credMissing.join(', ')}` : credRev ? 'A certificate is in review' : 'Certificates verified', st:credMissing.length ? 'act' : credRev ? 'rev' : 'ok'},
     {n:5, title:'Experience & lineage', hint:`${P.years} years · lineage ${P.lineageStatus === 'ok' ? 'confirmed' : 'in review'}`, st:P.lineageStatus},
     {n:6, title:'Your story', hint:'Bio, why people come to you, intro video', st:P.bio && P.why ? 'ok' : 'act'},
-    {n:7, title:'Practice & policies', hint:P.insurance.status === 'ok' ? 'Venue, cancellation and insurance' : `Insurance expires ${fDate(P.insurance.expires)}`, st:P.insurance.status},
+    {n:7, title:'Location & time zone', hint:P.loc && P.loc.city ? `${P.loc.area ? P.loc.area + ', ' : ''}${P.loc.city} · ${tvLocation.tzLabel(P.loc.tz).split(' (')[0]}` : 'Add your studio address and time zone', st:P.loc && !tvLocation.missing(P.loc).length && P.loc.tz ? 'ok' : 'act'},
     {n:8, title:'Preview & declaration', hint:P.declared ? `Last saved ${fShort(P.lastSaved)}` : 'Confirm and publish', st:P.declared ? 'ok' : 'act'}
   ];
 }
@@ -1698,15 +2125,13 @@ const stPillPf = st => st === 'ok' ? `<span class="pill ok">${ico('i-check','i')
 function pfPanel(step){
   const P = S.profile, el = $('#pfPanel');
   const chk = (name, opts, sel, dis = []) => `<div class="choice">${opts.map(o => `<label><input type="checkbox" name="${name}" value="${esc(o)}" ${sel.includes(o) ? 'checked' : ''} ${dis.includes(o) ? 'disabled' : ''}><span>${esc(o)}</span></label>`).join('')}</div>`;
-  const head = `<div class="step-h"><div><span class="eyebrow">Step ${step.n} of 8</span><h2 style="margin-top:6px">${step.title}</h2></div>${step.n >= 2 && step.n <= 5 || step.n === 7 ? stPillPf(step.st) : ''}</div>`;
+  const head = `<div class="step-h"><div><span class="eyebrow">Step ${step.n} of 8</span><h2 style="margin-top:6px">${step.title}</h2></div>${step.n >= 2 && step.n <= 5 ? stPillPf(step.st) : ''}</div>`;
   let body = '';
   if (step.n === 1) body = `<div class="fgrid">
       <label class="field"><span>Full legal name</span><input class="inp" name="name" value="${esc(P.name)}"></label>
       <label class="field"><span>Name shown to seekers</span><input class="inp" name="display" value="${esc(P.display)}"></label>
       <label class="field"><span>Email</span><input class="inp" type="email" name="email" value="${esc(P.email)}"></label>
       <label class="field"><span>Phone <small>(never shown to seekers)</small></span><input class="inp" name="phone" value="${esc(P.phone)}"></label>
-      <label class="field"><span>City</span><input class="inp" name="city" value="${esc(P.city)}"></label>
-      <label class="field"><span>Time zone</span><select class="sel" name="tz"><option>${esc(P.tz)}</option></select></label>
       <div class="field full"><span>Languages you teach in</span>${chk('langs', ['English','Hindi','Sanskrit','German','French','Spanish'], P.langs)}</div>
       <div class="field full"><span>Profile photo</span>${drop('photo', 'Upload a clear, natural portrait', 'JPG or PNG · shown on your profile and in search', 'image/*', P.photo ? 'Current photo' : '')}</div></div>`;
   if (step.n === 2) body = `<div class="note info" style="margin-bottom:16px">${ico('i-lock')}<span>Your ID is checked once by the 2Verse team and never shown to seekers. We also use it for payouts.</span></div>
@@ -1724,23 +2149,20 @@ function pfPanel(step){
       <label class="field"><span>Years of practice</span><input class="inp" type="number" name="years" value="${P.years}" min="0"></label>
       <label class="field"><span>Sessions taught <small>(from 2Verse and before)</small></span><input class="inp" type="number" name="sessions" value="${P.sessions}"></label>
       <label class="field full"><span>Your teacher</span><input class="inp" name="teacher" value="${esc(P.teacher)}"></label>
-      <label class="field full"><span>Lineage, school or tradition</span><textarea class="ta" name="lineage">${esc(P.lineage)}</textarea></label>
+      <label class="field full"><span>Lineage, school or tradition</span><textarea class="ta" name="lineage" data-veda="lineage">${esc(P.lineage)}</textarea></label>
       <div class="field full"><span>Supporting evidence <small>(letter from your teacher or school, photo)</small></span>${drop('lineagefile', 'Upload evidence', 'Optional · helps confirm your lineage', 'image/*,.pdf')}</div></div>`;
   if (step.n === 6) body = `<div class="fgrid">
-      <div class="full" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 14px;border-radius:14px;background:var(--surface-2)"><span style="display:flex;gap:10px;align-items:center"><span class="mini-orb" style="width:30px;height:30px"></span><span class="small">Speak or type your story and let AI draft your bio. You always review before saving.</span></span><button type="button" class="btn sm a" id="aiDraft">${ico('i-spark')}Draft with AI</button></div>
-      <label class="field full"><span>Bio <small>(2 to 4 sentences)</small></span><textarea class="ta" name="bio">${esc(P.bio)}</textarea></label>
-      <label class="field full"><span>Why people come to me <small>(in your own words; shown as a quote)</small></span><textarea class="ta" name="why">${esc(P.why)}</textarea></label>
+      <div class="full note info">${ico('i-spark')}<span>Tap <b>Veda</b> under any field to draft it, make it warmer or shorter, or fix the grammar. You always review before saving.</span></div>
+      <label class="field full"><span>Bio <small>(2 to 4 sentences)</small></span><textarea class="ta" name="bio" data-veda="bio">${esc(P.bio)}</textarea></label>
+      <label class="field full"><span>Why people come to me <small>(in your own words; shown as a quote)</small></span><textarea class="ta" name="why" data-veda="why">${esc(P.why)}</textarea></label>
       <div class="field full"><span>Areas I help with</span>${chk('areas', ['Anxiety','Sleep','Focus','Burnout','Grief','Energy','Emotional release','Starting a practice'], P.areas)}</div>
       <div class="field full"><span>Intro video <small>(60 to 90 seconds)</small></span>${drop('video', 'Upload an intro video', 'MP4 or MOV · up to 200 MB', 'video/*', P.video)}</div></div>`;
-  if (step.n === 7) body = `<div class="fgrid">
-      <label class="field full"><span>Venue for in-person sessions</span><input class="inp" name="venue" value="${esc(P.venue)}"></label>
-      <div class="field full"><span>How you meet seekers</span>${chk('delivery', ['In person','Online'], P.delivery)}</div>
+  if (step.n === 7) body = `<p class="small muted" style="margin-bottom:14px">Where you meet seekers in person, and the time zone your calendar uses. Seekers always see times converted to their own zone.</p>
+      ${tvLocation.html(P.loc)}
+      <h3 style="font-size:17px;font-family:var(--font-sans);font-weight:600;margin:22px 0 10px">Booking policies</h3>
+      <div class="fgrid"><div class="field full"><span>How you meet seekers</span>${chk('delivery', ['In person','Online'], P.delivery)}</div>
       <label class="field"><span>Default booking cut-off <small>(for new services)</small></span><select class="sel" name="defCutoff">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => `<option value="${v}" ${P.defCutoff === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
-      <label class="field"><span>Cancellation policy</span><select class="sel" name="cancel">${['Flexible · free cancellation up to 12 hours before','Moderate · free cancellation up to 24 hours before','Strict · free cancellation up to 7 days before'].map(x => `<option ${P.cancel === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
-      <div class="field full"><span>Liability insurance ${stPillPf(P.insurance.status)}</span>
-        <div class="cred" style="margin:4px 0 8px"><span class="ico-box">${ico('i-shield')}</span><div class="grow"><b>${esc(P.insurance.file)}</b><small>Expires ${fDate(P.insurance.expires)} ${pd(P.insurance.expires).getUTCFullYear()}</small></div></div>
-        ${drop('insfile', 'Upload your renewed policy', 'PDF · we will check the new expiry date', '.pdf,image/*')}</div>
-      <label class="field"><span>New expiry date</span><input class="inp" type="date" name="insexp" min="${TODAY}"></label></div>`;
+      <label class="field"><span>Cancellation policy</span><select class="sel" name="cancel">${['Flexible · free cancellation up to 12 hours before','Moderate · free cancellation up to 24 hours before','Strict · free cancellation up to 7 days before'].map(x => `<option ${P.cancel === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label></div>`;
   if (step.n === 8) {
     const mods = approvedMods();
     body = `<p class="small muted" style="margin-bottom:12px">This is how seekers see you. Only verified practices and approved details are shown.</p>
@@ -1756,6 +2178,8 @@ function pfPanel(step){
   const last = step.n === 8;
   el.innerHTML = `<form id="pfForm" novalidate>${head}${body}<div class="pf-foot"><button type="button" class="btn g" id="pfPrev" ${step.n === 1 ? 'disabled' : ''}>${ico('i-back')}Back</button><button type="submit" class="btn p">${last ? 'Save & publish profile' : 'Save & continue'}</button></div></form>`;
   wireDrops(el);
+  if (step.n === 7) tvLocation.wire(el.querySelector('.loc'), P.loc, toast);
+  attachVeda(el);
   $('#pfPrev').onclick = () => { pfStep = Math.max(1, step.n - 1); RENDER.profile(); };
   const add = $('#addCred'); add && (add.onclick = credModal);
   $$('[data-delcred]').forEach(b => b.onclick = () => confirmBox('Remove this certificate?', 'The practice it supports will need another certificate before it can stay on your profile.', 'Remove', true, () => { P.creds = P.creds.filter(c => c.id !== b.dataset.delcred); syncMods(); save(); badges(); RENDER.profile(); toast('Certificate removed'); }));
@@ -1765,14 +2189,15 @@ function pfPanel(step){
   $('#pfForm').addEventListener('submit', e => {
     e.preventDefault(); const fd = new FormData(e.target), f = e.target;
     const uploaded = n => { const d = f.querySelector(`.drop[data-field="${n}"]`); return d && d.dataset.name; };
-    if (step.n === 1){ if (!fd.get('name').trim() || !fd.get('email').includes('@')) return fieldErr(f, !fd.get('name').trim() ? 'name' : 'email', 'Add your name and a valid email'); Object.assign(P, {name:fd.get('name'), display:fd.get('display') || fd.get('name'), email:fd.get('email'), phone:fd.get('phone'), city:fd.get('city'), langs:fd.getAll('langs')}); if (uploaded('photo')) P.photo = true; }
+    if (step.n === 1){ if (!fd.get('name').trim() || !fd.get('email').includes('@')) return fieldErr(f, !fd.get('name').trim() ? 'name' : 'email', 'Add your name and a valid email'); Object.assign(P, {name:fd.get('name'), display:fd.get('display') || fd.get('name'), email:fd.get('email'), phone:fd.get('phone'), langs:fd.getAll('langs')}); if (uploaded('photo')) P.photo = true; }
     if (step.n === 2 && uploaded('idfile')){ P.idStatus = 'rev'; toast('New document sent for review'); }
     if (step.n === 3){ const sel = fd.getAll('mods'); const next = {}; sel.forEach(m => next[m] = P.modalities[m] || 'act'); P.modalities = next; syncMods(); }
     if (step.n === 5){ const changed = fd.get('lineage') !== P.lineage || fd.get('teacher') !== P.teacher; Object.assign(P, {years:+fd.get('years'), sessions:+fd.get('sessions'), teacher:fd.get('teacher'), lineage:fd.get('lineage')}); if (changed || uploaded('lineagefile')){ P.lineageStatus = 'rev'; toast('Lineage details sent for a quick review'); } }
     if (step.n === 6){ if (!fd.get('bio').trim()) return fieldErr(f, 'bio', 'Add a short bio'); Object.assign(P, {bio:fd.get('bio'), why:fd.get('why'), areas:fd.getAll('areas')}); if (uploaded('video')) P.video = uploaded('video'); }
-    if (step.n === 7){ Object.assign(P, {venue:fd.get('venue'), delivery:fd.getAll('delivery'), defCutoff:+fd.get('defCutoff'), cancel:fd.get('cancel')}); if (uploaded('insfile')){ if (!fd.get('insexp')) return fieldErr(f, 'insexp', 'Add the new expiry date'); P.insurance = {file:uploaded('insfile'), expires:fd.get('insexp'), status:'rev'}; toast('Renewed policy sent for review'); } }
+    if (step.n === 7){ const L = tvLocation.read(fd), miss = tvLocation.missing(L); if (P.delivery.includes('In person') || fd.getAll('delivery').includes('In person')){ if (miss.length) return fieldErr(f, 'loc_' + miss[0], 'Add your full address: ' + miss.join(', ')); }
+      P.loc = L; P.city = `${L.area ? L.area + ', ' : ''}${L.city}`; P.venue = `${L.venue}${L.landmark ? ', ' + L.landmark.toLowerCase() : ''}, ${L.city}`; Object.assign(P, {delivery:fd.getAll('delivery'), defCutoff:+fd.get('defCutoff'), cancel:fd.get('cancel')}); }
     if (step.n === 8){ if (!fd.get('declared')) return toast('Please confirm the declaration to publish'); P.declared = true; P.lastSaved = TODAY; save(); badges(); RENDER.profile(); return toast('Profile saved. Changes to verified details are in review.'); }
-    save(); badges(); pfStep = Math.min(8, step.n + 1); RENDER.profile(); if (![2,5,7].includes(step.n) || !f.querySelector('.drop[data-name]')) toast(`${step.title} saved`);
+    save(); badges(); pfStep = Math.min(8, step.n + 1); RENDER.profile(); if (![2,5].includes(step.n) || !f.querySelector('.drop[data-name]')) toast(`${step.title} saved`);
   });
 }
 function syncMods(){ const P = S.profile; Object.keys(P.modalities).forEach(m => { const c = P.creds.filter(x => x.modality === m); P.modalities[m] = !c.length ? 'act' : c.some(x => x.status === 'ok') ? 'ok' : 'rev'; }); }
@@ -1833,9 +2258,9 @@ function articleModal(id){
     <label class="field"><span>Format</span><select class="sel" name="kind">${['Article','Audio','Video','PDF guide'].map(c => `<option ${c === a.kind ? 'selected' : ''}>${c}</option>`).join('')}</select></label>
     <div class="field"><span>Cover image</span>${drop('cover', 'Upload a cover image', 'JPG or PNG · 1600 × 900 works best', 'image/*', a.cover ? 'Current cover' : '')}</div>
     <div class="field"><span>Attachment <small>(audio, video or PDF)</small></span>${drop('file', 'Upload a file', 'MP3, MP4 or PDF', 'audio/*,video/*,.pdf', a.file || '')}</div>
-    <label class="field full"><span>Text</span><textarea class="ta" name="body" style="min-height:160px" placeholder="Write in your own voice. Share practice, not medical claims.">${esc(a.body)}</textarea></label>
+    <label class="field full"><span>Text</span><textarea class="ta" name="body" data-veda="article" style="min-height:160px" placeholder="Write in your own voice. Share practice, not medical claims.">${esc(a.body)}</textarea></label>
     <label class="field full"><span>Tags</span><input class="inp" name="tags" value="${esc(a.tags)}" placeholder="sleep, beginners"></label></div>`,
-    foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn g" value="draft">Save draft</button><button type="submit" class="btn p" value="publish">Publish</button>`, onOpen:wireDrops,
+    foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn g" value="draft">Save draft</button><button type="submit" class="btn p" value="publish">Publish</button>`, onOpen:b => { wireDrops(b); attachVeda(b); },
     onSubmit:(fd, btn, f) => {
       if (!fd.get('title').trim()) return fieldErr(f, 'title', 'Add a title');
       const cov = f.querySelector('.drop[data-field=cover]').dataset.img, file = f.querySelector('.drop[data-field=file]').dataset.name;
@@ -1858,8 +2283,8 @@ function eventModal(id, rerun){
     <label class="field"><span>Price in India (₹)</span><input class="inp" type="number" name="inr" value="${e.inr}" min="0"></label>
     <label class="field"><span>International price ($)</span><input class="inp" type="number" name="usd" value="${e.usd}" min="0"></label>
     <div class="field"><span>Cover image</span>${drop('cover', 'Upload a cover', 'JPG or PNG', 'image/*', e.cover ? 'Current cover' : '')}</div>
-    <label class="field full"><span>Description</span><textarea class="ta" name="desc">${esc(e.desc)}</textarea></label></div>`,
-    foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn g" value="draft">Save draft</button><button type="submit" class="btn p" value="publish">Publish event</button>`, onOpen:wireDrops,
+    <label class="field full"><span>Description</span><textarea class="ta" name="desc" data-veda="eventdesc">${esc(e.desc)}</textarea></label></div>`,
+    foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn g" value="draft">Save draft</button><button type="submit" class="btn p" value="publish">Publish event</button>`, onOpen:b => { wireDrops(b); attachVeda(b); },
     onSubmit:(fd, btn, f) => {
       if (!fd.get('title').trim()) return fieldErr(f, 'title', 'Add an event name');
       if (!fd.get('date') || fd.get('date') < TODAY) return fieldErr(f, 'date', 'Choose a date from today onwards');
@@ -1966,5 +2391,7 @@ go(RENDER[start] ? start : 'overview');
 })();
 
 </script>
+
+
 </body>
 </html>
