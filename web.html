@@ -877,6 +877,39 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 .pk-mcta{display:none}
 @media (max-width:900px){.pk-mcta{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}.pk-mcta b{font-size:18px}.pk-mcta .btn{margin-left:auto}}
 
+/* clear format tags */
+.fmts{display:inline-flex;flex-wrap:wrap;gap:6px}
+.fmt-t{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;line-height:1.2;white-space:nowrap}
+.fmts.lg .fmt-t{font-size:13.5px;padding:7px 14px}
+.fm-solo{background:var(--soft-sage);color:var(--primary)}
+.fm-grp{background:var(--soft-sky);color:var(--ink)}
+.fm-on{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+.fm-in{background:var(--soft-gold);color:var(--ink)}
+.fm-both{background:var(--surface-2);color:var(--ink-2);border:1px dashed var(--line-strong)}
+.pk-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.pk-filters .seg button{display:inline-flex;gap:6px;align-items:center}
+.pk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.pkc{border-radius:22px;overflow:hidden;background:var(--surface);border:1px solid var(--line);cursor:pointer;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.pkc:hover,.pkc:focus-visible{border-color:var(--primary);box-shadow:var(--shadow-sm);transform:translateY(-2px)}
+.pkc-cov{height:150px;position:relative}
+.pkc-cov svg,.pkc-cov img{width:100%;height:100%;display:block;object-fit:cover}
+.pkc-cov .cp-badge{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:99px}
+.pkc-bd{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.pkc-bd h3{font-size:18px;line-height:1.3}
+.pkc-m{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:var(--muted)}.pkc-m span{display:inline-flex;gap:6px;align-items:center}
+.pkc-ft{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:auto;padding-top:8px;border-top:1px solid var(--line)}
+.pkc-ft b{font-size:17px}
+.hc-pk{display:inline-flex;gap:6px;align-items:center;font-size:12px;font-weight:600;color:var(--primary);margin-top:8px}
+
+/* location card */
+.loc-c{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);display:flex;flex-direction:column}
+.loc-c-map{height:140px;position:relative;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/26px 26px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/26px 26px,var(--surface-2)}
+.loc-c-in{padding:12px 14px;display:flex;flex-direction:column;gap:3px}
+.loc-c-in b{font-size:15px}
+.loc-c-b{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.pk-facts .loc-c{border-radius:16px}
+.pk-facts > .loc-c{flex-direction:column;padding:0;gap:0;align-items:stretch}
+
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
 .loc-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -1016,6 +1049,7 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
     <nav class="tnav" aria-label="Main">
       <a href="#/home" data-r="home"><svg class="i s"><use href="#i-home"/></svg><span class="lb">Home</span></a>
       <a href="#/explore" data-r="explore"><svg class="i s"><use href="#i-search"/></svg><span class="lb">Explore</span></a>
+      <a href="#/packages" data-r="packages"><svg class="i s"><use href="#i-layers"/></svg><span class="lb">Packages</span></a>
       <a href="#/sessions" data-r="sessions"><svg class="i s"><use href="#i-cal"/></svg><span class="lb">Sessions</span></a>
       <a href="#/messages" data-r="messages"><svg class="i s"><use href="#i-chat"/></svg><span class="lb">Messages</span><span class="cnt" data-badge="msg" hidden></span></a>
       <a href="#/journal" data-r="journal"><svg class="i s"><use href="#i-article"/></svg><span class="lb">Journal</span></a>
@@ -1033,6 +1067,7 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
   <nav class="tabbar" aria-label="Main">
     <a href="#/home" data-r="home"><svg class="i"><use href="#i-home"/></svg>Home</a>
     <a href="#/explore" data-r="explore"><svg class="i"><use href="#i-search"/></svg>Explore</a>
+    <a href="#/packages" data-r="packages"><svg class="i"><use href="#i-layers"/></svg>Packages</a>
     <a href="#/sessions" data-r="sessions"><svg class="i"><use href="#i-cal"/></svg>Sessions</a>
     <a href="#/messages" data-r="messages"><svg class="i"><use href="#i-chat"/></svg>Messages<span class="cnt" data-badge="msg" hidden></span></a>
     <a href="#/journal" data-r="journal"><svg class="i"><use href="#i-article"/></svg>Journal</a>
@@ -1759,7 +1794,7 @@ function render(){
   if (!signed) return nav('#/signin');
   if (!R[route.name]) return nav('#/home');
   $('#authShell').hidden = true; $('#appShell').hidden = false;
-  const tab = {healer:'explore', book:'explore', package:'explore', buy:'explore', booked:'sessions', pkdone:'sessions', plan:'sessions', room:'sessions', article:'journal'}[route.name] || route.name;
+  const tab = {healer:'explore', book:'explore', package:'packages', buy:'packages', booked:'sessions', pkdone:'sessions', plan:'sessions', room:'sessions', article:'journal'}[route.name] || route.name;
   $$('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === tab));
   const v = $('#view'); v.style.animation = 'none'; v.offsetHeight; v.style.animation = '';
   R[route.name](...route.args);
@@ -2286,6 +2321,7 @@ const healerCard = h => {
     ${port(h, 'l')}
     <div class="bd"><h3>${esc(h.name)} ${vb}</h3><div class="pr">${esc(h.tagline)}</div>
       <div class="tags">${h.practices.map(p => `<span class="pill sky">${p}</span>`).join('')}${h.formats.length === 1 ? `<span class="pill done">${h.formats[0]} only</span>` : ''}</div>
+      ${(h.packs || []).length ? `<div class="hc-pk">${ico('i-layers','i xs')}${h.packs.length} package${h.packs.length === 1 ? '' : 's'} · ${[...new Set(h.packs.map(p => p.type === '1:1' ? '1:1' : 'group'))].join(' & ')}</div>` : ''}
       <div class="nx">${esc(nextFor(h))}</div>
       <div class="ft"><span class="rt">${ico('i-star','i')} ${h.rating.toFixed(1)} <span class="muted" style="font-weight:400">(${h.count}) · ${h.years} yrs</span></span><span>from <b>${money(CUR(), minPrice(h))}</b></span></div></div></article>`;
 };
@@ -2336,11 +2372,13 @@ R.home = () => {
     ${pracs.length ? `<div class="h-sec"><div><h2>Your practices</h2><p>Shared by your healers after sessions.</p></div></div><div class="mini">${pracs.slice(0, 3).map((p, i) => `<div class="prac" data-prac="${i}"><button class="pl" aria-label="Play ${esc(p.att)}">${ico('i-play','i s f')}</button><div class="grow"><b style="font-size:14px">${esc(p.att.split(' · ')[0])}</b><div class="small muted">${esc(p.att.split(' · ')[1] || '')} · from ${esc(p.h.name.split(' ')[0])}</div><div class="bar"><i></i></div></div></div>`).join('')}</div>` : ''}
     <div class="h-sec"><div><h2>Recommended for you</h2><p>${S.me.intentions.length ? 'Matched to ' + S.me.intentions.map(n => NEEDS[n].toLowerCase()).join(', ') + ' and your preferences.' : 'Highly rated healers in Tapovan.'}</p></div><a class="lnk" href="#/explore">See all healers</a></div>
     <div class="h-grid">${recs.map(x => healerCard(x.h)).join('')}</div>
+    <div class="h-sec"><div><h2>Packages: a journey, not a one-off</h2><p>Several sessions planned by your healer, for one price. Private 1:1 or small groups, online or in Tapovan.</p></div><a class="lnk" href="#/packages">All packages</a></div>
+    <div class="pk-grid">${allPacks().slice(0, 3).map(pkCard).join('')}</div>
     <div class="h-sec"><div><h2>Upcoming events</h2><p>Small circles, online and by the river in Tapovan.</p></div><a class="lnk" href="#/journal/events">All events</a></div>
     <div class="stack">${evs.map(evCard).join('')}</div>
     <div class="h-sec"><div><h2>From the Journal</h2><p>Practices and ideas from 2Verse healers.</p></div><a class="lnk" href="#/journal">Open the Journal</a></div>
     <div class="ar-grid">${ARTICLES.slice(0, 3).map(arCard).join('')}</div></div>`;
-  wireCards(); wireEvents();
+  wireCards(); wireEvents(); wirePk($('#view'));
   $('#homeVeda').onsubmit = e => { e.preventDefault(); openVeda(e.target.q.value.trim()); };
   $('#homeMic').onclick = () => homeListen();
   $$('[data-rv]').forEach(b => b.onclick = () => reviewModal(b.dataset.rv));
@@ -2433,7 +2471,7 @@ R.healer = (id, tab = 'about') => {
   if (!hpSel.svc || !h.services.find(s => s.id === hpSel.svc)){ const first = h.services.find(s => price(s) > 0) || h.services[0]; hpSel = {svc:first.id, date:null, time:null}; }
   const tabs = [['about','About'],['services',`Services (${h.services.length})`], ...((h.packs || []).length ? [['packages',`Packages (${h.packs.length})`]] : []),['reviews',`Reviews (${h.count})`],['journal',`Journal & events (${arts.length + evs.length})`]];
   const svcRow = s => { const n = nextOpen(Object.assign({healer:h.id}, s)); return `<div class="svc-row"><span class="svc-cov">${tvCover.html(coverOf(s, h), s.name)}</span>
-    <div class="grow"><h3>${esc(s.name)}</h3><div class="m"><span>${ico('i-clock','i xs')}${durTxt(s.dur)}</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${s.format === 'Both' ? 'Online or in person' : s.format}</span>${s.cap ? `<span>${ico('i-group','i xs')}Up to ${s.cap}</span>` : ''}<span>${ico('i-lock','i xs')}${cutoffTxt(s.cutoff)}</span></div>
+    <div class="grow">${fmtTags(s.type, s.format, s.cap, s.format === 'In person' ? s.place : null)}<h3 class="mt8">${esc(s.name)}</h3><div class="m"><span>${ico('i-clock','i xs')}${durTxt(s.dur)}</span><span>${ico('i-lock','i xs')}${cutoffTxt(s.cutoff)}</span></div>
     <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(s.desc)}</p>${s.disc ? `<div class="pkg-line">${ico('i-wallet','i xs')}<b>${s.disc}% off</b> for a limited time</div>` : ''}${(s.tiers || []).length ? `<div class="pkg-line">${ico('i-users','i xs')}<b>Book together and save:</b> ${esc(tierTxt(s))}</div>` : ''}${s.place ? `<div class="mt8"><button type="button" class="lnk small" data-map="${s.id}">${ico('i-pin','i xs')}${esc(s.place.name)} · View on map</button></div>` : ''}${n ? `<div class="nx mt8">Next: ${rel(n.d)} · ${localOnly(n.d, n.t)} your time</div>` : '<div class="small muted mt8">No open times in the next 3 weeks</div>'}</div>
     <div class="pr"><b>${priceTxt(s)}</b><span class="small muted">${price(s) ? (s.type === '1:1' ? 'per session' : 'per seat') : 'no charge'}</span><div class="mt8"><button class="btn sm p" data-book="${s.id}" ${n ? '' : 'disabled'}>Book</button></div></div></div>`; };
   let body = '';
@@ -2459,8 +2497,7 @@ R.healer = (id, tab = 'about') => {
     <aside class="side-book"><div class="card" id="bookCard"></div></aside></div></div>`;
   $$('[data-tab]').forEach(b => b.onclick = () => { history.replaceState(null, '', `#/healer/${h.id}/${b.dataset.tab}`); R.healer(h.id, b.dataset.tab); });
   $$('[data-book]').forEach(b => b.onclick = () => nav(`#/book/${h.id}/${b.dataset.book}`));
-  $$('[data-pk]').forEach(b => b.onclick = e => { if (e.target.closest('[data-pkmap]')) return; nav('#/package/' + b.dataset.pk); });
-  $$('[data-pkmap]').forEach(b => b.onclick = () => mapModal(pkOf(b.dataset.pkmap).place, true));
+  wirePk($('#view'));
   $$('[data-map]').forEach(b => b.onclick = () => { const sv = h.services.find(x => x.id === b.dataset.map); mapModal(sv.place, true); });
   $('#aboutMap') && ($('#aboutMap').onclick = () => mapModal(h.place, true));
   $('#hpSave').onclick = () => { toggleSave(h.id); R.healer(h.id, tab); };
@@ -2535,7 +2572,7 @@ function drawBook(){
       ${cond.length ? `<div class="note info mt16">${ico('i-shield')}<span>Your health notes (${esc(cond.join(', '))}) will be shared with ${esc(h.name.split(' ')[0])} for your safety. <a class="lnk" href="#/profile/health" style="font-size:13px">Edit</a></span></div>` : ''}
       ${it.contra ? `<div class="card mt16" style="background:var(--soft-gold);border-color:transparent"><b class="row" style="gap:8px">${ico('i-alert')}Before you book</b><p class="small mt8" style="color:var(--ink-2)">This session is not suitable for: <b>${esc(it.contra)}</b>.</p>
         <label class="check mt16"><input type="checkbox" id="bkAck" ${BK.ack ? 'checked' : ''}><span>None of these apply to me, or I have checked with my doctor.</span></label></div>` : ''}
-      ${BK.format === 'In person' ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}</b>. The exact location and directions are sent after booking.${!isEv && it.place ? ` <button type="button" class="lnk small" id="bkMap">View area on map</button>` : ''}</span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join from your Sessions page; it opens 10 minutes before. Headphones help.</span></div>`}`;
+      ${BK.format === 'In person' ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}</b>. ${!isEv && it.place ? ` <button type="button" class="lnk small" id="bkMap">View on map</button>` : ''}</span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join from your Sessions page; it opens 10 minutes before. Headphones help.</span></div>`}`;
   }
   if (BK.step === 4){
     body = `<h2 style="font-size:26px">${free ? 'Confirm your booking' : 'Payment'}</h2>
@@ -2546,6 +2583,7 @@ function drawBook(){
         <label class="opt"><input type="radio" name="pay" value="paypal" ${BK.pay === 'paypal' ? 'checked' : ''}><span class="grow"><b>PayPal</b><small>You will confirm in a PayPal window</small></span></label>
         ${intl() ? '' : `<label class="opt"><input type="radio" name="pay" value="upi" ${BK.pay === 'upi' ? 'checked' : ''}><span class="grow"><b>UPI</b><small>Google Pay, PhonePe, Paytm</small></span></label>`}</div>
       <div class="row mt16"><input class="inp" id="promo" placeholder="Promo code" value="${esc(BK.promo)}" style="max-width:220px;text-transform:uppercase"><button type="button" class="btn g sm" id="promoBtn">Apply</button><span class="small muted">Try FIRSTBREATH</span></div>`}
+      ${BK.format === 'In person' && !isEv && (it.place || h.place) ? `<div class="mt16">${locCard(it.place || h.place, 'In person at')}</div>` : ''}
       <div class="note info mt16">${ico('i-shield')}<span>${esc(h.policy)}</span></div>`;
   }
   const when = BK.date && BK.time ? `${fDate(BK.date)} · ${whenTxt(BK.date, BK.time)}` : 'Choose a time';
@@ -2561,8 +2599,9 @@ function drawBook(){
       ${tot.disc ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">${esc(tot.dlabel)}</span><span>−${money(CUR(), tot.disc)}</span></div>` : ''}
       ${tot.off ? `<div class="ln"><span>Promo FIRSTBREATH</span><span>−${money(CUR(), tot.off)}</span></div>` : ''}
       <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
-      <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div></div></aside></div></div>`;
-  const v = $('#view');
+      <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div>
+      ${BK.format === 'In person' && !isEv && (it.place || h.place) ? locCard(it.place || h.place) : ''}</div></aside></div></div>`;
+  const v = $('#view'); wireLoc(v);
   $$('[name=sv]', v).forEach(r => r.onchange = () => { BK.sid = r.value; BK.date = null; BK.time = null; const s = healer(BK.hid).services.find(x => x.id === r.value); BK.format = s.format === 'Both' ? BK.format === 'In person' ? 'In person' : 'Online' : s.format; drawBook(); });
   $$('[name=fm]', v).forEach(r => r.onchange = () => { BK.format = r.value; drawBook(); });
   vedaAttach(v, () => ({name:h.name}));
@@ -2662,9 +2701,9 @@ function prepForm(el, b, intro){
 
 /* map modal: area circle before booking, exact pin + directions after */
 function mapModal(p, approx){
-  if (!p || !p.lat) return toast('Location not available');
+  if (!p || !p.lat) return toast('Location not available'); approx = false;
   openModal({title:approx ? 'Area on map' : 'Location', body:`<div class="map-m" id="mapM"></div>
-    <div class="row mt16" style="justify-content:space-between;align-items:flex-start"><div><b style="font-size:16px">${esc(p.name)}</b><div class="small muted">${approx ? 'Tapovan, Rishikesh · exact address shared after you book' : esc(p.address)}</div></div>
+    <div class="row mt16" style="justify-content:space-between;align-items:flex-start"><div><b style="font-size:16px">${esc(p.name)}</b><div class="small muted">${esc(p.address)}</div><div class="small muted">${coordTxt(p)}</div></div>
     <div class="row" style="gap:8px">${approx ? '' : `<a class="btn sm p" href="${tvPlace.directions(p)}" target="_blank" rel="noopener">${ico('i-send')}Directions</a>`}<a class="btn sm g" href="${approx ? 'https://www.google.com/maps/search/?api=1&query=Tapovan%2C%20Rishikesh' : tvPlace.gmaps(p)}" target="_blank" rel="noopener">${ico('i-globe')}Open in Google Maps</a></div></div>`,
     foot:'<button type="button" class="btn g" data-close>Close</button>', onOpen:body => tvPlace.map(body.querySelector('#mapM'), {lat:p.lat, lng:p.lng, label:p.name, approx})});
 }
@@ -2687,7 +2726,7 @@ R.sessions = (tab = 'upcoming') => {
     } else acts = `<span class="pill done">${b.refund ? 'Refunded ' + money(b.cur, b.refund) : 'No refund'}</span>${b.pack ? (pkOf(b.pack).type === '1:1' ? `<a class="btn sm g" href="#/plan/${b.pkg}">Schedule again</a>` : '') : !isEv ? `<a class="btn sm g" href="#/book/${h.id}/${b.service}">Book again</a>` : ''}`;
     return `<div class="ses ${b.status === 'upcoming' && js === 'open' ? 'live' : ''}"><div class="dt"><small>${MON[pd(b.date).getUTCMonth()]}</small><b>${pd(b.date).getUTCDate()}</b><span>${dow(b.date)}</span></div>
       <div class="grow"><div class="row" style="gap:8px">${b.status === 'upcoming' && js === 'open' ? '<span class="pill act">Starting now</span>' : b.status === 'upcoming' ? `<span class="pill ok">${ico('i-check')}Confirmed</span>` : ''}${isEv ? '<span class="pill sky">Event</span>' : ''}<span class="small muted">${b.id}</span>${b.pack ? `<span class="pill pk">${ico('i-layers')}${esc(pkOf(b.pack).name)} · ${b.pi + 1} of ${pkOf(b.pack).items.length}</span>` : ''}</div>
-        <h3 class="mt8">${esc(bTitle(b))}</h3><div class="m"><span>${port(h, 's')}${esc(h.name)}</span><span>${ico('i-clock')}${whenTxt(b.date, b.time)} · ${durTxt(bDur(b))}</span><span>${ico(online ? 'i-video' : 'i-pin')}${online ? 'Online' : esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}${!online && !isEv && (it.place || h.place) ? ` <button type="button" class="lnk small" data-smap="${b.id}">Map</button>` : ''}</span>${b.seats ? `<span>${ico('i-users')}${b.seats} people</span>` : ''}${b.status === 'cancelled' ? `<span>Cancelled ${fShort(b.cancelled)}</span>` : ''}</div></div>
+        <h3 class="mt8">${esc(bTitle(b))}</h3><div class="mt8">${fmtTags(isEv || (it && it.cap) || b.seats ? 'Group' : '1:1', b.format, 0, null)}</div><div class="m"><span>${port(h, 's')}${esc(h.name)}</span><span>${ico('i-clock')}${whenTxt(b.date, b.time)} · ${durTxt(bDur(b))}</span><span>${ico(online ? 'i-video' : 'i-pin')}${online ? 'Online' : esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}${!online && !isEv && (it.place || h.place) ? ` <button type="button" class="lnk small" data-smap="${b.id}">Map</button>` : ''}</span>${b.seats ? `<span>${ico('i-users')}${b.seats} people</span>` : ''}${b.status === 'cancelled' ? `<span>Cancelled ${fShort(b.cancelled)}</span>` : ''}</div></div>
       <div class="acts">${acts}</div></div>`;
   };
   $('#view').innerHTML = `<div class="wrap"><div class="hello"><div><span class="kicker">Your journey</span><h1 class="mt8">Sessions</h1><p>Join online sessions here. Times show in ${esc(city())} time and India time.</p></div><a class="btn p" href="#/explore">${ico('i-plus')}Book a session</a></div>
@@ -3070,8 +3109,8 @@ function pkRow(p){
   const h = healer(p.healer), g = p.type !== '1:1', mine = pkEnroll(p.id);
   return `<div class="pk-row" data-pk="${p.id}" tabindex="0" role="link" aria-label="${esc(p.name)}">
     <span class="pk-cov">${tvCover.html(p.cover || coverOf(p, h), p.name)}<span class="cp-badge">${p.items.length} sessions${p.disc ? ` · ${p.disc}% off` : ''}</span></span>
-    <div class="grow"><h3>${esc(p.name)}</h3>
-      <div class="m"><span>${ico('i-layers','i xs')}${p.items.length} sessions · ${hmTxt(pkMins(p))} in total</span><span>${ico(p.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${p.format === 'Both' ? 'Online or in person' : p.format}</span>${g ? `<span>${ico('i-group','i xs')}Up to ${p.cap}</span>` : `<span>${ico('i-user','i xs')}1:1</span>`}<span>${ico('i-cal','i xs')}${pkWhenTxt(p)}</span></div>
+    <div class="grow">${pkTags(p)}<h3 class="mt8">${esc(p.name)}</h3>
+      <div class="m"><span>${ico('i-layers','i xs')}${p.items.length} sessions · ${hmTxt(pkMins(p))} in total</span><span>${ico('i-cal','i xs')}${pkWhenTxt(p)}</span></div>
       <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(p.desc)}</p>
       <div class="pk-thumbs">${p.items.map((x, i) => `<span title="${i + 1}. ${esc(x.title)}"><i>${tvCover.html(pkItemCover(p, i), x.title)}</i><small>${i + 1}. ${esc(x.title)}</small></span>`).join('')}</div>
       ${g && (p.tiers || []).length ? `<div class="pkg-line">${ico('i-users','i xs')}<b>Book together and save:</b> ${esc(tierTxt(p))}</div>` : ''}
@@ -3088,12 +3127,13 @@ R.package = pid => {
       <div class="pk-hero">${tvCover.html(p.cover || coverOf(p, h), p.name)}<span class="cp-badge">${g ? 'Group' : '1:1'} package · ${p.items.length} sessions</span></div>
       <h1 class="mt24" style="font-size:36px">${esc(p.name)}</h1>
       <a class="row mt8" href="#/healer/${h.id}" style="gap:10px;color:var(--ink-2)">${port(h, 's')}<span>with <b>${esc(h.name)}</b> ${vb} · ${ico('i-star','i xs')} ${h.rating.toFixed(1)}</span></a>
-      <div class="chips mt16"><span class="pill sky">${ico('i-layers','i xs')}${p.items.length} sessions</span><span class="pill sky">${ico('i-clock','i xs')}${hmTxt(pkMins(p))} in total</span><span class="pill sky">${ico(p.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${p.format === 'Both' ? 'Online or in person' : p.format}</span><span class="pill sky">${p.intensity || 'Gentle'}</span></div>
+      <div class="mt16">${pkTags(p, 'lg')}</div>
+      <div class="chips mt16"><span class="pill sky">${ico('i-layers','i xs')}${p.items.length} sessions</span><span class="pill sky">${ico('i-clock','i xs')}${hmTxt(pkMins(p))} in total</span><span class="pill sky">${p.intensity || 'Gentle'}</span></div>
       <p class="mt16" style="font-size:16px;line-height:1.7;color:var(--ink-2)">${esc(p.desc)}</p>
       <div class="pk-mcta mt16"><b>${priceTxt(p)}</b><span class="small muted">${g ? 'per person' : `all ${p.items.length} sessions`}</span>${mine ? `<a class="btn p sm" href="#/pkdone/${mine.id}">My sessions</a>` : !closed && left !== 0 ? `<a class="btn p sm" href="#/buy/${p.id}">Buy package</a>` : ''}</div>
       <div class="pk-facts mt24">
         <div>${ico('i-cal')}<span><b>${g ? 'Fixed dates, same small group' : 'You choose each time'}</b><small>${g ? `${fDate(p.items[0].date)} to ${fDate(p.items[p.items.length - 1].date)}, starting ${whenTxt(p.items[0].date, p.items[0].time)}` : `Book from ${esc(h.name.split(' ')[0])}'s open times${p.spacing ? `, at least ${p.spacing === 7 ? 'a week' : p.spacing + ' day' + (p.spacing === 1 ? '' : 's')} apart` : ''}. Finish within ${p.valid} days. Plan them all now or later.`}</small></span></div>
-        ${p.place ? `<div>${ico('i-pin')}<span><b>${esc(p.place.name)}</b><small>${p.format === 'Both' ? 'For in-person sessions. ' : ''}Exact location after you buy. <button type="button" class="lnk small" id="pkMap">View area on map</button></small></span></div>` : `<div>${ico('i-video')}<span><b>Online in the 2Verse room</b><small>Join from your Sessions page; it opens 10 minutes before.</small></span></div>`}
+        ${p.place ? `${locCard(p.place, p.format === 'Both' ? 'In-person sessions take place at' : 'In person at')}` : `<div>${ico('i-video')}<span><b>Online in the 2Verse room</b><small>Join from your Sessions page; it opens 10 minutes before.</small></span></div>`}
         <div>${ico('i-shield')}<span><b>Cancellation</b><small>${g ? esc(h.policy) : 'Move or cancel any session up to 24 hours before; it goes back into your package.'}</small></span></div>
       </div>
       <h2 class="mt32" style="font-size:26px">Session by session</h2>
@@ -3112,7 +3152,7 @@ R.package = pid => {
         : `<a class="btn p block lg" href="#/buy/${p.id}">Buy package · ${money(CUR(), dPrice(p))}</a>`}
       <button type="button" class="btn g block" id="pkMsg">${ico('i-chat')}Ask ${esc(h.name.split(' ')[0])} a question</button>
       <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div></div></aside></div></div>`;
-  $('#pkMap') && ($('#pkMap').onclick = () => mapModal(p.place, true));
+  wireLoc($('#view'));
   $('#pkMsg').onclick = () => startThread(h.id);
 };
 
@@ -3178,12 +3218,13 @@ function drawBuy(){
       <label class="field mt16"><span>What would you like from this package? <small>(optional, only ${esc(first)} sees this)</small></span><textarea class="ta" id="pbIntent" data-veda="intent" placeholder="For example: I want to fall asleep without my phone">${esc(PB.intent)}</textarea></label>
       ${p.contra ? `<div class="card mt16" style="background:var(--soft-gold);border-color:transparent"><b class="row" style="gap:8px">${ico('i-alert')}Before you buy</b><p class="small mt8" style="color:var(--ink-2)">This package is not suitable for: <b>${esc(p.contra)}</b>.</p>
         <label class="check mt16"><input type="checkbox" id="pbAck" ${PB.ack ? 'checked' : ''}><span>None of these apply to me, or I have checked with my doctor.</span></label></div>` : ''}
-      ${PB.format === 'In person' && p.place ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(p.place.name)}</b>. The exact location and directions are sent after you buy. <button type="button" class="lnk small" id="pbMap">View area on map</button></span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join each session from your Sessions page.</span></div>`}`;
+      ${PB.format === 'In person' && p.place ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(p.place.name)}</b>. <button type="button" class="lnk small" id="pbMap">View on map</button></span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join each session from your Sessions page.</span></div>`}`;
   }
   if (PB.step === 3){
     body = `<h2 style="font-size:26px">Payment</h2><div class="stack mt16">${S.cards.map(c => `<label class="opt"><input type="radio" name="pay" value="${c.id}" ${PB.pay === c.id ? 'checked' : ''}><span class="ccard" style="border:none;padding:0;background:none"><span class="brand">${c.brand}</span></span><span class="grow"><b>•••• ${c.last4}</b><small>Expires ${c.exp}</small></span></label>`).join('')}
       <label class="opt"><input type="radio" name="pay" value="paypal" ${PB.pay === 'paypal' ? 'checked' : ''}><span class="grow"><b>PayPal</b><small>You will confirm in a PayPal window</small></span></label>
       ${intl() ? '' : `<label class="opt"><input type="radio" name="pay" value="upi" ${PB.pay === 'upi' ? 'checked' : ''}><span class="grow"><b>UPI</b><small>Google Pay, PhonePe, Paytm</small></span></label>`}</div>
+      ${PB.format === 'In person' && p.place ? `<div class="mt16">${locCard(p.place, 'In person at')}</div>` : ''}
       <div class="note info mt16">${ico('i-shield')}<span>${g ? esc(h.policy) : 'You can move or cancel any session up to 24 hours before; it goes back into your package.'}</span></div>`;
   }
   const steps = [[g ? 'Dates & people' : 'Plan sessions', 1], ['About you', 2], ['Payment', 3]];
@@ -3192,7 +3233,7 @@ function drawBuy(){
       <div class="card" style="padding:26px">${body}
       <div class="ob-foot">${PB.step > 1 ? `<button class="btn g" id="pbBack">${ico('i-back')}Back</button>` : '<span></span>'}<button class="btn p lg" id="pbNext">${PB.step < 3 ? 'Continue' : `Pay ${money(CUR(), tot.total)}`}</button></div></div></div>
     <aside class="side-book"><div class="card sum"><span class="pk-sumcov">${tvCover.html(p.cover || coverOf(p, h), p.name)}</span><b style="font-size:17px">${esc(p.name)}</b>
-      <div class="row">${port(h, 's')}<span class="small muted">with ${esc(h.name)}</span></div>
+      <div class="row">${port(h, 's')}<span class="small muted">with ${esc(h.name)}</span></div>${fmtTags(p.type, PB.format, g ? p.cap : 0, PB.format === 'In person' ? p.place : null)}
       <div class="divider" style="margin:4px 0"></div>
       <div class="ln"><span>Sessions</span><span>${p.items.length} · ${hmTxt(pkMins(p))}</span></div>
       <div class="ln"><span>${g ? 'Dates' : 'Planned'}</span><span>${g ? pkWhenTxt(p) : `${nPicked} of ${p.items.length}`}</span></div>
@@ -3201,8 +3242,9 @@ function drawBuy(){
       ${tot.d1 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Package discount · ${p.disc}%</span><span>−${money(CUR(), tot.d1)}</span></div>` : ''}
       ${tot.d2 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Group discount · ${tot.tier.n}+ people</span><span>−${money(CUR(), tot.d2)}</span></div>` : ''}
       <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
-      <div class="small muted">${money(CUR(), Math.round(tot.total / tot.seats / p.items.length))} a session${tot.seats > 1 ? ' per person' : ''} · ${intl() ? 'US dollars, taxes included' : 'rupees, GST included'}</div></div></aside></div></div>`;
-  const v = $('#view');
+      <div class="small muted">${money(CUR(), Math.round(tot.total / tot.seats / p.items.length))} a session${tot.seats > 1 ? ' per person' : ''} · ${intl() ? 'US dollars, taxes included' : 'rupees, GST included'}</div>
+      ${PB.format === 'In person' && p.place ? locCard(p.place) : ''}</div></aside></div></div>`;
+  const v = $('#view'); wireLoc(v);
   if ($('#pkPick')) pkPicker($('#pkPick'), p, PB.picks, PB.picks.map(() => false), PB.pst, drawBuy);
   $$('[name=fm]', v).forEach(r => r.onchange = () => { PB.format = r.value; drawBuy(); });
   $('#pkLater') && ($('#pkLater').onchange = e => { PB.later = e.target.checked; });
@@ -3253,7 +3295,7 @@ R.pkdone = id => {
   const fresh = e.bought === TODAY && !bs.some(b => b.status === 'completed');
   $('#view').innerHTML = `<div class="wrap"><div class="confirm" style="max-width:760px">${fresh ? `<div class="ok-big">${ico('i-check','i')}</div><h1>You are enrolled, ${esc(S.me.first)}</h1>
     <p class="mt8" style="color:var(--ink-2);font-size:16px">${esc(h.name)} has been notified. Your receipt is on its way ${S.me.login === 'phone' ? 'by SMS' : 'to ' + esc(S.me.email)}.</p>` : `<span class="kicker">Your package</span><h1 class="mt8">${esc(p.name)}</h1>`}
-    <div class="card sum" style="text-align:left"><div class="row">${port(h, 'm')}<div class="grow"><b style="font-size:17px">${esc(p.name)}</b><div class="small muted">with ${esc(h.name)} · ${e.id}</div></div><span class="pill ok">${ico('i-check')}Paid ${money(e.cur, e.amount)}</span></div>
+    <div class="card sum" style="text-align:left"><div class="row">${port(h, 'm')}<div class="grow"><b style="font-size:17px">${esc(p.name)}</b><div class="small muted">with ${esc(h.name)} · ${e.id}</div><div class="mt8">${fmtTags(p.type, e.format, 0, e.format === 'In person' ? p.place : null)}</div></div><span class="pill ok">${ico('i-check')}Paid ${money(e.cur, e.amount)}</span></div>
       <div class="pk-bar mt8"><i style="width:${done / p.items.length * 100}%"></i></div><div class="small muted">${done} of ${p.items.length} attended · ${bs.length} scheduled${!g ? ` · finish by ${fDate(e.until)}` : ''}${e.seats > 1 ? ` · ${e.seats} people` : ''}</div>
       <div class="pk-picks mt8">${p.items.map((x, i) => { const b = byI(i); return `<div class="pk-pick ${b ? 'set' : ''}"><span class="pk-num">${b && b.status === 'completed' ? ico('i-check','i xs') : i + 1}</span><span class="pk-img sm">${tvCover.html(pkItemCover(p, i), x.title)}</span>
         <span class="grow"><b>${esc(x.title)}</b><small>${durTxt(x.dur)} · ${b ? `${fDate(b.date)} · ${whenTxt(b.date, b.time)}` : 'Not scheduled yet'}</small></span>${b ? `<span class="pill ${b.status === 'completed' ? 'done' : 'ok'}">${b.status === 'completed' ? 'Attended' : 'Booked'}</span>` : ''}</div>`; }).join('')}</div>
@@ -3282,6 +3324,55 @@ R.plan = id => {
   };
   draw();
 };
+
+/* ---------- clear tags: 1:1 or group · online or in person ---------- */
+function fmtTags(type, format, cap, place, extra = ''){
+  const g = type !== '1:1';
+  const fm = format === 'Both' ? `<span class="fmt-t fm-both">${ico('i-video','i xs')}Online or in person</span>` : format === 'In person' ? `<span class="fmt-t fm-in">${ico('i-pin','i xs')}In person${place ? ' · ' + esc(place.name) : ''}</span>` : `<span class="fmt-t fm-on">${ico('i-video','i xs')}Online</span>`;
+  return `<span class="fmts ${extra}"><span class="fmt-t ${g ? 'fm-grp' : 'fm-solo'}">${ico(g ? 'i-group' : 'i-user','i xs')}${g ? `Group${cap ? ' · up to ' + cap : ''}` : '1:1 · private'}</span>${fm}</span>`;
+}
+const pkTags = (p, extra) => fmtTags(p.type, p.format, p.type !== '1:1' ? p.cap : 0, p.format === 'In person' ? p.place : null, extra);
+function pkCard(p){
+  const h = healer(p.healer), g = p.type !== '1:1';
+  return `<article class="pkc" data-pk="${p.id}" tabindex="0" role="link" aria-label="${esc(p.name)}">
+    <div class="pkc-cov">${tvCover.html(p.cover || coverOf(p, h), p.name)}<span class="cp-badge">${p.items.length} sessions${p.disc ? ` · ${p.disc}% off` : ''}</span></div>
+    <div class="pkc-bd">${pkTags(p)}<h3>${esc(p.name)}</h3>
+      <div class="row small muted" style="gap:8px">${port(h, 's')}<span>${esc(h.name)} · ${ico('i-star','i xs')} ${h.rating.toFixed(1)}</span></div>
+      <div class="pkc-m"><span>${ico('i-layers','i xs')}${p.items.length} sessions · ${hmTxt(pkMins(p))}</span><span>${ico('i-cal','i xs')}${pkWhenTxt(p)}</span></div>
+      <div class="pkc-ft"><span><b>${priceTxt(p)}</b> <small class="muted">${g ? 'per person' : 'whole package'}</small></span><span class="small muted">${money(CUR(), Math.round(dPrice(p) / p.items.length))}/session</span></div></div></article>`;
+}
+function wirePk(scope = document){
+  $$('[data-pk]', scope).forEach(c => { c.onclick = e => { if (e.target.closest('[data-pkmap]')) return; nav('#/package/' + c.dataset.pk); }; c.onkeydown = e => { if (e.key === 'Enter') nav('#/package/' + c.dataset.pk); }; });
+  $$('[data-pkmap]', scope).forEach(b => b.onclick = () => mapModal(pkOf(b.dataset.pkmap).place, true));
+}
+const pkF = {type:'All', format:'Any', practice:'All'};
+R.packages = () => {
+  document.title = 'Packages · 2Verse';
+  const pr = [...new Set(allPacks().map(p => healer(p.healer).practices[0]))];
+  const seg = (k, opts) => `<div class="seg" role="radiogroup">${opts.map(([v, l, i]) => `<button type="button" data-pf="${k}|${v}" class="${pkF[k] === v ? 'on' : ''}" aria-pressed="${pkF[k] === v}">${i ? ico(i,'i xs') : ''}${l}</button>`).join('')}</div>`;
+  const list = allPacks().filter(p => (pkF.type === 'All' || (pkF.type === '1:1') === (p.type === '1:1'))
+    && (pkF.format === 'Any' || p.format === pkF.format || p.format === 'Both') && (pkF.practice === 'All' || healer(p.healer).practices[0] === pkF.practice));
+  $('#view').innerHTML = `<div class="wrap">
+    <div class="ex-head"><span class="kicker">Several sessions, one journey</span><h1 class="mt8">Packages</h1>
+      <p class="mt8" style="color:var(--ink-2);max-width:640px">A set of sessions planned by your healer, each with its own focus, for one price. Choose private 1:1 or a small group, online or in person in Tapovan.</p></div>
+    <div class="pk-filters mt16">${seg('type', [['All','All'],['1:1','1:1 private','i-user'],['Group','Group','i-group']])}${seg('format', [['Any','Any format'],['Online','Online','i-video'],['In person','In person','i-pin']])}
+      <select class="sel" id="pkPr" aria-label="Practice" style="max-width:220px"><option value="All">All practices</option>${pr.map(x => `<option ${pkF.practice === x ? 'selected' : ''}>${x}</option>`).join('')}</select></div>
+    <p class="small muted mt16"><b style="color:var(--ink)">${list.length} package${list.length === 1 ? '' : 's'}</b></p>
+    <div class="pk-grid mt16">${list.map(pkCard).join('') || `<div class="card empty" style="grid-column:1/-1">${ico('i-layers','i')}No packages match these filters.</div>`}</div></div>`;
+  $$('[data-pf]').forEach(b => b.onclick = () => { const [k, v] = b.dataset.pf.split('|'); pkF[k] = v; R.packages(); });
+  $('#pkPr').onchange = e => { pkF.practice = e.target.value; R.packages(); };
+  wirePk($('#view'));
+};
+
+/* ---------- location card: in-person sessions, shown while viewing, booking and paying ---------- */
+const coordTxt = p => `${(+p.lat).toFixed(5)}° N, ${(+p.lng).toFixed(5)}° E`;
+function locCard(p, title = 'Where you will meet'){
+  if (!p || !p.lat) return '';
+  return `<div class="loc-c"><div class="loc-c-map" data-locmap="${p.lat},${p.lng}" data-label="${esc(p.name)}"></div>
+    <div class="loc-c-in"><small class="muted">${title}</small><b>${esc(p.name)}</b><span class="small" style="color:var(--ink-2)">${esc(p.address || '')}</span><span class="small muted">${coordTxt(p)}</span>
+    <div class="loc-c-b"><a class="btn xs p" href="${tvPlace.gmaps(p)}" target="_blank" rel="noopener" data-gm>${ico('i-pin','i xs')}View on map</a><a class="btn xs g" href="${tvPlace.directions(p)}" target="_blank" rel="noopener">${ico('i-send','i xs')}Directions</a></div></div></div>`;
+}
+function wireLoc(scope){ $$('[data-locmap]', scope).forEach(el => { const [lat, lng] = el.dataset.locmap.split(',').map(Number); try { tvPlace.map(el, {lat, lng, label:el.dataset.label}); } catch(e){} }); }
 
 applyTheme();
 render();
