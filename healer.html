@@ -733,6 +733,102 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 .loc-mk{background:none;border:none}.loc-mk .loc-pin{margin:0;cursor:grab}
 .modal-box{max-width:100vw}.fgrid > *,.cov-wrap > *{min-width:0}.modal-f{flex-wrap:wrap}.cov-ctrl .seg{flex-wrap:wrap}
 @media (max-width:720px){.modal-f .btn{flex:1 1 auto}}
+
+/* ===== availability (1:1) ===== */
+.wk-avail{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.pill.pk{white-space:normal;line-height:1.35}
+/* ===== packages ===== */
+.pk-list{display:flex;flex-direction:column;gap:6px;padding:10px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.pk-list details summary{cursor:pointer;color:var(--accent-strong);font-weight:600;padding:2px 0}
+.pk-list details[open] summary{margin-bottom:6px}
+.pk-list details .pk-it{margin-top:6px}
+.pk-it{display:flex;gap:10px;align-items:center;min-width:0}
+.pk-it b{display:block;font-size:13.5px;font-weight:600;line-height:1.3}
+.pk-it small{font-size:12px;color:var(--muted)}
+.pk-th{width:44px;height:34px;border-radius:9px;overflow:hidden;flex-shrink:0;background:var(--surface-2);display:block}
+.pk-th svg,.pk-th img{width:100%;height:100%;display:block;object-fit:cover}
+.pk-count{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin-bottom:12px}
+.pk-count .btn{height:44px}
+.pk-sched{border:1px dashed var(--line-strong);border-radius:16px;padding:12px 14px;margin-bottom:12px;display:flex;flex-direction:column;gap:8px}
+.pk-sched-r{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.pk-sched-r .field{min-width:140px;flex:1}
+.pk-sched-r .btn{height:44px}
+.pk-items{display:flex;flex-direction:column;gap:10px}
+.pk-item{border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden}
+.pk-item.open{border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 12%,transparent)}
+.pk-ih{display:flex;gap:12px;align-items:center;width:100%;padding:10px 14px;text-align:left;color:var(--ink);min-width:0}
+.pk-ih .grow{min-width:0;flex:1}
+.pk-row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pk-ia{display:flex;gap:14px;justify-content:flex-end;margin-top:10px}
+.pk-ih b{display:block;font-size:14.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pk-ih small{font-size:12.5px;color:var(--muted)}
+.pk-ih .pk-th{width:60px;height:44px}
+.pk-no{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary);font-weight:700;font-size:13px;flex-shrink:0}
+.pk-chev{transform:rotate(-90deg);transition:transform .2s;color:var(--muted);display:inline-flex}
+.pk-item.open .pk-chev{transform:rotate(90deg)}
+.pk-ib{padding:4px 14px 14px;border-top:1px solid var(--line)}
+.pk-ib .fgrid{margin-top:10px}
+.pk-img{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.pk-big{width:160px;height:96px;border-radius:12px;overflow:hidden;display:block;background:var(--surface-2);flex-shrink:0}
+.pk-big svg,.pk-big img{width:100%;height:100%;display:block;object-fit:cover}
+.pk-img-b{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media (max-width:720px){ .pk-sched-r .field{min-width:100%} .pk-big{width:100%;height:120px} .pk-row3{grid-template-columns:1fr} }
+
+.av-row{display:grid;grid-template-columns:96px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);background:var(--surface)}
+.av-row:first-child{border-top:none}
+.av-row:not(.on){background:var(--surface-2)}
+.av-day{display:flex;gap:8px;align-items:center;cursor:pointer}
+.av-day input{width:18px;height:18px;accent-color:var(--primary)}
+.av-day b{font-size:14px}
+.av-ranges{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.av-rg{display:inline-flex;align-items:center;gap:6px;padding:4px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.av-rg .inp{height:36px;width:118px;padding:0 8px;font-size:13.5px}
+.av-rg > span{font-size:12.5px;color:var(--muted)}
+.av-rg .icon-btn{width:30px;height:30px}
+.av-r{display:flex;flex-direction:column;align-items:flex-end;gap:2px;text-align:right}
+.lnk.small{font-size:12.5px;display:inline-flex;gap:4px;align-items:center}
+/* ===== group dates & times ===== */
+.grp-wrap{display:grid;grid-template-columns:280px 1fr;gap:16px;align-items:start}
+.mcal{border:1px solid var(--line);border-radius:16px;padding:12px;background:var(--surface)}
+.mcal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.mcal-h b{font-size:14.5px}
+.mcal-g{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.mcal-w{font-size:11px;color:var(--muted);text-align:center;font-weight:600;padding:2px 0}
+.mcal-d{height:34px;border-radius:10px;font-size:13px;font-weight:500;color:var(--ink);border:1px solid transparent}
+.mcal-d:hover:not(:disabled){border-color:var(--primary)}
+.mcal-d:disabled{color:var(--line-strong);cursor:not-allowed}
+.mcal-d.today{border-color:var(--line-strong)}
+.mcal-d.on{background:var(--primary);color:var(--on-primary);font-weight:700}
+.grp-list{display:flex;flex-direction:column;gap:10px;max-height:420px;overflow-y:auto;padding-right:4px}
+.grp-row{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--surface);display:flex;flex-direction:column;gap:8px}
+.grp-d{display:flex;align-items:center;gap:8px}
+.grp-d b{font-size:14px;flex:1}
+.grp-d .icon-btn{width:30px;height:30px}
+.grp-times{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tchip{display:inline-flex;align-items:center;gap:6px;padding:5px 6px 5px 11px;border-radius:99px;background:var(--soft-sage);color:var(--primary);font-weight:600;font-size:13px}
+.tchip small{font-weight:500;color:var(--ink-2);font-size:11px}
+.tchip button{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:inherit}
+.tchip button:disabled{opacity:.3}
+.tadd{display:inline-flex;gap:6px;align-items:center}
+.tadd .inp{height:32px;width:116px;padding:0 8px;font-size:13px}
+/* ===== discounts ===== */
+.disc-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 14px;border:1px dashed var(--line-strong);border-radius:14px}
+.tiers{display:flex;flex-direction:column;gap:8px;padding:12px 14px;border:1px dashed var(--line-strong);border-radius:14px}
+.tier{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2)}
+.tier .inp{width:70px;height:36px;padding:0 8px;text-align:center}
+.tier .icon-btn{width:30px;height:30px}
+.cp-price s{font-size:13px;margin-right:2px}
+/* ===== place ===== */
+.place-card{margin-top:10px}
+.pc{display:grid;grid-template-columns:220px 1fr;gap:14px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:10px;background:var(--surface)}
+.pc-map{height:130px;border-radius:12px;overflow:hidden;position:relative;background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/26px 26px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/26px 26px,var(--surface-2)}
+.pc-map .loc-fallback{padding:8px}.pc-map .loc-fallback b{font-size:12.5px}.pc-map .loc-pin{width:30px;height:30px}
+.pc-in b{display:block;font-size:14.5px}.pc-in small{font-size:12.5px;color:var(--muted)}
+@media (max-width:720px){
+  .av-row{grid-template-columns:1fr}.av-r{align-items:flex-start;text-align:left;flex-direction:row;gap:10px}
+  .grp-wrap{grid-template-columns:1fr}
+  .pc{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -744,6 +840,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c1-3.5 3.5-5 7-5s6 1.5 7 5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 15c2 .6 3.4 2.2 4 5"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></symbol>
   <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
   <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2M3 10h18"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/></symbol>
@@ -795,6 +892,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
     <button class="nav" data-view="calendar"><svg class="i"><use href="#i-cal"/></svg>Calendar</button>
     <button class="nav" data-view="bookings"><svg class="i"><use href="#i-book"/></svg>Bookings</button>
     <button class="nav" data-view="services"><svg class="i"><use href="#i-leaf"/></svg>Services</button>
+    <button class="nav" data-view="packages"><svg class="i"><use href="#i-layers"/></svg>Packages</button>
     <button class="nav" data-view="messages"><svg class="i"><use href="#i-chat"/></svg>Messages<span class="cnt" id="navMsg"></span></button>
     <button class="nav" data-view="seekers"><svg class="i"><use href="#i-users"/></svg>Seekers</button>
     <button class="nav" data-view="reviews"><svg class="i"><use href="#i-star"/></svg>Reviews<span class="cnt" id="navRv"></span></button>
@@ -832,6 +930,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
       <section class="view" id="v-calendar"></section>
       <section class="view" id="v-bookings"></section>
       <section class="view" id="v-services"></section>
+      <section class="view" id="v-packages"></section>
       <section class="view" id="v-messages"></section>
       <section class="view" id="v-seekers"></section>
       <section class="view" id="v-reviews"></section>
@@ -914,7 +1013,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
       city:a.city || a.town || a.village || a.municipality || '', district:a.state_district || a.county || '', state:a.state || '', pin:a.postcode || '', country:a.country || '', cc:(a.country_code || '').toLowerCase()};
   }
   window.tvLocation = {
-    DEMO: DEMO,
+    DEMO: DEMO, loadLeaflet: loadLeaflet,
     html: function(d){
       d = d || {};
       return '<div class="loc">' +
@@ -1125,6 +1224,33 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 })();
 </script>
 <script>
+/* =====================================================================
+   Place search (OSM Nominatim) + map view, used by services and seekers.
+   ===================================================================== */
+(function(){
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  window.tvPlace = {
+    search: function(q){ return fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&q=' + encodeURIComponent(q), {headers:{'Accept-Language':'en'}}).then(function(r){ return r.json(); }).then(function(list){ return list.map(function(x){ var a = x.address || {}; return {name:x.name || x.display_name.split(',')[0], address:x.display_name, area:a.suburb || a.neighbourhood || a.village || '', city:a.city || a.town || a.village || '', lat:+x.lat, lng:+x.lon}; }); }); },
+    gmaps: function(p){ return 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng; },
+    directions: function(p){ return 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng; },
+    /* render a map into el. opts: {lat,lng,label,approx} */
+    map: function(el, opts){
+      el.innerHTML = '<div class="loc-fallback"><span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span><b>' + esc(opts.label || 'Location') + '</b><small>' + (+opts.lat).toFixed(4) + ', ' + (+opts.lng).toFixed(4) + '</small></div>';
+      if (!window.tvLocation) return;
+      tvLocation.loadLeaflet().then(function(L){
+        if (!document.body.contains(el)) return; el.innerHTML = '';
+        var m = L.map(el, {scrollWheelZoom:false}).setView([opts.lat, opts.lng], opts.approx ? 15 : 16);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap contributors'}).addTo(m);
+        if (opts.approx) L.circle([opts.lat, opts.lng], {radius:350, color:'#c0704f', weight:2, fillOpacity:.15}).addTo(m);
+        else L.marker([opts.lat, opts.lng], {icon:L.divIcon({className:'loc-mk', html:'<span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span>', iconSize:[44,50], iconAnchor:[22,48]})}).addTo(m);
+        setTimeout(function(){ m.invalidateSize(); }, 200);
+      }).catch(function(){});
+    }
+  };
+})();
+</script>
+
+<script>
 (function(){
 'use strict';
 /* =====================================================================
@@ -1165,7 +1291,7 @@ const stars = (n, cls = '') => `<span class="stars ${cls}" aria-label="${n} out 
    Seed data (a realistic week for healer Ananya Rawat)
    ===================================================================== */
 const DEF = {
-  v: 4,
+  v: 6,
   theme: 'dawn', available: true,
   seekers: [
     {id:'sarah', name:'Sarah Mitchell', short:'Sarah M.', city:'London', tz:1, col:'--accent-strong', goals:'Sleep, anxiety', notes:'Responds well to long exhales. Prefers evening sessions. Shoulder tension eases after round two.'},
@@ -1289,7 +1415,54 @@ const DEF = {
     declared:true, lastSaved:'2026-09-18'
   }
 };
-const KEY = '2verse-healer-v4';
+/* service model: 1:1 = weekly availability windows (+ optional discount); Group = dates with start times (+ attendee discounts) */
+(function migrate(){
+  const A1 = {Mon:[['07:00','11:00'],['13:00','18:30']], Tue:[['07:00','11:00'],['13:00','18:30']], Wed:[['07:00','11:00'],['13:00','18:30']], Thu:[['07:00','11:00'],['13:00','18:30']], Fri:[['07:00','11:00'],['13:00','18:30']], Sat:[['08:00','12:00']], Sun:[]};
+  const INTRO = {Mon:[['17:00','19:00']], Tue:[['17:00','19:00']], Wed:[['17:00','19:00']], Thu:[['17:00','19:00']], Fri:[['17:00','20:00']], Sat:[], Sun:[]};
+  DEF.services.forEach(s => {
+    delete s.pkg; if (s.type === 'Workshop') s.type = 'Group';
+    const sc = s.schedule; delete s.schedule;
+    if (s.type === '1:1'){ s.avail = clone(s.id === 's3' ? INTRO : A1); s.gap = 15; s.disc = s.id === 's2' ? 10 : 0; }
+    else {
+      s.sessions = [];
+      if (sc.kind === 'weekly'){ for (let i = 0; i < 28; i++){ const d = addDays('2026-09-28', i); if (sc.days.includes(dow(d))) s.sessions.push({date:d, times:[sc.time]}); } }
+      else s.sessions.push({date:sc.date, times:[sc.time]});
+      s.tiers = s.status === 'completed' ? [] : s.id === 's5' ? [{n:3, pct:5}] : [{n:3, pct:5},{n:5, pct:10}];
+    }
+    if (s.format !== 'Online') s.place = /riverside/i.test(s.venue || '') ? {useStudio:false, name:'Tapovan riverside ghat', address:'Riverside steps below Tapovan, near Laxman Jhula, Rishikesh, Uttarakhand 249192', lat:30.1268, lng:78.3305} : {useStudio:true};
+  });
+})();
+
+/* packages: several sessions sold together */
+(function seedPacks(){
+  const A1 = {Mon:[['07:00','11:00'],['13:00','18:30']], Tue:[['07:00','11:00'],['13:00','18:30']], Wed:[['07:00','11:00'],['13:00','18:30']], Thu:[['07:00','11:00'],['13:00','18:30']], Fri:[['07:00','11:00'],['13:00','18:30']], Sat:[['08:00','12:00']], Sun:[]};
+  const GHAT = {useStudio:false, name:'Tapovan riverside ghat', address:'Riverside steps below Tapovan, near Laxman Jhula, Rishikesh, Uttarakhand 249192', lat:30.1268, lng:78.3305};
+  DEF.packs = [
+    {id:'an-p1', name:'Sleep reset: 5-session journey', modality:'Breathwork', type:'1:1', format:'Both', capacity:1, intensity:'Gentle', status:'active', created:'2026-09-02',
+     cover:{kind:'ai', seed:5120, pal:'night', scene:'stars', motif:'Breathwork'}, inr:11000, usd:290, disc:10, tiers:[], avail:A1, gap:15, spacing:3, valid:45, cutoff:120, place:{useStudio:true}, venue:'Tapovan studio',
+     desc:'Five guided sessions, a few days apart, that take you from racing thoughts at bedtime to a simple evening routine you can keep on your own.', contra:'Not advised in late pregnancy without a doctor\'s approval.',
+     items:[{title:'Map your sleep', dur:60, desc:'We look at your evenings, your nights and what wakes you, and you learn a first slow-exhale practice.', cover:{kind:'ai', seed:5121, pal:'dusk', scene:'mountains', motif:'Breathwork'}},
+       {title:'The long exhale', dur:60, desc:'Extended exhale and humming breath to move the body from alert to rest.', cover:{kind:'ai', seed:5122, pal:'ganga', scene:'river', motif:'Breathwork'}},
+       {title:'Body scan for rest', dur:45, desc:'A guided body scan to use lying down, with breath counting for a busy mind.', cover:null},
+       {title:'When you wake at 3 AM', dur:45, desc:'A quiet toolkit for night waking: what to do in bed, without reaching for your phone.', cover:{kind:'ai', seed:5124, pal:'night', scene:'stars', motif:'Meditation'}},
+       {title:'Your own evening routine', dur:60, desc:'We put it all together into a 10-minute routine and plan the next month.', cover:{kind:'ai', seed:5125, pal:'dawn', scene:'sunrise', motif:'Breathwork'}}],
+     enrolls:[{seeker:'emma', bought:'2026-09-20', seats:1}, {seeker:'james', bought:'2026-09-28', seats:1}], history:[['2026-09-02','Created and published'],['2026-09-15','Updated: discount']]},
+    {id:'an-p2', name:'Ganga sunrise breath week', modality:'Breathwork', type:'Group', format:'In person', capacity:12, intensity:'Moderate', status:'active', created:'2026-09-10',
+     cover:{kind:'ai', seed:6230, pal:'ganga', scene:'sunrise', motif:'Breathwork'}, inr:4000, usd:100, disc:0, tiers:[{n:2, pct:5},{n:4, pct:10}], gap:0, spacing:0, valid:0, cutoff:720, place:GHAT, venue:'Tapovan riverside ghat',
+     desc:'Four sunrise mornings by the Ganga with a small group. Each morning builds on the last, ending with a quiet closing circle and herbal tea.', contra:'Uncontrolled high blood pressure, recent surgery.',
+     items:[{title:'Arrive and settle', dur:90, date:'2026-10-12', time:'06:00', desc:'Meet the group, learn to sit comfortably by the river and begin with slow nasal breathing.', cover:{kind:'ai', seed:6231, pal:'dawn', scene:'river', motif:'Breathwork'}},
+       {title:'Breath with the river', dur:90, date:'2026-10-13', time:'06:00', desc:'Matching the breath to the sound of the water; alternate-nostril breathing.', cover:{kind:'ai', seed:6232, pal:'ganga', scene:'river', motif:'Breathwork'}},
+       {title:'Fire breath and stillness', dur:90, date:'2026-10-14', time:'06:00', desc:'A gentle introduction to kapalbhati, followed by a long silent sit.', cover:{kind:'ai', seed:6233, pal:'saffron', scene:'sunrise', motif:'Breathwork'}},
+       {title:'Closing circle', dur:90, date:'2026-10-15', time:'06:00', desc:'We practise the full sequence together and close with herbal tea on the steps.', cover:{kind:'ai', seed:6234, pal:'dusk', scene:'mountains', motif:'Meditation'}}],
+     enrolls:[{seeker:'priya', bought:'2026-09-22', seats:2}, {seeker:'mira', bought:'2026-09-25', seats:1}, {seeker:'anika', bought:'2026-09-29', seats:4}], history:[['2026-09-10','Created and published']]},
+    {id:'an-p3', name:'Focus in three sessions', modality:'Breathwork', type:'1:1', format:'Online', capacity:1, intensity:'Moderate', status:'draft', created:'2026-09-29',
+     cover:null, inr:5200, usd:135, disc:0, tiers:[], avail:A1, gap:15, spacing:2, valid:30, cutoff:30, place:null, venue:'',
+     desc:'Three short sessions of practical breath tools for clear, steady attention at work.', contra:'',
+     items:[{title:'Getting to know you', dur:45, desc:'Your work day, where focus breaks, and a first box-breathing practice.', cover:null},{title:'Box breathing for steady focus', dur:45, desc:'', cover:null},{title:'Your own daily routine', dur:45, desc:'', cover:null}],
+     enrolls:[], history:[['2026-09-29','Draft created']]}
+  ];
+})();
+const KEY = '2verse-healer-v5';
 let S;
 try { S = JSON.parse(localStorage.getItem(KEY)); } catch(e){}
 if (!S || S.v !== DEF.v) S = clone(DEF);
@@ -1300,7 +1473,8 @@ const service = id => S.services.find(s => s.id === id);
 const booking = id => S.bookings.find(b => b.id === id);
 const thread = sid => S.threads.find(t => t.seeker === sid);
 const cutoffTxt = c => c === 0 ? 'Booking open until start' : `Booking closes ${c >= 60 ? (c / 60) + (c === 60 ? ' hour' : ' hours') : c + ' min'} before`;
-const schedTxt = s => s.schedule.kind === 'availability' ? 'By your availability' : s.schedule.kind === 'weekly' ? `Every ${s.schedule.days.join(', ')} · ${f12(s.schedule.time)}` : `${fDate(s.schedule.date)} ${pd(s.schedule.date).getUTCFullYear()} · ${f12(s.schedule.time)}`;
+const schedTxt = s => { if (s.type === '1:1'){ const on = WEEK.filter(d => (s.avail || {})[d] && s.avail[d].length); return on.length ? `${on.length === 7 ? 'Every day' : on.length === 5 && !on.includes('Sat') && !on.includes('Sun') ? 'Mon–Fri' : on.join(', ')} · ${WEEK.reduce((a, d) => a + slotsIn((s.avail || {})[d], s.duration, s.gap).length, 0)} start times a week` : 'No availability set'; }
+  const fs = futureSessions(s), all = (s.sessions || []).slice().sort((a, b) => a.date.localeCompare(b.date)); return fs.length ? `${fs.length} date${fs.length === 1 ? '' : 's'} · next ${fDate(fs[0].date)}, ${fs[0].times.map(f12).join(', ')}` : all.length ? `Last held ${fDate(all[all.length - 1].date)}` : 'No dates yet'; };
 const typeIco = t => t === '1:1' ? 'i-user' : t === 'Group' ? 'i-group' : 'i-spark';
 const bLabel = b => b.seeker ? seeker(b.seeker).short : `${b.seats} seekers`;
 const approvedMods = () => Object.entries(S.profile.modalities).filter(([, v]) => v === 'ok').map(([m]) => m);
@@ -1443,13 +1617,11 @@ function occurrences(from, to){
     out.push({kind:'booking', id:b.id, date:b.date, time:b.time, dur:s.duration, cls:b.status === 'cancelled' ? 'x' : s.type === '1:1' ? 's' : 'g',
       title:s.type === '1:1' ? bLabel(b) : s.name, sub:s.type === '1:1' ? s.name : `${b.seats}/${s.capacity} booked`, b, s});
   });
-  S.services.filter(s => s.status === 'active' && s.schedule.kind !== 'availability').forEach(s => {
-    for (let d = from; d <= to; d = addDays(d, 1)){
-      const hit = s.schedule.kind === 'weekly' ? s.schedule.days.includes(dow(d)) : s.schedule.date === d;
-      if (!hit) continue;
-      if (S.bookings.some(b => b.service === s.id && b.date === d)) continue;
-      out.push({kind:'service', id:s.id, date:d, time:s.schedule.time, dur:s.duration, cls:'g', title:s.name, sub:'Open for booking', s});
-    }
+  S.services.filter(s => s.status === 'active' && s.type !== '1:1').forEach(s => {
+    (s.sessions || []).filter(x => inR(x.date)).forEach(x => x.times.forEach(t => {
+      if (S.bookings.some(b => b.service === s.id && b.date === x.date && b.time === t)) return;
+      out.push({kind:'service', id:s.id, date:x.date, time:t, dur:s.duration, cls:'g', title:s.name, sub:'Open for booking', s});
+    }));
   });
   S.events.filter(e => e.status === 'Published' && inR(e.date)).forEach(e => out.push({kind:'event', id:e.id, date:e.date, time:e.time, dur:e.duration, cls:'e', title:e.title, sub:`Event · ${e.reg}/${e.cap}`, e}));
   S.blocks.filter(b => b.kind === 'instant' && inR(b.date)).forEach(b => out.push({kind:'block', id:b.id, date:b.date, time:b.time, dur:b.dur, cls:b.kind === 'instant' ? 'pp' : 'bl', title:b.label, sub:b.kind === 'instant' ? '15 min calls' : 'Blocked', bl:b}));
@@ -1674,11 +1846,10 @@ function bookingModal(id){
     <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px"><span class="av l" style="background:var(${p ? p.col : '--chart-1'})">${p ? p.name[0] : ico('i-group','i')}</span><div style="flex:1"><b style="font-size:17px">${esc(p ? p.name : bLabel(b))}</b><div class="small muted">${p ? esc(p.city) + ' · ' + esc(p.goals) : 'Group session'}</div></div><span class="pill ${st[0]}">${st[2]}</span></div>
     <div class="ctx-row"><span class="d">Service</span><span>${esc(s.name)} · ${s.duration} min</span></div>
     <div class="ctx-row"><span class="d">When</span><span>${fDate(b.date)} · ${f12(b.time)} IST${p ? `<br><span class="small muted">${local(b.date, b.time, p.tz)} in ${esc(p.city)}</span>` : ''}</span></div>
-    <div class="ctx-row"><span class="d">Format</span><span>${b.format}${s.venue ? ' · ' + esc(s.venue) : ''}</span></div>
+    <div class="ctx-row"><span class="d">Format</span><span>${b.format}${b.format !== 'Online' && s.place ? ` · ${esc(placeOf(s).name)} <a class="lnk small" href="${tvPlace.gmaps(placeOf(s))}" target="_blank" rel="noopener">Map</a>` : ''}</span></div>
     <div class="ctx-row"><span class="d">Payment</span><span>${money(b.cur, b.amount)} · ${b.pay}</span></div>
     <div class="ctx-row"><span class="d">Booked</span><span>${fDate(b.booked)} · confirmed instantly</span></div>
     ${r ? `<div class="ctx-row"><span class="d">Review</span><span>${stars(r.rating)} <button type="button" class="lnk small" style="color:var(--accent-strong);font-weight:600" data-rv="${r.id}">View review</button></span></div>` : ''}
-    ${b.pkgOf ? `<div class="ctx-row"><span class="d">Package</span><span>Session ${b.pkgOf}</span></div>` : ''}
     ${prepBlock(b, s)}
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px">
       ${p ? `<button type="button" class="btn sm g" data-msg="${p.id}">${ico('i-chat')}Message</button>` : ''}
@@ -1719,11 +1890,11 @@ function svcCard(s){
   const done = s.status === 'completed';
   const stp = {active:['ok','Active'], paused:['rev','Paused'], draft:['done','Draft'], completed:['done','Completed']}[s.status];
   return `<div class="card svc" id="svc-${s.id}">
-    ${s.cover ? `<div class="cov">${tvCover.html(s.cover, s.name)}${s.pkg && s.pkg.on ? `<span class="cp-badge">${s.pkg.sessions}-session package</span>` : ''}</div>` : ''}
+    ${s.cover ? `<div class="cov">${tvCover.html(s.cover, s.name)}${s.type === '1:1' && s.disc ? `<span class="cp-badge">${s.disc}% off</span>` : ''}</div>` : ''}
     <div class="svc-top"><span class="ico-box" style="background:var(${s.type === '1:1' ? '--soft-sage' : s.type === 'Group' ? '--soft-sky' : '--soft-gold'})">${ico(typeIco(s.type), 'i')}</span><div style="flex:1;min-width:0"><h3>${esc(s.name)}</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="pill ${stp[0]}">${stp[1]}</span><span class="pill sky">${esc(s.modality)}</span><span class="pill sky">${s.type}</span></div></div></div>
-    <div class="meta"><span>${ico('i-clock')}${s.duration} min</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video')}${s.format}${s.venue ? ' · ' + esc(s.venue) : ''}</span>${s.type !== '1:1' ? `<span>${ico('i-group')}Up to ${s.capacity}</span>` : ''}<span>${ico('i-cal')}${schedTxt(s)}</span><span>${ico('i-lock')}${cutoffTxt(s.cutoff)}</span></div>
-    <div class="price">${s.pkg && s.pkg.on && s.pkg.only ? `<b>${money('INR', s.pkg.inr)}</b><span class="small muted">for ${s.pkg.sessions} sessions · ${money('USD', s.pkg.usd)} international</span>` : `<b>${money('INR', s.inr)}</b><span class="small muted">${s.inr ? `India · ${money('USD', s.usd)} international` : 'for every seeker'}</span>`}</div>
-    ${s.pkg && s.pkg.on && !s.pkg.only ? `<div><span class="pill pk">${ico('i-wallet')}Package: ${s.pkg.sessions} sessions · ${money('INR', s.pkg.inr)}${pkgSave(s) > 0 ? ` · save ${pkgSave(s)}%` : ''}</span></div>` : ''}
+    <div class="meta"><span>${ico('i-clock')}${s.duration} min</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video')}${s.format}${s.format !== 'Online' && s.place ? ' · ' + esc(placeOf(s).name) : ''}</span>${s.type !== '1:1' ? `<span>${ico('i-group')}Up to ${s.capacity}</span>` : ''}<span>${ico('i-cal')}${schedTxt(s)}</span><span>${ico('i-lock')}${cutoffTxt(s.cutoff)}</span></div>
+    <div class="price">${s.type === '1:1' && s.disc && s.inr ? `<s class="small muted">${money('INR', s.inr)}</s> ` : ''}<b>${money('INR', s.type === '1:1' && s.disc ? Math.round(s.inr * (1 - s.disc / 100)) : s.inr)}</b><span class="small muted">${s.inr ? `${s.type === '1:1' ? 'per session' : 'per seat'} · ${money('USD', s.type === '1:1' && s.disc ? Math.round(s.usd * (1 - s.disc / 100)) : s.usd)} international` : 'for every seeker'}</span></div>
+    ${discTxt(s) ? `<div><span class="pill pk">${ico('i-wallet')}${esc(discTxt(s))}</span></div>` : ''}
     ${s.prep && (s.prep.seeker || s.prep.questions) ? `<div class="small muted">${ico('i-check','i xs')} Preparation: ${linesOf(s.prep.seeker).length} steps · ${linesOf(s.prep.questions).length} question${linesOf(s.prep.questions).length === 1 ? '' : 's'}</div>` : ''}
     ${done ? `<div class="small" style="color:var(--ink-2)"><b>${s.stats.seats}</b> of ${s.capacity} seats · <b>${s.stats.revenue}</b> earned · ${stars(Math.round(s.stats.rating))} ${s.stats.rating}</div>` : `<div class="small muted">${up} upcoming booking${up === 1 ? '' : 's'}</div>`}
     <details><summary class="small" style="cursor:pointer;color:var(--accent-strong);font-weight:600">History</summary><div class="hist">${s.history.slice().reverse().map(h => `<div>${fShort(h[0])} · ${esc(h[1])}</div>`).join('')}</div></details>
@@ -1746,7 +1917,7 @@ function svcAction(act, id){
   if (act === 'pause'){ s.status = 'paused'; log('Bookings paused'); commit(); return toast(`${s.name} paused. Existing bookings stay confirmed.`); }
   if (act === 'resume'){ s.status = 'active'; log('Bookings resumed'); commit(); return toast(`${s.name} is open for booking again`); }
   if (act === 'publish'){ s.status = 'active'; log('Published'); svcTab = 'active'; commit(); return toast(`${s.name} is live on your profile`); }
-  if (act === 'dup'){ const c = clone(s); c.id = uid('s'); c.name = s.name + ' (copy)'; c.status = 'draft'; c.created = TODAY; c.history = [[TODAY, `Duplicated from ${s.name}`]]; delete c.stats; if (c.schedule.kind === 'once') c.schedule = {kind:'once', date:'', time:c.schedule.time}; S.services.push(c); svcTab = 'other'; commit(); return toast('Copy saved as a draft'); }
+  if (act === 'dup'){ const c = clone(s); c.id = uid('s'); c.name = s.name + ' (copy)'; c.status = 'draft'; c.created = TODAY; c.history = [[TODAY, `Duplicated from ${s.name}`]]; delete c.stats; if (c.type !== '1:1') c.sessions = []; S.services.push(c); svcTab = 'other'; commit(); return toast('Copy saved as a draft'); }
   if (act === 'del'){
     const up = S.bookings.filter(b => b.service === id && b.status === 'upcoming').length;
     if (up) return openModal({title:'This service has bookings', size:'narrow', body:`<p style="color:var(--ink-2)">${esc(s.name)} has ${up} upcoming booking${up === 1 ? '' : 's'}. Pause it to stop new bookings, or cancel those bookings first.</p>`,
@@ -1755,78 +1926,97 @@ function svcAction(act, id){
   }
 }
 const linesOf = t => String(t || '').split('\n').map(x => x.trim()).filter(Boolean);
-const pkgPer = (s) => s.pkg && s.pkg.on && s.pkg.sessions ? Math.round(s.pkg.inr / s.pkg.sessions) : 0;
-const pkgSave = (s) => s.pkg && s.pkg.on && s.inr ? Math.round((1 - s.pkg.inr / (s.inr * s.pkg.sessions)) * 100) : 0;
+const WEEK = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+/* start times inside each time window: session length + gap between sessions */
+const slotsIn = (ranges, dur, gap) => { const out = []; (ranges || []).forEach(([a, b]) => { for (let t = toMin(a); t + dur <= toMin(b); t += dur + (gap || 0)) out.push(hhmm(t)); }); return out; };
+const isGroup = s => s.type !== '1:1';
+const futureSessions = s => (s.sessions || []).filter(x => x.date >= TODAY && x.times.length).sort((a, b) => a.date.localeCompare(b.date));
+const discTxt = s => isGroup(s) ? ((s.tiers || []).length ? s.tiers.map(t => `${t.n}+ people ${t.pct}% off`).join(' · ') : '') : s.disc ? `${s.disc}% off` : '';
+const placeOf = s => !s.place || s.place.useStudio ? Object.assign({name:S.profile.loc.venue, address:[S.profile.loc.building, S.profile.loc.street, S.profile.loc.area, S.profile.loc.city, S.profile.loc.pin].filter(Boolean).join(', '), lat:S.profile.loc.lat, lng:S.profile.loc.lng, studio:true}) : s.place;
 function vedaCtx(kind, field){
   const P = S.profile, f = field && field.form;
   const val = n => f && f.querySelector(`[name="${n}"]`) ? f.querySelector(`[name="${n}"]`).value : '';
-  const svcCtx = f && f.querySelector('[name=modality]') ? {name:val('name'), modality:val('modality'), type:val('type'), format:val('format'), dur:+val('duration') || 60, pkg:f.querySelector('[name=pkg_on]') && f.querySelector('[name=pkg_on]').checked ? +val('pkg_sessions') : 0} : null;
+  const svcCtx = f && f.querySelector('[name=modality]') ? {name:val('name'), modality:val('modality'), type:val('type'), format:val('format'), dur:+val('duration') || 60} : null;
   const loc = f && f.querySelector('[name=loc_city]') ? {venue:val('loc_venue'), building:val('loc_building'), street:val('loc_street'), landmark:val('loc_landmark'), city:val('loc_city')} : P.loc;
   return {name:P.display, first:(field && field.dataset.first) || P.display.split(' ')[0], practices:approvedMods().length ? approvedMods() : Object.keys(P.modalities), years:P.years, city:(P.loc && P.loc.city) ? `${P.loc.area ? P.loc.area + ', ' : ''}${P.loc.city}` : P.city, teacher:P.teacher, areas:P.areas, langs:P.langs, service:svcCtx, title:val('title'), venue:val('venue'), loc};
 }
 const attachVeda = scope => window.tvVeda && tvVeda.attach(scope, vedaCtx, toast);
+const defAvail = () => ({Mon:[['07:00','11:00'],['15:00','18:00']], Tue:[['07:00','11:00'],['15:00','18:00']], Wed:[['07:00','11:00'],['15:00','18:00']], Thu:[['07:00','11:00'],['15:00','18:00']], Fri:[['07:00','11:00'],['15:00','18:00']], Sat:[['08:00','12:00']], Sun:[]});
 function serviceModal(id, preset, rerun){
-  const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', duration:60, inr:'', usd:'', capacity:10, cutoff:S.profile.defCutoff, schedule:{kind:'availability'}, intensity:'Gentle', desc:'', contra:'', venue:'', cover:null,
-    pkg:{on:false, sessions:5, inr:'', usd:'', valid:60, only:false}, prep:{seeker:'', questions:'', healer:'', remind:24, required:true}};
+  const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', duration:60, inr:'', usd:'', capacity:10, cutoff:S.profile.defCutoff, intensity:'Gentle', desc:'', contra:'', cover:null,
+    avail:defAvail(), gap:15, disc:0, sessions:[], tiers:[{n:3, pct:5},{n:5, pct:10}], place:{useStudio:true},
+    prep:{seeker:'', questions:'', healer:'', remind:24, required:true}};
   const s = id ? service(id) : Object.assign(clone(base), preset || {});
-  const pk = Object.assign(clone(base.pkg), s.pkg || {}), pr = Object.assign(clone(base.prep), s.prep || {});
-  let cover = s.cover ? clone(s.cover) : null, variants = [];
-  const sch = rerun ? {kind:'once', date:'', time:s.schedule.time || '09:00'} : s.schedule;
+  /* working copies edited by the UI */
+  const st = {avail:clone(s.avail || base.avail), sessions:rerun ? [] : clone(s.sessions || []), tiers:clone(s.tiers || base.tiers), place:clone(s.place || base.place), cover:s.cover ? clone(s.cover) : null, monthOff:0, variants:[], discOn:!!s.disc, tiersOn:(s.tiers || base.tiers).length > 0 && (id ? (s.tiers || []).length > 0 : true)};
+  WEEK.forEach(d => { if (!st.avail[d]) st.avail[d] = []; });
+  const pr = Object.assign(clone(base.prep), s.prep || {});
   const mods = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
   const opt = (v, cur, label) => `<option value="${esc(v)}" ${String(v) === String(cur) ? 'selected' : ''}>${label || esc(v)}</option>`;
-  const sec = (n, t, d) => `<div class="sm-sec full"><span class="sm-n">${n}</span><div><h3>${t}</h3>${d ? `<p>${d}</p>` : ''}</div></div>`;
-  const defVenue = S.profile.loc && S.profile.loc.venue ? `${S.profile.loc.venue}, ${S.profile.loc.area || S.profile.loc.city}` : S.profile.venue;
+  const sec = (n, t, d, show) => `<div class="sm-sec full" ${show ? `data-show="${show}"` : ''}><span class="sm-n">${n}</span><div><h3>${t}</h3>${d ? `<p>${d}</p>` : ''}</div></div>`;
+  const studio = S.profile.loc || {};
   openModal({title:rerun ? `Run again: ${s.name}` : id ? 'Edit service' : 'New service', size:'wide', body:`
-    ${rerun ? `<div class="note info" style="margin-bottom:16px">${ico('i-repeat')}<span>Set a new date and time. Everything else is copied from last time and can be changed. Bookings open as soon as you save.</span></div>` : ''}
+    ${rerun ? `<div class="note info" style="margin-bottom:16px">${ico('i-repeat')}<span>Choose new dates and times. Everything else is copied from last time and can be changed. Bookings open as soon as you save.</span></div>` : ''}
     <div class="fgrid">
       ${sec(1, 'The basics')}
       <label class="field full"><span>Service name</span><input class="inp" name="name" value="${esc(s.name)}" placeholder="For example: Breath for deep sleep" required></label>
-      <label class="field"><span>Practice <small>(only verified practices)</small></span><select class="sel" name="modality">${mods.map(m => { const st = S.profile.modalities[m]; return `<option value="${m}" ${m === s.modality ? 'selected' : ''} ${st !== 'ok' ? 'disabled' : ''}>${m}${st === 'act' ? ' · needs certificate' : st === 'rev' ? ' · in review' : !st ? ' · not on your profile' : ''}</option>`; }).join('')}</select></label>
-      <label class="field"><span>Type</span><select class="sel" name="type">${['1:1','Group','Workshop'].map(t => opt(t, s.type, t === '1:1' ? '1:1 session' : t)).join('')}</select></label>
+      <label class="field"><span>Practice <small>(only verified practices)</small></span><select class="sel" name="modality">${mods.map(m => { const v = S.profile.modalities[m]; return `<option value="${m}" ${m === s.modality ? 'selected' : ''} ${v !== 'ok' ? 'disabled' : ''}>${m}${v === 'act' ? ' · needs certificate' : v === 'rev' ? ' · in review' : !v ? ' · not on your profile' : ''}</option>`; }).join('')}</select></label>
+      <div class="field"><span>Type</span><div class="choice" id="typeCh">${[['1:1','1:1 session'],['Group','Group session']].map(([v, l]) => `<label><input type="radio" name="type" value="${v}" ${(v === '1:1') === !isGroup(s) ? 'checked' : ''}><span>${ico(v === '1:1' ? 'i-user' : 'i-group','i xs')}${l}</span></label>`).join('')}</div></div>
       <label class="field"><span>Format</span><select class="sel" name="format">${['Online','In person','Both'].map(t => opt(t, s.format, t === 'Both' ? 'Online or in person' : t)).join('')}</select></label>
-      <label class="field" data-show="venue"><span>Venue</span><input class="inp" name="venue" value="${esc(s.venue || defVenue)}"><small>From your saved location (Profile info, step 7)</small></label>
       <label class="field"><span>Session length</span><select class="sel" name="duration">${[15,30,45,60,75,90,120,180].map(d => opt(d, s.duration, d + ' min')).join('')}</select></label>
-      <label class="field" data-show="cap"><span>Seats</span><input class="inp" type="number" min="2" max="200" name="capacity" value="${s.capacity}"></label>
+      <label class="field" data-show="cap"><span>Seats per session</span><input class="inp" type="number" min="2" max="200" name="capacity" value="${s.capacity > 1 ? s.capacity : 10}"></label>
 
-      ${sec(2, 'Cover image', 'Shown on your profile, in search and when seekers book. Upload your own or let Veda create one.')}
+      ${sec(2, 'Location', 'For in-person sessions. Seekers see the area before booking and the exact pin after they book.', 'loc')}
+      <div class="full" data-show="loc"><div class="choice" id="placeCh">
+          <label><input type="radio" name="place_mode" value="studio" ${st.place.useStudio ? 'checked' : ''}><span>${ico('i-home','i xs')}My studio · ${esc(studio.venue || 'Tapovan studio')}, ${esc(studio.area || studio.city || '')}</span></label>
+          <label><input type="radio" name="place_mode" value="other" ${!st.place.useStudio ? 'checked' : ''}><span>${ico('i-pin','i xs')}Another place</span></label></div>
+        <div id="placeOther" class="mt8" ${st.place.useStudio ? 'hidden' : ''}>
+          <label class="loc-search" style="margin-top:10px">${ico('i-search')}<input type="search" id="placeQ" placeholder="Search a place: ghat, retreat, hall, café…" autocomplete="off" aria-label="Search for a place"><span class="loc-res" id="placeRes" hidden></span></label>
+          <div class="fgrid mt8"><label class="field"><span>Place name</span><input class="inp" name="place_name" value="${esc(st.place.name || '')}" placeholder="For example: Parmarth Niketan ghat"></label>
+          <label class="field"><span>Address</span><input class="inp" name="place_addr" value="${esc(st.place.address || '')}" placeholder="Filled when you choose a place"></label></div></div>
+        <div class="place-card" id="placeCard"></div></div>
+
+      ${sec(3, 'Cover image', 'Shown on your profile, in search and when seekers book. Upload your own or let Veda create one.')}
       <div class="full cov-wrap">
         <div class="cov-prev" id="covPrev"></div>
         <div class="cov-ctrl">
           <div class="seg" id="covMode"><button type="button" data-m="ai" class="on">${ico('i-spark')}Generate with Veda</button><button type="button" data-m="up">${ico('i-upload')}Upload</button></div>
-          <div id="covAi"><label class="field"><span>Describe the mood <small>(optional)</small></span><input class="inp" id="covPrompt" placeholder="For example: sunrise by the Ganga, calm and warm" value="${esc(cover && cover.prompt || '')}"></label>
+          <div id="covAi"><label class="field"><span>Describe the mood <small>(optional)</small></span><input class="inp" id="covPrompt" placeholder="For example: sunrise by the Ganga, calm and warm" value="${esc(st.cover && st.cover.prompt || '')}"></label>
             <div class="row" style="margin-top:8px;gap:8px"><button type="button" class="btn sm a" id="covGen">${ico('i-spark')}Generate 3 options</button><span class="small muted">Uses the practice and your words</span></div>
             <div class="cov-vars" id="covVars"></div></div>
           <div id="covUp" hidden>${drop('coverfile', 'Upload a cover photo', 'JPG or PNG · landscape works best', 'image/*')}<p class="small muted" style="margin-top:6px">Use your own photo, with permission from anyone in it.</p></div>
-          ${cover ? '<button type="button" class="lnk small" id="covRm" style="margin-top:8px;color:var(--danger)">Remove cover</button>' : ''}
+          ${st.cover ? '<button type="button" class="lnk small" id="covRm" style="margin-top:8px;color:var(--danger)">Remove cover</button>' : ''}
         </div>
       </div>
 
-      ${sec(3, 'Price & packages', 'Seekers in India see the rupee price; everyone else sees the dollar price.')}
-      <label class="field"><span>Single session · India (₹)</span><input class="inp" type="number" min="0" name="inr" value="${s.inr}" placeholder="0 for free"></label>
-      <label class="field"><span>Single session · international ($)</span><input class="inp" type="number" min="0" name="usd" value="${s.usd}" placeholder="0 for free"></label>
-      <label class="pkg-tg full"><input type="checkbox" name="pkg_on" ${pk.on ? 'checked' : ''}><span><b>Offer a package</b><small>A set of sessions bought together, used within a time limit</small></span></label>
-      <div class="full pkg-box" data-show="pkg"><div class="fgrid">
-        <label class="field"><span>Sessions in package</span><select class="sel" name="pkg_sessions">${[2,3,4,5,6,8,10,12].map(n => opt(n, pk.sessions, n + ' sessions')).join('')}</select></label>
-        <label class="field"><span>Use within</span><select class="sel" name="pkg_valid">${[[30,'30 days'],[45,'45 days'],[60,'60 days'],[90,'3 months'],[180,'6 months']].map(([v, l]) => opt(v, pk.valid, l)).join('')}</select></label>
-        <label class="field"><span>Total package price · India (₹)</span><input class="inp" type="number" min="0" name="pkg_inr" value="${pk.inr}"></label>
-        <label class="field"><span>Total package price · international ($)</span><input class="inp" type="number" min="0" name="pkg_usd" value="${pk.usd}"></label>
-        <div class="field full"><span>Sell as</span><div class="choice"><label><input type="radio" name="pkg_only" value="0" ${!pk.only ? 'checked' : ''}><span>Single sessions and package</span></label><label><input type="radio" name="pkg_only" value="1" ${pk.only ? 'checked' : ''}><span>Package only</span></label></div></div>
-        <div class="full note info" id="pkgCalc"></div></div></div>
+      ${sec(4, 'Price & discount', 'Seekers in India see the rupee price; everyone else sees the dollar price.')}
+      <label class="field"><span><span data-lbl="pr1">Price per session</span> · India (₹)</span><input class="inp" type="number" min="0" name="inr" value="${s.inr}" placeholder="0 for free"></label>
+      <label class="field"><span><span data-lbl="pr2">Price per session</span> · international ($)</span><input class="inp" type="number" min="0" name="usd" value="${s.usd}" placeholder="0 for free"></label>
+      <div class="full" data-show="disc1"><label class="pkg-tg"><input type="checkbox" id="discOn" ${st.discOn ? 'checked' : ''}><span><b>Offer a discount</b><small>Seekers see the original price crossed out</small></span></label>
+        <div class="disc-row mt8" id="discRow" ${st.discOn ? '' : 'hidden'}><span class="small">Discount</span><div class="choice">${[5,10,15,20,25].map(p => `<label><input type="radio" name="disc" value="${p}" ${+s.disc === p ? 'checked' : ''}><span>${p}%</span></label>`).join('')}</div>
+          <label class="row small" style="gap:6px">or <input class="inp" type="number" min="1" max="80" name="disc_c" value="${s.disc && ![5,10,15,20,25].includes(+s.disc) ? s.disc : ''}" placeholder="%" style="width:80px;height:36px"></label></div></div>
+      <div class="full" data-show="disc2"><label class="pkg-tg"><input type="checkbox" id="tiersOn" ${st.tiersOn ? 'checked' : ''}><span><b>Discount for bigger bookings</b><small>When one seeker books seats for several people, the whole booking gets the discount</small></span></label>
+        <div id="tierBox" class="mt8" ${st.tiersOn ? '' : 'hidden'}></div></div>
+      <div class="full note info" id="priceNote"></div>
 
-      ${sec(4, 'When seekers can book')}
-      <div class="field full"><div class="choice" id="schKind">
-        ${[['availability','Any time I am available'],['once','One date'],['weekly','Every week']].map(([v, l]) => `<label><input type="radio" name="kind" value="${v}" ${sch.kind === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div></div>
-      <label class="field" data-show="date"><span>Date</span><input class="inp" type="date" name="date" value="${sch.date || ''}" min="${TODAY}"></label>
-      <label class="field" data-show="time"><span>Start time (IST)</span><input class="inp" type="time" name="time" value="${sch.time || '09:00'}"></label>
-      <div class="field full" data-show="days"><span>Days</span><div class="choice">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(d => `<label><input type="checkbox" name="days" value="${d}" ${(sch.days || []).includes(d) ? 'checked' : ''}><span>${d}</span></label>`).join('')}</div></div>
-      <div class="field full"><span>Booking closes</span><div class="choice">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => `<label><input type="radio" name="cutoff" value="${v}" ${+s.cutoff === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div><small>Seekers can book open slots until this point. Bookings are confirmed instantly, with no approval step.</small></div>
+      ${sec(5, 'Availability', '', 'av1')}
+      <div class="full" data-show="av1"><p class="small muted" style="margin-bottom:10px">Choose the days and hours you are free. Seekers see open start times inside these hours; a time disappears as soon as someone books it.</p>
+        <div class="wk-avail" id="availBox"></div>
+        <div class="row mt16" style="gap:14px"><label class="field" style="max-width:220px"><span>Break between sessions</span><select class="sel" name="gap">${[[0,'No break'],[10,'10 min'],[15,'15 min'],[30,'30 min']].map(([v, l]) => opt(v, s.gap ?? 15, l)).join('')}</select></label><div class="small muted grow" id="slotSum"></div></div></div>
+      ${sec(5, 'Dates & times', '', 'av2')}
+      <div class="full" data-show="av2"><p class="small muted" style="margin-bottom:10px">Tap dates on the calendar, then add start times for each date. Use <b>Apply to all dates</b> to copy one date's times to every date.</p>
+        <div class="grp" id="grpBox"></div></div>
 
-      ${sec(5, 'Description & safety')}
+      ${sec(6, 'Booking closes')}
+      <div class="field full"><div class="choice">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => `<label><input type="radio" name="cutoff" value="${v}" ${+s.cutoff === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div><small>Seekers can book open times until this point. Bookings are confirmed instantly, with no approval step.</small></div>
+
+      ${sec(7, 'Description & safety')}
       <label class="field"><span>Intensity</span><select class="sel" name="intensity">${['Gentle','Moderate','Intense'].map(t => opt(t, s.intensity)).join('')}</select></label><span></span>
       <label class="field full"><span>Description</span><textarea class="ta" name="desc" data-veda="svcdesc" placeholder="What seekers can expect, in two or three sentences.">${esc(s.desc)}</textarea></label>
       <label class="field full"><span>Not suitable for <small>(safety note shown before booking)</small></span><input class="inp" name="contra" data-veda="contra" value="${esc(s.contra)}" placeholder="For example: late pregnancy, recent surgery"></label>
 
-      ${sec(6, 'Preparation', 'Sent to the seeker as soon as they book, with a reminder before the session. Their answers appear in the booking for you.')}
+      ${sec(8, 'Preparation', 'Sent to the seeker as soon as they book, with a reminder before the session. Their answers appear in the booking for you.')}
       <label class="field full"><span>What the seeker should do before the session <small>(one per line)</small></span><textarea class="ta" name="prep_seeker" data-veda="prep" placeholder="Eat lightly 2 hours before&#10;Wear loose clothes&#10;Keep water and a blanket nearby">${esc(pr.seeker)}</textarea></label>
       <label class="field full"><span>Questions to answer before the session <small>(one per line)</small></span><textarea class="ta" name="prep_questions" data-veda="questions" placeholder="What would you like help with?&#10;Have you tried breathwork before?">${esc(pr.questions)}</textarea></label>
       <label class="field"><span>Send a preparation reminder</span><select class="sel" name="prep_remind">${[[48,'48 hours before'],[24,'24 hours before'],[12,'12 hours before'],[2,'2 hours before']].map(([v, l]) => opt(v, pr.remind, l)).join('')}</select></label>
@@ -1835,68 +2025,471 @@ function serviceModal(id, preset, rerun){
     </div>`,
     foot:`<button type="button" class="btn g" data-close>Cancel</button>${!rerun && (!id || s.status === 'draft') ? '<button type="submit" class="btn g" value="draft">Save as draft</button>' : ''}<button type="submit" class="btn p" value="save">${rerun ? 'Open bookings' : id && s.status !== 'draft' ? 'Save changes' : 'Publish service'}</button>`,
     onOpen:body => {
-      const f = modalBox;
+      const f = modalBox, grp = () => f.querySelector('[name=type]:checked').value !== '1:1', dur = () => +f.duration.value, gap = () => +f.gap.value;
+      const discPct = () => { if (!st.discOn) return 0; const c = +f.disc_c.value; if (c) return c; const r = f.querySelector('[name=disc]:checked'); return r ? +r.value : 0; };
+      /* ---------- 1:1 weekly availability ---------- */
+      const drawAvail = () => {
+        $('#availBox').innerHTML = WEEK.map(d => { const r = st.avail[d], on = r.length > 0, n = slotsIn(r, dur(), gap()).length;
+          return `<div class="av-row ${on ? 'on' : ''}"><label class="av-day"><input type="checkbox" data-aday="${d}" ${on ? 'checked' : ''}><b>${d}</b></label>
+            <div class="av-ranges">${on ? r.map((x, i) => `<span class="av-rg"><input type="time" class="inp" data-d="${d}" data-i="${i}" data-k="0" value="${x[0]}" aria-label="${d} from"><span>to</span><input type="time" class="inp" data-d="${d}" data-i="${i}" data-k="1" value="${x[1]}" aria-label="${d} to"><button type="button" class="icon-btn" data-rm="${d}|${i}" aria-label="Remove these hours">${ico('i-x')}</button></span>`).join('') + `<button type="button" class="lnk small" data-add="${d}">${ico('i-plus','i xs')}Add hours</button>` : '<span class="small muted">Not available</span>'}</div>
+            <div class="av-r">${on ? `<span class="small muted">${n} start time${n === 1 ? '' : 's'}</span><button type="button" class="lnk small" data-copy="${d}">Copy to all days</button>` : ''}</div></div>`; }).join('');
+        const total = WEEK.reduce((a, d) => a + slotsIn(st.avail[d], dur(), gap()).length, 0);
+        const ex = WEEK.find(d => st.avail[d].length);
+        $('#slotSum').innerHTML = total ? `<b>${total} start times a week.</b> ${ex ? `${ex}: ${slotsIn(st.avail[ex], dur(), gap()).slice(0, 6).map(f12).join(', ')}${slotsIn(st.avail[ex], dur(), gap()).length > 6 ? '…' : ''}` : ''}` : '<span style="color:var(--danger)">Add at least one day with hours.</span>';
+        $$('[data-aday]').forEach(c => c.onchange = () => { st.avail[c.dataset.aday] = c.checked ? [['09:00','13:00']] : []; drawAvail(); });
+        $$('#availBox input[type=time]').forEach(i => i.onchange = () => { st.avail[i.dataset.d][+i.dataset.i][+i.dataset.k] = i.value; drawAvail(); });
+        $$('[data-rm]').forEach(b => b.onclick = () => { const [d, i] = b.dataset.rm.split('|'); st.avail[d].splice(+i, 1); drawAvail(); });
+        $$('[data-add]').forEach(b => b.onclick = () => { const r = st.avail[b.dataset.add], last = r[r.length - 1]; const from = last ? hhmm(Math.min(toMin(last[1]) + 60, 21 * 60)) : '09:00'; r.push([from, hhmm(Math.min(toMin(from) + 180, 23 * 60))]); drawAvail(); });
+        $$('[data-copy]').forEach(b => b.onclick = () => { const src = st.avail[b.dataset.copy]; WEEK.forEach(d => { if (d !== b.dataset.copy) st.avail[d] = clone(src); }); drawAvail(); toast(`${b.dataset.copy} hours copied to every day`); });
+      };
+      /* ---------- group: dates & times ---------- */
+      const drawGroup = () => {
+        const base = pd(TODAY); base.setUTCDate(1); base.setUTCMonth(base.getUTCMonth() + st.monthOff);
+        const y = base.getUTCFullYear(), m = base.getUTCMonth(), first = iso(base), lead = (base.getUTCDay() + 6) % 7, days = new Date(Date.UTC(y, m + 1, 0)).getUTCDate();
+        const sel = d => st.sessions.find(x => x.date === d);
+        st.sessions.sort((a, b) => a.date.localeCompare(b.date));
+        const booked = (d, t) => S.bookings.filter(b => b.service === s.id && b.date === d && b.time === t && b.status !== 'cancelled').reduce((a, b) => a + (b.seats || 1), 0);
+        $('#grpBox').innerHTML = `<div class="grp-wrap"><div class="mcal"><div class="mcal-h"><button type="button" class="icon-btn" id="mPrev" aria-label="Previous month" ${st.monthOff <= 0 ? 'disabled' : ''}>${ico('i-back')}</button><b>${MON[m]} ${y}</b><button type="button" class="icon-btn" id="mNext" aria-label="Next month" style="transform:scaleX(-1)">${ico('i-back')}</button></div>
+          <div class="mcal-g">${WEEK.map(w => `<span class="mcal-w">${w[0]}</span>`).join('')}${Array.from({length:lead}, () => '<span></span>').join('')}${Array.from({length:days}, (_, i) => { const d = addDays(first, i), past = d < TODAY; return `<button type="button" class="mcal-d ${sel(d) ? 'on' : ''} ${d === TODAY ? 'today' : ''}" data-cd="${d}" ${past ? 'disabled' : ''} aria-pressed="${!!sel(d)}">${i + 1}</button>`; }).join('')}</div>
+          <p class="small muted mt8">${st.sessions.length} date${st.sessions.length === 1 ? '' : 's'} chosen</p></div>
+          <div class="grp-list">${st.sessions.length ? st.sessions.map((x, i) => `<div class="grp-row"><div class="grp-d"><b>${fDate(x.date)}</b>${x.date < TODAY ? '<span class="pill done">Past</span>' : ''}<button type="button" class="icon-btn" data-gdel="${i}" aria-label="Remove ${fDate(x.date)}">${ico('i-trash')}</button></div>
+            <div class="grp-times">${x.times.map((t, j) => { const bk = booked(x.date, t); return `<span class="tchip">${f12(t)}${bk ? `<small>${bk}/${f.capacity.value} booked</small>` : ''}<button type="button" data-tdel="${i}|${j}" aria-label="Remove ${f12(t)}" ${bk ? 'disabled title="Has bookings"' : ''}>${ico('i-x','i xs')}</button></span>`; }).join('') || '<span class="small muted">No times yet</span>'}
+              <span class="tadd"><input type="time" class="inp" data-tin="${i}" value="${x.times.length ? hhmm(Math.min(toMin(x.times[x.times.length - 1]) + dur() + 30, 22 * 60)) : '18:30'}" aria-label="Add a start time"><button type="button" class="btn xs g" data-tadd="${i}">${ico('i-plus','i xs')}Add time</button></span></div>
+            ${x.times.length && st.sessions.length > 1 ? `<button type="button" class="lnk small" data-applyall="${i}">${ico('i-copy','i xs')}Apply ${x.times.map(f12).join(', ')} to all dates</button>` : ''}</div>`).join('') : `<div class="empty" style="padding:24px 10px">${ico('i-cal','i')}Tap dates on the calendar to add sessions.</div>`}</div></div>`;
+        $('#mPrev').onclick = () => { st.monthOff = Math.max(0, st.monthOff - 1); drawGroup(); };
+        $('#mNext').onclick = () => { st.monthOff++; drawGroup(); };
+        $$('[data-cd]').forEach(b => b.onclick = () => { const d = b.dataset.cd, i = st.sessions.findIndex(x => x.date === d);
+          if (i >= 0){ if (st.sessions[i].times.some(t => booked(d, t))) return toast('This date has bookings. Cancel them before removing it.'); st.sessions.splice(i, 1); }
+          else { const tpl = st.sessions.find(x => x.times.length); st.sessions.push({date:d, times:tpl ? clone(tpl.times) : ['18:30']}); }
+          drawGroup(); preview(); });
+        $$('[data-gdel]').forEach(b => b.onclick = () => { const x = st.sessions[+b.dataset.gdel]; if (x.times.some(t => booked(x.date, t))) return toast('This date has bookings. Cancel them before removing it.'); st.sessions.splice(+b.dataset.gdel, 1); drawGroup(); preview(); });
+        $$('[data-tdel]').forEach(b => b.onclick = () => { const [i, j] = b.dataset.tdel.split('|').map(Number); st.sessions[i].times.splice(j, 1); drawGroup(); });
+        $$('[data-tadd]').forEach(b => b.onclick = () => { const i = +b.dataset.tadd, v = $(`[data-tin="${i}"]`).value; if (!v) return; const x = st.sessions[i]; if (x.times.includes(v)) return toast('That time is already added');
+          const clash = x.times.find(t => Math.abs(toMin(t) - toMin(v)) < dur()); if (clash) return toast(`Overlaps the ${f12(clash)} session (${dur()} min)`); x.times.push(v); x.times.sort(); drawGroup(); });
+        $$('[data-applyall]').forEach(b => b.onclick = () => { const src = st.sessions[+b.dataset.applyall].times; st.sessions.forEach(x => { if (x.date >= TODAY && !x.times.some(t => booked(x.date, t))) x.times = clone(src); }); drawGroup(); toast(`Times applied to all ${st.sessions.length} dates`); });
+      };
+      /* ---------- attendee discount tiers ---------- */
+      const drawTiers = () => {
+        st.tiers.sort((a, b) => a.n - b.n);
+        $('#tierBox').innerHTML = `<div class="tiers">${st.tiers.map((t, i) => `<div class="tier"><span>When a booking has</span><input class="inp" type="number" min="2" max="50" value="${t.n}" data-tn="${i}" aria-label="Number of people"><span>or more people</span><input class="inp" type="number" min="1" max="60" value="${t.pct}" data-tp="${i}" aria-label="Percent off"><span>% off</span><button type="button" class="icon-btn" data-trm="${i}" aria-label="Remove">${ico('i-x')}</button></div>`).join('')}
+          <button type="button" class="lnk small" id="tierAdd">${ico('i-plus','i xs')}Add a level</button></div>`;
+        $$('[data-tn]').forEach(x => x.onchange = () => { st.tiers[+x.dataset.tn].n = Math.max(2, +x.value || 2); drawTiers(); preview(); });
+        $$('[data-tp]').forEach(x => x.onchange = () => { st.tiers[+x.dataset.tp].pct = Math.min(60, Math.max(1, +x.value || 1)); drawTiers(); preview(); });
+        $$('[data-trm]').forEach(x => x.onclick = () => { st.tiers.splice(+x.dataset.trm, 1); drawTiers(); preview(); });
+        $('#tierAdd').onclick = () => { const last = st.tiers[st.tiers.length - 1]; st.tiers.push({n:last ? last.n + 2 : 3, pct:last ? Math.min(60, last.pct + 5) : 5}); drawTiers(); preview(); };
+      };
+      /* ---------- location ---------- */
+      const drawPlace = () => {
+        const p = st.place.useStudio ? placeOf({place:{useStudio:true}}) : st.place;
+        $('#placeCard').innerHTML = p && p.lat ? `<div class="pc"><div class="pc-map" id="pcMap"></div><div class="pc-in"><b>${esc(p.name || 'Selected place')}</b><small>${esc(p.address || '')}</small>
+          <div class="row mt8" style="gap:8px"><a class="btn xs g" href="${tvPlace.gmaps(p)}" target="_blank" rel="noopener">${ico('i-globe','i xs')}View on map</a><span class="small muted">Seekers see the area before booking, the exact pin after.</span></div></div></div>`
+          : `<div class="note warn mt8">${ico('i-pin')}<span>Search and choose a place so seekers can find it.</span></div>`;
+        if (p && p.lat) tvPlace.map($('#pcMap'), {lat:p.lat, lng:p.lng, label:p.name});
+      };
+      const pres = $('#placeRes'); let ptimer;
+      $('#placeQ').addEventListener('input', e => { clearTimeout(ptimer); const v = e.target.value.trim(); if (v.length < 3){ pres.hidden = true; return; }
+        ptimer = setTimeout(() => tvPlace.search(v + (/rishikesh|india/i.test(v) ? '' : ', Rishikesh')).then(list => { pres.hidden = false;
+          pres.innerHTML = list.length ? list.map((x, i) => `<button type="button" data-pi="${i}"><b>${esc(x.name)}</b><br><span class="small muted">${esc(x.address)}</span></button>`).join('') : '<span class="none">No places found. Try a nearby landmark.</span>';
+          $$('[data-pi]', pres).forEach(b => b.onclick = () => { const x = list[+b.dataset.pi]; st.place = {useStudio:false, name:x.name, address:x.address, lat:x.lat, lng:x.lng}; f.place_name.value = x.name; f.place_addr.value = x.address; pres.hidden = true; $('#placeQ').value = ''; drawPlace(); toast('Place selected'); }); })
+          .catch(() => { pres.hidden = false; pres.innerHTML = '<span class="none">Place search is unavailable right now. Type the name and address below.</span>'; }), 400); });
+      $('#placeQ').addEventListener('keydown', e => { if (e.key === 'Enter') e.preventDefault(); });
+      $$('[name=place_mode]').forEach(r => r.onchange = () => { st.place.useStudio = r.value === 'studio'; $('#placeOther').hidden = st.place.useStudio; drawPlace(); });
+      f.place_name.addEventListener('input', () => { st.place.name = f.place_name.value; });
+      f.place_addr.addEventListener('input', () => { st.place.address = f.place_addr.value; });
+      /* ---------- preview + price note ---------- */
       const preview = () => {
-        const name = f.name.value.trim() || 'Your service name', modality = f.modality.value, inr = +f.inr.value || 0, usd = +f.usd.value || 0;
-        const pkOn = f.pkg_on.checked, pkInr = +f.pkg_inr.value || 0, n = +f.pkg_sessions.value;
-        $('#covPrev').innerHTML = `<div class="cp-card"><div class="cp-cov">${cover ? tvCover.html(cover, name) : `<div class="cp-empty">${ico('i-spark','i')}<span>No cover yet</span></div>`}${pkOn ? `<span class="cp-badge">${n}-session package</span>` : ''}</div>
-          <div class="cp-in"><small>${esc(modality)} · ${f.type.value === '1:1' ? '1:1' : f.type.value} · ${f.duration.value} min · ${f.format.value === 'Both' ? 'Online or in person' : f.format.value}</small><b>${esc(name)}</b>
-          <div class="cp-price">${pkOn && f.pkg_only.value === '1' ? `<span>${money('INR', pkInr)}</span><small>for ${n} sessions</small>` : `<span>${money('INR', inr)}</span><small>${inr ? 'per session · ' + money('USD', usd) + ' intl' : ''}</small>`}</div>
-          ${pkOn && f.pkg_only.value !== '1' && pkInr ? `<div class="cp-pk">${ico('i-check','i xs')} Package of ${n}: ${money('INR', pkInr)}</div>` : ''}</div></div>
+        const name = f.name.value.trim() || 'Your service name', modality = f.modality.value, inr = +f.inr.value || 0, usd = +f.usd.value || 0, g = grp(), dp = discPct();
+        const fs = futureSessions({sessions:st.sessions});
+        $('#covPrev').innerHTML = `<div class="cp-card"><div class="cp-cov">${st.cover ? tvCover.html(st.cover, name) : `<div class="cp-empty">${ico('i-spark','i')}<span>No cover yet</span></div>`}${!g && dp ? `<span class="cp-badge">${dp}% off</span>` : ''}</div>
+          <div class="cp-in"><small>${esc(modality)} · ${g ? 'Group' : '1:1'} · ${f.duration.value} min · ${f.format.value === 'Both' ? 'Online or in person' : f.format.value}</small><b>${esc(name)}</b>
+          <div class="cp-price">${!g && dp && inr ? `<s class="muted">${money('INR', inr)}</s><span>${money('INR', Math.round(inr * (1 - dp / 100)))}</span>` : `<span>${money('INR', inr)}</span>`}<small>${inr ? (g ? 'per seat' : 'per session') : ''}</small></div>
+          ${g ? `<div class="cp-pk">${ico('i-cal','i xs')} ${fs.length ? `${fs.length} dates · next ${fDate(fs[0].date)}` : 'No dates yet'}</div>${st.tiersOn && st.tiers.length ? `<div class="cp-pk">${ico('i-users','i xs')} ${st.tiers.map(t => `${t.n}+ · ${t.pct}% off`).join(' · ')}</div>` : ''}` : ''}</div></div>
           <p class="small muted" style="margin-top:8px;text-align:center">${ico('i-eye','i xs')} Preview: how seekers see this service</p>`;
-        const calc = $('#pkgCalc'); if (calc){ const single = inr * n; const per = n ? Math.round(pkInr / n) : 0, save = single && pkInr ? Math.round((1 - pkInr / single) * 100) : 0;
-          calc.innerHTML = pkInr ? `${ico('i-wallet')}<span><b>${money('INR', per)} per session</b> in the package${save > 0 ? ` · seekers save <b>${save}%</b> compared with ${n} single sessions (${money('INR', single)})` : save < 0 ? ' · this is more than single sessions; check the price' : ''}. Valid for ${f.pkg_valid.selectedOptions[0].text} after purchase.</span>` : `${ico('i-alert')}<span>Add the total price for ${n} sessions. Tip: packages usually cost 10–20% less than single sessions.</span>`; }
+        $('#priceNote').innerHTML = !inr ? `${ico('i-alert')}<span>Price is 0, so this is a free ${g ? 'session' : 'call'}.</span>` : g
+          ? `${ico('i-users')}<span>Example: ${st.tiersOn && st.tiers.length ? st.tiers.map(t => `${t.n} people pay ${money('INR', Math.round(inr * t.n * (1 - t.pct / 100)))} instead of ${money('INR', inr * t.n)}`).join('; ') : `each seat is ${money('INR', inr)}`}.</span>`
+          : `${ico('i-wallet')}<span>${dp ? `Seekers pay <b>${money('INR', Math.round(inr * (1 - dp / 100)))}</b> in India and <b>${money('USD', Math.round(usd * (1 - dp / 100)))}</b> internationally (${dp}% off).` : 'No discount. You can add one any time.'}</span>`;
       };
       const sync = () => {
-        const kind = f.querySelector('[name=kind]:checked').value, type = f.type.value, fmt = f.format.value;
-        body.querySelector('[data-show=date]').hidden = kind !== 'once';
-        body.querySelector('[data-show=time]').hidden = kind === 'availability';
-        body.querySelector('[data-show=days]').hidden = kind !== 'weekly';
-        body.querySelector('[data-show=cap]').hidden = type === '1:1';
-        body.querySelector('[data-show=venue]').hidden = fmt === 'Online';
-        body.querySelector('[data-show=pkg]').hidden = !f.pkg_on.checked;
+        const g = grp(), fmt = f.format.value;
+        body.querySelectorAll('[data-show=cap],[data-show=disc2],[data-show=av2]').forEach(x => x.hidden = !g);
+        body.querySelectorAll('[data-show=disc1],[data-show=av1]').forEach(x => x.hidden = g);
+        body.querySelectorAll('[data-show=loc]').forEach(x => x.hidden = fmt === 'Online');
+        body.querySelectorAll('[data-lbl]').forEach(x => x.textContent = g ? 'Price per seat' : 'Price per session');
         preview();
       };
-      body.addEventListener('change', sync); body.addEventListener('input', preview); sync();
-      const drawVars = () => { $('#covVars').innerHTML = variants.map((v, i) => `<button type="button" class="cov-var ${cover && cover.seed === v.seed ? 'on' : ''}" data-v="${i}" aria-label="Use option ${i + 1}">${tvCover.svg(v)}</button>`).join(''); $$('#covVars [data-v]').forEach(b => b.onclick = () => { cover = variants[+b.dataset.v]; drawVars(); preview(); toast('Cover selected'); }); };
+      $$('[name=type]').forEach(r => r.addEventListener('change', () => { sync(); g2(); }));
+      const g2 = () => { if (grp()) drawGroup(); else drawAvail(); };
+      f.format.addEventListener('change', () => { sync(); if (f.format.value !== 'Online') drawPlace(); });
+      f.duration.addEventListener('change', () => { g2(); preview(); });
+      f.gap.addEventListener('change', drawAvail);
+      f.capacity.addEventListener('change', () => grp() && drawGroup());
+      $('#discOn').onchange = e => { st.discOn = e.target.checked; $('#discRow').hidden = !st.discOn; if (st.discOn && !discPct()) f.querySelector('[name=disc][value="10"]').checked = true; preview(); };
+      $$('[name=disc]').forEach(r => r.onchange = () => { f.disc_c.value = ''; preview(); });
+      f.disc_c.addEventListener('input', () => { if (f.disc_c.value) $$('[name=disc]').forEach(r => r.checked = false); preview(); });
+      $('#tiersOn').onchange = e => { st.tiersOn = e.target.checked; $('#tierBox').hidden = !st.tiersOn; preview(); };
+      body.addEventListener('input', e => { if (['name','inr','usd'].includes(e.target.name)) preview(); });
+      f.modality.addEventListener('change', preview);
+      /* cover */
+      const drawVars = () => { $('#covVars').innerHTML = st.variants.map((v, i) => `<button type="button" class="cov-var ${st.cover && st.cover.seed === v.seed ? 'on' : ''}" data-v="${i}" aria-label="Use option ${i + 1}">${tvCover.svg(v)}</button>`).join(''); $$('#covVars [data-v]').forEach(b => b.onclick = () => { st.cover = st.variants[+b.dataset.v]; drawVars(); preview(); toast('Cover selected'); }); };
       $('#covGen').onclick = () => { const b = $('#covGen'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is painting…'; $('#covVars').innerHTML = '<div class="cov-load"></div><div class="cov-load"></div><div class="cov-load"></div>';
-        setTimeout(() => { variants = tvCover.variations($('#covPrompt').value, f.modality.value, 3); cover = Object.assign({}, variants[0]); cover.seed = variants[0].seed; drawVars(); preview(); b.disabled = false; b.innerHTML = `${ico('i-repeat')}Generate again`; }, 1100); };
+        setTimeout(() => { st.variants = tvCover.variations($('#covPrompt').value, f.modality.value, 3); st.cover = st.variants[0]; drawVars(); preview(); b.disabled = false; b.innerHTML = `${ico('i-repeat')}Generate again`; }, 1100); };
       $$('#covMode button').forEach(b => b.onclick = () => { $$('#covMode button').forEach(x => x.classList.toggle('on', x === b)); $('#covAi').hidden = b.dataset.m !== 'ai'; $('#covUp').hidden = b.dataset.m !== 'up'; });
-      const fi = body.querySelector('[name=coverfile]'); fi.addEventListener('change', () => { const file = fi.files[0]; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); cover = {kind:'img', src}; preview(); toast('Cover uploaded'); }); fi.closest('.drop').querySelector('b').textContent = file.name; });
-      const rm = $('#covRm'); rm && (rm.onclick = () => { cover = null; preview(); rm.remove(); });
+      const fi = body.querySelector('[name=coverfile]'); fi.addEventListener('change', () => { const file = fi.files[0]; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); st.cover = {kind:'img', src}; preview(); toast('Cover uploaded'); }); fi.closest('.drop').querySelector('b').textContent = file.name; });
+      const rm = $('#covRm'); rm && (rm.onclick = () => { st.cover = null; preview(); rm.remove(); });
+      drawTiers(); drawAvail(); drawGroup(); sync(); if (f.format.value !== 'Online') drawPlace();
       attachVeda(body);
+      modalBox._st = st; modalBox._disc = discPct;
     },
     onSubmit:(fd, btn, f) => {
-      const name = (fd.get('name') || '').trim();
+      const st2 = f._st, name = (fd.get('name') || '').trim(), g = fd.get('type') !== '1:1', dur = +fd.get('duration');
       if (!name) return fieldErr(f, 'name', 'Add a service name');
-      const kind = fd.get('kind'), date = fd.get('date'), time = fd.get('time'), days = fd.getAll('days');
-      if (kind === 'once' && (!date || date < TODAY)) return fieldErr(f, 'date', 'Choose a date from today onwards');
-      if (kind === 'weekly' && !days.length) return (toast('Choose at least one day'), false);
-      const pkOn = !!fd.get('pkg_on'), pkOnly = pkOn && fd.get('pkg_only') === '1';
-      if (!pkOnly && (fd.get('inr') === '' || fd.get('usd') === '')) return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free service)');
-      if (pkOn && (!+fd.get('pkg_inr') || !+fd.get('pkg_usd'))) return fieldErr(f, !+fd.get('pkg_inr') ? 'pkg_inr' : 'pkg_usd', 'Add the total package price in ₹ and $');
-      const data = {name, modality:fd.get('modality'), type:fd.get('type'), format:fd.get('format'), venue:fd.get('format') === 'Online' ? '' : fd.get('venue'), duration:+fd.get('duration'),
-        capacity:fd.get('type') === '1:1' ? 1 : Math.max(2, +fd.get('capacity') || 10), inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, cutoff:+fd.get('cutoff'),
-        schedule:kind === 'availability' ? {kind} : kind === 'once' ? {kind, date, time} : {kind, days, time}, intensity:fd.get('intensity'), desc:fd.get('desc'), contra:fd.get('contra'), cover,
-        pkg:{on:pkOn, sessions:+fd.get('pkg_sessions'), inr:+fd.get('pkg_inr') || 0, usd:+fd.get('pkg_usd') || 0, valid:+fd.get('pkg_valid'), only:pkOnly},
+      if (fd.get('inr') === '' || fd.get('usd') === '') return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free service)');
+      if (!g){
+        const bad = WEEK.find(d => st2.avail[d].some(([a, b]) => toMin(b) - toMin(a) < dur));
+        if (bad) return (toast(`${bad}: each time window must be at least ${dur} minutes`), false);
+        if (!WEEK.some(d => slotsIn(st2.avail[d], dur, +fd.get('gap')).length)) return (toast('Add at least one day with available hours'), false);
+      } else {
+        if (!futureSessions({sessions:st2.sessions}).length) return (toast('Choose at least one upcoming date with a start time'), false);
+        if (st2.sessions.some(x => !x.times.length)) return (toast('Every chosen date needs at least one start time'), false);
+      }
+      if (fd.get('format') !== 'Online' && !st2.place.useStudio && !(st2.place.name && (st2.place.lat || st2.place.address))) return (toast('Choose the place for in-person sessions'), false);
+      const disc = g ? 0 : f._disc();
+      const data = {name, modality:fd.get('modality'), type:g ? 'Group' : '1:1', format:fd.get('format'), duration:dur, capacity:g ? Math.max(2, +fd.get('capacity') || 10) : 1,
+        inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, cutoff:+fd.get('cutoff'), intensity:fd.get('intensity'), desc:fd.get('desc'), contra:fd.get('contra'), cover:st2.cover,
+        avail:g ? null : st2.avail, gap:+fd.get('gap'), disc, sessions:g ? st2.sessions : [], tiers:g && st2.tiersOn ? st2.tiers : [], place:fd.get('format') === 'Online' ? null : st2.place,
         prep:{seeker:fd.get('prep_seeker'), questions:fd.get('prep_questions'), healer:fd.get('prep_healer'), remind:+fd.get('prep_remind'), required:!!fd.get('prep_required')}};
+      data.venue = data.place ? placeOf(data).name : '';
       if (rerun){
-        Object.assign(s, data, {status:'active'}); delete s.stats; s.history.push([TODAY, `Run again for ${fDate(date)} · bookings opened`]);
-        svcTab = 'active'; commit(); toast(`${name} is open for booking on ${fDate(date)}`); return;
+        Object.assign(s, data, {status:'active'}); delete s.stats; s.history.push([TODAY, `Run again · ${futureSessions(s).length} new dates · bookings opened`]);
+        svcTab = 'active'; commit(); toast(`${name} is open for booking again`); return;
       }
       if (id){
-        const changed = ['inr','usd','cutoff','duration','capacity'].filter(x => s[x] !== data[x]);
-        if (JSON.stringify(s.pkg || {}) !== JSON.stringify(data.pkg)) changed.push('pkg');
-        if (JSON.stringify(s.cover || null) !== JSON.stringify(data.cover)) changed.push('cover');
-        if (JSON.stringify(s.prep || {}) !== JSON.stringify(data.prep)) changed.push('prep');
+        const lab = {inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'session length', capacity:'seats', disc:'discount', avail:'availability', sessions:'dates & times', tiers:'group discount', place:'location', cover:'cover image', prep:'preparation'};
+        const changed = Object.keys(lab).filter(k => JSON.stringify(s[k] ?? null) !== JSON.stringify(data[k] ?? null));
         Object.assign(s, data); if (btn === 'save' && s.status === 'draft') s.status = 'active';
-        s.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => ({inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'duration', capacity:'seats', pkg:'package', cover:'cover image', prep:'preparation'}[x])).join(', ')}` : 'Details updated']);
+        s.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => lab[x]).join(', ')}` : 'Details updated']);
         commit(); toast('Service updated'); return;
       }
       S.services.unshift(Object.assign({id:uid('s'), status:btn === 'draft' ? 'draft' : 'active', created:TODAY, history:[[TODAY, btn === 'draft' ? 'Draft created' : 'Created and published']]}, data));
       svcTab = btn === 'draft' ? 'other' : 'active';
       if (current !== 'services') go('services'); else commit();
       save(); badges(); toast(btn === 'draft' ? 'Saved as a draft' : `${name} is live on your profile`);
+    }});
+}
+
+
+/* =====================================================================
+   PACKAGES (a set of sessions sold together · 1:1 or group)
+   ===================================================================== */
+let pkTab = 'active';
+const pack = id => (S.packs || []).find(p => p.id === id);
+const pkHash = s => { let h = 7; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) % 1e9; return h; };
+const PK_DEF_COVER = m => ({kind:'ai', seed:pkHash(m) % 100000, pal:{Breathwork:'dawn', Meditation:'ganga', 'Sound Healing':'dusk', Yoga:'saffron', 'Somatic Healing':'rose'}[m] || 'dawn', scene:'river', motif:m});
+/* a session without its own image shows a variation of the package cover */
+const itemCover = (p, i) => { const it = p.items[i]; if (it && it.cover) return it.cover; const c = p.cover || PK_DEF_COVER(p.modality), pals = ['dawn','ganga','dusk','saffron','night','rose'];
+  return c.kind === 'img' ? c : Object.assign({}, c, {seed:(c.seed || 7) + (i + 1) * 977, scene:['river','mountains','sunrise','stars'][i % 4]}, p.cover ? {} : {pal:pals[(pals.indexOf(c.pal) + i) % pals.length]}); };
+const pkMins = p => p.items.reduce((a, x) => a + (+x.dur || 0), 0);
+const hrsTxt = m => m < 60 ? `${m} min` : `${+(m / 60).toFixed(1)} hours`;
+const pkNet = (p, cur) => { const b = cur === 'USD' ? p.usd : p.inr; return p.disc ? Math.round(b * (1 - p.disc / 100)) : b; };
+const pkDates = p => p.items.filter(x => x.date).map(x => x.date).sort();
+const pkSchedTxt = p => {
+  if (p.type === '1:1'){ const on = WEEK.filter(d => (p.avail || {})[d] && p.avail[d].length); return `Seeker books each session · ${on.length === 7 ? 'every day' : on.length === 5 && !on.includes('Sat') && !on.includes('Sun') ? 'Mon–Fri' : on.join(', ')} · finish within ${p.valid} days`; }
+  const ds = pkDates(p); if (!ds.length) return 'No dates yet';
+  return ds[ds.length - 1] < TODAY ? `Held ${fShort(ds[0])} – ${fShort(ds[ds.length - 1])}` : `${fShort(ds[0])} – ${fShort(ds[ds.length - 1])} · starts ${f12(p.items[0].time)}`;
+};
+const PK_PLAN = {
+  Breathwork:['The long exhale','Box breathing for steady focus','Humming breath (bhramari)','Alternate-nostril breathing','Breath and gentle movement','Breath for deep sleep','Energising breath, safely','Breath holds and calm'],
+  Meditation:['Settling the body','Following the breath','Body scan','Working with busy thoughts','Loving-kindness','Walking meditation','Sitting in silence','Yoga nidra'],
+  'Sound Healing':['Learning to listen','Singing bowls and the breath','Gong rest','Voice and humming','Sound bath for sleep','Silence after sound','Bowls on the body','Your home sound practice'],
+  Yoga:['Gentle foundations','Spine and hips','Standing strength','Balance and focus','Restorative yoga','Breath-led flow','Twists and release','Yoga for the evening'],
+  'Somatic Healing':['Orienting and feeling safe','Grounding through the feet','Releasing the jaw and shoulders','Shaking and settling','Boundaries in the body','Resting in the body','Gentle self-holding','Moving with emotion']
+};
+function vedaPlan(m, n, dur){
+  const pool = PK_PLAN[m] || PK_PLAN.Breathwork, out = [];
+  for (let i = 0; i < n; i++){
+    if (i === 0) out.push({title:'Getting to know you', desc:'We talk about what brings you here, set one clear goal for the package and try a first gentle practice together.'});
+    else if (i === n - 1) out.push({title:'Your own daily routine', desc:'We bring everything together into a short routine you can keep on your own, and plan what comes next.'});
+    else { const t = pool[(i - 1) % pool.length]; out.push({title:t, desc:`${t}: guided practice with time for your questions. You leave with a short routine to use before the next session.`}); }
+    out[i].dur = dur;
+  }
+  return out;
+}
+RENDER.packages = () => {
+  S.packs = S.packs || [];
+  const groups = {active:S.packs.filter(p => p.status === 'active'), other:S.packs.filter(p => p.status !== 'active')};
+  const list = groups[pkTab];
+  $('#v-packages').innerHTML = `
+  <div class="head"><div><span class="eyebrow">Sessions sold together</span><h1>Packages</h1><p>Group several sessions into one journey. Give every session its own title, image and length, and set one price for the whole package.</p></div>
+    <div class="head-actions"><div class="seg" id="pkTabs"><button data-t="active" class="${pkTab === 'active' ? 'on' : ''}">Active <span class="n">${groups.active.length}</span></button><button data-t="other" class="${pkTab === 'other' ? 'on' : ''}">Paused &amp; drafts <span class="n">${groups.other.length}</span></button></div><button class="btn p" id="pkNew">${ico('i-plus')}New package</button></div></div>
+  <div class="svc-grid">${list.map(pkCard).join('') || `<div class="card empty" style="grid-column:1/-1">${ico('i-layers','i')}No packages here yet.<div class="mt16"><button class="btn p sm" data-act="new">${ico('i-plus')}Create a package</button></div></div>`}</div>`;
+  $$('#pkTabs button').forEach(b => b.onclick = () => { pkTab = b.dataset.t; RENDER.packages(); });
+  $('#pkNew').onclick = () => packageModal();
+  $$('#v-packages [data-act]').forEach(b => b.onclick = () => pkAction(b.dataset.act, b.dataset.id));
+};
+function pkCard(p){
+  const stp = {active:['ok','Active'], paused:['rev','Paused'], draft:['done','Draft']}[p.status] || ['done', p.status];
+  const g = p.type !== '1:1', en = (p.enrolls || []), seats = en.reduce((a, e) => a + (e.seats || 1), 0);
+  return `<div class="card svc pk" id="pk-${p.id}">
+    <div class="cov">${tvCover.html(p.cover || PK_DEF_COVER(p.modality), p.name)}<span class="cp-badge">${p.items.length} sessions${p.disc ? ` · ${p.disc}% off` : ''}</span></div>
+    <div class="svc-top"><span class="ico-box" style="background:var(${g ? '--soft-sky' : '--soft-sage'})">${ico('i-layers', 'i')}</span><div style="flex:1;min-width:0"><h3>${esc(p.name)}</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="pill ${stp[0]}">${stp[1]}</span><span class="pill sky">${esc(p.modality)}</span><span class="pill sky">${g ? 'Group' : '1:1'} package</span></div></div></div>
+    <div class="meta"><span>${ico('i-clock')}${p.items.length} sessions · ${hrsTxt(pkMins(p))} in total</span><span>${ico(p.format === 'In person' ? 'i-pin' : 'i-video')}${p.format === 'Both' ? 'Online or in person' : p.format}${p.format !== 'Online' ? ' · ' + esc(placeOf(p).name) : ''}</span>${g ? `<span>${ico('i-group')}Up to ${p.capacity}</span>` : ''}<span>${ico('i-cal')}${esc(pkSchedTxt(p))}</span></div>
+    <div class="price">${p.disc && p.inr ? `<s class="small muted">${money('INR', p.inr)}</s> ` : ''}<b>${money('INR', pkNet(p, 'INR'))}</b><span class="small muted">${g ? 'per person' : 'whole package'} · ${money('USD', pkNet(p, 'USD'))} international · ${money('INR', Math.round(pkNet(p, 'INR') / p.items.length))} a session</span></div>
+    ${g && (p.tiers || []).length ? `<div><span class="pill pk">${ico('i-users')}${esc(p.tiers.map(t => `${t.n}+ people ${t.pct}% off`).join(' · '))}</span></div>` : ''}
+    <div class="pk-list">${p.items.slice(0, 3).map((x, i) => `<div class="pk-it"><span class="pk-th">${tvCover.html(itemCover(p, i), x.title)}</span><span class="grow"><b>${i + 1}. ${esc(x.title)}</b><small>${x.dur} min${g && x.date ? ` · ${fShort(x.date)}, ${f12(x.time)}` : ''}</small></span></div>`).join('')}
+      ${p.items.length > 3 ? `<details><summary class="small">+ ${p.items.length - 3} more session${p.items.length - 3 === 1 ? '' : 's'}</summary>${p.items.slice(3).map((x, j) => `<div class="pk-it"><span class="pk-th">${tvCover.html(itemCover(p, j + 3), x.title)}</span><span class="grow"><b>${j + 4}. ${esc(x.title)}</b><small>${x.dur} min${g && x.date ? ` · ${fShort(x.date)}, ${f12(x.time)}` : ''}</small></span></div>`).join('')}</details>` : ''}</div>
+    <div class="small muted">${en.length ? `${g ? `${seats} seat${seats === 1 ? '' : 's'} sold` : `${en.length} seeker${en.length === 1 ? '' : 's'} enrolled`} · ${en.map(e => esc(seeker(e.seeker) ? seeker(e.seeker).short : 'Seeker')).join(', ')}` : 'No one enrolled yet'}</div>
+    <div class="foot">
+      ${p.status === 'draft' ? `<button class="btn sm p" data-act="publish" data-id="${p.id}">Publish</button>` : p.status === 'paused' ? `<button class="btn sm p" data-act="resume" data-id="${p.id}">Resume sales</button>` : `<button class="btn sm g" data-act="pause" data-id="${p.id}">${ico('i-pause')}Pause</button>`}
+      <span class="grow"></span>
+      <button class="icon-btn" data-act="edit" data-id="${p.id}" aria-label="Edit ${esc(p.name)}" title="Edit">${ico('i-edit')}</button>
+      <button class="icon-btn" data-act="dup" data-id="${p.id}" aria-label="Duplicate ${esc(p.name)}" title="Duplicate">${ico('i-copy')}</button>
+      <button class="icon-btn danger" data-act="del" data-id="${p.id}" aria-label="Delete ${esc(p.name)}" title="Delete">${ico('i-trash')}</button>
+    </div></div>`;
+}
+function pkAction(act, id){
+  if (act === 'new') return packageModal();
+  const p = pack(id), log = t => p.history.push([TODAY, t]);
+  if (act === 'edit') return packageModal(id);
+  if (act === 'pause'){ p.status = 'paused'; log('Sales paused'); commit(); return toast(`${p.name} paused. Enrolled seekers keep their sessions.`); }
+  if (act === 'resume'){ p.status = 'active'; log('Sales resumed'); commit(); return toast(`${p.name} is on sale again`); }
+  if (act === 'publish'){ p.status = 'active'; log('Published'); pkTab = 'active'; commit(); return toast(`${p.name} is live on your profile`); }
+  if (act === 'dup'){ const c = clone(p); c.id = uid('pk'); c.name = p.name + ' (copy)'; c.status = 'draft'; c.created = TODAY; c.enrolls = []; c.history = [[TODAY, `Duplicated from ${p.name}`]]; if (c.type !== '1:1') c.items.forEach(x => { x.date = ''; }); S.packs.push(c); pkTab = 'other'; commit(); return toast('Copy saved as a draft'); }
+  if (act === 'del'){
+    if ((p.enrolls || []).length) return openModal({title:'Seekers are enrolled', size:'narrow', body:`<p style="color:var(--ink-2)">${esc(p.name)} has ${p.enrolls.length} enrolled seeker${p.enrolls.length === 1 ? '' : 's'}. Pause it to stop new sales; enrolled seekers keep their sessions.</p>`,
+      foot:`<button type="button" class="btn g" data-close>Close</button><button type="submit" class="btn p">Pause instead</button>`, onSubmit:() => pkAction('pause', id)});
+    return confirmBox('Delete this package?', `${esc(p.name)} will be removed from your profile.`, 'Delete package', true, () => { S.packs = S.packs.filter(x => x.id !== id); commit(); toast('Package deleted'); });
+  }
+}
+function packageModal(id){
+  const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', capacity:10, intensity:'Gentle', desc:'', contra:'', cover:null, inr:'', usd:'', disc:0, tiers:[{n:3, pct:5},{n:5, pct:10}],
+    avail:defAvail(), gap:15, spacing:2, valid:45, cutoff:S.profile.defCutoff, place:{useStudio:true}, items:vedaPlan(approvedMods()[0], 4, 60).map(x => Object.assign(x, {title:'', desc:'', cover:null}))};
+  const p = id ? pack(id) : clone(base);
+  const st = {items:clone(p.items), avail:clone(p.avail || base.avail), tiers:clone(p.tiers && p.tiers.length ? p.tiers : base.tiers), tiersOn:id ? (p.tiers || []).length > 0 : true, discOn:!!p.disc, place:clone(p.place || base.place), cover:p.cover ? clone(p.cover) : null, variants:[], open:id ? -1 : 0};
+  WEEK.forEach(d => { if (!st.avail[d]) st.avail[d] = []; });
+  const mods = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
+  const opt = (v, cur, label) => `<option value="${esc(v)}" ${String(v) === String(cur) ? 'selected' : ''}>${label || esc(v)}</option>`;
+  const sec = (n, t, d, show) => `<div class="sm-sec full" ${show ? `data-show="${show}"` : ''}><span class="sm-n">${n}</span><div><h3>${t}</h3>${d ? `<p>${d}</p>` : ''}</div></div>`;
+  const studio = S.profile.loc || {};
+  openModal({title:id ? 'Edit package' : 'New package', size:'wide', body:`
+    <div class="fgrid">
+      ${sec(1, 'The basics')}
+      <label class="field full"><span>Package name</span><input class="inp" name="name" value="${esc(p.name)}" placeholder="For example: Sleep reset, 5 sessions" required></label>
+      <label class="field"><span>Practice <small>(only verified practices)</small></span><select class="sel" name="modality">${mods.map(m => { const v = S.profile.modalities[m]; return `<option value="${m}" ${m === p.modality ? 'selected' : ''} ${v !== 'ok' ? 'disabled' : ''}>${m}${v === 'act' ? ' · needs certificate' : v === 'rev' ? ' · in review' : !v ? ' · not on your profile' : ''}</option>`; }).join('')}</select></label>
+      <div class="field"><span>Type</span><div class="choice">${[['1:1','1:1 package'],['Group','Group package']].map(([v, l]) => `<label><input type="radio" name="type" value="${v}" ${(v === '1:1') === (p.type === '1:1') ? 'checked' : ''}><span>${ico(v === '1:1' ? 'i-user' : 'i-group','i xs')}${l}</span></label>`).join('')}</div></div>
+      <label class="field"><span>Format</span><select class="sel" name="format">${['Online','In person','Both'].map(t => opt(t, p.format, t === 'Both' ? 'Online or in person' : t)).join('')}</select></label>
+      <label class="field" data-show="cap"><span>Seats per session</span><input class="inp" type="number" min="2" max="200" name="capacity" value="${p.capacity > 1 ? p.capacity : 10}"></label>
+
+      ${sec(2, 'Location', 'For in-person sessions. Seekers see the area before buying and the exact pin after.', 'loc')}
+      <div class="full" data-show="loc"><div class="choice">
+          <label><input type="radio" name="place_mode" value="studio" ${st.place.useStudio ? 'checked' : ''}><span>${ico('i-home','i xs')}My studio · ${esc(studio.venue || 'Tapovan studio')}, ${esc(studio.area || studio.city || '')}</span></label>
+          <label><input type="radio" name="place_mode" value="other" ${!st.place.useStudio ? 'checked' : ''}><span>${ico('i-pin','i xs')}Another place</span></label></div>
+        <div id="placeOther" class="mt8" ${st.place.useStudio ? 'hidden' : ''}>
+          <label class="loc-search" style="margin-top:10px">${ico('i-search')}<input type="search" id="placeQ" placeholder="Search a place: ghat, retreat, hall, café…" autocomplete="off" aria-label="Search for a place"><span class="loc-res" id="placeRes" hidden></span></label>
+          <div class="fgrid mt8"><label class="field"><span>Place name</span><input class="inp" name="place_name" value="${esc(st.place.name || '')}" placeholder="For example: Parmarth Niketan ghat"></label>
+          <label class="field"><span>Address</span><input class="inp" name="place_addr" value="${esc(st.place.address || '')}" placeholder="Filled when you choose a place"></label></div></div>
+        <div class="place-card" id="placeCard"></div></div>
+
+      ${sec(3, 'Package cover & description', 'The cover shows on your profile and in search. Each session can also have its own image below.')}
+      <div class="full cov-wrap">
+        <div class="cov-prev" id="covPrev"></div>
+        <div class="cov-ctrl">
+          <div class="seg" id="covMode"><button type="button" data-m="ai" class="on">${ico('i-spark')}Generate with Veda</button><button type="button" data-m="up">${ico('i-upload')}Upload</button></div>
+          <div id="covAi"><label class="field"><span>Describe the mood <small>(optional)</small></span><input class="inp" id="covPrompt" placeholder="For example: night sky over the Ganga, calm" value="${esc(st.cover && st.cover.prompt || '')}"></label>
+            <div class="row" style="margin-top:8px;gap:8px"><button type="button" class="btn sm a" id="covGen">${ico('i-spark')}Generate 3 options</button></div>
+            <div class="cov-vars" id="covVars"></div></div>
+          <div id="covUp" hidden>${drop('coverfile', 'Upload a cover photo', 'JPG or PNG · landscape works best', 'image/*')}</div>
+        </div>
+      </div>
+      <label class="field full"><span>What the package is about</span><textarea class="ta" name="desc" data-veda="svcdesc" placeholder="Who it is for and what changes by the last session.">${esc(p.desc)}</textarea></label>
+      <label class="field"><span>Intensity</span><select class="sel" name="intensity">${['Gentle','Moderate','Intense'].map(t => opt(t, p.intensity)).join('')}</select></label>
+      <label class="field"><span>Not suitable for <small>(safety note)</small></span><input class="inp" name="contra" data-veda="contra" value="${esc(p.contra)}" placeholder="For example: late pregnancy, recent surgery"></label>
+
+      ${sec(4, 'Sessions', 'Give every session a title, a short description, an image and its length. Seekers see this list before they buy.')}
+      <div class="full"><div class="pk-count"><label class="field" style="max-width:200px"><span>Number of sessions</span><select class="sel" id="pkN">${Array.from({length:11}, (_, i) => i + 2).map(n => opt(n, st.items.length, n + ' sessions')).join('')}</select></label>
+        <button type="button" class="btn sm a" id="pkPlan">${ico('i-spark')}Plan sessions with Veda</button><span class="small muted grow" id="pkTotal"></span></div>
+        <div class="pk-sched" data-show="grpsched"><b class="small">Quick schedule</b><div class="pk-sched-r">
+          <label class="field"><span>First session</span><input class="inp" type="date" id="qsDate" min="${TODAY}" value="${(st.items[0] && st.items[0].date) || addDays(TODAY, 7)}"></label>
+          <label class="field"><span>Start time</span><input class="inp" type="time" id="qsTime" value="${(st.items[0] && st.items[0].time) || '18:30'}"></label>
+          <label class="field"><span>Then</span><select class="sel" id="qsRep"><option value="1">Every day</option><option value="2">Every 2 days</option><option value="wd">Weekdays only</option><option value="7" selected>Every week</option></select></label>
+          <button type="button" class="btn sm g" id="qsApply">${ico('i-copy','i xs')}Apply to all sessions</button></div><small class="muted">Sets a date and time for every session. You can still change any one below.</small></div>
+        <div class="pk-items" id="pkItems"></div></div>
+
+      ${sec(5, 'When seekers can book', 'Seekers book each session from these hours, one after another.', 'av1')}
+      <div class="full" data-show="av1"><div class="wk-avail" id="availBox"></div>
+        <div class="fgrid mt16"><label class="field"><span>Break between sessions</span><select class="sel" name="gap">${[[0,'No break'],[10,'10 min'],[15,'15 min'],[30,'30 min']].map(([v, l]) => opt(v, p.gap ?? 15, l)).join('')}</select></label>
+          <label class="field"><span>Days between a seeker's sessions</span><select class="sel" name="spacing">${[[0,'Any time, even the same day'],[1,'At least 1 day'],[2,'At least 2 days'],[3,'At least 3 days'],[7,'At least a week']].map(([v, l]) => opt(v, p.spacing ?? 2, l)).join('')}</select></label>
+          <label class="field"><span>Finish all sessions within</span><select class="sel" name="valid">${[[30,'30 days'],[45,'45 days'],[60,'60 days'],[90,'90 days']].map(([v, l]) => opt(v, p.valid || 45, l)).join('')}</select></label>
+          <label class="field"><span>Booking closes</span><select class="sel" name="cutoff">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => opt(v, p.cutoff, l)).join('')}</select></label></div></div>
+      ${sec(5, 'Sales close', 'Seekers can buy a seat until this point before the first session.', 'av2')}
+      <div class="full" data-show="av2"><div class="choice">${[[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before'],[2880,'2 days before']].map(([v, l]) => `<label><input type="radio" name="gcut" value="${v}" ${(+p.cutoff || 720) === v ? 'checked' : ''}><span>${l}</span></label>`).join('')}</div></div>
+
+      ${sec(6, 'Package price & discount', 'One price for all sessions. Seekers in India see rupees; everyone else sees dollars.')}
+      <label class="field"><span><span data-lbl>Package price</span> · India (₹)</span><input class="inp" type="number" min="0" name="inr" value="${p.inr}" placeholder="For example: 11000"></label>
+      <label class="field"><span><span data-lbl>Package price</span> · international ($)</span><input class="inp" type="number" min="0" name="usd" value="${p.usd}" placeholder="For example: 290"></label>
+      <div class="full"><label class="pkg-tg"><input type="checkbox" id="discOn" ${st.discOn ? 'checked' : ''}><span><b>Discount on the whole package</b><small>Seekers see the original package price crossed out</small></span></label>
+        <div class="disc-row mt8" id="discRow" ${st.discOn ? '' : 'hidden'}><span class="small">Discount</span><div class="choice">${[5,10,15,20,25].map(v => `<label><input type="radio" name="disc" value="${v}" ${+p.disc === v ? 'checked' : ''}><span>${v}%</span></label>`).join('')}</div>
+          <label class="row small" style="gap:6px">or <input class="inp" type="number" min="1" max="80" name="disc_c" value="${p.disc && ![5,10,15,20,25].includes(+p.disc) ? p.disc : ''}" placeholder="%" style="width:80px;height:36px"></label></div></div>
+      <div class="full" data-show="disc2"><label class="pkg-tg"><input type="checkbox" id="tiersOn" ${st.tiersOn ? 'checked' : ''}><span><b>Extra discount for bigger bookings</b><small>When one seeker buys seats for several people, on top of the package discount</small></span></label>
+        <div id="tierBox" class="mt8" ${st.tiersOn ? '' : 'hidden'}></div></div>
+      <div class="full note info" id="priceNote"></div>
+    </div>`,
+    foot:`<button type="button" class="btn g" data-close>Cancel</button>${!id || p.status === 'draft' ? '<button type="submit" class="btn g" value="draft">Save as draft</button>' : ''}<button type="submit" class="btn p" value="save">${id && p.status !== 'draft' ? 'Save changes' : 'Publish package'}</button>`,
+    onOpen:body => {
+      const f = modalBox, grp = () => f.querySelector('[name=type]:checked').value !== '1:1', gap = () => +f.gap.value;
+      const minDur = () => Math.min(...st.items.map(x => +x.dur || 60));
+      const discPct = () => { if (!st.discOn) return 0; const c = +f.disc_c.value; if (c) return c; const r = f.querySelector('[name=disc]:checked'); return r ? +r.value : 0; };
+      /* ---------- sessions ---------- */
+      const drawItems = () => {
+        const g = grp();
+        $('#pkItems').innerHTML = st.items.map((x, i) => `<div class="pk-item ${st.open === i ? 'open' : ''}" data-i="${i}">
+          <button type="button" class="pk-ih" data-tog="${i}" aria-expanded="${st.open === i}"><span class="pk-no">${i + 1}</span><span class="pk-th">${tvCover.html(itemCover({items:st.items, cover:st.cover, modality:f.modality.value}, i), x.title)}</span>
+            <span class="grow"><b>${esc(x.title) || `<span class="muted">Session ${i + 1}: add a title</span>`}</b><small>${x.dur} min${g ? ` · ${x.date ? fDate(x.date) + ', ' + f12(x.time || '00:00') : 'no date yet'}` : ''}</small></span><span class="pk-chev" aria-hidden="true">${ico('i-back','i xs')}</span></button>
+          <div class="pk-ib" ${st.open === i ? '' : 'hidden'}>
+            <div class="fgrid">
+              <label class="field full"><span>Session title</span><input class="inp" data-f="title" data-i="${i}" value="${esc(x.title)}" placeholder="For example: The long exhale"></label>
+              <div class="full pk-row3"><label class="field"><span>Length</span><select class="sel" data-f="dur" data-i="${i}">${[30,45,60,75,90,120,180].map(d => opt(d, x.dur, d + ' min')).join('')}</select></label>
+              ${g ? `<label class="field"><span>Date</span><input class="inp" type="date" data-f="date" data-i="${i}" min="${TODAY}" value="${x.date || ''}"></label><label class="field"><span>Start time</span><input class="inp" type="time" data-f="time" data-i="${i}" value="${x.time || ''}"></label>` : ''}</div>
+              <label class="field full"><span>What happens in this session</span><textarea class="ta" data-f="desc" data-i="${i}" data-veda="svcdesc" name="item_desc_${i}" placeholder="One or two sentences.">${esc(x.desc)}</textarea></label>
+              <div class="field full"><span>Session image</span><div class="pk-img"><span class="pk-big">${tvCover.html(itemCover({items:st.items, cover:st.cover, modality:f.modality.value}, i), x.title)}</span>
+                <div class="pk-img-b"><button type="button" class="btn xs a" data-igen="${i}">${ico('i-spark','i xs')}Generate with Veda</button>
+                <label class="btn xs g" style="cursor:pointer">${ico('i-upload','i xs')}Upload<input type="file" accept="image/*" data-iup="${i}" hidden></label>
+                ${x.cover ? `<button type="button" class="lnk small" data-irm="${i}">Use the package style</button>` : '<span class="small muted">Using the package style</span>'}</div></div></div>
+            </div>
+            <div class="pk-ia">${i > 0 ? `<button type="button" class="lnk small" data-up="${i}">Move up</button>` : ''}${i < st.items.length - 1 ? `<button type="button" class="lnk small" data-down="${i}">Move down</button>` : ''}${st.items.length > 2 ? `<button type="button" class="lnk small" data-idel="${i}" style="color:var(--danger)">Remove session</button>` : ''}</div>
+          </div></div>`).join('');
+        $('#pkTotal').textContent = `${st.items.length} sessions · ${hrsTxt(st.items.reduce((a, x) => a + (+x.dur || 0), 0))} in total`;
+        $('#pkN').value = st.items.length;
+        $$('[data-tog]').forEach(b => b.onclick = () => { st.open = st.open === +b.dataset.tog ? -1 : +b.dataset.tog; drawItems(); });
+        $$('#pkItems [data-f]').forEach(el => el.addEventListener(el.tagName === 'SELECT' || el.type === 'date' || el.type === 'time' ? 'change' : 'input', () => {
+          const x = st.items[+el.dataset.i]; x[el.dataset.f] = el.dataset.f === 'dur' ? +el.value : el.value;
+          if (el.tagName === 'SELECT' || el.type === 'date' || el.type === 'time'){ drawItems(); preview(); if (!grp()) drawAvail(); }
+          else { const h = el.closest('.pk-item').querySelector('.pk-ih b'); if (el.dataset.f === 'title') h.textContent = el.value || `Session ${+el.dataset.i + 1}`; }
+        }));
+        $$('[data-igen]').forEach(b => b.onclick = () => { const i = +b.dataset.igen; b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Painting…'; setTimeout(() => { st.items[i].cover = tvCover.variations(st.items[i].title || f.name.value, f.modality.value, 3)[Math.floor(Math.random() * 3)]; drawItems(); toast(`Image ready for session ${i + 1}`); }, 800); });
+        $$('[data-iup]').forEach(inp => inp.onchange = () => { const file = inp.files[0], i = +inp.dataset.iup; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); st.items[i].cover = {kind:'img', src}; drawItems(); toast('Image uploaded'); }); });
+        $$('[data-irm]').forEach(b => b.onclick = () => { st.items[+b.dataset.irm].cover = null; drawItems(); });
+        $$('[data-idel]').forEach(b => b.onclick = () => { st.items.splice(+b.dataset.idel, 1); st.open = -1; drawItems(); preview(); });
+        const mv = (i, d) => { const t = st.items[i]; st.items[i] = st.items[i + d]; st.items[i + d] = t; st.open = i + d; drawItems(); };
+        $$('[data-up]').forEach(b => b.onclick = () => mv(+b.dataset.up, -1));
+        $$('[data-down]').forEach(b => b.onclick = () => mv(+b.dataset.down, 1));
+        attachVeda($('#pkItems'));
+      };
+      $('#pkN').onchange = e => { const n = +e.target.value; while (st.items.length < n){ const last = st.items[st.items.length - 1] || {dur:60}; st.items.push({title:'', desc:'', dur:last.dur, cover:null, date:'', time:last.time || ''}); } st.items.length = n; drawItems(); preview(); };
+      $('#pkPlan').onclick = () => { const b = $('#pkPlan'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is planning…';
+        setTimeout(() => { const plan = vedaPlan(f.modality.value, st.items.length, st.items[0].dur || 60); st.items.forEach((x, i) => { if (!x.title) x.title = plan[i].title; if (!x.desc) x.desc = plan[i].desc; }); st.open = 0; drawItems(); b.disabled = false; b.innerHTML = `${ico('i-spark')}Plan sessions with Veda`; toast('Veda filled the empty titles and descriptions. Edit anything you like.'); }, 900); };
+      $('#qsApply').onclick = () => { let d = $('#qsDate').value; const t = $('#qsTime').value, rep = $('#qsRep').value;
+        if (!d || d < TODAY) return toast('Choose a first date from today onwards'); if (!t) return toast('Choose a start time');
+        st.items.forEach((x, i) => { if (i){ if (rep === 'wd'){ do { d = addDays(d, 1); } while (['Sat','Sun'].includes(dow(d))); } else d = addDays(d, +rep); } x.date = d; x.time = t; });
+        drawItems(); preview(); toast(`Dates and times set for all ${st.items.length} sessions`); };
+      /* ---------- 1:1 weekly availability ---------- */
+      const drawAvail = () => {
+        const dur = minDur();
+        $('#availBox').innerHTML = WEEK.map(d => { const r = st.avail[d], on = r.length > 0;
+          return `<div class="av-row ${on ? 'on' : ''}"><label class="av-day"><input type="checkbox" data-aday="${d}" ${on ? 'checked' : ''}><b>${d}</b></label>
+            <div class="av-ranges">${on ? r.map((x, i) => `<span class="av-rg"><input type="time" class="inp" data-d="${d}" data-i="${i}" data-k="0" value="${x[0]}" aria-label="${d} from"><span>to</span><input type="time" class="inp" data-d="${d}" data-i="${i}" data-k="1" value="${x[1]}" aria-label="${d} to"><button type="button" class="icon-btn" data-rm="${d}|${i}" aria-label="Remove these hours">${ico('i-x')}</button></span>`).join('') + `<button type="button" class="lnk small" data-add="${d}">${ico('i-plus','i xs')}Add hours</button>` : '<span class="small muted">Not available</span>'}</div>
+            <div class="av-r">${on ? `<span class="small muted">${slotsIn(r, dur, gap()).length} start times</span><button type="button" class="lnk small" data-copy="${d}">Copy to all days</button>` : ''}</div></div>`; }).join('');
+        $$('[data-aday]').forEach(c => c.onchange = () => { st.avail[c.dataset.aday] = c.checked ? [['09:00','13:00']] : []; drawAvail(); });
+        $$('#availBox input[type=time]').forEach(i => i.onchange = () => { st.avail[i.dataset.d][+i.dataset.i][+i.dataset.k] = i.value; drawAvail(); });
+        $$('[data-rm]').forEach(b => b.onclick = () => { const [d, i] = b.dataset.rm.split('|'); st.avail[d].splice(+i, 1); drawAvail(); });
+        $$('[data-add]').forEach(b => b.onclick = () => { const r = st.avail[b.dataset.add], last = r[r.length - 1]; const from = last ? hhmm(Math.min(toMin(last[1]) + 60, 21 * 60)) : '09:00'; r.push([from, hhmm(Math.min(toMin(from) + 180, 23 * 60))]); drawAvail(); });
+        $$('[data-copy]').forEach(b => b.onclick = () => { const src = st.avail[b.dataset.copy]; WEEK.forEach(d => { if (d !== b.dataset.copy) st.avail[d] = clone(src); }); drawAvail(); toast(`${b.dataset.copy} hours copied to every day`); });
+      };
+      /* ---------- attendee tiers ---------- */
+      const drawTiers = () => {
+        st.tiers.sort((a, b) => a.n - b.n);
+        $('#tierBox').innerHTML = `<div class="tiers">${st.tiers.map((t, i) => `<div class="tier"><span>When a booking has</span><input class="inp" type="number" min="2" max="50" value="${t.n}" data-tn="${i}" aria-label="Number of people"><span>or more people</span><input class="inp" type="number" min="1" max="60" value="${t.pct}" data-tp="${i}" aria-label="Percent off"><span>% off</span><button type="button" class="icon-btn" data-trm="${i}" aria-label="Remove">${ico('i-x')}</button></div>`).join('')}
+          <button type="button" class="lnk small" id="tierAdd">${ico('i-plus','i xs')}Add a level</button></div>`;
+        $$('[data-tn]').forEach(x => x.onchange = () => { st.tiers[+x.dataset.tn].n = Math.max(2, +x.value || 2); drawTiers(); preview(); });
+        $$('[data-tp]').forEach(x => x.onchange = () => { st.tiers[+x.dataset.tp].pct = Math.min(60, Math.max(1, +x.value || 1)); drawTiers(); preview(); });
+        $$('[data-trm]').forEach(x => x.onclick = () => { st.tiers.splice(+x.dataset.trm, 1); drawTiers(); preview(); });
+        $('#tierAdd').onclick = () => { const last = st.tiers[st.tiers.length - 1]; st.tiers.push({n:last ? last.n + 2 : 3, pct:last ? Math.min(60, last.pct + 5) : 5}); drawTiers(); preview(); };
+      };
+      /* ---------- location ---------- */
+      const drawPlace = () => {
+        const pl = st.place.useStudio ? placeOf({place:{useStudio:true}}) : st.place;
+        $('#placeCard').innerHTML = pl && pl.lat ? `<div class="pc"><div class="pc-map" id="pcMap"></div><div class="pc-in"><b>${esc(pl.name || 'Selected place')}</b><small>${esc(pl.address || '')}</small>
+          <div class="row mt8" style="gap:8px"><a class="btn xs g" href="${tvPlace.gmaps(pl)}" target="_blank" rel="noopener">${ico('i-globe','i xs')}View on map</a></div></div></div>`
+          : `<div class="note warn mt8">${ico('i-pin')}<span>Search and choose a place so seekers can find it.</span></div>`;
+        if (pl && pl.lat) tvPlace.map($('#pcMap'), {lat:pl.lat, lng:pl.lng, label:pl.name});
+      };
+      const pres = $('#placeRes'); let ptimer;
+      $('#placeQ').addEventListener('input', e => { clearTimeout(ptimer); const v = e.target.value.trim(); if (v.length < 3){ pres.hidden = true; return; }
+        ptimer = setTimeout(() => tvPlace.search(v + (/rishikesh|india/i.test(v) ? '' : ', Rishikesh')).then(list => { pres.hidden = false;
+          pres.innerHTML = list.length ? list.map((x, i) => `<button type="button" data-pi="${i}"><b>${esc(x.name)}</b><br><span class="small muted">${esc(x.address)}</span></button>`).join('') : '<span class="none">No places found. Try a nearby landmark.</span>';
+          $$('[data-pi]', pres).forEach(b => b.onclick = () => { const x = list[+b.dataset.pi]; st.place = {useStudio:false, name:x.name, address:x.address, lat:x.lat, lng:x.lng}; f.place_name.value = x.name; f.place_addr.value = x.address; pres.hidden = true; $('#placeQ').value = ''; drawPlace(); toast('Place selected'); }); })
+          .catch(() => { pres.hidden = false; pres.innerHTML = '<span class="none">Place search is unavailable right now. Type the name and address below.</span>'; }), 400); });
+      $('#placeQ').addEventListener('keydown', e => { if (e.key === 'Enter') e.preventDefault(); });
+      $$('[name=place_mode]').forEach(r => r.onchange = () => { st.place.useStudio = r.value === 'studio'; $('#placeOther').hidden = st.place.useStudio; drawPlace(); });
+      f.place_name.addEventListener('input', () => { st.place.name = f.place_name.value; });
+      f.place_addr.addEventListener('input', () => { st.place.address = f.place_addr.value; });
+      /* ---------- preview + price ---------- */
+      const preview = () => {
+        const name = f.name.value.trim() || 'Your package name', inr = +f.inr.value || 0, usd = +f.usd.value || 0, g = grp(), dp = discPct(), n = st.items.length, net = Math.round(inr * (1 - dp / 100)), netU = Math.round(usd * (1 - dp / 100));
+        const ds = st.items.filter(x => x.date).map(x => x.date).sort();
+        $('#covPrev').innerHTML = `<div class="cp-card"><div class="cp-cov">${st.cover ? tvCover.html(st.cover, name) : `<div class="cp-empty">${ico('i-spark','i')}<span>No cover yet</span></div>`}<span class="cp-badge">${n} sessions${dp ? ` · ${dp}% off` : ''}</span></div>
+          <div class="cp-in"><small>${esc(f.modality.value)} · ${g ? 'Group' : '1:1'} package · ${f.format.value === 'Both' ? 'Online or in person' : f.format.value}</small><b>${esc(name)}</b>
+          <div class="cp-price">${dp && inr ? `<s class="muted">${money('INR', inr)}</s>` : ''}<span>${money('INR', net)}</span><small>${inr ? `${money('INR', Math.round(net / n))} a session` : ''}</small></div>
+          <div class="cp-pk">${ico('i-layers','i xs')} ${n} sessions · ${hrsTxt(st.items.reduce((a, x) => a + (+x.dur || 0), 0))}${g && ds.length ? ` · from ${fShort(ds[0])}` : ''}</div></div></div>
+          <p class="small muted" style="margin-top:8px;text-align:center">${ico('i-eye','i xs')} Preview: how seekers see this package</p>`;
+        $('#priceNote').innerHTML = !inr ? `${ico('i-alert')}<span>Add the package price.</span>` : `${ico('i-wallet')}<span>Seekers pay <b>${money('INR', net)}</b> in India and <b>${money('USD', netU)}</b> internationally${g ? ' per person' : ''} for ${n} sessions, which is <b>${money('INR', Math.round(net / n))}</b> a session${dp ? ` after ${dp}% off` : ''}.${g && st.tiersOn && st.tiers.length ? ` ${st.tiers.map(t => `${t.n} people pay ${money('INR', Math.round(net * t.n * (1 - t.pct / 100)))} instead of ${money('INR', net * t.n)}`).join('; ')}.` : ''}</span>`;
+      };
+      const sync = () => {
+        const g = grp();
+        body.querySelectorAll('[data-show=cap],[data-show=disc2],[data-show=av2],[data-show=grpsched]').forEach(x => x.hidden = !g);
+        body.querySelectorAll('[data-show=av1]').forEach(x => x.hidden = g);
+        body.querySelectorAll('[data-show=loc]').forEach(x => x.hidden = f.format.value === 'Online');
+        body.querySelectorAll('[data-lbl]').forEach(x => x.textContent = g ? 'Price per person' : 'Package price');
+        drawItems(); preview();
+      };
+      $$('[name=type]').forEach(r => r.addEventListener('change', () => { sync(); if (!grp()) drawAvail(); }));
+      f.format.addEventListener('change', () => { sync(); if (f.format.value !== 'Online') drawPlace(); });
+      f.gap.addEventListener('change', drawAvail);
+      $('#discOn').onchange = e => { st.discOn = e.target.checked; $('#discRow').hidden = !st.discOn; if (st.discOn && !discPct()) f.querySelector('[name=disc][value="10"]').checked = true; preview(); };
+      $$('[name=disc]').forEach(r => r.onchange = () => { f.disc_c.value = ''; preview(); });
+      f.disc_c.addEventListener('input', () => { if (f.disc_c.value) $$('[name=disc]').forEach(r => r.checked = false); preview(); });
+      $('#tiersOn').onchange = e => { st.tiersOn = e.target.checked; $('#tierBox').hidden = !st.tiersOn; preview(); };
+      body.addEventListener('input', e => { if (['name','inr','usd'].includes(e.target.name)) preview(); });
+      f.modality.addEventListener('change', () => { drawItems(); preview(); });
+      /* cover */
+      const drawVars = () => { $('#covVars').innerHTML = st.variants.map((v, i) => `<button type="button" class="cov-var ${st.cover && st.cover.seed === v.seed ? 'on' : ''}" data-v="${i}" aria-label="Use option ${i + 1}">${tvCover.svg(v)}</button>`).join(''); $$('#covVars [data-v]').forEach(b => b.onclick = () => { st.cover = st.variants[+b.dataset.v]; drawVars(); drawItems(); preview(); toast('Cover selected'); }); };
+      $('#covGen').onclick = () => { const b = $('#covGen'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is painting…'; $('#covVars').innerHTML = '<div class="cov-load"></div><div class="cov-load"></div><div class="cov-load"></div>';
+        setTimeout(() => { st.variants = tvCover.variations($('#covPrompt').value, f.modality.value, 3); st.cover = st.variants[0]; drawVars(); drawItems(); preview(); b.disabled = false; b.innerHTML = `${ico('i-repeat')}Generate again`; }, 1000); };
+      $$('#covMode button').forEach(b => b.onclick = () => { $$('#covMode button').forEach(x => x.classList.toggle('on', x === b)); $('#covAi').hidden = b.dataset.m !== 'ai'; $('#covUp').hidden = b.dataset.m !== 'up'; });
+      const fi = body.querySelector('[name=coverfile]'); fi.addEventListener('change', () => { const file = fi.files[0]; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); st.cover = {kind:'img', src}; drawItems(); preview(); toast('Cover uploaded'); }); fi.closest('.drop').querySelector('b').textContent = file.name; });
+      drawTiers(); drawAvail(); sync(); if (f.format.value !== 'Online') drawPlace();
+      attachVeda(body);
+      modalBox._st = st; modalBox._disc = discPct;
+    },
+    onSubmit:(fd, btn, f) => {
+      const st2 = f._st, name = (fd.get('name') || '').trim(), g = fd.get('type') !== '1:1', draft = btn === 'draft';
+      if (!name) return fieldErr(f, 'name', 'Add a package name');
+      const miss = st2.items.findIndex(x => !x.title.trim());
+      if (miss >= 0 && !draft){ const tb = $('[data-tog="' + miss + '"]'); if (tb.getAttribute('aria-expanded') !== 'true') tb.click(); return (toast(`Add a title for session ${miss + 1}`), false); }
+      if (!draft && (fd.get('inr') === '' || fd.get('usd') === '' || !+fd.get('inr'))) return fieldErr(f, fd.get('inr') === '' || !+fd.get('inr') ? 'inr' : 'usd', 'Add the package price in rupees and dollars');
+      if (!draft && g){
+        const nd = st2.items.findIndex(x => !x.date || !x.time); if (nd >= 0) return (toast(`Choose a date and start time for session ${nd + 1}, or use Quick schedule`), false);
+        if (st2.items.some(x => x.date < TODAY)) return (toast('All session dates must be today or later'), false);
+        const order = st2.items.map(x => x.date + x.time); if (order.some((v, i) => i && v <= order[i - 1])) return (toast('Sessions must be in date order. Use Move up / Move down or fix the dates.'), false);
+      }
+      if (!draft && !g && !WEEK.some(d => slotsIn(st2.avail[d], Math.min(...st2.items.map(x => +x.dur)), +fd.get('gap')).length)) return (toast('Add at least one day with available hours'), false);
+      if (fd.get('format') !== 'Online' && !st2.place.useStudio && !(st2.place.name && (st2.place.lat || st2.place.address)) && !draft) return (toast('Choose the place for in-person sessions'), false);
+      const data = {name, modality:fd.get('modality'), type:g ? 'Group' : '1:1', format:fd.get('format'), capacity:g ? Math.max(2, +fd.get('capacity') || 10) : 1, intensity:fd.get('intensity'),
+        desc:fd.get('desc'), contra:fd.get('contra'), cover:st2.cover, inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, disc:f._disc(), tiers:g && st2.tiersOn ? st2.tiers : [],
+        items:st2.items.map(x => g ? {title:x.title.trim(), desc:x.desc, dur:+x.dur, cover:x.cover, date:x.date, time:x.time} : {title:x.title.trim(), desc:x.desc, dur:+x.dur, cover:x.cover}),
+        avail:g ? null : st2.avail, gap:+fd.get('gap'), spacing:+fd.get('spacing'), valid:+fd.get('valid'), cutoff:g ? +fd.get('gcut') : +fd.get('cutoff'), place:fd.get('format') === 'Online' ? null : st2.place};
+      data.venue = data.place ? placeOf(data).name : '';
+      if (id){
+        const lab = {items:'sessions', inr:'India price', usd:'international price', disc:'discount', tiers:'group discount', avail:'availability', place:'location', cover:'cover image', capacity:'seats'};
+        const changed = Object.keys(lab).filter(k => JSON.stringify(p[k] ?? null) !== JSON.stringify(data[k] ?? null));
+        Object.assign(p, data); if (btn === 'save' && p.status === 'draft') p.status = 'active';
+        p.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => lab[x]).join(', ')}` : 'Details updated']);
+        commit(); toast('Package updated'); return;
+      }
+      S.packs = S.packs || [];
+      S.packs.unshift(Object.assign({id:uid('pk'), status:draft ? 'draft' : 'active', created:TODAY, enrolls:[], history:[[TODAY, draft ? 'Draft created' : 'Created and published']]}, data));
+      pkTab = draft ? 'other' : 'active';
+      if (current !== 'packages') go('packages'); else commit();
+      save(); badges(); toast(draft ? 'Saved as a draft' : `${name} is live on your profile`);
     }});
 }
 

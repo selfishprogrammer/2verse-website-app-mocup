@@ -815,6 +815,67 @@ main#view{min-height:calc(100vh - 72px);padding-bottom:80px;animation:fadeUp .4s
 @media (max-width:640px){.svc-cov{width:100%;height:120px}}
 .fgrid > *{min-width:0}.modal-f{flex-wrap:wrap}
 .r-side .rs-f input{min-width:0}.r-side .rs-f .btn{flex-shrink:0}
+/* seats + discounts + map */
+s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
+.seats-pick{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.stepper{display:flex;align-items:center;gap:12px}
+.stepper .icon-btn{width:40px;height:40px;border-radius:50%;font-size:20px;font-weight:600}
+.stepper b{font-size:22px;min-width:28px;text-align:center}
+.tier-hint{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tier-hint span{font-size:12.5px;padding:5px 10px;border-radius:99px;border:1px dashed var(--line-strong);color:var(--ink-2)}
+.tier-hint span.on{background:var(--soft-sage);border:1px solid var(--primary);color:var(--primary);font-weight:600}
+.map-m{height:340px;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line);background:linear-gradient(var(--line) 1px,transparent 1px) 0 0/30px 30px,linear-gradient(90deg,var(--line) 1px,transparent 1px) 0 0/30px 30px,var(--surface-2)}
+@media (max-width:640px){.map-m{height:260px}}
+
+/* ===== packages ===== */
+.flip{display:inline-flex}.flip svg{transform:scaleX(-1)}
+.pk-teaser{display:flex;gap:14px;align-items:center;width:100%;text-align:left;padding:14px 18px;margin-bottom:14px;border-radius:18px;border:1.5px dashed var(--primary);background:var(--soft-sage);color:var(--primary)}
+.pk-teaser b{display:block;color:var(--ink);font-size:15px}.pk-teaser small{color:var(--ink-2);font-size:13px}
+.pk-teaser:hover{background:color-mix(in srgb,var(--soft-sage) 70%,var(--surface))}
+.pk-row{display:flex;gap:18px;align-items:flex-start;padding:16px;border-radius:20px;border:1px solid var(--line);background:var(--surface);cursor:pointer;transition:border .2s,box-shadow .2s}
+.pk-row:hover,.pk-row:focus-visible{border-color:var(--primary);box-shadow:var(--shadow-sm)}
+.pk-row h3{font-size:19px}
+.pk-row .m{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);margin-top:4px}.pk-row .m span{display:inline-flex;align-items:center;gap:5px}
+.pk-row .pr{text-align:right;flex-shrink:0;min-width:130px}.pk-row .pr b{display:block;font-size:18px}
+.pk-row .grow{min-width:0}
+.pk-cov{width:150px;height:118px;border-radius:16px;overflow:hidden;flex-shrink:0;position:relative;display:block}
+.pk-cov svg,.pk-cov img,.pk-hero svg,.pk-hero img,.pk-img svg,.pk-img img,.pk-thumbs i svg,.pk-thumbs i img,.pk-sumcov svg,.pk-sumcov img{width:100%;height:100%;display:block;object-fit:cover}
+.pk-cov .cp-badge,.pk-hero .cp-badge{position:absolute;left:8px;top:8px;background:rgba(0,0,0,.55);color:#fff;font-size:11px;font-weight:600;padding:3px 8px;border-radius:99px}
+.pk-thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.pk-thumbs span{flex:0 0 96px;display:flex;flex-direction:column;gap:4px}
+.pk-thumbs i{display:block;width:96px;height:58px;border-radius:10px;overflow:hidden}
+.pk-thumbs small{font-size:11px;line-height:1.3;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pk-hero{height:300px;border-radius:24px;overflow:hidden;position:relative}
+.pk-hero .cp-badge{left:16px;top:16px;font-size:12.5px;padding:6px 12px}
+.pk-facts{display:grid;gap:10px}
+.pk-facts > div{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}
+.pk-facts > div > svg{color:var(--primary);flex-shrink:0;margin-top:2px}
+.pk-facts b{display:block;font-size:14.5px}.pk-facts small{font-size:13px;color:var(--ink-2);line-height:1.5}
+.pk-sessions{display:flex;flex-direction:column;gap:12px;position:relative}
+.pk-sess{display:flex;gap:16px;align-items:flex-start;padding:14px;border-radius:18px;background:var(--surface);border:1px solid var(--line)}
+.pk-sess b{font-size:16.5px;display:block}
+.pk-sess .m{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);margin-top:3px}.pk-sess .m span{display:inline-flex;gap:5px;align-items:center}
+.pk-sess p{font-size:14px;color:var(--ink-2);margin-top:6px;line-height:1.55}
+.pk-sess .grow{min-width:0}
+.pk-num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;background:var(--soft-sage);color:var(--primary);font-weight:700;font-size:13px}
+.pk-img{width:150px;height:96px;border-radius:14px;overflow:hidden;flex-shrink:0;display:block}
+.pk-img.sm{width:64px;height:46px;border-radius:10px}
+.pk-picks{display:flex;flex-direction:column;gap:8px}
+.pk-pick{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:16px;border:1px solid var(--line);background:var(--surface)}
+.pk-pick b{display:block;font-size:14.5px}.pk-pick small{font-size:12.5px;color:var(--muted)}
+.pk-pick .grow{min-width:0}
+.pk-pick.on{border-color:var(--primary);box-shadow:0 0 0 3px var(--soft-sage)}
+.pk-pick.set .pk-num{background:var(--primary);color:var(--on-primary)}
+.pk-pickbox{padding:4px 4px 12px 4px}
+.pk-sumcov{display:block;height:120px;border-radius:14px;overflow:hidden;margin-bottom:4px}
+.pk-bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}.pk-bar i{display:block;height:100%;background:var(--primary);border-radius:99px}
+@media (max-width:720px){
+  .pk-row{flex-direction:column}.pk-cov{width:100%;height:150px}.pk-row .pr{text-align:left;min-width:0}
+  .pk-hero{height:200px}.pk-sess{flex-wrap:wrap}.pk-img{width:100%;height:150px;order:-1}
+  .pk-pick{flex-wrap:wrap}
+}
+.pk-mcta{display:none}
+@media (max-width:900px){.pk-mcta{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--surface);border:1px solid var(--line)}.pk-mcta b{font-size:18px}.pk-mcta .btn{margin-left:auto}}
 
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
@@ -875,7 +936,8 @@ main#view{min-height:calc(100vh - 72px);padding-bottom:80px;animation:fadeUp .4s
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12l4 4v12H4z"/><path d="M8 12h8M8 16h5"/></symbol>
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2 20c1-3.5 3.5-5 7-5s6 1.5 7 5"/><path d="M16 4.5a3.5 3.5 0 010 7M18 15c2 .6 3.4 2.2 4 5"/></symbol>
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
-  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
   <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2M3 10h18"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></symbol>
@@ -1049,7 +1111,7 @@ main#view{min-height:calc(100vh - 72px);padding-bottom:80px;animation:fadeUp .4s
       city:a.city || a.town || a.village || a.municipality || '', district:a.state_district || a.county || '', state:a.state || '', pin:a.postcode || '', country:a.country || '', cc:(a.country_code || '').toLowerCase()};
   }
   window.tvLocation = {
-    DEMO: DEMO,
+    DEMO: DEMO, loadLeaflet: loadLeaflet,
     html: function(d){
       d = d || {};
       return '<div class="loc">' +
@@ -1260,6 +1322,32 @@ main#view{min-height:calc(100vh - 72px);padding-bottom:80px;animation:fadeUp .4s
 })();
 </script>
 <script>
+/* =====================================================================
+   Place search (OSM Nominatim) + map view, used by services and seekers.
+   ===================================================================== */
+(function(){
+  function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  window.tvPlace = {
+    search: function(q){ return fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=6&q=' + encodeURIComponent(q), {headers:{'Accept-Language':'en'}}).then(function(r){ return r.json(); }).then(function(list){ return list.map(function(x){ var a = x.address || {}; return {name:x.name || x.display_name.split(',')[0], address:x.display_name, area:a.suburb || a.neighbourhood || a.village || '', city:a.city || a.town || a.village || '', lat:+x.lat, lng:+x.lon}; }); }); },
+    gmaps: function(p){ return 'https://www.google.com/maps/search/?api=1&query=' + p.lat + ',' + p.lng; },
+    directions: function(p){ return 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng; },
+    /* render a map into el. opts: {lat,lng,label,approx} */
+    map: function(el, opts){
+      el.innerHTML = '<div class="loc-fallback"><span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span><b>' + esc(opts.label || 'Location') + '</b><small>' + (+opts.lat).toFixed(4) + ', ' + (+opts.lng).toFixed(4) + '</small></div>';
+      if (!window.tvLocation) return;
+      tvLocation.loadLeaflet().then(function(L){
+        if (!document.body.contains(el)) return; el.innerHTML = '';
+        var m = L.map(el, {scrollWheelZoom:false}).setView([opts.lat, opts.lng], opts.approx ? 15 : 16);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; OpenStreetMap contributors'}).addTo(m);
+        if (opts.approx) L.circle([opts.lat, opts.lng], {radius:350, color:'#c0704f', weight:2, fillOpacity:.15}).addTo(m);
+        else L.marker([opts.lat, opts.lng], {icon:L.divIcon({className:'loc-mk', html:'<span class="loc-pin"><svg class="i"><use href="#i-pin"/></svg></span>', iconSize:[44,50], iconAnchor:[22,48]})}).addTo(m);
+        setTimeout(function(){ m.invalidateSize(); }, 200);
+      }).catch(function(){});
+    }
+  };
+})();
+</script>
+<script>
 (function(){
 'use strict';
 /* =====================================================================
@@ -1313,8 +1401,8 @@ const HEALERS = [
    lineage:'Trained under Swami Atmananda (Sivananda tradition), 2013–2016', creds:['RYT-500, Yoga Alliance','Pranayama teacher training, Bihar School of Yoga','Mindfulness-Based Stress Reduction (MBSR) certificate'],
    policy:'Free cancellation up to 24 hours before. 50% refund within 24 hours. No refund within 2 hours or for no-shows.',
    services:[
-    {id:'an1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, pkg:{sessions:5, inr:10500, usd:275, valid:60}, prep:{seeker:['Eat lightly; no heavy meal 2 hours before','Wear loose, comfortable clothes','Keep water and a blanket nearby','Test your camera and sound 10 minutes before'], questions:['What would you most like help with?','How many hours do you usually sleep?','Anything about your health I should know?']}, name:'Breath for deep sleep', type:'1:1', format:'Both', dur:60, inr:2500, usd:65, cutoff:120, kind:'availability', desc:'A slow, guided session to calm the nervous system and build a 10-minute wind-down routine for your evenings.', contra:'Late pregnancy, recent chest surgery'},
-    {id:'an2', name:'Pranayama for focus', type:'1:1', format:'Online', dur:45, inr:1900, usd:55, cutoff:30, kind:'availability', desc:'Alternate-nostril and box breathing to clear mental fog before deep work.', contra:'Uncontrolled high blood pressure'},
+    {id:'an1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, prep:{seeker:['Eat lightly; no heavy meal 2 hours before','Wear loose, comfortable clothes','Keep water and a blanket nearby','Test your camera and sound 10 minutes before'], questions:['What would you most like help with?','How many hours do you usually sleep?','Anything about your health I should know?']}, name:'Breath for deep sleep', type:'1:1', format:'Both', dur:60, inr:2500, usd:65, cutoff:120, kind:'availability', desc:'A slow, guided session to calm the nervous system and build a 10-minute wind-down routine for your evenings.', contra:'Late pregnancy, recent chest surgery'},
+    {id:'an2', disc:10, name:'Pranayama for focus', type:'1:1', format:'Online', dur:45, inr:1900, usd:55, cutoff:30, kind:'availability', desc:'Alternate-nostril and box breathing to clear mental fog before deep work.', contra:'Uncontrolled high blood pressure'},
     {id:'an3', name:'Free intro call', type:'1:1', format:'Online', dur:15, inr:0, usd:0, cutoff:30, kind:'availability', desc:'Meet Ananya, share what you are going through and see if her approach fits you.', contra:''},
     {id:'an4', name:'Evening yoga nidra', type:'Group', format:'Online', dur:60, inr:1200, usd:25, cutoff:0, kind:'weekly', days:['Wed'], time:'18:30', cap:20, desc:'Guided yogic sleep in a small online circle. Lie down, cameras optional.', contra:''},
     {id:'an5', name:'Sunrise breath circle', type:'Group', format:'In person', dur:90, inr:1200, usd:30, cutoff:720, kind:'weekly', days:['Mon','Tue','Wed','Thu','Fri'], time:'06:00', cap:10, desc:'Breathwork by the Ganga at first light, followed by herbal tea.', contra:'Late pregnancy'}]},
@@ -1326,7 +1414,7 @@ const HEALERS = [
    lineage:'Apprenticed with bowl maker Lama Karma in Kathmandu, 2015–2017', creds:['Sound therapy diploma, College of Sound Healing (UK)','Gong practitioner level 2'],
    policy:'Free cancellation up to 24 hours before. 50% refund within 24 hours. No refund within 2 hours or for no-shows.',
    services:[
-    {id:'dv1', cover:{kind:'ai', seed:208, pal:'night', scene:'stars', motif:'Sound Healing'}, pkg:{sessions:4, inr:11500, usd:290, valid:90}, name:'Private sound bath', type:'1:1', format:'Both', dur:75, inr:3200, usd:80, cutoff:240, kind:'availability', desc:'A personal sound bath with bowls placed around and on the body. Online sessions use headphones.', contra:'Pacemaker, epilepsy, first trimester of pregnancy'},
+    {id:'dv1', cover:{kind:'ai', seed:208, pal:'night', scene:'stars', motif:'Sound Healing'}, name:'Private sound bath', type:'1:1', format:'Both', dur:75, inr:3200, usd:80, cutoff:240, kind:'availability', desc:'A personal sound bath with bowls placed around and on the body. Online sessions use headphones.', contra:'Pacemaker, epilepsy, first trimester of pregnancy'},
     {id:'dv2', name:'Saturday group sound bath', type:'Group', format:'In person', dur:90, inr:1500, usd:35, cutoff:120, kind:'weekly', days:['Sat'], time:'17:00', cap:14, desc:'Sunset gong and bowl bath for up to 14 people. Mats and blankets provided.', contra:'Pacemaker, epilepsy'},
     {id:'dv3', name:'Free intro call', type:'1:1', format:'Online', dur:15, inr:0, usd:0, cutoff:30, kind:'availability', desc:'Ask Dev anything about sound healing before you book.', contra:''}]},
   {id:'meera', name:'Meera Joshi', ini:'M', c:['#6b3a2f','#e8b48a'], practices:['Somatic Healing','Yoga'], years:14, langs:['English','Hindi','French'], rating:4.9, count:61, formats:['Online','In person'], gender:'F',
@@ -1337,7 +1425,7 @@ const HEALERS = [
    lineage:'Trauma-sensitive yoga with David Emerson (TCTSY), 2018', creds:['Somatic Experiencing Practitioner (SEP)','Trauma Center Trauma-Sensitive Yoga facilitator','RYT-500'],
    policy:'Free cancellation up to 48 hours before. 50% refund within 48 hours. No refund within 12 hours.',
    services:[
-    {id:'me1', cover:{kind:'ai', seed:63, pal:'rose', scene:'river', motif:'Somatic Healing'}, pkg:{sessions:3, inr:9500, usd:245, valid:60}, name:'Somatic release', type:'1:1', format:'Both', dur:75, inr:3500, usd:90, cutoff:1440, kind:'availability', desc:'Gentle body awareness, breath and movement to release stored tension. Fully clothed, no touch online.', contra:'Acute psychiatric crisis (please contact local services first)'},
+    {id:'me1', cover:{kind:'ai', seed:63, pal:'rose', scene:'river', motif:'Somatic Healing'}, name:'Somatic release', type:'1:1', format:'Both', dur:75, inr:3500, usd:90, cutoff:1440, kind:'availability', desc:'Gentle body awareness, breath and movement to release stored tension. Fully clothed, no touch online.', contra:'Acute psychiatric crisis (please contact local services first)'},
     {id:'me2', name:'Trauma-informed yoga', type:'1:1', format:'Online', dur:60, inr:2800, usd:70, cutoff:720, kind:'availability', desc:'Choice-based yoga where you set the pace. No adjustments, no pressure.', contra:''}]},
   {id:'arjun', name:'Arjun Negi', ini:'A', c:['#24443a','#a8c69a'], practices:['Meditation'], years:20, langs:['English','Hindi'], rating:5.0, count:24, formats:['In person'], gender:'M',
    needs:['focus','grief','beginner','stress'], hours:['07:00','09:30','16:00'], off:['Thu'], venue:'Forest kutir, upper Tapovan',
@@ -1357,7 +1445,7 @@ const HEALERS = [
    lineage:'Breathwork facilitator training, Rishikesh, 2019', creds:['Certified breathwork facilitator (300h)','Polyvagal-informed practitioner course'],
    policy:'Free cancellation up to 12 hours before. No refund within 12 hours.',
    services:[
-    {id:'ka1', name:'Calm the nervous system', type:'1:1', format:'Online', dur:50, inr:2000, usd:50, cutoff:60, kind:'availability', desc:'Slow breathing, orienting and a simple plan for anxious moments at work.', contra:'Panic disorder without medical support'},
+    {id:'ka1', disc:10, name:'Calm the nervous system', type:'1:1', format:'Online', dur:50, inr:2000, usd:50, cutoff:60, kind:'availability', desc:'Slow breathing, orienting and a simple plan for anxious moments at work.', contra:'Panic disorder without medical support'},
     {id:'ka2', name:'Free intro call', type:'1:1', format:'Online', dur:15, inr:0, usd:0, cutoff:30, kind:'availability', desc:'A short call to see if this is right for you.', contra:''}]},
   {id:'tenzin', name:'Tenzin Dorje', ini:'T', c:['#5a2a35','#d9a441'], practices:['Sound Healing','Meditation'], years:16, langs:['English','Hindi','Tibetan'], rating:4.8, count:33, formats:['Online','In person'], gender:'M',
    needs:['grief','sleep','stress','focus'], hours:['08:30','11:30','17:00'], off:['Wed'], venue:'Lotus courtyard, Tapovan',
@@ -1376,7 +1464,7 @@ const HEALERS = [
    lineage:'Hatha teacher training, Parmarth Niketan, 2015', creds:['RYT-300','Yoga for back care course'],
    policy:'Free cancellation up to 12 hours before.',
    services:[
-    {id:'ri1', name:'Hatha for the back', type:'1:1', format:'Both', dur:60, inr:1800, usd:45, cutoff:120, kind:'availability', desc:'A personal hatha sequence for your back, with a 15-minute home routine.', contra:'Acute disc injury'},
+    {id:'ri1', disc:15, name:'Hatha for the back', type:'1:1', format:'Both', dur:60, inr:1800, usd:45, cutoff:120, kind:'availability', desc:'A personal hatha sequence for your back, with a 15-minute home routine.', contra:'Acute disc injury'},
     {id:'ri2', name:'Morning hatha group', type:'Group', format:'In person', dur:75, inr:900, usd:20, cutoff:60, kind:'weekly', days:['Tue','Thu','Sat'], time:'07:30', cap:15, desc:'A steady morning class for all levels.', contra:''}]},
   {id:'nikhil', name:'Nikhil Bose', ini:'N', c:['#1d3557','#e76f51'], practices:['Breathwork'], years:6, langs:['English','Bengali','Hindi'], rating:4.7, count:22, formats:['Online'], gender:'M',
    needs:['energy','focus','burnout'], hours:['07:00','13:30','19:30'], off:['Sun'], venue:'',
@@ -1388,9 +1476,81 @@ const HEALERS = [
    services:[
     {id:'ni1', name:'Breath for energy', type:'1:1', format:'Online', dur:45, inr:1700, usd:45, cutoff:30, kind:'availability', desc:'Activating breath sets, then a calm-down, so you leave clear rather than wired.', contra:'Pregnancy, epilepsy, heart conditions'}]}
 ];
+/* availability model (same as the Healer dashboard):
+   1:1 services  -> weekly windows per day; seekers see start times inside them (length + 15 min break)
+   group services -> specific dates with start times, seats, and discounts for bigger bookings */
+const PACKS = {
+  ananya:[
+    {id:'an-p1', name:'Sleep reset: 5-session journey', type:'1:1', format:'Both', inr:11000, usd:290, disc:10, gap:15, spacing:3, valid:45, cutoff:120, intensity:'Gentle',
+     cover:{kind:'ai', seed:5120, pal:'night', scene:'stars', motif:'Breathwork'}, contra:'Late pregnancy without a doctor\'s approval.',
+     desc:'Five guided sessions, a few days apart, that take you from racing thoughts at bedtime to a simple evening routine you can keep on your own.',
+     items:[{title:'Map your sleep', dur:60, desc:'We look at your evenings, your nights and what wakes you, and you learn a first slow-exhale practice.', cover:{kind:'ai', seed:5121, pal:'dusk', scene:'mountains', motif:'Breathwork'}},
+       {title:'The long exhale', dur:60, desc:'Extended exhale and humming breath to move the body from alert to rest.', cover:{kind:'ai', seed:5122, pal:'ganga', scene:'river', motif:'Breathwork'}},
+       {title:'Body scan for rest', dur:45, desc:'A guided body scan to use lying down, with breath counting for a busy mind.', cover:null},
+       {title:'When you wake at 3 AM', dur:45, desc:'A quiet toolkit for night waking: what to do in bed, without reaching for your phone.', cover:{kind:'ai', seed:5124, pal:'night', scene:'stars', motif:'Meditation'}},
+       {title:'Your own evening routine', dur:60, desc:'We put it all together into a 10-minute routine and plan the next month.', cover:{kind:'ai', seed:5125, pal:'dawn', scene:'sunrise', motif:'Breathwork'}}]},
+    {id:'an-p2', name:'Ganga sunrise breath week', type:'Group', format:'In person', inr:4000, usd:100, disc:0, cap:12, cutoff:720, intensity:'Moderate', tiers:[{n:2, pct:5},{n:4, pct:10}],
+     cover:{kind:'ai', seed:6230, pal:'ganga', scene:'sunrise', motif:'Breathwork'}, contra:'Uncontrolled high blood pressure, recent surgery.',
+     place:{name:'Tapovan riverside ghat', address:'Riverside steps below Tapovan, near Laxman Jhula, Rishikesh 249192', lat:30.1268, lng:78.3305},
+     desc:'Four sunrise mornings by the Ganga with a small group. Each morning builds on the last, ending with a quiet closing circle and herbal tea.',
+     items:[{title:'Arrive and settle', dur:90, date:'2026-10-12', time:'06:00', desc:'Meet the group, learn to sit comfortably by the river and begin with slow nasal breathing.', cover:{kind:'ai', seed:6231, pal:'dawn', scene:'river', motif:'Breathwork'}},
+       {title:'Breath with the river', dur:90, date:'2026-10-13', time:'06:00', desc:'Matching the breath to the sound of the water; alternate-nostril breathing.', cover:{kind:'ai', seed:6232, pal:'ganga', scene:'river', motif:'Breathwork'}},
+       {title:'Fire breath and stillness', dur:90, date:'2026-10-14', time:'06:00', desc:'A gentle introduction to kapalbhati, followed by a long silent sit.', cover:{kind:'ai', seed:6233, pal:'saffron', scene:'sunrise', motif:'Breathwork'}},
+       {title:'Closing circle', dur:90, date:'2026-10-15', time:'06:00', desc:'We practise the full sequence together and close with herbal tea on the steps.', cover:{kind:'ai', seed:6234, pal:'dusk', scene:'mountains', motif:'Meditation'}}]}],
+  dev:[
+    {id:'dv-p1', name:'Sound healing foundations', type:'Group', format:'Online', inr:3600, usd:90, disc:10, cap:15, cutoff:120, intensity:'Gentle', tiers:[{n:3, pct:10}],
+     cover:{kind:'ai', seed:7310, pal:'dusk', scene:'stars', motif:'Sound Healing'}, contra:'',
+     desc:'Three Saturday evenings online. Learn how sound settles the nervous system and build a short home practice with one bowl or just your voice.',
+     items:[{title:'Learning to listen', dur:75, date:'2026-10-10', time:'18:00', desc:'How long tones slow the breath, and a first guided sound bath with headphones.', cover:null},
+       {title:'Voice and humming', dur:75, date:'2026-10-17', time:'18:00', desc:'Using your own voice as a healing instrument. No singing skills needed.', cover:null},
+       {title:'Your home sound practice', dur:75, date:'2026-10-24', time:'18:00', desc:'Build a 15-minute routine for evenings, with or without a bowl.', cover:null}]}],
+  meera:[
+    {id:'me-p1', name:'Gentle somatic reset', type:'1:1', format:'Online', inr:10000, usd:280, disc:0, gap:15, spacing:7, valid:60, cutoff:720, intensity:'Gentle',
+     cover:{kind:'ai', seed:8410, pal:'rose', scene:'mountains', motif:'Somatic Healing'}, contra:'Active psychosis or acute crisis. Please contact a doctor first.',
+     desc:'Four weekly sessions to feel safer in your body. We go slowly, and you are always in charge of the pace.',
+     items:[{title:'Orienting and feeling safe', dur:60, desc:'Simple ways to tell your nervous system it is safe, right now.', cover:null},
+       {title:'Grounding through the feet', dur:60, desc:'Standing and walking practices to come back into the body.', cover:null},
+       {title:'Releasing the jaw and shoulders', dur:60, desc:'Small movements and breath for where tension is held.', cover:null},
+       {title:'Resting in the body', dur:60, desc:'Putting it together into a short daily check-in.', cover:null}]}]
+};
+const GEO = {ananya:[30.1290,78.3262,'Shanti Kutir, 2nd floor, Tapovan Road, Tapovan, Rishikesh 249192'], dev:[30.1305,78.3240,'Nada House, Badrinath Road, Tapovan, Rishikesh 249192'], meera:[30.1276,78.3281,'Ganga View shala, Laxman Jhula Road, Tapovan, Rishikesh 249192'],
+  arjun:[30.1352,78.3197,'Forest kutir, upper Tapovan, Rishikesh 249192'], tenzin:[30.1288,78.3229,'Lotus courtyard, Tapovan, Rishikesh 249192'], ritu:[30.1270,78.3249,'Sunrise shala, Tapovan, Rishikesh 249192']};
+const TIERS = {an4:[{n:3, pct:5},{n:5, pct:10}], an5:[{n:3, pct:5}], dv2:[{n:4, pct:10}], ri2:[{n:3, pct:5},{n:5, pct:10}]};
+const PLACES = {an5:{name:'Tapovan riverside ghat', address:'Riverside steps below Tapovan, near Laxman Jhula, Rishikesh 249192', lat:30.1268, lng:78.3305}};
+HEALERS.forEach(h => {
+  const win = {}; ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => { win[d] = h.off.includes(d) ? [] : h.hours.map(t => { const m = toMin(t); return [t, `${String(Math.min(23, Math.floor((m + 150) / 60))).padStart(2, '0')}:${String((m + 150) % 60).padStart(2, '0')}`]; }); });
+  if (h.id === 'ananya') ['Mon','Tue','Wed','Thu','Fri'].forEach(d => win[d] = [['07:00','11:00'],['13:00','18:30']]), win.Sat = [['08:00','12:00']];
+  if (GEO[h.id]) h.place = {name:h.venue, address:GEO[h.id][2], lat:GEO[h.id][0], lng:GEO[h.id][1]};
+  h.services.forEach(s => {
+    if (s.kind === 'availability'){ s.avail = win; s.gap = 15; }
+    else {
+      s.sessions = [];
+      if (s.kind === 'weekly'){ for (let i = -2; i < 28; i++){ const d = addDays(TODAY, i); if (s.days.includes(dow(d))) s.sessions.push({date:d, times:[s.time]}); } }
+      else s.sessions.push({date:s.date, times:[s.time]});
+      s.tiers = TIERS[s.id] || [];
+      if (s.type === 'Workshop') s.type = 'Group';
+    }
+    if (s.format !== 'Online') s.place = PLACES[s.id] || h.place;
+  });
+  h.packs = (PACKS[h.id] || []).map(p => Object.assign(p, {healer:h.id, avail:p.type === '1:1' ? win : null, place:p.format === 'Online' ? null : (p.place || h.place)}));
+});
 const healer = id => HEALERS.find(h => h.id === id);
 const allServices = () => HEALERS.flatMap(h => h.services.map(s => Object.assign({healer:h.id}, s)));
-const svc = id => allServices().find(s => s.id === id);
+const svc = id => String(id).includes('~') ? pkSvc(id) : allServices().find(s => s.id === id);
+/* ---------- packages: several sessions sold together ---------- */
+const allPacks = () => HEALERS.flatMap(h => h.packs || []);
+const pkOf = id => allPacks().find(p => p.id === id);
+const pkItemCover = (p, i) => { const it = p.items[i]; if (it && it.cover) return it.cover; const c = p.cover || coverOf(p, healer(p.healer)), pals = ['dawn','ganga','dusk','saffron','night','rose'];
+  return c.kind === 'img' ? c : Object.assign({}, c, {seed:(c.seed || 7) + (i + 1) * 977, scene:['river','mountains','sunrise','stars'][i % 4]}, p.cover ? {} : {pal:pals[(pals.indexOf(c.pal) + i) % pals.length]}); };
+const pkMins = p => p.items.reduce((a, x) => a + x.dur, 0);
+const hmTxt = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} hr${m % 60 ? ' ' + (m % 60) + ' min' : m >= 120 ? 's' : ''}`;
+/* one session of a package, shaped like a service so slots, rooms and reviews work the same way */
+function pkSvc(sid){
+  const [pid, i] = sid.split('~'), p = pkOf(pid); if (!p) return null;
+  const it = p.items[+i], per = n => Math.round(n * (1 - (p.disc || 0) / 100) / p.items.length);
+  return {id:sid, healer:p.healer, name:it.title, dur:it.dur, type:p.type, format:p.format, place:p.place, cutoff:p.cutoff, avail:p.type === '1:1' ? p.avail : null, gap:p.gap,
+    sessions:p.type === '1:1' ? null : [{date:it.date, times:[it.time]}], cap:p.type === '1:1' ? 0 : p.cap, inr:per(p.inr), usd:per(p.usd), desc:it.desc, cover:pkItemCover(p, +i), prep:p.prep, contra:p.contra, pack:p.id, pi:+i};
+}
 const hStyle = h => `--h1:${h.c[0]};--h2:${h.c[1]}`;
 const port = (h, size = 'm', extra = '') => `<span class="port ${size} ${extra}" style="${hStyle(h)}" aria-hidden="true"><span>${h.ini}</span></span>`;
 const vb = `<span class="vbadge" title="Verified by 2Verse">${ico('i-verified','i')}</span>`;
@@ -1445,7 +1605,7 @@ const event = id => EVENTS.find(e => e.id === id);
 const COUNTRIES = [['United Kingdom',1,true],['India',5.5,false],['United States',-4,true],['Germany',2,true],['France',2,true],['Switzerland',2,true],['UAE',4,true],['Singapore',8,true],['Australia',10,true],['Canada',-4,true]];
 const CITY = {'United Kingdom':'London', India:'Mumbai', 'United States':'New York', Germany:'Berlin', France:'Paris', Switzerland:'Zurich', UAE:'Dubai', Singapore:'Singapore', Australia:'Sydney', Canada:'Toronto'};
 const DEF = {
-  v:3, theme:'dawn',
+  v:5, theme:'dawn',
   auth:{signedIn:false, role:'seeker', region:null, id:'', pending:null},
   me:{name:'Sarah Mitchell', first:'Sarah', email:'sarah.mitchell@example.com', phone:'+44 7700900412', login:'email', emailVerified:true, phoneVerified:true, whatsapp:true, country:'United Kingdom', tz:1, lang:'English',
       intentions:['sleep','anxiety'], format:'Online', langs:['English'], intensity:'Gentle', budget:100,
@@ -1453,8 +1613,10 @@ const DEF = {
   saved:['dev','meera'],
   bookings:[
     {id:'SB-2101', healer:'dev', service:'dv1', date:'2026-10-01', time:'12:00', format:'Online', cur:'USD', amount:80, status:'upcoming', paid:'2026-09-24', prep:{done:[0,1,2,3], answers:['Switching off before sleep.','Yes, once in Goa.','Nothing.'], at:'2026-09-30 21:10'}, intent:'Help switching off before sleep.'},
-    {id:'SB-2102', healer:'ananya', service:'an1', date:'2026-10-07', time:'13:00', format:'Online', cur:'USD', amount:0, pkg:'PK-301', status:'upcoming', paid:'2026-09-29', prep:{done:[1], answers:['Staying asleep after 3 AM.','',''], at:'2026-09-30 22:15'}, intent:'Keep building the evening routine.'},
+    {id:'SB-2102', healer:'ananya', service:'an1', date:'2026-10-07', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', paid:'2026-09-29', prep:{done:[1], answers:['Staying asleep after 3 AM.','',''], at:'2026-09-30 22:15'}, intent:'Keep building the evening routine.'},
+    {id:'SB-2104', healer:'ananya', service:'an-p1~1', pack:'an-p1', pi:1, pkg:'PK-301', date:'2026-10-02', time:'13:00', format:'Online', cur:'USD', amount:0, status:'upcoming', paid:'2026-09-25', intent:'Sleep reset package.'},
     {id:'SB-2103', healer:'ananya', event:'e1', date:'2026-10-06', time:'19:00', format:'In person', cur:'USD', amount:35, status:'upcoming', paid:'2026-09-26', intent:''},
+    {id:'SB-2096', healer:'ananya', service:'an-p1~0', pack:'an-p1', pi:0, pkg:'PK-301', date:'2026-09-28', time:'13:00', format:'Online', cur:'USD', amount:0, status:'completed', paid:'2026-09-25', intent:'Sleep reset package.'},
     {id:'SB-2094', healer:'meera', service:'me1', date:'2026-09-26', time:'14:00', format:'Online', cur:'USD', amount:90, status:'completed', paid:'2026-09-19', intent:'Shoulder and jaw tension.'},
     {id:'SB-2088', healer:'ananya', service:'an1', date:'2026-09-22', time:'13:00', format:'Online', cur:'USD', amount:65, status:'completed', paid:'2026-09-16', intent:'Sleep.', review:{r:5, t:'Gentle and practical. I am sleeping better already.', tags:['Practical','Calming'], d:'2026-09-23'}},
     {id:'SB-2071', healer:'ananya', service:'an3', date:'2026-09-12', time:'15:00', format:'Online', cur:'USD', amount:0, status:'completed', paid:'2026-09-10', intent:'Intro call.'},
@@ -1481,7 +1643,7 @@ const DEF = {
     {id:'n3', ic:'i-star', t:'How was your session with Meera? Leave a review', at:'Sat 26 Sep', go:'#/sessions/past', unread:true},
     {id:'n4', ic:'i-cal', t:'Seat confirmed: Full moon breath & sound evening, Tue 6 Oct', at:'Sat 26 Sep', go:'#/sessions', unread:false}
   ],
-  packages:[{id:'PK-301', healer:'ananya', service:'an1', total:5, used:1, bought:'2026-09-29', until:'2026-11-28', cur:'USD', amount:275}],
+  packages:[{id:'PK-301', healer:'ananya', pack:'an-p1', total:5, bought:'2026-09-25', until:'2026-11-09', cur:'USD', amount:261, seats:1, format:'Online'}],
   cards:[{id:'c1', brand:'VISA', last4:'4242', exp:'08/28', def:true}],
   notif:{reminders:[true,true,true], messages:[true,false,true], journal:[true,false,false], offers:[false,false,false]},
   application:{step:1, d:{}, status:null},
@@ -1496,7 +1658,10 @@ const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch
 const intl = () => (COUNTRIES.find(c => c[0] === S.me.country) || [0,0,true])[2];
 const CUR = () => intl() ? 'USD' : 'INR';
 const price = o => intl() ? o.usd : o.inr;
-const priceTxt = o => money(CUR(), price(o));
+const dPrice = o => o.disc ? Math.round(price(o) * (1 - o.disc / 100)) : price(o);
+const priceTxt = o => o.disc && price(o) ? `<s class="was">${money(CUR(), price(o))}</s> ${money(CUR(), dPrice(o))}` : money(CUR(), price(o));
+const tierFor = (s, n) => (s.tiers || []).filter(t => n >= t.n).sort((a, b) => b.pct - a.pct)[0] || null;
+const tierTxt = s => (s.tiers || []).map(t => `${t.n}+ people ${t.pct}% off`).join(' · ');
 const city = () => CITY[S.me.country] || S.me.country;
 const tz = () => S.me.tz;
 const whenTxt = (d, t) => { if (tz() === 5.5) return `${f12(t)} IST`; const l = toLocal(d, t, tz()); return `${f12(t)} IST · ${f12(l.t)}${l.d !== d ? ' ' + dow(l.d) : ''} ${city()}`; };
@@ -1513,10 +1678,7 @@ function prepOf(b){
   return {seeker, questions:pr.questions || ['What would you like help with in this session?','Anything about your health your healer should know?']};
 }
 const coverOf = (s, h) => s.cover || {kind:'ai', seed:hash(s.id) % 100000, pal:{Breathwork:'dawn','Sound Healing':'dusk',Meditation:'ganga',Yoga:'saffron','Somatic Healing':'rose'}[h.practices[0]] || 'dawn', scene:s.format === 'In person' ? 'mountains' : 'river', motif:h.practices[0]};
-const pkgPrice = s => s.pkg ? (intl() ? s.pkg.usd : s.pkg.inr) : 0;
-const pkgSave = s => s.pkg && price(s) ? Math.round((1 - pkgPrice(s) / (price(s) * s.pkg.sessions)) * 100) : 0;
-const credits = sid => (S.packages || []).filter(p => p.service === sid && p.used < p.total && p.until >= TODAY);
-const minPrice = h => { const ps = h.services.filter(s => price(s) > 0).map(price); return ps.length ? Math.min(...ps) : 0; };
+const minPrice = h => { const ps = h.services.filter(s => price(s) > 0).map(dPrice); return ps.length ? Math.min(...ps) : 0; };
 
 /* =====================================================================
    Toast, modal, confirm, uploads
@@ -1597,7 +1759,7 @@ function render(){
   if (!signed) return nav('#/signin');
   if (!R[route.name]) return nav('#/home');
   $('#authShell').hidden = true; $('#appShell').hidden = false;
-  const tab = {healer:'explore', book:'explore', booked:'sessions', room:'sessions', article:'journal'}[route.name] || route.name;
+  const tab = {healer:'explore', book:'explore', package:'explore', buy:'explore', booked:'sessions', pkdone:'sessions', plan:'sessions', room:'sessions', article:'journal'}[route.name] || route.name;
   $$('[data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === tab));
   const v = $('#view'); v.style.animation = 'none'; v.offsetHeight; v.style.animation = '';
   R[route.name](...route.args);
@@ -1673,7 +1835,7 @@ function priyaState(){
   let x = clone(DEF);
   x = JSON.parse(JSON.stringify(x).replace(/Sarah/g, 'Priya').replace(/ \(7:30 AM London\)/g, '').replace(/ · 7:30 AM London/g, ''));
   x.me = Object.assign(x.me, {name:'Priya Sharma', first:'Priya', email:'priya.sharma@example.in', phone:DEMO_IDS.priya, country:'India', tz:5.5, lang:'English', login:'phone', emailVerified:true, phoneVerified:true, intentions:['sleep','focus'], langs:['English','Hindi'], budget:60});
-  x.packages.forEach(p => { const it = allServices().find(s => s.id === p.service); p.cur = 'INR'; p.amount = it.pkg.inr; });
+  x.packages.forEach(p => { const pk = pkOf(p.pack); p.cur = 'INR'; p.amount = Math.round(pk.inr * (1 - (pk.disc || 0) / 100)); });
   x.bookings.forEach(b => { const it = b.event ? EVENTS.find(e => e.id === b.event) : allServices().find(s => s.id === b.service); b.cur = 'INR'; b.amount = b.pkg ? 0 : it.inr; if (b.refund) b.refund = it.inr; });
   x.cards = [{id:'c1', brand:'RUPAY', last4:'8812', exp:'11/29', def:true}];
   return x;
@@ -2082,31 +2244,33 @@ function wireMatchRows(scope){
 /* =====================================================================
    Slots (respect each service's booking cut-off)
    ===================================================================== */
+const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
+const slotsIn = (ranges, dur, gap) => { const out = []; (ranges || []).forEach(([a, b]) => { for (let t = toMin(a); t + dur <= toMin(b); t += dur + (gap || 0)) out.push(hhmm(t)); }); return out; };
 function slotsFor(s, date){
   const h = healer(s.healer || HEALERS.find(x => x.services.includes(s)).id);
   if (date < TODAY) return [];
   const mk = (t, cap) => {
     const until = minsUntil(date, t);
     if (until <= 0) return null;
-    const mine = S.bookings.some(b => b.healer === h.id && b.date === date && b.time === t && b.status === 'upcoming');
+    const mineB = S.bookings.filter(b => b.healer === h.id && b.date === date && b.status === 'upcoming' && (cap ? b.time === t : Math.abs(toMin(b.time) - toMin(t)) < (s.dur || 60)));
+    const mine = mineB.length > 0;
     let state = 'open', left = null;
-    if (cap){ const taken = Math.min(cap, Math.floor(hash(s.id + date) % cap * .8) + (mine ? 1 : 0)); left = cap - taken; if (left <= 0) state = 'full'; }
+    if (cap){ const mySeats = mineB.reduce((a, b) => a + (b.seats || 1), 0); const taken = Math.min(cap, Math.floor(hash(s.id + date + t) % cap * .7) + mySeats); left = cap - taken; if (left <= 0) state = 'full'; }
     else if (mine || hash(h.id + date + t) % 4 === 0) state = 'booked';
     if (state === 'open' && until <= (s.cutoff || 0)) state = 'closed';
     if (mine) state = 'yours';
     return {t, state, left};
   };
-  if (s.kind === 'availability'){ if (h.off.includes(dow(date))) return []; return h.hours.map(t => mk(t)).filter(Boolean); }
-  if (s.kind === 'weekly') return s.days.includes(dow(date)) ? [mk(s.time, s.cap)].filter(Boolean) : [];
-  if (s.kind === 'once') return s.date === date ? [mk(s.time, s.cap)].filter(Boolean) : [];
-  return [];
+  if (s.avail) return slotsIn(s.avail[dow(date)], s.dur, s.gap ?? 15).map(t => mk(t)).filter(Boolean);
+  const ss = (s.sessions || []).find(x => x.date === date);
+  return ss ? ss.times.map(t => mk(t, s.cap || 10)).filter(Boolean) : [];
 }
 function nextOpen(s, from = TODAY, days = 21){
   for (let i = 0; i < days; i++){ const d = addDays(from, i); const o = slotsFor(s, d).find(x => x.state === 'open'); if (o) return {d, t:o.t}; }
   return null;
 }
 function nextFor(h){
-  const s = h.services.find(x => price(x) > 0 && x.kind === 'availability') || h.services[0];
+  const s = h.services.find(x => price(x) > 0 && x.avail) || h.services[0];
   const n = nextOpen(Object.assign({healer:h.id}, s));
   return n ? `Next: ${rel(n.d)} ${localOnly(n.d, n.t)}` : 'Fully booked this month';
 }
@@ -2267,19 +2431,20 @@ R.healer = (id, tab = 'about') => {
   dist[0] = Math.max(0, h.count - dist.slice(1).reduce((a, b) => a + b, 0));
   const arts = ARTICLES.filter(a => a.healer === h.id), evs = EVENTS.filter(e => e.healer === h.id && e.date >= TODAY);
   if (!hpSel.svc || !h.services.find(s => s.id === hpSel.svc)){ const first = h.services.find(s => price(s) > 0) || h.services[0]; hpSel = {svc:first.id, date:null, time:null}; }
-  const tabs = [['about','About'],['services',`Services (${h.services.length})`],['reviews',`Reviews (${h.count})`],['journal',`Journal & events (${arts.length + evs.length})`]];
+  const tabs = [['about','About'],['services',`Services (${h.services.length})`], ...((h.packs || []).length ? [['packages',`Packages (${h.packs.length})`]] : []),['reviews',`Reviews (${h.count})`],['journal',`Journal & events (${arts.length + evs.length})`]];
   const svcRow = s => { const n = nextOpen(Object.assign({healer:h.id}, s)); return `<div class="svc-row"><span class="svc-cov">${tvCover.html(coverOf(s, h), s.name)}</span>
     <div class="grow"><h3>${esc(s.name)}</h3><div class="m"><span>${ico('i-clock','i xs')}${durTxt(s.dur)}</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${s.format === 'Both' ? 'Online or in person' : s.format}</span>${s.cap ? `<span>${ico('i-group','i xs')}Up to ${s.cap}</span>` : ''}<span>${ico('i-lock','i xs')}${cutoffTxt(s.cutoff)}</span></div>
-    <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(s.desc)}</p>${s.pkg ? `<div class="pkg-line">${ico('i-wallet','i xs')}<b>Package of ${s.pkg.sessions}:</b> ${money(CUR(), pkgPrice(s))}${pkgSave(s) > 0 ? ` · save ${pkgSave(s)}%` : ''} · use within ${s.pkg.valid} days${credits(s.id).length ? ` · <b>you have ${credits(s.id)[0].total - credits(s.id)[0].used} left</b>` : ''}</div>` : ''}${n ? `<div class="nx mt8">Next: ${rel(n.d)} · ${localOnly(n.d, n.t)} your time</div>` : '<div class="small muted mt8">No open times in the next 3 weeks</div>'}</div>
-    <div class="pr"><b>${priceTxt(s)}</b><span class="small muted">${price(s) ? (s.type === '1:1' ? 'per session' : 'per seat') : 'no charge'}</span><div class="mt8"><button class="btn sm p" data-book="${s.id}" ${n ? '' : 'disabled'}>Book</button></div>${s.pkg ? `<div class="mt8"><button class="btn xs g" data-bookpkg="${s.id}" ${n ? '' : 'disabled'}>Buy package</button></div>` : ''}</div></div>`; };
+    <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(s.desc)}</p>${s.disc ? `<div class="pkg-line">${ico('i-wallet','i xs')}<b>${s.disc}% off</b> for a limited time</div>` : ''}${(s.tiers || []).length ? `<div class="pkg-line">${ico('i-users','i xs')}<b>Book together and save:</b> ${esc(tierTxt(s))}</div>` : ''}${s.place ? `<div class="mt8"><button type="button" class="lnk small" data-map="${s.id}">${ico('i-pin','i xs')}${esc(s.place.name)} · View on map</button></div>` : ''}${n ? `<div class="nx mt8">Next: ${rel(n.d)} · ${localOnly(n.d, n.t)} your time</div>` : '<div class="small muted mt8">No open times in the next 3 weeks</div>'}</div>
+    <div class="pr"><b>${priceTxt(s)}</b><span class="small muted">${price(s) ? (s.type === '1:1' ? 'per session' : 'per seat') : 'no charge'}</span><div class="mt8"><button class="btn sm p" data-book="${s.id}" ${n ? '' : 'disabled'}>Book</button></div></div></div>`; };
   let body = '';
   if (tab === 'about') body = `<p class="quote">“${esc(h.quote)}”</p><p class="mt24" style="font-size:16px;line-height:1.7;color:var(--ink-2)">${esc(h.bio)}</p>
     <h3 class="mt32" style="font-size:22px">Can help with</h3><div class="chips mt16">${h.needs.map(n => `<span class="pill sky" style="font-size:13px;padding:6px 12px">${NEEDS[n]}</span>`).join('')}</div>
     <h3 class="mt32" style="font-size:22px;display:flex;gap:8px;align-items:center">${vb} Verified by 2Verse</h3>
     <div class="vlist mt16"><div class="vitem">${ico('i-shield')}Identity checked in person</div><div class="vitem">${ico('i-check')}${h.creds.length} certificates verified</div><div class="vitem">${ico('i-users')}${esc(h.lineage)}</div><div class="vitem">${ico('i-pin')}Studio address verified</div></div>
     <ul class="mt16" style="padding-left:18px;color:var(--ink-2);font-size:14px;line-height:1.9">${h.creds.map(c => `<li>${esc(c)}</li>`).join('')}</ul>
-    <h3 class="mt32" style="font-size:22px">Policies</h3><div class="card mt16 stack" style="gap:10px"><div class="row small">${ico('i-cal')}<span><b>Cancellation.</b> ${esc(h.policy)}</span></div><div class="row small">${ico('i-shield')}<span><b>Safety.</b> You will be asked a few safety questions before booking. Healers do not diagnose or replace medical care.</span></div>${h.venue ? `<div class="row small">${ico('i-pin')}<span><b>In person at</b> ${esc(h.venue)}. Exact address shared after booking.</span></div>` : ''}</div>`;
-  if (tab === 'services') body = `<div class="stack">${h.services.map(svcRow).join('')}</div>`;
+    <h3 class="mt32" style="font-size:22px">Policies</h3><div class="card mt16 stack" style="gap:10px"><div class="row small">${ico('i-cal')}<span><b>Cancellation.</b> ${esc(h.policy)}</span></div><div class="row small">${ico('i-shield')}<span><b>Safety.</b> You will be asked a few safety questions before booking. Healers do not diagnose or replace medical care.</span></div>${h.place ? `<div class="row small">${ico('i-pin')}<span><b>In person at</b> ${esc(h.venue)}, Tapovan. Exact address shared after booking. <button type="button" class="lnk small" id="aboutMap">View on map</button></span></div>` : ''}</div>`;
+  if (tab === 'services') body = `${(h.packs || []).length ? `<button type="button" class="pk-teaser" data-tab="packages">${ico('i-layers','i')}<span class="grow"><b>Save with a package</b><small>${h.packs.length} package${h.packs.length === 1 ? '' : 's'} · several sessions planned as one journey</small></span><span class="flip">${ico('i-back','i xs')}</span></button>` : ''}<div class="stack">${h.services.map(svcRow).join('')}</div>`;
+  if (tab === 'packages') body = `<p class="small muted" style="margin-bottom:14px">Each package is a set of sessions planned as one journey, for one price.</p><div class="stack">${(h.packs || []).map(pkRow).join('')}</div>`;
   if (tab === 'reviews') body = `<div class="card row" style="gap:28px;align-items:center"><div><div style="font-family:var(--font-display);font-size:56px;line-height:1">${h.rating.toFixed(1)}</div>${stars(h.rating)}<div class="small muted">${h.count} reviews</div></div>
       <div class="dist grow">${[5,4,3,2,1].map((n, i) => `<div><span>${n}★</span><span class="b"><i style="width:${h.count ? dist[i] / h.count * 100 : 0}%"></i></span><span class="muted">${dist[i]}</span></div>`).join('')}</div></div>
     <div class="note info mt16">${ico('i-check')}<span>Only seekers who attended a session can leave a review, so every review is linked to a real booking.</span></div>
@@ -2294,7 +2459,10 @@ R.healer = (id, tab = 'about') => {
     <aside class="side-book"><div class="card" id="bookCard"></div></aside></div></div>`;
   $$('[data-tab]').forEach(b => b.onclick = () => { history.replaceState(null, '', `#/healer/${h.id}/${b.dataset.tab}`); R.healer(h.id, b.dataset.tab); });
   $$('[data-book]').forEach(b => b.onclick = () => nav(`#/book/${h.id}/${b.dataset.book}`));
-  $$('[data-bookpkg]').forEach(b => b.onclick = () => { BK = null; nextPlan = 'pkg'; nav(`#/book/${h.id}/${b.dataset.bookpkg}`); });
+  $$('[data-pk]').forEach(b => b.onclick = e => { if (e.target.closest('[data-pkmap]')) return; nav('#/package/' + b.dataset.pk); });
+  $$('[data-pkmap]').forEach(b => b.onclick = () => mapModal(pkOf(b.dataset.pkmap).place, true));
+  $$('[data-map]').forEach(b => b.onclick = () => { const sv = h.services.find(x => x.id === b.dataset.map); mapModal(sv.place, true); });
+  $('#aboutMap') && ($('#aboutMap').onclick = () => mapModal(h.place, true));
   $('#hpSave').onclick = () => { toggleSave(h.id); R.healer(h.id, tab); };
   $('#hpMsg').onclick = () => startThread(h.id);
   $('#hpShare').onclick = () => { try { navigator.clipboard.writeText(`https://2verse.com/h/${h.id}`); } catch(e){} toast('Profile link copied'); };
@@ -2308,10 +2476,9 @@ function bookCard(h){
   const sl = slotsFor(s, hpSel.date);
   const lab = {booked:'Booked', closed:'Booking closed', full:'Full', yours:'Your booking'};
   $('#bookCard').innerHTML = `<div class="row" style="justify-content:space-between"><b style="font-family:var(--font-display);font-size:22px;font-weight:500">Book a session</b><span><b>${priceTxt(s)}</b></span></div>
-    <label class="field mt16"><span>Service</span><select class="sel" id="bcSvc">${h.services.map(x => `<option value="${x.id}" ${x.id === s.id ? 'selected' : ''}>${esc(x.name)} · ${durTxt(x.dur)} · ${priceTxt(x)}</option>`).join('')}</select></label>
+    <label class="field mt16"><span>Service</span><select class="sel" id="bcSvc">${h.services.map(x => `<option value="${x.id}" ${x.id === s.id ? 'selected' : ''}>${esc(x.name)} · ${durTxt(x.dur)} · ${money(CUR(), dPrice(x))}${x.disc ? ` (${x.disc}% off)` : ''}</option>`).join('')}</select></label>
     <div class="field mt16"><span>Date</span><div class="dstrip">${days.map(d => { const has = slotsFor(s, d).some(x => x.state === 'open'); return `<button type="button" data-d="${d}" class="${d === hpSel.date ? 'on' : ''}" ${has ? '' : 'disabled'} aria-label="${fDate(d)}">${dow(d)}<b>${pd(d).getUTCDate()}</b>${MON[pd(d).getUTCMonth()]}</button>`; }).join('')}</div></div>
     <div class="field mt16"><span>Time <small>(your time · IST below)</small></span>${sl.length ? `<div class="slots">${sl.map(x => `<button type="button" class="slot ${hpSel.time === x.t ? 'on' : ''}" data-t="${x.t}" ${x.state === 'open' ? '' : 'disabled'} title="${x.state === 'open' ? '' : lab[x.state]}">${localOnly(hpSel.date, x.t)}<small>${x.state === 'open' ? f12(x.t) + ' IST' + (x.left != null ? ` · ${x.left} left` : '') : lab[x.state]}</small></button>`).join('')}</div>` : '<div class="small muted">No sessions on this day.</div>'}</div>
-    ${s.pkg ? `<div class="pkg-line mt16">${ico('i-wallet','i xs')}${credits(s.id).length ? `<span>You have <b>${credits(s.id)[0].total - credits(s.id)[0].used} package sessions</b> left for this</span>` : `<span>Or buy <b>${s.pkg.sessions} sessions for ${money(CUR(), pkgPrice(s))}</b>${pkgSave(s) > 0 ? `, save ${pkgSave(s)}%` : ''}</span>`}</div>` : ''}
     <div class="note info mt16" style="font-size:12.5px">${ico('i-lock')}<span>${cutoffTxt(s.cutoff)}. Bookings are confirmed instantly.</span></div>
     <button class="btn p block lg mt16" id="bcGo" ${hpSel.time ? '' : 'disabled'}>${hpSel.time ? `Continue · ${rel(hpSel.date)} ${localOnly(hpSel.date, hpSel.time)}` : 'Choose a time'}</button>`;
   $('#bcSvc').onchange = e => { hpSel = {svc:e.target.value, date:null, time:null}; bookCard(h); };
@@ -2327,12 +2494,17 @@ let BK = null, nextPlan = null;
 R.book = (a, b, d, t) => {
   if (a === 'event'){ const e = event(b); if (!e) return nav('#/journal/events'); if (!BK || BK.eid !== e.id) BK = {eid:e.id, hid:e.healer, date:e.date, time:e.time, format:e.format, step:3, intent:'', ack:false, pay:'c1', promo:''}; }
   else { const h = healer(a), s = h && h.services.find(x => x.id === b); if (!s) return nav('#/explore');
-    if (!BK || BK.sid !== s.id || BK.hid !== h.id){ BK = {hid:h.id, sid:s.id, date:d || null, time:t ? t.slice(0, 2) + ':' + t.slice(2) : null, format:s.format === 'Both' ? S.me.format === 'In person' ? 'In person' : 'Online' : s.format, step:1, intent:S.me.intentions.map(n => NEEDS[n]).join(', '), ack:false, pay:(S.cards[0] || {}).id || 'paypal', promo:'', plan:nextPlan && s.pkg ? nextPlan : credits(s.id).length ? 'credit' : 'single'}; nextPlan = null; if (BK.time) BK.step = s.pkg ? 1 : 3; }
+    if (!BK || BK.sid !== s.id || BK.hid !== h.id){ BK = {hid:h.id, sid:s.id, date:d || null, time:t ? t.slice(0, 2) + ':' + t.slice(2) : null, format:s.format === 'Both' ? S.me.format === 'In person' ? 'In person' : 'Online' : s.format, step:1, intent:S.me.intentions.map(n => NEEDS[n]).join(', '), ack:false, pay:(S.cards[0] || {}).id || 'paypal', promo:'', seats:1}; nextPlan = null; if (BK.time) BK.step = 3; }
     else if (d && t){ BK.date = d; BK.time = t.slice(0, 2) + ':' + t.slice(2); BK.step = Math.max(BK.step, 3); } }
   drawBook();
 };
-function bkItem(){ return BK.eid ? Object.assign({healer:BK.hid, type:'Event', kind:'once', name:event(BK.eid).title, cap:event(BK.eid).cap, contra:''}, event(BK.eid)) : Object.assign({healer:BK.hid}, healer(BK.hid).services.find(x => x.id === BK.sid)); }
-function bkTotal(){ const it = bkItem(); const base = BK.plan === 'credit' ? 0 : BK.plan === 'pkg' && it.pkg ? pkgPrice(it) : price(it); const off = BK.promo === 'FIRSTBREATH' ? Math.round(base * .1) : 0; return {base, off, total:base - off}; }
+function bkItem(){ return BK.eid ? Object.assign({healer:BK.hid, type:'Event', kind:'once', name:event(BK.eid).title, cap:event(BK.eid).cap, contra:'', sessions:[{date:event(BK.eid).date, times:[event(BK.eid).time]}]}, event(BK.eid)) : Object.assign({healer:BK.hid}, healer(BK.hid).services.find(x => x.id === BK.sid)); }
+function bkTotal(){
+  const it = bkItem(), n = BK.seats || 1, unit = price(it), base = unit * n;
+  const tier = !BK.eid && it.type === 'Group' ? tierFor(it, n) : null, dpct = tier ? tier.pct : (!BK.eid && it.disc ? it.disc : 0);
+  const disc = Math.round(base * dpct / 100), promo = BK.promo === 'FIRSTBREATH' ? Math.round((base - disc) * .1) : 0;
+  return {unit, n, base, dpct, disc, dlabel:tier ? `Group discount · ${tier.n}+ people` : dpct ? `${dpct}% off` : '', off:promo, total:base - disc - promo};
+}
 function drawBook(){
   const h = healer(BK.hid), it = bkItem(), isEv = !!BK.eid;
   const steps = isEv ? [['Your details',3],['Payment',4]] : [['Session',1],['Date & time',2],['About you',3],['Payment',4]];
@@ -2340,10 +2512,6 @@ function drawBook(){
   let body = '';
   if (BK.step === 1){
     body = `<h2 style="font-size:26px">Choose a session</h2><div class="stack mt16">${h.services.map(s => `<label class="opt"><input type="radio" name="sv" value="${s.id}" ${s.id === BK.sid ? 'checked' : ''}><span class="grow"><b>${esc(s.name)}</b><small>${durTxt(s.dur)} · ${s.type} · ${s.format === 'Both' ? 'online or in person' : s.format.toLowerCase()} · ${cutoffTxt(s.cutoff).toLowerCase()}</small></span><b>${priceTxt(s)}</b></label>`).join('')}</div>
-      ${it.pkg ? `<h3 class="mt24" style="font-size:20px">How would you like to pay?</h3><div class="stack mt8">
-        ${credits(it.id).length ? `<label class="opt"><input type="radio" name="plan" value="credit" ${BK.plan === 'credit' ? 'checked' : ''}><span class="grow"><b>Use a package session</b><small>${credits(it.id)[0].total - credits(it.id)[0].used} of ${credits(it.id)[0].total} left · use by ${fDate(credits(it.id)[0].until)}</small></span><b>Included</b></label>` : ''}
-        <label class="opt"><input type="radio" name="plan" value="single" ${BK.plan === 'single' ? 'checked' : ''}><span class="grow"><b>Single session</b><small>Pay for this session only</small></span><b>${priceTxt(it)}</b></label>
-        <label class="opt"><input type="radio" name="plan" value="pkg" ${BK.plan === 'pkg' ? 'checked' : ''}><span class="grow"><b>Package of ${it.pkg.sessions} sessions</b><small>${money(CUR(), Math.round(pkgPrice(it) / it.pkg.sessions))} per session${pkgSave(it) > 0 ? ` · save ${pkgSave(it)}%` : ''} · book this one now, the other ${it.pkg.sessions - 1} any time in ${it.pkg.valid} days</small></span><b>${money(CUR(), pkgPrice(it))}</b></label></div>` : ''}
       ${it.format === 'Both' ? `<h3 class="mt24" style="font-size:20px">How would you like to meet?</h3><div class="choice mt8">${['Online','In person'].map(f => `<label><input type="radio" name="fm" value="${f}" ${BK.format === f ? 'checked' : ''}><span>${ico(f === 'Online' ? 'i-video' : 'i-pin','i xs')}${f === 'Online' ? 'Online video' : 'In person in Tapovan'}</span></label>`).join('')}</div>` : ''}`;
   }
   if (BK.step === 2){
@@ -2354,6 +2522,10 @@ function drawBook(){
       <div class="dstrip mt16">${days.map(d => { const has = slotsFor(it, d).some(x => x.state === 'open'); return `<button type="button" data-d="${d}" class="${d === BK.date ? 'on' : ''}" ${has ? '' : 'disabled'}>${dow(d)}<b>${pd(d).getUTCDate()}</b>${MON[pd(d).getUTCMonth()]}</button>`; }).join('')}</div>
       <h3 class="mt24" style="font-size:19px">${fDate(BK.date)}</h3>
       ${sl.length ? `<div class="slots mt16">${sl.map(x => `<button type="button" class="slot ${BK.time === x.t ? 'on' : ''}" data-t="${x.t}" ${x.state === 'open' ? '' : 'disabled'}>${localOnly(BK.date, x.t)}<small>${x.state === 'open' ? f12(x.t) + ' IST' + (x.left != null ? ` · ${x.left} seats left` : '') : lab[x.state]}</small></button>`).join('')}</div>` : '<div class="card empty mt16">No sessions on this day.</div>'}
+      ${it.type === 'Group' && !isEv && BK.time ? (() => { const left = (sl.find(x => x.t === BK.time) || {}).left || 1, max = Math.min(left, 10); BK.seats = Math.min(BK.seats || 1, max);
+        return `<div class="seats-pick mt24"><div><b>How many people are coming?</b><div class="small muted">${left} seat${left === 1 ? '' : 's'} left at ${localOnly(BK.date, BK.time)}${(it.tiers || []).length ? ` · ${esc(tierTxt(it))}` : ''}</div></div>
+          <div class="stepper"><button type="button" class="icon-btn" id="seatMinus" aria-label="Fewer people" ${BK.seats <= 1 ? 'disabled' : ''}>−</button><b id="seatN" aria-live="polite">${BK.seats}</b><button type="button" class="icon-btn" id="seatPlus" aria-label="More people" ${BK.seats >= max ? 'disabled' : ''}>+</button></div></div>
+          ${(it.tiers || []).length ? `<div class="tier-hint">${it.tiers.map(t => `<span class="${BK.seats >= t.n ? 'on' : ''}">${t.n}+ people · ${t.pct}% off</span>`).join('')}</div>` : ''}`; })() : ''}
       ${sl.some(x => x.state === 'closed') ? `<div class="note warn mt16">${ico('i-lock')}<span>Some times today are closed because ${esc(h.name.split(' ')[0])} stops taking bookings ${it.cutoff >= 60 ? it.cutoff / 60 + ' hour' + (it.cutoff > 60 ? 's' : '') : it.cutoff + ' minutes'} before a session starts.</span></div>` : ''}`;
   }
   if (BK.step === 3){
@@ -2363,11 +2535,11 @@ function drawBook(){
       ${cond.length ? `<div class="note info mt16">${ico('i-shield')}<span>Your health notes (${esc(cond.join(', '))}) will be shared with ${esc(h.name.split(' ')[0])} for your safety. <a class="lnk" href="#/profile/health" style="font-size:13px">Edit</a></span></div>` : ''}
       ${it.contra ? `<div class="card mt16" style="background:var(--soft-gold);border-color:transparent"><b class="row" style="gap:8px">${ico('i-alert')}Before you book</b><p class="small mt8" style="color:var(--ink-2)">This session is not suitable for: <b>${esc(it.contra)}</b>.</p>
         <label class="check mt16"><input type="checkbox" id="bkAck" ${BK.ack ? 'checked' : ''}><span>None of these apply to me, or I have checked with my doctor.</span></label></div>` : ''}
-      ${BK.format === 'In person' ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(isEv ? it.venue : h.venue)}</b>. The exact location and directions are sent after booking.</span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join from your Sessions page; it opens 10 minutes before. Headphones help.</span></div>`}`;
+      ${BK.format === 'In person' ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}</b>. The exact location and directions are sent after booking.${!isEv && it.place ? ` <button type="button" class="lnk small" id="bkMap">View area on map</button>` : ''}</span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join from your Sessions page; it opens 10 minutes before. Headphones help.</span></div>`}`;
   }
   if (BK.step === 4){
     body = `<h2 style="font-size:26px">${free ? 'Confirm your booking' : 'Payment'}</h2>
-      ${free ? `<p class="mt8" style="color:var(--ink-2)">${BK.plan === 'credit' ? 'This session uses one of your package sessions. No payment is needed.' : 'This session is free. No payment is needed.'}</p>` : `
+      ${free ? `<p class="mt8" style="color:var(--ink-2)">This session is free. No payment is needed.</p>` : `
       <div class="stack mt16">${S.cards.map(c => `<label class="opt"><input type="radio" name="pay" value="${c.id}" ${BK.pay === c.id ? 'checked' : ''}><span class="ccard" style="border:none;padding:0;background:none"><span class="brand">${c.brand}</span></span><span class="grow"><b>•••• ${c.last4}</b><small>Expires ${c.exp}</small></span></label>`).join('')}
         <label class="opt"><input type="radio" name="pay" value="new" ${BK.pay === 'new' ? 'checked' : ''}><span class="grow"><b>New card</b><small>Visa, Mastercard, Amex</small></span>${ico('i-card','i')}</label>
         <div id="newCard" class="fgrid" ${BK.pay === 'new' ? '' : 'hidden'}><label class="field full"><span>Card number</span><input class="inp" id="ccN" inputmode="numeric" placeholder="1234 1234 1234 1234"></label><label class="field"><span>Expiry</span><input class="inp" id="ccE" placeholder="MM/YY"></label><label class="field"><span>CVC</span><input class="inp" id="ccC" inputmode="numeric" placeholder="123"></label><label class="check full"><input type="checkbox" id="ccS" checked><span>Save this card for next time</span></label></div>
@@ -2384,18 +2556,21 @@ function drawBook(){
     <aside class="side-book"><div class="card sum"><div class="row">${port(h, 'm')}<div><b>${esc(h.name)}</b><div class="small muted">${esc(h.practices.join(' · '))}</div></div></div>
       <div class="divider" style="margin:4px 0"></div><b style="font-size:17px">${esc(it.name || it.title)}</b>
       <div class="ln"><span>When</span><span style="text-align:right">${when}</span></div>
-      <div class="ln"><span>Length</span><span>${durTxt(it.dur)}</span></div><div class="ln"><span>Format</span><span>${BK.format}</span></div>
-      ${!isEv && it.pkg && BK.plan !== 'single' ? `<div class="ln"><span>${BK.plan === 'credit' ? 'Package session' : `Package · ${it.pkg.sessions} sessions`}</span><span>${BK.plan === 'credit' ? 'Included' : money(CUR(), tot.base)}</span></div>` : `<div class="ln"><span>${isEv || it.cap ? 'Seat' : 'Session'}</span><span>${money(CUR(), tot.base)}</span></div>`}
+      <div class="ln"><span>Length</span><span>${durTxt(it.dur)}</span></div><div class="ln"><span>Format</span><span>${BK.format}</span></div>${(BK.seats || 1) > 1 ? `<div class="ln"><span>People</span><span>${BK.seats}</span></div>` : ''}
+      <div class="ln"><span>${tot.n > 1 ? `${tot.n} seats × ${money(CUR(), tot.unit)}` : isEv || it.cap ? 'Seat' : 'Session'}</span><span>${money(CUR(), tot.base)}</span></div>
+      ${tot.disc ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">${esc(tot.dlabel)}</span><span>−${money(CUR(), tot.disc)}</span></div>` : ''}
       ${tot.off ? `<div class="ln"><span>Promo FIRSTBREATH</span><span>−${money(CUR(), tot.off)}</span></div>` : ''}
       <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
       <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div></div></aside></div></div>`;
   const v = $('#view');
   $$('[name=sv]', v).forEach(r => r.onchange = () => { BK.sid = r.value; BK.date = null; BK.time = null; const s = healer(BK.hid).services.find(x => x.id === r.value); BK.format = s.format === 'Both' ? BK.format === 'In person' ? 'In person' : 'Online' : s.format; drawBook(); });
   $$('[name=fm]', v).forEach(r => r.onchange = () => { BK.format = r.value; drawBook(); });
-  $$('[name=plan]', v).forEach(r => r.onchange = () => { BK.plan = r.value; drawBook(); });
   vedaAttach(v, () => ({name:h.name}));
-  $$('[data-d]', v).forEach(b => b.onclick = () => { BK.date = b.dataset.d; BK.time = null; drawBook(); });
+  $$('[data-d]', v).forEach(b => b.onclick = () => { BK.date = b.dataset.d; BK.time = null; BK.seats = 1; drawBook(); });
   $$('.slot[data-t]', v).forEach(b => b.onclick = () => { BK.time = b.dataset.t; drawBook(); });
+  $('#seatMinus') && ($('#seatMinus').onclick = () => { BK.seats = Math.max(1, (BK.seats || 1) - 1); drawBook(); });
+  $('#seatPlus') && ($('#seatPlus').onclick = () => { BK.seats = (BK.seats || 1) + 1; drawBook(); });
+  $('#bkMap') && ($('#bkMap').onclick = () => mapModal(isEv ? null : it.place, true));
   $$('[name=pay]', v).forEach(r => r.onchange = () => { BK.pay = r.value; $('#newCard') && ($('#newCard').hidden = r.value !== 'new'); });
   $('#bkIntent') && ($('#bkIntent').oninput = e => BK.intent = e.target.value);
   $('#bkAck') && ($('#bkAck').onchange = e => BK.ack = e.target.checked);
@@ -2417,10 +2592,8 @@ function payNow(){
   setTimeout(() => {
     if (BK.pay === 'new' && tot.total && $('#ccS') && $('#ccS').checked){ const n = $('#ccN').value.replace(/\s/g, ''); S.cards.push({id:uid('c'), brand:n[0] === '5' ? 'MC' : n[0] === '3' ? 'AMEX' : 'VISA', last4:n.slice(-4), exp:$('#ccE').value.trim(), def:false}); }
     const id = 'SB-' + (2110 + S.bookings.length);
-    const b = {id, healer:h.id, date:BK.date, time:BK.time, format:BK.format, cur:CUR(), amount:BK.plan === 'pkg' || BK.plan === 'credit' ? 0 : tot.total, status:'upcoming', paid:TODAY, intent:BK.intent, method:BK.pay};
-    S.packages = S.packages || [];
-    if (!BK.eid && BK.plan === 'pkg'){ const pk = {id:'PK-' + (302 + S.packages.length), healer:h.id, service:BK.sid, total:it.pkg.sessions, used:1, bought:TODAY, until:addDays(TODAY, it.pkg.valid), cur:CUR(), amount:tot.total}; S.packages.push(pk); b.pkg = pk.id; }
-    if (!BK.eid && BK.plan === 'credit'){ const pk = credits(BK.sid)[0]; pk.used++; b.pkg = pk.id; }
+    const b = {id, healer:h.id, date:BK.date, time:BK.time, format:BK.format, cur:CUR(), amount:tot.total, status:'upcoming', paid:TODAY, intent:BK.intent, method:BK.pay};
+    if ((BK.seats || 1) > 1) b.seats = BK.seats; if (tot.disc) b.discount = {amt:tot.disc, label:tot.dlabel};
     if (BK.eid) b.event = BK.eid; else b.service = BK.sid;
     S.bookings.push(b);
     const t = thread(h.id) || (S.threads.push({id:'t-' + h.id, healer:h.id, unread:0, msgs:[]}), thread(h.id));
@@ -2438,12 +2611,14 @@ R.booked = id => {
     <div class="card sum"><div class="row">${port(h, 'm')}<div><b style="font-size:17px">${esc(bTitle(b))}</b><div class="small muted">with ${esc(h.name)}</div></div><span class="pill ok" style="margin-left:auto">${ico('i-check')}Confirmed</span></div>
       <div class="divider" style="margin:4px 0"></div>
       <div class="ln"><span>When</span><span style="text-align:right">${fDate(b.date)}<br>${whenTxt(b.date, b.time)}</span></div>
-      <div class="ln"><span>Where</span><span style="text-align:right">${online ? 'Online · 2Verse room' : esc(b.event ? it.venue : h.venue)}</span></div>
-      ${b.pkg ? (() => { const pk = S.packages.find(p => p.id === b.pkg); return `<div class="ln"><span>Package</span><span>Session ${pk.used} of ${pk.total} · ${money(pk.cur, pk.amount)} paid · use by ${fDate(pk.until)}</span></div>`; })() : `<div class="ln"><span>Paid</span><span>${money(b.cur, b.amount)}</span></div>`}<div class="ln"><span>Booking ID</span><span>${b.id}</span></div></div>
+      <div class="ln"><span>Where</span><span style="text-align:right">${online ? 'Online · 2Verse room' : `${esc(b.event ? it.venue : (it.place || h.place || {}).name || h.venue)}${!b.event && (it.place || h.place) ? `<br><small class="muted">${esc((it.place || h.place).address)}</small><br><button type="button" class="lnk small" id="bdMap">${ico('i-pin','i xs')}View on map & directions</button>` : ''}`}</span></div>
+      ${b.seats ? `<div class="ln"><span>People</span><span>${b.seats}</span></div>` : ''}${b.discount ? `<div class="ln"><span>${esc(b.discount.label)}</span><span>−${money(b.cur, b.discount.amt)}</span></div>` : ''}
+      <div class="ln"><span>Paid</span><span>${money(b.cur, b.amount)}</span></div><div class="ln"><span>Booking ID</span><span>${b.id}</span></div></div>
     <div class="card mt16" style="text-align:left" id="prepCard"></div>
     <div class="note info mt16" style="text-align:left">${ico(online ? 'i-video' : 'i-pin')}<span>${online ? 'Join from <b>Sessions</b>. The room opens 10 minutes before. Find a quiet spot and use headphones.' : 'Arrive 10 minutes early and wear loose, comfortable clothes. Directions are in your email.'}</span></div>
     <div class="row mt24" style="justify-content:center"><button class="btn g" id="ics">${ico('i-cal')}Add to calendar</button><button class="btn g" id="bdMsg">${ico('i-chat')}Message ${esc(h.name.split(' ')[0])}</button><a class="btn p" href="#/sessions">View my sessions</a></div></div></div>`;
   prepForm($('#prepCard'), b, true);
+  $('#bdMap') && ($('#bdMap').onclick = () => mapModal(it.place || h.place, false));
   $('#ics').onclick = () => downloadIcs(b);
   $('#bdMsg').onclick = () => nav('#/messages/' + thread(h.id).id);
 };
@@ -2485,6 +2660,15 @@ function prepForm(el, b, intro){
     toast(`Saved. ${h.name.split(' ')[0]} can see your answers.`); prepForm(el, b, intro); el.dispatchEvent(new CustomEvent('prepsaved', {bubbles:true})); };
 }
 
+/* map modal: area circle before booking, exact pin + directions after */
+function mapModal(p, approx){
+  if (!p || !p.lat) return toast('Location not available');
+  openModal({title:approx ? 'Area on map' : 'Location', body:`<div class="map-m" id="mapM"></div>
+    <div class="row mt16" style="justify-content:space-between;align-items:flex-start"><div><b style="font-size:16px">${esc(p.name)}</b><div class="small muted">${approx ? 'Tapovan, Rishikesh · exact address shared after you book' : esc(p.address)}</div></div>
+    <div class="row" style="gap:8px">${approx ? '' : `<a class="btn sm p" href="${tvPlace.directions(p)}" target="_blank" rel="noopener">${ico('i-send')}Directions</a>`}<a class="btn sm g" href="${approx ? 'https://www.google.com/maps/search/?api=1&query=Tapovan%2C%20Rishikesh' : tvPlace.gmaps(p)}" target="_blank" rel="noopener">${ico('i-globe')}Open in Google Maps</a></div></div>`,
+    foot:'<button type="button" class="btn g" data-close>Close</button>', onOpen:body => tvPlace.map(body.querySelector('#mapM'), {lat:p.lat, lng:p.lng, label:p.name, approx})});
+}
+
 /* =====================================================================
    SESSIONS: upcoming, past, cancelled · join, reschedule, cancel, review
    ===================================================================== */
@@ -2497,21 +2681,22 @@ R.sessions = (tab = 'upcoming') => {
     if (b.status === 'upcoming'){
       acts = `${online ? (js === 'open' ? `<a class="btn sm p" href="#/room/${b.id}">${ico('i-video')}Join now</a>` : `<a class="btn sm g" href="#/room/${b.id}" title="Check your camera and sound before the session">${ico('i-video')}Test & lobby</a>`) : ''}
         <button class="btn sm g" data-act="prep" data-id="${b.id}">${ico('i-check')}Prepare ${(b.prep ? b.prep.done.length : 0)}/${prepOf(b).seeker.length}</button>
-        ${!isEv ? `<button class="btn sm g" data-act="move" data-id="${b.id}">${ico('i-repeat')}Reschedule</button>` : ''}<button class="btn sm g" data-act="msg" data-id="${b.id}">${ico('i-chat')}Message</button><button class="btn sm t" data-act="cancel" data-id="${b.id}">Cancel</button>`;
+        ${!isEv && !(b.pack && pkOf(b.pack).type !== '1:1') ? `<button class="btn sm g" data-act="move" data-id="${b.id}">${ico('i-repeat')}Reschedule</button>` : ''}<button class="btn sm g" data-act="msg" data-id="${b.id}">${ico('i-chat')}Message</button><button class="btn sm t" data-act="cancel" data-id="${b.id}">Cancel</button>`;
     } else if (b.status === 'completed'){
-      acts = `${b.review ? `<span class="pill ok">${stars(b.review.r)} Reviewed</span>` : !isEv && b.amount ? `<button class="btn sm p" data-act="review" data-id="${b.id}">${ico('i-star')}Leave a review</button>` : ''}${!isEv ? `<a class="btn sm g" href="#/book/${h.id}/${b.service}">${ico('i-repeat')}Book again</a>` : ''}<button class="btn sm t" data-act="receipt" data-id="${b.id}">${ico('i-receipt')}Receipt</button>`;
-    } else acts = `<span class="pill done">${b.refund ? 'Refunded ' + money(b.cur, b.refund) : 'No refund'}</span>${!isEv ? `<a class="btn sm g" href="#/book/${h.id}/${b.service}">Book again</a>` : ''}`;
+      acts = `${b.review ? `<span class="pill ok">${stars(b.review.r)} Reviewed</span>` : !isEv && b.amount ? `<button class="btn sm p" data-act="review" data-id="${b.id}">${ico('i-star')}Leave a review</button>` : ''}${b.pack ? `<a class="btn sm g" href="#/pkdone/${b.pkg}">${ico('i-layers')}Package</a>` : !isEv ? `<a class="btn sm g" href="#/book/${h.id}/${b.service}">${ico('i-repeat')}Book again</a>` : ''}${b.pack ? '' : `<button class="btn sm t" data-act="receipt" data-id="${b.id}">${ico('i-receipt')}Receipt</button>`}`;
+    } else acts = `<span class="pill done">${b.refund ? 'Refunded ' + money(b.cur, b.refund) : 'No refund'}</span>${b.pack ? (pkOf(b.pack).type === '1:1' ? `<a class="btn sm g" href="#/plan/${b.pkg}">Schedule again</a>` : '') : !isEv ? `<a class="btn sm g" href="#/book/${h.id}/${b.service}">Book again</a>` : ''}`;
     return `<div class="ses ${b.status === 'upcoming' && js === 'open' ? 'live' : ''}"><div class="dt"><small>${MON[pd(b.date).getUTCMonth()]}</small><b>${pd(b.date).getUTCDate()}</b><span>${dow(b.date)}</span></div>
-      <div class="grow"><div class="row" style="gap:8px">${b.status === 'upcoming' && js === 'open' ? '<span class="pill act">Starting now</span>' : b.status === 'upcoming' ? `<span class="pill ok">${ico('i-check')}Confirmed</span>` : ''}${isEv ? '<span class="pill sky">Event</span>' : ''}<span class="small muted">${b.id}</span>${b.pkg ? `<span class="pill pk">${ico('i-wallet')}Package</span>` : ''}</div>
-        <h3 class="mt8">${esc(bTitle(b))}</h3><div class="m"><span>${port(h, 's')}${esc(h.name)}</span><span>${ico('i-clock')}${whenTxt(b.date, b.time)} · ${durTxt(bDur(b))}</span><span>${ico(online ? 'i-video' : 'i-pin')}${online ? 'Online' : esc(isEv ? it.venue : h.venue)}</span>${b.status === 'cancelled' ? `<span>Cancelled ${fShort(b.cancelled)}</span>` : ''}</div></div>
+      <div class="grow"><div class="row" style="gap:8px">${b.status === 'upcoming' && js === 'open' ? '<span class="pill act">Starting now</span>' : b.status === 'upcoming' ? `<span class="pill ok">${ico('i-check')}Confirmed</span>` : ''}${isEv ? '<span class="pill sky">Event</span>' : ''}<span class="small muted">${b.id}</span>${b.pack ? `<span class="pill pk">${ico('i-layers')}${esc(pkOf(b.pack).name)} · ${b.pi + 1} of ${pkOf(b.pack).items.length}</span>` : ''}</div>
+        <h3 class="mt8">${esc(bTitle(b))}</h3><div class="m"><span>${port(h, 's')}${esc(h.name)}</span><span>${ico('i-clock')}${whenTxt(b.date, b.time)} · ${durTxt(bDur(b))}</span><span>${ico(online ? 'i-video' : 'i-pin')}${online ? 'Online' : esc(isEv ? it.venue : (it.place || h.place || {}).name || h.venue)}${!online && !isEv && (it.place || h.place) ? ` <button type="button" class="lnk small" data-smap="${b.id}">Map</button>` : ''}</span>${b.seats ? `<span>${ico('i-users')}${b.seats} people</span>` : ''}${b.status === 'cancelled' ? `<span>Cancelled ${fShort(b.cancelled)}</span>` : ''}</div></div>
       <div class="acts">${acts}</div></div>`;
   };
   $('#view').innerHTML = `<div class="wrap"><div class="hello"><div><span class="kicker">Your journey</span><h1 class="mt8">Sessions</h1><p>Join online sessions here. Times show in ${esc(city())} time and India time.</p></div><a class="btn p" href="#/explore">${ico('i-plus')}Book a session</a></div>
     <div class="seg mt16" role="tablist">${[['upcoming','Upcoming',up.length],['past','Past',past.length],['cancelled','Cancelled',can.length]].map(([k, l, n]) => `<button data-t="${k}" class="${k === tab ? 'on' : ''}" role="tab" aria-selected="${k === tab}">${l} <span class="n">${n}</span></button>`).join('')}</div>
-    ${tab === 'upcoming' && (S.packages || []).length ? `<div class="pk-strip mt24">${S.packages.map(p => { const h = healer(p.healer), sv = svc(p.service), left = p.total - p.used, done = S.bookings.filter(x => x.pkg === p.id && x.status === 'completed').length;
-      return `<div class="pk-card"><span class="svc-cov" style="width:64px;height:64px">${tvCover.html(coverOf(sv, h), sv.name)}</span><div class="grow"><b>${esc(sv.name)} · package</b><div class="small muted">with ${esc(h.name)} · ${done} attended · ${p.used} booked of ${p.total} · use by ${fDate(p.until)}</div><div class="pk-bar"><i style="width:${p.used / p.total * 100}%"></i></div></div>${left ? `<a class="btn sm p" href="#/book/${h.id}/${sv.id}">Book next (${left} left)</a>` : '<span class="pill done">All sessions used</span>'}</div>`; }).join('')}</div>` : ''}
+    ${tab === 'upcoming' && (S.packages || []).length ? `<div class="pk-strip mt24">${S.packages.map(e => { const p = pkOf(e.pack), h = healer(e.healer), bs = pkBookings(e), done = bs.filter(x => x.status === 'completed').length, open = p.items.length - bs.length;
+      return `<div class="pk-card"><span class="svc-cov" style="width:64px;height:64px">${tvCover.html(p.cover || coverOf(p, h), p.name)}</span><div class="grow"><b>${esc(p.name)}</b><div class="small muted">with ${esc(h.name)} · ${done} of ${p.items.length} attended · ${bs.length} scheduled${p.type === '1:1' ? ` · finish by ${fDate(e.until)}` : ''}</div><div class="pk-bar"><i style="width:${done / p.items.length * 100}%"></i></div></div>${p.type === '1:1' && open ? `<a class="btn sm p" href="#/plan/${e.id}">Schedule ${open} more</a>` : `<a class="btn sm g" href="#/pkdone/${e.id}">View package</a>`}</div>`; }).join('')}</div>` : ''}
     <div class="stack mt24">${list.map(card).join('') || `<div class="card empty">${ico('i-cal','i')}${tab === 'upcoming' ? 'No upcoming sessions.' : tab === 'past' ? 'Your completed sessions will appear here.' : 'No cancelled sessions.'}${tab === 'upcoming' ? `<div class="mt16"><a class="btn p sm" href="#/explore">Find a healer</a></div>` : ''}</div>`}</div></div>`;
   $$('[data-t]').forEach(b => b.onclick = () => nav('#/sessions/' + b.dataset.t));
+  $$('[data-smap]').forEach(x => x.onclick = () => { const bk = bookingOf(x.dataset.smap), it = svc(bk.service), h = healer(bk.healer); mapModal(it.place || h.place, bk.status === 'cancelled'); });
   $$('[data-act]').forEach(b => b.onclick = () => { const bk = bookingOf(b.dataset.id), a = b.dataset.act;
     if (a === 'review') reviewModal(bk.id); if (a === 'cancel') cancelModal(bk); if (a === 'move') moveModal(bk); if (a === 'receipt') receiptModal(bk); if (a === 'msg') startThread(bk.healer); if (a === 'prep') prepModal(bk); });
 };
@@ -2524,6 +2709,13 @@ function refundFor(b){
 }
 function cancelModal(b){
   const h = healer(b.healer), r = refundFor(b);
+  if (b.pack){ const p = pkOf(b.pack), solo = p.type === '1:1', late = minsUntil(b.date, b.time) < 24 * 60;
+    return openModal({title:'Cancel this session?', size:'narrow', body:`<p style="color:var(--ink-2)"><b>${esc(bTitle(b))}</b> (session ${b.pi + 1} of ${esc(p.name)}) on ${fDate(b.date)} at ${whenTxt(b.date, b.time)}.</p>
+      <div class="note ${late ? 'warn' : 'info'} mt16">${ico(late ? 'i-alert' : 'i-repeat')}<span>${!solo ? 'This is a group session on a fixed date. Your seat is released and the session is not refunded separately.' : late ? 'Less than 24 hours to go, so this session counts as used.' : 'This session goes back into your package. You can book a new time from your Sessions page.'}</span></div>`,
+      foot:`<button type="button" class="btn g" data-close>Keep session</button><button type="submit" class="btn dd">Cancel session</button>`,
+      onSubmit:() => { b.status = 'cancelled'; b.cancelled = TODAY; b.refund = 0; if (!solo || late) b.used = true;
+        const t = thread(h.id); t && t.msgs.push({f:'sys', at:`${TODAY} ${NOW_T}`, t:`Cancelled package session: ${bTitle(b)} · ${fDate(b.date)}`});
+        save(); toast(solo && !late ? 'Cancelled. The session is back in your package.' : 'Session cancelled'); render(); }}); }
   openModal({title:'Cancel this session?', size:'narrow', body:`<p style="color:var(--ink-2)"><b>${esc(bTitle(b))}</b> with ${esc(h.name)} on ${fDate(b.date)} at ${whenTxt(b.date, b.time)}.</p>
     <div class="card mt16 sum" style="padding:16px"><div class="ln"><span>You paid</span><span>${money(b.cur, b.amount)}</span></div><div class="ln tot"><span style="color:var(--ink)">Refund</span><span>${money(b.cur, r.amt)}</span></div><div class="small muted">You are cancelling ${r.why}. Refunds reach your card in 5–7 days.</div></div>
     <label class="field mt16"><span>Reason <small>(shared with ${esc(h.name.split(' ')[0])})</small></span><select class="sel" name="why"><option>Something came up</option><option>I am unwell</option><option>Time no longer works</option><option>I booked by mistake</option><option>Other</option></select></label>
@@ -2752,9 +2944,9 @@ R.profile = (tab = 'account') => {
     <label class="field"><span>Notes for healers</span><textarea class="ta" name="notes" placeholder="Injuries, medication, anything to be careful about">${esc(m.safety.notes)}</textarea></label>
     <div class="set-row"><span><b>Share with healers I book</b><small>Turn off to share per booking instead</small></span>${tgBtn(m.safety.share, 'Share health notes', 'id="shareTg"')}</div>
     <div class="row" style="justify-content:flex-end"><button class="btn p">Save</button></div></form>`;
-  if (tab === 'payments'){ const rc = [...S.bookings.filter(b => b.amount > 0), ...(S.packages || []).map(p => ({id:p.id, healer:p.healer, paid:p.bought, cur:p.cur, amount:p.amount, status:'paid', isPkg:true, service:p.service, total:p.total}))].sort((a, b) => b.paid.localeCompare(a.paid));
+  if (tab === 'payments'){ const rc = [...S.bookings.filter(b => b.amount > 0), ...(S.packages || []).map(p => ({id:p.id, healer:p.healer, paid:p.bought, cur:p.cur, amount:p.amount, status:'paid', isPkg:true, name:pkOf(p.pack).name, total:p.total}))].sort((a, b) => b.paid.localeCompare(a.paid));
     body = `<div class="card"><div class="card-h"><h2>Saved cards</h2><button class="btn sm g" id="addCard">${ico('i-plus')}Add card</button></div><div class="stack">${S.cards.map(c => `<div class="ccard"><span class="brand">${c.brand}</span><div class="grow"><b>•••• ${c.last4}</b><div class="small muted">Expires ${c.exp}</div></div>${c.def ? '<span class="pill ok">Default</span>' : `<button class="btn xs g" data-def="${c.id}">Make default</button>`}<button class="icon-btn danger" data-rmc="${c.id}" aria-label="Remove card ending ${c.last4}">${ico('i-trash')}</button></div>`).join('') || '<div class="empty">No saved cards.</div>'}</div></div>
-    <div class="card mt24"><div class="card-h"><h2>Receipts</h2><small>${rc.length} payments</small></div><div class="tscroll"><table class="tbl"><thead><tr><th>Date</th><th>Session</th><th>Healer</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody>${rc.map(b => `<tr><td>${fShort(b.paid)}</td><td>${esc(b.isPkg ? `${svc(b.service).name} · ${b.total}-session package` : bTitle(b))}</td><td>${esc(healer(b.healer).name)}</td><td>${money(b.cur, b.amount)}</td><td>${b.status === 'cancelled' ? `<span class="pill done">Refunded ${money(b.cur, b.refund || 0)}</span>` : '<span class="pill ok">Paid</span>'}</td><td><button class="btn xs t" data-rc="${b.id}" ${b.isPkg ? 'data-pk="1"' : ''}>${ico('i-down','i xs')}Receipt</button></td></tr>`).join('')}</tbody></table></div></div>`; }
+    <div class="card mt24"><div class="card-h"><h2>Receipts</h2><small>${rc.length} payments</small></div><div class="tscroll"><table class="tbl"><thead><tr><th>Date</th><th>Session</th><th>Healer</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody>${rc.map(b => `<tr><td>${fShort(b.paid)}</td><td>${esc(b.isPkg ? `${b.name} · ${b.total}-session package` : bTitle(b))}</td><td>${esc(healer(b.healer).name)}</td><td>${money(b.cur, b.amount)}</td><td>${b.status === 'cancelled' ? `<span class="pill done">Refunded ${money(b.cur, b.refund || 0)}</span>` : '<span class="pill ok">Paid</span>'}</td><td><button class="btn xs t" data-rc="${b.id}" ${b.isPkg ? 'data-pk="1"' : ''}>${ico('i-down','i xs')}Receipt</button></td></tr>`).join('')}</tbody></table></div></div>`; }
   if (tab === 'saved') body = S.saved.length ? `<div class="h-grid">${S.saved.map(id => healerCard(healer(id))).join('')}</div>` : `<div class="card empty">${ico('i-heart','i')}Tap the heart on a healer to save them here.<div class="mt16"><a class="btn p sm" href="#/explore">Explore healers</a></div></div>`;
   if (tab === 'notifications'){ const rows = [['reminders','Session reminders','24 hours and 1 hour before'],['messages','Messages from healers','When a healer replies'],['journal','Journal & events','New articles and events from healers you follow'],['offers','Offers','Occasional news from 2Verse']];
     body = `<div class="card"><div class="tscroll"><table class="ntbl"><thead><tr><th></th><th>Email</th><th>WhatsApp</th><th>Push</th></tr></thead><tbody>${rows.map(([k, l, d]) => `<tr><td><b>${l}</b><div class="small muted">${d}</div></td>${[0,1,2].map(i => `<td>${tgBtn(S.notif[k][i], l + ' ' + ['email','WhatsApp','push'][i], `data-nk="${k}" data-ni="${i}"`)}</td>`).join('')}</tr>`).join('')}</tbody></table></div></div>`; }
@@ -2778,7 +2970,7 @@ R.profile = (tab = 'account') => {
     if (tab === 'health'){ m.safety = {conditions:fd.getAll('cond'), notes:fd.get('notes'), share:$('#shareTg').getAttribute('aria-checked') === 'true'}; save(); toast('Health notes saved'); }
     render(); });
   $$('[data-nk]').forEach(b => b.onclick = () => { const v = !S.notif[b.dataset.nk][+b.dataset.ni]; S.notif[b.dataset.nk][+b.dataset.ni] = v; b.setAttribute('aria-checked', v); save(); toast('Notification settings saved'); });
-  $$('[data-rc]').forEach(b => b.onclick = () => { if (b.dataset.pk){ const p = S.packages.find(x => x.id === b.dataset.rc); download(`2verse-receipt-${p.id}.txt`, [`2Verse receipt`, `Package ${p.id}`, `${svc(p.service).name} · ${p.total} sessions with ${healer(p.healer).name}`, `Paid ${money(p.cur, p.amount)} on ${fDate(p.bought)}`, `Use by ${fDate(p.until)}`, `Billed to ${S.me.name}, ${S.me.country}`].join('\n')); return toast('Receipt downloaded'); } receiptModal(bookingOf(b.dataset.rc)); });
+  $$('[data-rc]').forEach(b => b.onclick = () => { if (b.dataset.pk){ const p = S.packages.find(x => x.id === b.dataset.rc); download(`2verse-receipt-${p.id}.txt`, [`2Verse receipt`, `Package ${p.id}`, `${pkOf(p.pack).name} · ${p.total} sessions with ${healer(p.healer).name}`, `Paid ${money(p.cur, p.amount)} on ${fDate(p.bought)}`, `Valid until ${fDate(p.until)}`, `Billed to ${S.me.name}, ${S.me.country}`].join('\n')); return toast('Receipt downloaded'); } receiptModal(bookingOf(b.dataset.rc)); });
   $$('[data-def]').forEach(b => b.onclick = () => { S.cards.forEach(c => c.def = c.id === b.dataset.def); S.cards.sort((a, c) => c.def - a.def); save(); render(); toast('Default card updated'); });
   $$('[data-rmc]').forEach(b => b.onclick = () => confirmBox('Remove this card?', 'You can add it again any time.', 'Remove', true, () => { S.cards = S.cards.filter(c => c.id !== b.dataset.rmc); if (S.cards.length && !S.cards.some(c => c.def)) S.cards[0].def = true; save(); render(); toast('Card removed'); }));
   $('#addCard') && ($('#addCard').onclick = () => openModal({title:'Add a card', size:'narrow', body:`<div class="fgrid"><label class="field full"><span>Card number</span><input class="inp" name="n" inputmode="numeric" placeholder="1234 1234 1234 1234"></label><label class="field"><span>Expiry</span><input class="inp" name="e" placeholder="MM/YY"></label><label class="field"><span>CVC</span><input class="inp" name="c" inputmode="numeric" placeholder="123"></label><label class="field full"><span>Name on card</span><input class="inp" name="nm" value="${esc(m.name)}"></label></div><p class="small muted mt16">${ico('i-lock','i xs')} Card details are stored by our payment provider, never on 2Verse servers.</p>`,
@@ -2861,6 +3053,236 @@ $('#vedaBtn').onclick = () => openVeda();
    ===================================================================== */
 const st0 = sharedTheme(); if (st0) S.theme = st0;
 window.addEventListener('storage', e => { if (e.key === THEME_KEY && e.newValue && e.newValue !== S.theme){ S.theme = e.newValue; save(); applyTheme(); } });
+
+/* =====================================================================
+   PACKAGES: browse, details session by session, buy, plan sessions
+   ===================================================================== */
+const pkSeatsLeft = p => p.cap - Math.min(p.cap, Math.floor(hash(p.id) % p.cap * .6) + S.packages.filter(e => e.pack === p.id).reduce((a, e) => a + (e.seats || 1), 0));
+const pkClosed = p => p.type !== '1:1' && minsUntil(p.items[0].date, p.items[0].time) <= p.cutoff;
+const pkEnroll = pid => (S.packages || []).find(e => e.pack === pid);
+const pkBookings = e => S.bookings.filter(b => b.pkg === e.id && b.status !== 'cancelled');
+const pkWhenTxt = p => p.type === '1:1' ? `You choose each time${p.spacing ? `, at least ${p.spacing === 7 ? 'a week' : p.spacing + ' day' + (p.spacing === 1 ? '' : 's')} apart` : ''}` : `${fShort(p.items[0].date)} – ${fShort(p.items[p.items.length - 1].date)}`;
+function pkTotal(p, seats = 1){
+  const unit = price(p), base = unit * seats, d1 = Math.round(base * (p.disc || 0) / 100), tier = p.type !== '1:1' ? tierFor(p, seats) : null, d2 = tier ? Math.round((base - d1) * tier.pct / 100) : 0;
+  return {unit, seats, base, d1, tier, d2, total:base - d1 - d2};
+}
+function pkRow(p){
+  const h = healer(p.healer), g = p.type !== '1:1', mine = pkEnroll(p.id);
+  return `<div class="pk-row" data-pk="${p.id}" tabindex="0" role="link" aria-label="${esc(p.name)}">
+    <span class="pk-cov">${tvCover.html(p.cover || coverOf(p, h), p.name)}<span class="cp-badge">${p.items.length} sessions${p.disc ? ` · ${p.disc}% off` : ''}</span></span>
+    <div class="grow"><h3>${esc(p.name)}</h3>
+      <div class="m"><span>${ico('i-layers','i xs')}${p.items.length} sessions · ${hmTxt(pkMins(p))} in total</span><span>${ico(p.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${p.format === 'Both' ? 'Online or in person' : p.format}</span>${g ? `<span>${ico('i-group','i xs')}Up to ${p.cap}</span>` : `<span>${ico('i-user','i xs')}1:1</span>`}<span>${ico('i-cal','i xs')}${pkWhenTxt(p)}</span></div>
+      <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(p.desc)}</p>
+      <div class="pk-thumbs">${p.items.map((x, i) => `<span title="${i + 1}. ${esc(x.title)}"><i>${tvCover.html(pkItemCover(p, i), x.title)}</i><small>${i + 1}. ${esc(x.title)}</small></span>`).join('')}</div>
+      ${g && (p.tiers || []).length ? `<div class="pkg-line">${ico('i-users','i xs')}<b>Book together and save:</b> ${esc(tierTxt(p))}</div>` : ''}
+      ${p.place ? `<div class="mt8"><button type="button" class="lnk small" data-pkmap="${p.id}">${ico('i-pin','i xs')}${esc(p.place.name)} · View on map</button></div>` : ''}
+      ${mine ? `<div class="nx mt8">${ico('i-check','i xs')} You are enrolled</div>` : ''}</div>
+    <div class="pr"><b>${priceTxt(p)}</b><span class="small muted">${g ? 'per person' : `for all ${p.items.length} sessions`}<br>${money(CUR(), Math.round(dPrice(p) / p.items.length))} a session</span><div class="mt8"><span class="btn sm p">View package</span></div></div></div>`;
+}
+R.package = pid => {
+  const p = pkOf(pid); if (!p) return nav('#/explore');
+  const h = healer(p.healer), g = p.type !== '1:1', mine = pkEnroll(p.id), closed = pkClosed(p), left = g ? pkSeatsLeft(p) : null;
+  document.title = p.name + ' · 2Verse';
+  $('#view').innerHTML = `<div class="wrap"><div class="row mt24"><a class="btn t" style="padding:0" href="#/healer/${h.id}/packages">${ico('i-back')}Back to ${esc(h.name)}</a></div>
+    <div class="bk-layout"><div>
+      <div class="pk-hero">${tvCover.html(p.cover || coverOf(p, h), p.name)}<span class="cp-badge">${g ? 'Group' : '1:1'} package · ${p.items.length} sessions</span></div>
+      <h1 class="mt24" style="font-size:36px">${esc(p.name)}</h1>
+      <a class="row mt8" href="#/healer/${h.id}" style="gap:10px;color:var(--ink-2)">${port(h, 's')}<span>with <b>${esc(h.name)}</b> ${vb} · ${ico('i-star','i xs')} ${h.rating.toFixed(1)}</span></a>
+      <div class="chips mt16"><span class="pill sky">${ico('i-layers','i xs')}${p.items.length} sessions</span><span class="pill sky">${ico('i-clock','i xs')}${hmTxt(pkMins(p))} in total</span><span class="pill sky">${ico(p.format === 'In person' ? 'i-pin' : 'i-video','i xs')}${p.format === 'Both' ? 'Online or in person' : p.format}</span><span class="pill sky">${p.intensity || 'Gentle'}</span></div>
+      <p class="mt16" style="font-size:16px;line-height:1.7;color:var(--ink-2)">${esc(p.desc)}</p>
+      <div class="pk-mcta mt16"><b>${priceTxt(p)}</b><span class="small muted">${g ? 'per person' : `all ${p.items.length} sessions`}</span>${mine ? `<a class="btn p sm" href="#/pkdone/${mine.id}">My sessions</a>` : !closed && left !== 0 ? `<a class="btn p sm" href="#/buy/${p.id}">Buy package</a>` : ''}</div>
+      <div class="pk-facts mt24">
+        <div>${ico('i-cal')}<span><b>${g ? 'Fixed dates, same small group' : 'You choose each time'}</b><small>${g ? `${fDate(p.items[0].date)} to ${fDate(p.items[p.items.length - 1].date)}, starting ${whenTxt(p.items[0].date, p.items[0].time)}` : `Book from ${esc(h.name.split(' ')[0])}'s open times${p.spacing ? `, at least ${p.spacing === 7 ? 'a week' : p.spacing + ' day' + (p.spacing === 1 ? '' : 's')} apart` : ''}. Finish within ${p.valid} days. Plan them all now or later.`}</small></span></div>
+        ${p.place ? `<div>${ico('i-pin')}<span><b>${esc(p.place.name)}</b><small>${p.format === 'Both' ? 'For in-person sessions. ' : ''}Exact location after you buy. <button type="button" class="lnk small" id="pkMap">View area on map</button></small></span></div>` : `<div>${ico('i-video')}<span><b>Online in the 2Verse room</b><small>Join from your Sessions page; it opens 10 minutes before.</small></span></div>`}
+        <div>${ico('i-shield')}<span><b>Cancellation</b><small>${g ? esc(h.policy) : 'Move or cancel any session up to 24 hours before; it goes back into your package.'}</small></span></div>
+      </div>
+      <h2 class="mt32" style="font-size:26px">Session by session</h2>
+      <div class="pk-sessions mt16">${p.items.map((x, i) => `<div class="pk-sess"><span class="pk-num">${i + 1}</span><span class="pk-img">${tvCover.html(pkItemCover(p, i), x.title)}</span>
+        <div class="grow"><b>${esc(x.title)}</b><div class="m"><span>${ico('i-clock','i xs')}${durTxt(x.dur)}</span>${g ? `<span>${ico('i-cal','i xs')}${fDate(x.date)} · ${whenTxt(x.date, x.time)}</span>` : ''}</div><p>${esc(x.desc || '')}</p></div></div>`).join('')}</div>
+      ${p.contra ? `<div class="card mt24" style="background:var(--soft-gold);border-color:transparent"><b class="row" style="gap:8px">${ico('i-alert')}Before you buy</b><p class="small mt8" style="color:var(--ink-2)">Not suitable for: <b>${esc(p.contra)}</b></p></div>` : ''}
+    </div>
+    <aside class="side-book"><div class="card sum">
+      <div class="row" style="justify-content:space-between;align-items:baseline"><span class="small muted">${g ? 'Per person' : `All ${p.items.length} sessions`}</span><b style="font-size:24px">${priceTxt(p)}</b></div>
+      <div class="ln"><span>Per session</span><span>${money(CUR(), Math.round(dPrice(p) / p.items.length))}</span></div>
+      ${p.disc ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Package discount</span><span>${p.disc}% off</span></div>` : ''}
+      ${g && (p.tiers || []).length ? `<div class="tier-hint">${p.tiers.map(t => `<span>${t.n}+ people · ${t.pct}% off</span>`).join('')}</div>` : ''}
+      ${g ? `<div class="ln"><span>Seats left</span><span>${left} of ${p.cap}</span></div>` : `<div class="ln"><span>Finish within</span><span>${p.valid} days</span></div>`}
+      ${mine ? `<div class="note info">${ico('i-check')}<span>You are enrolled.</span></div><a class="btn p block lg" href="#/pkdone/${mine.id}">View my sessions</a>`
+        : closed ? `<div class="note warn">${ico('i-lock')}<span>Sales closed for these dates.</span></div>` : left === 0 ? `<div class="note warn">${ico('i-lock')}<span>This package is full.</span></div>`
+        : `<a class="btn p block lg" href="#/buy/${p.id}">Buy package · ${money(CUR(), dPrice(p))}</a>`}
+      <button type="button" class="btn g block" id="pkMsg">${ico('i-chat')}Ask ${esc(h.name.split(' ')[0])} a question</button>
+      <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div></div></aside></div></div>`;
+  $('#pkMap') && ($('#pkMap').onclick = () => mapModal(p.place, true));
+  $('#pkMsg').onclick = () => startThread(h.id);
+};
+
+/* ---------- choosing times for 1:1 package sessions ---------- */
+function pkPicker(el, p, picks, locked, state, onChange){
+  const minFor = i => { let prev = null; for (let j = i - 1; j >= 0; j--) if (picks[j]){ prev = picks[j]; break; } return prev ? addDays(prev.d, Math.max(p.spacing || 0, 0)) : TODAY; };
+  const until = state.until || addDays(TODAY, p.valid);
+  const next = () => picks.findIndex(x => !x);
+  if (state.active == null || picks[state.active] && !locked[state.active] && state.active !== state.editing) state.active = next();
+  const a = state.active;
+  const free = (d, t, dur) => !picks.some((x, j) => x && j !== a && x.d === d && Math.abs(toMin(x.t) - toMin(t)) < Math.max(dur, p.items[j].dur) + (p.gap || 0));
+  let strip = '';
+  if (a >= 0){
+    const s = pkSvc(`${p.id}~${a}`), from = minFor(a), days = [];
+    for (let d = from < TODAY ? TODAY : from; d <= until && days.length < 21; d = addDays(d, 1)) days.push(d);
+    const has = d => slotsFor(s, d).some(x => x.state === 'open' && free(d, x.t, s.dur));
+    if (!state.date || !days.includes(state.date) || !has(state.date)) state.date = days.find(has) || days[0];
+    const sl = state.date ? slotsFor(s, state.date) : [];
+    strip = `<div class="pk-pickbox"><p class="small muted">Times for <b>session ${a + 1}</b> in your time zone (${esc(city())}), India time below.${a && from > TODAY ? ` Earliest ${fDate(from)}, ${p.spacing} day${p.spacing === 1 ? '' : 's'} after session ${a}.` : ''}</p>
+      <div class="dstrip mt8">${days.map(d => `<button type="button" data-pd="${d}" class="${d === state.date ? 'on' : ''}" ${has(d) ? '' : 'disabled'}>${dow(d)}<b>${pd(d).getUTCDate()}</b>${MON[pd(d).getUTCMonth()]}</button>`).join('')}</div>
+      ${sl.length ? `<div class="slots mt16">${sl.map(x => { const ok = x.state === 'open' && free(state.date, x.t, s.dur); return `<button type="button" class="slot" data-pt="${x.t}" ${ok ? '' : 'disabled'}>${localOnly(state.date, x.t)}<small>${ok ? f12(x.t) + ' IST' : x.state === 'open' ? 'Too close to another pick' : {booked:'Booked', closed:'Booking closed', yours:'Your booking'}[x.state]}</small></button>`; }).join('')}</div>` : '<div class="small muted mt16">No open times on this day.</div>'}</div>`;
+  }
+  el.innerHTML = `<div class="pk-picks">${p.items.map((x, i) => { const pk = picks[i], on = i === a;
+    return `<div class="pk-pick ${on ? 'on' : ''} ${pk ? 'set' : ''}"><span class="pk-num">${pk ? ico('i-check','i xs') : i + 1}</span><span class="pk-img sm">${tvCover.html(pkItemCover(p, i), x.title)}</span>
+      <span class="grow"><b>${esc(x.title)}</b><small>${durTxt(x.dur)} · ${pk ? `${fDate(pk.d)} · ${whenTxt(pk.d, pk.t)}` : on ? 'Choose a time below' : 'Not scheduled yet'}</small></span>
+      ${locked[i] ? '<span class="pill ok">Booked</span>' : pk ? `<button type="button" class="lnk small" data-pchg="${i}">Change</button>` : !on && i === next() ? `<button type="button" class="lnk small" data-pgo="${i}">Choose time</button>` : ''}</div>${on ? strip : ''}`; }).join('')}</div>`;
+  $$('[data-pd]', el).forEach(b => b.onclick = () => { state.date = b.dataset.pd; pkPicker(el, p, picks, locked, state, onChange); });
+  $$('[data-pt]', el).forEach(b => b.onclick = () => { picks[a] = {d:state.date, t:b.dataset.pt};
+    for (let j = a + 1; j < picks.length; j++) if (picks[j] && !locked[j] && picks[j].d < addDays(picks[a].d, p.spacing || 0)) picks[j] = null; /* keep later picks in order */
+    state.editing = null; state.active = null; state.date = null; pkPicker(el, p, picks, locked, state, onChange); onChange(); });
+  $$('[data-pchg]', el).forEach(b => b.onclick = () => { const i = +b.dataset.pchg; state.active = i; state.editing = i; state.date = picks[i].d; pkPicker(el, p, picks, locked, state, onChange); });
+  $$('[data-pgo]', el).forEach(b => b.onclick = () => { state.active = +b.dataset.pgo; pkPicker(el, p, picks, locked, state, onChange); });
+}
+
+/* ---------- buying a package ---------- */
+let PB = null;
+R.buy = pid => {
+  const p = pkOf(pid); if (!p) return nav('#/explore');
+  if (pkEnroll(pid)) return nav('#/pkdone/' + pkEnroll(pid).id);
+  if (!PB || PB.pid !== pid) PB = {pid, step:1, seats:1, picks:p.items.map(() => null), pst:{}, later:false, format:p.format === 'Both' ? (S.me.format === 'In person' ? 'In person' : 'Online') : p.format, intent:S.me.intentions.map(n => NEEDS[n]).join(', '), ack:false, pay:(S.cards[0] || {}).id || 'paypal'};
+  drawBuy();
+};
+function drawBuy(){
+  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats), first = h.name.split(' ')[0];
+  const nPicked = PB.picks.filter(Boolean).length;
+  let body = '';
+  if (PB.step === 1){
+    if (g){ const left = pkSeatsLeft(p), max = Math.min(left, 10); PB.seats = Math.min(PB.seats, max);
+      body = `<h2 style="font-size:26px">Your dates</h2><p class="small muted mt8">This group meets on fixed dates. Times show in your time zone (${esc(city())}) and India time.</p>
+        <div class="pk-picks mt16">${p.items.map((x, i) => `<div class="pk-pick set"><span class="pk-num">${i + 1}</span><span class="pk-img sm">${tvCover.html(pkItemCover(p, i), x.title)}</span><span class="grow"><b>${esc(x.title)}</b><small>${fDate(x.date)} · ${whenTxt(x.date, x.time)} · ${durTxt(x.dur)}</small></span></div>`).join('')}</div>
+        <div class="seats-pick mt24"><div><b>How many people are coming?</b><div class="small muted">${left} seat${left === 1 ? '' : 's'} left${(p.tiers || []).length ? ` · ${esc(tierTxt(p))}` : ''}</div></div>
+          <div class="stepper"><button type="button" class="icon-btn" id="seatMinus" aria-label="Fewer people" ${PB.seats <= 1 ? 'disabled' : ''}>−</button><b aria-live="polite">${PB.seats}</b><button type="button" class="icon-btn" id="seatPlus" aria-label="More people" ${PB.seats >= max ? 'disabled' : ''}>+</button></div></div>
+        ${(p.tiers || []).length ? `<div class="tier-hint">${p.tiers.map(t => `<span class="${PB.seats >= t.n ? 'on' : ''}">${t.n}+ people · ${t.pct}% off</span>`).join('')}</div>` : ''}`;
+    } else {
+      body = `<h2 style="font-size:26px">Plan your sessions</h2><p class="small muted mt8">Choose a time for each session, in order. You need to pick the first one now; the rest can wait until after you buy (finish within ${p.valid} days).</p>
+        ${p.format === 'Both' ? `<div class="choice mt16">${['Online','In person'].map(f => `<label><input type="radio" name="fm" value="${f}" ${PB.format === f ? 'checked' : ''}><span>${ico(f === 'Online' ? 'i-video' : 'i-pin','i xs')}${f === 'Online' ? 'Online video' : 'In person in Tapovan'}</span></label>`).join('')}</div>` : ''}
+        <div id="pkPick" class="mt16"></div>
+        ${nPicked && nPicked < p.items.length ? `<label class="check mt16"><input type="checkbox" id="pkLater" ${PB.later ? 'checked' : ''}><span>Schedule the other ${p.items.length - nPicked} session${p.items.length - nPicked === 1 ? '' : 's'} later, from my Sessions page</span></label>` : ''}`;
+    }
+  }
+  if (PB.step === 2){
+    body = `<h2 style="font-size:26px">Tell ${esc(first)} a little about you</h2>
+      <label class="field mt16"><span>What would you like from this package? <small>(optional, only ${esc(first)} sees this)</small></span><textarea class="ta" id="pbIntent" data-veda="intent" placeholder="For example: I want to fall asleep without my phone">${esc(PB.intent)}</textarea></label>
+      ${p.contra ? `<div class="card mt16" style="background:var(--soft-gold);border-color:transparent"><b class="row" style="gap:8px">${ico('i-alert')}Before you buy</b><p class="small mt8" style="color:var(--ink-2)">This package is not suitable for: <b>${esc(p.contra)}</b>.</p>
+        <label class="check mt16"><input type="checkbox" id="pbAck" ${PB.ack ? 'checked' : ''}><span>None of these apply to me, or I have checked with my doctor.</span></label></div>` : ''}
+      ${PB.format === 'In person' && p.place ? `<div class="note info mt16">${ico('i-pin')}<span>In person at <b>${esc(p.place.name)}</b>. The exact location and directions are sent after you buy. <button type="button" class="lnk small" id="pbMap">View area on map</button></span></div>` : `<div class="note info mt16">${ico('i-video')}<span>Online in the 2Verse room. Join each session from your Sessions page.</span></div>`}`;
+  }
+  if (PB.step === 3){
+    body = `<h2 style="font-size:26px">Payment</h2><div class="stack mt16">${S.cards.map(c => `<label class="opt"><input type="radio" name="pay" value="${c.id}" ${PB.pay === c.id ? 'checked' : ''}><span class="ccard" style="border:none;padding:0;background:none"><span class="brand">${c.brand}</span></span><span class="grow"><b>•••• ${c.last4}</b><small>Expires ${c.exp}</small></span></label>`).join('')}
+      <label class="opt"><input type="radio" name="pay" value="paypal" ${PB.pay === 'paypal' ? 'checked' : ''}><span class="grow"><b>PayPal</b><small>You will confirm in a PayPal window</small></span></label>
+      ${intl() ? '' : `<label class="opt"><input type="radio" name="pay" value="upi" ${PB.pay === 'upi' ? 'checked' : ''}><span class="grow"><b>UPI</b><small>Google Pay, PhonePe, Paytm</small></span></label>`}</div>
+      <div class="note info mt16">${ico('i-shield')}<span>${g ? esc(h.policy) : 'You can move or cancel any session up to 24 hours before; it goes back into your package.'}</span></div>`;
+  }
+  const steps = [[g ? 'Dates & people' : 'Plan sessions', 1], ['About you', 2], ['Payment', 3]];
+  $('#view').innerHTML = `<div class="wrap"><div class="row mt24"><a class="btn t" style="padding:0" href="#/package/${p.id}">${ico('i-back')}Back to the package</a></div>
+    <div class="bk-layout"><div><div class="bk-steps">${steps.map(([l, n], i) => `<span class="${n === PB.step ? 'on' : n < PB.step ? 'ok' : ''}"><b>${n < PB.step ? ico('i-check','i xs') : i + 1}</b>${l}</span>`).join('')}</div>
+      <div class="card" style="padding:26px">${body}
+      <div class="ob-foot">${PB.step > 1 ? `<button class="btn g" id="pbBack">${ico('i-back')}Back</button>` : '<span></span>'}<button class="btn p lg" id="pbNext">${PB.step < 3 ? 'Continue' : `Pay ${money(CUR(), tot.total)}`}</button></div></div></div>
+    <aside class="side-book"><div class="card sum"><span class="pk-sumcov">${tvCover.html(p.cover || coverOf(p, h), p.name)}</span><b style="font-size:17px">${esc(p.name)}</b>
+      <div class="row">${port(h, 's')}<span class="small muted">with ${esc(h.name)}</span></div>
+      <div class="divider" style="margin:4px 0"></div>
+      <div class="ln"><span>Sessions</span><span>${p.items.length} · ${hmTxt(pkMins(p))}</span></div>
+      <div class="ln"><span>${g ? 'Dates' : 'Planned'}</span><span>${g ? pkWhenTxt(p) : `${nPicked} of ${p.items.length}`}</span></div>
+      <div class="ln"><span>Format</span><span>${PB.format}</span></div>${g ? `<div class="ln"><span>People</span><span>${PB.seats}</span></div>` : ''}
+      <div class="ln"><span>${tot.seats > 1 ? `${tot.seats} × ${money(CUR(), tot.unit)}` : 'Package'}</span><span>${money(CUR(), tot.base)}</span></div>
+      ${tot.d1 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Package discount · ${p.disc}%</span><span>−${money(CUR(), tot.d1)}</span></div>` : ''}
+      ${tot.d2 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Group discount · ${tot.tier.n}+ people</span><span>−${money(CUR(), tot.d2)}</span></div>` : ''}
+      <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
+      <div class="small muted">${money(CUR(), Math.round(tot.total / tot.seats / p.items.length))} a session${tot.seats > 1 ? ' per person' : ''} · ${intl() ? 'US dollars, taxes included' : 'rupees, GST included'}</div></div></aside></div></div>`;
+  const v = $('#view');
+  if ($('#pkPick')) pkPicker($('#pkPick'), p, PB.picks, PB.picks.map(() => false), PB.pst, drawBuy);
+  $$('[name=fm]', v).forEach(r => r.onchange = () => { PB.format = r.value; drawBuy(); });
+  $('#pkLater') && ($('#pkLater').onchange = e => { PB.later = e.target.checked; });
+  $('#seatMinus') && ($('#seatMinus').onclick = () => { PB.seats = Math.max(1, PB.seats - 1); drawBuy(); });
+  $('#seatPlus') && ($('#seatPlus').onclick = () => { PB.seats++; drawBuy(); });
+  $('#pbIntent') && ($('#pbIntent').oninput = e => PB.intent = e.target.value);
+  $('#pbAck') && ($('#pbAck').onchange = e => PB.ack = e.target.checked);
+  $('#pbMap') && ($('#pbMap').onclick = () => mapModal(p.place, true));
+  $$('[name=pay]', v).forEach(r => r.onchange = () => { PB.pay = r.value; });
+  vedaAttach(v, () => ({name:h.name}));
+  $('#pbBack') && ($('#pbBack').onclick = () => { PB.step--; drawBuy(); window.scrollTo(0, 0); });
+  $('#pbNext').onclick = () => {
+    if (PB.step === 1 && !g){
+      if (!PB.picks[0]) return toast('Choose a time for session 1');
+      if (PB.picks.some(x => !x) && !PB.later) return toast(`Choose times for every session, or tick "schedule later"`);
+    }
+    if (PB.step === 2 && p.contra && !PB.ack) return toast('Please confirm the safety note');
+    if (PB.step === 3) return buyNow();
+    PB.step++; drawBuy(); window.scrollTo(0, 0);
+  };
+}
+function pkBook(p, e, i, d, t){
+  const b = {id:'SB-' + (2110 + S.bookings.length), healer:p.healer, service:`${p.id}~${i}`, pack:p.id, pi:i, pkg:e.id, date:d, time:t, format:e.format, cur:e.cur, amount:0, status:'upcoming', paid:TODAY, intent:e.intent || '', method:'package'};
+  if ((e.seats || 1) > 1) b.seats = e.seats;
+  S.bookings.push(b); return b;
+}
+function buyNow(){
+  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats);
+  if (g && pkClosed(p)) return toast('Sorry, sales for these dates just closed.');
+  if (!g){ const bad = PB.picks.findIndex((x, i) => x && !slotsFor(pkSvc(`${p.id}~${i}`), x.d).some(s => s.t === x.t && s.state === 'open')); if (bad >= 0){ PB.picks[bad] = null; PB.step = 1; toast(`Session ${bad + 1}: that time was just taken. Pick another.`); return drawBuy(); } }
+  const btn = $('#pbNext'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Confirming…';
+  setTimeout(() => {
+    S.packages = S.packages || [];
+    const e = {id:'PK-' + (301 + S.packages.length), healer:h.id, pack:p.id, total:p.items.length, bought:TODAY, until:g ? p.items[p.items.length - 1].date : addDays(TODAY, p.valid), cur:CUR(), amount:tot.total, seats:PB.seats, format:PB.format, intent:PB.intent, method:PB.pay};
+    if (tot.d1 + tot.d2) e.discount = tot.d1 + tot.d2;
+    S.packages.push(e);
+    p.items.forEach((x, i) => { if (g) pkBook(p, e, i, x.date, x.time); else if (PB.picks[i]) pkBook(p, e, i, PB.picks[i].d, PB.picks[i].t); });
+    const t = thread(h.id) || (S.threads.push({id:'t-' + h.id, healer:h.id, unread:0, msgs:[]}), thread(h.id));
+    t.msgs.push({f:'sys', at:`${TODAY} ${NOW_T}`, t:`Package bought: ${p.name} · ${p.items.length} sessions${g && PB.seats > 1 ? ` · ${PB.seats} people` : ''}`});
+    notify('i-check', `You are enrolled: ${p.name} with ${h.name}`, '#/pkdone/' + e.id);
+    save(); PB = null; nav('#/pkdone/' + e.id);
+  }, 1100);
+}
+/* ---------- after buying: overview + plan the remaining sessions ---------- */
+R.pkdone = id => {
+  const e = (S.packages || []).find(x => x.id === id); if (!e) return nav('#/sessions');
+  const p = pkOf(e.pack), h = healer(p.healer), g = p.type !== '1:1', bs = pkBookings(e), byI = i => bs.find(b => b.pi === i), done = bs.filter(b => b.status === 'completed').length, open = p.items.length - bs.length;
+  const fresh = e.bought === TODAY && !bs.some(b => b.status === 'completed');
+  $('#view').innerHTML = `<div class="wrap"><div class="confirm" style="max-width:760px">${fresh ? `<div class="ok-big">${ico('i-check','i')}</div><h1>You are enrolled, ${esc(S.me.first)}</h1>
+    <p class="mt8" style="color:var(--ink-2);font-size:16px">${esc(h.name)} has been notified. Your receipt is on its way ${S.me.login === 'phone' ? 'by SMS' : 'to ' + esc(S.me.email)}.</p>` : `<span class="kicker">Your package</span><h1 class="mt8">${esc(p.name)}</h1>`}
+    <div class="card sum" style="text-align:left"><div class="row">${port(h, 'm')}<div class="grow"><b style="font-size:17px">${esc(p.name)}</b><div class="small muted">with ${esc(h.name)} · ${e.id}</div></div><span class="pill ok">${ico('i-check')}Paid ${money(e.cur, e.amount)}</span></div>
+      <div class="pk-bar mt8"><i style="width:${done / p.items.length * 100}%"></i></div><div class="small muted">${done} of ${p.items.length} attended · ${bs.length} scheduled${!g ? ` · finish by ${fDate(e.until)}` : ''}${e.seats > 1 ? ` · ${e.seats} people` : ''}</div>
+      <div class="pk-picks mt8">${p.items.map((x, i) => { const b = byI(i); return `<div class="pk-pick ${b ? 'set' : ''}"><span class="pk-num">${b && b.status === 'completed' ? ico('i-check','i xs') : i + 1}</span><span class="pk-img sm">${tvCover.html(pkItemCover(p, i), x.title)}</span>
+        <span class="grow"><b>${esc(x.title)}</b><small>${durTxt(x.dur)} · ${b ? `${fDate(b.date)} · ${whenTxt(b.date, b.time)}` : 'Not scheduled yet'}</small></span>${b ? `<span class="pill ${b.status === 'completed' ? 'done' : 'ok'}">${b.status === 'completed' ? 'Attended' : 'Booked'}</span>` : ''}</div>`; }).join('')}</div>
+      ${e.format === 'In person' && p.place ? `<div class="ln"><span>Where</span><span style="text-align:right">${esc(p.place.name)}<br><small class="muted">${esc(p.place.address)}</small><br><button type="button" class="lnk small" id="pdMap">${ico('i-pin','i xs')}View on map & directions</button></span></div>` : ''}</div>
+    <div class="row mt24" style="justify-content:center">${!g && open ? `<a class="btn p" href="#/plan/${e.id}">${ico('i-cal')}Schedule ${open} more session${open === 1 ? '' : 's'}</a>` : ''}<button class="btn g" id="pdMsg">${ico('i-chat')}Message ${esc(h.name.split(' ')[0])}</button><a class="btn ${!g && open ? 'g' : 'p'}" href="#/sessions">View my sessions</a></div></div></div>`;
+  $('#pdMap') && ($('#pdMap').onclick = () => mapModal(p.place, false));
+  $('#pdMsg').onclick = () => startThread(h.id);
+};
+let PL = null;
+R.plan = id => {
+  const e = (S.packages || []).find(x => x.id === id); if (!e) return nav('#/sessions');
+  const p = pkOf(e.pack), h = healer(p.healer), bs = pkBookings(e);
+  if (!PL || PL.id !== id){ PL = {id, picks:p.items.map((x, i) => { const b = bs.find(y => y.pi === i); return b ? {d:b.date, t:b.time} : null; }), st:{until:e.until}}; PL.locked = PL.picks.map(Boolean); }
+  const draw = () => {
+    const nNew = PL.picks.filter((x, i) => x && !PL.locked[i]).length;
+    $('#view').innerHTML = `<div class="wrap" style="max-width:820px"><div class="row mt24"><a class="btn t" style="padding:0" href="#/pkdone/${e.id}">${ico('i-back')}Back to the package</a></div>
+      <h1 class="mt16" style="font-size:32px">Schedule your sessions</h1><p class="mt8" style="color:var(--ink-2)">${esc(p.name)} with ${esc(h.name)} · finish by ${fDate(e.until)}${p.spacing ? ` · at least ${p.spacing === 7 ? 'a week' : p.spacing + ' day' + (p.spacing === 1 ? '' : 's')} between sessions` : ''}.</p>
+      <div class="card mt24" style="padding:22px"><div id="plPick"></div>
+      <div class="ob-foot"><span class="small muted">${nNew ? `${nNew} new session${nNew === 1 ? '' : 's'} chosen` : 'Pick a time for the next session'}</span><button class="btn p lg" id="plSave" ${nNew ? '' : 'disabled'}>Book ${nNew || ''} session${nNew === 1 ? '' : 's'}</button></div></div></div>`;
+    pkPicker($('#plPick'), p, PL.picks, PL.locked, PL.st, draw);
+    $('#plSave').onclick = () => {
+      const made = []; PL.picks.forEach((x, i) => { if (x && !PL.locked[i]) made.push(pkBook(p, e, i, x.d, x.t)); });
+      const t = thread(h.id); t && t.msgs.push({f:'sys', at:`${TODAY} ${NOW_T}`, t:`Scheduled ${made.length} package session${made.length === 1 ? '' : 's'}: ${made.map(b => `${fShort(b.date)} ${f12(b.time)}`).join(', ')} IST`});
+      notify('i-cal', `${made.length} session${made.length === 1 ? '' : 's'} of ${p.name} booked`, '#/sessions'); save(); PL = null; toast(`${made.length} session${made.length === 1 ? '' : 's'} booked`); nav('#/pkdone/' + e.id);
+    };
+  };
+  draw();
+};
+
 applyTheme();
 render();
 })();
