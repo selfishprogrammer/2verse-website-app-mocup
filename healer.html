@@ -737,6 +737,31 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 /* ===== availability (1:1) ===== */
 .wk-avail{border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .pill.pk{white-space:normal;line-height:1.35}
+/* ===== healer video room ===== */
+.hroom{position:fixed;inset:0;z-index:80;background:#0b1416;color:#eef3ef;display:grid;grid-template-columns:1fr 340px}
+.hroom.noside{grid-template-columns:1fr}.hroom.noside .hr-side{display:none}
+.hr-stage{display:flex;flex-direction:column;min-width:0;padding:14px 18px;gap:12px}
+.hr-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.hr-top b{font-size:18px}
+.hr-rec{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.08)}.hr-rec i{width:7px;height:7px;border-radius:50%;background:#e5484d}
+.hr-att{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(80,180,130,.18);color:#bfe8d2}
+.hr-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:0}
+.hr-grid.many{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));grid-auto-rows:150px;overflow:auto}
+.hr-tile{position:relative;border-radius:18px;background:linear-gradient(140deg,#20363a,#2d2540);display:grid;place-items:center;overflow:hidden}
+.hr-tile.wait{opacity:.45}.hr-tile.me.off .av{filter:grayscale(1);opacity:.5}
+.hr-name{position:absolute;left:10px;bottom:10px;font-size:12.5px;padding:3px 9px;border-radius:99px;background:rgba(0,0,0,.45)}
+.hr-ctrl{display:flex;justify-content:center;gap:10px}
+.hr-ctrl button{height:48px;min-width:48px;padding:0 14px;border-radius:99px;background:rgba(255,255,255,.1);color:#fff;display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.hr-ctrl button.off{background:#e5484d}.hr-ctrl .end{background:#e5484d;padding:0 20px}
+.hr-side{background:#111d20;border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;min-height:0}
+.hr-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,.08)}.hr-tabs button{flex:1;padding:14px 6px;color:#b8c4bf;font-weight:600;font-size:13.5px;border-bottom:2px solid transparent}.hr-tabs button.on{color:#fff;border-color:var(--gold, #d6a85a)}
+.hr-body{padding:16px;overflow:auto;display:flex;flex-direction:column;gap:10px;font-size:14px}.hr-body .muted{color:#93a29c!important}.hr-body h4{font-size:13px;margin-top:8px;color:#d9e2de}
+.hr-body .ta{background:#0b1416;color:#eef3ef;border-color:rgba(255,255,255,.15)}
+.hr-qa{background:rgba(255,255,255,.05);border-radius:10px;padding:8px 10px}.hr-qa small{display:block;color:#93a29c;font-size:11.5px}
+.hr-count b{font-size:28px}
+.hr-p{display:flex;gap:10px;align-items:center}.hr-p b{display:block;font-size:13.5px}.hr-p small{font-size:12px;color:#93a29c}
+.hr-confirm{position:absolute;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center}.hr-confirm .card{max-width:380px;color:var(--ink)}
+@media (max-width:900px){.hroom{grid-template-columns:1fr}.hr-side{display:none}.hroom.side-m .hr-side{display:flex;position:absolute;left:0;right:0;bottom:0;height:62%;border-radius:18px 18px 0 0;border-left:none;z-index:2}.hr-grid{grid-template-columns:1fr 1fr}.hr-ctrl .end{padding:0 14px}}
+
 /* ===== attendance ===== */
 .scan-box{position:relative;border-radius:18px;overflow:hidden;background:#0d1a1c;aspect-ratio:4/3;display:grid;place-items:center}
 .scan-box video{width:100%;height:100%;object-fit:cover;display:block}
@@ -854,6 +879,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
   <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
   <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3z"/><path d="M3 12l9 4.5 9-4.5"/><path d="M3 16.5 12 21l9-4.5"/></symbol>
   <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6" height="6" rx="1"/><rect x="14.5" y="3.5" width="6" height="6" rx="1"/><rect x="3.5" y="14.5" width="6" height="6" rx="1"/><path d="M14.5 14.5h2.5v2.5M20.5 14.5v.01M14.5 20.5h2.5M20.5 18v2.5h-1"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></symbol>
   <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19l7-7"/></symbol>
   <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2M3 10h18"/></symbol>
   <symbol id="i-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.5M8.2 13.2l7.6 4.5"/></symbol>
@@ -1735,7 +1761,7 @@ RENDER.overview = () => {
       ${nextP ? `<div class="who"><span class="av l" style="background:var(${nextP.col})">${nextP.name[0]}</span><div><b>${esc(nextP.name)}</b><small>${esc(nextP.city)} · ${local(next.date, next.time, nextP.tz)} her time</small></div></div>
       ${nextP.notes ? `<div class="unote"><b>Your note from last time</b>${esc(nextP.notes)}</div>` : ''}` : ''}
       ${nextS.prep && linesOf(nextS.prep.seeker).length && next.seeker ? `<div class="prep-s"><span>${ico('i-check','i xs')} Preparation: ${next.prep ? `${next.prep.done.length} of ${linesOf(nextS.prep.seeker).length} done · answers ready` : 'not started yet'}</span><button type="button" id="prepNext">View</button></div>` : ''}
-      <div class="cd"><div class="t"><span id="countdown">${mins > 0 && next.date === TODAY ? `${mins}:00` : rel(next.date)}</span><small>${next.date === TODAY ? 'minutes to go' : f12(next.time)}</small></div><button class="btn gold" id="openRoom">${ico('i-video')}Open room</button></div>
+      <div class="cd"><div class="t"><span id="countdown">${mins > 0 && next.date === TODAY ? `${mins}:00` : rel(next.date)}</span><small>${next.date === TODAY ? 'minutes to go' : f12(next.time)}</small></div>${next.format === 'Online' ? joinBtn(next, 'btn gold') : `<button class="btn gold" id="openRoom">${ico('i-qr')}Scan check-in</button>`}</div>
     </div>` : '<div class="card empty">No upcoming sessions.</div>'}
     <div class="card">
       <div class="card-h"><h2>Today's schedule</h2><button class="lnk" data-go="calendar">Open calendar</button></div>
@@ -1785,7 +1811,7 @@ RENDER.overview = () => {
   </div>`;
   $$('#v-overview [data-occ]').forEach(el => el.addEventListener('click', () => { const [kind, id] = el.dataset.occ.split('|'); const o = today.find(x => x.kind === kind && x.id === id); o && openOccurrence(o); }));
   $('#prepNext') && ($('#prepNext').onclick = () => bookingModal(next.id));
-  $('#openRoom') && ($('#openRoom').onclick = () => toast('The room opens 10 minutes before the session.'));
+  $('#openRoom') && ($('#openRoom').onclick = () => scanModal(next.id));
   $('#ovNewSvc').onclick = () => serviceModal(); $('#insSvc').onclick = () => serviceModal(null, {name:'Sleep reset', modality:'Breathwork', type:'1:1', duration:45, schedule:{kind:'availability'}});
   $('#earnTblBtn').onclick = e => {
     const show = $('#earnTable').hidden; $('#earnTable').hidden = !show; $('#earnChart').hidden = show;
@@ -1915,7 +1941,7 @@ function bookingModal(id){
     ${attBlock(b)}
     ${prepBlock(b, s)}
     <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:18px">
-      ${p ? `<button type="button" class="btn sm g" data-msg="${p.id}">${ico('i-chat')}Message</button>` : ''}
+      ${joinBtn(b)}${p ? `<button type="button" class="btn sm g" data-msg="${p.id}">${ico('i-chat')}Message</button>` : ''}
       ${b.status === 'upcoming' && !future ? `<button type="button" class="btn sm p" data-set="completed">Mark completed</button><button type="button" class="btn sm g" data-set="no-show">Mark no-show</button>` : ''}
       ${b.status === 'upcoming' && future ? `<button type="button" class="btn sm d" data-cancel>Cancel &amp; refund</button>` : ''}
     </div>`, foot:'<button type="button" class="btn g" data-close>Close</button>',
@@ -2607,7 +2633,8 @@ function scanModal(focusId){
       const handle = (text, typed) => {
         let b = null;
         if (typed){ b = S.bookings.find(x => x.format !== 'Online' && x.status !== 'cancelled' && tvAtt.code(x.id) === text); }
-        else { const p = tvAtt.parse(text); b = p && booking(p.id); }
+        else { const p = tvAtt.parse(text); b = p && booking(p.id);
+          if (p && !b){ res.innerHTML = `<div class="note info">${ico('i-check')}<span><b>Valid 2Verse check-in QR</b> for booking ${esc(p.id)}. In this demo that booking lives in the seeker app's sample data, so it is not in your list. In the live app it would check the seeker in.</span></div>`; return; } }
         if (!b){ res.innerHTML = `<div class="note warn">${ico('i-alert')}<span>${typed ? 'No booking matches that code. Check the 6 digits and try again.' : 'This QR is not a 2Verse check-in code for one of your sessions.'}</span></div>`; return; }
         const w = ciWindow(b);
         if (w !== 'open'){ res.innerHTML = `<div class="note warn">${ico('i-clock')}<span>${isGrpB(b) ? `This group session (${esc(service(b.service).name)})` : esc(bLabel(b)) + "'s session"} is on ${fDate(b.date)} at ${f12(b.time)}. Check-in ${w === 'early' ? 'opens 1 hour before it starts' : 'has closed'}.</span></div>`; return; }
@@ -2636,6 +2663,7 @@ function attBlock(b){
     const w = ciWindow(b), grp = isGrpB(b), done = grp ? (a ? a.checked : 0) >= b.seats : !!a;
     acts = done ? '' : w === 'open' ? `<div class="row" style="gap:8px;flex-wrap:wrap;margin-top:10px"><button type="button" class="btn sm p" data-att="scan">${ico('i-qr')}Scan check-in QR</button><button type="button" class="btn sm g" data-att="manual">${grp ? 'Check in 1 person' : 'Mark present'}</button></div>`
       : `<div class="small muted" style="margin-top:8px">${w === 'early' ? 'Check-in opens 1 hour before the session.' : 'Check-in has closed.'}</div>`;
+    if (!done) acts += `<div class="small muted" style="margin-top:8px">${ico('i-spark','i xs')} Demo: ${grp ? 'the group' : esc(bLabel(b)) + "'s"} check-in code is <b>${tvAtt.code(b.id)}</b></div>`;
   }
   if (online && b.status === 'upcoming') detail = '<div class="small muted">2Verse records when the seeker joins and leaves the video room. Nothing to do.</div>';
   return `<div class="prep"><div class="prep-h"><b>Attendance</b><span class="small muted">${online ? 'Online · automatic' : 'In person · QR check-in'}</span></div><div class="prep-b">
@@ -2646,6 +2674,75 @@ function wireAtt(body, b){
     if (x.dataset.att === 'scan'){ closeModal(); return scanModal(b.id); }
     const late = checkIn(b, 'manual', 1); closeModal(); commit(); toast(`${bLabel(b)} marked present${late >= 10 ? ` · ${late} min late` : ''}`);
   });
+}
+
+
+/* =====================================================================
+   HEALER VIDEO ROOM (online sessions) · attendance captured automatically
+   ===================================================================== */
+/* the healer can open the room 15 minutes before the start, until the session ends */
+const roomState = b => { if (b.format === 'Online' && b.status === 'upcoming'){ if (b.date !== TODAY) return b.date > TODAY ? 'soon' : 'over'; const st = toMin(b.time), now = toMin(NOW_T); return now < st - 15 ? 'soon' : now > st + bDur(b) ? 'over' : 'open'; } return 'na'; };
+const GUESTS = ['Mira K.','Hannah K.','Tom B.','Isha R.','Omar F.','Claire D.','Ben A.','Sofia G.','Jonas P.','Grace W.','Maya C.','Leo M.','Asha V.','Nina S.','Ravi P.','Elena T.','Kenji O.','Zara H.','Arun D.','Lea B.'];
+function joinBtn(b, cls = 'btn sm p'){
+  const st = roomState(b); if (st === 'na' || st === 'over') return '';
+  return `<button type="button" class="${cls}" data-join="${b.id}">${ico('i-video')}${st === 'open' ? 'Join now' : `Join · opens ${f12(hhmm(toMin(b.time) - 15))}`}</button>`;
+}
+function tryJoin(id){
+  const b = booking(id), st = roomState(b);
+  if (st === 'open') return healerRoom(id);
+  confirmBox('The room is not open yet', `Your room for ${esc(service(b.service).name)} opens 15 minutes before the start, at ${f12(hhmm(toMin(b.time) - 15))} IST on ${fDate(b.date)}.`, 'Demo: open it now', false, () => setTimeout(() => healerRoom(id), 50));
+}
+document.addEventListener('click', e => { const j = e.target.closest('[data-join]'); if (j){ e.preventDefault(); e.stopPropagation(); if (modalEl.classList.contains('open')) closeModal(); tryJoin(j.dataset.join); } }, true);
+let hrT = null;
+function healerRoom(id){
+  const b = booking(id), s = service(b.service), grp = !b.seeker, p = b.seeker && seeker(b.seeker), dur = bDur(b);
+  const startLate = Math.max(0, toMin(NOW_T) - toMin(b.time));
+  /* who is in the room: one seeker, or everyone who booked a seat */
+  const people = grp ? Array.from({length:b.seats}, (_, i) => ({name:GUESTS[i % GUESTS.length], col:['--chart-1','--chart-2','--primary','--accent','--gold-strong','--primary-deep'][i % 6], joined:null, late:0})) : [{name:p.name, short:p.short, col:p.col, joined:null, late:0}];
+  let sec = 0, mic = true, cam = true, tab = grp ? 'att' : 'seeker';
+  const now = () => hhmm(Math.max(toMin(NOW_T), toMin(b.time) - 15) + Math.floor(sec / 60));
+  const el = document.createElement('div'); el.className = 'hroom'; el.id = 'hroom'; document.body.appendChild(el); document.body.style.overflow = 'hidden';
+  el.innerHTML = `<div class="hr-stage"><div class="hr-top"><b>${esc(s.name)}</b><span class="hr-rec"><i></i>Live · end-to-end encrypted</span><span class="hr-att">${ico('i-check','i xs')}Attendance is recorded automatically</span><span class="grow"></span><span id="hrTime">00:00</span></div>
+    <div class="hr-grid ${grp ? 'many' : ''}" id="hrGrid"></div>
+    <div class="hr-ctrl"><button type="button" id="hrMic" aria-label="Mute">${ico('i-mic')}</button><button type="button" id="hrCam" aria-label="Camera">${ico('i-video')}</button><button type="button" id="hrSide" aria-label="Side panel">${ico('i-users')}</button><button type="button" class="end" id="hrEnd">${ico('i-x')}End session</button></div></div>
+    <aside class="hr-side"><div class="hr-tabs">${grp ? '' : '<button type="button" data-ht="seeker">Seeker</button>'}<button type="button" data-ht="att">Attendance</button><button type="button" data-ht="notes">Notes</button></div><div class="hr-body" id="hrBody"></div></aside>`;
+  const grid = () => { $('#hrGrid').innerHTML = people.map(x => `<div class="hr-tile ${x.joined ? '' : 'wait'}"><span class="av xl" style="background:var(${x.col})">${x.name[0]}</span><span class="hr-name">${esc(x.name)}${x.joined ? '' : ' · waiting to join'}</span></div>`).join('') + `<div class="hr-tile me ${cam ? '' : 'off'}"><span class="av xl" style="background:var(--primary)">A</span><span class="hr-name">You${mic ? '' : ' · muted'}</span></div>`; };
+  const side = () => {
+    $$('[data-ht]', el).forEach(x => x.classList.toggle('on', x.dataset.ht === tab));
+    const pr = s.prep || {}, qs = linesOf(pr.questions), pa = b.prep;
+    if (tab === 'seeker') $('#hrBody').innerHTML = `<b>${esc(p.name)}</b><div class="small muted">${esc(p.city)} · ${esc(p.goals || '')}</div>
+      ${qs.length ? `<h4>Their answers</h4>${qs.map((q, i) => `<div class="hr-qa"><small>${esc(q)}</small>${pa && pa.answers[i] ? esc(pa.answers[i]) : '<span class="muted">No answer</span>'}</div>`).join('')}` : ''}
+      ${p.notes ? `<h4>Your note from last time</h4><p class="small">${esc(p.notes)}</p>` : ''}`;
+    if (tab === 'att'){ const inn = people.filter(x => x.joined).length;
+      $('#hrBody').innerHTML = `<div class="hr-count"><b>${inn}</b> of ${people.length} in the room</div><p class="small muted">Join and leave times are saved when you end the session. Present = in the room for at least half the session; late = joined 10+ minutes after the start.</p>
+        ${people.map(x => `<div class="hr-p"><span class="av s" style="background:var(${x.col})">${x.name[0]}</span><span class="grow"><b>${esc(x.name)}</b><small>${x.joined ? `Joined ${f12(x.joined)}` : 'Not joined yet'}</small></span><span class="pill ${x.joined ? (x.late >= 10 ? 'rev' : 'ok') : 'done'}">${x.joined ? (x.late >= 10 ? `Late ${x.late} min` : 'In the room') : 'Waiting'}</span></div>`).join('')}`; }
+    if (tab === 'notes'){ $('#hrBody').innerHTML = `<p class="small muted">Private session notes. Saved to ${grp ? 'this booking' : esc(p.short) + "'s profile"}.</p><textarea class="ta" id="hrNotes" style="min-height:220px">${esc(grp ? (b.notes || '') : (p.notes || ''))}</textarea>`; $('#hrNotes').oninput = e => { if (grp) b.notes = e.target.value; else p.notes = e.target.value; save(); }; }
+  };
+  $$('[data-ht]', el).forEach(x => x.onclick = () => { tab = x.dataset.ht; side(); });
+  $('#hrMic').onclick = e => { mic = !mic; e.currentTarget.classList.toggle('off', !mic); grid(); };
+  $('#hrCam').onclick = e => { cam = !cam; e.currentTarget.classList.toggle('off', !cam); grid(); };
+  $('#hrSide').onclick = () => el.classList.toggle(innerWidth <= 900 ? 'side-m' : 'noside');
+  /* demo: seekers arrive a few seconds after the healer opens the room */
+  const skip = grp ? new Set([b.seats - 1]) : new Set();
+  people.forEach((x, i) => { if (skip.has(i)) return; setTimeout(() => { if (!document.body.contains(el)) return; x.joined = hhmm(Math.max(toMin(NOW_T), toMin(b.time)) + (grp && i > b.seats - 3 ? 12 : 0)); x.late = Math.max(0, toMin(x.joined) - toMin(b.time)); grid(); side(); toast(`${x.short || x.name} joined`); }, 1800 + i * 700); });
+  grid(); side();
+  clearInterval(hrT); hrT = setInterval(() => { const t = $('#hrTime'); if (!t) return clearInterval(hrT); sec++; t.textContent = `${String(Math.floor(sec / 60)).padStart(2, '0')}:${String(sec % 60).padStart(2, '0')}`; }, 1000);
+  const close = () => { clearInterval(hrT); el.remove(); document.body.style.overflow = ''; };
+  $('#hrEnd').onclick = () => {
+    const inn = people.filter(x => x.joined);
+    const box = document.createElement('div'); box.className = 'hr-confirm'; box.innerHTML = `<div class="card"><h3>End the session for everyone?</h3><p class="small muted" style="margin:6px 0 14px">${inn.length} of ${people.length} ${grp ? 'seekers' : 'seeker'} joined. We will save attendance and mark the session completed.</p>
+      <div class="row" style="gap:8px;justify-content:flex-end"><button type="button" class="btn g" data-k>Keep going</button><button type="button" class="btn p" data-e>End and save</button></div></div>`;
+    el.appendChild(box);
+    box.querySelector('[data-k]').onclick = () => box.remove();
+    box.querySelector('[data-e]').onclick = () => {
+      const end = hhmm(toMin(b.time) + dur);
+      if (grp) b.att = {mode:'auto', checked:inn.length};
+      else { const x = people[0]; b.att = x.joined ? {mode:'auto', joined:x.joined, left:end, mins:Math.max(1, dur - x.late), late:x.late} : {mode:'auto', mins:0}; }
+      b.status = b.att.mins === 0 ? 'no-show' : 'completed';
+      close(); commit();
+      const i = attInfo(b); toast(`Session ended · attendance saved: ${i.label}`);
+    };
+  };
 }
 
 /* =====================================================================
