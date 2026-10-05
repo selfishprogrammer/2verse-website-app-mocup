@@ -737,6 +737,40 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 /* ===== availability (1:1) ===== */
 .wk-avail{border:1px solid var(--line);border-radius:16px;overflow:hidden}
 .pill.pk{white-space:normal;line-height:1.35}
+/* ===== invite clients ===== */
+.inv-kpis{grid-template-columns:repeat(3,1fr)}
+.irow{display:flex;align-items:center}.irow.mt8{margin-top:8px}.irow.mt16{margin-top:16px}
+.wa-b,.sms-b,.mp-b,.mp-h{overflow-wrap:anywhere}
+.inv-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.inv-comp{display:flex;flex-direction:column;gap:10px}
+.inv-side{display:flex;flex-direction:column;gap:16px;position:sticky;top:90px}
+.seg button{display:inline-flex;align-items:center;gap:6px}
+.chip-r{display:inline-flex;cursor:pointer}.chip-r input{position:absolute;opacity:0;pointer-events:none}
+.chip-r span{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;border:1.5px solid var(--line);font-weight:600;font-size:13.5px;background:var(--surface)}
+.chip-r input:checked+span{border-color:var(--primary);background:var(--soft-sage);color:var(--primary)}
+.chip-r input:focus-visible+span{outline:2px solid var(--primary);outline-offset:2px}
+.inv-rows{display:flex;flex-direction:column;gap:8px}
+.inv-row{display:grid;grid-template-columns:1fr 1.2fr 1fr auto;gap:8px;align-items:center}
+.inv-row .inp{height:40px}
+.inv-err{grid-column:1/-1;color:var(--danger);font-size:12px;margin-top:-4px}
+.csv-tbl{max-height:280px;overflow:auto;margin-top:8px;border:1px solid var(--line);border-radius:12px}
+.csv-tbl .dt th,.csv-tbl .dt td{padding:8px 10px;font-size:13px}
+.inv-past{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-top:8px}
+.inv-p{display:flex;gap:10px;align-items:center;padding:8px 10px;border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.inv-p:has(input:checked){border-color:var(--primary);background:var(--soft-sage)}
+.inv-p b{display:block;font-size:13.5px}.inv-p small{font-size:12px;color:var(--muted)}
+.inv-link{display:flex;gap:12px;align-items:center}
+.inv-qr{width:92px;height:92px;flex-shrink:0;background:#fff;border-radius:10px;padding:4px}.inv-qr svg{width:100%;height:100%;display:block}
+.inv-link code{display:block;font-size:11.5px;word-break:break-all;color:var(--ink-2);background:var(--surface-2);padding:6px 8px;border-radius:8px}
+.wa-prev{background:#e7ddd3;border-radius:14px;padding:14px}
+.wa-b{background:#dcf8c6;color:#1b1b1b;border-radius:10px 10px 2px 10px;padding:9px 11px;font-size:13.5px;line-height:1.45;margin-left:24px;position:relative}
+.wa-b .lnk{color:#0b6bcb}.wa-t{display:block;text-align:right;font-size:10.5px;color:#667;margin-top:4px}
+.sms-prev{display:flex;flex-direction:column;gap:6px}.sms-b{background:var(--surface-2);border-radius:14px 14px 14px 4px;padding:10px 12px;font-size:13.5px;line-height:1.45}
+.mail-prev{border:1px solid var(--line);border-radius:12px;overflow:hidden}.mp-h{padding:10px 12px;background:var(--surface-2);display:flex;flex-direction:column;gap:2px}.mp-h small{font-size:11.5px;color:var(--muted)}
+.mp-b{padding:12px;font-size:13.5px;line-height:1.5;display:flex;flex-direction:column;gap:10px}.mp-btn{align-self:flex-start;background:var(--primary);color:var(--on-primary);padding:8px 14px;border-radius:99px;font-weight:600;font-size:13px}
+@media (max-width:1100px){.inv-grid{grid-template-columns:1fr}.inv-side{position:static}}
+@media (max-width:720px){.inv-kpis{grid-template-columns:1fr}.inv-row{grid-template-columns:1fr auto}.inv-row .inp:nth-child(2),.inv-row .inp:nth-child(3){grid-column:1}}
+
 /* ===== healer video room ===== */
 .hroom{position:fixed;inset:0;z-index:80;background:#0b1416;color:#eef3ef;display:grid;grid-template-columns:1fr 340px}
 .hroom.noside{grid-template-columns:1fr}.hroom.noside .hr-side{display:none}
@@ -936,6 +970,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
     <button class="nav" data-view="seekers"><svg class="i"><use href="#i-users"/></svg>Seekers</button>
     <button class="nav" data-view="reviews"><svg class="i"><use href="#i-star"/></svg>Reviews<span class="cnt" id="navRv"></span></button>
     <div class="nav-l">Grow</div>
+    <button class="nav" data-view="invite"><svg class="i"><use href="#i-send"/></svg>Invite clients</button>
     <button class="nav" data-view="earnings"><svg class="i"><use href="#i-wallet"/></svg>Earnings</button>
     <button class="nav" data-view="content"><svg class="i"><use href="#i-article"/></svg>Articles &amp; events</button>
     <button class="nav" data-view="social"><svg class="i"><use href="#i-share"/></svg>Social media<span class="cnt" id="navSocial"></span></button>
@@ -974,6 +1009,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
       <section class="view" id="v-messages"></section>
       <section class="view" id="v-seekers"></section>
       <section class="view" id="v-reviews"></section>
+      <section class="view" id="v-invite"></section>
       <section class="view" id="v-earnings"></section>
       <section class="view" id="v-content"></section>
       <section class="view" id="v-social"></section>
@@ -1363,7 +1399,7 @@ const stars = (n, cls = '') => `<span class="stars ${cls}" aria-label="${n} out 
    Seed data (a realistic week for healer Ananya Rawat)
    ===================================================================== */
 const DEF = {
-  v: 7,
+  v: 8,
   theme: 'dawn', available: true,
   seekers: [
     {id:'sarah', name:'Sarah Mitchell', short:'Sarah M.', city:'London', tz:1, col:'--accent-strong', goals:'Sleep, anxiety', notes:'Responds well to long exhales. Prefers evening sessions. Shoulder tension eases after round two.'},
@@ -1548,6 +1584,16 @@ const DEF = {
   DEF.bookings.unshift(
     {id:'BK-1059', seeker:'priya', service:'s1', date:'2026-09-30', time:'13:30', format:'In person', cur:'INR', amount:2500, status:'upcoming', pay:'Paid', booked:'2026-09-28'},
     {id:'BK-1060', seeker:null, seats:6, service:'s5', date:'2026-10-01', time:'06:00', format:'In person', cur:'INR', amount:7200, status:'upcoming', pay:'Paid', booked:'2026-09-27'});
+})();
+
+/* invites the healer has sent to existing clients */
+(function seedInvites(){
+  DEF.invites = [
+    {id:'iv1', name:'Kavita Joshi', email:'kavita.j@example.com', phone:'+919830012345', kind:'package', target:'an-p1', label:'Sleep reset: 5-session journey', ch:['email','whatsapp'], disc:10, sent:'2026-09-22', status:'booked'},
+    {id:'iv2', name:'Ben Harper', email:'ben.harper@example.com', phone:'', kind:'profile', target:'', label:'Profile', ch:['email'], disc:0, sent:'2026-09-24', status:'joined'},
+    {id:'iv3', name:'Meenal Rao', email:'', phone:'+919900112233', kind:'service', target:'s4', label:'Evening yoga nidra', ch:['whatsapp','sms'], disc:0, sent:'2026-09-26', status:'opened'},
+    {id:'iv4', name:'Julia Weber', email:'julia.w@example.de', phone:'', kind:'package', target:'an-p2', label:'Ganga sunrise breath week', ch:['email'], disc:15, sent:'2026-09-28', status:'sent'},
+    {id:'iv5', name:'Arnav Mehta', email:'arnav@example', phone:'', kind:'profile', target:'', label:'Profile', ch:['email'], disc:0, sent:'2026-09-29', status:'bounced'}];
 })();
 const KEY = '2verse-healer-v5';
 let S;
@@ -1994,6 +2040,7 @@ function svcCard(s){
         : `<button class="btn sm g" data-act="pause" data-id="${s.id}">${ico('i-pause')}Pause</button>`}
       <span class="grow"></span>
       ${!done ? `<button class="icon-btn" data-act="edit" data-id="${s.id}" aria-label="Edit ${esc(s.name)}" title="Edit">${ico('i-edit')}</button>` : ''}
+      ${s.status === 'active' ? `<button class="icon-btn" data-act="invite" data-id="${s.id}" aria-label="Invite clients to ${esc(s.name)}" title="Invite clients">${ico('i-send')}</button>` : ''}
       <button class="icon-btn" data-act="dup" data-id="${s.id}" aria-label="Duplicate ${esc(s.name)}" title="Duplicate">${ico('i-copy')}</button>
       <button class="icon-btn danger" data-act="del" data-id="${s.id}" aria-label="Delete ${esc(s.name)}" title="Delete">${ico('i-trash')}</button>
     </div></div>`;
@@ -2002,6 +2049,7 @@ function svcAction(act, id){
   const s = service(id);
   const log = t => s.history.push([TODAY, t]);
   if (act === 'edit') return serviceModal(id);
+  if (act === 'invite') return go('invite', {preset:{kind:'service', id}});
   if (act === 'rerun') return serviceModal(id, null, true);
   if (act === 'pause'){ s.status = 'paused'; log('Bookings paused'); commit(); return toast(`${s.name} paused. Existing bookings stay confirmed.`); }
   if (act === 'resume'){ s.status = 'active'; log('Bookings resumed'); commit(); return toast(`${s.name} is open for booking again`); }
@@ -2331,6 +2379,7 @@ function pkCard(p){
       ${p.status === 'draft' ? `<button class="btn sm p" data-act="publish" data-id="${p.id}">Publish</button>` : p.status === 'paused' ? `<button class="btn sm p" data-act="resume" data-id="${p.id}">Resume sales</button>` : `<button class="btn sm g" data-act="pause" data-id="${p.id}">${ico('i-pause')}Pause</button>`}
       <span class="grow"></span>
       <button class="icon-btn" data-act="edit" data-id="${p.id}" aria-label="Edit ${esc(p.name)}" title="Edit">${ico('i-edit')}</button>
+      ${p.status === 'active' ? `<button class="icon-btn" data-act="invite" data-id="${p.id}" aria-label="Invite clients to ${esc(p.name)}" title="Invite clients">${ico('i-send')}</button>` : ''}
       <button class="icon-btn" data-act="dup" data-id="${p.id}" aria-label="Duplicate ${esc(p.name)}" title="Duplicate">${ico('i-copy')}</button>
       <button class="icon-btn danger" data-act="del" data-id="${p.id}" aria-label="Delete ${esc(p.name)}" title="Delete">${ico('i-trash')}</button>
     </div></div>`;
@@ -2339,6 +2388,7 @@ function pkAction(act, id){
   if (act === 'new') return packageModal();
   const p = pack(id), log = t => p.history.push([TODAY, t]);
   if (act === 'edit') return packageModal(id);
+  if (act === 'invite') return go('invite', {preset:{kind:'package', id}});
   if (act === 'pause'){ p.status = 'paused'; log('Sales paused'); commit(); return toast(`${p.name} paused. Enrolled seekers keep their sessions.`); }
   if (act === 'resume'){ p.status = 'active'; log('Sales resumed'); commit(); return toast(`${p.name} is on sale again`); }
   if (act === 'publish'){ p.status = 'active'; log('Published'); pkTab = 'active'; commit(); return toast(`${p.name} is live on your profile`); }
@@ -2743,6 +2793,188 @@ function healerRoom(id){
       const i = attInfo(b); toast(`Session ended · attendance saved: ${i.label}`);
     };
   };
+}
+
+
+/* =====================================================================
+   INVITE CLIENTS: profile, a service or a package · email, SMS, WhatsApp · one by one, past seekers or CSV
+   ===================================================================== */
+const WEB = 'https://2verse.com';
+/* dashboard service ids → public ids on the seeker site */
+const PUB = {s1:'an1', s2:'an2', s3:'an3', s4:'an4', s5:'an5'};
+const invTarget = (kind, id) => kind === 'service' ? service(id) && {label:service(id).name, path:`svc/${PUB[id] || id}`} : kind === 'package' ? pack(id) && {label:pack(id).name, path:`pkg/${id}`} : {label:'my profile', path:'profile/-'};
+const invLink = (kind, id, ref) => `${WEB}/web#/invite/ananya/${invTarget(kind, id).path}/${ref || 'link'}`;
+const INV_TPL = {
+  email:{subject:'{healer} has invited you to 2Verse', body:'Hi {first_name},\n\nI now take bookings on 2Verse, where you can see my open times, book and pay in one place, and join online sessions.\n\nI would love to see you for {offer}.{discount_line}\n\nBook here: {link}\n\nWith warmth,\n{healer}'},
+  sms:{body:'Hi {first_name}, {healer} here. You can now book {offer} with me on 2Verse:{discount_short} {link} Reply STOP to opt out'},
+  whatsapp:{body:'Namaste {first_name} 🙏\n{healer} here. I now take bookings on 2Verse. You can book {offer} and pay in one place.{discount_line}\n\n{link}'}
+};
+const normPhone = v => { const d = String(v || '').replace(/[^\d+]/g, ''); if (!d) return ''; if (d.startsWith('+')) return d.length >= 9 ? d : null; if (d.length === 10) return '+91' + d; if (d.length === 12 && d.startsWith('91')) return '+' + d; return d.length >= 9 ? '+' + d : null; };
+const validEmailD = e => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(e || '').trim());
+function parseCSV(text){
+  const rows = []; let row = [], cur = '', q = false;
+  for (let i = 0; i < text.length; i++){ const c = text[i];
+    if (q){ if (c === '"' && text[i + 1] === '"'){ cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
+    else if (c === '"') q = true; else if (c === ',') { row.push(cur); cur = ''; } else if (c === '\n' || c === '\r'){ if (c === '\r' && text[i + 1] === '\n') i++; row.push(cur); rows.push(row); row = []; cur = ''; } else cur += c; }
+  if (cur || row.length){ row.push(cur); rows.push(row); }
+  return rows.filter(r => r.some(x => x.trim()));
+}
+/* turn CSV rows into recipients, finding the name / email / phone columns by header */
+function csvRecipients(text){
+  const rows = parseCSV(text); if (!rows.length) return {list:[], error:'The file is empty.'};
+  const h = rows[0].map(x => x.trim().toLowerCase());
+  const col = re => h.findIndex(x => re.test(x));
+  let ni = col(/^(full\s*)?name|^client|^first/), ei = col(/mail/), pi = col(/phone|mobile|whats|contact|number/);
+  const hasHeader = ni >= 0 || ei >= 0 || pi >= 0, body = hasHeader ? rows.slice(1) : rows;
+  if (!hasHeader){ ni = 0; ei = 1; pi = 2; }
+  if (body.length > 500) return {list:[], error:`This file has ${body.length} rows. Please upload up to 500 at a time.`};
+  return {list:body.map(r => ({name:(r[ni] || '').trim(), email:(r[ei] || '').trim(), phone:(r[pi] || '').trim()}))};
+}
+function checkRecipients(list){
+  const seen = new Set(), known = new Set([...S.seekers.map(s => s.name.toLowerCase()), ...(S.invites || []).map(i => (i.email || i.phone || '').toLowerCase())]);
+  return list.map(r => {
+    const em = r.email && validEmailD(r.email) ? r.email.toLowerCase() : '', ph = r.phone ? normPhone(r.phone) : '';
+    const issues = [];
+    if (!r.name) issues.push('No name');
+    if (r.email && !em) issues.push('Email looks wrong');
+    if (r.phone && !ph) issues.push('Phone looks wrong');
+    if (!em && !ph) issues.push('No email or phone');
+    const key = em || ph; let dup = false;
+    if (key){ if (seen.has(key)) { issues.push('Duplicate in this list'); dup = true; } seen.add(key); }
+    const already = key && known.has(key);
+    return Object.assign({}, r, {email:em, phone:ph || '', issues, ok:!issues.length, already, sel:!issues.length && !already});
+  });
+}
+let INV = null;
+RENDER.invite = (o = {}) => {
+  S.invites = S.invites || [];
+  if (!INV || o.preset) INV = {kind:(o.preset && o.preset.kind) || 'profile', id:(o.preset && o.preset.id) || '', ch:{email:true, sms:false, whatsapp:true}, src:'manual', manual:[{name:'', email:'', phone:''}], csv:[], past:[], disc:0, consent:false, tpl:clone(INV_TPL), prevCh:'whatsapp', csvName:''};
+  const inv = S.invites, n = st => inv.filter(i => i.status === st || (st === 'joined' && i.status === 'booked')).length;
+  const sent = inv.length, joined = n('joined'), booked = inv.filter(i => i.status === 'booked').length;
+  const actS = S.services.filter(s => s.status === 'active'), actP = (S.packs || []).filter(p => p.status === 'active');
+  $('#v-invite').innerHTML = `
+  <div class="head"><div><span class="eyebrow">Bring your clients with you</span><h1>Invite clients</h1><p>Invite people you already work with to book you on 2Verse: your profile, a service or a package. Send by email, SMS or WhatsApp, one at a time or from a CSV.</p></div></div>
+  <div class="kpis inv-kpis">
+    <div class="card kpi"><div class="lbl"><span class="ic" style="background:var(--soft-sky)">${ico('i-send')}</span>Invites sent</div><div class="val">${sent}</div><div class="sub">${inv.filter(i => i.sent >= addDays(TODAY, -30)).length} in the last 30 days</div></div>
+    <div class="card kpi"><div class="lbl"><span class="ic" style="background:var(--soft-sage)">${ico('i-user')}</span>Joined 2Verse</div><div class="val">${joined}</div><div class="sub">${sent ? Math.round(joined / sent * 100) : 0}% of invites</div></div>
+    <div class="card kpi"><div class="lbl"><span class="ic" style="background:var(--soft-gold);color:var(--gold-strong)">${ico('i-cal')}</span>Booked a session</div><div class="val">${booked}</div><div class="sub">${joined ? Math.round(booked / joined * 100) : 0}% of those who joined</div></div>
+  </div>
+  <div class="inv-grid">
+    <div class="card inv-comp">
+      <div class="sm-sec" style="margin-top:0;padding-top:0;border:none"><span class="sm-n">1</span><div><h3>Invite them to</h3></div></div>
+      <div class="seg" id="invKind">${[['profile','My profile','i-user'],['service','A service','i-leaf'],['package','A package','i-layers']].map(([k, l, i]) => `<button type="button" data-k="${k}" class="${INV.kind === k ? 'on' : ''}">${ico(i,'i xs')}${l}</button>`).join('')}</div>
+      ${INV.kind === 'service' ? `<label class="field mt8"><span>Service</span><select class="sel" id="invId">${actS.map(s => `<option value="${s.id}" ${s.id === INV.id ? 'selected' : ''}>${esc(s.name)} · ${s.type} · ${s.format}</option>`).join('')}</select></label>` : ''}
+      ${INV.kind === 'package' ? `<label class="field mt8"><span>Package</span><select class="sel" id="invId">${actP.map(p => `<option value="${p.id}" ${p.id === INV.id ? 'selected' : ''}>${esc(p.name)} · ${p.items.length} sessions</option>`).join('')}</select></label>` : ''}
+      <label class="check mt8"><input type="checkbox" id="invDiscOn" ${INV.disc ? 'checked' : ''}><span>Add a welcome offer for their first booking</span></label>
+      <div class="irow mt8" id="invDiscRow" ${INV.disc ? '' : 'hidden'} style="gap:8px">${[10,15,20].map(v => `<label class="chip-r"><input type="radio" name="invDisc" value="${v}" ${INV.disc === v ? 'checked' : ''}><span>${v}% off</span></label>`).join('')}</div>
+
+      <div class="sm-sec"><span class="sm-n">2</span><div><h3>Send by</h3><p>Each person gets the invite on every channel you pick that they have details for.</p></div></div>
+      <div class="irow" style="gap:8px;flex-wrap:wrap">${[['email','Email','i-article'],['sms','SMS','i-chat'],['whatsapp','WhatsApp','i-send']].map(([k, l, i]) => `<label class="chip-r ch"><input type="checkbox" data-ch="${k}" ${INV.ch[k] ? 'checked' : ''}><span>${ico(i,'i xs')}${l}</span></label>`).join('')}</div>
+
+      <div class="sm-sec"><span class="sm-n">3</span><div><h3>Who</h3></div></div>
+      <div class="seg" id="invSrc">${[['manual','Add people'],['csv','Upload CSV'],['past','Past seekers']].map(([k, l]) => `<button type="button" data-s="${k}" class="${INV.src === k ? 'on' : ''}">${l}</button>`).join('')}</div>
+      <div id="invWho" class="mt8"></div>
+
+      <div class="sm-sec"><span class="sm-n">4</span><div><h3>Message</h3><p>Use {first_name}, {healer}, {offer} and {link}. They are filled in for each person.</p></div></div>
+      <div class="seg" id="invTplTabs">${['email','sms','whatsapp'].map(k => `<button type="button" data-t="${k}" class="${INV.prevCh === k ? 'on' : ''}">${{email:'Email', sms:'SMS', whatsapp:'WhatsApp'}[k]}</button>`).join('')}</div>
+      <div id="invTpl" class="mt8"></div>
+      <label class="check mt16"><input type="checkbox" id="invConsent" ${INV.consent ? 'checked' : ''}><span>These are my own clients and they are happy to hear from me. Each message includes an easy way to opt out.</span></label>
+      <div class="irow mt16" style="justify-content:space-between;gap:10px;flex-wrap:wrap"><span class="small muted" id="invCount"></span><button type="button" class="btn p" id="invSend">${ico('i-send')}Send invites</button></div>
+    </div>
+    <div class="inv-side">
+      <div class="card"><b>Preview</b><div class="small muted" style="margin-top:2px">What the first person will receive</div><div id="invPrev" class="mt8"></div></div>
+      <div class="card"><b>Your invite link</b><p class="small muted" style="margin:4px 0 10px">Share it anywhere: your Instagram bio, a class group, a printed card at your studio.</p>
+        <div class="inv-link"><div class="inv-qr" id="invQr"></div><div style="min-width:0;flex:1"><code id="invUrl"></code><div class="irow mt8" style="gap:6px;flex-wrap:wrap"><button type="button" class="btn xs g" id="invCopy">${ico('i-copy','i xs')}Copy link</button><a class="btn xs g" id="invWa" target="_blank" rel="noopener">${ico('i-send','i xs')}Share on WhatsApp</a></div></div></div></div>
+    </div>
+  </div>
+  <div class="card mt16"><div class="card-h"><h2>Sent invites</h2><small>${sent} total</small></div>
+    <div style="overflow-x:auto"><table class="dt"><thead><tr><th>Person</th><th>Invited to</th><th>Sent by</th><th>Sent</th><th>Status</th><th></th></tr></thead><tbody>
+    ${inv.slice().sort((a, b) => b.sent.localeCompare(a.sent)).map(i => { const st = {sent:['done','Sent'], opened:['sky','Opened'], joined:['ok','Joined'], booked:['ok','Booked'], bounced:['bad','Not delivered']}[i.status] || ['done', i.status];
+      return `<tr><td><b style="font-size:14px">${esc(i.name)}</b><div class="small muted">${esc([i.email, i.phone].filter(Boolean).join(' · '))}</div></td><td>${esc(i.label)}${i.disc ? `<div class="small muted">${i.disc}% welcome offer</div>` : ''}</td>
+        <td>${i.ch.map(c => `<span class="pill sky" style="margin:1px">${{email:'Email', sms:'SMS', whatsapp:'WhatsApp'}[c]}</span>`).join('')}</td><td>${fShort(i.sent)}</td><td><span class="pill ${st[0]}">${st[1]}</span></td>
+        <td>${['sent','opened','bounced'].includes(i.status) ? `<button type="button" class="lnk small" data-resend="${i.id}">Resend</button>` : ''}</td></tr>`; }).join('') || '<tr><td colspan="6"><div class="empty">No invites yet.</div></td></tr>'}</tbody></table></div></div>`;
+  wireInvite();
+};
+function invRecipients(){ return INV.src === 'manual' ? checkRecipients(INV.manual.filter(r => r.name || r.email || r.phone)) : INV.src === 'csv' ? INV.csv : INV.past; }
+function fillTpl(t, r, ch){
+  const tg = invTarget(INV.kind, INV.id) || {label:'a session'}, offer = INV.kind === 'profile' ? 'a session' : tg.label;
+  const link = invLink(INV.kind, INV.id, 'INV' + Math.abs(pkHash((r.email || r.phone || r.name) + INV.kind + INV.id)) % 100000);
+  return t.replace(/\{first_name\}/g, (r.name || 'there').split(' ')[0]).replace(/\{healer\}/g, S.profile.display || 'Ananya Rawat').replace(/\{offer\}/g, offer)
+    .replace(/\{discount_line\}/g, INV.disc ? `\n\nAs a thank you for coming with me, your first booking is ${INV.disc}% off.` : '').replace(/\{discount_short\}/g, INV.disc ? ` ${INV.disc}% off your first booking.` : '').replace(/\{link\}/g, link);
+}
+function wireInvite(){
+  const v = $('#v-invite');
+  const drawWho = () => {
+    let h = '';
+    if (INV.src === 'manual'){ const rows = checkRecipients(INV.manual);
+      h = `<div class="inv-rows">${INV.manual.map((r, i) => `<div class="inv-row"><input class="inp" placeholder="Name" data-m="${i}|name" value="${esc(r.name)}"><input class="inp" placeholder="Email" data-m="${i}|email" value="${esc(r.email)}"><input class="inp" placeholder="Mobile / WhatsApp" data-m="${i}|phone" value="${esc(r.phone)}"><button type="button" class="icon-btn" data-mrm="${i}" aria-label="Remove">${ico('i-x')}</button>
+        ${(r.name || r.email || r.phone) && rows[i].issues.length ? `<small class="inv-err">${rows[i].issues.join(' · ')}</small>` : ''}</div>`).join('')}</div><button type="button" class="lnk small mt8" id="invAddRow">${ico('i-plus','i xs')}Add another person</button>`; }
+    if (INV.src === 'csv'){
+      const ok = INV.csv.filter(r => r.ok && !r.already).length, bad = INV.csv.filter(r => !r.ok).length, al = INV.csv.filter(r => r.already).length;
+      h = `<label class="drop" id="csvDrop"><span class="dz-ic">${ico('i-upload','i')}</span><span><b>${INV.csvName ? esc(INV.csvName) : 'Upload a CSV of your clients'}</b><small>Columns: name, email, phone · up to 500 rows · Excel: File → Save as → CSV</small></span><input type="file" id="csvFile" accept=".csv,text/csv"></label>
+        <div class="irow mt8" style="gap:10px;flex-wrap:wrap"><button type="button" class="lnk small" id="csvTpl">${ico('i-article','i xs')}Download a sample CSV</button><button type="button" class="lnk small" id="csvDemo">${ico('i-spark','i xs')}Demo: load 8 sample clients</button></div>
+        ${INV.csv.length ? `<div class="small mt8"><b>${INV.csv.length} rows</b> · <span style="color:var(--primary)">${ok} ready</span>${bad ? ` · <span style="color:var(--danger)">${bad} need fixing</span>` : ''}${al ? ` · ${al} already invited or on 2Verse` : ''}</div>
+        <div class="csv-tbl"><table class="dt"><thead><tr><th><input type="checkbox" id="csvAll" aria-label="Select all"></th><th>Name</th><th>Email</th><th>Phone</th><th>Check</th></tr></thead><tbody>${INV.csv.map((r, i) => `<tr><td><input type="checkbox" data-csel="${i}" ${r.sel ? 'checked' : ''} ${r.ok ? '' : 'disabled'}></td><td>${esc(r.name) || '<span class="muted">—</span>'}</td><td>${esc(r.email) || '<span class="muted">—</span>'}</td><td>${esc(r.phone) || '<span class="muted">—</span>'}</td><td>${r.ok ? (r.already ? '<span class="pill done">Already invited</span>' : '<span class="pill ok">Ready</span>') : `<span class="pill bad">${esc(r.issues[0])}</span>`}</td></tr>`).join('')}</tbody></table></div>` : ''}`; }
+    if (INV.src === 'past'){
+      if (!INV.past.length) INV.past = S.seekers.map((p, i) => ({name:p.name, email:p.id + '@example.com', phone:'', ok:true, issues:[], sel:false, city:p.city, id:p.id}));
+      h = `<p class="small muted">People who have booked you before. Invite them to something new, like a package.</p><div class="inv-past">${INV.past.map((r, i) => { const p = seeker(r.id); return `<label class="inv-p"><input type="checkbox" data-psel="${i}" ${r.sel ? 'checked' : ''}><span class="av s" style="background:var(${p.col})">${p.name[0]}</span><span class="grow"><b>${esc(p.name)}</b><small>${esc(p.city)}</small></span></label>`; }).join('')}</div>`; }
+    $('#invWho').innerHTML = h;
+    $$('[data-m]', v).forEach(el => el.oninput = () => { const [i, k] = el.dataset.m.split('|'); INV.manual[+i][k] = el.value; count(); prev(); });
+    $$('[data-m]', v).forEach(el => el.onchange = () => drawWho());
+    $$('[data-mrm]', v).forEach(b => b.onclick = () => { INV.manual.splice(+b.dataset.mrm, 1); if (!INV.manual.length) INV.manual.push({name:'', email:'', phone:''}); drawWho(); count(); prev(); });
+    $('#invAddRow') && ($('#invAddRow').onclick = () => { INV.manual.push({name:'', email:'', phone:''}); drawWho(); });
+    const loadCsv = (text, name) => { const r = csvRecipients(text); if (r.error) return toast(r.error); INV.csv = checkRecipients(r.list); INV.csvName = name; drawWho(); count(); prev(); toast(`${INV.csv.length} rows read from ${name}`); };
+    $('#csvFile') && ($('#csvFile').onchange = e => { const f = e.target.files[0]; if (!f) return; if (!/\.csv$/i.test(f.name) && f.type !== 'text/csv') return toast('Please upload a .csv file. In Excel or Google Sheets: File → Download / Save as → CSV.'); const rd = new FileReader(); rd.onload = () => loadCsv(String(rd.result), f.name); rd.readAsText(f); });
+    $('#csvTpl') && ($('#csvTpl').onclick = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['name,email,phone\nPriya Sharma,priya@example.com,+91 98200 12345\nJohn Miller,john@example.com,\n'], {type:'text/csv'})); a.download = '2verse-invite-sample.csv'; a.click(); });
+    $('#csvDemo') && ($('#csvDemo').onclick = () => loadCsv('Name,Email,Phone\nRitika Sen,ritika.sen@example.com,98300 11223\nMarco Rossi,marco@example.it,+39 347 555 0192\nAisha Khan,aisha.khan@example,9876501234\nDavid Cohen,david.cohen@example.com,\nNeha Gupta,,+91 99887 66554\nRitika Sen,ritika.sen@example.com,98300 11223\nTom Baker,,\nSophie Martin,sophie.m@example.fr,+33 6 12 34 56 78\n', 'clients.csv'));
+    $$('[data-csel]', v).forEach(c => c.onchange = () => { INV.csv[+c.dataset.csel].sel = c.checked; count(); });
+    $('#csvAll') && ($('#csvAll').onchange = e => { INV.csv.forEach(r => { if (r.ok) r.sel = e.target.checked; }); drawWho(); count(); });
+    $$('[data-psel]', v).forEach(c => c.onchange = () => { INV.past[+c.dataset.psel].sel = c.checked; count(); prev(); });
+  };
+  const drawTpl = () => { const k = INV.prevCh, t = INV.tpl[k];
+    $('#invTpl').innerHTML = `${k === 'email' ? `<label class="field"><span>Subject</span><input class="inp" id="tplSub" value="${esc(t.subject)}"></label>` : ''}<label class="field ${k === 'email' ? 'mt8' : ''}"><span>${k === 'sms' ? 'SMS text' : k === 'email' ? 'Email' : 'WhatsApp message'}</span><textarea class="ta" id="tplBody" data-veda="message" style="min-height:${k === 'sms' ? 80 : 150}px">${esc(t.body)}</textarea></label>
+      <div class="irow small muted" style="justify-content:space-between"><span>${k === 'whatsapp' ? 'Sent from the 2Verse WhatsApp Business number, on your behalf' : k === 'sms' ? 'Long messages are split into parts' : 'Sent from invites@2verse.com with your name'}</span><button type="button" class="lnk small" id="tplReset">Reset to default</button></div>`;
+    $('#tplBody').oninput = e => { t.body = e.target.value; prev(); };
+    $('#tplSub') && ($('#tplSub').oninput = e => { t.subject = e.target.value; prev(); });
+    $('#tplReset').onclick = () => { INV.tpl[k] = clone(INV_TPL[k]); drawTpl(); prev(); };
+    attachVeda($('#invTpl')); };
+  const prev = () => {
+    const rs = invRecipients().filter(r => r.sel !== false && r.ok !== false), r = rs[0] || {name:'Priya Sharma', email:'priya@example.com', phone:'+919820012345'}, k = INV.prevCh, t = INV.tpl[k];
+    const body = esc(fillTpl(t.body, r, k)).replace(/\n/g, '<br>').replace(/(https:\/\/[^\s<]+)/g, '<a href="#" onclick="return false" class="lnk">$1</a>');
+    $('#invPrev').innerHTML = k === 'whatsapp' ? `<div class="wa-prev"><div class="wa-b">${body}<span class="wa-t">${f12(NOW_T)} ✓✓</span></div></div>`
+      : k === 'sms' ? `<div class="sms-prev"><div class="sms-b">${body}</div><small class="muted">${fillTpl(t.body, r, k).length} characters · ${Math.ceil(fillTpl(t.body, r, k).length / 160)} SMS</small></div>`
+      : `<div class="mail-prev"><div class="mp-h"><b>${esc(fillTpl(t.subject, r, k))}</b><small>From: ${esc(S.profile.display)} via 2Verse &lt;invites@2verse.com&gt; · To: ${esc(r.email || '(no email)')}</small></div><div class="mp-b">${body}<div class="mp-btn">${INV.kind === 'package' ? 'View the package' : INV.kind === 'service' ? 'Book a time' : 'See my profile'}</div><small class="muted">Do not want invites like this? Unsubscribe in one click.</small></div></div>`;
+    const link = invLink(INV.kind, INV.id, 'link'); $('#invUrl').textContent = link; $('#invQr').innerHTML = tvAtt.qrSvg(link);
+    $('#invWa').href = 'https://wa.me/?text=' + encodeURIComponent(fillTpl(INV.tpl.whatsapp.body, {name:'there'}, 'whatsapp').replace('Namaste there', 'Namaste'));
+  };
+  const count = () => { const rs = invRecipients().filter(r => r.ok && r.sel !== false && !(INV.src === 'csv' && !r.sel)); const chs = Object.keys(INV.ch).filter(c => INV.ch[c]);
+    const msgs = rs.reduce((a, r) => a + chs.filter(c => c === 'email' ? r.email : r.phone).length, 0);
+    $('#invCount').textContent = rs.length ? `${rs.length} ${rs.length === 1 ? 'person' : 'people'} · ${msgs} message${msgs === 1 ? '' : 's'}` : 'Add at least one person';
+    $('#invSend').innerHTML = `${ico('i-send')}Send ${rs.length ? rs.length + ' ' : ''}invite${rs.length === 1 ? '' : 's'}`; return {rs, chs}; };
+  $$('#invKind button').forEach(b => b.onclick = () => { INV.kind = b.dataset.k; INV.id = INV.kind === 'service' ? (S.services.find(s => s.status === 'active') || {}).id : INV.kind === 'package' ? ((S.packs || []).find(p => p.status === 'active') || {}).id : ''; RENDER.invite(); });
+  $('#invId') && ($('#invId').onchange = e => { INV.id = e.target.value; prev(); });
+  if ((INV.kind === 'service' || INV.kind === 'package') && !INV.id && $('#invId')) INV.id = $('#invId').value;
+  $('#invDiscOn').onchange = e => { INV.disc = e.target.checked ? 10 : 0; $('#invDiscRow').hidden = !INV.disc; $$('[name=invDisc]').forEach(r => r.checked = +r.value === INV.disc); prev(); };
+  $$('[name=invDisc]').forEach(r => r.onchange = () => { INV.disc = +r.value; prev(); });
+  $$('[data-ch]').forEach(c => c.onchange = () => { INV.ch[c.dataset.ch] = c.checked; count(); });
+  $$('#invSrc button').forEach(b => b.onclick = () => { INV.src = b.dataset.s; $$('#invSrc button').forEach(x => x.classList.toggle('on', x === b)); drawWho(); count(); prev(); });
+  $$('#invTplTabs button').forEach(b => b.onclick = () => { INV.prevCh = b.dataset.t; $$('#invTplTabs button').forEach(x => x.classList.toggle('on', x === b)); drawTpl(); prev(); });
+  $('#invConsent').onchange = e => { INV.consent = e.target.checked; };
+  $('#invCopy').onclick = () => { try { navigator.clipboard.writeText($('#invUrl').textContent); } catch(e){} toast('Invite link copied'); };
+  $$('[data-resend]').forEach(b => b.onclick = () => { const i = S.invites.find(x => x.id === b.dataset.resend); i.sent = TODAY; i.status = 'sent'; i.resent = (i.resent || 0) + 1; commit(); toast(`Invite sent again to ${i.name}`); });
+  $('#invSend').onclick = () => {
+    const {rs, chs} = count();
+    if (!rs.length) return toast(INV.src === 'csv' ? 'Upload a CSV and select who to invite' : 'Add at least one person with an email or phone');
+    if (!chs.length) return toast('Choose at least one way to send: email, SMS or WhatsApp');
+    if (!rs.some(r => chs.some(c => c === 'email' ? r.email : r.phone))) return toast('None of these people have details for the channels you picked');
+    if ((INV.kind === 'service' || INV.kind === 'package') && !INV.id) return toast('Choose what to invite them to');
+    if (!INV.consent) return toast('Please confirm these are your own clients');
+    const tg = invTarget(INV.kind, INV.id);
+    rs.forEach(r => { const ch = chs.filter(c => c === 'email' ? r.email : r.phone); if (!ch.length) return;
+      S.invites.push({id:uid('iv'), name:r.name, email:r.email, phone:r.phone, kind:INV.kind, target:INV.id, label:INV.kind === 'profile' ? 'Profile' : tg.label, ch, disc:INV.disc, sent:TODAY, status:'sent'}); });
+    const n = rs.length; INV = null; save(); RENDER.invite(); toast(`${n} invite${n === 1 ? '' : 's'} sent. You will see here when they join and book.`);
+  };
+  drawWho(); drawTpl(); count(); prev();
 }
 
 /* =====================================================================

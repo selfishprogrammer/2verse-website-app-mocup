@@ -919,6 +919,7 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 .qr-done .i{width:40px;height:40px}.qr-done b{color:var(--ink);font-size:18px}
 .att-ok{color:var(--primary)!important;font-weight:600}
 .att-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.14);color:#e9f3ee;margin-left:8px}
+.inv-banner{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--soft-sage);margin-bottom:16px}.inv-banner b{display:block;font-size:14.5px}.inv-banner small{font-size:13px;color:var(--ink-2)}
 
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
@@ -1816,7 +1817,7 @@ const tgBtn = (on, label, attrs = '') => `<button type="button" class="tg" role=
    ===================================================================== */
 const R = {};                 // seeker views
 const A = {};                 // auth views
-const AUTH_ROUTES = ['signin','otp','join','waitlist','welcome','apply','status'];
+const AUTH_ROUTES = ['signin','otp','join','waitlist','welcome','apply','status','invite'];
 let route = {name:'', args:[]};
 function nav(h){ if (location.hash === h) render(); else location.hash = h; }
 function parse(){ const p = (location.hash || '#/').slice(2).split('/').filter(Boolean); return {name:p[0] || '', args:p.slice(1)}; }
@@ -1996,6 +1997,7 @@ A.otp = () => {
 };
 function finishAuth(){
   const p = S.auth.pending || {kind:'signin'}, id = S.auth.id, phone = !id.includes('@'), th = S.theme;
+  const invKeep = S.auth.invite || null;
   S.auth.pending = null;
   if (S.auth.role === 'healer'){
     if (p.kind === 'join'){ S.application = {step:1, d:Object.assign({name:p.name, loginBy:phone ? 'phone' : 'email', loginId:id}, phone ? {phone:id, phoneOk:true} : {email:id, emailOk:true}), status:null}; save(); return nav('#/apply/1'); }
@@ -2008,7 +2010,7 @@ function finishAuth(){
   if (p.kind === 'join'){
     const tzC = phone ? 'India' : (S.auth.country || 'United Kingdom'), c = COUNTRIES.find(x => x[0] === tzC);
     S = Object.assign(clone(DEF), {theme:th});
-    S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null};
+    S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null, invite:invKeep};
     S.me = Object.assign(clone(DEF.me), {name:p.name, first:p.name.split(' ')[0], login:phone ? 'phone' : 'email', email:phone ? '' : id, phone:phone ? id : '', emailVerified:!phone, phoneVerified:phone, country:c[0], tz:c[1], intentions:[], onboarded:false, safety:{conditions:[], notes:'', share:true}, whatsapp:true});
     S.bookings = []; S.threads = []; S.saved = [];
     S.notifs = [{id:'n0', ic:'i-spark', t:`Welcome to 2Verse, ${S.me.first}. Veda can help you find your first healer.`, at:'Just now', go:'#/home', unread:true}];
@@ -2020,9 +2022,9 @@ function finishAuth(){
     else if (loginId() !== id){ S.auth.prefill = id; save(); toast(`No 2Verse account for this ${phone ? 'number' : 'email'} yet. Create one in a minute.`); return nav('#/join'); }
     S.theme = th;
   }
-  S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null};
+  S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null, invite:invKeep};
   if (!S.me.onboarded){ save(); return nav('#/welcome/1'); }
-  save(); toast(`Welcome back, ${S.me.first}`); nav('#/home');
+  save(); if (inviteGo()) return; toast(`Welcome back, ${S.me.first}`); nav('#/home');
 }
 A.join = () => {
   setAuthWide(false);
@@ -2032,7 +2034,8 @@ A.join = () => {
   const draw = () => {
     const seekerSub = 'Find verified healers for sleep, stress, anxiety and more, online or in person. It takes a minute.';
     const healerSub = 'Offer your practice to seekers worldwide. Create your account, then complete a short application; every healer is verified before going live.';
-    authEl().innerHTML = `<span class="kicker">Create your account</span><h2 class="mt8">Join 2Verse</h2><p class="sub">${role === 'healer' ? healerSub : seekerSub}</p>
+    const iv = role === 'seeker' && inviteInfo(S.auth.invite);
+    authEl().innerHTML = `${iv ? `<div class="inv-banner">${port(iv.h, 's')}<span><b>${esc(iv.h.name)} invited you</b><small>to ${esc(iv.label)}. Create your account to book; it takes a minute.</small></span></div>` : ''}<span class="kicker">Create your account</span><h2 class="mt8">Join 2Verse</h2><p class="sub">${role === 'healer' ? healerSub : seekerSub}</p>
       <form id="fJoin" novalidate>${roleCards(role)}
         <div class="stack"><label class="field"><span>Full name</span><input class="inp" name="name" autocomplete="name" value="${esc(keep.name)}"></label>${regionSeg(rg)}</div>${idField(rg, pre && (pre.includes('@') === (rg === 'global')) ? pre : '')}
         <button class="btn p block lg mt24" type="submit">${rg === 'in' ? 'Send OTP' : 'Email me a code'}</button></form>
@@ -2052,6 +2055,14 @@ A.join = () => {
   };
   draw();
 };
+/* invite links from healers: #/invite/<healer>/<svc|pkg|profile>/<id>/<ref> */
+function inviteInfo(v){ if (!v) return null; const h = healer(v.h); if (!h) return null;
+  const it = v.kind === 'svc' ? h.services.find(x => x.id === v.id) : v.kind === 'pkg' ? pkOf(v.id) : null;
+  return {h, label:it ? (it.name || it.title) : 'their sessions', go:v.kind === 'svc' && it ? `#/book/${h.id}/${it.id}` : v.kind === 'pkg' && it ? `#/package/${it.id}` : `#/healer/${h.id}`}; }
+function inviteGo(){ const i = inviteInfo(S.auth.invite); S.auth.invite = null; save(); if (i){ toast(`Here is what ${i.h.name.split(' ')[0]} invited you to`); nav(i.go); return true; } return false; }
+A.invite = (h, kind, id, ref) => { S.auth.invite = {h, kind, id, ref}; save();
+  if (S.auth.signedIn && S.auth.role === 'seeker' && S.me.onboarded){ if (inviteGo()) return; toast('This invite link has expired. Explore healers instead'); return nav('#/explore'); }
+  nav('#/join'); };
 /* old waitlist links go to sign-up */
 A.waitlist = () => nav('#/join');
 
@@ -2139,7 +2150,7 @@ A.welcome = (n = '1') => {
     if (step === 2){ m.intentions = fd.getAll('need'); m.more = fd.get('more'); if (!m.intentions.length) return toast('Choose at least one, or "New to this"'); }
     if (step === 3){ m.format = fd.get('format') || 'Both'; m.langs = fd.getAll('langs'); m.intensity = fd.get('intensity') || 'Gentle'; m.budget = +fd.get('budget'); }
     if (step === 4){ if (!fd.get('consent')) return toast('Please confirm the safety note to continue'); m.safety.conditions = fd.getAll('cond'); m.safety.notes = fd.get('notes'); }
-    if (step === 5){ m.onboarded = true; save(); toast('You are all set'); return nav('#/home'); }
+    if (step === 5){ m.onboarded = true; save(); if (inviteGo()) return; toast('You are all set'); return nav('#/home'); }
     save(); nav('#/welcome/' + (step + 1)); };
 };
 
