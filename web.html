@@ -1043,7 +1043,7 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
   <aside class="auth-art" aria-hidden="true">
     <div class="orb o1"></div><div class="rings"></div><div class="orb o2"></div>
     <a class="logo" href="index.html"><svg width="34" height="34" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="19" style="stroke:var(--primary)" stroke-width="1.5"/><path d="M20 8c-4 5-4 11 0 16 4-5 4-11 0-16z" style="fill:var(--accent)"/><path d="M9 22c5-1 9 1 11 6-5 1-9-1-11-6zM31 22c-5-1-9 1-11 6 5 1 9-1 11-6z" style="fill:var(--primary)"/><circle cx="20" cy="31" r="1.6" style="fill:var(--gold)"/></svg><span>2<span class="v">V</span>erse</span></a>
-    <div class="q"><h1>Healing that is <em>verified</em>, personal and quietly yours.</h1><p>An invite-only circle of healers from Tapovan, Rishikesh. Every healer is checked by hand. Every review comes from a real session.</p></div>
+    <div class="q"><h1>Healing that is <em>verified</em>, personal and quietly yours.</h1><p>A curated circle of verified healers, rooted in Rishikesh and open to seekers everywhere. Every healer is checked by hand. Every review comes from a real session.</p></div>
     <div class="facts"><div><b>100</b>verified healers</div><div><b>5</b>practices</div><div><b>40+</b>countries</div></div>
   </aside>
   <section class="auth-panel">
@@ -1897,7 +1897,6 @@ $('#meBtn').onclick = e => {
    Outside India: email + email OTP to sign in; mobile is added and verified in onboarding.
    ===================================================================== */
 const DEMO_OTP = '246810';
-const INVITES = {'TAPOVAN26':'seeker', 'HEALER26':'healer'};
 const IN_TZ = (() => { try { return /Calcutta|Kolkata/.test(Intl.DateTimeFormat().resolvedOptions().timeZone); } catch(e){ return false; } })();
 const DIAL = [['+91','India'],['+44','United Kingdom'],['+1','United States'],['+1','Canada'],['+49','Germany'],['+33','France'],['+41','Switzerland'],['+971','UAE'],['+65','Singapore'],['+61','Australia']];
 const dialFor = c => (DIAL.find(d => d[1] === c) || ['+44'])[0];
@@ -1944,7 +1943,7 @@ A.signin = () => {
       <form id="fSignin" novalidate>${roleCards(role)}${regionSeg(rg)}${idField(rg, demoFor(role, rg))}
         <button class="btn p block lg mt16" type="submit">${rg === 'in' ? 'Send OTP' : 'Email me a code'}</button></form>
       ${rg === 'global' ? `<div class="or">or</div><div class="stack" style="gap:10px"><button class="btn g block" data-sso="Google">${ico('i-globe')}Continue with Google</button><button class="btn g block" data-sso="Apple">${ico('i-user')}Continue with Apple</button></div>` : ''}
-      <p class="mt24" style="text-align:center;color:var(--ink-2)">New to 2Verse? <a class="lnk" href="#/join">Join with an invite</a></p>
+      <p class="mt24" style="text-align:center;color:var(--ink-2)">New to 2Verse? <a class="lnk" href="#/join">Create an account</a></p>
       <div class="demo-hint">${ico('i-spark','i xs')} Demo accounts: Seeker in India <b>98200 12345</b> (Priya) · Seeker abroad <b>sarah.mitchell@example.com</b> · Healer <b>98765 43210</b> (Ananya).</div>`;
     const f = $('#fSignin');
     $$('[name=role]', f).forEach(r => r.onchange = () => { role = r.value; S.auth.role = role; draw(); });
@@ -2003,7 +2002,7 @@ function finishAuth(){
     const ap = S.application, mine = ap.d.loginId === id;
     if (mine && ap.status && ap.status !== 'approved') { save(); return nav('#/status'); }
     if (mine && !ap.status) { save(); return nav('#/apply/' + (ap.step || 1)); }
-    if (!mine && id !== DEMO_IDS.ananyaP && id !== DEMO_IDS.ananyaE){ S.auth.prefill = id; save(); toast(`No healer account for this ${phone ? 'number' : 'email'}. Join with your invite code.`); return nav('#/join'); }
+    if (!mine && id !== DEMO_IDS.ananyaP && id !== DEMO_IDS.ananyaE){ S.auth.prefill = id; save(); toast(`No healer account for this ${phone ? 'number' : 'email'}. Create one to apply.`); return nav('#/join'); }
     save(); toast('Opening your Healer dashboard'); setTimeout(() => location.href = 'healer.html', 500); return;
   }
   if (p.kind === 'join'){
@@ -2018,7 +2017,7 @@ function finishAuth(){
   /* sign in: find the account for this phone or email */
   if (loginId() !== id || !S.me.onboarded){
     if (id === DEMO_IDS.sarah) S = sarahState(); else if (id === DEMO_IDS.priya) S = priyaState();
-    else if (loginId() !== id){ S.auth.prefill = id; save(); toast(`No 2Verse account for this ${phone ? 'number' : 'email'}. 2Verse is invite-only.`); return nav('#/join'); }
+    else if (loginId() !== id){ S.auth.prefill = id; save(); toast(`No 2Verse account for this ${phone ? 'number' : 'email'} yet. Create one in a minute.`); return nav('#/join'); }
     S.theme = th;
   }
   S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null};
@@ -2029,51 +2028,32 @@ A.join = () => {
   setAuthWide(false);
   let role = S.auth.role || 'seeker', rg = S.auth.region || (IN_TZ ? 'in' : 'global');
   const pre = S.auth.prefill || ''; if (pre) rg = pre.includes('@') ? 'global' : 'in';
-  const keep = {code:'', name:''};
+  const keep = {name:''};
   const draw = () => {
-    authEl().innerHTML = `<span class="kicker">Invite only</span><h2 class="mt8">Join 2Verse</h2><p class="sub">2Verse is a small, invite-only circle so every seeker and healer is known. Enter the invite code you received.</p>
+    const seekerSub = 'Find verified healers for sleep, stress, anxiety and more, online or in person. It takes a minute.';
+    const healerSub = 'Offer your practice to seekers worldwide. Create your account, then complete a short application; every healer is verified before going live.';
+    authEl().innerHTML = `<span class="kicker">Create your account</span><h2 class="mt8">Join 2Verse</h2><p class="sub">${role === 'healer' ? healerSub : seekerSub}</p>
       <form id="fJoin" novalidate>${roleCards(role)}
-        <div class="stack"><label class="field"><span>Invite code</span><input class="inp" name="code" placeholder="For example: TAPOVAN26" autocomplete="off" style="text-transform:uppercase;letter-spacing:.08em" value="${esc(keep.code)}"></label>
-        <label class="field"><span>Full name</span><input class="inp" name="name" autocomplete="name" value="${esc(keep.name)}"></label>${regionSeg(rg)}</div>${idField(rg, pre && (pre.includes('@') === (rg === 'global')) ? pre : '')}
+        <div class="stack"><label class="field"><span>Full name</span><input class="inp" name="name" autocomplete="name" value="${esc(keep.name)}"></label>${regionSeg(rg)}</div>${idField(rg, pre && (pre.includes('@') === (rg === 'global')) ? pre : '')}
         <button class="btn p block lg mt24" type="submit">${rg === 'in' ? 'Send OTP' : 'Email me a code'}</button></form>
-      <p class="mt24" style="text-align:center;color:var(--ink-2)">No invite yet? <a class="lnk" href="#/waitlist">Request one</a> · <a class="lnk" href="#/signin">Sign in</a></p>
-      <div class="demo-hint">Demo invite codes: <b>TAPOVAN26</b> for seekers, <b>HEALER26</b> for healers. In India you join with your mobile number; outside India, with your email.</div>`;
+      <p class="mt24" style="text-align:center;color:var(--ink-2)">Already have an account? <a class="lnk" href="#/signin">Sign in</a></p>
+      <div class="demo-hint">${ico('i-spark','i xs')} In India you join with your mobile number; outside India, with your email. Demo code: <b>${DEMO_OTP}</b>.</div>`;
     const f = $('#fJoin');
-    const remember = () => { keep.code = f.code.value; keep.name = f.name.value; };
+    const remember = () => { keep.name = f.name.value; };
     $$('[name=role]', f).forEach(r => r.onchange = () => { remember(); role = r.value; S.auth.role = role; draw(); });
     $$('[data-rg]', f).forEach(b => b.onclick = () => { remember(); rg = b.dataset.rg; S.auth.region = rg; draw(); });
     wireIdInput(f, rg);
     f.onsubmit = e => { e.preventDefault();
-      const code = f.code.value.trim().toUpperCase(), name = f.name.value.trim();
-      if (!INVITES[code]) return fieldErr(f, 'code', 'That invite code is not valid. Check the message you received.');
-      if (INVITES[code] !== role) return fieldErr(f, 'code', `This code is for ${INVITES[code]}s. Switch the option above or use another code.`);
+      const name = f.name.value.trim();
       if (name.length < 2) return fieldErr(f, 'name', 'Add your full name');
       const id = readId(f, rg); if (!id) return;
       if (Object.values(DEMO_IDS).includes(id)) return fieldErr(f, 'id', `There is already an account with this ${rg === 'in' ? 'number' : 'email'}. Sign in instead.`);
-      Object.assign(S.auth, {role, region:rg, id, prefill:'', pending:{kind:'join', name}}); save(); toast('Invite accepted'); nav('#/otp'); };
+      Object.assign(S.auth, {role, region:rg, id, prefill:'', pending:{kind:'join', name}}); save(); nav('#/otp'); };
   };
   draw();
 };
-A.waitlist = () => {
-  setAuthWide(false);
-  const rg = S.auth.region || (IN_TZ ? 'in' : 'global');
-  authEl().innerHTML = `<span class="kicker">Request an invite</span><h2 class="mt8">Tell us a little about you</h2><p class="sub">We open new places every month. Most requests hear back within a week.</p>
-    <form id="fWait" novalidate class="stack">
-      <label class="field"><span>Full name</span><input class="inp" name="name"></label>
-      ${idField(rg, '').replace('field mt16', 'field')}
-      <label class="field"><span>I want to join as</span><select class="sel" name="as"><option>Seeker</option><option>Healer</option></select></label>
-      <label class="field"><span>What brings you to 2Verse? <small>(optional)</small></span><textarea class="ta" name="why" placeholder="For example: I want help with sleep and stress"></textarea></label>
-      <label class="field"><span>Who referred you? <small>(optional)</small></span><input class="inp" name="ref"></label>
-      <button class="btn p block lg" type="submit">Request invite</button></form>
-    <p class="mt16" style="text-align:center"><a class="lnk" href="#/join">I have an invite code</a></p>`;
-  const f = $('#fWait'); wireIdInput(f, rg);
-  f.onsubmit = e => { e.preventDefault();
-    if (f.name.value.trim().length < 2) return fieldErr(f, 'name', 'Add your name');
-    const id = readId(f, rg); if (!id) return;
-    authEl().innerHTML = `<div class="ok-big">${ico('i-check','i')}</div><h2 class="mt24" style="text-align:center">You are on the list</h2>
-      <p class="sub" style="text-align:center">Thank you, ${esc(f.name.value.trim().split(' ')[0])}. We will ${rg === 'in' ? 'send an SMS to' : 'email'} <b>${esc(id)}</b> as soon as a place opens. Your request number is <b>WL-${String(hash(id) % 9000 + 1000)}</b>.</p>
-      <a class="btn g block" href="#/signin">Back to sign in</a>`; };
-};
+/* old waitlist links go to sign-up */
+A.waitlist = () => nav('#/join');
 
 /* =====================================================================
    Inline verification: the second contact (email for India, mobile abroad)
@@ -2108,7 +2088,7 @@ function wireVerify(scope, onOk){
 const lockedId = (kind, val, note = 'Used to sign in') => `<div class="field full"><span>${kind === 'phone' ? 'Mobile number' : 'Email'}</span><div class="locked">${ico(kind === 'phone' ? 'i-chat' : 'i-article')}<b>${esc(val)}</b><span class="pill ok">${ico('i-check')}Verified</span><small>${note}</small></div></div>`;
 
 /* =====================================================================
-   SEEKER ONBOARDING (after joining with an invite)
+   SEEKER ONBOARDING (after creating an account)
    ===================================================================== */
 const COND = ['Pregnancy','Heart condition','High blood pressure','Epilepsy','Pacemaker','Recent surgery','Currently getting mental health support'];
 A.welcome = (n = '1') => {

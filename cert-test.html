@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificate Reader · 2Verse test bench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5efe6;--surface:#fffdf8;--surface-2:#f1ebe0;--line:#e3dccd;--line-strong:#cfc5b1;--ink:#1f2c2e;--ink-2:#4a5654;--muted:#7a8380;--primary:#2c5558;--on-primary:#fff;--sage:#e3eee8;--gold:#f4e8cf;--gold-ink:#8a6420;--clay:#b5562e;--ok:#2e7d55;--warn:#a86a12;--bad:#b23a3a;--shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(31,44,46,.06);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1719;--surface:#162123;--surface-2:#1d2a2d;--line:#28383b;--line-strong:#3a4d51;--ink:#eef3ef;--ink-2:#c4cfca;--muted:#8e9b96;--primary:#8cc7b6;--on-primary:#0f1719;--sage:#1f3a33;--gold:#3a2f18;--gold-ink:#e7c27a;--clay:#e08a63;--ok:#6fd19b;--warn:#e7b25a;--bad:#f08c8c;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box;margin:0}[hidden]{display:none!important}
+body{font-family:Poppins,system-ui,sans-serif;background:var(--bg);color:var(--ink);font-size:14.5px;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 16px 60px}
+header{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:22px}
+.kicker{font-size:11.5px;letter-spacing:.18em;font-weight:600;color:var(--clay);text-transform:uppercase}
+h1{font-size:34px;line-height:1.15;margin-top:6px;letter-spacing:-.01em}
+h2{font-size:18px}
+.sub{color:var(--ink-2);max-width:640px;margin-top:6px}
+.grid{display:grid;grid-template-columns:400px 1fr;gap:20px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>span{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.inp,.sel,.ta{width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:10px 12px;outline:none}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(--primary)}
+.ta{min-height:90px;resize:vertical;font-size:13px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:42px;padding:0 18px;border-radius:99px;font-weight:600;font-size:14px;border:1.5px solid transparent}
+.btn.p{background:var(--primary);color:var(--on-primary)}
+.btn.g{border-color:var(--line-strong);background:var(--surface)}
+.btn.sm{height:34px;padding:0 13px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.drop{border:2px dashed var(--line-strong);border-radius:18px;padding:22px;text-align:center;cursor:pointer;background:var(--surface-2);transition:.2s}
+.drop.over{border-color:var(--primary);background:var(--sage)}
+.drop b{display:block;font-size:15px}.drop small{color:var(--muted)}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px}
+.thumb{position:relative;border-radius:12px;overflow:hidden;border:2px solid transparent;aspect-ratio:4/3;background:var(--surface-2)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb.on{border-color:var(--primary)}
+.thumb .st{position:absolute;left:4px;bottom:4px;font-size:10px;font-weight:600;padding:2px 6px;border-radius:99px;background:rgba(0,0,0,.6);color:#fff}
+.engines{display:flex;flex-direction:column;gap:8px}
+.eng{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;cursor:pointer}
+.eng:has(input:checked){border-color:var(--primary);background:var(--sage)}
+.eng input{margin-top:4px;accent-color:var(--primary)}
+.eng b{display:block;font-size:14px}.eng small{color:var(--muted);font-size:12.5px}
+.tag{display:inline-flex;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
+.tag.free{background:var(--sage);color:var(--ok)}.tag.key{background:var(--gold);color:var(--gold-ink)}
+.keybox{display:none;margin-top:8px}
+.eng:has(input:checked) .keybox{display:flex;flex-direction:column;gap:6px}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.check input{margin-top:3px;accent-color:var(--primary)}
+.preview{border-radius:16px;overflow:hidden;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;min-height:220px}
+.preview img,.preview canvas{max-width:100%;max-height:420px;display:block}
+.empty{color:var(--muted);text-align:center;padding:40px 16px}
+.prog{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden}.prog i{display:block;height:100%;width:0;background:var(--primary);transition:width .2s}
+.status{font-size:13px;color:var(--ink-2)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
+.tabs button{padding:7px 13px;border-radius:99px;font-weight:600;font-size:13px;color:var(--ink-2)}
+.tabs button.on{background:var(--primary);color:var(--on-primary)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td .inp{padding:7px 9px;border-radius:9px}
+.conf{font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.conf.high{background:var(--sage);color:var(--ok)}.conf.medium{background:var(--gold);color:var(--gold-ink)}.conf.low,.conf.missing{background:rgba(178,58,58,.12);color:var(--bad)}
+.flags{display:flex;flex-direction:column;gap:6px}
+.flag{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:8px 10px;border-radius:10px}
+.flag.bad{background:rgba(178,58,58,.1);color:var(--bad)}.flag.warn{background:var(--gold);color:var(--gold-ink)}.flag.ok{background:var(--sage);color:var(--ok)}
+.verdict{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:16px}
+.verdict b{font-size:17px;display:block}.verdict .sc{font-size:30px;font-weight:700;min-width:64px;text-align:center}
+.verdict.ok{background:var(--sage);color:var(--ok)}.verdict.warn{background:var(--gold);color:var(--gold-ink)}.verdict.bad{background:rgba(178,58,58,.12);color:var(--bad)}
+pre{background:var(--surface-2);border-radius:12px;padding:12px;font-size:12px;overflow:auto;max-height:340px;white-space:pre-wrap;word-break:break-word}
+details summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--primary)}
+.cmp td:first-child{font-weight:600;color:var(--ink-2);width:160px}
+.muted{color:var(--muted)}.small{font-size:12.5px}
+.note{font-size:12.5px;padding:10px 12px;border-radius:12px;background:var(--surface-2);color:var(--ink-2)}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:99px;font-size:13.5px;transition:.3s;z-index:9}
+.toast.on{transform:translateX(-50%)}
+@media (max-width:900px){.grid{grid-template-columns:1fr}h1{font-size:27px}.cmp td:first-child{width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div><span class="kicker">2Verse · internal test bench</span><h1>Certificate reader</h1>
+    <p class="sub">Upload a healer's certificate (photo, scan or PDF). Compare a free on-device OCR with AI vision models, check the details against the application, and see what a reviewer would need to confirm.</p></div>
+    <div class="row"><button class="btn g sm" id="sampleBtn">Load a sample certificate</button></div></header>
+
+  <div class="grid">
+    <!-- LEFT: input + engine -->
+    <div class="stack">
+      <div class="card stack">
+        <h2>1. Certificate</h2>
+        <label class="drop" id="drop"><input type="file" id="file" accept="image/*,application/pdf" multiple hidden><b>Drop images or a PDF here</b><small>JPG, PNG, WEBP or PDF (first page) · several files OK</small></label>
+        <div class="thumbs" id="thumbs"></div>
+        <label class="check"><input type="checkbox" id="enhance" checked><span>Clean up the image before reading (grayscale, contrast, resize). Helps phone photos.</span></label>
+      </div>
+
+      <div class="card stack">
+        <h2>2. Check against the application <span class="muted small">(optional)</span></h2>
+        <label class="field"><span>Healer's legal name</span><input class="inp" id="expName" placeholder="e.g. Ananya Rawat"></label>
+        <label class="field"><span>Practice they applied for</span><select class="sel" id="expPractice"><option value="">Any</option><option>Breathwork</option><option>Meditation</option><option>Sound Healing</option><option>Yoga</option><option>Somatic Healing</option></select></label>
+      </div>
+
+      <div class="card stack">
+        <h2>3. How to read it</h2>
+        <div class="engines">
+          <label class="eng"><input type="radio" name="eng" value="ocr" checked><span class="grow"><b>On-device OCR <span class="tag free">FREE</span></b><small>Tesseract.js runs in this browser. No key, nothing leaves the device. Good for clear, typed certificates; weaker on fancy fonts and handwriting.</small>
+            <span class="keybox"><span class="field"><span>Language</span><select class="sel" id="ocrLang"><option value="eng">English</option><option value="eng+hin">English + Hindi</option></select></span></span></span></label>
+          <label class="eng"><input type="radio" name="eng" value="gemini"><span class="grow"><b>Google Gemini <span class="tag free">FREE TIER</span></b><small>Vision AI; understands layout, script fonts and stamps. Free API key from Google AI Studio (rate-limited; free-tier data may be used to improve Google's models).</small>
+            <span class="keybox"><input class="inp" id="gemKey" type="password" placeholder="Gemini API key (AIza…)" autocomplete="off"><input class="inp" id="gemModel" value="gemini-flash-latest" aria-label="Gemini model"><small class="muted">Get a key at aistudio.google.com → Get API key.</small></span></span></label>
+          <label class="eng"><input type="radio" name="eng" value="grok"><span class="grow"><b>xAI Grok <span class="tag key">PAID</span></b><small>Vision AI via the xAI API. Needs credits on console.x.ai.</small>
+            <span class="keybox"><input class="inp" id="grokKey" type="password" placeholder="xAI API key (xai-…)" autocomplete="off"><input class="inp" id="grokModel" value="grok-4.7" aria-label="Grok model"><small class="muted">If the browser blocks the call (CORS), run it from your backend instead.</small></span></span></label>
+        </div>
+        <label class="check"><input type="checkbox" id="remember"><span>Remember keys in this browser (testing only, never in production)</span></label>
+        <div class="row"><button class="btn p" id="runBtn" disabled>Read certificate</button><button class="btn g sm" id="runAll" disabled title="Runs every engine that is ready and compares them">Compare all engines</button></div>
+        <div class="prog"><i id="bar"></i></div><div class="status" id="status">Add a certificate to start.</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: results -->
+    <div class="stack">
+      <div class="card"><div class="preview" id="preview"><div class="empty">The certificate preview appears here.</div></div></div>
+      <div class="card stack" id="resCard" hidden>
+        <div class="tabs" id="tabs"></div>
+        <div id="verdict"></div>
+        <table><thead><tr><th>Field</th><th>Extracted value <span class="muted" style="text-transform:none;letter-spacing:0">(editable)</span></th><th>Confidence</th></tr></thead><tbody id="fields"></tbody></table>
+        <div><h2 style="font-size:15px;margin-bottom:8px">Checks for the reviewer</h2><div class="flags" id="flags"></div></div>
+        <details><summary>Raw text the engine read</summary><pre id="raw"></pre></details>
+        <details><summary>JSON (what we would save)</summary><pre id="json"></pre><button class="btn g sm" id="copyJson" style="margin-top:8px">Copy JSON</button></details>
+      </div>
+      <div class="card stack" id="cmpCard" hidden><h2>Engine comparison</h2><div style="overflow-x:auto"><table class="cmp" id="cmp"></table></div></div>
+      <div class="note">Test bench only. Keys typed here are sent straight from your browser to Google or xAI. In the live app, the upload goes to our server, which calls the model and stores the result; the final decision stays with a human reviewer.</div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let tt; const toast = m => { $('#toast').textContent = m; $('#toast').classList.add('on'); clearTimeout(tt); tt = setTimeout(() => $('#toast').classList.remove('on'), 2600); };
+const store = {get:k => { try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } }, set:(k, v) => { try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch(e){} }};
+
+/* ---------------- files ---------------- */
+const FILES = []; let cur = -1;
+const FIELDS = [
+  ['holder_name','Name on certificate'],['title','Certificate / course title'],['practice','Practice'],['issuer','Issued by (school / body)'],
+  ['signatory','Teacher / signatory'],['issue_date','Issue date'],['hours','Training hours / level'],['certificate_id','Certificate / registration no.'],
+  ['accreditation','Accreditation'],['location','Place']];
+const PRACTICES = {Yoga:['yoga','asana','hatha','vinyasa','ashtanga','ryt','rys','yin '],Breathwork:['breath','pranayama','prana'],Meditation:['meditation','dhyana','mindfulness','vipassana','yoga nidra'],'Sound Healing':['sound','singing bowl','gong','nada','tuning fork'],'Somatic Healing':['somatic','trauma','body-based','embodiment']};
+
+function addFiles(list){
+  [...list].forEach(f => {
+    if (f.type === 'application/pdf') return pdfToImage(f).then(src => pushFile(f.name + ' (page 1)', src)).catch(() => toast('Could not read that PDF'));
+    if (!f.type.startsWith('image/')) return toast(`${f.name} is not an image or PDF`);
+    const r = new FileReader(); r.onload = () => pushFile(f.name, r.result); r.readAsDataURL(f);
+  });
+}
+function pushFile(name, src){ FILES.push({name, src, results:{}}); cur = FILES.length - 1; drawThumbs(); showPreview(); $('#runBtn').disabled = $('#runAll').disabled = false; $('#status').textContent = 'Ready. Choose how to read it and press "Read certificate".'; }
+async function pdfToImage(file){
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdf = await pdfjsLib.getDocument({data:await file.arrayBuffer()}).promise, page = await pdf.getPage(1), vp = page.getViewport({scale:2});
+  const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height; await page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise; return c.toDataURL('image/png');
+}
+function drawThumbs(){ $('#thumbs').innerHTML = FILES.map((f, i) => `<button class="thumb ${i === cur ? 'on' : ''}" data-i="${i}" title="${esc(f.name)}"><img src="${f.src}" alt=""><span class="st">${Object.keys(f.results).length ? Object.keys(f.results).length + ' read' : 'new'}</span></button>`).join(''); $$('#thumbs .thumb').forEach(b => b.onclick = () => { cur = +b.dataset.i; drawThumbs(); showPreview(); showResults(); }); }
+function showPreview(){ $('#preview').innerHTML = cur >= 0 ? `<img src="${FILES[cur].src}" alt="Certificate preview">` : '<div class="empty">The certificate preview appears here.</div>'; }
+const drop = $('#drop');
+$('#file').onchange = e => { addFiles(e.target.files); e.target.value = ''; };
+['dragenter','dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+drop.addEventListener('drop', e => addFiles(e.dataTransfer.files));
+document.addEventListener('paste', e => { const f = [...(e.clipboardData || {}).files || []]; if (f.length) addFiles(f); });
+
+/* ---------------- image clean-up ---------------- */
+function loadImg(src){ return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; }); }
+async function prepImage(src, {enhance, maxW = 2000, forAI = false}){
+  const img = await loadImg(src), s = Math.min(1, maxW / img.width) * (!forAI && img.width < 1200 ? 1200 / img.width : 1);
+  const c = document.createElement('canvas'); c.width = Math.round(img.width * s); c.height = Math.round(img.height * s);
+  const x = c.getContext('2d'); x.drawImage(img, 0, 0, c.width, c.height);
+  if (enhance && !forAI){
+    const d = x.getImageData(0, 0, c.width, c.height), p = d.data; let min = 255, max = 0;
+    for (let i = 0; i < p.length; i += 4){ const g = .299 * p[i] + .587 * p[i + 1] + .114 * p[i + 2]; p[i] = p[i + 1] = p[i + 2] = g; if (g < min) min = g; if (g > max) max = g; }
+    const r = Math.max(1, max - min); for (let i = 0; i < p.length; i += 4){ const v = Math.min(255, Math.max(0, (p[i] - min) * 255 / r)); p[i] = p[i + 1] = p[i + 2] = v; }
+    x.putImageData(d, 0, 0);
+  }
+  return c.toDataURL(forAI ? 'image/jpeg' : 'image/png', .9);
+}
+
+/* ---------------- engine 1: free on-device OCR + rules ---------------- */
+let worker = null, workerLang = '';
+async function runOCR(f){
+  const lang = $('#ocrLang').value;
+  if (!worker || workerLang !== lang){
+    if (worker) await worker.terminate();
+    setStatus('Loading the OCR engine (first time only, ~10 MB)…', 5);
+    worker = await Tesseract.createWorker(lang, 1, {
+      workerPath:'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/worker.min.js',
+      corePath:'https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1',
+      logger:m => { if (m.status === 'recognizing text') setStatus(`Reading text… ${Math.round(m.progress * 100)}%`, 20 + m.progress * 75); else if (m.progress) setStatus(cap(m.status) + '…', 5 + m.progress * 15); }
+    });
+    workerLang = lang;
+  }
+  const img = await prepImage(f.src, {enhance:$('#enhance').checked});
+  await worker.setParameters({tessedit_pageseg_mode:'3'});
+  const {data} = await worker.recognize(img);
+  let res = parseText(data.text), raw = data.text, confd = data.confidence;
+  /* certificates are often laid out in scattered blocks: if key details are missing, read again in sparse-text mode and merge */
+  if (['holder_name','certificate_id','title'].some(k => !res.fields[k])){
+    setStatus('Second pass for scattered text…', 60);
+    await worker.setParameters({tessedit_pageseg_mode:'11'});
+    const d2 = (await worker.recognize(img)).data; await worker.setParameters({tessedit_pageseg_mode:'3'});
+    const r2 = parseText(d2.text);
+    FIELDS.forEach(([k]) => { if (!res.fields[k] && r2.fields[k]){ res.fields[k] = r2.fields[k]; res.conf[k] = r2.conf[k] === 'high' ? 'medium' : 'low'; } });
+    if (res.fields.holder_name) res.notes = res.notes.filter(n => !/name could not/i.test(n));
+    raw += '\n\n----- second pass (sparse text) -----\n' + d2.text; confd = Math.max(confd, d2.confidence);
+  }
+  return Object.assign(res, {raw, ocr_confidence:Math.round(confd), red_flags:res.notes});
+}
+const cap = s => s ? s[0].toUpperCase() + s.slice(1) : s;
+const MONTHS = 'jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec|january|february|march|april|june|july|august|september|october|november|december';
+function parseText(text){
+  const t = text.replace(/[|]/g, 'I').replace(/[“”]/g, '"').replace(/[ \t]+/g, ' ');
+  const lines = t.split('\n').map(l => l.trim().replace(/^[^A-Za-z0-9]+|[^A-Za-z0-9).]+$/g, '')).filter(l => l.length > 1), one = lines.join(' ');
+  const f = {}, conf = {}, notes = [];
+  const set = (k, v, c) => { v = v && String(v).trim().replace(/^[^A-Za-z0-9]+/, '').replace(/[.,;:\-]+$/, ''); if (v && !f[k]){ f[k] = v; conf[k] = c; } };
+  const LABEL = /^(date|dated|name|signature|signed|issued|issue|director|principal|chairman|chairperson|registrar|certificate|cert|no|number|id|serial|place|grade|seal|stamp|authori[sz]ed|signatory|head|dean|ceo|founder|trainer|instructor)$/i;
+  const STOP = /^(has|have|having|is|was|of|the|for|to|and|in|on|that|this|who|with|by|from|successfully|completed|certificate|course|program|programme|training|awarded|presented|hereby|certify|certifies)$/i;
+  const ORG = /(academy|institute|school|ashram|foundation|university|yogpeeth|peeth|vidyalaya|trust|centre|center|society|niketan|sansthan|alliance|board|association|college|council|federation|organi[sz]ation|pvt|ltd|limited|llp|inc)\b/i;
+  /* a line that looks like a person's name: 1–5 words, letters only, no stop or label words */
+  const looksName = s => { if (!s) return false; s = s.replace(/^(mr|ms|mrs|miss|shri|smt|sri|dr)\.?\s+/i, ''); const w = s.split(/\s+/);
+    return /^[A-Za-z][A-Za-z.'\- ]{2,45}$/.test(s) && w.length >= 1 && w.length <= 5 && !w.some(x => STOP.test(x) || LABEL.test(x)) && w.some(x => x.replace(/\W/g, '').length >= 3) && !ORG.test(s); };
+  const tidyName = s => s.replace(/\s+/g, ' ').split(' ').map(w => w.length > 2 && w === w.toUpperCase() ? w[0] + w.slice(1).toLowerCase() : w).join(' ');
+
+  /* ---- name ---- */
+  const LEAD = /(certify\s+that|certifies\s+that|presented\s+to|awarded\s+to|conferred\s+(?:up)?on|granted\s+to|issued\s+to|is\s+given\s+to|proudly\s+presented\s+to|recogni[sz]es)/i;
+  let name = null;
+  const inl = one.match(new RegExp(LEAD.source + '\\s+(?:Mr\\.?|Ms\\.?|Mrs\\.?|Miss|Shri|Smt\\.?|Dr\\.?)?\\s*([A-Z][A-Za-z.\'\\-]+(?:\\s+[A-Z][A-Za-z.\'\\-]+){0,4})', 'i'));
+  if (inl){ const cand = inl[2].split(/\s+/); const cut = cand.findIndex(x => STOP.test(x) || LABEL.test(x)); const nm = (cut < 0 ? cand : cand.slice(0, cut)).join(' '); if (looksName(nm)) name = [nm, 'high']; }
+  if (!name){ const i = lines.findIndex(l => LEAD.test(l));
+    if (i >= 0) for (const l of [lines[i].split(LEAD).pop(), lines[i + 1], lines[i + 2]]) if (looksName(l)){ name = [l, 'medium']; break; } }
+  if (!name){ const i = lines.findIndex(l => /^(has|have)\s+(successfully|completed|attended|participated|passed)/i.test(l)); if (i > 0 && looksName(lines[i - 1])) name = [lines[i - 1], 'medium']; }
+  if (name) set('holder_name', tidyName(name[0].replace(/^(mr|ms|mrs|miss|shri|smt|sri|dr)\.?\s+/i, '')), name[1]);
+  else if (LEAD.test(one)) notes.push('The name could not be read. It is often in a decorative script font; try an AI engine or type it in.');
+
+  /* ---- title / course ---- */
+  const crs = one.match(/(?:successfully\s+)?(?:completed|attended|passed|undergone|participated\s+in|qualified\s+in|achieved)\s+(?:the\s+|a\s+|an\s+|all\s+requirements\s+of\s+(?:the\s+)?)?([A-Z0-9][A-Za-z0-9&,'()\-\/ ]{5,90}?)(?=\s+(?:held|conducted|organi[sz]ed|offered|at|from|on|with|during|under|by|in\s+(?:the\s+)?(?:year|month)|and\s+(?:is|has))\b|[.;]|$)/);
+  if (crs && !/^(the\s+)?requirements/i.test(crs[1])) set('title', crs[1], 'high');
+  if (!f.title){ const co = lines.find(l => /^certificate\s+(of|in)\s+\w+/i.test(l) && !/completion$|achievement$|participation$|appreciation$|merit$/i.test(l)) || lines.find(l => /(teacher training|diploma|course|programme|program|level [0-9]|practitioner|facilitator|instructor)/i.test(l) && l.length < 90 && !LEAD.test(l) && !/board|council/i.test(l));
+    set('title', co, 'medium'); }
+  if (!f.title){ const co = lines.find(l => /^certificate\s+of\s+\w+/i.test(l)); set('title', co, 'low'); }
+
+  /* ---- practice ---- */
+  const low = one.toLowerCase(); const pr = Object.entries(PRACTICES).map(([p, ws]) => [p, ws.filter(w => low.includes(w)).length]).filter(x => x[1]).sort((a, b) => b[1] - a[1]);
+  if (pr.length) set('practice', pr.map(x => x[0]).slice(0, 2).join(', '), pr[0][1] > 1 ? 'high' : 'medium');
+
+  /* ---- issuer & accreditation bodies ---- */
+  const orgs = lines.filter(l => ORG.test(l) && l.length < 90 && !LEAD.test(l) && !/^(has|have)\s/i.test(l)).map(l => l.replace(/^(?:[0-9]+|[a-z])\s+(?=[A-Z])/, ''));
+  const school = orgs.find(l => /(academy|institute|school|ashram|university|yogpeeth|peeth|vidyalaya|college|niketan|sansthan|centre|center|foundation|pvt|ltd|limited)/i.test(l)) || orgs[0];
+  set('issuer', school, school && orgs.indexOf(school) <= 1 ? 'high' : 'medium');
+  const bodies = orgs.filter(l => l !== school && /(board|council|alliance|association|federation)/i.test(l));
+
+  /* ---- signatory (a titled person, or a name above/below a role) ---- */
+  for (const l of lines){ const sg = l.match(/((?:Swami|Dr\.?|Prof\.?|Acharya|Guru|Yogi|Sri|Shri)\s+[A-Z][a-zA-Z.]+(?:\s+[A-Z][a-zA-Z.]+){0,2})/); if (sg){ set('signatory', sg[1].replace(/\s+(Certificate|Date|No|Signature|Director|Principal).*$/i, ''), 'medium'); break; } }
+  if (!f.signatory){ const i = lines.findIndex(l => /^(director|principal|chairman|chairperson|registrar|lead teacher|head of|founder|program director|course director|authori[sz]ed signatory)/i.test(l)); if (i > 0 && looksName(lines[i - 1]) && lines[i - 1] !== f.holder_name) set('signatory', lines[i - 1], 'low'); }
+
+  /* ---- date ---- */
+  /* prefer a date next to a "Date / Issued on / Dated" label; otherwise the last date on the page (start dates come first) */
+  const DRE = [new RegExp(`\\b(\\d{1,2}(?:st|nd|rd|th)?\\s+(?:of\\s+)?(?:${MONTHS})[a-z]*,?\\s+\\d{4})\\b`, 'ig'), new RegExp(`\\b((?:${MONTHS})[a-z]*\\.?\\s+\\d{1,2}(?:st|nd|rd|th)?,?\\s+\\d{4})\\b`, 'ig'), /\b(\d{1,2}[\/\-.]\d{1,2}[\/\-.](?:19|20)\d{2})\b/g, /\b((?:19|20)\d{2}[\/\-.]\d{1,2}[\/\-.]\d{1,2})\b/g];
+  const datesIn = s => DRE.flatMap(r => [...String(s || '').matchAll(r)].map(m => ({d:m[1], at:m.index})));
+  const li = lines.findIndex(l => /\b(date|dated|issued on|date of issue|awarded on)\b/i.test(l) && !/\bfrom\b/i.test(l));
+  let dpick = null;
+  if (li >= 0) for (const l of [lines[li], lines[li + 1], lines[li + 2]]){ const ds = datesIn(l); if (ds.length){ dpick = [ds[0].d, 'high']; break; } }
+  if (!dpick){ const all = datesIn(one).sort((x, y) => x.at - y.at); if (all.length) dpick = [all[all.length - 1].d, all.length > 1 ? 'medium' : 'high']; }
+  if (dpick) set('issue_date', dpick[0], dpick[1]); else { const y = one.match(/\b(20[0-3]\d|19[89]\d)\b/); if (y) set('issue_date', y[1], 'low'); }
+
+  /* ---- hours / level ---- */
+  const hr = one.match(/\b(E-RYT|RYT)[\s\-]*(\d{3})\b/i) || one.match(/\b(\d{2,4})\s*[-]?\s*(?:hours?|hrs?)\b/i) || one.match(/\b(RYS)[\s\-]*(\d{3})\b/i) || one.match(/\b(level)\s*[-:]?\s*(\d|[IVX]{1,3})\b/i);
+  if (hr) set('hours', hr[2] ? `${/level/i.test(hr[1]) ? 'Level' : hr[1].toUpperCase()}-${hr[2]}` : `${hr[1]} hours`, 'high');
+
+  /* ---- certificate / registration number (must contain a digit; handles "No. | Date" label rows) ---- */
+  const isId = v => v && /\d/.test(v) && /^[A-Z0-9][A-Z0-9\-\/.]{3,28}$/i.test(v) && !/^\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4}$/.test(v) && !/^(19|20)\d{2}$/.test(v);
+  const idRe = /(?:certificate|cert|registration|reg|regd|roll|serial|enrol(?:l)?ment|membership|credential|license|licence)\.?\s*(?:no|number|#|id|code)?\.?\s*[:\-#]?\s*([A-Z0-9][A-Z0-9\-\/.]{3,28})/ig;
+  let m; while ((m = idRe.exec(one))){ if (isId(m[1])){ set('certificate_id', m[1], 'high'); break; } }
+  if (!f.certificate_id){ const li = lines.findIndex(l => /(certificate|registration|reg|serial|credential)\s*(no|number|id|#)/i.test(l));
+    if (li >= 0) for (const l of [lines[li], lines[li + 1], lines[li + 2]]) { const tok = (l || '').split(/\s+/).find(isId); if (tok){ set('certificate_id', tok, 'medium'); break; } } }
+  if (!f.certificate_id){ const tok = one.match(/\b([A-Z]{2,}[\-\/][A-Z0-9]*\d[A-Z0-9\-\/]{2,})\b/); if (tok && isId(tok[1])) set('certificate_id', tok[1], 'low'); }
+
+  /* ---- accreditation ---- */
+  const ac = [['Yoga Alliance', /yoga\s*alliance/i], ['Yoga Certification Board (AYUSH)', /yoga certification board|\bycb\b/i], ['Ministry of AYUSH', /ayush/i], ['IAYT', /\biayt\b/i], ['QCI', /quality council of india|\bqci\b/i], ['International Breathwork Foundation', /breathwork foundation|\bibf\b/i], ['Global Professional Breathwork Alliance', /breathwork alliance/i]].filter(([, r]) => r.test(one)).map(x => x[0]);
+  set('accreditation', [...ac, ...bodies.filter(b => !ac.some(a => b.toLowerCase().includes(a.toLowerCase().split(' ')[0])))].join(', '), ac.length ? 'high' : 'medium');
+
+  /* ---- place ---- */
+  const pl = one.match(/\b(Rishikesh|Haridwar|Mysore|Mysuru|Dharamshala|Goa|Kerala|Varanasi|Pune|Bangalore|Bengaluru|Delhi|New Delhi|Mumbai|Kolkata|Chennai|Hyderabad|Ahmedabad|Jaipur|Kathmandu|Bali|Tapovan|London|New York|Berlin)\b/i);
+  if (pl) set('location', pl[1].split(' ').map(w => cap(w.toLowerCase())).join(' '), 'high');
+  FIELDS.forEach(([k]) => { if (!f[k]){ f[k] = ''; conf[k] = 'missing'; } });
+  return {fields:f, conf, notes, is_certificate:/certif|diploma|awarded|this is to|presented to/i.test(one)};
+}
+
+/* ---------------- engines 2 & 3: AI vision ---------------- */
+const PROMPT = `You are checking a certificate uploaded by a wellness practitioner (yoga, breathwork, meditation, sound healing or somatic work) who wants to teach on a verified marketplace.
+Read the image and return ONLY a JSON object with these keys:
+{"is_certificate": boolean,
+ "fields": {"holder_name": string, "title": string, "practice": string, "issuer": string, "signatory": string, "issue_date": string (ISO yyyy-mm-dd if the full date is visible, otherwise as written), "hours": string, "certificate_id": string, "accreditation": string, "location": string},
+ "conf": {same keys as fields, each "high" | "medium" | "low" | "missing"},
+ "practice_category": one of "Yoga","Breathwork","Meditation","Sound Healing","Somatic Healing","Other",
+ "language": string,
+ "red_flags": [short strings: anything a human reviewer should double-check, e.g. edited or mismatched fonts, missing seal or signature, blurry key text, name looks pasted, date in the future, not a certificate],
+ "raw_text": all readable text, in reading order}
+Use "" for anything not visible. Do not guess names, numbers or dates.`;
+function parseJSON(s){ const m = String(s).match(/\{[\s\S]*\}/); if (!m) throw new Error('The model did not return JSON'); return JSON.parse(m[0]); }
+function normAI(j){ const f = {}, conf = {}; FIELDS.forEach(([k]) => { f[k] = (j.fields && j.fields[k]) || ''; conf[k] = (j.conf && j.conf[k]) || (f[k] ? 'medium' : 'missing'); }); if (j.practice_category && !f.practice) f.practice = j.practice_category; return {fields:f, conf, is_certificate:j.is_certificate !== false, red_flags:j.red_flags || [], raw:j.raw_text || '', language:j.language || ''}; }
+async function runGemini(f){
+  const key = $('#gemKey').value.trim(), model = $('#gemModel').value.trim() || 'gemini-flash-latest'; if (!key) throw new Error('Add your Gemini API key');
+  setStatus('Sending to Gemini…', 30);
+  const img = await prepImage(f.src, {forAI:true, maxW:1600}), b64 = img.split(',')[1];
+  const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {method:'POST', headers:{'Content-Type':'application/json', 'x-goog-api-key':key},
+    body:JSON.stringify({contents:[{parts:[{text:PROMPT}, {inline_data:{mime_type:'image/jpeg', data:b64}}]}], generationConfig:{responseMimeType:'application/json', temperature:0}})});
+  const j = await r.json(); if (!r.ok) throw new Error((j.error && j.error.message) || `Gemini error ${r.status}`);
+  setStatus('Reading the answer…', 90);
+  const txt = (j.candidates && j.candidates[0] && j.candidates[0].content.parts.map(p => p.text || '').join('')) || '';
+  return Object.assign(normAI(parseJSON(txt)), {usage:j.usageMetadata ? `${j.usageMetadata.totalTokenCount} tokens` : ''});
+}
+async function runGrok(f){
+  const key = $('#grokKey').value.trim(), model = $('#grokModel').value.trim() || 'grok-4.7'; if (!key) throw new Error('Add your xAI API key');
+  setStatus('Sending to Grok…', 30);
+  const img = await prepImage(f.src, {forAI:true, maxW:1600});
+  let r;
+  try { r = await fetch('https://api.x.ai/v1/chat/completions', {method:'POST', headers:{'Content-Type':'application/json', Authorization:'Bearer ' + key},
+    body:JSON.stringify({model, temperature:0, response_format:{type:'json_object'}, messages:[{role:'user', content:[{type:'image_url', image_url:{url:img, detail:'high'}}, {type:'text', text:PROMPT}]}]})}); }
+  catch(e){ throw new Error('The browser could not reach api.x.ai (likely blocked by CORS). Call it from your backend, or test with Gemini.'); }
+  const j = await r.json(); if (!r.ok) throw new Error((j.error && (j.error.message || j.error)) || `xAI error ${r.status}`);
+  setStatus('Reading the answer…', 90);
+  return Object.assign(normAI(parseJSON(j.choices[0].message.content)), {usage:j.usage ? `${j.usage.total_tokens} tokens` : ''});
+}
+const ENGINES = {ocr:{name:'On-device OCR', run:runOCR}, gemini:{name:'Gemini', run:runGemini}, grok:{name:'Grok', run:runGrok}};
+
+/* ---------------- checks ---------------- */
+const normName = s => String(s || '').toLowerCase().replace(/\b(mr|ms|mrs|dr|shri|smt|sri)\b\.?/g, '').replace(/[^a-z ]/g, ' ').split(/\s+/).filter(Boolean);
+function nameScore(a, b){ const A = normName(a), B = normName(b); if (!A.length || !B.length) return null;
+  const lev = (x, y) => { const d = Array.from({length:x.length + 1}, (_, i) => [i]); for (let j = 1; j <= y.length; j++) d[0][j] = j; for (let i = 1; i <= x.length; i++) for (let j = 1; j <= y.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (x[i - 1] === y[j - 1] ? 0 : 1)); return d[x.length][y.length]; };
+  const hit = B.filter(w => A.some(v => v === w || (w.length > 3 && lev(v, w) <= 1) || (v.length === 1 && w[0] === v))).length; return Math.round(hit / B.length * 100); }
+function checks(res){
+  const f = res.fields, c = res.conf, out = [], exp = $('#expName').value.trim(), ep = $('#expPractice').value;
+  if (!res.is_certificate) out.push(['bad', 'This does not look like a certificate.']);
+  if (exp){ const s = nameScore(f.holder_name, exp); if (s === null) out.push(['bad', 'No name found on the certificate to compare.']); else if (s >= 100) out.push(['ok', `Name matches the application (${esc(exp)}).`]); else if (s >= 50) out.push(['warn', `Name partly matches (${s}%). Check spelling or a changed surname.`]); else out.push(['bad', `Name does not match the application (${s}%).`]); }
+  if (ep){ if ((f.practice || '').toLowerCase().includes(ep.toLowerCase().split(' ')[0])) out.push(['ok', `Covers ${esc(ep)}.`]); else out.push(['warn', `Could not confirm it covers ${esc(ep)}.`]); }
+  if (!f.practice) out.push(['warn', 'No wellness practice (yoga, breathwork, meditation, sound, somatic) is mentioned. Check this certificate is relevant to what they will teach.']);
+  if (!f.issuer) out.push(['warn', 'Issuing school or body not found.']);
+  if (!f.issue_date) out.push(['warn', 'No issue date found.']); else { const y = +(String(f.issue_date).match(/(19|20)\d{2}/) || [0])[0]; if (y > new Date().getFullYear()) out.push(['bad', 'The date is in the future.']); }
+  if (!f.certificate_id) out.push(['warn', 'No certificate or registration number. Ask for one, or verify with the school directly.']);
+  if (/yoga alliance/i.test(f.accreditation)) out.push(['ok', 'Yoga Alliance mentioned: look the teacher up in the Yoga Alliance directory.']);
+  if (res.ocr_confidence != null && res.ocr_confidence < 60) out.push(['warn', `Low OCR confidence (${res.ocr_confidence}%). Try a sharper photo or an AI engine.`]);
+  (res.red_flags || []).forEach(r => out.push(['warn', esc(r)]));
+  const bad = out.filter(x => x[0] === 'bad').length, warn = out.filter(x => x[0] === 'warn').length, found = FIELDS.filter(([k]) => f[k]).length;
+  const score = Math.max(0, Math.round(found / FIELDS.length * 70 + 30 - bad * 25 - warn * 6));
+  return {out, score, level:bad ? 'bad' : score >= 70 ? 'ok' : 'warn'};
+}
+
+/* ---------------- run + render ---------------- */
+let shown = null;
+function setStatus(t, p){ $('#status').textContent = t; if (p != null) $('#bar').style.width = Math.min(100, p) + '%'; }
+async function runOne(engine, quiet){
+  const f = FILES[cur], t0 = performance.now();
+  try { const r = await ENGINES[engine].run(f); r.ms = Math.round(performance.now() - t0); r.engine = engine; f.results[engine] = r; shown = engine; if (!quiet){ setStatus(`Done with ${ENGINES[engine].name} in ${(r.ms / 1000).toFixed(1)} s.`, 100); } return r; }
+  catch(e){ if (!quiet){ setStatus(e.message, 0); toast(e.message); } f.results[engine] = {error:e.message, engine}; return null; }
+  finally { drawThumbs(); showResults(); }
+}
+$('#runBtn').onclick = async () => { const e = $('[name=eng]:checked').value; $('#runBtn').disabled = true; await runOne(e); $('#runBtn').disabled = false; saveKeys(); };
+$('#runAll').onclick = async () => { $('#runAll').disabled = true; const list = ['ocr', ...($('#gemKey').value.trim() ? ['gemini'] : []), ...($('#grokKey').value.trim() ? ['grok'] : [])];
+  for (const e of list){ setStatus(`Running ${ENGINES[e].name}…`, 10); await runOne(e, true); }
+  setStatus(`Compared ${list.length} engine${list.length === 1 ? '' : 's'}.${list.length === 1 ? ' Add a Gemini or Grok key to compare with AI.' : ''}`, 100); $('#runAll').disabled = false; saveKeys(); };
+function showResults(){
+  const f = FILES[cur]; const keys = f ? Object.keys(f.results) : [];
+  $('#resCard').hidden = !keys.length; $('#cmpCard').hidden = keys.filter(k => !f.results[k].error).length < 2;
+  if (!keys.length) return;
+  if (!shown || !f.results[shown]) shown = keys[keys.length - 1];
+  $('#tabs').innerHTML = keys.map(k => `<button class="${k === shown ? 'on' : ''}" data-t="${k}">${ENGINES[k].name}${f.results[k].error ? ' · failed' : f.results[k].ms ? ` · ${(f.results[k].ms / 1000).toFixed(1)}s` : ''}</button>`).join('');
+  $$('#tabs [data-t]').forEach(b => b.onclick = () => { shown = b.dataset.t; showResults(); });
+  const r = f.results[shown];
+  if (r.error){ $('#verdict').innerHTML = `<div class="verdict bad"><div><b>${ENGINES[shown].name} could not read it</b><span class="small">${esc(r.error)}</span></div></div>`; $('#fields').innerHTML = ''; $('#flags').innerHTML = ''; $('#raw').textContent = ''; $('#json').textContent = ''; return; }
+  const ck = checks(r);
+  $('#verdict').innerHTML = `<div class="verdict ${ck.level}"><span class="sc">${ck.score}</span><div><b>${ck.level === 'ok' ? 'Looks complete. Send to reviewer' : ck.level === 'warn' ? 'Needs a closer look' : 'Problem found'}</b><span class="small">${FIELDS.filter(([k]) => r.fields[k]).length} of ${FIELDS.length} details found${r.ocr_confidence != null ? ` · OCR confidence ${r.ocr_confidence}%` : ''}${r.usage ? ' · ' + r.usage : ''}</span></div></div>`;
+  $('#fields').innerHTML = FIELDS.map(([k, l]) => `<tr><td>${l}</td><td><input class="inp" data-k="${k}" value="${esc(r.fields[k])}"></td><td><span class="conf ${r.conf[k] || 'missing'}">${r.conf[k] || 'missing'}</span></td></tr>`).join('');
+  $$('#fields [data-k]').forEach(i => i.oninput = () => { r.fields[i.dataset.k] = i.value; r.conf[i.dataset.k] = i.value ? 'edited' : 'missing'; drawJSON(r); });
+  $('#flags').innerHTML = ck.out.length ? ck.out.map(([lv, t]) => `<div class="flag ${lv}">${lv === 'ok' ? '✓' : lv === 'bad' ? '✕' : '!'} <span>${t}</span></div>`).join('') : '<div class="flag ok">✓ <span>No issues found.</span></div>';
+  $('#raw').textContent = r.raw || '(no text)';
+  drawJSON(r); drawCmp(f);
+}
+function drawJSON(r){ $('#json').textContent = JSON.stringify({engine:r.engine, file:FILES[cur].name, extracted:r.fields, confidence:r.conf, red_flags:r.red_flags || [], read_at:new Date().toISOString(), status:'pending_review'}, null, 2); }
+function drawCmp(f){
+  const ok = Object.keys(f.results).filter(k => !f.results[k].error); if (ok.length < 2) return;
+  $('#cmp').innerHTML = `<thead><tr><th>Field</th>${ok.map(k => `<th>${ENGINES[k].name}</th>`).join('')}</tr></thead><tbody>${FIELDS.map(([k, l]) => `<tr><td>${l}</td>${ok.map(e => `<td>${esc(f.results[e].fields[k]) || '<span class="muted">—</span>'}</td>`).join('')}</tr>`).join('')}
+    <tr><td>Time</td>${ok.map(e => `<td>${(f.results[e].ms / 1000).toFixed(1)} s</td>`).join('')}</tr><tr><td>Details found</td>${ok.map(e => `<td>${FIELDS.filter(([k]) => f.results[e].fields[k]).length} / ${FIELDS.length}</td>`).join('')}</tr></tbody>`;
+}
+$('#copyJson').onclick = () => { try { navigator.clipboard.writeText($('#json').textContent); toast('JSON copied'); } catch(e){} };
+['#expName','#expPractice'].forEach(s => $(s).addEventListener('input', showResults));
+
+/* keys (optional, local only) */
+function saveKeys(){ if ($('#remember').checked){ store.set('cr-gem', $('#gemKey').value.trim()); store.set('cr-grok', $('#grokKey').value.trim()); } }
+$('#remember').onchange = e => { if (!e.target.checked){ store.set('cr-gem', ''); store.set('cr-grok', ''); } else saveKeys(); };
+if (store.get('cr-gem') || store.get('cr-grok')){ $('#gemKey').value = store.get('cr-gem'); $('#grokKey').value = store.get('cr-grok'); $('#remember').checked = true; }
+
+/* ---------------- sample certificate (fictional) ---------------- */
+$('#sampleBtn').onclick = () => {
+  const c = document.createElement('canvas'), W = 1400, H = 990; c.width = W; c.height = H; const x = c.getContext('2d');
+  x.fillStyle = '#fbf6ea'; x.fillRect(0, 0, W, H); x.strokeStyle = '#9b7a3a'; x.lineWidth = 10; x.strokeRect(30, 30, W - 60, H - 60); x.lineWidth = 2; x.strokeRect(52, 52, W - 104, H - 104);
+  const t = (s, y, size, w = 400, col = '#1f2c2e', font = 'Georgia, serif') => { x.fillStyle = col; x.font = `${w} ${size}px ${font}`; x.textAlign = 'center'; x.fillText(s, W / 2, y); };
+  t('SHANTI YOGA SCHOOL, RISHIKESH (SAMPLE)', 150, 34, 700, '#2c5558');
+  t('Registered Yoga School with Yoga Alliance · RYS 200', 195, 22, 400, '#5b6463');
+  t('CERTIFICATE OF COMPLETION', 290, 54, 700, '#8a5a1e');
+  t('This is to certify that', 370, 28, 400, '#3a4544');
+  t('Ananya Rawat', 450, 64, 700, '#1f2c2e', 'Georgia, serif');
+  t('has successfully completed the 200 Hour Yoga Teacher Training', 525, 28);
+  t('in Hatha Yoga, Pranayama and Meditation', 568, 28);
+  t('held at Tapovan, Rishikesh from 4 February to 3 March 2024.', 611, 24, 400, '#3a4544');
+  x.textAlign = 'left'; x.fillStyle = '#3a4544'; x.font = '22px Georgia, serif';
+  x.fillText('Date: 3 March 2024', 120, 830); x.fillText('Certificate No: SYS-2024-0187', 120, 866);
+  x.textAlign = 'right'; x.fillText('Swami Devananda', W - 120, 830); x.fillText('Lead Teacher', W - 120, 866);
+  x.strokeStyle = '#3a4544'; x.lineWidth = 1.5; x.beginPath(); x.moveTo(W - 380, 800); x.lineTo(W - 120, 800); x.stroke();
+  x.beginPath(); x.arc(W / 2, 820, 62, 0, Math.PI * 2); x.strokeStyle = '#b5562e'; x.lineWidth = 4; x.stroke(); x.textAlign = 'center'; x.fillStyle = '#b5562e'; x.font = '700 16px Georgia, serif'; x.fillText('SAMPLE', W / 2, 826);
+  pushFile('sample-certificate.png', c.toDataURL('image/png'));
+  if (!$('#expName').value) $('#expName').value = 'Ananya Rawat';
+  toast('Sample loaded. It is fictional, made for testing.');
+};
+</script>
+</body>
+</html>
