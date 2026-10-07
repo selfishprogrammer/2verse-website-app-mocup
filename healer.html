@@ -655,12 +655,15 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
 .leaflet-container{font-family:var(--font-sans)}
 
 /* ===== Veda writing help ===== */
-.vw{margin-top:6px}
-.vw-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.vw-btn{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 4px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);font-size:12px;font-weight:600;color:var(--ink-2)}
+.vw{margin-top:0}
+.vw-head{display:flex!important;align-items:center;gap:6px;flex-wrap:wrap}
+.vw-head .vw-btn{margin-left:auto}
+.vw-bar{display:flex;justify-content:flex-end;margin-bottom:6px}
+.vw-btn{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 3px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);font-size:12px;font-weight:600;color:var(--ink-2);cursor:pointer;letter-spacing:0;text-transform:none;user-select:none}
 .vw-btn:hover,.vw-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent-strong)}
-.vw-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--orb-2),var(--orb-1) 55%,var(--orb-3));flex-shrink:0}
-.vw-acts{display:inline-flex;gap:4px;flex-wrap:wrap}
+.vw-btn:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.vw-orb{width:19px;height:19px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--orb-2),var(--orb-1) 55%,var(--orb-3));flex-shrink:0}
+.vw-acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .vw-acts[hidden]{display:none}
 .vw-acts button{height:28px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--surface)}
 .vw-acts button:hover{border-color:var(--primary);color:var(--primary)}
@@ -900,6 +903,41 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
   .grp-wrap{grid-template-columns:1fr}
   .pc{grid-template-columns:1fr}
 }
+
+/* one-off date, repeat pattern, promo codes, questionnaire builder */
+.once-row[hidden]{display:none}
+.once-row{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:12px}
+.rp-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 14px;border-radius:14px;background:var(--surface-2);border:1px dashed var(--line);margin-bottom:10px}
+.rp-row .choice label span{padding:6px 10px;font-size:12.5px}
+.promos{display:flex;flex-direction:column;gap:8px}
+.promo-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.promo-r .inp.code{width:160px;text-transform:uppercase;font-weight:700;letter-spacing:.06em;font-family:ui-monospace,Menlo,monospace}
+.pr-f{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.pr-f .inp{width:80px}.pr-f .inp[data-pm]{width:108px}.pr-f .inp[type=date]{width:150px}
+.qb{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.qb-row{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;padding:12px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.qb-n{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary);font-weight:700;font-size:12.5px;margin-top:9px}
+.qb-top{display:grid;grid-template-columns:1fr 180px;gap:8px}
+.qb-opts{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+.qb-add{display:inline-flex;gap:6px;align-items:center}.qb-add .inp{height:32px;width:170px;font-size:13px}
+.qb-hint{margin-top:6px}.qb-req{margin-top:8px;font-size:13px}
+.qb-act{display:flex;flex-direction:column;gap:4px}.qb-act [data-qu] svg{transform:rotate(90deg)}
+.qb-bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+@media (max-width:640px){.once-row{grid-template-columns:1fr 1fr}.once-row #onceTxt{grid-column:1/-1;padding-bottom:0!important}.qb-top{grid-template-columns:1fr}.qb-row{grid-template-columns:24px 1fr auto;padding:10px}}
+
+.soc-list{display:flex;flex-direction:column;gap:10px}
+.soc-row{display:flex;align-items:flex-end;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.soc-row.on{border-color:var(--primary)}
+.soc-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;background:var(--soft-sage);color:var(--primary);font-weight:700;font-size:16px;margin-bottom:2px}
+.soc-act{display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-width:118px;padding-bottom:4px}
+.soc-act small{color:var(--muted);font-size:12px}
+.soc-perms{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.soc-perms li{display:flex;gap:8px;align-items:flex-start;color:var(--ink-2)}
+.exp-tbl{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.exp-h,.exp-r{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;align-items:center;padding:10px 14px}
+.exp-h{background:var(--surface-2);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.exp-r+.exp-r{border-top:1px solid var(--line)}
+@media (max-width:640px){.soc-row{flex-wrap:wrap}.soc-act{align-items:flex-start;min-width:0}.exp-h,.exp-r{grid-template-columns:1fr 1fr 1fr}}
 </style>
 </head>
 <body>
@@ -1217,10 +1255,15 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
   };
   function wrap(field){
     if (field.dataset.vedaReady) return; field.dataset.vedaReady = 1;
-    var kind = field.dataset.veda, box = document.createElement('div'); box.className = 'vw';
-    box.innerHTML = '<div class="vw-bar"><button type="button" class="vw-btn" aria-expanded="false"><span class="vw-orb"></span>Veda</button>' +
-      '<span class="vw-acts" hidden><button type="button" data-a="write">Write for me</button><button type="button" data-a="warmer">Warmer</button><button type="button" data-a="shorter">Shorter</button><button type="button" data-a="detail">More detail</button><button type="button" data-a="fix">Fix grammar</button></span></div><div class="vw-out" hidden></div>';
+    var box = document.createElement('div'); box.className = 'vw';
+    box.innerHTML = '<span class="vw-acts" hidden><button type="button" data-a="write">Write for me</button><button type="button" data-a="warmer">Warmer</button><button type="button" data-a="shorter">Shorter</button><button type="button" data-a="detail">More detail</button><button type="button" data-a="fix">Fix grammar</button></span><div class="vw-out" hidden></div>';
     field.insertAdjacentElement('afterend', box);
+    /* the Veda button sits at the top right of the field, on its label row */
+    var holder = field.closest('.field'), head = holder && holder.firstElementChild !== field ? holder.firstElementChild : null;
+    var btn = document.createElement('span'); btn.className = 'vw-btn'; btn.setAttribute('role', 'button'); btn.tabIndex = 0; btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Veda writing help'); btn.innerHTML = '<span class="vw-orb"></span>Veda';
+    if (head && head.tagName === 'SPAN'){ head.classList.add('vw-head'); head.appendChild(btn); }
+    else { var bar = document.createElement('div'); bar.className = 'vw-bar'; bar.appendChild(btn); field.insertAdjacentElement('beforebegin', bar); }
+    box._btn = btn;
     return box;
   }
   function put(field, text, mode){ field.value = mode === 'add' && field.value.trim() ? field.value.trim() + (field.tagName === 'TEXTAREA' ? '\n\n' : ' ') + text : text; field.dispatchEvent(new Event('input', {bubbles:true})); field.focus(); }
@@ -1228,8 +1271,8 @@ h1,h2,h3{font-weight:600;letter-spacing:-.02em}
     attach:function(scope, ctxFn, toast){
       Array.prototype.forEach.call((scope || document).querySelectorAll('[data-veda]'), function(field){
         var box = wrap(field); if (!box) return;
-        var acts = box.querySelector('.vw-acts'), out = box.querySelector('.vw-out'), btn = box.querySelector('.vw-btn');
-        btn.onclick = function(){ var open = acts.hidden; acts.hidden = !open; btn.setAttribute('aria-expanded', open); if (!open) out.hidden = true; };
+        var acts = box.querySelector('.vw-acts'), out = box.querySelector('.vw-out'), btn = box._btn;
+        var tog = function(e){ e.preventDefault(); e.stopPropagation(); var open = acts.hidden; acts.hidden = !open; btn.setAttribute('aria-expanded', open); if (!open) out.hidden = true; }; btn.onclick = tog; btn.onkeydown = function(e){ if (e.key === 'Enter' || e.key === ' ') tog(e); };
         Array.prototype.forEach.call(acts.querySelectorAll('[data-a]'), function(a){ a.onclick = function(){
           var kind = field.dataset.veda, c = (ctxFn && ctxFn(kind, field)) || {}, cur = field.value.trim(), act = a.dataset.a, opts;
           if (act !== 'write' && !cur){ act = 'write'; }
@@ -1399,7 +1442,7 @@ const stars = (n, cls = '') => `<span class="stars ${cls}" aria-label="${n} out 
    Seed data (a realistic week for healer Ananya Rawat)
    ===================================================================== */
 const DEF = {
-  v: 8,
+  v: 9,
   theme: 'dawn', available: true,
   seekers: [
     {id:'sarah', name:'Sarah Mitchell', short:'Sarah M.', city:'London', tz:1, col:'--accent-strong', goals:'Sleep, anxiety', notes:'Responds well to long exhales. Prefers evening sessions. Shoulder tension eases after round two.'},
@@ -1413,7 +1456,7 @@ const DEF = {
     {id:'lucas', name:'Lucas Meyer', short:'Lucas M.', city:'Munich', tz:2, col:'--chart-1', goals:'Sleep', notes:'Missed his last session.'}
   ],
   services: [
-    {id:'s1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, pkg:{on:true, sessions:5, inr:10500, usd:275, valid:60, only:false}, prep:{seeker:'Eat lightly; no heavy meal 2 hours before\nWear loose, comfortable clothes\nKeep water and a blanket nearby\nTest your camera and sound 10 minutes before', questions:'What would you most like help with?\nHow many hours do you usually sleep?\nAnything about your health I should know?', healer:'Read the intake answers and safety notes\nTest the room, camera and audio\nKeep the evening exhale recording ready to share', remind:24, required:true},  name:'Breath for deep sleep', modality:'Breathwork', type:'1:1', format:'Both', duration:60, inr:2500, usd:65, capacity:1, cutoff:120, status:'active', schedule:{kind:'availability'}, intensity:'Gentle', desc:'A calming pranayama session that helps your body move from alert to rest.', contra:'Not advised in late pregnancy without a doctor\'s approval.', created:'2026-06-12', history:[['2026-06-12','Created'],['2026-08-02','Price updated to ₹2,500 / $65']]},
+    {id:'s1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, pkg:{on:true, sessions:5, inr:10500, usd:275, valid:60, only:false}, prep:{seeker:'Eat lightly; no heavy meal 2 hours before\nWear loose, comfortable clothes\nKeep water and a blanket nearby\nTest your camera and sound 10 minutes before', qs:[{q:'What would you most like help with?', type:'multi', opts:['Waking at night','Racing thoughts','Falling asleep','Feeling tired all day'], req:true},{q:'How many hours do you usually sleep?', type:'single', opts:['Less than 5','5–6','7–8','More than 8'], req:true},{q:'Is there anything about your health I should know?', type:'long', opts:[], req:false},{q:'How stressed have you felt this week?', type:'scale', opts:[], req:false},{q:'Have you tried breathwork before?', type:'yesno', opts:[], req:false}], questions:'What would you most like help with?\nHow many hours do you usually sleep?\nIs there anything about your health I should know?\nHow stressed have you felt this week?\nHave you tried breathwork before?', healer:'Read the intake answers and safety notes\nTest the room, camera and audio\nKeep the evening exhale recording ready to share', remind:24, required:true},  name:'Breath for deep sleep', modality:'Breathwork', type:'1:1', format:'Both', duration:60, inr:2500, usd:65, capacity:1, cutoff:120, status:'active', promos:[{code:'SLEEPWELL15', pct:15, until:'2026-12-31', max:50, used:7}], schedule:{kind:'availability'}, intensity:'Gentle', desc:'A calming pranayama session that helps your body move from alert to rest.', contra:'Not advised in late pregnancy without a doctor\'s approval.', created:'2026-06-12', history:[['2026-06-12','Created'],['2026-08-02','Price updated to ₹2,500 / $65']]},
     {id:'s2', cover:{kind:'ai', seed:77, pal:'saffron', scene:'sunrise', motif:'Breathwork'}, prep:{seeker:'Sit on a firm chair or cushion\nEmpty stomach, or a light snack only', questions:'What do you need focus for this week?', healer:'Check notes from last time', remind:12, required:false},  name:'Pranayama for focus', modality:'Breathwork', type:'1:1', format:'Online', duration:45, inr:1900, usd:55, capacity:1, cutoff:30, status:'active', schedule:{kind:'availability'}, intensity:'Moderate', desc:'Energising breath practices for clear, steady attention.', contra:'Avoid with uncontrolled high blood pressure.', created:'2026-06-20', history:[['2026-06-20','Created']]},
     {id:'s3', name:'Free intro call', modality:'Breathwork', type:'1:1', format:'Online', duration:15, inr:0, usd:0, capacity:1, cutoff:30, status:'active', schedule:{kind:'availability'}, intensity:'Gentle', desc:'A short call to understand what you need and whether we are a good fit.', contra:'', created:'2026-06-12', history:[['2026-06-12','Created']]},
     {id:'s4', cover:{kind:'ai', seed:902, pal:'night', scene:'stars', motif:'Meditation'},  name:'Evening yoga nidra', modality:'Meditation', type:'Group', format:'Online', duration:60, inr:1200, usd:25, capacity:20, cutoff:0, status:'active', schedule:{kind:'weekly', days:['Wed'], time:'18:30'}, intensity:'Gentle', desc:'Guided deep rest for the whole body, every Wednesday evening.', contra:'', created:'2026-07-01', history:[['2026-07-01','Created'],['2026-08-15','Capacity raised to 20']]},
@@ -1510,6 +1553,8 @@ const DEF = {
     name:'Ananya Rawat', display:'Ananya Rawat', email:'ananya@example.com', phone:'+91 98•• ••• 210', city:'Tapovan, Rishikesh', tz:'India (IST, UTC+5:30)', langs:['English','Hindi'], photo:null,
     idStatus:'ok', idDate:'18 Sep 2026',
     modalities:{Breathwork:'ok', Meditation:'ok', 'Sound Healing':'act'},
+    exp:{Breathwork:{years:12, teach:9}, Meditation:{years:10, teach:7}, 'Sound Healing':{years:3, teach:1}},
+    social:{instagram:{url:'@ananya.breathes', connected:true, handle:'@ananya.breathes', followers:4820}, youtube:{url:'https://youtube.com/@ananyabreath'}},
     creds:[
       {id:'c1', modality:'Breathwork', title:'500-hour pranayama teacher training', provider:'Traditional pranayama school, Rishikesh', hours:500, issued:'2015-04', expires:'2029-04', status:'ok', file:'pranayama-ttc.pdf'},
       {id:'c2', modality:'Meditation', title:'Yoga nidra & meditation facilitator', provider:'Meditation teacher programme, Rishikesh', hours:200, issued:'2018-02', expires:'', status:'ok', file:'meditation-cert.pdf'}
@@ -1546,7 +1591,7 @@ const DEF = {
   const A1 = {Mon:[['07:00','11:00'],['13:00','18:30']], Tue:[['07:00','11:00'],['13:00','18:30']], Wed:[['07:00','11:00'],['13:00','18:30']], Thu:[['07:00','11:00'],['13:00','18:30']], Fri:[['07:00','11:00'],['13:00','18:30']], Sat:[['08:00','12:00']], Sun:[]};
   const GHAT = {useStudio:false, name:'Tapovan riverside ghat', address:'Riverside steps below Tapovan, near Laxman Jhula, Rishikesh, Uttarakhand 249192', lat:30.1268, lng:78.3305};
   DEF.packs = [
-    {id:'an-p1', name:'Sleep reset: 5-session journey', modality:'Breathwork', type:'1:1', format:'Both', capacity:1, intensity:'Gentle', status:'active', created:'2026-09-02',
+    {id:'an-p1', name:'Sleep reset: 5-session journey', modality:'Breathwork', type:'1:1', format:'Both', capacity:1, intensity:'Gentle', status:'active', promos:[{code:'JOURNEY10', pct:10, until:'2026-12-31', max:null, used:2}], created:'2026-09-02',
      cover:{kind:'ai', seed:5120, pal:'night', scene:'stars', motif:'Breathwork'}, inr:11000, usd:290, disc:10, tiers:[], avail:A1, gap:15, spacing:3, valid:45, cutoff:120, place:{useStudio:true}, venue:'Tapovan studio',
      desc:'Five guided sessions, a few days apart, that take you from racing thoughts at bedtime to a simple evening routine you can keep on your own.', contra:'Not advised in late pregnancy without a doctor\'s approval.',
      items:[{title:'Map your sleep', dur:60, desc:'We look at your evenings, your nights and what wakes you, and you learn a first slow-exhale practice.', cover:{kind:'ai', seed:5121, pal:'dusk', scene:'mountains', motif:'Breathwork'}},
@@ -1606,7 +1651,7 @@ const service = id => S.services.find(s => s.id === id);
 const booking = id => S.bookings.find(b => b.id === id);
 const thread = sid => S.threads.find(t => t.seeker === sid);
 const cutoffTxt = c => c === 0 ? 'Booking open until start' : `Booking closes ${c >= 60 ? (c / 60) + (c === 60 ? ' hour' : ' hours') : c + ' min'} before`;
-const schedTxt = s => { if (s.type === '1:1'){ const on = WEEK.filter(d => (s.avail || {})[d] && s.avail[d].length); return on.length ? `${on.length === 7 ? 'Every day' : on.length === 5 && !on.includes('Sat') && !on.includes('Sun') ? 'Mon–Fri' : on.join(', ')} · ${WEEK.reduce((a, d) => a + slotsIn((s.avail || {})[d], s.duration, s.gap).length, 0)} start times a week` : 'No availability set'; }
+const schedTxt = s => { if (s.recurring === false){ const x = (s.sessions || [])[0]; return x ? `One-off · ${fShort(x.date)}, ${f12(x.times[0])}` : 'No date set'; } if (s.type === '1:1'){ const on = WEEK.filter(d => (s.avail || {})[d] && s.avail[d].length); return on.length ? `${on.length === 7 ? 'Every day' : on.length === 5 && !on.includes('Sat') && !on.includes('Sun') ? 'Mon–Fri' : on.join(', ')} · ${WEEK.reduce((a, d) => a + slotsIn((s.avail || {})[d], s.duration, s.gap).length, 0)} start times a week` : 'No availability set'; }
   const fs = futureSessions(s), all = (s.sessions || []).slice().sort((a, b) => a.date.localeCompare(b.date)); return fs.length ? `${fs.length} date${fs.length === 1 ? '' : 's'} · next ${fDate(fs[0].date)}, ${fs[0].times.map(f12).join(', ')}` : all.length ? `Last held ${fDate(all[all.length - 1].date)}` : 'No dates yet'; };
 const typeIco = t => t === '1:1' ? 'i-user' : t === 'Group' ? 'i-group' : 'i-spark';
 const bLabel = b => b.seeker ? seeker(b.seeker).short : `${b.seats} seekers`;
@@ -2030,7 +2075,8 @@ function svcCard(s){
     <div class="meta"><span>${ico('i-clock')}${s.duration} min</span><span>${ico(s.format === 'In person' ? 'i-pin' : 'i-video')}${s.format}${s.format !== 'Online' && s.place ? ' · ' + esc(placeOf(s).name) : ''}</span>${s.type !== '1:1' ? `<span>${ico('i-group')}Up to ${s.capacity}</span>` : ''}<span>${ico('i-cal')}${schedTxt(s)}</span><span>${ico('i-lock')}${cutoffTxt(s.cutoff)}</span></div>
     <div class="price">${s.type === '1:1' && s.disc && s.inr ? `<s class="small muted">${money('INR', s.inr)}</s> ` : ''}<b>${money('INR', s.type === '1:1' && s.disc ? Math.round(s.inr * (1 - s.disc / 100)) : s.inr)}</b><span class="small muted">${s.inr ? `${s.type === '1:1' ? 'per session' : 'per seat'} · ${money('USD', s.type === '1:1' && s.disc ? Math.round(s.usd * (1 - s.disc / 100)) : s.usd)} international` : 'for every seeker'}</span></div>
     ${discTxt(s) ? `<div><span class="pill pk">${ico('i-wallet')}${esc(discTxt(s))}</span></div>` : ''}
-    ${s.prep && (s.prep.seeker || s.prep.questions) ? `<div class="small muted">${ico('i-check','i xs')} Preparation: ${linesOf(s.prep.seeker).length} steps · ${linesOf(s.prep.questions).length} question${linesOf(s.prep.questions).length === 1 ? '' : 's'}</div>` : ''}
+    ${s.prep && (s.prep.seeker || s.prep.questions || (s.prep.qs || []).length) ? (n => `<div class="small muted">${ico('i-check','i xs')} Preparation: ${linesOf(s.prep.seeker).length} steps · ${n} question${n === 1 ? '' : 's'}</div>`)(s.prep.qs ? s.prep.qs.length : linesOf(s.prep.questions).length) : ''}
+    ${promoTxt(s)}
     ${done ? `<div class="small" style="color:var(--ink-2)"><b>${s.stats.seats}</b> of ${s.capacity} seats · <b>${s.stats.revenue}</b> earned · ${stars(Math.round(s.stats.rating))} ${s.stats.rating}</div>` : `<div class="small muted">${up} upcoming booking${up === 1 ? '' : 's'}</div>`}
     <details><summary class="small" style="cursor:pointer;color:var(--accent-strong);font-weight:600">History</summary><div class="hist">${s.history.slice().reverse().map(h => `<div>${fShort(h[0])} · ${esc(h[1])}</div>`).join('')}</div></details>
     <div class="foot">
@@ -2080,13 +2126,75 @@ function vedaCtx(kind, field){
 }
 const attachVeda = scope => window.tvVeda && tvVeda.attach(scope, vedaCtx, toast);
 const defAvail = () => ({Mon:[['07:00','11:00'],['15:00','18:00']], Tue:[['07:00','11:00'],['15:00','18:00']], Wed:[['07:00','11:00'],['15:00','18:00']], Thu:[['07:00','11:00'],['15:00','18:00']], Fri:[['07:00','11:00'],['15:00','18:00']], Sat:[['08:00','12:00']], Sun:[]});
+/* ---------- promo codes (service + package): optional codes the healer shares; seekers enter them at checkout ---------- */
+const promoHTML = (st, what) => `<div class="full"><label class="pkg-tg"><input type="checkbox" id="promoOn" ${st.promoOn ? 'checked' : ''}><span><b>Create promo codes</b><small>Optional. Share a code with anyone you choose; whoever enters it at checkout gets the discount on this ${what}.</small></span></label><div id="promoBox" class="mt8" ${st.promoOn ? '' : 'hidden'}></div></div>`;
+const promoGen = name => (String(name || 'HEAL').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 8) || 'HEAL') + (10 + Math.floor(Math.random() * 40));
+function wirePromos(st, nameFn){
+  const box = $('#promoBox');
+  const draw = () => {
+    box.innerHTML = `<div class="promos">${st.promos.map((p, i) => `<div class="promo-r"><input class="inp code" value="${esc(p.code)}" data-pc="${i}" aria-label="Promo code" maxlength="20"><span class="pr-f"><input class="inp" type="number" min="1" max="90" value="${p.pct}" data-pp="${i}" aria-label="Percent off"><span>% off</span></span><span class="pr-f"><span>Uses</span><input class="inp" type="number" min="1" value="${p.max || ''}" placeholder="No limit" data-pm="${i}" aria-label="Maximum uses"></span><span class="pr-f"><span>Until</span><input class="inp" type="date" min="${TODAY}" value="${p.until || ''}" data-pu="${i}" aria-label="Valid until"></span>${p.used ? `<small class="muted">${p.used} used</small>` : ''}<button type="button" class="icon-btn" data-prm="${i}" aria-label="Remove code">${ico('i-x')}</button></div>`).join('')}
+      <button type="button" class="lnk small" id="promoAdd">${ico('i-plus','i xs')}Add a code</button></div>`;
+    $$('[data-pc]', box).forEach(x => x.oninput = () => { x.value = x.value.toUpperCase().replace(/[^A-Z0-9]/g, ''); st.promos[+x.dataset.pc].code = x.value; });
+    $$('[data-pp]', box).forEach(x => x.onchange = () => { const v = Math.min(90, Math.max(1, +x.value || 10)); st.promos[+x.dataset.pp].pct = v; x.value = v; });
+    $$('[data-pm]', box).forEach(x => x.onchange = () => { st.promos[+x.dataset.pm].max = +x.value || null; });
+    $$('[data-pu]', box).forEach(x => x.onchange = () => { st.promos[+x.dataset.pu].until = x.value || null; });
+    $$('[data-prm]', box).forEach(x => x.onclick = () => { st.promos.splice(+x.dataset.prm, 1); draw(); });
+    $('#promoAdd').onclick = () => { st.promos.push({code:promoGen(nameFn()), pct:10, max:null, until:addDays(TODAY, 30), used:0}); draw(); };
+  };
+  $('#promoOn').onchange = e => { st.promoOn = e.target.checked; box.hidden = !st.promoOn; if (st.promoOn && !st.promos.length) st.promos.push({code:promoGen(nameFn()), pct:10, max:null, until:addDays(TODAY, 30), used:0}); draw(); };
+  draw();
+}
+function promoCheck(st){
+  if (!st.promoOn) return [];
+  const list = st.promos.filter(p => p.code);
+  if (list.some(p => p.code.length < 4)) return (toast('Promo codes need at least 4 letters or numbers'), null);
+  const codes = list.map(p => p.code); if (new Set(codes).size !== codes.length) return (toast('Each promo code must be different'), null);
+  return list.map(p => Object.assign({}, p));
+}
+const promoTxt = x => (x.promos || []).length ? `<div class="small muted">${ico('i-wallet','i xs')} Promo code${x.promos.length === 1 ? '' : 's'}: ${x.promos.map(p => `<b>${esc(p.code)}</b> ${p.pct}%`).join(', ')}</div>` : '';
+
+/* ---------- questionnaire builder: typed questions the seeker answers after booking, before joining ---------- */
+const QTYPES = [['short','Short answer'],['long','Paragraph'],['single','Single choice'],['multi','Multiple choice'],['yesno','Yes / No'],['scale','Scale 1–5']];
+const qsFrom = pr => pr.qs ? clone(pr.qs) : linesOf(pr.questions).map(q => ({q, type:'long', opts:[], req:true}));
+function wireQs(st, modFn){
+  const box = $('#qBuild');
+  const draw = () => {
+    box.innerHTML = st.qs.length ? st.qs.map((q, i) => `<div class="qb-row"><span class="qb-n">${i + 1}</span><div class="grow"><div class="qb-top"><input class="inp" value="${esc(q.q)}" data-qq="${i}" placeholder="Type your question" aria-label="Question ${i + 1}"><select class="sel" data-qt="${i}" aria-label="Answer type for question ${i + 1}">${QTYPES.map(([v, l]) => `<option value="${v}" ${q.type === v ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+      ${q.type === 'single' || q.type === 'multi' ? `<div class="qb-opts">${q.opts.map((o, j) => `<span class="tchip">${esc(o)}<button type="button" data-qod="${i}|${j}" aria-label="Remove ${esc(o)}">${ico('i-x','i xs')}</button></span>`).join('')}<span class="qb-add"><input class="inp" data-qoi="${i}" placeholder="Add an option" aria-label="New option"><button type="button" class="btn xs g" data-qoa="${i}">${ico('i-plus','i xs')}Add</button></span></div>`
+        : `<div class="small muted qb-hint">${{short:'The seeker types a short answer', long:'The seeker writes a few lines', yesno:'The seeker picks Yes or No', scale:'The seeker picks 1 (not at all) to 5 (very)'}[q.type]}</div>`}
+      <label class="check small qb-req"><input type="checkbox" data-qr="${i}" ${q.req !== false ? 'checked' : ''}><span>Required</span></label></div>
+      <div class="qb-act"><button type="button" class="icon-btn" data-qu="${i}" aria-label="Move question ${i + 1} up" ${i ? '' : 'disabled'}>${ico('i-back','i')}</button><button type="button" class="icon-btn danger" data-qd="${i}" aria-label="Delete question ${i + 1}">${ico('i-trash')}</button></div></div>`).join('')
+      : `<div class="empty" style="padding:16px">No questions yet. Add one, or let Veda suggest a few.</div>`;
+    $$('[data-qq]', box).forEach(x => x.oninput = () => { st.qs[+x.dataset.qq].q = x.value; });
+    $$('[data-qt]', box).forEach(x => x.onchange = () => { const q = st.qs[+x.dataset.qt]; q.type = x.value; if ((q.type === 'single' || q.type === 'multi') && !q.opts.length) q.opts = []; draw(); const oi = box.querySelector(`[data-qoi="${x.dataset.qt}"]`); oi && oi.focus(); });
+    const addOpt = i => { const inp = box.querySelector(`[data-qoi="${i}"]`), v = inp.value.trim(); if (!v) return inp.focus(); if (st.qs[i].opts.includes(v)) return toast('That option is already there'); st.qs[i].opts.push(v); draw(); box.querySelector(`[data-qoi="${i}"]`).focus(); };
+    $$('[data-qoa]', box).forEach(x => x.onclick = () => addOpt(+x.dataset.qoa));
+    $$('[data-qoi]', box).forEach(x => x.onkeydown = e => { if (e.key === 'Enter'){ e.preventDefault(); addOpt(+x.dataset.qoi); } });
+    $$('[data-qod]', box).forEach(x => x.onclick = () => { const [i, j] = x.dataset.qod.split('|').map(Number); st.qs[i].opts.splice(j, 1); draw(); });
+    $$('[data-qr]', box).forEach(x => x.onchange = () => { st.qs[+x.dataset.qr].req = x.checked; });
+    $$('[data-qu]', box).forEach(x => x.onclick = () => { const i = +x.dataset.qu; [st.qs[i - 1], st.qs[i]] = [st.qs[i], st.qs[i - 1]]; draw(); });
+    $$('[data-qd]', box).forEach(x => x.onclick = () => { st.qs.splice(+x.dataset.qd, 1); draw(); });
+  };
+  $('#qAdd').onclick = () => { st.qs.push({q:'', type:'short', opts:[], req:true}); draw(); const ins = box.querySelectorAll('[data-qq]'); ins[ins.length - 1].focus(); };
+  $('#qVeda').onclick = () => { const m = modFn() || 'this practice', b = $('#qVeda'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is thinking…';
+    setTimeout(() => { const sug = [{q:'What would you most like help with in this session?', type:'multi', opts:['Stress','Sleep','Focus','Low energy','Something else'], req:true}, {q:`Have you tried ${m.toLowerCase()} before?`, type:'yesno', opts:[], req:true}, {q:'How stressed have you felt this week?', type:'scale', opts:[], req:false}, {q:'Is there anything about your health I should know?', type:'long', opts:[], req:true}];
+      let n = 0; sug.forEach(x => { if (!st.qs.some(q => q.q.trim().toLowerCase() === x.q.toLowerCase())){ st.qs.push(x); n++; } }); draw(); b.disabled = false; b.innerHTML = '<span class="vw-orb"></span>Suggest with Veda'; toast(n ? `Veda added ${n} question${n === 1 ? '' : 's'}. Edit anything.` : 'These suggestions are already in your list'); }, 700); };
+  draw();
+}
+function qsCheck(st){
+  const list = st.qs.filter(q => q.q.trim()).map(q => Object.assign({}, q, {q:q.q.trim()}));
+  const bad = list.findIndex(q => (q.type === 'single' || q.type === 'multi') && q.opts.length < 2);
+  if (bad >= 0) return (toast(`"${list[bad].q.slice(0, 40)}" needs at least two options`), null);
+  return list;
+}
+
 function serviceModal(id, preset, rerun){
   const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', duration:60, inr:'', usd:'', capacity:10, cutoff:S.profile.defCutoff, intensity:'Gentle', desc:'', contra:'', cover:null,
     avail:defAvail(), gap:15, disc:0, sessions:[], tiers:[{n:3, pct:5},{n:5, pct:10}], place:{useStudio:true},
     prep:{seeker:'', questions:'', healer:'', remind:24, required:true}};
   const s = id ? service(id) : Object.assign(clone(base), preset || {});
   /* working copies edited by the UI */
-  const st = {avail:clone(s.avail || base.avail), sessions:rerun ? [] : clone(s.sessions || []), tiers:clone(s.tiers || base.tiers), place:clone(s.place || base.place), cover:s.cover ? clone(s.cover) : null, monthOff:0, variants:[], discOn:!!s.disc, tiersOn:(s.tiers || base.tiers).length > 0 && (id ? (s.tiers || []).length > 0 : true)};
+  const st = {avail:clone(s.avail || base.avail), sessions:rerun ? [] : clone(s.sessions || []), tiers:clone(s.tiers || base.tiers), place:clone(s.place || base.place), cover:s.cover ? clone(s.cover) : null, monthOff:0, variants:[], discOn:!!s.disc, promos:clone(s.promos || []), promoOn:!!(s.promos || []).length, qs:qsFrom(Object.assign({}, base.prep, s.prep || {})), recurring:rerun ? false : id ? s.recurring !== false : (preset && preset.recurring) || false, once:clone(s.once || (s.recurring === false && (s.sessions || [])[0] ? {date:s.sessions[0].date, time:s.sessions[0].times[0]} : {date:addDays(TODAY, 2), time:'18:00'})), tiersOn:(s.tiers || base.tiers).length > 0 && (id ? (s.tiers || []).length > 0 : true)};
   WEEK.forEach(d => { if (!st.avail[d]) st.avail[d] = []; });
   const pr = Object.assign(clone(base.prep), s.prep || {});
   const mods = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
@@ -2136,13 +2244,18 @@ function serviceModal(id, preset, rerun){
       <div class="full" data-show="disc2"><label class="pkg-tg"><input type="checkbox" id="tiersOn" ${st.tiersOn ? 'checked' : ''}><span><b>Discount for bigger bookings</b><small>When one seeker books seats for several people, the whole booking gets the discount</small></span></label>
         <div id="tierBox" class="mt8" ${st.tiersOn ? '' : 'hidden'}></div></div>
       <div class="full note info" id="priceNote"></div>
+      ${promoHTML(st, 'service')}
 
-      ${sec(5, 'Availability', '', 'av1')}
+      ${sec(5, 'Date & time', 'One session on one date by default. Tick “This repeats” to set recurring availability instead.')}
+      <div class="full once-row" id="onceBox" ${st.recurring ? 'hidden' : ''}><label class="field"><span>Date</span><input class="inp" type="date" name="once_date" min="${TODAY}" value="${st.once.date}"></label><label class="field"><span>Start time <small>(IST)</small></span><input class="inp" type="time" name="once_time" value="${st.once.time}"></label><div class="small muted" id="onceTxt" style="align-self:end;padding-bottom:12px"></div></div>
+      <div class="full"><label class="pkg-tg"><input type="checkbox" id="recOn" ${st.recurring ? 'checked' : ''}><span><b>This repeats (recurring)</b><small id="recSub">Set the days and hours you are free; seekers book open times</small></span></label></div>
+      ${sec('↻', 'Recurring availability', '', 'av1')}
       <div class="full" data-show="av1"><p class="small muted" style="margin-bottom:10px">Choose the days and hours you are free. Seekers see open start times inside these hours; a time disappears as soon as someone books it.</p>
         <div class="wk-avail" id="availBox"></div>
         <div class="row mt16" style="gap:14px"><label class="field" style="max-width:220px"><span>Break between sessions</span><select class="sel" name="gap">${[[0,'No break'],[10,'10 min'],[15,'15 min'],[30,'30 min']].map(([v, l]) => opt(v, s.gap ?? 15, l)).join('')}</select></label><div class="small muted grow" id="slotSum"></div></div></div>
-      ${sec(5, 'Dates & times', '', 'av2')}
-      <div class="full" data-show="av2"><p class="small muted" style="margin-bottom:10px">Tap dates on the calendar, then add start times for each date. Use <b>Apply to all dates</b> to copy one date's times to every date.</p>
+      ${sec('↻', 'Recurring dates & times', '', 'av2')}
+      <div class="full" data-show="av2"><div class="rp-row"><span class="small" style="font-weight:600">Repeat every</span><div class="choice" id="rpDays">${WEEK.map(d => `<label><input type="checkbox" value="${d}" ${['Mon','Wed','Fri'].includes(d) ? 'checked' : ''}><span>${d}</span></label>`).join('')}</div><span class="small">at</span><input class="inp" type="time" id="rpTime" value="18:30" style="width:120px" aria-label="Start time"><span class="small">for</span><select class="sel" id="rpWeeks" style="width:120px" aria-label="Number of weeks">${[2,4,6,8,12].map(w => `<option value="${w}" ${w === 4 ? 'selected' : ''}>${w} weeks</option>`).join('')}</select><button type="button" class="btn sm g" id="rpGen">${ico('i-repeat')}Add these dates</button></div>
+        <p class="small muted" style="margin:10px 0">Or tap dates on the calendar, then add start times for each date. Use <b>Apply to all dates</b> to copy one date's times to every date.</p>
         <div class="grp" id="grpBox"></div></div>
 
       ${sec(6, 'Booking closes')}
@@ -2155,7 +2268,8 @@ function serviceModal(id, preset, rerun){
 
       ${sec(8, 'Preparation', 'Sent to the seeker as soon as they book, with a reminder before the session. Their answers appear in the booking for you.')}
       <label class="field full"><span>What the seeker should do before the session <small>(one per line)</small></span><textarea class="ta" name="prep_seeker" data-veda="prep" placeholder="Eat lightly 2 hours before&#10;Wear loose clothes&#10;Keep water and a blanket nearby">${esc(pr.seeker)}</textarea></label>
-      <label class="field full"><span>Questions to answer before the session <small>(one per line)</small></span><textarea class="ta" name="prep_questions" data-veda="questions" placeholder="What would you like help with?&#10;Have you tried breathwork before?">${esc(pr.questions)}</textarea></label>
+      <div class="field full"><span>Questions for the seeker <small>(they answer after booking, before joining)</small></span><div id="qBuild" class="qb"></div>
+        <div class="row" style="gap:8px;margin-top:10px"><button type="button" class="btn sm g" id="qAdd">${ico('i-plus')}Add question</button><button type="button" class="btn sm g" id="qVeda"><span class="vw-orb"></span>Suggest with Veda</button></div></div>
       <label class="field"><span>Send a preparation reminder</span><select class="sel" name="prep_remind">${[[48,'48 hours before'],[24,'24 hours before'],[12,'12 hours before'],[2,'2 hours before']].map(([v, l]) => opt(v, pr.remind, l)).join('')}</select></label>
       <label class="check" style="align-self:end;padding-bottom:10px"><input type="checkbox" name="prep_required" ${pr.required ? 'checked' : ''}><span>Ask seekers to answer before joining</span></label>
       <label class="field full"><span>Your own checklist before each session <small>(private, one per line)</small></span><textarea class="ta" name="prep_healer" data-veda="hprep" placeholder="Read the seeker's answers&#10;Test audio 10 minutes before">${esc(pr.healer)}</textarea></label>
@@ -2240,7 +2354,7 @@ function serviceModal(id, preset, rerun){
         $('#covPrev').innerHTML = `<div class="cp-card"><div class="cp-cov">${st.cover ? tvCover.html(st.cover, name) : `<div class="cp-empty">${ico('i-spark','i')}<span>No cover yet</span></div>`}${!g && dp ? `<span class="cp-badge">${dp}% off</span>` : ''}</div>
           <div class="cp-in"><small>${esc(modality)} · ${g ? 'Group' : '1:1'} · ${f.duration.value} min · ${f.format.value === 'Both' ? 'Online or in person' : f.format.value}</small><b>${esc(name)}</b>
           <div class="cp-price">${!g && dp && inr ? `<s class="muted">${money('INR', inr)}</s><span>${money('INR', Math.round(inr * (1 - dp / 100)))}</span>` : `<span>${money('INR', inr)}</span>`}<small>${inr ? (g ? 'per seat' : 'per session') : ''}</small></div>
-          ${g ? `<div class="cp-pk">${ico('i-cal','i xs')} ${fs.length ? `${fs.length} dates · next ${fDate(fs[0].date)}` : 'No dates yet'}</div>${st.tiersOn && st.tiers.length ? `<div class="cp-pk">${ico('i-users','i xs')} ${st.tiers.map(t => `${t.n}+ · ${t.pct}% off`).join(' · ')}</div>` : ''}` : ''}</div></div>
+          ${!st.recurring ? `<div class="cp-pk">${ico('i-cal','i xs')} ${f.once_date.value ? `${fDate(f.once_date.value)} · ${f12(f.once_time.value || '18:00')}` : 'Choose a date'}</div>` : ''}${g && st.recurring ? `<div class="cp-pk">${ico('i-cal','i xs')} ${fs.length ? `${fs.length} dates · next ${fDate(fs[0].date)}` : 'No dates yet'}</div>${st.tiersOn && st.tiers.length ? `<div class="cp-pk">${ico('i-users','i xs')} ${st.tiers.map(t => `${t.n}+ · ${t.pct}% off`).join(' · ')}</div>` : ''}` : ''}</div></div>
           <p class="small muted" style="margin-top:8px;text-align:center">${ico('i-eye','i xs')} Preview: how seekers see this service</p>`;
         $('#priceNote').innerHTML = !inr ? `${ico('i-alert')}<span>Price is 0, so this is a free ${g ? 'session' : 'call'}.</span>` : g
           ? `${ico('i-users')}<span>Example: ${st.tiersOn && st.tiers.length ? st.tiers.map(t => `${t.n} people pay ${money('INR', Math.round(inr * t.n * (1 - t.pct / 100)))} instead of ${money('INR', inr * t.n)}`).join('; ') : `each seat is ${money('INR', inr)}`}.</span>`
@@ -2248,8 +2362,12 @@ function serviceModal(id, preset, rerun){
       };
       const sync = () => {
         const g = grp(), fmt = f.format.value;
-        body.querySelectorAll('[data-show=cap],[data-show=disc2],[data-show=av2]').forEach(x => x.hidden = !g);
-        body.querySelectorAll('[data-show=disc1],[data-show=av1]').forEach(x => x.hidden = g);
+        body.querySelectorAll('[data-show=cap],[data-show=disc2]').forEach(x => x.hidden = !g);
+        body.querySelectorAll('[data-show=disc1]').forEach(x => x.hidden = g);
+        body.querySelectorAll('[data-show=av2]').forEach(x => x.hidden = !g || !st.recurring);
+        body.querySelectorAll('[data-show=av1]').forEach(x => x.hidden = g || !st.recurring);
+        $('#onceBox').hidden = st.recurring; $('#recSub').textContent = g ? 'Choose a weekly pattern or several dates, each with its start times' : 'Set the days and hours you are free; seekers book open times';
+        $('#onceTxt').innerHTML = !st.recurring && f.once_date.value && f.once_time.value ? `${ico('i-cal','i xs')} ${fDate(f.once_date.value)} · ${f12(f.once_time.value)} IST · ${g ? `up to ${f.capacity.value} people` : 'one seeker'}` : '';
         body.querySelectorAll('[data-show=loc]').forEach(x => x.hidden = fmt === 'Online');
         body.querySelectorAll('[data-lbl]').forEach(x => x.textContent = g ? 'Price per seat' : 'Price per session');
         preview();
@@ -2266,6 +2384,12 @@ function serviceModal(id, preset, rerun){
       $('#tiersOn').onchange = e => { st.tiersOn = e.target.checked; $('#tierBox').hidden = !st.tiersOn; preview(); };
       body.addEventListener('input', e => { if (['name','inr','usd'].includes(e.target.name)) preview(); });
       f.modality.addEventListener('change', preview);
+      $('#recOn').onchange = e => { st.recurring = e.target.checked; sync(); g2(); };
+      ['once_date','once_time'].forEach(n => f[n].addEventListener('change', () => { st.once = {date:f.once_date.value, time:f.once_time.value}; sync(); }));
+      $('#rpGen').onclick = () => { const days = [...$$('#rpDays input:checked')].map(x => x.value), t = $('#rpTime').value, w = +$('#rpWeeks').value; if (!days.length) return toast('Choose at least one day'); if (!t) return toast('Choose a start time');
+        let n = 0; for (let k = 1; k <= w * 7; k++){ const d = addDays(TODAY, k), wd = WEEK[(pd(d).getUTCDay() + 6) % 7]; if (!days.includes(wd)) continue; const ex = st.sessions.find(x => x.date === d); if (ex){ if (!ex.times.includes(t)){ ex.times.push(t); ex.times.sort(); n++; } } else { st.sessions.push({date:d, times:[t]}); n++; } }
+        drawGroup(); preview(); toast(n ? `${n} session${n === 1 ? '' : 's'} added over ${w} weeks` : 'Those dates are already added'); };
+      wirePromos(st, () => f.name.value); wireQs(st, () => f.modality.value);
       /* cover */
       const drawVars = () => { $('#covVars').innerHTML = st.variants.map((v, i) => `<button type="button" class="cov-var ${st.cover && st.cover.seed === v.seed ? 'on' : ''}" data-v="${i}" aria-label="Use option ${i + 1}">${tvCover.svg(v)}</button>`).join(''); $$('#covVars [data-v]').forEach(b => b.onclick = () => { st.cover = st.variants[+b.dataset.v]; drawVars(); preview(); toast('Cover selected'); }); };
       $('#covGen').onclick = () => { const b = $('#covGen'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Veda is painting…'; $('#covVars').innerHTML = '<div class="cov-load"></div><div class="cov-load"></div><div class="cov-load"></div>';
@@ -2281,7 +2405,13 @@ function serviceModal(id, preset, rerun){
       const st2 = f._st, name = (fd.get('name') || '').trim(), g = fd.get('type') !== '1:1', dur = +fd.get('duration');
       if (!name) return fieldErr(f, 'name', 'Add a service name');
       if (fd.get('inr') === '' || fd.get('usd') === '') return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free service)');
-      if (!g){
+      const promos = promoCheck(st2); if (!promos) return false;
+      const qs = qsCheck(st2); if (!qs) return false;
+      const once = {date:fd.get('once_date') || '', time:fd.get('once_time') || ''};
+      if (!st2.recurring){
+        if (!once.date || once.date < TODAY) return fieldErr(f, 'once_date', 'Choose a date from today onwards');
+        if (!once.time) return fieldErr(f, 'once_time', 'Choose a start time');
+      } else if (!g){
         const bad = WEEK.find(d => st2.avail[d].some(([a, b]) => toMin(b) - toMin(a) < dur));
         if (bad) return (toast(`${bad}: each time window must be at least ${dur} minutes`), false);
         if (!WEEK.some(d => slotsIn(st2.avail[d], dur, +fd.get('gap')).length)) return (toast('Add at least one day with available hours'), false);
@@ -2290,18 +2420,19 @@ function serviceModal(id, preset, rerun){
         if (st2.sessions.some(x => !x.times.length)) return (toast('Every chosen date needs at least one start time'), false);
       }
       if (fd.get('format') !== 'Online' && !st2.place.useStudio && !(st2.place.name && (st2.place.lat || st2.place.address))) return (toast('Choose the place for in-person sessions'), false);
-      const disc = g ? 0 : f._disc();
+      const disc = g ? 0 : f._disc(), rec = st2.recurring;
       const data = {name, modality:fd.get('modality'), type:g ? 'Group' : '1:1', format:fd.get('format'), duration:dur, capacity:g ? Math.max(2, +fd.get('capacity') || 10) : 1,
         inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, cutoff:+fd.get('cutoff'), intensity:fd.get('intensity'), desc:fd.get('desc'), contra:fd.get('contra'), cover:st2.cover,
-        avail:g ? null : st2.avail, gap:+fd.get('gap'), disc, sessions:g ? st2.sessions : [], tiers:g && st2.tiersOn ? st2.tiers : [], place:fd.get('format') === 'Online' ? null : st2.place,
-        prep:{seeker:fd.get('prep_seeker'), questions:fd.get('prep_questions'), healer:fd.get('prep_healer'), remind:+fd.get('prep_remind'), required:!!fd.get('prep_required')}};
+        avail:g || !rec ? null : st2.avail, gap:+fd.get('gap'), disc, sessions:!rec ? [{date:once.date, times:[once.time]}] : g ? st2.sessions : [], tiers:g && st2.tiersOn ? st2.tiers : [], place:fd.get('format') === 'Online' ? null : st2.place,
+        recurring:rec, once:rec ? null : once, promos,
+        prep:{seeker:fd.get('prep_seeker'), qs, questions:qs.map(q => q.q).join('\n'), healer:fd.get('prep_healer'), remind:+fd.get('prep_remind'), required:!!fd.get('prep_required')}};
       data.venue = data.place ? placeOf(data).name : '';
       if (rerun){
-        Object.assign(s, data, {status:'active'}); delete s.stats; s.history.push([TODAY, `Run again · ${futureSessions(s).length} new dates · bookings opened`]);
+        Object.assign(s, data, {status:'active'}); delete s.stats; s.history.push([TODAY, rec ? `Run again · ${futureSessions(s).length} new dates · bookings opened` : `Run again · ${fShort(once.date)} at ${f12(once.time)} · bookings opened`]);
         svcTab = 'active'; commit(); toast(`${name} is open for booking again`); return;
       }
       if (id){
-        const lab = {inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'session length', capacity:'seats', disc:'discount', avail:'availability', sessions:'dates & times', tiers:'group discount', place:'location', cover:'cover image', prep:'preparation'};
+        const lab = {inr:'India price', usd:'international price', cutoff:'booking cut-off', duration:'session length', capacity:'seats', disc:'discount', avail:'availability', sessions:'dates & times', tiers:'group discount', place:'location', cover:'cover image', prep:'preparation', promos:'promo codes', recurring:'one-off or recurring'};
         const changed = Object.keys(lab).filter(k => JSON.stringify(s[k] ?? null) !== JSON.stringify(data[k] ?? null));
         Object.assign(s, data); if (btn === 'save' && s.status === 'draft') s.status = 'active';
         s.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => lab[x]).join(', ')}` : 'Details updated']);
@@ -2374,6 +2505,7 @@ function pkCard(p){
     ${g && (p.tiers || []).length ? `<div><span class="pill pk">${ico('i-users')}${esc(p.tiers.map(t => `${t.n}+ people ${t.pct}% off`).join(' · '))}</span></div>` : ''}
     <div class="pk-list">${p.items.slice(0, 3).map((x, i) => `<div class="pk-it"><span class="pk-th">${tvCover.html(itemCover(p, i), x.title)}</span><span class="grow"><b>${i + 1}. ${esc(x.title)}</b><small>${x.dur} min${g && x.date ? ` · ${fShort(x.date)}, ${f12(x.time)}` : ''}</small></span></div>`).join('')}
       ${p.items.length > 3 ? `<details><summary class="small">+ ${p.items.length - 3} more session${p.items.length - 3 === 1 ? '' : 's'}</summary>${p.items.slice(3).map((x, j) => `<div class="pk-it"><span class="pk-th">${tvCover.html(itemCover(p, j + 3), x.title)}</span><span class="grow"><b>${j + 4}. ${esc(x.title)}</b><small>${x.dur} min${g && x.date ? ` · ${fShort(x.date)}, ${f12(x.time)}` : ''}</small></span></div>`).join('')}</details>` : ''}</div>
+    ${promoTxt(p)}
     <div class="small muted">${en.length ? `${g ? `${seats} seat${seats === 1 ? '' : 's'} sold` : `${en.length} seeker${en.length === 1 ? '' : 's'} enrolled`} · ${en.map(e => esc(seeker(e.seeker) ? seeker(e.seeker).short : 'Seeker')).join(', ')}` : 'No one enrolled yet'}</div>
     <div class="foot">
       ${p.status === 'draft' ? `<button class="btn sm p" data-act="publish" data-id="${p.id}">Publish</button>` : p.status === 'paused' ? `<button class="btn sm p" data-act="resume" data-id="${p.id}">Resume sales</button>` : `<button class="btn sm g" data-act="pause" data-id="${p.id}">${ico('i-pause')}Pause</button>`}
@@ -2403,7 +2535,7 @@ function packageModal(id){
   const base = {name:'', modality:approvedMods()[0], type:'1:1', format:'Online', capacity:10, intensity:'Gentle', desc:'', contra:'', cover:null, inr:'', usd:'', disc:0, tiers:[{n:3, pct:5},{n:5, pct:10}],
     avail:defAvail(), gap:15, spacing:2, valid:45, cutoff:S.profile.defCutoff, place:{useStudio:true}, items:vedaPlan(approvedMods()[0], 4, 60).map(x => Object.assign(x, {title:'', desc:'', cover:null}))};
   const p = id ? pack(id) : clone(base);
-  const st = {items:clone(p.items), avail:clone(p.avail || base.avail), tiers:clone(p.tiers && p.tiers.length ? p.tiers : base.tiers), tiersOn:id ? (p.tiers || []).length > 0 : true, discOn:!!p.disc, place:clone(p.place || base.place), cover:p.cover ? clone(p.cover) : null, variants:[], open:id ? -1 : 0};
+  const st = {items:clone(p.items), avail:clone(p.avail || base.avail), tiers:clone(p.tiers && p.tiers.length ? p.tiers : base.tiers), tiersOn:id ? (p.tiers || []).length > 0 : true, discOn:!!p.disc, place:clone(p.place || base.place), cover:p.cover ? clone(p.cover) : null, variants:[], open:id ? -1 : 0, promos:clone(p.promos || []), promoOn:!!(p.promos || []).length};
   WEEK.forEach(d => { if (!st.avail[d]) st.avail[d] = []; });
   const mods = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
   const opt = (v, cur, label) => `<option value="${esc(v)}" ${String(v) === String(cur) ? 'selected' : ''}>${label || esc(v)}</option>`;
@@ -2471,6 +2603,7 @@ function packageModal(id){
       <div class="full" data-show="disc2"><label class="pkg-tg"><input type="checkbox" id="tiersOn" ${st.tiersOn ? 'checked' : ''}><span><b>Extra discount for bigger bookings</b><small>When one seeker buys seats for several people, on top of the package discount</small></span></label>
         <div id="tierBox" class="mt8" ${st.tiersOn ? '' : 'hidden'}></div></div>
       <div class="full note info" id="priceNote"></div>
+      ${promoHTML(st, 'package')}
     </div>`,
     foot:`<button type="button" class="btn g" data-close>Cancel</button>${!id || p.status === 'draft' ? '<button type="submit" class="btn g" value="draft">Save as draft</button>' : ''}<button type="submit" class="btn p" value="save">${id && p.status !== 'draft' ? 'Save changes' : 'Publish package'}</button>`,
     onOpen:body => {
@@ -2596,12 +2729,14 @@ function packageModal(id){
       $$('#covMode button').forEach(b => b.onclick = () => { $$('#covMode button').forEach(x => x.classList.toggle('on', x === b)); $('#covAi').hidden = b.dataset.m !== 'ai'; $('#covUp').hidden = b.dataset.m !== 'up'; });
       const fi = body.querySelector('[name=coverfile]'); fi.addEventListener('change', () => { const file = fi.files[0]; if (!file) return; tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); st.cover = {kind:'img', src}; drawItems(); preview(); toast('Cover uploaded'); }); fi.closest('.drop').querySelector('b').textContent = file.name; });
       drawTiers(); drawAvail(); sync(); if (f.format.value !== 'Online') drawPlace();
+      wirePromos(st, () => f.name.value);
       attachVeda(body);
       modalBox._st = st; modalBox._disc = discPct;
     },
     onSubmit:(fd, btn, f) => {
       const st2 = f._st, name = (fd.get('name') || '').trim(), g = fd.get('type') !== '1:1', draft = btn === 'draft';
       if (!name) return fieldErr(f, 'name', 'Add a package name');
+      const promos = promoCheck(st2); if (!promos) return false;
       const miss = st2.items.findIndex(x => !x.title.trim());
       if (miss >= 0 && !draft){ const tb = $('[data-tog="' + miss + '"]'); if (tb.getAttribute('aria-expanded') !== 'true') tb.click(); return (toast(`Add a title for session ${miss + 1}`), false); }
       if (!draft && (fd.get('inr') === '' || fd.get('usd') === '' || !+fd.get('inr'))) return fieldErr(f, fd.get('inr') === '' || !+fd.get('inr') ? 'inr' : 'usd', 'Add the package price in rupees and dollars');
@@ -2615,10 +2750,10 @@ function packageModal(id){
       const data = {name, modality:fd.get('modality'), type:g ? 'Group' : '1:1', format:fd.get('format'), capacity:g ? Math.max(2, +fd.get('capacity') || 10) : 1, intensity:fd.get('intensity'),
         desc:fd.get('desc'), contra:fd.get('contra'), cover:st2.cover, inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, disc:f._disc(), tiers:g && st2.tiersOn ? st2.tiers : [],
         items:st2.items.map(x => g ? {title:x.title.trim(), desc:x.desc, dur:+x.dur, cover:x.cover, date:x.date, time:x.time} : {title:x.title.trim(), desc:x.desc, dur:+x.dur, cover:x.cover}),
-        avail:g ? null : st2.avail, gap:+fd.get('gap'), spacing:+fd.get('spacing'), valid:+fd.get('valid'), cutoff:g ? +fd.get('gcut') : +fd.get('cutoff'), place:fd.get('format') === 'Online' ? null : st2.place};
+        avail:g ? null : st2.avail, gap:+fd.get('gap'), spacing:+fd.get('spacing'), valid:+fd.get('valid'), cutoff:g ? +fd.get('gcut') : +fd.get('cutoff'), place:fd.get('format') === 'Online' ? null : st2.place, promos};
       data.venue = data.place ? placeOf(data).name : '';
       if (id){
-        const lab = {items:'sessions', inr:'India price', usd:'international price', disc:'discount', tiers:'group discount', avail:'availability', place:'location', cover:'cover image', capacity:'seats'};
+        const lab = {items:'sessions', inr:'India price', usd:'international price', disc:'discount', tiers:'group discount', avail:'availability', place:'location', cover:'cover image', capacity:'seats', promos:'promo codes'};
         const changed = Object.keys(lab).filter(k => JSON.stringify(p[k] ?? null) !== JSON.stringify(data[k] ?? null));
         Object.assign(p, data); if (btn === 'save' && p.status === 'draft') p.status = 'active';
         p.history.push([TODAY, changed.length ? `Updated: ${changed.map(x => lab[x]).join(', ')}` : 'Details updated']);
@@ -3167,6 +3302,25 @@ function rvList(focus){
 /* =====================================================================
    PROFILE INFO (step-wise, verification built in)
    ===================================================================== */
+const SOCIALS = [['instagram','Instagram','@yourname or profile link'],['facebook','Facebook','Facebook page link'],['youtube','YouTube','Channel link'],['linkedin','LinkedIn','Profile link'],['x','X (Twitter)','@yourname'],['website','Website','https://yourwebsite.com']];
+const socHandle = (k, v, name) => { v = String(v || '').trim(); if (!v) return '@' + String(name || 'healer').toLowerCase().replace(/[^a-z]+/g, '').slice(0, 14); const m = v.match(/(?:@|\.com\/)([A-Za-z0-9_.]+)/); return '@' + (m ? m[1] : v.replace(/^@/, '').split('/').pop()); };
+function socialRows(soc){
+  return `<div class="soc-list">${SOCIALS.map(([k, n, ph]) => { const x = soc[k] || {};
+    return `<div class="soc-row ${x.connected ? 'on' : ''}" data-soc="${k}"><span class="soc-ic" aria-hidden="true">${n[0]}</span>
+      <label class="grow field" style="margin:0"><span>${n}</span><input class="inp" name="soc_${k}" value="${esc(x.url || '')}" placeholder="${ph}"></label>
+      <div class="soc-act">${k === 'website' ? '' : x.connected ? `<span class="pill ok">${ico('i-check')}Connected</span><small>${esc(x.handle)} · ${x.followers.toLocaleString('en-IN')} followers</small><button type="button" class="lnk small" data-socx="${k}">Disconnect</button>` : `<button type="button" class="btn sm g" data-socc="${k}">${ico('i-share')}Connect</button>`}</div></div>`; }).join('')}</div>`;
+}
+function wireSocial(scope, soc, name, redraw){
+  $$('[data-socc]', scope).forEach(b => b.onclick = () => { const k = b.dataset.socc, n = SOCIALS.find(x => x[0] === k)[1], inp = scope.querySelector(`[name=soc_${k}]`);
+    openModal({title:`Connect ${n}`, size:'narrow', body:`<p style="color:var(--ink-2)">You will sign in to ${n} in a new window and allow 2Verse to:</p>
+      <ul class="soc-perms"><li>${ico('i-check','i xs')}Show your follower count on your profile</li><li>${ico('i-check','i xs')}Publish posts the 2Verse content team prepares, <b>only after you approve each one</b></li></ul>
+      <p class="small muted mt16">Connected securely through Outstand, our social media partner. You can disconnect any time; we never post without your approval.</p>`,
+      foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn p">Continue to ${n}</button>`,
+      onSubmit:() => { b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Connecting…';
+        setTimeout(() => { soc[k] = Object.assign(soc[k] || {}, {url:inp.value.trim() || soc[k] && soc[k].url || '', connected:true, handle:socHandle(k, inp.value, name), followers:400 + Math.floor(Math.random() * 9000)}); if (!soc[k].url) soc[k].url = soc[k].handle; save(); toast(`${n} connected`); redraw(); }, 900); }}); });
+  $$('[data-socx]', scope).forEach(b => b.onclick = () => { const k = b.dataset.socx; soc[k].connected = false; save(); toast('Disconnected'); redraw(); });
+}
+function readSocial(fd, soc){ SOCIALS.forEach(([k]) => { const v = (fd.get('soc_' + k) || '').trim(); soc[k] = Object.assign(soc[k] || {}, {url:v}); }); }
 let pfStep = 1;
 function pfSteps(){
   const P = S.profile, mods = P.modalities;
@@ -3178,10 +3332,11 @@ function pfSteps(){
     {n:2, title:'Identity', hint:P.idStatus === 'ok' ? `Verified ${P.idDate}` : 'Document in review', st:P.idStatus},
     {n:3, title:'Practices', hint:modSt === 'act' ? 'A practice needs a certificate' : 'Each practice is verified on its own', st:modSt},
     {n:4, title:'Qualifications', hint:credMissing.length ? `Upload a certificate for ${credMissing.join(', ')}` : credRev ? 'A certificate is in review' : 'Certificates verified', st:credMissing.length ? 'act' : credRev ? 'rev' : 'ok'},
-    {n:5, title:'Experience & lineage', hint:`${P.years} years · lineage ${P.lineageStatus === 'ok' ? 'confirmed' : 'in review'}`, st:P.lineageStatus},
+    {n:5, title:'Experience & lineage', hint:`${P.exp ? Object.entries(P.exp).map(([m, x]) => `${m.split(' ')[0]} ${x.years}y`).slice(0, 2).join(', ') : P.years + ' years'} · lineage ${P.lineageStatus === 'ok' ? 'confirmed' : 'in review'}`, st:P.lineageStatus},
     {n:6, title:'Your story', hint:'Bio, why people come to you, intro video', st:P.bio && P.why ? 'ok' : 'act'},
     {n:7, title:'Location & time zone', hint:P.loc && P.loc.city ? `${P.loc.area ? P.loc.area + ', ' : ''}${P.loc.city} · ${tvLocation.tzLabel(P.loc.tz).split(' (')[0]}` : 'Add your studio address and time zone', st:P.loc && !tvLocation.missing(P.loc).length && P.loc.tz ? 'ok' : 'act'},
-    {n:8, title:'Preview & declaration', hint:P.declared ? `Last saved ${fShort(P.lastSaved)}` : 'Confirm and publish', st:P.declared ? 'ok' : 'act'}
+    {n:8, title:'Social media', hint:(() => { const on = SOCIALS.filter(([k]) => (P.social || {})[k] && P.social[k].url), c = on.filter(([k]) => P.social[k].connected).length; return on.length ? `${on.length} link${on.length === 1 ? '' : 's'}${c ? ` · ${c} connected` : ''}` : 'Optional · add your links'; })(), st:SOCIALS.some(([k]) => (P.social || {})[k] && P.social[k].url) ? 'ok' : 'opt'},
+    {n:9, title:'Preview & declaration', hint:P.declared ? `Last saved ${fShort(P.lastSaved)}` : 'Confirm and publish', st:P.declared ? 'ok' : 'act'}
   ];
 }
 RENDER.profile = (o = {}) => {
@@ -3190,19 +3345,19 @@ RENDER.profile = (o = {}) => {
   $('#v-profile').innerHTML = `
   <div class="head"><div><span class="eyebrow">Same steps as onboarding</span><h1>Profile info</h1><p>Everything seekers see about you, and everything 2Verse verifies, in one place. Changes to verified details go back for a quick review.</p></div><div class="head-actions"><a class="btn g" href="#" id="pfView">${ico('i-eye')}View public profile</a></div></div>
   <div class="pf-grid">
-    <nav class="card stepper" aria-label="Profile steps"><div class="pf-progress"><div style="display:flex;justify-content:space-between"><b style="font-size:14px">${done} of 8 complete</b><span class="small muted">${Math.round(done / 8 * 100)}%</span></div><div class="bar"><i style="width:${done / 8 * 100}%"></i></div></div>
+    <nav class="card stepper" aria-label="Profile steps"><div class="pf-progress"><div style="display:flex;justify-content:space-between"><b style="font-size:14px">${done} of 9 complete</b><span class="small muted">${Math.round(done / 9 * 100)}%</span></div><div class="bar"><i style="width:${done / 9 * 100}%"></i></div></div>
       ${steps.map(s => `<button class="st ${s.st}${s.n === pfStep ? ' on' : ''}" data-n="${s.n}" aria-current="${s.n === pfStep}"><span class="nb">${s.st === 'ok' ? ico('i-check','i xs') : s.st === 'act' ? '!' : s.n}</span><span><b>${s.title}</b><small>${esc(s.hint)}</small></span></button>`).join('')}</nav>
     <div class="card pf-panel" id="pfPanel"></div>
   </div>`;
   $$('.st').forEach(b => b.onclick = () => { pfStep = +b.dataset.n; RENDER.profile(); });
-  $('#pfView').onclick = e => { e.preventDefault(); pfStep = 8; RENDER.profile(); };
+  $('#pfView').onclick = e => { e.preventDefault(); pfStep = 9; RENDER.profile(); };
   pfPanel(steps.find(s => s.n === pfStep));
 };
 const stPillPf = st => st === 'ok' ? `<span class="pill ok">${ico('i-check','i')}Verified</span>` : st === 'rev' ? `<span class="pill rev">${ico('i-clock','i')}In review</span>` : `<span class="pill act">${ico('i-alert','i')}Action needed</span>`;
 function pfPanel(step){
   const P = S.profile, el = $('#pfPanel');
   const chk = (name, opts, sel, dis = []) => `<div class="choice">${opts.map(o => `<label><input type="checkbox" name="${name}" value="${esc(o)}" ${sel.includes(o) ? 'checked' : ''} ${dis.includes(o) ? 'disabled' : ''}><span>${esc(o)}</span></label>`).join('')}</div>`;
-  const head = `<div class="step-h"><div><span class="eyebrow">Step ${step.n} of 8</span><h2 style="margin-top:6px">${step.title}</h2></div>${step.n >= 2 && step.n <= 5 ? stPillPf(step.st) : ''}</div>`;
+  const head = `<div class="step-h"><div><span class="eyebrow">Step ${step.n} of 9</span><h2 style="margin-top:6px">${step.title}</h2></div>${step.n >= 2 && step.n <= 5 ? stPillPf(step.st) : ''}</div>`;
   let body = '';
   if (step.n === 1) body = `<div class="fgrid">
       <label class="field"><span>Full legal name</span><input class="inp" name="name" value="${esc(P.name)}"></label>
@@ -3220,16 +3375,18 @@ function pfPanel(step){
     const missing = Object.keys(P.modalities).filter(m => !P.creds.some(c => c.modality === m));
     body = `${missing.map(m => `<div class="note warn" style="margin-bottom:12px">${ico('i-alert')}<span><b>${m}</b> needs a certificate before it can go on your profile.</span></div>`).join('')}
       ${P.creds.map(c => `<div class="cred"><span class="ico-box">${ico('i-article')}</span><div class="grow"><b>${esc(c.title)}</b><small>${esc(c.modality)} · ${esc(c.provider)} · ${c.hours} hours · issued ${esc(c.issued)}${c.expires ? ' · valid to ' + esc(c.expires) : ''}</small></div>${stPillPf(c.status)}<button type="button" class="icon-btn danger" data-delcred="${c.id}" aria-label="Remove ${esc(c.title)}">${ico('i-trash')}</button></div>`).join('')}
-      <button type="button" class="btn g" id="addCred">${ico('i-plus')}Add a certificate</button>`;
+      <p class="small muted" style="margin:6px 0 10px">You can add as many certificates as you hold, more than one for each practice. Each is checked on its own.</p>
+      <button type="button" class="btn g" id="addCred">${ico('i-plus')}${P.creds.length ? 'Add another certificate' : 'Add a certificate'}</button>`;
   }
   if (step.n === 5) body = `<div class="fgrid">
-      <label class="field"><span>Years of practice</span><input class="inp" type="number" name="years" value="${P.years}" min="0"></label>
+      <div class="field full"><span>Experience in each practice</span><div class="exp-tbl"><div class="exp-h"><span>Practice</span><span>Years practising</span><span>Years teaching</span></div>
+        ${Object.keys(P.modalities).map((m, i) => { const x = (P.exp || {})[m] || {years:P.years, teach:''}; return `<div class="exp-r"><b style="font-size:14px">${esc(m)}</b><input class="inp" type="number" min="0" max="80" name="ey_${i}" value="${x.years ?? ''}" aria-label="${esc(m)}: years practising"><input class="inp" type="number" min="0" max="80" name="et_${i}" value="${x.teach ?? ''}" placeholder="0" aria-label="${esc(m)}: years teaching"></div>`; }).join('') || '<div class="exp-r"><span class="small muted">Add a practice in step 3 first.</span></div>'}</div></div>
       <label class="field"><span>Sessions taught <small>(from 2Verse and before)</small></span><input class="inp" type="number" name="sessions" value="${P.sessions}"></label>
       <label class="field full"><span>Your teacher</span><input class="inp" name="teacher" value="${esc(P.teacher)}"></label>
       <label class="field full"><span>Lineage, school or tradition</span><textarea class="ta" name="lineage" data-veda="lineage">${esc(P.lineage)}</textarea></label>
       <div class="field full"><span>Supporting evidence <small>(letter from your teacher or school, photo)</small></span>${drop('lineagefile', 'Upload evidence', 'Optional · helps confirm your lineage', 'image/*,.pdf')}</div></div>`;
   if (step.n === 6) body = `<div class="fgrid">
-      <div class="full note info">${ico('i-spark')}<span>Tap <b>Veda</b> under any field to draft it, make it warmer or shorter, or fix the grammar. You always review before saving.</span></div>
+      <div class="full note info">${ico('i-spark')}<span>Tap <b>Veda</b> at the top right of any field to draft it, make it warmer or shorter, or fix the grammar. You always review before saving.</span></div>
       <label class="field full"><span>Bio <small>(2 to 4 sentences)</small></span><textarea class="ta" name="bio" data-veda="bio">${esc(P.bio)}</textarea></label>
       <label class="field full"><span>Why people come to me <small>(in your own words; shown as a quote)</small></span><textarea class="ta" name="why" data-veda="why">${esc(P.why)}</textarea></label>
       <div class="field full"><span>Areas I help with</span>${chk('areas', ['Anxiety','Sleep','Focus','Burnout','Grief','Energy','Emotional release','Starting a practice'], P.areas)}</div>
@@ -3240,7 +3397,8 @@ function pfPanel(step){
       <div class="fgrid"><div class="field full"><span>How you meet seekers</span>${chk('delivery', ['In person','Online'], P.delivery)}</div>
       <label class="field"><span>Default booking cut-off <small>(for new services)</small></span><select class="sel" name="defCutoff">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([v, l]) => `<option value="${v}" ${P.defCutoff === v ? 'selected' : ''}>${l}</option>`).join('')}</select></label>
       <label class="field"><span>Cancellation policy</span><select class="sel" name="cancel">${['Flexible · free cancellation up to 12 hours before','Moderate · free cancellation up to 24 hours before','Strict · free cancellation up to 7 days before'].map(x => `<option ${P.cancel === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label></div>`;
-  if (step.n === 8) {
+  if (step.n === 8) body = `<p class="small muted" style="margin-bottom:14px">Optional. Links show on your public profile. <b>Connect</b> an account to show your follower count and let the 2Verse content team share posts, always with your approval first.</p>${socialRows(P.social = P.social || {})}`;
+  if (step.n === 9) {
     const mods = approvedMods();
     body = `<p class="small muted" style="margin-bottom:12px">This is how seekers see you. Only verified practices and approved details are shown.</p>
       <div class="preview-card"><div class="cov"></div><div class="in"><span class="av xl" style="margin-top:-42px;border:4px solid var(--surface);background:var(--primary-deep)">${esc(P.display[0])}</span>
@@ -3252,10 +3410,11 @@ function pfPanel(step){
         <div class="tag-cloud" style="margin-top:10px">${P.areas.map(a => `<span>${esc(a)}</span>`).join('')}</div></div></div>
       <label class="check" style="margin-top:18px"><input type="checkbox" name="declared" ${P.declared ? 'checked' : ''}>I confirm these details are true, that I hold the qualifications shown, and that I will follow the 2Verse healer guidelines.</label>`;
   }
-  const last = step.n === 8;
+  const last = step.n === 9;
   el.innerHTML = `<form id="pfForm" novalidate>${head}${body}<div class="pf-foot"><button type="button" class="btn g" id="pfPrev" ${step.n === 1 ? 'disabled' : ''}>${ico('i-back')}Back</button><button type="submit" class="btn p">${last ? 'Save & publish profile' : 'Save & continue'}</button></div></form>`;
   wireDrops(el);
   if (step.n === 7) tvLocation.wire(el.querySelector('.loc'), P.loc, toast);
+  if (step.n === 8) wireSocial(el, P.social, P.display, () => { const f = $('#pfForm'); readSocial(new FormData(f), P.social); RENDER.profile(); });
   attachVeda(el);
   $('#pfPrev').onclick = () => { pfStep = Math.max(1, step.n - 1); RENDER.profile(); };
   const add = $('#addCred'); add && (add.onclick = credModal);
@@ -3269,12 +3428,16 @@ function pfPanel(step){
     if (step.n === 1){ if (!fd.get('name').trim() || !fd.get('email').includes('@')) return fieldErr(f, !fd.get('name').trim() ? 'name' : 'email', 'Add your name and a valid email'); Object.assign(P, {name:fd.get('name'), display:fd.get('display') || fd.get('name'), email:fd.get('email'), phone:fd.get('phone'), langs:fd.getAll('langs')}); if (uploaded('photo')) P.photo = true; }
     if (step.n === 2 && uploaded('idfile')){ P.idStatus = 'rev'; toast('New document sent for review'); }
     if (step.n === 3){ const sel = fd.getAll('mods'); const next = {}; sel.forEach(m => next[m] = P.modalities[m] || 'act'); P.modalities = next; syncMods(); }
-    if (step.n === 5){ const changed = fd.get('lineage') !== P.lineage || fd.get('teacher') !== P.teacher; Object.assign(P, {years:+fd.get('years'), sessions:+fd.get('sessions'), teacher:fd.get('teacher'), lineage:fd.get('lineage')}); if (changed || uploaded('lineagefile')){ P.lineageStatus = 'rev'; toast('Lineage details sent for a quick review'); } }
+    if (step.n === 5){ const ms = Object.keys(P.modalities), miss = ms.findIndex((m, i) => fd.get('ey_' + i) === ''); if (miss >= 0) return fieldErr(f, 'ey_' + miss, `Add your years practising ${ms[miss]}`);
+      const tb = ms.findIndex((m, i) => +fd.get('et_' + i) > +fd.get('ey_' + i)); if (tb >= 0) return fieldErr(f, 'et_' + tb, `Years teaching ${ms[tb]} can't be more than years practising it`);
+      P.exp = {}; ms.forEach((m, i) => P.exp[m] = {years:+fd.get('ey_' + i), teach:+fd.get('et_' + i) || 0});
+      const changed = fd.get('lineage') !== P.lineage || fd.get('teacher') !== P.teacher; Object.assign(P, {years:Math.max(0, ...ms.map(m => P.exp[m].years)), sessions:+fd.get('sessions'), teacher:fd.get('teacher'), lineage:fd.get('lineage')}); if (changed || uploaded('lineagefile')){ P.lineageStatus = 'rev'; toast('Lineage details sent for a quick review'); } }
     if (step.n === 6){ if (!fd.get('bio').trim()) return fieldErr(f, 'bio', 'Add a short bio'); Object.assign(P, {bio:fd.get('bio'), why:fd.get('why'), areas:fd.getAll('areas')}); if (uploaded('video')) P.video = uploaded('video'); }
     if (step.n === 7){ const L = tvLocation.read(fd), miss = tvLocation.missing(L); if (P.delivery.includes('In person') || fd.getAll('delivery').includes('In person')){ if (miss.length) return fieldErr(f, 'loc_' + miss[0], 'Add your full address: ' + miss.join(', ')); }
       P.loc = L; P.city = `${L.area ? L.area + ', ' : ''}${L.city}`; P.venue = `${L.venue}${L.landmark ? ', ' + L.landmark.toLowerCase() : ''}, ${L.city}`; Object.assign(P, {delivery:fd.getAll('delivery'), defCutoff:+fd.get('defCutoff'), cancel:fd.get('cancel')}); }
-    if (step.n === 8){ if (!fd.get('declared')) return toast('Please confirm the declaration to publish'); P.declared = true; P.lastSaved = TODAY; save(); badges(); RENDER.profile(); return toast('Profile saved. Changes to verified details are in review.'); }
-    save(); badges(); pfStep = Math.min(8, step.n + 1); RENDER.profile(); if (![2,5].includes(step.n) || !f.querySelector('.drop[data-name]')) toast(`${step.title} saved`);
+    if (step.n === 8){ const bad = SOCIALS.find(([k]) => { const v = (fd.get('soc_' + k) || '').trim(); return v && k === 'website' && !/^https?:\/\/[^.\s]+\.[^\s]+$/i.test(v); }); if (bad) return fieldErr(f, 'soc_website', 'Add the full website link, starting with https://'); readSocial(fd, P.social); }
+    if (step.n === 9){ if (!fd.get('declared')) return toast('Please confirm the declaration to publish'); P.declared = true; P.lastSaved = TODAY; save(); badges(); RENDER.profile(); return toast('Profile saved. Changes to verified details are in review.'); }
+    save(); badges(); pfStep = Math.min(9, step.n + 1); RENDER.profile(); if (![2,5].includes(step.n) || !f.querySelector('.drop[data-name]')) toast(`${step.title} saved`);
   });
 }
 function syncMods(){ const P = S.profile; Object.keys(P.modalities).forEach(m => { const c = P.creds.filter(x => x.modality === m); P.modalities[m] = !c.length ? 'act' : c.some(x => x.status === 'ok') ? 'ok' : 'rev'; }); }

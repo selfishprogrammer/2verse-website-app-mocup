@@ -920,6 +920,29 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 .att-ok{color:var(--primary)!important;font-weight:600}
 .att-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(255,255,255,.14);color:#e9f3ee;margin-left:8px}
 .inv-banner{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--soft-sage);margin-bottom:16px}.inv-banner b{display:block;font-size:14.5px}.inv-banner small{font-size:13px;color:var(--ink-2)}
+/* questionnaire (typed questions from the healer) */
+.q-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.q-head small{color:var(--muted);font-size:12px}
+.q-scale label span{min-width:46px;justify-content:center}
+.q-ends{display:flex;justify-content:space-between;max-width:270px;color:var(--muted);font-size:12px;margin-top:4px}
+/* healer application: social accounts, certificates, experience */
+.soc-list{gap:10px}
+.soc-row{display:flex;align-items:flex-end;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.soc-row.on{border-color:var(--primary)}
+.soc-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;background:var(--soft-sage);color:var(--primary);font-weight:700;font-size:16px;margin-bottom:2px}
+.soc-act{display:flex;flex-direction:column;align-items:flex-end;gap:2px;min-width:118px;padding-bottom:4px}
+.soc-act small{color:var(--muted);font-size:12px}
+.soc-perms{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.soc-perms li{display:flex;gap:8px;align-items:flex-start;color:var(--ink-2)}
+.cert-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:var(--surface-2);margin-bottom:8px}
+.cert-row small{display:block;color:var(--muted);font-size:12px}
+.cert-add{border:1px dashed var(--line-strong);border-radius:14px;padding:12px}
+.exp-tbl{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.exp-h,.exp-r{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;align-items:center;padding:10px 14px}
+.exp-h{background:var(--surface-2);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.exp-r+.exp-r{border-top:1px solid var(--line)}
+@media (max-width:640px){.soc-row{flex-wrap:wrap}.soc-act{align-items:flex-start;min-width:0}.exp-h,.exp-r{grid-template-columns:1fr 1fr 1fr}}
+.spin-s{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;animation:rot .8s linear infinite}
 
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
@@ -946,12 +969,15 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 .loc-mk{background:none;border:none}.loc-mk .loc-pin{margin:0;cursor:grab}
 
 /* ===== Veda writing help ===== */
-.vw{margin-top:6px}
-.vw-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.vw-btn{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px 0 4px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);font-size:12px;font-weight:600;color:var(--ink-2)}
+.vw{margin-top:0}
+.vw-head{display:flex!important;align-items:center;gap:6px;flex-wrap:wrap}
+.vw-head .vw-btn{margin-left:auto}
+.vw-bar{display:flex;justify-content:flex-end;margin-bottom:6px}
+.vw-btn{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px 0 3px;border-radius:99px;border:1px solid var(--line);background:var(--surface-2);font-size:12px;font-weight:600;color:var(--ink-2);cursor:pointer;letter-spacing:0;text-transform:none;user-select:none}
 .vw-btn:hover,.vw-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent-strong)}
-.vw-orb{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--orb-2),var(--orb-1) 55%,var(--orb-3));flex-shrink:0}
-.vw-acts{display:inline-flex;gap:4px;flex-wrap:wrap}
+.vw-btn:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.vw-orb{width:19px;height:19px;border-radius:50%;background:radial-gradient(circle at 35% 35%,var(--orb-2),var(--orb-1) 55%,var(--orb-3));flex-shrink:0}
+.vw-acts{display:flex;gap:4px;flex-wrap:wrap;margin-top:6px}
 .vw-acts[hidden]{display:none}
 .vw-acts button{height:28px;padding:0 10px;border-radius:99px;font-size:12px;font-weight:500;color:var(--ink-2);border:1px solid var(--line);background:var(--surface)}
 .vw-acts button:hover{border-color:var(--primary);color:var(--primary)}
@@ -1286,10 +1312,15 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
   };
   function wrap(field){
     if (field.dataset.vedaReady) return; field.dataset.vedaReady = 1;
-    var kind = field.dataset.veda, box = document.createElement('div'); box.className = 'vw';
-    box.innerHTML = '<div class="vw-bar"><button type="button" class="vw-btn" aria-expanded="false"><span class="vw-orb"></span>Veda</button>' +
-      '<span class="vw-acts" hidden><button type="button" data-a="write">Write for me</button><button type="button" data-a="warmer">Warmer</button><button type="button" data-a="shorter">Shorter</button><button type="button" data-a="detail">More detail</button><button type="button" data-a="fix">Fix grammar</button></span></div><div class="vw-out" hidden></div>';
+    var box = document.createElement('div'); box.className = 'vw';
+    box.innerHTML = '<span class="vw-acts" hidden><button type="button" data-a="write">Write for me</button><button type="button" data-a="warmer">Warmer</button><button type="button" data-a="shorter">Shorter</button><button type="button" data-a="detail">More detail</button><button type="button" data-a="fix">Fix grammar</button></span><div class="vw-out" hidden></div>';
     field.insertAdjacentElement('afterend', box);
+    /* the Veda button sits at the top right of the field, on its label row */
+    var holder = field.closest('.field'), head = holder && holder.firstElementChild !== field ? holder.firstElementChild : null;
+    var btn = document.createElement('span'); btn.className = 'vw-btn'; btn.setAttribute('role', 'button'); btn.tabIndex = 0; btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Veda writing help'); btn.innerHTML = '<span class="vw-orb"></span>Veda';
+    if (head && head.tagName === 'SPAN'){ head.classList.add('vw-head'); head.appendChild(btn); }
+    else { var bar = document.createElement('div'); bar.className = 'vw-bar'; bar.appendChild(btn); field.insertAdjacentElement('beforebegin', bar); }
+    box._btn = btn;
     return box;
   }
   function put(field, text, mode){ field.value = mode === 'add' && field.value.trim() ? field.value.trim() + (field.tagName === 'TEXTAREA' ? '\n\n' : ' ') + text : text; field.dispatchEvent(new Event('input', {bubbles:true})); field.focus(); }
@@ -1297,8 +1328,8 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
     attach:function(scope, ctxFn, toast){
       Array.prototype.forEach.call((scope || document).querySelectorAll('[data-veda]'), function(field){
         var box = wrap(field); if (!box) return;
-        var acts = box.querySelector('.vw-acts'), out = box.querySelector('.vw-out'), btn = box.querySelector('.vw-btn');
-        btn.onclick = function(){ var open = acts.hidden; acts.hidden = !open; btn.setAttribute('aria-expanded', open); if (!open) out.hidden = true; };
+        var acts = box.querySelector('.vw-acts'), out = box.querySelector('.vw-out'), btn = box._btn;
+        var tog = function(e){ e.preventDefault(); e.stopPropagation(); var open = acts.hidden; acts.hidden = !open; btn.setAttribute('aria-expanded', open); if (!open) out.hidden = true; }; btn.onclick = tog; btn.onkeydown = function(e){ if (e.key === 'Enter' || e.key === ' ') tog(e); };
         Array.prototype.forEach.call(acts.querySelectorAll('[data-a]'), function(a){ a.onclick = function(){
           var kind = field.dataset.veda, c = (ctxFn && ctxFn(kind, field)) || {}, cur = field.value.trim(), act = a.dataset.a, opts;
           if (act !== 'write' && !cur){ act = 'write'; }
@@ -1479,7 +1510,7 @@ const HEALERS = [
    lineage:'Trained under Swami Atmananda (Sivananda tradition), 2013–2016', creds:['RYT-500, Yoga Alliance','Pranayama teacher training, Bihar School of Yoga','Mindfulness-Based Stress Reduction (MBSR) certificate'],
    policy:'Free cancellation up to 24 hours before. 50% refund within 24 hours. No refund within 2 hours or for no-shows.',
    services:[
-    {id:'an1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, prep:{seeker:['Eat lightly; no heavy meal 2 hours before','Wear loose, comfortable clothes','Keep water and a blanket nearby','Test your camera and sound 10 minutes before'], questions:['What would you most like help with?','How many hours do you usually sleep?','Anything about your health I should know?']}, name:'Breath for deep sleep', type:'1:1', format:'Both', dur:60, inr:2500, usd:65, cutoff:120, kind:'availability', desc:'A slow, guided session to calm the nervous system and build a 10-minute wind-down routine for your evenings.', contra:'Late pregnancy, recent chest surgery'},
+    {id:'an1', cover:{kind:'ai', seed:418, pal:'dawn', scene:'river', motif:'Breathwork'}, prep:{seeker:['Eat lightly; no heavy meal 2 hours before','Wear loose, comfortable clothes','Keep water and a blanket nearby','Test your camera and sound 10 minutes before'], questions:[{q:'What would you most like help with?', type:'multi', opts:['Falling asleep','Waking at night','Racing thoughts','Low energy in the morning']}, {q:'How many hours do you usually sleep?', type:'single', opts:['Under 5','5–6','6–7','7 or more']}, {q:'Have you tried breathwork before?', type:'yesno'}, {q:'How stressed have you felt this week?', type:'scale'}, {q:'Anything about your health I should know?', type:'long'}], required:true}, promos:[{code:'SLEEPWELL15', pct:15, until:'2026-12-31', max:50, used:7}], name:'Breath for deep sleep', type:'1:1', format:'Both', dur:60, inr:2500, usd:65, cutoff:120, kind:'availability', desc:'A slow, guided session to calm the nervous system and build a 10-minute wind-down routine for your evenings.', contra:'Late pregnancy, recent chest surgery'},
     {id:'an2', disc:10, name:'Pranayama for focus', type:'1:1', format:'Online', dur:45, inr:1900, usd:55, cutoff:30, kind:'availability', desc:'Alternate-nostril and box breathing to clear mental fog before deep work.', contra:'Uncontrolled high blood pressure'},
     {id:'an3', name:'Free intro call', type:'1:1', format:'Online', dur:15, inr:0, usd:0, cutoff:30, kind:'availability', desc:'Meet Ananya, share what you are going through and see if her approach fits you.', contra:''},
     {id:'an4', name:'Evening yoga nidra', type:'Group', format:'Online', dur:60, inr:1200, usd:25, cutoff:0, kind:'weekly', days:['Wed'], time:'18:30', cap:20, desc:'Guided yogic sleep in a small online circle. Lie down, cameras optional.', contra:''},
@@ -1559,7 +1590,7 @@ const HEALERS = [
    group services -> specific dates with start times, seats, and discounts for bigger bookings */
 const PACKS = {
   ananya:[
-    {id:'an-p1', name:'Sleep reset: 5-session journey', type:'1:1', format:'Both', inr:11000, usd:290, disc:10, gap:15, spacing:3, valid:45, cutoff:120, intensity:'Gentle',
+    {id:'an-p1', promos:[{code:'JOURNEY10', pct:10, until:'2026-12-31', max:30, used:4}], name:'Sleep reset: 5-session journey', type:'1:1', format:'Both', inr:11000, usd:290, disc:10, gap:15, spacing:3, valid:45, cutoff:120, intensity:'Gentle',
      cover:{kind:'ai', seed:5120, pal:'night', scene:'stars', motif:'Breathwork'}, contra:'Late pregnancy without a doctor\'s approval.',
      desc:'Five guided sessions, a few days apart, that take you from racing thoughts at bedtime to a simple evening routine you can keep on your own.',
      items:[{title:'Map your sleep', dur:60, desc:'We look at your evenings, your nights and what wakes you, and you learn a first slow-exhale practice.', cover:{kind:'ai', seed:5121, pal:'dusk', scene:'mountains', motif:'Breathwork'}},
@@ -1683,7 +1714,7 @@ const event = id => EVENTS.find(e => e.id === id);
 const COUNTRIES = [['United Kingdom',1,true],['India',5.5,false],['United States',-4,true],['Germany',2,true],['France',2,true],['Switzerland',2,true],['UAE',4,true],['Singapore',8,true],['Australia',10,true],['Canada',-4,true]];
 const CITY = {'United Kingdom':'London', India:'Mumbai', 'United States':'New York', Germany:'Berlin', France:'Paris', Switzerland:'Zurich', UAE:'Dubai', Singapore:'Singapore', Australia:'Sydney', Canada:'Toronto'};
 const DEF = {
-  v:6, theme:'dawn',
+  v:7, theme:'dawn',
   auth:{signedIn:false, role:'seeker', region:null, id:'', pending:null},
   me:{name:'Sarah Mitchell', first:'Sarah', email:'sarah.mitchell@example.com', phone:'+44 7700900412', login:'email', emailVerified:true, phoneVerified:true, whatsapp:true, country:'United Kingdom', tz:1, lang:'English',
       intentions:['sleep','anxiety'], format:'Online', langs:['English'], intensity:'Gentle', budget:100,
@@ -1691,7 +1722,7 @@ const DEF = {
   saved:['dev','meera'],
   bookings:[
     {id:'SB-2101', healer:'dev', service:'dv1', date:'2026-10-01', time:'12:00', format:'Online', cur:'USD', amount:80, status:'upcoming', paid:'2026-09-24', prep:{done:[0,1,2,3], answers:['Switching off before sleep.','Yes, once in Goa.','Nothing.'], at:'2026-09-30 21:10'}, intent:'Help switching off before sleep.'},
-    {id:'SB-2102', healer:'ananya', service:'an1', date:'2026-10-07', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', paid:'2026-09-29', prep:{done:[1], answers:['Staying asleep after 3 AM.','',''], at:'2026-09-30 22:15'}, intent:'Keep building the evening routine.'},
+    {id:'SB-2102', healer:'ananya', service:'an1', date:'2026-10-07', time:'13:00', format:'Online', cur:'USD', amount:65, status:'upcoming', paid:'2026-09-29', prep:{done:[1], answers:['Waking at night','','','',''], at:'2026-09-30 22:15'}, intent:'Keep building the evening routine.'},
     {id:'SB-2104', healer:'ananya', service:'an-p1~1', pack:'an-p1', pi:1, pkg:'PK-301', date:'2026-10-02', time:'13:00', format:'Online', cur:'USD', amount:0, status:'upcoming', paid:'2026-09-25', intent:'Sleep reset package.'},
     {id:'SB-2103', healer:'ananya', event:'e1', date:'2026-10-06', time:'19:00', format:'In person', cur:'USD', amount:35, status:'upcoming', paid:'2026-09-26', intent:''},
     {id:'SB-2096', healer:'ananya', service:'an-p1~0', pack:'an-p1', pi:0, pkg:'PK-301', date:'2026-09-28', time:'13:00', format:'Online', cur:'USD', amount:0, status:'completed', paid:'2026-09-25', intent:'Sleep reset package.', att:{mode:'auto', joined:'13:03', left:'14:00', mins:57, late:3}},
@@ -1753,7 +1784,18 @@ function prepOf(b){
   const it = b.event ? event(b.event) : svc(b.service), h = healer(b.healer), m = b.event ? h.practices[0] : (h.practices.find(p => it.name && false) || h.practices[0]);
   const pr = it.prep || {}, seeker = (pr.seeker || PREP_DEF[m] || PREP_DEF.Breathwork).slice();
   if (!pr.seeker) seeker.push(b.format === 'Online' ? 'Test your camera and sound 10 minutes before' : 'Arrive 10 minutes early');
-  return {seeker, questions:pr.questions || ['What would you like help with in this session?','Anything about your health your healer should know?']};
+  return {seeker, questions:(pr.questions || ['What would you like help with in this session?','Anything about your health your healer should know?']).map(qNorm), required:pr.required !== false};
+}
+/* questionnaire: a question is text, or {q, type, opts} with type short | long | single | multi | yesno | scale */
+const qNorm = q => typeof q === 'string' ? {q, type:'long', opts:[]} : Object.assign({type:'long', opts:[]}, q);
+const unanswered = b => { const P = prepOf(b); return P.questions.length && !(b.prep && b.prep.answers && b.prep.answers.some(a => String(a || '').trim())); };
+/* promo codes: healer codes live on the service or package; FIRSTBREATH is the 2Verse welcome code */
+const PLATFORM_PROMOS = [{code:'FIRSTBREATH', pct:10, by:'2verse'}];
+function promoFind(it, code){
+  code = String(code || '').trim().toUpperCase(); if (!code) return null;
+  const own = ((it && it.promos) || []).find(p => p.code === code);
+  if (own){ if (own.until && own.until < TODAY) return {err:'This code has expired'}; if (own.max && (own.used || 0) >= own.max) return {err:'This code has been fully used'}; return Object.assign({by:'healer'}, own); }
+  const pl = PLATFORM_PROMOS.find(p => p.code === code); return pl ? Object.assign({}, pl) : {err:'That code is not valid for this ' + (it && it.items ? 'package' : 'session')};
 }
 const coverOf = (s, h) => s.cover || {kind:'ai', seed:hash(s.id) % 100000, pal:{Breathwork:'dawn','Sound Healing':'dusk',Meditation:'ganga',Yoga:'saffron','Somatic Healing':'rose'}[h.practices[0]] || 'dawn', scene:s.format === 'In person' ? 'mountains' : 'river', motif:h.practices[0]};
 const minPrice = h => { const ps = h.services.filter(s => price(s) > 0).map(dPrice); return ps.length ? Math.min(...ps) : 0; };
@@ -1842,6 +1884,7 @@ function render(){
   const v = $('#view'); v.style.animation = 'none'; v.offsetHeight; v.style.animation = '';
   R[route.name](...route.args);
   shell();
+  if (S.me.prefAsk) setTimeout(() => { if (S.me.prefAsk && !modalEl.classList.contains('open') && !AUTH_ROUTES.includes(route.name) && route.name !== 'room') prefPopup(); }, 450);
   if (route.name !== 'messages' || !route.args.length) window.scrollTo(0, 0);
 }
 window.addEventListener('hashchange', render);
@@ -2011,10 +2054,10 @@ function finishAuth(){
     const tzC = phone ? 'India' : (S.auth.country || 'United Kingdom'), c = COUNTRIES.find(x => x[0] === tzC);
     S = Object.assign(clone(DEF), {theme:th});
     S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null, invite:invKeep};
-    S.me = Object.assign(clone(DEF.me), {name:p.name, first:p.name.split(' ')[0], login:phone ? 'phone' : 'email', email:phone ? '' : id, phone:phone ? id : '', emailVerified:!phone, phoneVerified:phone, country:c[0], tz:c[1], intentions:[], onboarded:false, safety:{conditions:[], notes:'', share:true}, whatsapp:true});
+    S.me = Object.assign(clone(DEF.me), {name:p.name, first:p.name.split(' ')[0], login:phone ? 'phone' : 'email', email:phone ? '' : id, phone:phone ? id : '', emailVerified:!phone, phoneVerified:phone, country:c[0], tz:c[1], intentions:[], onboarded:true, prefAsk:true, safety:{conditions:[], notes:'', share:true}, whatsapp:true});
     S.bookings = []; S.threads = []; S.saved = [];
     S.notifs = [{id:'n0', ic:'i-spark', t:`Welcome to 2Verse, ${S.me.first}. Veda can help you find your first healer.`, at:'Just now', go:'#/home', unread:true}];
-    save(); return nav('#/welcome/1');
+    save(); if (inviteGo()) return; toast(`Welcome to 2Verse, ${S.me.first}`); return nav('#/home');
   }
   /* sign in: find the account for this phone or email */
   if (loginId() !== id || !S.me.onboarded){
@@ -2023,7 +2066,7 @@ function finishAuth(){
     S.theme = th;
   }
   S.auth = {signedIn:true, role:'seeker', region:phone ? 'in' : 'global', id, pending:null, invite:invKeep};
-  if (!S.me.onboarded){ save(); return nav('#/welcome/1'); }
+  if (!S.me.onboarded){ S.me.onboarded = true; S.me.prefAsk = true; }
   save(); if (inviteGo()) return; toast(`Welcome back, ${S.me.first}`); nav('#/home');
 }
 A.join = () => {
@@ -2099,6 +2142,22 @@ function wireVerify(scope, onOk){
 const lockedId = (kind, val, note = 'Used to sign in') => `<div class="field full"><span>${kind === 'phone' ? 'Mobile number' : 'Email'}</span><div class="locked">${ico(kind === 'phone' ? 'i-chat' : 'i-article')}<b>${esc(val)}</b><span class="pill ok">${ico('i-check')}Verified</span><small>${note}</small></div></div>`;
 
 /* =====================================================================
+   PREFERENCES POPUP (asked once, right after the first login; can be skipped)
+   ===================================================================== */
+function prefPopup(){
+  const m = S.me, chip = (name, val, label, on, type = 'checkbox') => `<label><input type="${type}" name="${name}" value="${esc(val)}" ${on ? 'checked' : ''}><span>${esc(label)}</span></label>`;
+  openModal({title:`Welcome, ${m.first}. What brings you here?`, size:'narrow', body:`<p class="small muted" style="margin-bottom:14px">Three quick questions so Veda can suggest the right healers. You can skip this and change it any time in Profile.</p>
+    <div class="field"><span>What would you like help with?</span><div class="choice" id="ppNeeds">${Object.entries(NEEDS).map(([v, l]) => chip('need', v, l, m.intentions.includes(v))).join('')}</div></div>
+    <div class="field mt16"><span>How would you like to meet?</span><div class="choice">${[['Online','Online'],['In person','In person'],['Both','Either']].map(([v, l]) => chip('format', v, l, (m.format || 'Both') === v, 'radio')).join('')}</div></div>
+    <div class="field mt16"><span>Healer speaks</span><div class="choice">${['English','Hindi','German','French','Spanish'].map(l => chip('langs', l, l, (m.langs || ['English']).includes(l))).join('')}</div></div>`,
+    foot:'<button type="button" class="btn g" data-close>Skip for now</button><button type="submit" class="btn p" value="save">Show my matches</button>',
+    onClose:() => { if (S.me.prefAsk){ S.me.prefAsk = false; save(); } },
+    onSubmit:fd => { const needs = fd.getAll('need');
+      Object.assign(S.me, {intentions:needs, format:fd.get('format') || 'Both', langs:fd.getAll('langs').length ? fd.getAll('langs') : ['English'], prefAsk:false}); save();
+      toast(needs.length ? 'Preferences saved. Your matches are updated.' : 'Saved. You can add what you need help with any time.'); setTimeout(() => { if (route.name === 'home') render(); }, 50); }});
+}
+
+/* =====================================================================
    SEEKER ONBOARDING (after creating an account)
    ===================================================================== */
 const COND = ['Pregnancy','Heart condition','High blood pressure','Epilepsy','Pacemaker','Recent surgery','Currently getting mental health support'];
@@ -2157,11 +2216,35 @@ A.welcome = (n = '1') => {
 /* =====================================================================
    HEALER APPLICATION (same steps as Profile info in the dashboard)
    ===================================================================== */
-const APP_STEPS = ['Personal details','Identity','Practices','Qualifications','Experience & lineage','Your story','Location & time zone','Review & submit'];
+const APP_STEPS = ['Personal details','Identity','Practices','Qualifications','Experience & lineage','Your story','Social media','Location & time zone','Review & submit'];
+/* social accounts: a link shows on the profile; Connect (via Outstand) lets the content team post what the healer approves */
+const SOCIALS = [['instagram','Instagram','@yourname or profile link'],['facebook','Facebook','Facebook page link'],['youtube','YouTube','Channel link'],['linkedin','LinkedIn','Profile link'],['x','X (Twitter)','@yourname'],['website','Website','https://yourwebsite.com']];
+const socHandle = (k, v, name) => { v = String(v || '').trim(); if (!v) return '@' + String(name || 'healer').toLowerCase().replace(/[^a-z]+/g, '').slice(0, 14); const m = v.match(/(?:@|\.com\/)([A-Za-z0-9_.]+)/); return '@' + (m ? m[1] : v.replace(/^@/, '').split('/').pop()); };
+function socialRows(soc){
+  return `<div class="stack soc-list">${SOCIALS.map(([k, n, ph]) => { const x = soc[k] || {};
+    return `<div class="soc-row ${x.connected ? 'on' : ''}" data-soc="${k}"><span class="soc-ic" aria-hidden="true">${n[0]}</span>
+      <label class="grow field" style="margin:0"><span>${n}</span><input class="inp" name="soc_${k}" value="${esc(x.url || '')}" placeholder="${ph}"></label>
+      <div class="soc-act">${k === 'website' ? '' : x.connected ? `<span class="pill ok">${ico('i-check')}Connected</span><small>${esc(x.handle)} · ${x.followers.toLocaleString('en-IN')} followers</small><button type="button" class="lnk small" data-socx="${k}">Disconnect</button>` : `<button type="button" class="btn sm g" data-socc="${k}">${ico('i-share')}Connect</button>`}</div></div>`; }).join('')}</div>`;
+}
+function wireSocial(scope, soc, name, redraw){
+  $$('[data-socc]', scope).forEach(b => b.onclick = () => { const k = b.dataset.socc, n = SOCIALS.find(x => x[0] === k)[1], inp = scope.querySelector(`[name=soc_${k}]`);
+    openModal({title:`Connect ${n}`, size:'narrow', body:`<p style="color:var(--ink-2)">You will sign in to ${n} in a new window and allow 2Verse to:</p>
+      <ul class="soc-perms"><li>${ico('i-check','i xs')}Show your follower count on your profile</li><li>${ico('i-check','i xs')}Publish posts the 2Verse content team prepares, <b>only after you approve each one</b></li></ul>
+      <p class="small muted mt16">Connected securely through Outstand, our social media partner. You can disconnect any time; we never post without your approval.</p>`,
+      foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn p">Continue to ${n}</button>`,
+      onSubmit:() => { const btn = b; btn.disabled = true; btn.innerHTML = '<span class="spin-s"></span>Connecting…';
+        setTimeout(() => { soc[k] = Object.assign(soc[k] || {}, {url:inp.value.trim() || soc[k] && soc[k].url || '', connected:true, handle:socHandle(k, inp.value, name), followers:400 + Math.floor(Math.random() * 9000)}); if (!soc[k].url) soc[k].url = soc[k].handle; save(); toast(`${n} connected`); redraw(); }, 900); }}); });
+  $$('[data-socx]', scope).forEach(b => b.onclick = () => { const k = b.dataset.socx; soc[k].connected = false; save(); toast('Disconnected'); redraw(); });
+}
+function readSocial(fd, soc){ SOCIALS.forEach(([k]) => { const v = (fd.get('soc_' + k) || '').trim(); soc[k] = Object.assign(soc[k] || {}, {url:v}); }); }
 A.apply = (n = '1') => {
   setAuthWide(true);
   const ap = S.application; if (ap.status) return nav('#/status');
-  const step = Math.min(8, Math.max(1, +n || 1)), d = ap.d; ap.step = step; save();
+  const step = Math.min(9, Math.max(1, +n || 1)), d = ap.d; ap.step = step;
+  /* older applications kept one certificate per practice; move them to the list */
+  if (d.certs && !d.certList){ d.certList = Object.entries(d.certs).map(([p, f]) => ({p, name:(d.certn || {})[p] || 'Certificate', issuer:(d.certi || {})[p] || '', file:f})); delete d.certs; }
+  d.certList = d.certList || []; d.exp = d.exp || {}; d.social = d.social || {}; save();
+  const pend = {};
   const v = k => esc(d[k] || '');
   const prs = d.practices || [];
   let body = '';
@@ -2176,19 +2259,26 @@ A.apply = (n = '1') => {
     <label class="field full"><span>Address</span><input class="inp" name="addr" value="${v('addr')}" placeholder="House, street, area, city, PIN"></label></div>`;
   if (step === 3) body = `<p style="color:var(--ink-2);margin-bottom:14px">Choose the practices you want to offer. Each one needs a certificate in the next step before seekers can book it.</p>
     <div class="stack">${PRACTICES.map(p => `<label class="opt"><input type="checkbox" name="practices" value="${p}" ${prs.includes(p) ? 'checked' : ''}><span class="ic" style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary)">${ico(PR_ICO[p])}</span><span class="grow"><b>${p}</b><small>${{Breathwork:'Pranayama, breath coaching, breath for sleep and stress',Meditation:'Guided, silent, mantra, yoga nidra','Sound Healing':'Bowls, gong, tuning forks, voice',Yoga:'Hatha, restorative, therapeutic, trauma-informed','Somatic Healing':'Body awareness, somatic experiencing, movement'}[p]}</small></span></label>`).join('')}</div>`;
-  if (step === 4) body = prs.length ? `<p style="color:var(--ink-2);margin-bottom:14px">Upload one certificate or proof of training for each practice. Our team verifies it with the issuing school.</p>
-    <div class="stack">${prs.map((p, i) => `<div class="card" style="padding:16px"><div class="row" style="margin-bottom:10px"><b>${p}</b><span class="pill ${(d.certs || {})[p] ? 'ok' : 'act'}">${(d.certs || {})[p] ? 'Added' : 'Needed'}</span></div>
-      <div class="fgrid"><label class="field"><span>Certificate name</span><input class="inp" name="cn_${i}" value="${esc(((d.certn || {})[p]) || '')}" placeholder="For example: RYT-500"></label><label class="field"><span>Issued by</span><input class="inp" name="ci_${i}" value="${esc(((d.certi || {})[p]) || '')}" placeholder="School or teacher"></label>
-      <div class="field full">${drop('cert_' + i, 'Upload certificate', 'PDF or image', 'image/*,.pdf', (d.certs || {})[p])}</div></div></div>`).join('')}</div>` : `<div class="note warn">${ico('i-alert')}<span>Choose at least one practice in the previous step first.</span></div>`;
-  if (step === 5) body = `<div class="fgrid"><label class="field"><span>Years of practice</span><input class="inp" type="number" min="0" name="years" value="${v('years')}"></label><label class="field"><span>Years of teaching</span><input class="inp" type="number" min="0" name="teach" value="${v('teach')}"></label>
-    <label class="field full"><span>Your teacher or lineage</span><input class="inp" name="lineage" data-veda="lineage" value="${v('lineage')}" placeholder="For example: Trained under Swami Atmananda (Sivananda tradition)"></label>
+  if (step === 4) body = prs.length ? `<p style="color:var(--ink-2);margin-bottom:14px">Add every certificate or proof of training you hold. Each practice needs at least one; more help seekers trust you. Our team verifies each one with the issuing school.</p>
+    <div class="stack">${prs.map((p, i) => { const cs = d.certList.filter(c => c.p === p);
+      return `<div class="card" style="padding:16px"><div class="row" style="margin-bottom:10px;justify-content:space-between"><b>${p}</b><span class="pill ${cs.length ? 'ok' : 'act'}">${cs.length ? cs.length + ' certificate' + (cs.length === 1 ? '' : 's') : 'Needed'}</span></div>
+      ${cs.map(c => `<div class="cert-row">${ico('i-article')}<span class="grow"><b>${esc(c.name)}</b><small>${esc(c.issuer || 'Issuer not added')} · ${esc(c.file)}</small></span><button type="button" class="icon-btn" data-crm="${d.certList.indexOf(c)}" aria-label="Remove ${esc(c.name)}">${ico('i-trash')}</button></div>`).join('')}
+      <div class="cert-add ${cs.length ? 'more' : ''}"><div class="small" style="font-weight:600;margin-bottom:8px">${cs.length ? 'Add another certificate' : 'Add a certificate'}</div>
+      <div class="fgrid"><label class="field"><span>Certificate name</span><input class="inp" name="cn_${i}" placeholder="For example: RYT-500"></label><label class="field"><span>Issued by</span><input class="inp" name="ci_${i}" placeholder="School or teacher"></label>
+      <div class="field full">${drop('cert_' + i, 'Upload certificate', 'PDF or image', 'image/*,.pdf')}</div></div>
+      <button type="button" class="btn sm g mt8" data-cadd="${i}">${ico('i-plus')}${cs.length ? 'Add this certificate' : 'Add certificate'}</button></div></div>`; }).join('')}</div>` : `<div class="note warn">${ico('i-alert')}<span>Choose at least one practice in the previous step first.</span></div>`;
+  if (step === 5) body = `<p style="color:var(--ink-2);margin-bottom:12px">Your experience in each practice you offer. Seekers see it on your profile.</p>
+    <div class="exp-tbl"><div class="exp-h"><span>Practice</span><span>Years practising</span><span>Years teaching</span></div>
+    ${(prs.length ? prs : ['Your practice']).map((p, i) => { const e = d.exp[p] || {}; return `<div class="exp-r"><b>${esc(p)}</b><input class="inp" type="number" min="0" max="80" name="ey_${i}" value="${esc(e.years ?? '')}" aria-label="${esc(p)}: years practising" placeholder="0"><input class="inp" type="number" min="0" max="80" name="et_${i}" value="${esc(e.teach ?? '')}" aria-label="${esc(p)}: years teaching" placeholder="0"></div>`; }).join('')}</div>
+    <div class="fgrid mt16"><label class="field full"><span>Your teacher or lineage</span><input class="inp" name="lineage" data-veda="lineage" value="${v('lineage')}" placeholder="For example: Trained under Swami Atmananda (Sivananda tradition)"></label>
     <label class="field full"><span>Where you trained</span><input class="inp" name="where" value="${v('where')}" placeholder="Ashram, school or institute"></label>
     <label class="field"><span>Teacher's contact for reference <small>(optional)</small></span><input class="inp" name="refc" value="${v('refc')}"></label><label class="field"><span>Approx. sessions given</span><select class="sel" name="sessions">${['Under 100','100–500','500–2,000','2,000+'].map(x => `<option ${d.sessions === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label></div>`;
   if (step === 6) body = `<label class="field"><span>Short headline</span><input class="inp" name="tagline" data-veda="tagline" value="${v('tagline')}" placeholder="For example: Breathwork for sleep, stress and steady focus"></label>
     <label class="field mt16"><span>Your story <small id="bioN"></small></span><textarea class="ta" name="bio" data-veda="bio" style="min-height:150px" placeholder="Who you help, how you work and what a first session feels like.">${v('bio')}</textarea></label>
     <label class="field mt16"><span>Why do people come to you? <small>(shown as a quote)</small></span><input class="inp" name="quote" data-veda="why" value="${v('quote')}"></label>
     <div class="field mt16"><span>Intro video <small>(optional, up to 90 seconds)</small></span>${drop('video','Upload a short hello','MP4 or MOV','video/*', d.video)}</div>`;
-  if (step === 7) body = `${tvLocation.html(d.loc || {country:'India', tz:'Asia/Kolkata'})}
+  if (step === 7) body = `<div class="note info" style="margin-bottom:16px">${ico('i-share')}<span>Links show on your public profile. <b>Connect</b> an account so the 2Verse content team can publish posts you approve, and so seekers see your follower count. All optional.</span></div>${socialRows(d.social)}`;
+  if (step === 8) body = `${tvLocation.html(d.loc || {country:'India', tz:'Asia/Kolkata'})}
     <h3 style="font-size:18px;margin:26px 0 12px">Policies & payout</h3>
     <div class="fgrid"><label class="field"><span>Default cancellation policy</span><select class="sel" name="policy">${['Free up to 24 hours before, 50% after','Free up to 48 hours before, 50% after','Free up to 12 hours before'].map(x => `<option ${d.policy === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
     <div class="field"><span>Default booking closes</span><select class="sel" name="cutoff">${[[0,'Until it starts'],[30,'30 min before'],[120,'2 hours before'],[720,'12 hours before'],[1440,'24 hours before']].map(([x, l]) => `<option value="${x}" ${String(d.cutoff ?? 120) === String(x) ? 'selected' : ''}>${l}</option>`).join('')}</select><small>You can change this for each service later.</small></div>
@@ -2196,44 +2286,54 @@ A.apply = (n = '1') => {
     <label class="field"><span>Payout account holder</span><input class="inp" name="acct" value="${v('acct') || v('name')}"></label>
     <label class="field"><span>Bank IFSC</span><input class="inp" name="ifsc" value="${v('ifsc')}" placeholder="For example: SBIN0001234"></label>
     <label class="check full"><input type="checkbox" name="coc" ${d.coc ? 'checked' : ''}><span>I have read and will follow the 2Verse healer code of conduct, including safety screening, consent and professional boundaries.</span></label></div>`;
-  if (step === 8){
+  if (step === 9){
     const miss = appMissing();
     body = `${miss.length ? `<div class="note warn" style="margin-bottom:16px">${ico('i-alert')}<span><b>Still missing:</b> ${miss.join(', ')}. You can submit now and add these from your dashboard; review starts once they are in.</span></div>` : `<div class="note info" style="margin-bottom:16px">${ico('i-check')}<span>Everything is in. Our team usually reviews applications within 2 working days.</span></div>`}
-    <div class="stack">${APP_STEPS.slice(0, 7).map((s, i) => `<div class="set-row"><span><b>${i + 1}. ${s}</b><small>${esc(appSummary(i + 1))}</small></span><a class="lnk" href="#/apply/${i + 1}">Edit</a></div>`).join('')}</div>
+    <div class="stack">${APP_STEPS.slice(0, -1).map((s, i) => `<div class="set-row"><span><b>${i + 1}. ${s}</b><small>${esc(appSummary(i + 1))}</small></span><a class="lnk" href="#/apply/${i + 1}">Edit</a></div>`).join('')}</div>
     <label class="check mt24"><input type="checkbox" name="decl"><span>I confirm that the information and documents I have shared are true, and I agree to the 2Verse healer terms.</span></label>`;
   }
-  authEl().innerHTML = `<div class="row" style="justify-content:space-between"><span class="step-l">Healer application · Step ${step} of 8</span><button class="lnk" id="apSave" type="button">Save & exit</button></div>
+  authEl().innerHTML = `<div class="row" style="justify-content:space-between"><span class="step-l">Healer application · Step ${step} of ${APP_STEPS.length}</span><button class="lnk" id="apSave" type="button">Save & exit</button></div>
     <div class="steps-bar">${APP_STEPS.map((_, i) => `<i class="${i < step ? 'on' : ''}" title="${APP_STEPS[i]}"></i>`).join('')}</div>
-    <h2>${APP_STEPS[step - 1]}</h2><p class="sub">${['How seekers and our team will know you.','Private. Used only to verify that you are you.','What you will offer on 2Verse.','Proof of training for each practice.','Your training and who you learned from.','What seekers read on your profile.','Where you meet seekers, your time zone, policies and payouts.','Check everything before you send it.'][step - 1]}</p>
-    <form id="fAp" novalidate>${body}<div class="ob-foot">${step > 1 ? `<button type="button" class="btn g" id="apBack">${ico('i-back')}Back</button>` : '<span></span>'}<button class="btn p lg" type="submit">${step === 8 ? 'Submit application' : 'Save & continue'}</button></div></form>`;
+    <h2>${APP_STEPS[step - 1]}</h2><p class="sub">${['How seekers and our team will know you.','Private. Used only to verify that you are you.','What you will offer on 2Verse.','Proof of training for each practice.','Your training and who you learned from.','What seekers read on your profile.','Links on your profile, and accounts you connect for posting.','Where you meet seekers, your time zone, policies and payouts.','Check everything before you send it.'][step - 1]}</p>
+    <form id="fAp" novalidate>${body}<div class="ob-foot">${step > 1 ? `<button type="button" class="btn g" id="apBack">${ico('i-back')}Back</button>` : '<span></span>'}<button class="btn p lg" type="submit">${step === 9 ? 'Submit application' : 'Save & continue'}</button></div></form>`;
   const f = $('#fAp');
   if (step === 1) wireVerify(f, (k, val) => { if (k === 'email'){ d.email = val; d.emailOk = true; } else { d.phone = val; d.phoneOk = true; } save(); });
-  wireDrops(f, (field, name) => { if (field.startsWith('cert_')){ const p = prs[+field.split('_')[1]]; d.certs = d.certs || {}; d.certs[p] = name; const pl = f.querySelector(`[name=${field}]`).closest('.card').querySelector('.pill'); pl.className = 'pill ok'; pl.textContent = 'Added'; } else d[field] = name; save(); });
+  wireDrops(f, (field, name) => { if (field.startsWith('cert_')) pend[+field.split('_')[1]] = name; else d[field] = name; save(); });
+  const addCert = (i, quiet) => { const nm = (f[`cn_${i}`].value || '').trim(), file = pend[i]; if (!nm && !file) return quiet ? true : (toast('Add the certificate name and file'), false);
+    if (!nm) return (fieldErr(f, `cn_${i}`, 'Add the certificate name'), false); if (!file) return (toast('Upload the certificate file'), false);
+    d.certList.push({p:prs[i], name:nm, issuer:(f[`ci_${i}`].value || '').trim(), file}); delete pend[i]; save(); return true; };
+  $$('[data-cadd]', f).forEach(b => b.onclick = () => { collect(); if (addCert(+b.dataset.cadd) && d.certList.length) { toast('Certificate added'); A.apply(4); } });
+  $$('[data-crm]', f).forEach(b => b.onclick = () => { collect(); d.certList.splice(+b.dataset.crm, 1); save(); A.apply(4); });
+  if (step === 7) wireSocial(f, d.social, d.display || d.name, () => { collect(); A.apply(7); });
   $('#apBack') && ($('#apBack').onclick = () => { collect(); nav('#/apply/' + (step - 1)); });
   $('#apSave').onclick = () => { collect(); S.auth.role = 'healer'; save(); toast('Saved. Sign in with ' + (d.loginId || 'your number') + ' to continue.'); nav('#/signin'); };
   if (step === 6){ const cnt = () => $('#bioN').textContent = `(${f.bio.value.length}/600)`; f.bio.addEventListener('input', cnt); cnt(); }
-  if (step === 7) tvLocation.wire(f.querySelector('.loc'), d.loc || {}, toast);
-  vedaAttach(f, () => { collect(); return {name:d.display || d.name, practices:d.practices || ['Breathwork'], years:d.years, city:d.loc && d.loc.city ? `${d.loc.area ? d.loc.area + ', ' : ''}${d.loc.city}` : 'Tapovan, Rishikesh', teacher:d.lineage, areas:['stress','sleep','focus'], langs:d.langs, loc:step === 7 ? tvLocation.read(new FormData(f)) : d.loc}; });
+  if (step === 8) tvLocation.wire(f.querySelector('.loc'), d.loc || {}, toast);
+  vedaAttach(f, () => { collect(); return {name:d.display || d.name, practices:d.practices || ['Breathwork'], years:d.years, city:d.loc && d.loc.city ? `${d.loc.area ? d.loc.area + ', ' : ''}${d.loc.city}` : 'Tapovan, Rishikesh', teacher:d.lineage, areas:['stress','sleep','focus'], langs:d.langs, loc:step === 8 ? tvLocation.read(new FormData(f)) : d.loc}; });
   function collect(){
     const fd = new FormData(f);
-    for (const [k, val] of fd.entries()){ if (val instanceof File) continue; if (['langs','practices'].includes(k) || k.startsWith('loc_')) continue; if (/^c[ni]_\d+$/.test(k)){ const p = prs[+k.split('_')[1]]; const key = k[1] === 'n' ? 'certn' : 'certi'; d[key] = d[key] || {}; d[key][p] = val; continue; } d[k] = val; }
+    for (const [k, val] of fd.entries()){ if (val instanceof File) continue; if (['langs','practices'].includes(k) || k.startsWith('loc_') || k.startsWith('soc_') || /^(c[ni]|e[yt])_\d+$/.test(k)) continue; d[k] = val; }
+    if (step === 5){ prs.forEach((p, i) => { d.exp[p] = {years:fd.get('ey_' + i) === '' ? '' : +fd.get('ey_' + i), teach:fd.get('et_' + i) === '' ? '' : +fd.get('et_' + i)}; }); const ys = Object.values(d.exp).map(e => +e.years || 0); d.years = ys.length ? Math.max(...ys) : ''; }
+    if (step === 7) readSocial(fd, d.social);
     if (step === 1) d.langs = fd.getAll('langs');
     if (step === 3) d.practices = fd.getAll('practices');
-    if (step === 7){ d.coc = !!fd.get('coc'); d.loc = tvLocation.read(fd); }
+    if (step === 8){ d.coc = !!fd.get('coc'); d.loc = tvLocation.read(fd); }
     save();
   }
   f.onsubmit = e => { e.preventDefault(); collect();
     if (step === 1){ if (!(d.name || '').trim()) return fieldErr(f, 'name', 'Add your legal name'); if (!$('.vf', f).dataset.ok) return toast(d.loginBy === 'email' ? 'Verify your mobile number to continue' : 'Verify your email to continue'); }
     if (step === 3 && !(d.practices || []).length) return toast('Choose at least one practice');
+    if (step === 4){ for (const i of prs.keys()){ if (!addCert(i, true)) return; } }
+    if (step === 5 && prs.some(p => d.exp[p].years === '')) return toast('Add your years of practice for each practice');
     if (step === 6 && (d.bio || '').length > 600) return fieldErr(f, 'bio', 'Keep your story under 600 characters');
-    if (step === 7){ const miss = tvLocation.missing(d.loc); if (miss.length) return fieldErr(f, 'loc_' + miss[0], 'Add your studio address: ' + miss.join(', ')); if (!d.coc) return toast('Please accept the code of conduct'); }
-    if (step === 8){ if (!new FormData(f).get('decl')) return toast('Please confirm the declaration'); ap.status = 'submitted'; ap.submitted = TODAY; ap.call = null; save(); toast('Application submitted'); return nav('#/status'); }
+    if (step === 8){ const miss = tvLocation.missing(d.loc); if (miss.length) return fieldErr(f, 'loc_' + miss[0], 'Add your studio address: ' + miss.join(', ')); if (!d.coc) return toast('Please accept the code of conduct'); }
+    if (step === 9){ if (!new FormData(f).get('decl')) return toast('Please confirm the declaration'); ap.status = 'submitted'; ap.submitted = TODAY; ap.call = null; save(); toast('Application submitted'); return nav('#/status'); }
     nav('#/apply/' + (step + 1)); };
 };
 function appMissing(){
   const d = S.application.d, m = [];
   if (!d.photo) m.push('profile photo'); if (!d.idfile) m.push('ID document'); if (!d.selfie) m.push('selfie');
-  (d.practices || []).forEach(p => { if (!(d.certs || {})[p]) m.push(`${p} certificate`); });
+  (d.practices || []).forEach(p => { if (!(d.certList || []).some(c => c.p === p)) m.push(`${p} certificate`); });
   if (!d.loc || tvLocation.missing(d.loc).length) m.push('studio address'); return m;
 }
 function appSummary(i){
@@ -2241,9 +2341,10 @@ function appSummary(i){
   return [ `${d.display || d.name || '—'} · ${d.phone || 'no mobile'} · ${d.email || 'no email'} · ${(d.langs || []).join(', ')}`,
     `${d.idtype || 'Aadhaar'} · ${d.idfile ? 'ID uploaded' : 'ID missing'} · ${d.selfie ? 'selfie uploaded' : 'selfie missing'}`,
     (d.practices || []).join(', ') || 'None chosen',
-    (d.practices || []).map(p => `${p}: ${(d.certs || {})[p] ? 'uploaded' : 'missing'}`).join(' · ') || '—',
-    `${d.years || '?'} years · ${d.lineage || 'lineage not added'}`,
+    (d.practices || []).map(p => { const n = (d.certList || []).filter(c => c.p === p).length; return `${p}: ${n ? n + ' certificate' + (n === 1 ? '' : 's') : 'missing'}`; }).join(' · ') || '—',
+    (d.practices || []).map(p => { const e = (d.exp || {})[p] || {}; return `${p} ${e.years || '?'} yrs (teaching ${e.teach || 0})`; }).join(' · ') + ` · ${d.lineage || 'lineage not added'}`,
     d.bio ? d.bio.slice(0, 90) + (d.bio.length > 90 ? '…' : '') : 'Not written yet',
+    (() => { const s = d.social || {}, on = SOCIALS.filter(([k]) => s[k] && s[k].url); return on.length ? on.map(([k, n]) => n + (s[k].connected ? ' (connected)' : '')).join(', ') : 'No links added'; })(),
     `${d.loc && d.loc.city ? [d.loc.venue, d.loc.area, d.loc.city, d.loc.pin].filter(Boolean).join(', ') + ' · ' + tvLocation.tzLabel(d.loc.tz).split(' (')[0] : 'Address not added'} · ${d.policy || 'Free up to 24 hours before, 50% after'}` ][i - 1];
 }
 A.status = () => {
@@ -2265,7 +2366,7 @@ A.status = () => {
     <p class="mt16 small muted" style="text-align:center"><a class="lnk" href="#/signin" id="stOut">Sign out</a></p>`;
   $$('#callSlots [data-s]').forEach(b => b.onclick = () => { ap.call = b.dataset.s + ' IST'; save(); toast('Call booked. We have emailed you the link.'); A.status(); });
   $('#demoApprove') && ($('#demoApprove').onclick = () => { ap.status = 'approved'; save(); toast('Application approved'); A.status(); });
-  $('#reopen') && ($('#reopen').onclick = () => { ap.status = null; save(); nav('#/apply/8'); });
+  $('#reopen') && ($('#reopen').onclick = () => { ap.status = null; save(); nav('#/apply/9'); });
   $('#stOut').onclick = () => { S.auth.role = 'healer'; save(); };
 };
 
@@ -2572,8 +2673,8 @@ function bkItem(){ return BK.eid ? Object.assign({healer:BK.hid, type:'Event', k
 function bkTotal(){
   const it = bkItem(), n = BK.seats || 1, unit = price(it), base = unit * n;
   const tier = !BK.eid && it.type === 'Group' ? tierFor(it, n) : null, dpct = tier ? tier.pct : (!BK.eid && it.disc ? it.disc : 0);
-  const disc = Math.round(base * dpct / 100), promo = BK.promo === 'FIRSTBREATH' ? Math.round((base - disc) * .1) : 0;
-  return {unit, n, base, dpct, disc, dlabel:tier ? `Group discount · ${tier.n}+ people` : dpct ? `${dpct}% off` : '', off:promo, total:base - disc - promo};
+  const disc = Math.round(base * dpct / 100), pr = BK.promo ? promoFind(it, BK.promo) : null, promo = pr && !pr.err ? Math.round((base - disc) * pr.pct / 100) : 0;
+  return {unit, n, base, dpct, disc, dlabel:tier ? `Group discount · ${tier.n}+ people` : dpct ? `${dpct}% off` : '', off:promo, plabel:pr && !pr.err ? `Promo ${BK.promo} · ${pr.pct}%` : '', total:base - disc - promo};
 }
 function drawBook(){
   const h = healer(BK.hid), it = bkItem(), isEv = !!BK.eid;
@@ -2615,7 +2716,7 @@ function drawBook(){
         <div id="newCard" class="fgrid" ${BK.pay === 'new' ? '' : 'hidden'}><label class="field full"><span>Card number</span><input class="inp" id="ccN" inputmode="numeric" placeholder="1234 1234 1234 1234"></label><label class="field"><span>Expiry</span><input class="inp" id="ccE" placeholder="MM/YY"></label><label class="field"><span>CVC</span><input class="inp" id="ccC" inputmode="numeric" placeholder="123"></label><label class="check full"><input type="checkbox" id="ccS" checked><span>Save this card for next time</span></label></div>
         <label class="opt"><input type="radio" name="pay" value="paypal" ${BK.pay === 'paypal' ? 'checked' : ''}><span class="grow"><b>PayPal</b><small>You will confirm in a PayPal window</small></span></label>
         ${intl() ? '' : `<label class="opt"><input type="radio" name="pay" value="upi" ${BK.pay === 'upi' ? 'checked' : ''}><span class="grow"><b>UPI</b><small>Google Pay, PhonePe, Paytm</small></span></label>`}</div>
-      <div class="row mt16"><input class="inp" id="promo" placeholder="Promo code" value="${esc(BK.promo)}" style="max-width:220px;text-transform:uppercase"><button type="button" class="btn g sm" id="promoBtn">Apply</button><span class="small muted">Try FIRSTBREATH</span></div>`}
+      <div class="row mt16"><input class="inp" id="promo" placeholder="Promo code" value="${esc(BK.promo)}" style="max-width:220px;text-transform:uppercase"><button type="button" class="btn g sm" id="promoBtn">Apply</button>${BK.promo && tot.off ? `<span class="pill ok">${ico('i-check')}${esc(BK.promo)} applied</span><button type="button" class="lnk small" id="promoRm">Remove</button>` : `<span class="small muted">Got a code from ${esc(h.name.split(' ')[0])}? Demo: ${esc(((it.promos || [])[0] || {code:'FIRSTBREATH'}).code)}</span>`}</div>`}
       ${BK.format === 'In person' && !isEv && (it.place || h.place) ? `<div class="mt16">${locCard(it.place || h.place, 'In person at')}</div>` : ''}
       <div class="note info mt16">${ico('i-shield')}<span>${esc(h.policy)}</span></div>`;
   }
@@ -2630,7 +2731,7 @@ function drawBook(){
       <div class="ln"><span>Length</span><span>${durTxt(it.dur)}</span></div><div class="ln"><span>Format</span><span>${BK.format}</span></div>${(BK.seats || 1) > 1 ? `<div class="ln"><span>People</span><span>${BK.seats}</span></div>` : ''}
       <div class="ln"><span>${tot.n > 1 ? `${tot.n} seats × ${money(CUR(), tot.unit)}` : isEv || it.cap ? 'Seat' : 'Session'}</span><span>${money(CUR(), tot.base)}</span></div>
       ${tot.disc ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">${esc(tot.dlabel)}</span><span>−${money(CUR(), tot.disc)}</span></div>` : ''}
-      ${tot.off ? `<div class="ln"><span>Promo FIRSTBREATH</span><span>−${money(CUR(), tot.off)}</span></div>` : ''}
+      ${tot.off ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">${esc(tot.plabel)}</span><span>−${money(CUR(), tot.off)}</span></div>` : ''}
       <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
       <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'}</div>
       ${BK.format === 'In person' && !isEv && (it.place || h.place) ? locCard(it.place || h.place) : ''}</div></aside></div></div>`;
@@ -2646,7 +2747,9 @@ function drawBook(){
   $$('[name=pay]', v).forEach(r => r.onchange = () => { BK.pay = r.value; $('#newCard') && ($('#newCard').hidden = r.value !== 'new'); });
   $('#bkIntent') && ($('#bkIntent').oninput = e => BK.intent = e.target.value);
   $('#bkAck') && ($('#bkAck').onchange = e => BK.ack = e.target.checked);
-  $('#promoBtn') && ($('#promoBtn').onclick = () => { const c = $('#promo').value.trim().toUpperCase(); if (c === 'FIRSTBREATH'){ BK.promo = c; toast('10% off applied'); drawBook(); } else { BK.promo = ''; toast('That code is not valid'); } });
+  $('#promoBtn') && ($('#promoBtn').onclick = () => { const c = $('#promo').value.trim().toUpperCase(), r = promoFind(bkItem(), c); if (!c) return toast('Enter a promo code'); if (r && !r.err){ BK.promo = c; toast(`${r.pct}% off applied${r.by === 'healer' ? ` · code from ${healer(BK.hid).name.split(' ')[0]}` : ''}`); drawBook(); } else { BK.promo = ''; toast(r.err); drawBook(); } });
+  $('#promoRm') && ($('#promoRm').onclick = () => { BK.promo = ''; drawBook(); });
+  $('#promo') && $('#promo').addEventListener('keydown', e => { if (e.key === 'Enter'){ e.preventDefault(); $('#promoBtn').click(); } });
   $('#bkBack') && ($('#bkBack').onclick = () => { BK.step--; drawBook(); window.scrollTo(0, 0); });
   $('#bkNext').onclick = () => {
     if (BK.step === 2 && !BK.time) return toast('Choose a time to continue');
@@ -2714,6 +2817,18 @@ function homeListen(){
   homeRec.onend = () => { homeRec = null; if (!document.body.contains(btn)) return; btn.classList.remove('on'); btn.innerHTML = ico('i-mic'); inp.placeholder = 'I have not been sleeping well…'; };
   try { homeRec.start(); } catch(e){ homeRec = null; }
 }
+/* one questionnaire field by type; answers are stored as text (multi = comma separated) */
+function qField(q, i, ans){
+  const nm = `pa_${i}`, chips = (opts, type) => `<div class="choice">${opts.map(o => `<label><input type="${type}" name="${nm}" value="${esc(o)}" ${(type === 'checkbox' ? String(ans).split(', ').includes(o) : ans === o) ? 'checked' : ''}><span>${esc(o)}</span></label>`).join('')}</div>`;
+  const t = q.type, lab = `<span>${esc(q.q)}</span>`;
+  if (t === 'short') return `<label class="field">${lab}<input class="inp" name="${nm}" value="${esc(ans)}"></label>`;
+  if (t === 'single') return `<div class="field">${lab}${chips(q.opts, 'radio')}</div>`;
+  if (t === 'multi') return `<div class="field">${lab.replace('</span>', ' <small>(choose any)</small></span>')}${chips(q.opts, 'checkbox')}</div>`;
+  if (t === 'yesno') return `<div class="field">${lab}${chips(['Yes','No'], 'radio')}</div>`;
+  if (t === 'scale') return `<div class="field">${lab}<div class="choice q-scale">${[1,2,3,4,5].map(n => `<label><input type="radio" name="${nm}" value="${n}" ${String(ans) === String(n) ? 'checked' : ''}><span>${n}</span></label>`).join('')}</div><small class="q-ends"><span>Not at all</span><span>Very</span></small></div>`;
+  return `<label class="field">${lab}<textarea class="ta" name="${nm}" style="min-height:64px" ${i === 0 ? 'data-veda="intent"' : ''}>${esc(ans)}</textarea></label>`;
+}
+function qRead(f, q, i){ const nm = `pa_${i}`; if (q.type === 'multi') return [...f.querySelectorAll(`[name="${nm}"]:checked`)].map(x => x.value).join(', '); const el = q.type === 'single' || q.type === 'yesno' || q.type === 'scale' ? f.querySelector(`[name="${nm}"]:checked`) : f.querySelector(`[name="${nm}"]`); return el ? el.value.trim() : ''; }
 /* preparation form (after booking, and from Sessions) */
 function prepForm(el, b, intro){
   if (!el) return;
@@ -2723,12 +2838,13 @@ function prepForm(el, b, intro){
     ${intro ? `<p class="small muted mt8">${esc(h.name.split(' ')[0])} asks every seeker to do this. Your answers go only to ${esc(h.name.split(' ')[0])}, and you can change them until the session.</p>` : ''}
     <div class="stack mt16 prep-f" style="gap:10px">
       ${P.seeker.map((t, i) => `<label class="check"><input type="checkbox" name="pd" value="${i}" ${pr.done.includes(i) ? 'checked' : ''}><span>${esc(t)}</span></label>`).join('')}
-      ${P.questions.map((q, i) => `<label class="field"><span>${esc(q)}</span><textarea class="ta" name="pa" style="min-height:64px" ${i === 0 ? 'data-veda="intent"' : ''}>${esc(pr.answers[i] || '')}</textarea></label>`).join('')}
+      ${P.questions.length ? `<div class="q-head"><b>${esc(h.name.split(' ')[0])}'s questions</b><small>${P.required ? 'Please answer before you join' : 'Optional'}</small></div>` : ''}
+      ${P.questions.map((q, i) => qField(q, i, pr.answers[i] || '')).join('')}
       <div class="row" style="justify-content:space-between"><span class="small muted">${b.prep ? `Saved ${b.prep.at ? rel(b.prep.at.split(' ')[0]) : ''}` : 'Not saved yet'}</span><button class="btn p sm" type="button" data-savep>${ico('i-check')}Save preparation</button></div></div>`;
   const f = el.querySelector('.prep-f');
   vedaAttach(f, () => ({name:h.name}));
   f.querySelector('[data-savep]').onclick = () => {
-    b.prep = {done:[...f.querySelectorAll('[name=pd]:checked')].map(x => +x.value), answers:[...f.querySelectorAll('[name=pa]')].map(x => x.value.trim()), at:`${TODAY} ${NOW_T}`}; save();
+    b.prep = {done:[...f.querySelectorAll('[name=pd]:checked')].map(x => +x.value), answers:P.questions.map((q, i) => qRead(f, q, i)), at:`${TODAY} ${NOW_T}`}; save();
     toast(`Saved. ${h.name.split(' ')[0]} can see your answers.`); prepForm(el, b, intro); el.dispatchEvent(new CustomEvent('prepsaved', {bubbles:true})); };
 }
 
@@ -2850,14 +2966,19 @@ R.room = id => {
   const b = bookingOf(id); if (!b || b.status !== 'upcoming' || b.format !== 'Online') return nav('#/sessions');
   const h = healer(b.healer), js = joinState(b);
   clearInterval(roomT); clearInterval(guideT);
-  if (js !== 'open' && !b.lobbyOk){
-    const c = countdown(b);
+  const needQ = unanswered(b) && prepOf(b).required && !b.qSkip;
+  if ((js !== 'open' && !b.lobbyOk) || needQ){
+    const c = countdown(b), hf = h.name.split(' ')[0];
     $('#view').innerHTML = `<div class="wrap"><div class="confirm" style="max-width:760px"><span class="kicker">Lobby</span><h1>${esc(bTitle(b))}</h1><p class="mt8" style="color:var(--ink-2)">with ${esc(h.name)} · ${fDate(b.date)} · ${whenTxt(b.date, b.time)}</p>
       <div class="card mt24" style="text-align:left"><div class="row" style="gap:20px;align-items:stretch;flex-wrap:wrap"><div class="pip" style="position:relative;right:auto;bottom:auto;width:280px;height:180px;color:#f3eee4">${esc(S.me.first[0])}<small>Camera preview</small></div>
         <div class="grow stack" style="gap:10px"><b>Check before you join</b><div class="row small">${ico('i-check')}Camera found</div><div class="row small">${ico('i-check')}Microphone working<span class="pill ok" style="margin-left:6px">Good level</span></div><div class="row small">${ico('i-check')}Connection: strong</div><div class="row small">${ico('i-alert')}Use headphones for the best sound</div></div></div></div>
-      <div class="note info mt16" style="text-align:left">${ico('i-clock')}<span>The room opens 10 minutes before the start, in <b>${c.d ? c.d + ' days ' : ''}${c.h} h ${c.m} min</b>. We will remind you by email and WhatsApp.</span></div>
-      <div class="row mt24" style="justify-content:center"><a class="btn g" href="#/sessions">Back to sessions</a><button class="btn t" id="demoJoin">${ico('i-spark')}Demo: enter the room now</button></div></div></div>`;
-    $('#demoJoin').onclick = () => { b.lobbyOk = true; R.room(id); };
+      ${unanswered(b) ? `<div class="card mt16" style="text-align:left" id="lobbyPrep"></div>` : ''}
+      ${js === 'open' ? `<div class="note ${needQ ? 'warn' : 'info'} mt16" style="text-align:left">${ico(needQ ? 'i-alert' : 'i-video')}<span>${needQ ? `The room is open. Answer ${esc(hf)}'s questions above, then join.` : 'The room is open.'}</span></div>`
+        : `<div class="note info mt16" style="text-align:left">${ico('i-clock')}<span>The room opens 10 minutes before the start, in <b>${c.d ? c.d + ' days ' : ''}${c.h} h ${c.m} min</b>. We will remind you by email and WhatsApp.</span></div>`}
+      <div class="row mt24" style="justify-content:center"><a class="btn g" href="#/sessions">Back to sessions</a>${js === 'open' ? `<button class="btn p" id="qJoin" ${needQ ? 'disabled' : ''}>${ico('i-video')}Join now</button>` : `<button class="btn t" id="demoJoin">${ico('i-spark')}Demo: enter the room now</button>`}</div></div></div>`;
+    $('#demoJoin') && ($('#demoJoin').onclick = () => { if (unanswered(b) && prepOf(b).required) return toast(`Please answer ${hf}'s questions first`); b.lobbyOk = true; R.room(id); });
+    $('#qJoin') && ($('#qJoin').onclick = () => { b.lobbyOk = true; R.room(id); });
+    const lp = $('#lobbyPrep'); if (lp){ prepForm(lp, b, false); lp.addEventListener('prepsaved', () => { if (!unanswered(b)) R.room(id); }); }
     return;
   }
   let mic = true, cam = true, panel = innerWidth > 900, tab = 'chat', sec = 0, guide = false;
@@ -3136,9 +3257,10 @@ const pkClosed = p => p.type !== '1:1' && minsUntil(p.items[0].date, p.items[0].
 const pkEnroll = pid => (S.packages || []).find(e => e.pack === pid);
 const pkBookings = e => S.bookings.filter(b => b.pkg === e.id && b.status !== 'cancelled');
 const pkWhenTxt = p => p.type === '1:1' ? `You choose each time${p.spacing ? `, at least ${p.spacing === 7 ? 'a week' : p.spacing + ' day' + (p.spacing === 1 ? '' : 's')} apart` : ''}` : `${fShort(p.items[0].date)} – ${fShort(p.items[p.items.length - 1].date)}`;
-function pkTotal(p, seats = 1){
+function pkTotal(p, seats = 1, code = ''){
   const unit = price(p), base = unit * seats, d1 = Math.round(base * (p.disc || 0) / 100), tier = p.type !== '1:1' ? tierFor(p, seats) : null, d2 = tier ? Math.round((base - d1) * tier.pct / 100) : 0;
-  return {unit, seats, base, d1, tier, d2, total:base - d1 - d2};
+  const pr = code ? promoFind(p, code) : null, d3 = pr && !pr.err ? Math.round((base - d1 - d2) * pr.pct / 100) : 0;
+  return {unit, seats, base, d1, tier, d2, d3, promo:pr && !pr.err ? pr : null, total:base - d1 - d2 - d3};
 }
 function pkRow(p){
   const h = healer(p.healer), g = p.type !== '1:1', mine = pkEnroll(p.id);
@@ -3231,7 +3353,7 @@ R.buy = pid => {
   drawBuy();
 };
 function drawBuy(){
-  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats), first = h.name.split(' ')[0];
+  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats, PB.promo), first = h.name.split(' ')[0];
   const nPicked = PB.picks.filter(Boolean).length;
   let body = '';
   if (PB.step === 1){
@@ -3259,6 +3381,7 @@ function drawBuy(){
     body = `<h2 style="font-size:26px">Payment</h2><div class="stack mt16">${S.cards.map(c => `<label class="opt"><input type="radio" name="pay" value="${c.id}" ${PB.pay === c.id ? 'checked' : ''}><span class="ccard" style="border:none;padding:0;background:none"><span class="brand">${c.brand}</span></span><span class="grow"><b>•••• ${c.last4}</b><small>Expires ${c.exp}</small></span></label>`).join('')}
       <label class="opt"><input type="radio" name="pay" value="paypal" ${PB.pay === 'paypal' ? 'checked' : ''}><span class="grow"><b>PayPal</b><small>You will confirm in a PayPal window</small></span></label>
       ${intl() ? '' : `<label class="opt"><input type="radio" name="pay" value="upi" ${PB.pay === 'upi' ? 'checked' : ''}><span class="grow"><b>UPI</b><small>Google Pay, PhonePe, Paytm</small></span></label>`}</div>
+      <div class="row mt16"><input class="inp" id="pbPromo" placeholder="Promo code" value="${esc(PB.promo || '')}" style="max-width:220px;text-transform:uppercase"><button type="button" class="btn g sm" id="pbPromoBtn">Apply</button>${tot.d3 ? `<span class="pill ok">${ico('i-check')}${esc(PB.promo)} applied</span><button type="button" class="lnk small" id="pbPromoRm">Remove</button>` : `<span class="small muted">Got a code from ${esc(first)}? Demo: ${esc(((p.promos || [])[0] || {code:'FIRSTBREATH'}).code)}</span>`}</div>
       ${PB.format === 'In person' && p.place ? `<div class="mt16">${locCard(p.place, 'In person at')}</div>` : ''}
       <div class="note info mt16">${ico('i-shield')}<span>${g ? esc(h.policy) : 'You can move or cancel any session up to 24 hours before; it goes back into your package.'}</span></div>`;
   }
@@ -3276,6 +3399,7 @@ function drawBuy(){
       <div class="ln"><span>${tot.seats > 1 ? `${tot.seats} × ${money(CUR(), tot.unit)}` : 'Package'}</span><span>${money(CUR(), tot.base)}</span></div>
       ${tot.d1 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Package discount · ${p.disc}%</span><span>−${money(CUR(), tot.d1)}</span></div>` : ''}
       ${tot.d2 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Group discount · ${tot.tier.n}+ people</span><span>−${money(CUR(), tot.d2)}</span></div>` : ''}
+      ${tot.d3 ? `<div class="ln" style="color:var(--primary)"><span style="color:inherit">Promo ${esc(PB.promo)} · ${tot.promo.pct}%</span><span>−${money(CUR(), tot.d3)}</span></div>` : ''}
       <div class="ln tot"><span style="color:var(--ink)">Total</span><span>${money(CUR(), tot.total)}</span></div>
       <div class="small muted">${money(CUR(), Math.round(tot.total / tot.seats / p.items.length))} a session${tot.seats > 1 ? ' per person' : ''} · ${intl() ? 'US dollars, taxes included' : 'rupees, GST included'}</div>
       ${PB.format === 'In person' && p.place ? locCard(p.place) : ''}</div></aside></div></div>`;
@@ -3289,6 +3413,8 @@ function drawBuy(){
   $('#pbAck') && ($('#pbAck').onchange = e => PB.ack = e.target.checked);
   $('#pbMap') && ($('#pbMap').onclick = () => mapModal(p.place, true));
   $$('[name=pay]', v).forEach(r => r.onchange = () => { PB.pay = r.value; });
+  $('#pbPromoBtn') && ($('#pbPromoBtn').onclick = () => { const c = $('#pbPromo').value.trim().toUpperCase(), r = promoFind(p, c); if (!c) return toast('Enter a promo code'); if (r && !r.err){ PB.promo = c; toast(`${r.pct}% off applied`); } else { PB.promo = ''; toast(r.err); } drawBuy(); });
+  $('#pbPromoRm') && ($('#pbPromoRm').onclick = () => { PB.promo = ''; drawBuy(); });
   vedaAttach(v, () => ({name:h.name}));
   $('#pbBack') && ($('#pbBack').onclick = () => { PB.step--; drawBuy(); window.scrollTo(0, 0); });
   $('#pbNext').onclick = () => {
@@ -3307,14 +3433,14 @@ function pkBook(p, e, i, d, t){
   S.bookings.push(b); return b;
 }
 function buyNow(){
-  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats);
+  const p = pkOf(PB.pid), h = healer(p.healer), g = p.type !== '1:1', tot = pkTotal(p, PB.seats, PB.promo);
   if (g && pkClosed(p)) return toast('Sorry, sales for these dates just closed.');
   if (!g){ const bad = PB.picks.findIndex((x, i) => x && !slotsFor(pkSvc(`${p.id}~${i}`), x.d).some(s => s.t === x.t && s.state === 'open')); if (bad >= 0){ PB.picks[bad] = null; PB.step = 1; toast(`Session ${bad + 1}: that time was just taken. Pick another.`); return drawBuy(); } }
   const btn = $('#pbNext'); btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Confirming…';
   setTimeout(() => {
     S.packages = S.packages || [];
     const e = {id:'PK-' + (301 + S.packages.length), healer:h.id, pack:p.id, total:p.items.length, bought:TODAY, until:g ? p.items[p.items.length - 1].date : addDays(TODAY, p.valid), cur:CUR(), amount:tot.total, seats:PB.seats, format:PB.format, intent:PB.intent, method:PB.pay};
-    if (tot.d1 + tot.d2) e.discount = tot.d1 + tot.d2;
+    if (tot.d1 + tot.d2 + tot.d3) e.discount = tot.d1 + tot.d2 + tot.d3; if (tot.d3) e.promo = PB.promo;
     S.packages.push(e);
     p.items.forEach((x, i) => { if (g) pkBook(p, e, i, x.date, x.time); else if (PB.picks[i]) pkBook(p, e, i, PB.picks[i].d, PB.picks[i].t); });
     const t = thread(h.id) || (S.threads.push({id:'t-' + h.id, healer:h.id, unread:0, msgs:[]}), thread(h.id));
