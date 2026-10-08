@@ -4,45 +4,53 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>2Verse Healer Dashboard</title>
-<link rel="preload" href="fonts/poppins/Poppins-400.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="fonts/poppins/Poppins-600.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="fonts/fonts.css" />
 <script>
 (function(){
   var KEY = '2verse-font', DEF = 'poppins', root = document.documentElement;
-  var FALL = '"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif';
+  var SYS = 'system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+  var SERIF = 'Georgia,"Times New Roman",Times,serif';
+  /* Poppins is the 2Verse default and is served from our own /fonts folder.
+     Every other option is a font already installed on the device, so nothing is downloaded. */
   var FONTS = [
-    {id:'poppins', name:'Poppins', note:'Default', h:'Poppins', b:'Poppins'},
-    {id:'inter', name:'Inter', note:'Crisp and neutral', h:'Inter', b:'Inter'},
-    {id:'lora', name:'Lora', note:'Warm serif', h:'Lora', b:'Lora'},
-    {id:'fraunces', name:'Fraunces', note:'Soft, literary serif', h:'Fraunces', b:'Fraunces'},
-    {id:'playfair', name:'Playfair Display', note:'Elegant serif', h:'Playfair Display', b:'Playfair Display'},
-    {id:'cormorant', name:'Cormorant Garamond', note:'Classic and airy', h:'Cormorant Garamond', b:'Cormorant Garamond'},
-    {id:'marcellus', name:'Marcellus + Poppins', note:'Carved headings', h:'Marcellus', b:'Poppins'},
-    {id:'dmserif', name:'DM Serif + Inter', note:'Bold editorial headings', h:'DM Serif Display', b:'Inter'},
-    {id:'gilda', name:'Gilda Display + Lora', note:'Quiet, bookish', h:'Gilda Display', b:'Lora'}
+    {id:'poppins', name:'Poppins', note:'2Verse default', f:'"Poppins",' + SYS},
+    {id:'system', name:'System default', note:'Your device\'s own font: San Francisco, Segoe UI or Roboto', f:SYS},
+    {id:'helvetica', name:'Helvetica / Arial', note:'Clean and familiar', f:'"Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif'},
+    {id:'verdana', name:'Verdana', note:'Wide and very easy to read', f:'Verdana,Geneva,"DejaVu Sans",sans-serif'},
+    {id:'tahoma', name:'Tahoma', note:'Compact and clear', f:'Tahoma,Geneva,"Segoe UI",sans-serif'},
+    {id:'trebuchet', name:'Trebuchet', note:'Friendly, slightly rounded', f:'"Trebuchet MS","Lucida Grande","Lucida Sans Unicode",' + SYS},
+    {id:'humanist', name:'Humanist (Optima / Candara)', note:'Soft and calm', f:'Optima,Candara,"Gill Sans","Gill Sans MT","Noto Sans",' + SYS},
+    {id:'rounded', name:'Rounded', note:'Gentle, rounded letters', f:'ui-rounded,"SF Pro Rounded","Arial Rounded MT Bold","Varela Round",' + SYS},
+    {id:'georgia', name:'Georgia', note:'Warm, readable serif', f:SERIF},
+    {id:'times', name:'Times New Roman', note:'Classic book serif', f:'"Times New Roman",Times,"Liberation Serif","Noto Serif",serif'},
+    {id:'palatino', name:'Palatino', note:'Elegant, calligraphic serif', f:'"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",' + SERIF},
+    {id:'garamond', name:'Garamond / Baskerville', note:'Old-style, literary serif', f:'Garamond,"EB Garamond",Baskerville,"Baskerville Old Face","Hoefler Text",' + SERIF}
   ];
   var byId = function(id){ for (var i = 0; i < FONTS.length; i++) if (FONTS[i].id === id) return FONTS[i]; return null; };
-  var stack = function(n){ return n === 'Poppins' ? FALL : '"' + n + '",' + FALL; };
   var cur = DEF;
   function apply(id){
     var f = byId(id) || byId(DEF); cur = f.id; root.setAttribute('data-font', f.id);
     if (f.id === DEF){ root.style.removeProperty('--font-sans'); root.style.removeProperty('--font-display'); }
-    else { root.style.setProperty('--font-sans', stack(f.b)); root.style.setProperty('--font-display', stack(f.h)); }
+    else { root.style.setProperty('--font-sans', f.f); root.style.setProperty('--font-display', f.f); }
   }
   function set(id){ apply(id); try { localStorage.setItem(KEY, cur); } catch(e){} }
   var start = null;
   try { start = new URLSearchParams(location.search).get('font'); } catch(e){}
   if (!byId(start)){ try { start = localStorage.getItem(KEY); } catch(e){} }
-  apply(start || DEF);
+  apply(byId(start) ? start : DEF);
+  /* fetch the Poppins files early only when Poppins is actually in use */
+  if (cur === DEF) ['400','600'].forEach(function(w){ var l = document.createElement('link'); l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = 'fonts/poppins/Poppins-' + w + '.woff2'; document.head.appendChild(l); });
   window.addEventListener('storage', function(e){ if (e.key === KEY && e.newValue && e.newValue !== cur) apply(e.newValue); });
+  var q = function(s){ return s.replace(/"/g, "'"); };
   window.tvFont = {
     list: FONTS, get: function(){ return cur; }, set: set,
     html: function(){
       var f = byId(cur);
-      return '<h6>Font</h6><div class="fpick"><select class="fsel" aria-label="App font">' + FONTS.map(function(x){ return '<option value="' + x.id + '"' + (x.id === cur ? ' selected' : '') + ' style="font-family:' + stack(x.b).replace(/"/g, "'") + '">' + x.name + (x.id === DEF ? ' (default)' : '') + '</option>'; }).join('') + '</select>' +
-        '<div class="fprev"><b style="font-family:' + stack(f.h).replace(/"/g, "'") + '">Breathe in, slow down</b><small style="font-family:' + stack(f.b).replace(/"/g, "'") + '">' + f.note + ' · ₹2,500 · 6:30 PM</small></div>' +
-        '<small class="fnote">Fonts are stored with 2Verse, no outside font service. Saved on this device.</small></div>';
+      return '<h6>Font</h6><div class="fpick"><select class="fsel" aria-label="App font">' +
+        '<option value="poppins"' + (cur === DEF ? ' selected' : '') + ' style="font-family:' + q(FONTS[0].f) + '">Poppins (default)</option>' +
+        '<optgroup label="System fonts · nothing to download">' + FONTS.slice(1).map(function(x){ return '<option value="' + x.id + '"' + (x.id === cur ? ' selected' : '') + ' style="font-family:' + q(x.f) + '">' + x.name + '</option>'; }).join('') + '</optgroup></select>' +
+        '<div class="fprev" style="font-family:' + q(f.f) + '"><b>Breathe in, slow down</b><small>' + f.note + ' · ₹2,500 · 6:30 PM</small></div>' +
+        '<small class="fnote">' + (cur === DEF ? 'Poppins loads from 2Verse itself, never from an outside service.' : 'Uses a font already on this device. How it looks can differ slightly between phones and computers.') + ' Saved on this device.</small></div>';
     },
     wire: function(scope, redraw){
       var s = scope.querySelector('.fsel'); if (!s) return;
