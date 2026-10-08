@@ -5,9 +5,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>2Verse</title>
 <meta name="description" content="2Verse web app: Seekers find and book verified healers from Tapovan, Rishikesh. Healers apply and manage their practice." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+<link rel="preload" href="fonts/poppins/Poppins-400.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="fonts/poppins/Poppins-600.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="fonts/fonts.css" />
+<script>
+(function(){
+  var KEY = '2verse-font', DEF = 'poppins', root = document.documentElement;
+  var FALL = '"Poppins",system-ui,-apple-system,"Segoe UI",sans-serif';
+  var FONTS = [
+    {id:'poppins', name:'Poppins', note:'Default', h:'Poppins', b:'Poppins'},
+    {id:'inter', name:'Inter', note:'Crisp and neutral', h:'Inter', b:'Inter'},
+    {id:'lora', name:'Lora', note:'Warm serif', h:'Lora', b:'Lora'},
+    {id:'fraunces', name:'Fraunces', note:'Soft, literary serif', h:'Fraunces', b:'Fraunces'},
+    {id:'playfair', name:'Playfair Display', note:'Elegant serif', h:'Playfair Display', b:'Playfair Display'},
+    {id:'cormorant', name:'Cormorant Garamond', note:'Classic and airy', h:'Cormorant Garamond', b:'Cormorant Garamond'},
+    {id:'marcellus', name:'Marcellus + Poppins', note:'Carved headings', h:'Marcellus', b:'Poppins'},
+    {id:'dmserif', name:'DM Serif + Inter', note:'Bold editorial headings', h:'DM Serif Display', b:'Inter'},
+    {id:'gilda', name:'Gilda Display + Lora', note:'Quiet, bookish', h:'Gilda Display', b:'Lora'}
+  ];
+  var byId = function(id){ for (var i = 0; i < FONTS.length; i++) if (FONTS[i].id === id) return FONTS[i]; return null; };
+  var stack = function(n){ return n === 'Poppins' ? FALL : '"' + n + '",' + FALL; };
+  var cur = DEF;
+  function apply(id){
+    var f = byId(id) || byId(DEF); cur = f.id; root.setAttribute('data-font', f.id);
+    if (f.id === DEF){ root.style.removeProperty('--font-sans'); root.style.removeProperty('--font-display'); }
+    else { root.style.setProperty('--font-sans', stack(f.b)); root.style.setProperty('--font-display', stack(f.h)); }
+  }
+  function set(id){ apply(id); try { localStorage.setItem(KEY, cur); } catch(e){} }
+  var start = null;
+  try { start = new URLSearchParams(location.search).get('font'); } catch(e){}
+  if (!byId(start)){ try { start = localStorage.getItem(KEY); } catch(e){} }
+  apply(start || DEF);
+  window.addEventListener('storage', function(e){ if (e.key === KEY && e.newValue && e.newValue !== cur) apply(e.newValue); });
+  window.tvFont = {
+    list: FONTS, get: function(){ return cur; }, set: set,
+    html: function(){
+      var f = byId(cur);
+      return '<h6>Font</h6><div class="fpick"><select class="fsel" aria-label="App font">' + FONTS.map(function(x){ return '<option value="' + x.id + '"' + (x.id === cur ? ' selected' : '') + ' style="font-family:' + stack(x.b).replace(/"/g, "'") + '">' + x.name + (x.id === DEF ? ' (default)' : '') + '</option>'; }).join('') + '</select>' +
+        '<div class="fprev"><b style="font-family:' + stack(f.h).replace(/"/g, "'") + '">Breathe in, slow down</b><small style="font-family:' + stack(f.b).replace(/"/g, "'") + '">' + f.note + ' · ₹2,500 · 6:30 PM</small></div>' +
+        '<small class="fnote">Fonts are stored with 2Verse, no outside font service. Saved on this device.</small></div>';
+    },
+    wire: function(scope, redraw){
+      var s = scope.querySelector('.fsel'); if (!s) return;
+      s.addEventListener('click', function(e){ e.stopPropagation(); });
+      s.onchange = function(e){ e.stopPropagation(); set(s.value); redraw && redraw(); };
+    }
+  };
+})();
+</script>
 <style>
 /* ===== 2Verse brand tokens (Brand Guidelines v1) ===== */
 :root,[data-theme="dawn"]{
@@ -944,6 +989,14 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 @media (max-width:640px){.soc-row{flex-wrap:wrap}.soc-act{align-items:flex-start;min-width:0}.exp-h,.exp-r{grid-template-columns:1fr 1fr 1fr}}
 .spin-s{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;animation:rot .8s linear infinite}
 
+.tpick .fpick{display:flex;flex-direction:column;gap:8px;padding:0 4px 4px}
+.tpick .fsel{width:100%;height:42px;padding:0 36px 0 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--ink);font:inherit;font-size:14px;font-weight:500;appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 18px) 18px,calc(100% - 13px) 18px;background-size:5px 5px;background-repeat:no-repeat}
+.tpick .fsel:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 20%,transparent)}
+.tpick .fprev{padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.tpick .fprev b{display:block;font-size:18px;font-weight:600;color:var(--ink);line-height:1.25}
+.tpick .fprev small{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.tpick .fnote{font-size:11px;color:var(--muted);line-height:1.4}
+
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
 .loc-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -1138,10 +1191,11 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
   }
   function opt(t){ return '<button type="button" class="topt' + (t.id === cur ? ' on' : '') + '" data-tid="' + t.id + '" aria-pressed="' + (t.id === cur) + '"><span class="chips">' + t.chips.map(function(c){ return '<i style="background:' + c + '"></i>'; }).join('') + '</span><span><b>' + t.name + '</b><small>' + t.desc + '</small></span><span class="tick"><svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M3 8l3 3 7-7"/></svg></span></button>'; }
   function draw(){
-    pop.innerHTML = '<div class="tp-h"><b>Theme</b><small style="color:var(--muted);font-size:12px">10 themes · saved on this device</small></div>' +
+    pop.innerHTML = '<div class="tp-h"><b>Theme &amp; font</b><small style="color:var(--muted);font-size:12px">Saved on this device</small></div>' +
       '<h6>Light</h6><div class="tg-grid">' + THEMES.filter(function(t){ return t.mode === 'light'; }).map(opt).join('') + '</div>' +
-      '<h6>Dark</h6><div class="tg-grid">' + THEMES.filter(function(t){ return t.mode === 'dark'; }).map(opt).join('') + '</div>';
+      '<h6>Dark</h6><div class="tg-grid">' + THEMES.filter(function(t){ return t.mode === 'dark'; }).map(opt).join('') + '</div>' + (window.tvFont ? tvFont.html() : '');
     Array.prototype.forEach.call(pop.querySelectorAll('[data-tid]'), function(b){ b.onclick = function(e){ e.stopPropagation(); cur = b.dataset.tid; cb && cb(cur); draw(); }; });
+    window.tvFont && tvFont.wire(pop, draw);
   }
   function place(){ if (!pop || !anchor || !pop.classList.contains('open')) return; var r = anchor.getBoundingClientRect(); pop.style.top = (r.bottom + 10) + 'px'; pop.style.left = 'auto'; pop.style.right = Math.max(12, window.innerWidth - r.right) + 'px'; }
   function close(){ pop && pop.classList.remove('open'); anchor && anchor.setAttribute('aria-expanded', 'false'); }

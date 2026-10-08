@@ -1,0 +1,39 @@
+/* 2Verse local fonts. All files are served from /fonts (SIL Open Font License, see OFL.txt in each folder). No CDN. */
+@font-face{font-family:'Poppins';font-style:normal;font-weight:300;font-display:swap;src:url('poppins/Poppins-300.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:400;font-display:swap;src:url('poppins/Poppins-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('poppins/Poppins-400.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:italic;font-weight:500;font-display:swap;src:url('poppins/Poppins-500-Italic.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:500;font-display:swap;src:url('poppins/Poppins-500.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:600;font-display:swap;src:url('poppins/Poppins-600.woff2') format('woff2')}
+@font-face{font-family:'Poppins';font-style:normal;font-weight:700;font-display:swap;src:url('poppins/Poppins-700.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('inter/Inter-400.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('inter/Inter-500.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('inter/Inter-600.woff2') format('woff2')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('inter/Inter-700.woff2') format('woff2')}
+@font-face{font-family:'Lora';font-style:italic;font-weight:400;font-display:swap;src:url('lora/Lora-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'Lora';font-style:normal;font-weight:400;font-display:swap;src:url('lora/Lora-400.woff2') format('woff2')}
+@font-face{font-family:'Lora';font-style:italic;font-weight:500;font-display:swap;src:url('lora/Lora-500-Italic.woff2') format('woff2')}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('lora/Lora-500.woff2') format('woff2')}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('lora/Lora-600.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:300;font-display:swap;src:url('fraunces/Fraunces-300-Italic.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:300;font-display:swap;src:url('fraunces/Fraunces-300.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('fraunces/Fraunces-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('fraunces/Fraunces-400.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('fraunces/Fraunces-500.woff2') format('woff2')}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('fraunces/Fraunces-600.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;font-display:swap;src:url('playfair-display/PlayfairDisplay-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;font-display:swap;src:url('playfair-display/PlayfairDisplay-400.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url('playfair-display/PlayfairDisplay-500-Italic.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url('playfair-display/PlayfairDisplay-500.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;font-display:swap;src:url('playfair-display/PlayfairDisplay-600.woff2') format('woff2')}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;font-display:swap;src:url('playfair-display/PlayfairDisplay-700.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:400;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:400;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-400.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:500;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-500-Italic.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-500.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-600.woff2') format('woff2')}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:700;font-display:swap;size-adjust:112%;src:url('cormorant-garamond/CormorantGaramond-700.woff2') format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:italic;font-weight:400;font-display:swap;src:url('dm-serif-display/DMSerifDisplay-400-Italic.woff2') format('woff2')}
+@font-face{font-family:'DM Serif Display';font-style:normal;font-weight:400;font-display:swap;src:url('dm-serif-display/DMSerifDisplay-400.woff2') format('woff2')}
+@font-face{font-family:'Gilda Display';font-style:normal;font-weight:400;font-display:swap;src:url('gilda-display/GildaDisplay-400.woff2') format('woff2')}
+@font-face{font-family:'Marcellus';font-style:normal;font-weight:400;font-display:swap;src:url('marcellus/Marcellus-400.woff2') format('woff2')}
