@@ -552,6 +552,12 @@ table.dt .num{text-align:right;font-variant-numeric:tabular-nums}
 .cred small{font-size:12.5px;color:var(--muted)}
 .mod-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;margin-bottom:8px}
 .mod-row .grow{flex:1}
+/* sub-modalities */
+.sub-box{margin:-2px 0 10px 24px;padding:14px 16px;border-left:2px solid var(--primary);background:var(--soft-sage);border-radius:0 14px 14px 0}
+.sub-box[hidden]{display:none}
+.sub-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:10px}.sub-h b{font-size:14px}.sub-h small{color:var(--muted);font-size:12.5px;flex-basis:100%}
+.sub-add{display:flex;gap:8px;margin-top:10px}.sub-add .inp{flex:1;min-width:0;height:38px}
+
 .preview-card{border:1px solid var(--line);border-radius:22px;overflow:hidden}
 .preview-card .cov{height:110px;background:linear-gradient(135deg,var(--orb-2),var(--primary))}
 .preview-card .in{padding:0 22px 22px}
@@ -1683,6 +1689,7 @@ const DEF = {
     idStatus:'ok', idDate:'18 Sep 2026',
     modalities:{Breathwork:'ok', Meditation:'ok', 'Sound Healing':'act'},
     exp:{Breathwork:{years:12, teach:9}, Meditation:{years:10, teach:7}, 'Sound Healing':{years:3, teach:1}},
+    subs:{Breathwork:['Pranayama','Breath for sleep and stress','Coherent breathing'], Meditation:['Yoga nidra','Guided meditation'], 'Sound Healing':['Singing bowls']},
     social:{instagram:{url:'@ananya.breathes', connected:true, handle:'@ananya.breathes', followers:4820}, youtube:{url:'https://youtube.com/@ananyabreath'}},
     creds:[
       {id:'c1', modality:'Breathwork', title:'500-hour pranayama teacher training', provider:'Traditional pranayama school, Rishikesh', hours:500, issued:'2015-04', expires:'2029-04', status:'ok', file:'pranayama-ttc.pdf'},
@@ -3761,8 +3768,8 @@ function pfPanel(step){
   if (step.n === 2) body = `<div class="note info" style="margin-bottom:16px">${ico('i-lock')}<span>Your ID is checked once by the 2Verse team and never shown to seekers. We also use it for payouts.</span></div>
       <div class="cred"><span class="ico-box">${ico('i-user')}</span><div class="grow"><b>Government ID</b><small>${P.idStatus === 'ok' ? 'Verified on ' + P.idDate : 'Replacement document in review · usually 1 working day'}</small></div>${stPillPf(P.idStatus)}</div>
       <div class="field" style="margin-top:6px"><span>Replace document <small>(only if your name or document changed)</small></span>${drop('idfile', 'Upload passport, Aadhaar or voter ID', 'PDF or photo · going back to review', 'image/*,.pdf')}</div>`;
-  if (step.n === 3) body = `<p class="small muted" style="margin-bottom:12px">Choose the practices you offer. Each one is verified separately, and only verified practices appear on your profile and can be used for services.</p>
-      ${['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'].map(m => { const st = P.modalities[m]; return `<label class="mod-row"><input type="checkbox" name="mods" value="${m}" ${st ? 'checked' : ''} style="width:18px;height:18px;accent-color:var(--primary)"><span class="grow"><b style="font-size:14.5px">${m}</b><br><small class="muted">${st === 'ok' ? 'Verified · visible on your profile' : st === 'act' ? 'Needs a certificate (step 4)' : st === 'rev' ? 'Certificate in review' : 'Not offered'}</small></span>${st ? stPillPf(st) : ''}</label>`; }).join('')}`;
+  if (step.n === 3) body = `<p class="small muted" style="margin-bottom:12px">Choose the practices you offer, then the styles you teach in each. Each practice is verified separately, and only verified practices appear on your profile and can be used for services.</p>
+      ${PRACTICE_LIST.map((m, i) => { const st = P.modalities[m]; return `<label class="mod-row"><input type="checkbox" name="mods" value="${m}" ${st ? 'checked' : ''} style="width:18px;height:18px;accent-color:var(--primary)"><span class="grow"><b style="font-size:14.5px">${m}</b><br><small class="muted">${st === 'ok' ? 'Verified · visible on your profile' : st === 'act' ? 'Needs a certificate (step 4)' : st === 'rev' ? 'Certificate in review' : 'Not offered'}</small></span>${st ? stPillPf(st) : ''}</label>${subPicker(i, m, !!st, (P.subs || {})[m])}`; }).join('')}`;
   if (step.n === 4) {
     const missing = Object.keys(P.modalities).filter(m => !P.creds.some(c => c.modality === m));
     body = `${missing.map(m => `<div class="note warn" style="margin-bottom:12px">${ico('i-alert')}<span><b>${m}</b> needs a certificate before it can go on your profile.</span></div>`).join('')}
@@ -3797,7 +3804,7 @@ function pfPanel(step){
         <h2 style="font-size:26px;margin-top:10px;display:flex;align-items:center;gap:8px">${esc(P.display)} <svg class="i f" style="width:22px;height:22px;color:var(--gold-strong)"><use href="#i-verified"/></svg></h2>
         <p class="small muted">${mods.join(' & ')} · ${esc(P.city)} · ${P.years} yrs · ${P.langs.join(', ')}</p>
         <p style="font-family:var(--font-display);font-style:italic;font-size:17px;color:var(--ink-2);margin:12px 0">"${esc(P.why)}"</p>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">${P.idStatus === 'ok' ? `<span class="pill ok">${ico('i-check','i')}Identity</span>` : ''}${mods.map(m => `<span class="pill ok">${ico('i-check','i')}${m}</span>`).join('')}${P.lineageStatus === 'ok' ? `<span class="pill ok">${ico('i-check','i')}Lineage</span>` : ''}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">${P.idStatus === 'ok' ? `<span class="pill ok">${ico('i-check','i')}Identity</span>` : ''}${mods.map(m => `<span class="pill ok">${ico('i-check','i')}${m}${((P.subs || {})[m] || []).length ? ` · ${esc(P.subs[m].join(', '))}` : ''}</span>`).join('')}${P.lineageStatus === 'ok' ? `<span class="pill ok">${ico('i-check','i')}Lineage</span>` : ''}</div>
         <p style="font-size:14.5px;color:var(--ink-2);margin-top:12px">${esc(P.bio)}</p>
         <div class="tag-cloud" style="margin-top:10px">${P.areas.map(a => `<span>${esc(a)}</span>`).join('')}</div></div></div>
       <label class="check" style="margin-top:18px"><input type="checkbox" name="declared" ${P.declared ? 'checked' : ''}>I confirm these details are true, that I hold the qualifications shown, and that I will follow the 2Verse healer guidelines.</label>`;
@@ -3806,6 +3813,7 @@ function pfPanel(step){
   el.innerHTML = `<form id="pfForm" novalidate>${head}${body}<div class="pf-foot"><button type="button" class="btn g" id="pfPrev" ${step.n === 1 ? 'disabled' : ''}>${ico('i-back')}Back</button><button type="submit" class="btn p">${last ? 'Save & publish profile' : 'Save & continue'}</button></div></form>`;
   wireDrops(el);
   if (step.n === 7) tvLocation.wire(el.querySelector('.loc'), P.loc, toast);
+  if (step.n === 3){ wireSubs(el); $$('[name=mods]', el).forEach((c, i) => c.addEventListener('change', () => { el.querySelector(`[data-subi="${i}"]`).hidden = !c.checked; })); }
   if (step.n === 8) wireSocial(el, P.social, P.display, () => { const f = $('#pfForm'); readSocial(new FormData(f), P.social); RENDER.profile(); });
   attachVeda(el);
   $('#pfPrev').onclick = () => { pfStep = Math.max(1, step.n - 1); RENDER.profile(); };
@@ -3819,7 +3827,10 @@ function pfPanel(step){
     const uploaded = n => { const d = f.querySelector(`.drop[data-field="${n}"]`); return d && d.dataset.name; };
     if (step.n === 1){ if (!fd.get('name').trim() || !fd.get('email').includes('@')) return fieldErr(f, !fd.get('name').trim() ? 'name' : 'email', 'Add your name and a valid email'); Object.assign(P, {name:fd.get('name'), display:fd.get('display') || fd.get('name'), email:fd.get('email'), phone:fd.get('phone'), langs:fd.getAll('langs')}); if (uploaded('photo')) P.photo = true; }
     if (step.n === 2 && uploaded('idfile')){ P.idStatus = 'rev'; toast('New document sent for review'); }
-    if (step.n === 3){ const sel = fd.getAll('mods'); const next = {}; sel.forEach(m => next[m] = P.modalities[m] || 'act'); P.modalities = next; syncMods(); }
+    if (step.n === 3){ const sel = fd.getAll('mods'); if (!sel.length) return toast('Choose at least one practice');
+      const subs = {}; PRACTICE_LIST.forEach((m, i) => { if (sel.includes(m)) subs[m] = fd.getAll('sub_' + i); });
+      const noSub = sel.find(m => !subs[m].length); if (noSub){ const bx = f.querySelector(`[data-subi="${PRACTICE_LIST.indexOf(noSub)}"]`); bx && bx.scrollIntoView({block:'center'}); return toast(`Choose at least one style of ${noSub}`); }
+      P.subs = subs; const next = {}; sel.forEach(m => next[m] = P.modalities[m] || 'act'); P.modalities = next; syncMods(); }
     if (step.n === 5){ const ms = Object.keys(P.modalities), miss = ms.findIndex((m, i) => fd.get('ey_' + i) === ''); if (miss >= 0) return fieldErr(f, 'ey_' + miss, `Add your years practising ${ms[miss]}`);
       const tb = ms.findIndex((m, i) => +fd.get('et_' + i) > +fd.get('ey_' + i)); if (tb >= 0) return fieldErr(f, 'et_' + tb, `Years teaching ${ms[tb]} can't be more than years practising it`);
       P.exp = {}; ms.forEach((m, i) => P.exp[m] = {years:+fd.get('ey_' + i), teach:+fd.get('et_' + i) || 0});
@@ -3831,6 +3842,29 @@ function pfPanel(step){
     if (step.n === 9){ if (!fd.get('declared')) return toast('Please confirm the declaration to publish'); P.declared = true; P.lastSaved = TODAY; save(); badges(); RENDER.profile(); return toast('Profile saved. Changes to verified details are in review.'); }
     save(); badges(); pfStep = Math.min(9, step.n + 1); RENDER.profile(); if (![2,5].includes(step.n) || !f.querySelector('.drop[data-name]')) toast(`${step.title} saved`);
   });
+}
+/* sub-modalities (styles) inside each practice */
+const PRACTICE_LIST = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
+const SUBMODS = {
+  Breathwork:['Pranayama','Breath coaching','Conscious connected breathing','Coherent breathing','Buteyko breathing','Breath for sleep and stress'],
+  Meditation:['Guided meditation','Silent meditation','Mantra meditation','Yoga nidra','Mindfulness','Vipassana','Chakra meditation','Loving-kindness'],
+  'Sound Healing':['Singing bowls','Gong bath','Crystal bowls','Tuning forks','Voice and chanting','Nada yoga'],
+  Yoga:['Hatha','Restorative','Therapeutic','Trauma-informed','Yin','Kundalini','Vinyasa','Ashtanga','Prenatal'],
+  'Somatic Healing':['Body awareness','Somatic experiencing','Movement therapy','Tension release (TRE)','Polyvagal-informed','Dance and movement']
+};
+/* one practice row with its styles underneath (healer application) */
+function subPicker(i, p, on, chosen){
+  const all = [...SUBMODS[p] || [], ...(chosen || []).filter(x => !(SUBMODS[p] || []).includes(x))];
+  return `<div class="sub-box" data-subi="${i}" ${on ? '' : 'hidden'}><div class="sub-h">${ico('i-layers','i xs')}<b>Styles of ${esc(p)} you offer</b><small>Choose at least one. Seekers can filter by these.</small></div>
+    <div class="choice" data-subc="${i}">${all.map(s => `<label><input type="checkbox" name="sub_${i}" value="${esc(s)}" ${(chosen || []).includes(s) ? 'checked' : ''}><span>${esc(s)}</span></label>`).join('')}</div>
+    <div class="sub-add"><input class="inp" data-subx="${i}" placeholder="Another style, for example: Bhramari" aria-label="Add another ${esc(p)} style"><button type="button" class="btn sm g" data-subadd="${i}">${ico('i-plus')}Add</button></div></div>`;
+}
+function wireSubs(scope){
+  $$('[data-subadd]', scope).forEach(b => { const i = b.dataset.subadd, inp = scope.querySelector(`[data-subx="${i}"]`);
+    const add = () => { const v = inp.value.trim().replace(/\s+/g, ' '); if (v.length < 2) return toast('Type the style name first'); const box = scope.querySelector(`[data-subc="${i}"]`);
+      const ex = [...box.querySelectorAll('input')].find(x => x.value.toLowerCase() === v.toLowerCase()); if (ex){ ex.checked = true; inp.value = ''; return toast(`${ex.value} is selected`); }
+      box.insertAdjacentHTML('beforeend', `<label><input type="checkbox" name="sub_${i}" value="${esc(v)}" checked><span>${esc(v)}</span></label>`); inp.value = ''; toast(`${v} added`); };
+    b.onclick = add; inp.onkeydown = e => { if (e.key === 'Enter'){ e.preventDefault(); add(); } }; });
 }
 function syncMods(){ const P = S.profile; Object.keys(P.modalities).forEach(m => { const c = P.creds.filter(x => x.modality === m); P.modalities[m] = !c.length ? 'act' : c.some(x => x.status === 'ok') ? 'ok' : 'rev'; }); }
 function credModal(){

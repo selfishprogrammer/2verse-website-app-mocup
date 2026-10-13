@@ -1031,6 +1031,16 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 
 .rt-cq{border-top:1px solid var(--line);padding-top:16px;margin-top:4px}
 
+/* sub-modalities */
+.opt-wrap{display:flex;flex-direction:column}
+.sub-box{margin:8px 0 4px 24px;padding:14px 16px;border-left:2px solid var(--primary);background:var(--soft-sage);border-radius:0 14px 14px 0}
+.sub-box[hidden]{display:none}
+.sub-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-bottom:10px}.sub-h small{color:var(--muted);font-size:12.5px;flex-basis:100%}
+.sub-box .choice input:not(:checked)+span{background:var(--surface)}
+.sub-add{display:flex;gap:8px;margin-top:10px}.sub-add .inp{flex:1;min-width:0;height:38px}
+.sub-f{margin-top:8px}.sub-f>small{display:block;color:var(--muted);font-size:12px;margin-bottom:6px}
+.sub-pr{display:flex;gap:12px;align-items:flex-start}.sub-pr .ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary);flex-shrink:0}
+
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
 .loc-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
@@ -1586,6 +1596,40 @@ const hash = s => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
    Catalogue: healers, services, articles, events (read-only demo data)
    ===================================================================== */
 const PRACTICES = ['Breathwork','Meditation','Sound Healing','Yoga','Somatic Healing'];
+/* sub-modalities (styles) inside each practice; healers pick theirs in onboarding, seekers can filter by them */
+const SUBMODS = {
+  Breathwork:['Pranayama','Breath coaching','Conscious connected breathing','Coherent breathing','Buteyko breathing','Breath for sleep and stress'],
+  Meditation:['Guided meditation','Silent meditation','Mantra meditation','Yoga nidra','Mindfulness','Vipassana','Chakra meditation','Loving-kindness'],
+  'Sound Healing':['Singing bowls','Gong bath','Crystal bowls','Tuning forks','Voice and chanting','Nada yoga'],
+  Yoga:['Hatha','Restorative','Therapeutic','Trauma-informed','Yin','Kundalini','Vinyasa','Ashtanga','Prenatal'],
+  'Somatic Healing':['Body awareness','Somatic experiencing','Movement therapy','Tension release (TRE)','Polyvagal-informed','Dance and movement']
+};
+const HSUBS = {
+  ananya:{Breathwork:['Pranayama','Breath for sleep and stress','Coherent breathing'], Meditation:['Yoga nidra','Guided meditation']},
+  dev:{'Sound Healing':['Singing bowls','Gong bath','Tuning forks']},
+  meera:{'Somatic Healing':['Somatic experiencing','Body awareness'], Yoga:['Trauma-informed','Restorative']},
+  arjun:{Meditation:['Vipassana','Silent meditation','Mantra meditation']},
+  kavya:{Breathwork:['Breath coaching','Coherent breathing'], 'Somatic Healing':['Polyvagal-informed']},
+  tenzin:{'Sound Healing':['Singing bowls','Voice and chanting'], Meditation:['Loving-kindness','Mantra meditation']},
+  ritu:{Yoga:['Hatha','Yin','Prenatal']},
+  nikhil:{Breathwork:['Conscious connected breathing','Breath coaching']}
+};
+const subsOf = h => h.subs || HSUBS[h.id] || {};
+const subList = h => Object.values(subsOf(h)).flat();
+/* one practice row with its styles underneath (healer application) */
+function subPicker(i, p, on, chosen){
+  const all = [...SUBMODS[p] || [], ...(chosen || []).filter(x => !(SUBMODS[p] || []).includes(x))];
+  return `<div class="sub-box" data-subi="${i}" ${on ? '' : 'hidden'}><div class="sub-h">${ico('i-layers','i xs')}<b>Styles of ${esc(p)} you offer</b><small>Choose at least one. Seekers can filter by these.</small></div>
+    <div class="choice" data-subc="${i}">${all.map(s => `<label><input type="checkbox" name="sub_${i}" value="${esc(s)}" ${(chosen || []).includes(s) ? 'checked' : ''}><span>${esc(s)}</span></label>`).join('')}</div>
+    <div class="sub-add"><input class="inp" data-subx="${i}" placeholder="Another style, for example: Bhramari" aria-label="Add another ${esc(p)} style"><button type="button" class="btn sm g" data-subadd="${i}">${ico('i-plus')}Add</button></div></div>`;
+}
+function wireSubs(scope){
+  $$('[data-subadd]', scope).forEach(b => { const i = b.dataset.subadd, inp = scope.querySelector(`[data-subx="${i}"]`);
+    const add = () => { const v = inp.value.trim().replace(/\s+/g, ' '); if (v.length < 2) return toast('Type the style name first'); const box = scope.querySelector(`[data-subc="${i}"]`);
+      const ex = [...box.querySelectorAll('input')].find(x => x.value.toLowerCase() === v.toLowerCase()); if (ex){ ex.checked = true; inp.value = ''; return toast(`${ex.value} is selected`); }
+      box.insertAdjacentHTML('beforeend', `<label><input type="checkbox" name="sub_${i}" value="${esc(v)}" checked><span>${esc(v)}</span></label>`); inp.value = ''; toast(`${v} added`); };
+    b.onclick = add; inp.onkeydown = e => { if (e.key === 'Enter'){ e.preventDefault(); add(); } }; });
+}
 const PR_ICO = {Breathwork:'i-wind', Meditation:'i-spark', 'Sound Healing':'i-sound', Yoga:'i-yoga', 'Somatic Healing':'i-leaf'};
 const NEEDS = {sleep:'Sleep', anxiety:'Anxiety', stress:'Stress', burnout:'Burnout', focus:'Focus', grief:'Grief', pain:'Body pain', energy:'Energy', trauma:'Trauma', beginner:'New to this'};
 
@@ -2345,8 +2389,8 @@ A.apply = (n = '1') => {
     <div class="field full"><span>Government ID</span>${drop('idfile','Upload the front of your ID','PDF, JPG or PNG','image/*,.pdf', d.idfile)}</div>
     <div class="field full"><span>Selfie holding your ID</span>${drop('selfie','Upload a selfie','So we can match you to your ID','image/*', d.selfie)}</div>
     <label class="field full"><span>Address</span><input class="inp" name="addr" value="${v('addr')}" placeholder="House, street, area, city, PIN"></label></div>`;
-  if (step === 3) body = `<p style="color:var(--ink-2);margin-bottom:14px">Choose the practices you want to offer. Each one needs a certificate in the next step before seekers can book it.</p>
-    <div class="stack">${PRACTICES.map(p => `<label class="opt"><input type="checkbox" name="practices" value="${p}" ${prs.includes(p) ? 'checked' : ''}><span class="ic" style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary)">${ico(PR_ICO[p])}</span><span class="grow"><b>${p}</b><small>${{Breathwork:'Pranayama, breath coaching, breath for sleep and stress',Meditation:'Guided, silent, mantra, yoga nidra','Sound Healing':'Bowls, gong, tuning forks, voice',Yoga:'Hatha, restorative, therapeutic, trauma-informed','Somatic Healing':'Body awareness, somatic experiencing, movement'}[p]}</small></span></label>`).join('')}</div>`;
+  if (step === 3) body = `<p style="color:var(--ink-2);margin-bottom:14px">Choose the practices you want to offer, then the styles you teach in each. Each practice needs a certificate in the next step before seekers can book it.</p>
+    <div class="stack">${PRACTICES.map((p, i) => `<div class="opt-wrap"><label class="opt"><input type="checkbox" name="practices" value="${p}" ${prs.includes(p) ? 'checked' : ''}><span class="ic" style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--soft-sage);color:var(--primary)">${ico(PR_ICO[p])}</span><span class="grow"><b>${p}</b><small>${{Breathwork:'Pranayama, breath coaching, breath for sleep and stress',Meditation:'Guided, silent, mantra, yoga nidra','Sound Healing':'Bowls, gong, tuning forks, voice',Yoga:'Hatha, restorative, therapeutic, trauma-informed','Somatic Healing':'Body awareness, somatic experiencing, movement'}[p]}</small></span></label>${subPicker(i, p, prs.includes(p), (d.subs || {})[p])}</div>`).join('')}</div>`;
   if (step === 4) body = prs.length ? `<p style="color:var(--ink-2);margin-bottom:14px">Add every certificate or proof of training you hold. Each practice needs at least one; more help seekers trust you. Our team verifies each one with the issuing school.</p>
     <div class="stack">${prs.map((p, i) => { const cs = d.certList.filter(c => c.p === p);
       return `<div class="card" style="padding:16px"><div class="row" style="margin-bottom:10px;justify-content:space-between"><b>${p}</b><span class="pill ${cs.length ? 'ok' : 'act'}">${cs.length ? cs.length + ' certificate' + (cs.length === 1 ? '' : 's') : 'Needed'}</span></div>
@@ -2392,6 +2436,7 @@ A.apply = (n = '1') => {
     d.certList.push({p:prs[i], name:nm, issuer:(f[`ci_${i}`].value || '').trim(), file}); delete pend[i]; save(); return true; };
   $$('[data-cadd]', f).forEach(b => b.onclick = () => { collect(); if (addCert(+b.dataset.cadd) && d.certList.length) { toast('Certificate added'); A.apply(4); } });
   $$('[data-crm]', f).forEach(b => b.onclick = () => { collect(); d.certList.splice(+b.dataset.crm, 1); save(); A.apply(4); });
+  if (step === 3){ wireSubs(f); $$('[name=practices]', f).forEach((c, i) => c.addEventListener('change', () => { const bx = f.querySelector(`[data-subi="${i}"]`); bx.hidden = !c.checked; })); }
   if (step === 7) wireSocial(f, d.social, d.display || d.name, () => { collect(); A.apply(7); });
   $('#apBack') && ($('#apBack').onclick = () => { collect(); nav('#/apply/' + (step - 1)); });
   $('#apSave').onclick = () => { collect(); S.auth.role = 'healer'; save(); toast('Saved. Sign in with ' + (d.loginId || 'your number') + ' to continue.'); nav('#/signin'); };
@@ -2400,17 +2445,18 @@ A.apply = (n = '1') => {
   vedaAttach(f, () => { collect(); return {name:d.display || d.name, practices:d.practices || ['Breathwork'], years:d.years, city:d.loc && d.loc.city ? `${d.loc.area ? d.loc.area + ', ' : ''}${d.loc.city}` : 'Tapovan, Rishikesh', teacher:d.lineage, areas:['stress','sleep','focus'], langs:d.langs, loc:step === 8 ? tvLocation.read(new FormData(f)) : d.loc}; });
   function collect(){
     const fd = new FormData(f);
-    for (const [k, val] of fd.entries()){ if (val instanceof File) continue; if (['langs','practices'].includes(k) || k.startsWith('loc_') || k.startsWith('soc_') || /^(c[ni]|e[yt])_\d+$/.test(k)) continue; d[k] = val; }
+    for (const [k, val] of fd.entries()){ if (val instanceof File) continue; if (['langs','practices'].includes(k) || k.startsWith('loc_') || k.startsWith('soc_') || /^(c[ni]|e[yt]|sub)_\d+$/.test(k)) continue; d[k] = val; }
     if (step === 5){ prs.forEach((p, i) => { d.exp[p] = {years:fd.get('ey_' + i) === '' ? '' : +fd.get('ey_' + i), teach:fd.get('et_' + i) === '' ? '' : +fd.get('et_' + i)}; }); const ys = Object.values(d.exp).map(e => +e.years || 0); d.years = ys.length ? Math.max(...ys) : ''; }
     if (step === 7) readSocial(fd, d.social);
     if (step === 1) d.langs = fd.getAll('langs');
-    if (step === 3) d.practices = fd.getAll('practices');
+    if (step === 3){ d.practices = fd.getAll('practices'); d.subs = Object.assign({}, d.subs); PRACTICES.forEach((p, i) => { if (d.practices.includes(p)) d.subs[p] = fd.getAll('sub_' + i); else delete d.subs[p]; }); }
     if (step === 8){ d.coc = !!fd.get('coc'); d.loc = tvLocation.read(fd); }
     save();
   }
   f.onsubmit = e => { e.preventDefault(); collect();
     if (step === 1){ if (!(d.name || '').trim()) return fieldErr(f, 'name', 'Add your legal name'); if (!$('.vf', f).dataset.ok) return toast(d.loginBy === 'email' ? 'Verify your mobile number to continue' : 'Verify your email to continue'); }
     if (step === 3 && !(d.practices || []).length) return toast('Choose at least one practice');
+    if (step === 3){ const p = d.practices.find(x => !(d.subs[x] || []).length); if (p){ const bx = f.querySelector(`[data-subi="${PRACTICES.indexOf(p)}"]`); bx && bx.scrollIntoView({block:'center'}); return toast(`Choose at least one style of ${p}`); } }
     if (step === 4){ for (const i of prs.keys()){ if (!addCert(i, true)) return; } }
     if (step === 5 && prs.some(p => d.exp[p].years === '')) return toast('Add your years of practice for each practice');
     if (step === 6 && (d.bio || '').length > 600) return fieldErr(f, 'bio', 'Keep your story under 600 characters');
@@ -2428,7 +2474,7 @@ function appSummary(i){
   const d = S.application.d;
   return [ `${d.display || d.name || '—'} · ${d.phone || 'no mobile'} · ${d.email || 'no email'} · ${(d.langs || []).join(', ')}`,
     `${d.idtype || 'Aadhaar'} · ${d.idfile ? 'ID uploaded' : 'ID missing'} · ${d.selfie ? 'selfie uploaded' : 'selfie missing'}`,
-    (d.practices || []).join(', ') || 'None chosen',
+    (d.practices || []).map(p => { const s = (d.subs || {})[p] || []; return s.length ? `${p} (${s.join(', ')})` : p; }).join(' · ') || 'None chosen',
     (d.practices || []).map(p => { const n = (d.certList || []).filter(c => c.p === p).length; return `${p}: ${n ? n + ' certificate' + (n === 1 ? '' : 's') : 'missing'}`; }).join(' · ') || '—',
     (d.practices || []).map(p => { const e = (d.exp || {})[p] || {}; return `${p} ${e.years || '?'} yrs (teaching ${e.teach || 0})`; }).join(' · ') + ` · ${d.lineage || 'lineage not added'}`,
     d.bio ? d.bio.slice(0, 90) + (d.bio.length > 90 ? '…' : '') : 'Not written yet',
@@ -2619,7 +2665,7 @@ function playPrac(el){
 /* =====================================================================
    EXPLORE
    ===================================================================== */
-const exF = {q:'', practices:[], needs:[], format:'Any', langs:[], max:0, sort:'match', saved:false};
+const exF = {q:'', practices:[], styles:[], needs:[], format:'Any', langs:[], max:0, sort:'match', saved:false};
 R.explore = () => {
   const maxP = Math.max(...HEALERS.map(minPrice));
   if (!exF.max) exF.max = maxP;
@@ -2631,6 +2677,7 @@ R.explore = () => {
     <div class="ex-layout"><aside class="fpanel" id="fPanel" aria-label="Filters">
       <div class="row" style="justify-content:space-between"><b style="font-family:var(--font-display);font-size:20px;font-weight:500">Filters</b><button class="lnk" id="fClear" style="font-size:13px">Clear all</button></div>
       <div><h4>Practice</h4><div class="choice">${PRACTICES.map(p => ck('pr', p, exF.practices.includes(p))).join('')}</div></div>
+      <div id="fStyles"></div>
       <div><h4>Helps with</h4><div class="choice">${Object.entries(NEEDS).map(([k, v]) => ck('nd', k, exF.needs.includes(k), v)).join('')}</div></div>
       <div><h4>Format</h4><div class="choice">${['Any','Online','In person'].map(f => ck('fm', f, exF.format === f, f, 'radio')).join('')}</div></div>
       <div><h4>Language</h4><div class="choice">${['English','Hindi','German','French','Tamil','Bengali'].map(l => ck('lg', l, exF.langs.includes(l))).join('')}</div></div>
@@ -2644,8 +2691,9 @@ R.explore = () => {
     $('#pmax').textContent = money(CUR(), +exF.max);
     const q = exF.q.toLowerCase();
     const rank = vedaRank(S.me.intentions.map(n => NEEDS[n]).join(' ') + ' ' + exF.q, true);
-    let list = rank.filter(({h}) => (!q || [h.name, h.tagline, h.bio, ...h.practices, ...h.needs.map(n => NEEDS[n])].join(' ').toLowerCase().includes(q))
+    let list = rank.filter(({h}) => (!q || [h.name, h.tagline, h.bio, ...h.practices, ...subList(h), ...h.needs.map(n => NEEDS[n])].join(' ').toLowerCase().includes(q))
       && (!exF.practices.length || exF.practices.some(p => h.practices.includes(p)))
+      && (!exF.styles.length || exF.styles.some(s => subList(h).includes(s)))
       && (!exF.needs.length || exF.needs.some(n => h.needs.includes(n)))
       && (exF.format === 'Any' || h.formats.includes(exF.format))
       && (!exF.langs.length || exF.langs.some(l => h.langs.includes(l)))
@@ -2654,23 +2702,28 @@ R.explore = () => {
     if (exF.sort === 'price') list.sort((a, b) => minPrice(a.h) - minPrice(b.h));
     if (exF.sort === 'years') list.sort((a, b) => b.h.years - a.h.years);
     $('#resN').textContent = `${list.length} healer${list.length === 1 ? '' : 's'}`;
-    const chips = [...exF.practices.map(p => ['pr', p, p]), ...exF.needs.map(n => ['nd', n, NEEDS[n]]), ...(exF.format !== 'Any' ? [['fm', exF.format, exF.format]] : []), ...exF.langs.map(l => ['lg', l, l]), ...(exF.saved ? [['sv', '', 'Saved']] : [])];
+    const chips = [...exF.practices.map(p => ['pr', p, p]), ...exF.styles.map(s => ['st', s, s]), ...exF.needs.map(n => ['nd', n, NEEDS[n]]), ...(exF.format !== 'Any' ? [['fm', exF.format, exF.format]] : []), ...exF.langs.map(l => ['lg', l, l]), ...(exF.saved ? [['sv', '', 'Saved']] : [])];
     $('#actF').innerHTML = chips.map(([k, v, l]) => `<button data-rm="${k}|${esc(v)}">${esc(l)} ${ico('i-x','i xs')}</button>`).join('');
     $$('#actF [data-rm]').forEach(b => b.onclick = () => { const [k, v] = b.dataset.rm.split('|');
-      if (k === 'pr') exF.practices = exF.practices.filter(x => x !== v); if (k === 'nd') exF.needs = exF.needs.filter(x => x !== v); if (k === 'lg') exF.langs = exF.langs.filter(x => x !== v); if (k === 'fm') exF.format = 'Any'; if (k === 'sv') exF.saved = false; R.explore(); });
+      if (k === 'pr'){ exF.practices = exF.practices.filter(x => x !== v); exF.styles = exF.styles.filter(s => exF.practices.some(p => (SUBMODS[p] || []).includes(s))); } if (k === 'st') exF.styles = exF.styles.filter(x => x !== v); if (k === 'nd') exF.needs = exF.needs.filter(x => x !== v); if (k === 'lg') exF.langs = exF.langs.filter(x => x !== v); if (k === 'fm') exF.format = 'Any'; if (k === 'sv') exF.saved = false; R.explore(); });
     $('#exGrid').innerHTML = list.length ? list.map(x => healerCard(x.h)).join('') : `<div class="card empty" style="grid-column:1/-1">${ico('i-search','i')}No healers match all of these filters.<div class="row mt16" style="justify-content:center"><button class="btn g sm" id="emClear">Clear filters</button><button class="btn p sm" id="emVeda">${ico('i-spark')}Ask Veda instead</button></div></div>`;
     wireCards($('#exGrid'));
     $('#emClear') && ($('#emClear').onclick = () => $('#fClear').click());
     $('#emVeda') && ($('#emVeda').onclick = () => openVeda(exF.q));
   };
   const fp = $('#fPanel');
-  fp.addEventListener('change', () => {
-    exF.practices = $$('[name=pr]:checked', fp).map(x => x.value); exF.needs = $$('[name=nd]:checked', fp).map(x => x.value);
+  /* styles appear once a practice is chosen */
+  const drawStyles = () => { const opts = exF.practices.flatMap(p => (SUBMODS[p] || []).map(s => [p, s])); exF.styles = exF.styles.filter(s => opts.some(o => o[1] === s));
+    $('#fStyles').innerHTML = opts.length ? `<h4>Style <small class="muted" style="font-weight:400">(optional)</small></h4>${exF.practices.map(p => `<div class="sub-f"><small>${esc(p)}</small><div class="choice">${(SUBMODS[p] || []).map(s => ck('st', s, exF.styles.includes(s))).join('')}</div></div>`).join('')}` : ''; };
+  drawStyles();
+  fp.addEventListener('change', e => {
+    const was = exF.practices.join('|');
+    exF.practices = $$('[name=pr]:checked', fp).map(x => x.value); if (was !== exF.practices.join('|')) drawStyles(); exF.styles = $$('[name=st]:checked', fp).map(x => x.value); exF.needs = $$('[name=nd]:checked', fp).map(x => x.value);
     exF.format = (fp.querySelector('[name=fm]:checked') || {}).value || 'Any'; exF.langs = $$('[name=lg]:checked', fp).map(x => x.value); exF.saved = $('#fSaved').checked; draw(); });
   $('#fMax').oninput = e => { exF.max = +e.target.value; draw(); };
   $('#exQ').oninput = e => { exF.q = e.target.value; draw(); };
   $('#exSort').onchange = e => { exF.sort = e.target.value; draw(); };
-  $('#fClear').onclick = () => { Object.assign(exF, {q:'', practices:[], needs:[], format:'Any', langs:[], max:0, saved:false}); R.explore(); };
+  $('#fClear').onclick = () => { Object.assign(exF, {q:'', practices:[], styles:[], needs:[], format:'Any', langs:[], max:0, saved:false}); R.explore(); };
   $('#exVeda').onclick = () => openVeda(exF.q);
   $('#fOpen').onclick = () => document.body.classList.add('f-open');
   $('#fDone').onclick = () => document.body.classList.remove('f-open');
@@ -2698,6 +2751,7 @@ R.healer = (id, tab = 'about') => {
     <div class="pr"><b>${priceTxt(s)}</b><span class="small muted">${price(s) ? (s.type === '1:1' ? 'per session' : 'per seat') : 'no charge'}</span><div class="mt8"><button class="btn sm p" data-book="${s.id}" ${n ? '' : 'disabled'}>Book</button></div></div></div>`; };
   let body = '';
   if (tab === 'about') body = `<p class="quote">“${esc(h.quote)}”</p><p class="mt24" style="font-size:16px;line-height:1.7;color:var(--ink-2)">${esc(h.bio)}</p>
+    <h3 class="mt32" style="font-size:22px">Practices and styles</h3><div class="stack mt16" style="gap:12px">${h.practices.map(p => `<div class="sub-pr"><span class="ic">${ico(PR_ICO[p])}</span><div><b>${esc(p)}</b><div class="chips mt8">${(subsOf(h)[p] || []).map(s => `<span class="pill sky" style="font-size:13px;padding:6px 12px">${esc(s)}</span>`).join('') || '<span class="small muted">All styles</span>'}</div></div></div>`).join('')}</div>
     <h3 class="mt32" style="font-size:22px">Can help with</h3><div class="chips mt16">${h.needs.map(n => `<span class="pill sky" style="font-size:13px;padding:6px 12px">${NEEDS[n]}</span>`).join('')}</div>
     <h3 class="mt32" style="font-size:22px;display:flex;gap:8px;align-items:center">${vb} Verified by 2Verse</h3>
     <div class="vlist mt16"><div class="vitem">${ico('i-shield')}Identity checked in person</div><div class="vitem">${ico('i-check')}${h.creds.length} certificates verified</div><div class="vitem">${ico('i-users')}${esc(h.lineage)}</div><div class="vitem">${ico('i-pin')}Studio address verified</div></div>
