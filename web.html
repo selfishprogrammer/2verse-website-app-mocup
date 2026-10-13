@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dawn">
 <head>
@@ -1029,6 +1028,8 @@ s.was{color:var(--muted);font-weight:500;font-size:.85em;margin-right:2px}
 .rt-done{display:flex;flex-direction:column;gap:6px}
 .rt-ok{width:56px;height:56px;border-radius:50%;background:var(--soft-sage);color:var(--primary);display:grid;place-items:center;margin-bottom:8px}
 @media (max-width:760px){.rt-gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 110px}.rt-gal span.big{grid-column:1/3;grid-row:auto}.rt-gal span:nth-child(n+4){display:none}}
+
+.rt-cq{border-top:1px solid var(--line);padding-top:16px;margin-top:4px}
 
 /* ===== location picker ===== */
 .loc{display:flex;flex-direction:column;gap:12px}
@@ -3647,20 +3648,22 @@ function qrModal(b){
    RETREATS: browse on a healer's profile, details, booking form, confirmation
    (the healer chooses which booking questions are asked)
    ===================================================================== */
-const RT_T = {'1':{label:'1-Day retreat', days:1, nights:0, len:'About 8 hours'}, '3':{label:'3-Day retreat', days:3, nights:2, len:'3 days, 2 nights'}, '7':{label:'7-Day retreat', days:7, nights:6, len:'7 days, 6 nights'}};
+const rtN = r => +r.days || 1;
+const rtLbl = r => `${rtN(r)}-day retreat`;
+const rtLen = r => rtN(r) === 1 ? 'About 8 hours' : `${rtN(r)} days, ${rtN(r) - 1} night${rtN(r) === 2 ? '' : 's'}`;
 const RT_ACCN = {shared:'Shared room', private:'Private room', none:'No stay'};
 const RETREATS = [
-  {id:'rt1', healer:'ananya', type:'3', name:'Silent Ganga weekend', desc:'Three quiet days by the river to slow the breath, sleep deeply and come home to yourself. Small group, gentle pace, no experience needed.', dates:['2026-10-16','2026-10-30','2026-11-13','2026-11-27'],
+  {id:'rt1', healer:'ananya', days:3, name:'Silent Ganga weekend', desc:'Three quiet days by the river to slow the breath, sleep deeply and come home to yourself. Small group, gentle pace, no experience needed.', dates:['2026-10-16','2026-10-30','2026-11-13','2026-11-27'],
     schedule:[{title:'Arrive and settle', text:'Arrival, welcome circle, light meditation, early dinner'},{title:'Go deeper', text:'Morning yoga, main healing session, rest, one-to-one session, evening sharing'},{title:'Take it home', text:'Morning practice, closing circle, guidance for home, departure'}],
-    sessions:[{name:'Morning pranayama and yoga', dur:75},{name:'Breath for deep sleep (group)', dur:120},{name:'Sound bath by the river', dur:60},{name:'Evening sharing circle', dur:60}], o2o:1, max:12, price:18500,
-    acc:{type:'shared', notes:'Twin rooms with attached bath, river-facing balcony'}, venue:{name:'Ganga Kinare ashram', address:'Tapovan, Laxman Jhula Road, Rishikesh, Uttarakhand 249192', map:'https://maps.google.com/?q=Tapovan+Rishikesh'},
+    sessions:[{name:'Morning pranayama and yoga', dur:75},{name:'Breath for deep sleep (group)', dur:120},{name:'Sound bath by the river', dur:60},{name:'Evening sharing circle', dur:60}], o2o:1, max:12, inr:18500, usd:260, cq:[{q:'Is this your first retreat?', type:'yesno', opts:[], req:true},{q:'What would you like to take home from this weekend?', type:'long', opts:[], req:false}],
+    acc:{type:'shared', notes:'Twin rooms with attached bath, river-facing balcony'}, venue:{name:'Ganga Kinare ashram', address:'Tapovan, Laxman Jhula Road, Rishikesh, Uttarakhand 249192', lat:30.1268, lng:78.3215},
     reach:'Dehradun airport is 35 km away (about 1 hour by taxi). Rishikesh railway station is 8 km. We can arrange pickup on request.', bring:'Loose, warm clothes, a shawl for early mornings, a water bottle and a notebook.', rules:'No alcohol or smoking. Phones off during sessions. Silence after 9 pm.',
     photos:[{kind:'ai', seed:4101, pal:'ganga', scene:'river', motif:'Retreat'},{kind:'ai', seed:4102, pal:'dawn', scene:'sunrise', motif:'Retreat'},{kind:'ai', seed:4103, pal:'dusk', scene:'mountains', motif:'Retreat'},{kind:'ai', seed:4104, pal:'night', scene:'stars', motif:'Retreat'}],
     q:{city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:true, heard:true}, booked:{'2026-10-16':3, '2026-10-30':1}},
-  {id:'rt2', healer:'ananya', type:'1', name:'Breath and sound day', desc:'One unhurried day of breathwork, a group healing session and a sound bath. A gentle first taste of retreat life.', dates:['2026-10-11','2026-10-25','2026-11-08'],
+  {id:'rt2', healer:'ananya', days:1, name:'Breath and sound day', desc:'One unhurried day of breathwork, a group healing session and a sound bath. A gentle first taste of retreat life.', dates:['2026-10-11','2026-10-25','2026-11-08'],
     schedule:[{title:'The day', text:'8:00 am · Welcome, tea and introduction\n9:00 am · Morning yoga and breathing\n11:00 am · Group healing session\n1:00 pm · Lunch and rest\n3:00 pm · Guided meditation\n4:30 pm · One-to-one chat or closing circle'}],
-    sessions:[{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}], o2o:null, max:16, price:4500,
-    acc:{type:'none', notes:''}, venue:{name:'Tapovan studio', address:'Tapovan, Rishikesh, Uttarakhand 249192', map:''}, reach:'A 10-minute walk from Laxman Jhula. Auto-rickshaws drop at the studio gate.', bring:'Comfortable clothes and a water bottle.', rules:'Please arrive by 7:50 am.',
+    sessions:[{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}], o2o:null, max:16, inr:4500, usd:65, cq:[],
+    acc:{type:'none', notes:''}, venue:{name:'Tapovan studio', address:'Shanti Kutir, 2nd floor, Tapovan Road, Tapovan, Rishikesh 249192', lat:30.129, lng:78.3262}, reach:'A 10-minute walk from Laxman Jhula. Auto-rickshaws drop at the studio gate.', bring:'Comfortable clothes and a water bottle.', rules:'Please arrive by 7:50 am.',
     photos:[{kind:'ai', seed:4201, pal:'dawn', scene:'sunrise', motif:'Retreat'},{kind:'ai', seed:4202, pal:'ganga', scene:'river', motif:'Retreat'},{kind:'ai', seed:4203, pal:'saffron', scene:'mountains', motif:'Retreat'}],
     q:{city:true, guests:true, start:true, meal:true, therapies:false, needs:true, emergency:false, heard:false}, booked:{'2026-10-25':3}}
 ];
@@ -3669,43 +3672,45 @@ const rtOf = id => RETREATS.find(r => r.id === id);
 const rtMine = () => (S.retreatBookings = S.retreatBookings || []);
 const rtLeft = (r, d) => Math.max(0, r.max - (r.booked[d] || 0) - rtMine().filter(b => b.rt === r.id && b.date === d).reduce((a, b) => a + b.guests, 0));
 const rtDates = r => r.dates.filter(d => d > TODAY).sort();
-const rtRange = (r, d) => RT_T[r.type].days > 1 ? `${fDate(d)} – ${fDate(addDays(d, RT_T[r.type].days - 1))}` : fDate(d);
-const rtStay = r => r.type === '1' ? 'Day retreat, no overnight stay' : `${RT_T[r.type].nights} nights · ${RT_ACCN[r.acc.type]}`;
-const rtPrice = r => '₹' + r.price.toLocaleString('en-IN');
+const rtRange = (r, d) => rtN(r) > 1 ? `${fDate(d)} – ${fDate(addDays(d, rtN(r) - 1))}` : fDate(d);
+const rtStay = r => rtN(r) === 1 ? 'Day retreat, no overnight stay' : `${rtN(r) - 1} night${rtN(r) === 2 ? '' : 's'} · ${RT_ACCN[r.acc.type]}`;
+const rtUnit = r => intl() ? r.usd : r.inr;
+const rtMoney = a => money(CUR(), a);
+const rtPrice = r => rtMoney(rtUnit(r));
 
 function rtRow(r){
   const ds = rtDates(r), open = ds.filter(d => rtLeft(r, d) > 0);
   return `<div class="pk-row rt-row" data-rt="${r.id}" tabindex="0" role="link" aria-label="${esc(r.name)}">
-    <span class="pk-cov">${tvCover.html(r.photos[0], r.name)}<span class="cp-badge">${RT_T[r.type].label}</span></span>
+    <span class="pk-cov">${tvCover.html(r.photos[0], r.name)}<span class="cp-badge">${rtLbl(r)}</span></span>
     <div class="grow"><h3>${esc(r.name)}</h3>
       <div class="m"><span>${ico('i-home','i xs')}${esc(rtStay(r))}</span><span>${ico('i-pin','i xs')}${esc(r.venue.name)}</span></div>
       <p class="small" style="color:var(--ink-2);margin-top:6px">${esc(r.desc)}</p>
       <div class="m mt8"><span>${ico('i-leaf','i xs')}${r.sessions.length} healing sessions${r.o2o ? ` · ${r.o2o} one-to-one` : ''}</span><span>${ico('i-cal','i xs')}${open.length ? `Next ${rtRange(r, open[0])}` : 'No dates open'}</span></div></div>
-    <div class="pr"><b>${rtPrice(r)}</b><span class="small muted">per person<br>${r.type === '1' ? 'lunch included' : 'stay included'}</span><div class="mt8"><span class="btn sm p">View retreat</span></div></div></div>`;
+    <div class="pr"><b>${rtPrice(r)}</b><span class="small muted">per person<br>${rtN(r) === 1 ? 'lunch included' : 'stay included'}</span><div class="mt8"><span class="btn sm p">View retreat</span></div></div></div>`;
 }
 function wireRtRows(scope){ $$('[data-rt]', scope).forEach(el => { el.onclick = () => nav('#/retreat/' + el.dataset.rt); el.onkeydown = e => { if (e.key === 'Enter') nav('#/retreat/' + el.dataset.rt); }; }); }
 
 let RTS = {date:null, guests:1};
 R.retreat = id => {
   const r = rtOf(id); if (!r) return nav('#/explore');
-  const h = healer(r.healer), T = RT_T[r.type], ds = rtDates(r), mine = rtMine().filter(b => b.rt === r.id);
+  const h = healer(r.healer), ds = rtDates(r), mine = rtMine().filter(b => b.rt === r.id);
   if (!RTS.date || !ds.includes(RTS.date) || RTS.id !== r.id) RTS = {id:r.id, date:ds.find(d => rtLeft(r, d) > 0) || null, guests:1};
   document.title = r.name + ' · 2Verse';
   $('#view').innerHTML = `<div class="wrap"><div class="row mt24"><a class="btn t" style="padding:0" href="#/healer/${h.id}/retreats">${ico('i-back')}Back to ${esc(h.name)}</a></div>
     <div class="rt-gal mt16">${r.photos.slice(0, 4).map((p, i) => `<span class="${i ? '' : 'big'}">${tvCover.html(p, `${r.venue.name}, photo ${i + 1}`)}</span>`).join('')}</div>
     <div class="bk-layout"><div>
-      <span class="pill sky mt24">${T.label}</span>
+      <span class="pill sky mt24">${rtLbl(r)}</span>
       <h1 class="mt8" style="font-size:36px">${esc(r.name)}</h1>
       <a class="row mt8" href="#/healer/${h.id}" style="gap:10px;color:var(--ink-2)">${port(h, 's')}<span>Hosted by <b>${esc(h.name)}</b> ${vb} · ${ico('i-star','i xs')} ${h.rating.toFixed(1)}</span></a>
-      <div class="chips mt16"><span class="pill sky">${ico('i-clock','i xs')}${T.len}</span><span class="pill sky">${ico('i-home','i xs')}${r.type === '1' ? 'No overnight stay' : RT_ACCN[r.acc.type]}</span><span class="pill sky">${ico('i-leaf','i xs')}${r.sessions.length} healing sessions</span>${r.o2o ? `<span class="pill sky">${ico('i-user','i xs')}${r.o2o} one-to-one</span>` : ''}<span class="pill sky">${ico('i-group','i xs')}Up to ${r.max} guests</span></div>
+      <div class="chips mt16"><span class="pill sky">${ico('i-clock','i xs')}${rtLen(r)}</span><span class="pill sky">${ico('i-home','i xs')}${rtN(r) === 1 ? 'No overnight stay' : RT_ACCN[r.acc.type]}</span><span class="pill sky">${ico('i-leaf','i xs')}${r.sessions.length} healing sessions</span>${r.o2o ? `<span class="pill sky">${ico('i-user','i xs')}${r.o2o} one-to-one</span>` : ''}<span class="pill sky">${ico('i-group','i xs')}Up to ${r.max} guests</span></div>
       <p class="mt16" style="font-size:16px;line-height:1.7;color:var(--ink-2)">${esc(r.desc)}</p>
-      <h2 class="mt32" style="font-size:26px">${r.type === '1' ? 'The day' : 'Day by day'}</h2>
-      <div class="rt-tl mt16">${r.schedule.map((d, i) => `<div class="rt-tli"><span class="rt-tln">${r.type === '1' ? ico('i-sun','i xs') : i + 1}</span><div class="grow"><b>${r.type === '1' ? 'Your day' : `Day ${i + 1}${d.title ? ' · ' + esc(d.title) : ''}`}</b>${r.type === '1' ? `<ul class="rt-hours">${d.text.split('\n').filter(Boolean).map(l => { const [t, ...x] = l.split(' · '); return `<li><span>${esc(t)}</span>${esc(x.join(' · ') || '')}</li>`; }).join('')}</ul>` : `<p>${esc(d.text)}</p>`}</div></div>`).join('')}</div>
+      <h2 class="mt32" style="font-size:26px">${rtN(r) === 1 ? 'The day' : 'Day by day'}</h2>
+      <div class="rt-tl mt16">${r.schedule.map((d, i) => `<div class="rt-tli"><span class="rt-tln">${rtN(r) === 1 ? ico('i-sun','i xs') : i + 1}</span><div class="grow"><b>${rtN(r) === 1 ? 'Your day' : `Day ${i + 1}${d.title ? ' · ' + esc(d.title) : ''}`}</b>${rtN(r) === 1 ? `<ul class="rt-hours">${d.text.split('\n').filter(Boolean).map(l => { const [t, ...x] = l.split(' · '); return `<li><span>${esc(t)}</span>${esc(x.join(' · ') || '')}</li>`; }).join('')}</ul>` : `<p>${esc(d.text)}</p>`}</div></div>`).join('')}</div>
       <h2 class="mt32" style="font-size:26px">Healing sessions included</h2>
       <div class="rt-sl mt16">${r.sessions.map(s => `<div><span>${ico('i-leaf','i xs')}${esc(s.name)}</span><small>${durTxt(s.dur)}</small></div>`).join('')}${r.o2o ? `<div><span>${ico('i-user','i xs')}One-to-one time with ${esc(h.name.split(' ')[0])}</span><small>${r.o2o} session${r.o2o === 1 ? '' : 's'} per guest</small></div>` : ''}</div>
       <div class="pk-facts mt32">
-        ${r.type !== '1' ? `<div>${ico('i-home')}<span><b>Where you stay · ${RT_ACCN[r.acc.type]}</b><small>${esc(r.acc.notes || `${T.nights} nights at the venue`)}</small></span></div>` : ''}
-        <div>${ico('i-pin')}<span><b>${esc(r.venue.name)}</b><small>${esc(r.venue.address)}${r.venue.map ? ` · <a href="${esc(r.venue.map)}" target="_blank" rel="noopener">Open map</a>` : ''}</small></span></div>
+        ${rtN(r) > 1 ? `<div>${ico('i-home')}<span><b>Where you stay · ${RT_ACCN[r.acc.type]}</b><small>${esc(r.acc.notes || `${rtN(r) - 1} nights at the venue`)}</small></span></div>` : ''}
+        ${locCard(r.venue, 'Retreat venue')}
         <div>${ico('i-globe')}<span><b>How to reach</b><small>${esc(r.reach)}</small></span></div>
         ${r.bring ? `<div>${ico('i-check')}<span><b>What to bring</b><small>${esc(r.bring)}</small></span></div>` : ''}
         ${r.rules ? `<div>${ico('i-shield')}<span><b>House rules</b><small>${esc(r.rules)}</small></span></div>` : ''}
@@ -3717,16 +3722,17 @@ R.retreat = id => {
       <span class="small" style="font-weight:600">Choose your dates</span>
       <div class="rt-dpick">${ds.length ? ds.map(d => { const l = rtLeft(r, d); return `<button type="button" data-rd="${d}" class="${d === RTS.date ? 'on' : ''}" ${l ? '' : 'disabled'}><b>${rtRange(r, d)}</b><small>${l ? `${l} place${l === 1 ? '' : 's'} left` : 'Full'}</small></button>`; }).join('') : '<p class="small muted">No upcoming dates yet.</p>'}</div>
       <div class="ln"><span>Guests</span><span class="stepper"><button type="button" class="icon-btn" id="rgMinus" aria-label="Fewer guests">−</button><b id="rgN">${RTS.guests}</b><button type="button" class="icon-btn" id="rgPlus" aria-label="More guests">+</button></span></div>
-      <div class="ln" style="font-weight:600"><span>Total</span><span id="rgTot">${'₹' + (r.price * RTS.guests).toLocaleString('en-IN')}</span></div>
+      <div class="ln" style="font-weight:600"><span>Total</span><span id="rgTot">${rtMoney(rtUnit(r) * RTS.guests)}</span></div>
       <button type="button" class="btn p block lg" id="rtGo" ${RTS.date ? '' : 'disabled'}>Book this retreat</button>
       <button type="button" class="btn g block" id="rtMsg">${ico('i-chat')}Ask ${esc(h.name.split(' ')[0])} a question</button>
-      <div class="small muted">Charged in Indian rupees; your bank converts it. ${esc(h.policy)}</div></div></aside></div></div>`;
+      <div class="small muted">${intl() ? 'International price in US dollars, taxes included.' : 'Price in rupees, GST included.'} ${esc(h.policy)}</div></div></aside></div></div>`;
   const left = () => RTS.date ? rtLeft(r, RTS.date) : 0;
-  const upd = () => { $('#rgN').textContent = RTS.guests; $('#rgTot').textContent = '₹' + (r.price * RTS.guests).toLocaleString('en-IN'); };
+  const upd = () => { $('#rgN').textContent = RTS.guests; $('#rgTot').textContent = rtMoney(rtUnit(r) * RTS.guests); };
   $$('[data-rd]').forEach(b => b.onclick = () => { RTS.date = b.dataset.rd; RTS.guests = Math.min(RTS.guests, left()) || 1; R.retreat(id); });
   $('#rgMinus').onclick = () => { RTS.guests = Math.max(1, RTS.guests - 1); upd(); };
   $('#rgPlus').onclick = () => { if (RTS.guests >= left()) return toast(`Only ${left()} place${left() === 1 ? '' : 's'} left on these dates`); RTS.guests++; upd(); };
   $('#rtGo').onclick = () => nav(`#/rbook/${r.id}`);
+  wireLoc($('#view'));
   $('#rtMsg').onclick = () => startThread(h.id);
 };
 
@@ -3736,7 +3742,8 @@ R.rbook = id => {
   if (!RTS.date || RTS.id !== r.id || !ds.includes(RTS.date)) RTS = {id:r.id, date:ds[0] || null, guests:1};
   if (!RTS.date) return nav('#/retreat/' + id);
   document.title = 'Book ' + r.name + ' · 2Verse';
-  const n = 3 + Object.values(q).filter(Boolean).length;
+  const cq = (r.cq || []).map(qNorm);
+  const n = 3 + Object.values(q).filter(Boolean).length + cq.length;
   const f = (lbl, inner, full = true) => `<label class="field${full ? ' full' : ''}"><span>${lbl}</span>${inner}</label>`;
   $('#view').innerHTML = `<div class="wrap"><div class="row mt24"><a class="btn t" style="padding:0" href="#/retreat/${r.id}">${ico('i-back')}Back to the retreat</a></div>
     <div class="bk-layout"><div>
@@ -3754,20 +3761,21 @@ R.rbook = id => {
         ${q.needs ? f('Special needs or requests <small>(optional)</small>', `<textarea class="ta" name="needs" rows="2" placeholder="Food allergies, mobility, a ground-floor room…"></textarea>`) : ''}
         ${q.emergency ? f('Emergency contact name', `<input class="inp" name="ec_name" placeholder="Full name">`, false) + f('Emergency contact number', `<input class="inp" type="tel" name="ec_phone" placeholder="+44 …">`, false) : ''}
         ${q.heard ? f('How did you hear about us? <small>(optional)</small>', `<select class="sel" name="heard"><option value="">Choose one</option><option>Instagram</option><option>A friend or family</option><option>Google search</option><option>The 2Verse app</option><option>Other</option></select>`, false) : ''}
+        ${cq.length ? `<div class="full rt-cq"><span class="eyebrow">A few questions from ${esc(h.name.split(' ')[0])}</span><div class="fgrid mt8">${cq.map((x, i) => `<div class="full">${qField(Object.assign({}, x, {q:x.q + (x.req ? '' : ' (optional)')}), i, '')}</div>`).join('')}</div></div>` : ''}
         <label class="check full mt8"><input type="checkbox" name="terms"><span>I agree to the house rules and the cancellation policy: ${esc(h.policy)}</span></label>
       </div></form>
     </div>
     <aside class="side-book"><div class="card sum">
-      <div class="rt-mini"><span>${tvCover.html(r.photos[0], r.name)}</span><div><b>${esc(r.name)}</b><small>${RT_T[r.type].label} · ${esc(r.venue.name)}</small></div></div>
+      <div class="rt-mini"><span>${tvCover.html(r.photos[0], r.name)}</span><div><b>${esc(r.name)}</b><small>${rtLbl(r)} · ${esc(r.venue.name)}</small></div></div>
       <div class="ln"><span>Dates</span><span id="rbDates">${rtRange(r, RTS.date)}</span></div>
       <div class="ln"><span>Guests</span><span id="rbG">${RTS.guests}</span></div>
-      <div class="ln"><span>${rtPrice(r)} × <span id="rbG2">${RTS.guests}</span></span><span id="rbSub">₹${(r.price * RTS.guests).toLocaleString('en-IN')}</span></div>
-      <div class="ln" style="font-weight:600;font-size:17px"><span>Total</span><span id="rbTot">₹${(r.price * RTS.guests).toLocaleString('en-IN')}</span></div>
+      <div class="ln"><span>${rtPrice(r)} × <span id="rbG2">${RTS.guests}</span></span><span id="rbSub">${rtMoney(rtUnit(r) * RTS.guests)}</span></div>
+      <div class="ln" style="font-weight:600;font-size:17px"><span>Total</span><span id="rbTot">${rtMoney(rtUnit(r) * RTS.guests)}</span></div>
       <button type="button" class="btn p block lg" id="rbPay">Pay and confirm</button>
       <div class="small muted">${ico('i-lock','i xs')} Secure payment. ${esc(h.name.split(' ')[0])} gets your answers by email.</div></div></aside></div></div>`;
   const F = $('#rbForm');
   const sync = () => { if (F.date) RTS.date = F.date.value; if (F.guests){ const mx = rtLeft(r, RTS.date); F.guests.max = mx; RTS.guests = Math.max(1, Math.min(mx, +F.guests.value || 1)); }
-    const t = '₹' + (r.price * RTS.guests).toLocaleString('en-IN'); $('#rbDates').textContent = rtRange(r, RTS.date); $('#rbG').textContent = RTS.guests; $('#rbG2').textContent = RTS.guests; $('#rbSub').textContent = t; $('#rbTot').textContent = t; };
+    const t = rtMoney(rtUnit(r) * RTS.guests); $('#rbDates').textContent = rtRange(r, RTS.date); $('#rbG').textContent = RTS.guests; $('#rbG2').textContent = RTS.guests; $('#rbSub').textContent = t; $('#rbTot').textContent = t; };
   F.addEventListener('input', sync); F.addEventListener('change', sync);
   const bad = (n, m) => { const el = F.querySelector(`[name=${n}]`); if (el){ el.style.borderColor = 'var(--danger)'; el.focus(); } toast(m); };
   $('#rbPay').onclick = () => {
@@ -3779,10 +3787,13 @@ R.rbook = id => {
     if (q.guests && (+fd.get('guests') < 1 || +fd.get('guests') > rtLeft(r, RTS.date))) return bad('guests', `Choose 1 to ${rtLeft(r, RTS.date)} guests`);
     if (q.meal && !fd.get('meal')) return bad('meal', 'Choose a meal preference');
     if (q.emergency && (!fd.get('ec_name').trim() || (fd.get('ec_phone') || '').replace(/\D/g, '').length < 8)) return bad(!fd.get('ec_name').trim() ? 'ec_name' : 'ec_phone', 'Add an emergency contact for your stay');
+    const cqa = cq.map((x, i) => qRead(F, x, i));
+    const miss = cq.findIndex((x, i) => x.req && !String(cqa[i] || '').trim());
+    if (miss >= 0){ const el = F.querySelector(`[name="pa_${miss}"]`); el && el.scrollIntoView({block:'center'}); return toast(`Please answer: ${cq[miss].q}`); }
     if (!fd.get('terms')) return toast('Please agree to the house rules and cancellation policy');
     const b = $('#rbPay'); b.disabled = true; b.innerHTML = '<span class="spin-s"></span>Paying…';
     setTimeout(() => {
-      const bk = {id:'RB-' + (2400 + rtMine().length + 1), rt:r.id, date:RTS.date, guests:RTS.guests, total:r.price * RTS.guests, name:fd.get('name'), answers:{city:fd.get('city'), meal:fd.get('meal'), therapies:fd.getAll('ther'), needs:fd.get('needs'), emergency:q.emergency ? `${fd.get('ec_name')} ${fd.get('ec_phone')}` : '', heard:fd.get('heard')}, at:TODAY};
+      const bk = {id:'RB-' + (2400 + rtMine().length + 1), rt:r.id, date:RTS.date, guests:RTS.guests, total:rtUnit(r) * RTS.guests, cur:CUR(), custom:cq.map((x, i) => ({q:x.q, a:cqa[i]})), name:fd.get('name'), answers:{city:fd.get('city'), meal:fd.get('meal'), therapies:fd.getAll('ther'), needs:fd.get('needs'), emergency:q.emergency ? `${fd.get('ec_name')} ${fd.get('ec_phone')}` : '', heard:fd.get('heard')}, at:TODAY};
       rtMine().push(bk); save(); nav('#/rdone/' + bk.id);
     }, 900);
   };
@@ -3796,7 +3807,7 @@ R.rdone = bid => {
     <span class="rt-ok">${ico('i-check','i')}</span>
     <h1 style="font-size:30px">You're booked</h1>
     <p class="muted">Booking ${esc(b.id)} · a confirmation is on its way to your email.</p>
-    <div class="rt-mini mt16"><span>${tvCover.html(r.photos[0], r.name)}</span><div><b>${esc(r.name)}</b><small>${rtRange(r, b.date)} · ${b.guests} guest${b.guests === 1 ? '' : 's'} · ₹${b.total.toLocaleString('en-IN')} paid</small></div></div>
+    <div class="rt-mini mt16"><span>${tvCover.html(r.photos[0], r.name)}</span><div><b>${esc(r.name)}</b><small>${rtRange(r, b.date)} · ${b.guests} guest${b.guests === 1 ? '' : 's'} · ${money(b.cur || 'INR', b.total)} paid</small></div></div>
     <div class="pk-facts mt16"><div>${ico('i-pin')}<span><b>${esc(r.venue.name)}</b><small>${esc(r.venue.address)}</small></span></div><div>${ico('i-globe')}<span><b>How to reach</b><small>${esc(r.reach)}</small></span></div>${r.bring ? `<div>${ico('i-check')}<span><b>What to bring</b><small>${esc(r.bring)}</small></span></div>` : ''}</div>
     <div class="row mt24" style="gap:10px;flex-wrap:wrap"><button class="btn p" id="rdMsg">${ico('i-chat')}Message ${esc(h.name.split(' ')[0])}</button><a class="btn g" href="#/retreat/${r.id}">View retreat</a></div></div></div>`;
   $('#rdMsg').onclick = () => startThread(h.id);

@@ -1551,7 +1551,7 @@ const stars = (n, cls = '') => `<span class="stars ${cls}" aria-label="${n} out 
    Seed data (a realistic week for healer Ananya Rawat)
    ===================================================================== */
 const DEF = {
-  v: 10,
+  v: 11,
   theme: 'dawn', available: true,
   seekers: [
     {id:'sarah', name:'Sarah Mitchell', short:'Sarah M.', city:'London', tz:1, col:'--accent-strong', goals:'Sleep, anxiety', notes:'Responds well to long exhales. Prefers evening sessions. Shoulder tension eases after round two.'},
@@ -1659,24 +1659,24 @@ const DEF = {
     {id:'p3', txt:'4-7-8, explained', cap:'Inhale for four, hold for seven, exhale for eight. A short guide to the breath I teach most.', when:'Mon 5 Oct · 12:00 PM', kind:'Carousel · 5 slides', plats:['IG','LI']}
   ],
   retreats: [
-    {id:'rt1', type:'3', status:'active', created:'2026-09-10', name:'Silent Ganga weekend', desc:'Three quiet days by the river to slow the breath, sleep deeply and come home to yourself. Small group, gentle pace, no experience needed.', dates:['2026-10-16','2026-10-30','2026-11-13','2026-11-27'],
+    {id:'rt1', days:3, status:'active', created:'2026-09-10', name:'Silent Ganga weekend', desc:'Three quiet days by the river to slow the breath, sleep deeply and come home to yourself. Small group, gentle pace, no experience needed.', dates:['2026-10-16','2026-10-30','2026-11-13','2026-11-27'],
       schedule:[{title:'Arrive and settle', text:'Arrival, welcome circle, light meditation, early dinner'},{title:'Go deeper', text:'Morning yoga, main healing session, rest, one-to-one session, evening sharing'},{title:'Take it home', text:'Morning practice, closing circle, guidance for home, departure'}],
-      sessions:[{name:'Morning pranayama and yoga', dur:75},{name:'Breath for deep sleep (group)', dur:120},{name:'Sound bath by the river', dur:60},{name:'Evening sharing circle', dur:60}], o2o:1, max:12, price:18500,
-      acc:{type:'shared', notes:'Twin rooms with attached bath, river-facing balcony'}, venue:{name:'Ganga Kinare ashram', address:'Tapovan, Laxman Jhula Road, Rishikesh, Uttarakhand 249192', map:'https://maps.google.com/?q=Tapovan+Rishikesh'},
+      sessions:[{name:'Morning pranayama and yoga', dur:75},{name:'Breath for deep sleep (group)', dur:120},{name:'Sound bath by the river', dur:60},{name:'Evening sharing circle', dur:60}], o2o:1, max:12, inr:18500, usd:260, cq:[{q:'Is this your first retreat?', type:'yesno', opts:[], req:true},{q:'What would you like to take home from this weekend?', type:'long', opts:[], req:false}],
+      acc:{type:'shared', notes:'Twin rooms with attached bath, river-facing balcony'}, place:{useStudio:false, name:'Ganga Kinare ashram', address:'Tapovan, Laxman Jhula Road, Rishikesh, Uttarakhand 249192', lat:30.1268, lng:78.3215},
       reach:'Dehradun airport is 35 km away (about 1 hour by taxi). Rishikesh railway station is 8 km. We can arrange pickup on request.', bring:'Loose, warm clothes, a shawl for early mornings, a water bottle and a notebook.', rules:'No alcohol or smoking. Phones off during sessions. Silence after 9 pm.',
       photos:[{kind:'ai', seed:4101, pal:'ganga', scene:'river', motif:'Retreat'},{kind:'ai', seed:4102, pal:'dawn', scene:'sunrise', motif:'Retreat'},{kind:'ai', seed:4103, pal:'dusk', scene:'mountains', motif:'Retreat'},{kind:'ai', seed:4104, pal:'night', scene:'stars', motif:'Retreat'}],
       q:{city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:true, heard:true},
       bookings:[{name:'Sarah Mitchell', guests:2, date:'2026-10-16', paid:37000},{name:'Priya Sharma', guests:1, date:'2026-10-16', paid:18500},{name:'Daniel Okafor', guests:1, date:'2026-10-30', paid:18500}]},
-    {id:'rt2', type:'1', status:'active', created:'2026-09-18', name:'Breath and sound day', desc:'One unhurried day of breathwork, a group healing session and a sound bath. A gentle first taste of retreat life.', dates:['2026-10-11','2026-10-25','2026-11-08'],
+    {id:'rt2', days:1, status:'active', created:'2026-09-18', name:'Breath and sound day', desc:'One unhurried day of breathwork, a group healing session and a sound bath. A gentle first taste of retreat life.', dates:['2026-10-11','2026-10-25','2026-11-08'],
       schedule:[{title:'The day', text:'8:00 am · Welcome, tea and introduction\n9:00 am · Morning yoga and breathing\n11:00 am · Group healing session\n1:00 pm · Lunch and rest\n3:00 pm · Guided meditation\n4:30 pm · One-to-one chat or closing circle'}],
-      sessions:[{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}], o2o:null, max:16, price:4500,
-      acc:{type:'none', notes:''}, venue:{name:'Tapovan studio', address:'Tapovan, Rishikesh, Uttarakhand 249192', map:''}, reach:'A 10-minute walk from Laxman Jhula. Auto-rickshaws drop at the studio gate.', bring:'Comfortable clothes and a water bottle.', rules:'Please arrive by 7:50 am.',
+      sessions:[{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}], o2o:null, max:16, inr:4500, usd:65, cq:[],
+      acc:{type:'none', notes:''}, place:{useStudio:true}, reach:'A 10-minute walk from Laxman Jhula. Auto-rickshaws drop at the studio gate.', bring:'Comfortable clothes and a water bottle.', rules:'Please arrive by 7:50 am.',
       photos:[{kind:'ai', seed:4201, pal:'dawn', scene:'sunrise', motif:'Retreat'},{kind:'ai', seed:4202, pal:'ganga', scene:'river', motif:'Retreat'},{kind:'ai', seed:4203, pal:'saffron', scene:'mountains', motif:'Retreat'}],
       q:{city:true, guests:true, start:true, meal:true, therapies:false, needs:true, emergency:false, heard:false}, bookings:[{name:'Meera Iyer', guests:3, date:'2026-10-25', paid:13500}]},
-    {id:'rt3', type:'7', status:'draft', created:'2026-09-25', name:'Seven days of deep rest', desc:'A week of daily practice, deep healing work, silence and one-to-one guidance for people ready to reset.', dates:[],
+    {id:'rt3', days:7, status:'draft', created:'2026-09-25', name:'Seven days of deep rest', desc:'A week of daily practice, deep healing work, silence and one-to-one guidance for people ready to reset.', dates:[],
       schedule:[{title:'Arrive and settle', text:'Arrival and settling in'},{title:'Cleansing and release', text:'Daily practice, group and private sessions'},{title:'Cleansing and release', text:'Daily practice, group and private sessions'},{title:'Deep healing', text:'Deep healing work and silence time'},{title:'Deep healing', text:'Deep healing work and silence time'},{title:'Integration', text:'Integration and planning for life at home'},{title:'Closing', text:'Closing ceremony and departure'}],
-      sessions:[{name:'Daily morning practice', dur:75},{name:'Group healing session', dur:120},{name:'Silent meditation', dur:60}], o2o:3, max:8, price:62000,
-      acc:{type:'private', notes:''}, venue:{name:'', address:'', map:''}, reach:'', bring:'', rules:'', photos:[], q:{city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:true, heard:false}, bookings:[]}
+      sessions:[{name:'Daily morning practice', dur:75},{name:'Group healing session', dur:120},{name:'Silent meditation', dur:60}], o2o:3, max:8, inr:62000, usd:850, cq:[],
+      acc:{type:'private', notes:''}, place:{useStudio:true}, reach:'', bring:'', rules:'', photos:[], q:{city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:true, heard:false}, bookings:[]}
   ],
   profile: {
     name:'Ananya Rawat', display:'Ananya Rawat', email:'ananya@example.com', phone:'+91 98•• ••• 210', city:'Tapovan, Rishikesh', tz:'India (IST, UTC+5:30)', langs:['English','Hindi'], photo:null,
@@ -2576,24 +2576,27 @@ function serviceModal(id, preset, rerun){
 
 
 /* =====================================================================
-   RETREATS (1-day, 3-day and 7-day healing retreats with stay)
+   RETREATS (healing retreats of 1 to 20 days, with or without stay)
    ===================================================================== */
 let rtTab = 'active';
-const RT_TYPES = {
-  '1':{label:'1-Day retreat', short:'1-Day', days:1, nights:0, length:'About 8 hours', stay:'Not needed', best:'First-time guests', o2o:null},
-  '3':{label:'3-Day retreat', short:'3-Day', days:3, nights:2, length:'2 nights', stay:'Yes', best:'A weekend reset', o2o:1},
-  '7':{label:'7-Day retreat', short:'7-Day', days:7, nights:6, length:'6 nights', stay:'Yes', best:'A deep program with one-to-one time', o2o:2}
+const RT_MAXD = 20;
+const rtDays = r => +r.days || +r.type || 1;
+const rtLabel = n => `${n}-day retreat`;
+const rtLenTxt = n => n === 1 ? 'About 8 hours, no overnight stay' : `${n} days, ${n - 1} night${n === 2 ? '' : 's'}`;
+const rtTpl = n => {
+  if (n === 1) return [{title:'The day', text:'8:00 am · Welcome, tea and introduction\n9:00 am · Morning yoga and breathing\n11:00 am · Group healing session\n1:00 pm · Lunch and rest\n3:00 pm · Guided meditation\n4:30 pm · One-to-one chat or closing circle'}];
+  const out = [{title:'Arrive and settle', text:'Arrival, welcome circle, light meditation, early dinner'}];
+  for (let i = 2; i < n; i++){
+    const deep = n >= 5 && i > Math.floor(n / 3) && i <= Math.ceil(n * 2 / 3);
+    out.push(deep ? {title:'Deep healing', text:'Deep healing work and silence time'} : i === n - 1 && n > 3 ? {title:'Integration', text:'Integration and planning for life at home'} : {title:'Practice and healing', text:'Morning practice, group healing session, rest, one-to-one time, evening sharing'});
+  }
+  out.push({title:'Closing', text:'Morning practice, closing circle, guidance for home, departure'});
+  return out;
 };
-const RT_SCHED = {
-  '1':[{title:'The day', text:'8:00 am · Welcome, tea and introduction\n9:00 am · Morning yoga and breathing\n11:00 am · Group healing session\n1:00 pm · Lunch and rest\n3:00 pm · Guided meditation\n4:30 pm · One-to-one chat or closing circle'}],
-  '3':[{title:'Arrive and settle', text:'Arrival, welcome circle, light meditation, early dinner'},{title:'Go deeper', text:'Morning yoga, main healing session, rest, one-to-one session, evening sharing'},{title:'Take it home', text:'Morning practice, closing circle, guidance for home, departure'}],
-  '7':[{title:'Arrive and settle', text:'Arrival and settling in'},{title:'Cleansing and release', text:'Daily practice, group and private sessions'},{title:'Cleansing and release', text:'Daily practice, group and private sessions'},{title:'Deep healing', text:'Deep healing work and silence time'},{title:'Deep healing', text:'Deep healing work and silence time'},{title:'Integration', text:'Integration and planning for life at home'},{title:'Closing', text:'Closing ceremony and departure'}]
-};
-const RT_SESS = {
-  '1':[{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}],
-  '3':[{name:'Daily morning yoga', dur:60},{name:'Main healing session', dur:120},{name:'Evening sharing circle', dur:60}],
-  '7':[{name:'Daily morning practice', dur:75},{name:'Group healing session', dur:120},{name:'Silent meditation', dur:60},{name:'Closing ceremony', dur:90}]
-};
+const rtSessTpl = n => n === 1 ? [{name:'Morning yoga and breathing', dur:60},{name:'Group healing session', dur:90},{name:'Guided meditation', dur:45}]
+  : n <= 4 ? [{name:'Daily morning yoga', dur:60},{name:'Main healing session', dur:120},{name:'Evening sharing circle', dur:60}]
+  : [{name:'Daily morning practice', dur:75},{name:'Group healing session', dur:120},{name:'Silent meditation', dur:60},{name:'Closing ceremony', dur:90}];
+const rtO2O = n => n === 1 ? null : n <= 4 ? 1 : 2;
 const RT_Q = [
   ['city','City and country','To plan travel and pickup'],
   ['guests','Number of guests','To check space'],
@@ -2605,36 +2608,44 @@ const RT_Q = [
   ['heard','How they heard about us','To see which marketing works']
 ];
 const RT_ACC = {shared:'Shared room', private:'Private room', none:'No stay'};
-const rtDefQ = t => ({city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:t !== '1', heard:false});
+const rtDefQ = n => ({city:true, guests:true, start:true, meal:true, therapies:true, needs:true, emergency:n > 1, heard:false});
 const retreat = id => (S.retreats || []).find(r => r.id === id);
+/* older saved retreats: 1/3/7 types, single rupee price, venue text */
+function rtFix(r){
+  if (!r.days) r.days = +r.type || 1;
+  if (r.inr == null) r.inr = r.price || 0;
+  if (r.usd == null) r.usd = Math.round((r.price || 0) / 84);
+  if (!r.place) r.place = r.venue && r.venue.name ? {useStudio:false, name:r.venue.name, address:r.venue.address} : {useStudio:true};
+  if (!r.cq) r.cq = [];
+  return r;
+}
+const rtPlace = r => placeOf({place:r.place || {useStudio:true}});
 const rtFuture = r => (r.dates || []).filter(d => d >= TODAY).sort();
-const rtEnd = (r, d) => addDays(d, RT_TYPES[r.type].days - 1);
-const rtStayTxt = r => r.type === '1' ? 'Day retreat, no stay' : `${RT_TYPES[r.type].nights} nights · ${RT_ACC[(r.acc || {}).type] || 'Stay included'}`;
+const rtEnd = (r, d) => addDays(d, rtDays(r) - 1);
+const rtStayTxt = r => rtDays(r) === 1 ? 'Day retreat, no stay' : `${rtDays(r) - 1} night${rtDays(r) === 2 ? '' : 's'} · ${RT_ACC[(r.acc || {}).type] || 'Stay included'}`;
 const rtCover = r => (r.photos || [])[0] || {kind:'ai', seed:pkHash(r.name || 'retreat') % 100000, pal:'ganga', scene:'mountains', motif:'Retreat'};
 const rtBooked = (r, d) => (r.bookings || []).filter(b => !d || b.date === d).reduce((a, b) => a + (b.guests || 1), 0);
 
 RENDER.retreats = () => {
-  S.retreats = S.retreats || [];
+  S.retreats = (S.retreats || []).map(rtFix);
   const groups = {active:S.retreats.filter(r => r.status === 'active'), other:S.retreats.filter(r => r.status !== 'active')};
   $('#v-retreats').innerHTML = `
-  <div class="head"><div><span class="eyebrow">Stay, practise, heal</span><h1>Retreats</h1><p>Offer 1-day, 3-day or 7-day healing retreats at your venue. Seekers choose a date, answer a short form and pay online.</p></div>
+  <div class="head"><div><span class="eyebrow">Stay, practise, heal</span><h1>Retreats</h1><p>Offer healing retreats of 1 to 20 days at your venue. Seekers choose a date, answer a short form and pay online, in India or from abroad.</p></div>
     <div class="head-actions"><div class="seg" id="rtTabs"><button data-t="active" class="${rtTab === 'active' ? 'on' : ''}">Live <span class="n">${groups.active.length}</span></button><button data-t="other" class="${rtTab === 'other' ? 'on' : ''}">Drafts <span class="n">${groups.other.length}</span></button></div><button class="btn p" id="rtNew">${ico('i-plus')}New retreat</button></div></div>
-  <div class="rt-types">${Object.entries(RT_TYPES).map(([k, t]) => `<button type="button" class="rt-type" data-rtnew="${k}"><b>${t.short}</b><span>${t.length} · stay ${t.stay.toLowerCase()}</span><small>Best for ${t.best.toLowerCase()}</small></button>`).join('')}</div>
-  <div class="svc-grid">${groups[rtTab].map(rtCard).join('') || `<div class="card empty" style="grid-column:1/-1">${ico('i-retreat','i')}No retreats here yet. Pick a retreat type above to start.</div>`}</div>`;
+  <div class="svc-grid">${groups[rtTab].map(rtCard).join('') || `<div class="card empty" style="grid-column:1/-1">${ico('i-retreat','i')}No retreats here yet.<div class="mt16"><button class="btn p sm" data-rta="new">${ico('i-plus')}Create a retreat</button></div></div>`}</div>`;
   $$('#rtTabs button').forEach(b => b.onclick = () => { rtTab = b.dataset.t; RENDER.retreats(); });
-  $('#rtNew').onclick = () => retreatModal(null, '3');
-  $$('[data-rtnew]').forEach(b => b.onclick = () => retreatModal(null, b.dataset.rtnew));
+  $('#rtNew').onclick = () => retreatModal();
   $$('#v-retreats [data-rta]').forEach(b => b.onclick = () => rtAction(b.dataset.rta, b.dataset.id));
 };
 function rtCard(r){
-  const T = RT_TYPES[r.type], fut = rtFuture(r), live = r.status === 'active';
+  const n = rtDays(r), fut = rtFuture(r), live = r.status === 'active', pl = rtPlace(r);
   return `<div class="card svc rt" id="rt-${r.id}">
-    <div class="cov">${tvCover.html(rtCover(r), r.name)}<span class="cp-badge">${T.short}${T.nights ? ` · ${T.nights} nights` : ''}</span></div>
-    <div class="svc-top"><span class="ico-box" style="background:var(--soft-sage)">${ico('i-retreat','i')}</span><div style="flex:1;min-width:0"><h3>${esc(r.name)}</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="pill ${live ? 'ok' : 'done'}">${live ? 'Live' : 'Draft'}</span><span class="pill sky">${T.label}</span></div></div></div>
+    <div class="cov">${tvCover.html(rtCover(r), r.name)}<span class="cp-badge">${n} day${n === 1 ? '' : 's'}${n > 1 ? ` · ${n - 1} night${n === 2 ? '' : 's'}` : ''}</span></div>
+    <div class="svc-top"><span class="ico-box" style="background:var(--soft-sage)">${ico('i-retreat','i')}</span><div style="flex:1;min-width:0"><h3>${esc(r.name)}</h3><div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px"><span class="pill ${live ? 'ok' : 'done'}">${live ? 'Live' : 'Draft'}</span><span class="pill sky">${rtLabel(n)}</span></div></div></div>
     <p class="small muted" style="margin:0">${esc(r.desc)}</p>
-    <div class="meta"><span>${ico('i-home')}${esc(rtStayTxt(r))}</span><span>${ico('i-pin')}${esc((r.venue || {}).name || 'Venue not set')}</span><span>${ico('i-cal')}${fut.length ? `Next ${fDate(fut[0])}${T.days > 1 ? ` – ${fShort(rtEnd(r, fut[0]))}` : ''} · ${fut.length} date${fut.length === 1 ? '' : 's'}` : 'No upcoming dates'}</span><span>${ico('i-group')}Up to ${r.max} guests a date</span></div>
-    <div class="price"><b>${money('INR', r.price)}</b><span class="small muted">per person · ${(r.sessions || []).length} healing sessions${r.o2o ? ` · ${r.o2o} one-to-one` : ''}</span></div>
-    <div class="small muted">${rtBooked(r)} guest${rtBooked(r) === 1 ? '' : 's'} booked · booking form asks ${3 + RT_Q.filter(([k]) => (r.q || {})[k]).length} questions</div>
+    <div class="meta"><span>${ico('i-home')}${esc(rtStayTxt(r))}</span><span>${ico('i-pin')}${esc(pl.name || 'Venue not set')}${pl.lat ? ` · <a class="lnk small" href="${tvPlace.gmaps(pl)}" target="_blank" rel="noopener">Map</a>` : ''}</span><span>${ico('i-cal')}${fut.length ? `Next ${fDate(fut[0])}${n > 1 ? ` – ${fShort(rtEnd(r, fut[0]))}` : ''} · ${fut.length} date${fut.length === 1 ? '' : 's'}` : 'No upcoming dates'}</span><span>${ico('i-group')}Up to ${r.max} guests a date</span></div>
+    <div class="price"><b>${money('INR', r.inr)}</b><span class="small muted">per person · ${money('USD', r.usd)} international · ${(r.sessions || []).length} healing sessions${r.o2o ? ` · ${r.o2o} one-to-one` : ''}</span></div>
+    <div class="small muted">${rtBooked(r)} guest${rtBooked(r) === 1 ? '' : 's'} booked · booking form asks ${3 + RT_Q.filter(([k]) => (r.q || {})[k]).length + (r.cq || []).length} questions${(r.cq || []).length ? ` (${r.cq.length} of your own)` : ''}</div>
     <div class="foot">
       ${live ? `<button class="btn sm g" data-rta="draft" data-id="${r.id}">Move to drafts</button>` : `<button class="btn sm p" data-rta="publish" data-id="${r.id}">Publish</button>`}
       <span class="grow"></span>
@@ -2644,6 +2655,7 @@ function rtCard(r){
     </div></div>`;
 }
 function rtAction(act, id){
+  if (act === 'new') return retreatModal();
   const r = retreat(id);
   if (act === 'edit') return retreatModal(id);
   if (act === 'publish'){ const miss = rtMissing(r); if (miss) return (toast(`Add ${miss} before publishing`), retreatModal(id)); r.status = 'active'; rtTab = 'active'; commit(); return toast(`${r.name} is live`); }
@@ -2655,35 +2667,40 @@ function rtAction(act, id){
   }
 }
 function rtMissing(r){
+  const pl = rtPlace(r);
   if (!r.name) return 'a name';
   if (!r.desc) return 'a short description';
   if (!rtFuture(r).length) return 'at least one upcoming date';
   if ((r.schedule || []).some(d => !d.text.trim())) return 'a plan for every day';
   if (!(r.sessions || []).length) return 'the healing sessions included';
   if (!r.max) return 'the maximum guests per date';
-  if (r.type !== '1' && !(r.acc && r.acc.type && r.acc.type !== 'none')) return 'the accommodation';
-  if (!r.venue || !r.venue.name || !r.venue.address) return 'the venue name and address';
+  if (rtDays(r) > 1 && !(r.acc && r.acc.type && r.acc.type !== 'none')) return 'the accommodation';
+  if (!pl.name || !(pl.lat || pl.address)) return 'the venue on the map';
   if (!r.reach) return 'how to reach the venue';
   if ((r.photos || []).length < 3) return 'at least 3 venue photos';
   return '';
 }
-function retreatModal(id, newType){
-  const ex = id ? retreat(id) : null;
-  const t0 = ex ? ex.type : newType || '3';
-  const st = ex ? clone(ex) : {type:t0, name:'', desc:'', dates:[addDays(TODAY, 21)], schedule:clone(RT_SCHED[t0]), sessions:clone(RT_SESS[t0]), o2o:RT_TYPES[t0].o2o, max:12, price:'', acc:{type:t0 === '1' ? 'none' : 'shared', notes:''}, venue:{name:'', address:'', map:''}, reach:'', bring:'', rules:'', photos:[], q:rtDefQ(t0), status:'draft', bookings:[]};
+function retreatModal(id){
+  const ex = id ? rtFix(retreat(id)) : null;
+  const n0 = ex ? rtDays(ex) : 3;
+  const st = ex ? clone(ex) : {days:n0, name:'', desc:'', dates:[addDays(TODAY, 21)], schedule:rtTpl(n0), sessions:rtSessTpl(n0), o2o:rtO2O(n0), max:12, inr:'', usd:'', acc:{type:'shared', notes:''}, place:{useStudio:true}, reach:'', bring:'', rules:'', photos:[], q:rtDefQ(n0), cq:[], status:'draft', bookings:[]};
+  st.qs = clone(st.cq || []);
   let schedEdited = !!ex;
+  const studio = S.profile.loc || {};
   const sec = (n, t, d) => `<div class="sm-sec full"><span class="sm-n">${n}</span><div><h3>${t}</h3>${d ? `<p>${d}</p>` : ''}</div></div>`;
   const opt = (v, cur, l) => `<option value="${v}" ${String(v) === String(cur) ? 'selected' : ''}>${l}</option>`;
   openModal({title:ex ? 'Edit retreat' : 'New retreat', size:'wide', body:`
     <div class="fgrid">
-      ${sec(1, 'Retreat type', 'Pick the length. You can change it later; the day plan adjusts to match.')}
-      <div class="full rt-pick" id="rtType">${Object.entries(RT_TYPES).map(([k, t]) => `<label><input type="radio" name="rtype" value="${k}" ${k === st.type ? 'checked' : ''}><span><b>${t.label}</b><small>${t.length} · Stay: ${t.stay}</small><small>Best for: ${t.best}</small></span></label>`).join('')}</div>
-
-      ${sec(2, 'The basics')}
+      ${sec(1, 'The basics')}
       <label class="field full"><span>Retreat name</span><input class="inp" name="name" value="${esc(st.name)}" placeholder="For example: Silent Ganga weekend" required></label>
-      <label class="field full"><span>Short description <small>(2 to 3 lines)</small></span><textarea class="ta" name="desc" data-veda="svcdesc" rows="3" placeholder="Who it is for and how guests will feel when they leave.">${esc(st.desc)}</textarea></label>
+      <label class="field"><span>Length</span><select class="sel" name="days">${Array.from({length:RT_MAXD}, (_, i) => i + 1).map(n => opt(n, st.days, n === 1 ? '1 day (no overnight stay)' : `${n} days · ${n - 1} night${n === 2 ? '' : 's'}`)).join('')}</select></label>
       <label class="field"><span>Maximum guests per date</span><input class="inp" type="number" min="1" max="200" name="max" value="${st.max}"></label>
-      <label class="field"><span>Price per person <small>(₹, everything included)</small></span><input class="inp" type="number" min="0" name="price" value="${st.price}" placeholder="18500"></label>
+      <label class="field full"><span>Short description <small>(2 to 3 lines)</small></span><textarea class="ta" name="desc" data-veda="svcdesc" rows="3" placeholder="Who it is for and how guests will feel when they leave.">${esc(st.desc)}</textarea></label>
+
+      ${sec(2, 'Price per person', 'Everything in the retreat is included. Set one price for seekers in India and one for international seekers.')}
+      <label class="field"><span>Price in India <small>(₹)</small></span><input class="inp" type="number" min="0" name="inr" value="${st.inr}" placeholder="18500"></label>
+      <label class="field"><span>International price <small>($)</small></span><input class="inp" type="number" min="0" name="usd" value="${st.usd}" placeholder="260"></label>
+      <div class="full note info" id="rtPriceNote"></div>
 
       ${sec(3, 'Dates available', 'Add every start date you can host. Each date takes the number of guests above.')}
       <div class="full"><div class="rt-dadd"><input class="inp" type="date" id="rtDate" min="${TODAY}" value="${addDays(TODAY, 28)}" aria-label="Start date"><button type="button" class="btn sm g" id="rtDateAdd">${ico('i-plus','i xs')}Add date</button><button type="button" class="btn sm g" id="rtDateWk">${ico('i-repeat','i xs')}Same weekday, next 4 weeks</button></div><div class="rt-dates" id="rtDates"></div></div>
@@ -2693,14 +2710,19 @@ function retreatModal(id, newType){
 
       ${sec(5, 'Healing sessions included', 'Every session in the price, with its length.')}
       <div class="full"><div class="rt-sess" id="rtSess"></div><button type="button" class="lnk small" id="rtSessAdd">${ico('i-plus','i xs')}Add a session</button></div>
-      <label class="field"><span>One-to-one sessions per guest <small id="o2oHint"></small></span><input class="inp" type="number" min="0" max="14" name="o2o" value="${st.o2o ?? ''}" placeholder="0"></label>
+      <label class="field"><span>One-to-one sessions per guest <small>(optional)</small></span><input class="inp" type="number" min="0" max="20" name="o2o" value="${st.o2o ?? ''}" placeholder="0"></label>
       <div></div>
 
-      ${sec(6, 'Stay and venue')}
+      ${sec(6, 'Stay and venue', 'Seekers see this place on a map while booking and paying.')}
       <div class="field full" id="accBox"><span>Accommodation</span><div class="rt-acc"><select class="sel" name="acc_type">${opt('shared', st.acc.type, 'Shared room')}${opt('private', st.acc.type, 'Private room')}${opt('none', st.acc.type, 'No stay')}</select><input class="inp" name="acc_notes" value="${esc(st.acc.notes || '')}" placeholder="Notes, for example: twin rooms with attached bath, river view"></div></div>
-      <label class="field"><span>Venue name</span><input class="inp" name="v_name" value="${esc(st.venue.name)}" placeholder="For example: Ganga Kinare ashram"></label>
-      <label class="field"><span>Map link <small>(optional)</small></span><input class="inp" name="v_map" value="${esc(st.venue.map || '')}" placeholder="https://maps.google.com/…"></label>
-      <label class="field full"><span>Venue address</span><input class="inp" name="v_addr" value="${esc(st.venue.address)}" placeholder="Building, street, area, city, PIN"></label>
+      <div class="full"><div class="choice" id="placeCh">
+          <label><input type="radio" name="place_mode" value="studio" ${st.place.useStudio ? 'checked' : ''}><span>${ico('i-home','i xs')}My studio · ${esc(studio.venue || 'Tapovan studio')}, ${esc(studio.area || studio.city || '')}</span></label>
+          <label><input type="radio" name="place_mode" value="other" ${!st.place.useStudio ? 'checked' : ''}><span>${ico('i-pin','i xs')}Another place</span></label></div>
+        <div id="placeOther" class="mt8" ${st.place.useStudio ? 'hidden' : ''}>
+          <label class="loc-search" style="margin-top:10px">${ico('i-search')}<input type="search" id="placeQ" placeholder="Search a place: ashram, retreat centre, camp, hotel…" autocomplete="off" aria-label="Search for a place"><span class="loc-res" id="placeRes" hidden></span></label>
+          <div class="fgrid mt8"><label class="field"><span>Venue name</span><input class="inp" name="place_name" value="${esc(st.place.name || '')}" placeholder="For example: Ganga Kinare ashram"></label>
+          <label class="field"><span>Address</span><input class="inp" name="place_addr" value="${esc(st.place.address || '')}" placeholder="Filled when you choose a place"></label></div></div>
+        <div class="place-card" id="placeCard"></div></div>
       <label class="field full"><span>How to reach</span><textarea class="ta" name="reach" rows="2" data-veda="directions" placeholder="Nearest airport and railway station, taxi time, pickup if you offer it">${esc(st.reach)}</textarea></label>
       <label class="field"><span>What guests should bring <small>(optional)</small></span><textarea class="ta" name="bring" rows="3" placeholder="Loose clothes, a shawl, a water bottle…">${esc(st.bring)}</textarea></label>
       <label class="field"><span>Rules <small>(optional)</small></span><textarea class="ta" name="rules" rows="3" placeholder="No alcohol, phones off during sessions…">${esc(st.rules)}</textarea></label>
@@ -2710,19 +2732,22 @@ function retreatModal(id, newType){
 
       ${sec(8, 'Booking form', 'Name, email and phone are always asked. Switch the other questions on or off. Fewer questions mean more bookings.')}
       <div class="full rt-q" id="rtQ"></div>
+      <div class="field full"><span>Your own questions <small>(optional · any answer type)</small></span><div id="qBuild" class="qb"></div>
+        <div class="row" style="gap:8px;margin-top:10px"><button type="button" class="btn sm g" id="qAdd">${ico('i-plus')}Add a question</button><button type="button" class="btn sm g" id="qVeda"><span class="vw-orb"></span>Suggest with Veda</button></div></div>
+      <p class="full small muted" id="rtQCount" style="margin:0"></p>
 
       <div class="full rt-prev" id="rtPrev"></div>
     </div>`,
     foot:`<button type="button" class="btn g" data-close>Cancel</button><button type="submit" class="btn g" value="draft">Save as draft</button><button type="submit" class="btn p" value="save">${ex && ex.status === 'active' ? 'Save changes' : 'Publish retreat'}</button>`,
     onOpen:body => {
       const f = $('#modalBox');
-      const T = () => RT_TYPES[st.type];
-      const drawDates = () => { const ds = st.dates.slice().sort(); $('#rtDates').innerHTML = ds.length ? ds.map(d => { const b = rtBooked(st, d); return `<span class="tchip ${d < TODAY ? 'past' : ''}">${fDate(d)}${T().days > 1 ? ` – ${fShort(addDays(d, T().days - 1))}` : ''}${b ? ` <small>${b} booked</small>` : ''}<button type="button" data-drm="${d}" aria-label="Remove ${fDate(d)}" ${b ? 'disabled title="Has bookings"' : ''}>${ico('i-x','i xs')}</button></span>`; }).join('') : '<span class="small muted">No dates yet</span>';
+      const N = () => st.days;
+      const drawDates = () => { const ds = st.dates.slice().sort(); $('#rtDates').innerHTML = ds.length ? ds.map(d => { const b = rtBooked(st, d); return `<span class="tchip ${d < TODAY ? 'past' : ''}">${fDate(d)}${N() > 1 ? ` – ${fShort(addDays(d, N() - 1))}` : ''}${b ? ` <small>${b} booked</small>` : ''}<button type="button" data-drm="${d}" aria-label="Remove ${fDate(d)}" ${b ? 'disabled title="Has bookings"' : ''}>${ico('i-x','i xs')}</button></span>`; }).join('') : '<span class="small muted">No dates yet</span>';
         $$('[data-drm]', body).forEach(b => b.onclick = () => { st.dates = st.dates.filter(x => x !== b.dataset.drm); drawDates(); prev(); }); };
       const addDate = d => { if (!d || d < TODAY) return toast('Choose a date from today onwards'); if (st.dates.includes(d)) return toast('That date is already added'); st.dates.push(d); drawDates(); prev(); };
       $('#rtDateAdd').onclick = () => addDate($('#rtDate').value);
-      $('#rtDateWk').onclick = () => { const d0 = $('#rtDate').value; if (!d0) return; let n = 0; for (let i = 0; i < 4; i++){ const d = addDays(d0, i * 7); if (!st.dates.includes(d) && d >= TODAY){ st.dates.push(d); n++; } } drawDates(); prev(); toast(`${n} date${n === 1 ? '' : 's'} added`); };
-      const drawSched = () => { $('#rtSched').innerHTML = st.schedule.map((d, i) => `<div class="rt-day"><span class="rt-dn">${st.type === '1' ? 'Day' : 'Day ' + (i + 1)}</span><div class="grow"><input class="inp" data-dt="${i}" value="${esc(d.title)}" placeholder="Theme of the day" aria-label="Day ${i + 1} title"><textarea class="ta" data-dx="${i}" rows="${st.type === '1' ? 6 : 2}" placeholder="What happens this day" aria-label="Day ${i + 1} plan">${esc(d.text)}</textarea></div></div>`).join('');
+      $('#rtDateWk').onclick = () => { const d0 = $('#rtDate').value; if (!d0) return; let k = 0; for (let i = 0; i < 4; i++){ const d = addDays(d0, i * 7); if (!st.dates.includes(d) && d >= TODAY){ st.dates.push(d); k++; } } drawDates(); prev(); toast(`${k} date${k === 1 ? '' : 's'} added`); };
+      const drawSched = () => { $('#rtSched').innerHTML = st.schedule.map((d, i) => `<div class="rt-day"><span class="rt-dn">${N() === 1 ? 'Day' : 'Day ' + (i + 1)}</span><div class="grow"><input class="inp" data-dt="${i}" value="${esc(d.title)}" placeholder="Theme of the day" aria-label="Day ${i + 1} title"><textarea class="ta" data-dx="${i}" rows="${N() === 1 ? 6 : 2}" placeholder="What happens this day" aria-label="Day ${i + 1} plan">${esc(d.text)}</textarea></div></div>`).join('');
         $$('[data-dt]', body).forEach(x => x.oninput = () => { st.schedule[+x.dataset.dt].title = x.value; schedEdited = true; });
         $$('[data-dx]', body).forEach(x => x.oninput = () => { st.schedule[+x.dataset.dx].text = x.value; schedEdited = true; }); };
       const drawSess = () => { $('#rtSess').innerHTML = st.sessions.map((s, i) => `<div class="rt-srow"><input class="inp" data-sn="${i}" value="${esc(s.name)}" placeholder="Session name" aria-label="Session ${i + 1}"><select class="sel" data-sd="${i}" aria-label="Length of session ${i + 1}">${[30,45,60,75,90,120,180].map(m => opt(m, s.dur, m + ' min')).join('')}</select><button type="button" class="icon-btn danger" data-srm="${i}" aria-label="Remove session ${i + 1}">${ico('i-trash')}</button></div>`).join('') || '<span class="small muted">No sessions yet</span>';
@@ -2730,55 +2755,81 @@ function retreatModal(id, newType){
         $$('[data-sd]', body).forEach(x => x.onchange = () => { st.sessions[+x.dataset.sd].dur = +x.value; });
         $$('[data-srm]', body).forEach(x => x.onclick = () => { st.sessions.splice(+x.dataset.srm, 1); drawSess(); prev(); }); };
       $('#rtSessAdd').onclick = () => { st.sessions.push({name:'', dur:60}); drawSess(); const ins = $$('[data-sn]', body); ins[ins.length - 1].focus(); };
+      /* venue on the map: same picker as in-person services */
+      const drawPlace = () => {
+        const p = st.place.useStudio ? placeOf({place:{useStudio:true}}) : st.place;
+        $('#placeCard').innerHTML = p && p.lat ? `<div class="pc"><div class="pc-map" id="pcMap"></div><div class="pc-in"><b>${esc(p.name || 'Selected place')}</b><small>${esc(p.address || '')}</small><small class="muted" style="display:block">${(+p.lat).toFixed(5)}, ${(+p.lng).toFixed(5)}</small>
+          <div class="row mt8" style="gap:8px"><a class="btn xs g" href="${tvPlace.gmaps(p)}" target="_blank" rel="noopener">${ico('i-globe','i xs')}View on map</a><span class="small muted">Seekers see this pin while booking and paying.</span></div></div></div>`
+          : `<div class="note warn mt8">${ico('i-pin')}<span>Search and choose the venue so seekers can find it on the map.</span></div>`;
+        if (p && p.lat) tvPlace.map($('#pcMap'), {lat:p.lat, lng:p.lng, label:p.name});
+        prev();
+      };
+      const pres = $('#placeRes'); let ptimer;
+      $('#placeQ').addEventListener('input', e => { clearTimeout(ptimer); const v = e.target.value.trim(); if (v.length < 3){ pres.hidden = true; return; }
+        ptimer = setTimeout(() => tvPlace.search(v + (/rishikesh|india|,/i.test(v) ? '' : ', Rishikesh')).then(list => { pres.hidden = false;
+          pres.innerHTML = list.length ? list.map((x, i) => `<button type="button" data-pi="${i}"><b>${esc(x.name)}</b><br><span class="small muted">${esc(x.address)}</span></button>`).join('') : '<span class="none">No places found. Try a nearby landmark.</span>';
+          $$('[data-pi]', pres).forEach(b => b.onclick = () => { const x = list[+b.dataset.pi]; st.place = {useStudio:false, name:x.name, address:x.address, lat:x.lat, lng:x.lng}; f.place_name.value = x.name; f.place_addr.value = x.address; pres.hidden = true; $('#placeQ').value = ''; drawPlace(); toast('Venue selected'); }); })
+          .catch(() => { pres.hidden = false; pres.innerHTML = '<span class="none">Place search is unavailable right now. Type the name and address below.</span>'; }), 400); });
+      $('#placeQ').addEventListener('keydown', e => { if (e.key === 'Enter') e.preventDefault(); });
+      $$('[name=place_mode]', body).forEach(r => r.onchange = () => { st.place.useStudio = r.value === 'studio'; $('#placeOther').hidden = st.place.useStudio; drawPlace(); });
+      ['place_name','place_addr'].forEach(nm => f[nm].addEventListener('input', () => { st.place[nm === 'place_name' ? 'name' : 'address'] = f[nm].value; prev(); }));
       const drawPhotos = () => { $('#rtPhotos').innerHTML = st.photos.map((p, i) => `<div class="rt-ph">${tvCover.html(p, 'Venue photo ' + (i + 1))}${i === 0 ? '<span class="rt-cov">Cover</span>' : ''}<button type="button" class="icon-btn" data-prm="${i}" aria-label="Remove photo ${i + 1}">${ico('i-x')}</button></div>`).join('') +
           `<label class="rt-ph add"><input type="file" accept="image/*" multiple id="rtPhIn" hidden>${ico('i-upload','i')}<b>Upload photos</b><small>${st.photos.length}/3 minimum</small></label><button type="button" class="rt-ph add" id="rtPhDemo">${ico('i-spark','i')}<b>Add sample photos</b><small>Demo only</small></button>`;
         $$('[data-prm]', body).forEach(b => b.onclick = () => { st.photos.splice(+b.dataset.prm, 1); drawPhotos(); prev(); });
         $('#rtPhIn').onchange = e => { [...e.target.files].forEach(file => tvCover.compress(file, src => { if (!src) return toast('That image could not be read'); st.photos.push({kind:'img', src}); drawPhotos(); prev(); })); };
         $('#rtPhDemo').onclick = () => { const sc = ['mountains','river','sunrise','stars']; for (let i = 0; i < 3; i++) st.photos.push({kind:'ai', seed:(pkHash(f.name.value || 'r') + st.photos.length * 911) % 100000, pal:['ganga','dawn','dusk','saffron'][st.photos.length % 4], scene:sc[st.photos.length % 4], motif:'Retreat'}); drawPhotos(); prev(); toast('3 sample photos added'); }; };
-      const drawQ = () => { const on = RT_Q.filter(([k]) => st.q[k]).length;
+      const qCount = () => { const on = RT_Q.filter(([k]) => st.q[k]).length, own = st.qs.filter(q => q.q.trim()).length, tot = 3 + on + own;
+        $('#rtQCount').innerHTML = `Guests will answer <b>${tot}</b> questions${own ? `, including ${own} of your own` : ''}.${tot > 12 ? ' Consider switching a few off.' : ''}`; };
+      const drawQ = () => {
         $('#rtQ').innerHTML = `<div class="rt-qrow lock"><span class="grow"><b>Full name, email and phone</b><small>To confirm the booking</small></span><span class="pill ok">Always on</span></div>` +
-          RT_Q.map(([k, l, why]) => `<label class="rt-qrow"><span class="grow"><b>${l}</b><small>${why}</small></span><span class="sw"><input type="checkbox" data-q="${k}" ${st.q[k] ? 'checked' : ''} aria-label="Ask ${l}"><i></i></span></label>`).join('') +
-          `<p class="small muted" style="margin:8px 2px 0">Guests will answer <b>${3 + on}</b> questions.${on > 6 ? ' Consider switching a few off.' : ''}</p>`;
-        $$('[data-q]', body).forEach(x => x.onchange = () => { st.q[x.dataset.q] = x.checked; drawQ(); }); };
-      const prev = () => { const fut = st.dates.filter(d => d >= TODAY).sort(), p = +f.price.value || 0;
-        $('#rtPrev').innerHTML = `<span class="eyebrow">How seekers see it</span><div class="rt-pcard"><div class="rt-pimg">${tvCover.html(st.photos[0] || rtCover({name:f.name.value || 'retreat'}), 'Cover')}</div><div class="grow"><span class="pill sky">${T().label}</span><h3>${esc(f.name.value || 'Your retreat name')}</h3><p class="small muted">${esc(f.v_name.value || 'Venue')} · ${st.type === '1' ? T().length : T().nights + ' nights, ' + (RT_ACC[f.acc_type.value] || '').toLowerCase()} · ${st.sessions.length} healing sessions</p><p class="small"><b>${p ? money('INR', p) : '₹ —'}</b> per person · ${fut.length ? 'next ' + fDate(fut[0]) : 'no dates yet'} · up to ${f.max.value || '—'} guests</p></div></div>`; };
-      const setType = (k, init) => {
-        st.type = k; const t = RT_TYPES[k];
+          RT_Q.map(([k, l, why]) => `<label class="rt-qrow"><span class="grow"><b>${l}</b><small>${why}</small></span><span class="sw"><input type="checkbox" data-q="${k}" ${st.q[k] ? 'checked' : ''} aria-label="Ask ${l}"><i></i></span></label>`).join('');
+        $$('[data-q]', body).forEach(x => x.onchange = () => { st.q[x.dataset.q] = x.checked; qCount(); }); qCount(); };
+      $('#qBuild').addEventListener('input', qCount); $('#qBuild').addEventListener('click', () => setTimeout(qCount, 0));
+      const priceNote = () => { const i = +f.inr.value || 0, u = +f.usd.value || 0;
+        $('#rtPriceNote').innerHTML = !f.inr.value && !f.usd.value ? `${ico('i-wallet')}<span>Add both prices. Seekers in India see the rupee price; everyone else sees dollars.</span>` : `${ico('i-wallet')}<span>Seekers in India pay <b>${money('INR', i)}</b> per person; international seekers pay <b>${money('USD', u)}</b>. For ${f.max.value || '—'} guests a date that is up to ${money('INR', i * (+f.max.value || 0))} or ${money('USD', u * (+f.max.value || 0))}.</span>`; };
+      const prev = () => { const fut = st.dates.filter(d => d >= TODAY).sort(), pl = st.place.useStudio ? placeOf({place:{useStudio:true}}) : st.place, n = N();
+        $('#rtPrev').innerHTML = `<span class="eyebrow">How seekers see it</span><div class="rt-pcard"><div class="rt-pimg">${tvCover.html(st.photos[0] || rtCover({name:f.name.value || 'retreat'}), 'Cover')}</div><div class="grow"><span class="pill sky">${rtLabel(n)}</span><h3>${esc(f.name.value || 'Your retreat name')}</h3><p class="small muted">${esc((pl && pl.name) || 'Venue')} · ${n === 1 ? 'about 8 hours' : `${n - 1} night${n === 2 ? '' : 's'}, ${(RT_ACC[f.acc_type.value] || '').toLowerCase()}`} · ${st.sessions.length} healing sessions</p><p class="small"><b>${f.inr.value ? money('INR', +f.inr.value) : '₹ —'}</b> or <b>${f.usd.value ? money('USD', +f.usd.value) : '$ —'}</b> per person · ${fut.length ? 'next ' + fDate(fut[0]) : 'no dates yet'} · up to ${f.max.value || '—'} guests</p></div></div>`; };
+      const setDays = (n, init) => {
+        const was = st.days; st.days = n;
         if (!init){
-          if (!schedEdited) st.schedule = clone(RT_SCHED[k]);
-          else { const n = t.days; while (st.schedule.length < n) st.schedule.push({title:'', text:''}); st.schedule = st.schedule.slice(0, n); }
-          if (!ex) { st.sessions = clone(RT_SESS[k]); f.o2o.value = t.o2o ?? ''; st.q.emergency = k !== '1'; }
-          if (k === '1') f.acc_type.value = 'none'; else if (f.acc_type.value === 'none') f.acc_type.value = 'shared';
+          if (!schedEdited) st.schedule = rtTpl(n);
+          else { const sc = st.schedule; if (n === 1) st.schedule = [sc[0]]; else { const last = sc.length > 1 ? sc[sc.length - 1] : {title:'Closing', text:''}; const mid = sc.length > 1 ? sc.slice(0, -1) : sc.slice(); while (mid.length < n - 1) mid.push({title:'Practice and healing', text:''}); st.schedule = mid.slice(0, n - 1).concat([last]); } }
+          if (!ex){ if ((was === 1) !== (n === 1) || (was <= 4) !== (n <= 4)) st.sessions = rtSessTpl(n); f.o2o.value = rtO2O(n) ?? ''; st.q.emergency = n > 1; }
+          if (n === 1) f.acc_type.value = 'none'; else if (f.acc_type.value === 'none') f.acc_type.value = 'shared';
         }
-        $('#accBox').hidden = k === '1';
-        $('#o2oHint').textContent = k === '1' ? '(optional)' : k === '3' ? '(usually 1)' : '(2 or more)';
+        $('#accBox').hidden = n === 1;
         drawSched(); drawSess(); drawDates(); drawQ(); prev();
       };
-      $$('[name=rtype]', body).forEach(x => x.onchange = () => setType(x.value));
-      ['name','price','max','v_name','acc_type'].forEach(n => f[n].addEventListener('input', prev));
+      f.days.onchange = () => setDays(+f.days.value);
+      ['name','max','acc_type','inr','usd'].forEach(nm => f[nm].addEventListener('input', () => { prev(); priceNote(); }));
       f.acc_type.addEventListener('change', prev);
-      setType(st.type, true); drawPhotos();
+      setDays(st.days, true); drawPhotos(); drawPlace(); priceNote();
+      wireQs(st, () => 'retreats'); qCount();
       attachVeda(body);
       modalBox._rt = st;
     },
     onSubmit:(fd, btn, f) => {
       const s = f._rt, draft = btn === 'draft';
-      const data = {type:s.type, name:(fd.get('name') || '').trim(), desc:(fd.get('desc') || '').trim(), dates:s.dates.slice().sort(), schedule:s.schedule.map(d => ({title:d.title.trim(), text:d.text.trim()})), sessions:s.sessions.filter(x => x.name.trim()).map(x => ({name:x.name.trim(), dur:x.dur})),
-        o2o:fd.get('o2o') === '' ? null : +fd.get('o2o'), max:+fd.get('max') || 0, price:+fd.get('price') || 0, acc:s.type === '1' ? {type:'none', notes:''} : {type:fd.get('acc_type'), notes:fd.get('acc_notes')},
-        venue:{name:(fd.get('v_name') || '').trim(), address:(fd.get('v_addr') || '').trim(), map:(fd.get('v_map') || '').trim()}, reach:(fd.get('reach') || '').trim(), bring:fd.get('bring'), rules:fd.get('rules'), photos:s.photos, q:s.q};
+      const cq = qsCheck(s); if (!cq) return false;
+      const pl = s.place.useStudio ? {useStudio:true} : Object.assign({}, s.place, {useStudio:false, name:(fd.get('place_name') || '').trim(), address:(fd.get('place_addr') || '').trim()});
+      const n = +fd.get('days');
+      const data = {days:n, name:(fd.get('name') || '').trim(), desc:(fd.get('desc') || '').trim(), dates:s.dates.slice().sort(), schedule:s.schedule.map(d => ({title:d.title.trim(), text:d.text.trim()})), sessions:s.sessions.filter(x => x.name.trim()).map(x => ({name:x.name.trim(), dur:x.dur})),
+        o2o:fd.get('o2o') === '' ? null : +fd.get('o2o'), max:+fd.get('max') || 0, inr:+fd.get('inr') || 0, usd:+fd.get('usd') || 0, acc:n === 1 ? {type:'none', notes:''} : {type:fd.get('acc_type'), notes:fd.get('acc_notes')},
+        place:pl, reach:(fd.get('reach') || '').trim(), bring:fd.get('bring'), rules:fd.get('rules'), photos:s.photos, q:s.q, cq};
+      data.venue = {name:rtPlace(data).name, address:rtPlace(data).address};
       if (!data.name) return fieldErr(f, 'name', 'Add a retreat name');
       if (!draft){
         if (!data.desc) return fieldErr(f, 'desc', 'Add a short description');
-        if (fd.get('price') === '') return fieldErr(f, 'price', 'Add the price per person (0 for free)');
+        if (fd.get('inr') === '' || fd.get('usd') === '') return fieldErr(f, fd.get('inr') === '' ? 'inr' : 'usd', 'Add both prices (use 0 for a free retreat)');
         if (!data.max) return fieldErr(f, 'max', 'Add the maximum guests per date');
-        if (data.type !== '1' && data.acc.type === 'none') return fieldErr(f, 'acc_type', 'Stay retreats need a room type');
-        if (!data.venue.name) return fieldErr(f, 'v_name', 'Add the venue name');
-        if (!data.venue.address) return fieldErr(f, 'v_addr', 'Add the venue address');
+        if (n > 1 && data.acc.type === 'none') return fieldErr(f, 'acc_type', 'Stay retreats need a room type');
+        if (!pl.useStudio && !pl.name) return fieldErr(f, 'place_name', 'Search and choose the venue');
         if (!data.reach) return fieldErr(f, 'reach', 'Tell guests how to reach the venue');
-        const miss = rtMissing(Object.assign({}, data));
+        const miss = rtMissing(data);
         if (miss) return (toast(`Add ${miss} before publishing`), false);
       }
-      if (ex){ Object.assign(ex, data); if (!draft) ex.status = 'active'; rtTab = ex.status === 'active' ? 'active' : 'other'; commit(); toast(draft ? 'Draft saved' : 'Retreat updated'); return; }
+      delete data.type;
+      if (ex){ Object.assign(ex, data); delete ex.type; delete ex.price; if (!draft) ex.status = 'active'; rtTab = ex.status === 'active' ? 'active' : 'other'; commit(); toast(draft ? 'Draft saved' : 'Retreat updated'); return; }
       S.retreats = S.retreats || [];
       S.retreats.unshift(Object.assign({id:uid('rt'), status:draft ? 'draft' : 'active', created:TODAY, bookings:[]}, data));
       rtTab = draft ? 'other' : 'active';
