@@ -962,7 +962,7 @@ body.modal-open{overflow:hidden}
         <div class="avs"><span style="background:var(--hill2)">A</span><span style="background:var(--accent)">D</span><span style="background:var(--primary-deep)">M</span></div>
         <div><strong>Founding cohort</strong><small>100 healers from Tapovan</small></div>
       </div>
-      <div class="orb-label"><i></i>Drag to explore</div>
+      <div class="orb-label"><i></i>Tap the bowl · drag to turn</div>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"></div>
@@ -1637,8 +1637,9 @@ body.modal-open{overflow:hidden}
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
   /* =========================================================
-     THREE.JS HERO — breathing energy orb, sacred-geometry shell,
-     orbit rings (singing-bowl halos) and drifting particles
+     THREE.JS HERO — Himalayan singing bowl on a meditation
+     cushion: brass with turned lines, water that ripples when
+     the bowl sings, sound rings across the floor, rising light
      ========================================================= */
   const hero3d = { setColors(){} };
   (function initHero3D(){
@@ -1649,159 +1650,200 @@ body.modal-open{overflow:hidden}
     catch(e){ wrap.classList.add('fallback'); return; }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.05;
     wrap.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(38, 1, .1, 100);
-    camera.position.set(0, 0, 8.2);
+    const camera = new THREE.PerspectiveCamera(30, 1, .1, 100);
+    const target = new THREE.Vector3(0, .85, 0);
     const world = new THREE.Group(); scene.add(world);
+    const tex = (w, h, draw) => { const c = document.createElement('canvas'); c.width = w; c.height = h; draw(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); return t; };
 
-    // Orb with displacement + fresnel shader
-    const orbUniforms = { uTime:{value:0}, uC1:{value:new THREE.Color()}, uC2:{value:new THREE.Color()}, uC3:{value:new THREE.Color()} };
-    const orb = new THREE.Mesh(
-      new THREE.SphereGeometry(1.35, 160, 160),
-      new THREE.ShaderMaterial({
-        uniforms: orbUniforms,
-        vertexShader: `
-          uniform float uTime; varying vec3 vN; varying vec3 vV; varying float vD;
-          void main(){
-            vec3 p = position;
-            float d = sin(p.x*2.1 + uTime*.9) * sin(p.y*2.5 + uTime*.7) * sin(p.z*1.9 + uTime*1.1);
-            d += .5 * sin(p.y*5.0 + uTime*1.6) * sin(p.x*4.0 - uTime);
-            p += normal * d * .11;
-            vD = d;
-            vN = normalize(normalMatrix * normal);
-            vec4 mv = modelViewMatrix * vec4(p, 1.0);
-            vV = -mv.xyz;
-            gl_Position = projectionMatrix * mv;
-          }`,
-        fragmentShader: `
-          uniform vec3 uC1; uniform vec3 uC2; uniform vec3 uC3; varying vec3 vN; varying vec3 vV; varying float vD;
-          void main(){
-            vec3 v = normalize(vV);
-            float f = pow(1.0 - max(dot(vN, v), 0.0), 2.4);
-            float t = clamp(vD * .55 + .5, 0.0, 1.0);
-            vec3 c = mix(uC3, uC1, t);
-            c = mix(c, uC2, smoothstep(.55, 1.0, t) * .8);
-            c += uC2 * f * .9;
-            float light = max(dot(vN, normalize(vec3(-.4, .6, .8))), 0.0);
-            c *= .72 + light * .45;
-            gl_FragColor = vec4(c, 1.0);
-          }`
-      })
-    );
-    world.add(orb);
-
-    // Glow sprite behind orb
-    const glowCanvas = document.createElement('canvas'); glowCanvas.width = glowCanvas.height = 256;
-    const gctx = glowCanvas.getContext('2d');
-    const drawGlow = col => {
-      gctx.clearRect(0,0,256,256);
-      const g = gctx.createRadialGradient(128,128,0,128,128,128);
-      g.addColorStop(0, col); g.addColorStop(.35, col.replace(/rgb\((.*)\)/, 'rgba($1,.35)')); g.addColorStop(1, 'rgba(0,0,0,0)');
-      gctx.fillStyle = g; gctx.fillRect(0,0,256,256);
-    };
-    const glowTex = new THREE.CanvasTexture(glowCanvas);
-    const glow = new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex, transparent:true, depthWrite:false, opacity:.55}));
-    glow.scale.set(6.4, 6.4, 1); glow.position.z = -1; world.add(glow);
-
-    // Sacred-geometry wire shell
-    const shellMat = new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.22});
-    const shell = new THREE.Mesh(new THREE.IcosahedronGeometry(2.05, 1), shellMat);
-    world.add(shell);
-    const shell2 = new THREE.Mesh(new THREE.OctahedronGeometry(2.45, 0), new THREE.MeshBasicMaterial({wireframe:true, transparent:true, opacity:.1}));
-    world.add(shell2);
-
-    // Orbit rings with beads
-    const rings = [], beads = [];
-    const ringCfg = [
-      {r:2.45, tilt:[1.25, .2, 0], speed:.35},
-      {r:2.75, tilt:[.3, 1.0, .4], speed:-.25},
-      {r:3.05, tilt:[-.6, .5, 1.1], speed:.18}
-    ];
-    ringCfg.forEach((cfg, i) => {
-      const g = new THREE.Group(); g.rotation.set(...cfg.tilt);
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(cfg.r, i === 1 ? .018 : .011, 12, 240), new THREE.MeshBasicMaterial({transparent:true, opacity: i === 1 ? .75 : .45}));
-      g.add(ring);
-      const bead = new THREE.Mesh(new THREE.SphereGeometry(i === 1 ? .085 : .06, 24, 24), new THREE.MeshBasicMaterial());
-      g.add(bead);
-      world.add(g); rings.push({g, ring, cfg}); beads.push({bead, cfg, a: i * 2});
-    });
-
-    // Particles
-    const pCount = 900, pos = new Float32Array(pCount * 3), seeds = new Float32Array(pCount);
-    for (let i = 0; i < pCount; i++){
-      const r = 2.4 + Math.random() * 3.2, th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
-      pos[i*3] = r * Math.sin(ph) * Math.cos(th); pos[i*3+1] = r * Math.sin(ph) * Math.sin(th) * .8; pos[i*3+2] = r * Math.cos(ph);
-      seeds[i] = Math.random() * 10;
+    /* --- studio reflections: a soft room with warm softboxes, baked into an env map --- */
+    const pmrem = new THREE.PMREMGenerator(renderer);
+    let envRT = null;
+    function buildEnv(warm, cool){
+      const W = 1024, H = 512, c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+      const css = col => `#${col.getHexString()}`;
+      const sky = g.createLinearGradient(0, 0, 0, H);
+      sky.addColorStop(0, css(warm.clone().lerp(new THREE.Color('#ffffff'), .5))); sky.addColorStop(.48, css(warm)); sky.addColorStop(.56, css(cool.clone().lerp(warm, .75))); sky.addColorStop(1, css(new THREE.Color('#5a4128').lerp(cool, .2)));
+      g.fillStyle = sky; g.fillRect(0, 0, W, H);
+      const soft = (x, y, w, h, col, blur) => { g.save(); g.filter = `blur(${blur}px)`; g.fillStyle = col; g.fillRect(x, y, w, h); g.restore(); };
+      soft(150, 70, 230, 120, '#fffaf0', 14);   // key softbox, warm
+      soft(640, 120, 70, 210, '#ffffff', 10);   // rim strip
+      soft(430, 20, 160, 50, '#fff1d6', 12);    // top kicker
+      soft(0, 300, W, 40, css(warm), 30);       // floor bounce
+      const t = new THREE.CanvasTexture(c); t.encoding = THREE.sRGBEncoding; t.mapping = THREE.EquirectangularReflectionMapping;
+      if (envRT) envRT.dispose();
+      envRT = pmrem.fromEquirectangular(t); t.dispose();
+      scene.environment = envRT.texture;
+      renderer.setClearColor(0x000000, 0);
     }
-    const pGeo = new THREE.BufferGeometry(); pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-    const dot = document.createElement('canvas'); dot.width = dot.height = 64;
-    const dctx = dot.getContext('2d'); const dg = dctx.createRadialGradient(32,32,0,32,32,32);
-    dg.addColorStop(0,'rgba(255,255,255,1)'); dg.addColorStop(.4,'rgba(255,255,255,.6)'); dg.addColorStop(1,'rgba(255,255,255,0)');
-    dctx.fillStyle = dg; dctx.fillRect(0,0,64,64);
-    const pMat = new THREE.PointsMaterial({size:.07, map:new THREE.CanvasTexture(dot), transparent:true, depthWrite:false, opacity:.9, sizeAttenuation:true});
-    const particles = new THREE.Points(pGeo, pMat); world.add(particles);
 
-    // Colors from active theme
+    /* --- the bowl: lathe profile with real wall thickness and a rolled rim --- */
+    const prof = [];
+    const outer = s => { const y = s * .98, r = .52 + .78 * Math.sin(s * Math.PI / 2) ** .8 - .04 * s * s; return [r, y]; };
+    prof.push(new THREE.Vector2(0, 0));
+    for (let i = 0; i <= 40; i++){ const [r, y] = outer(i / 40); prof.push(new THREE.Vector2(r, y)); }
+    const rimR = prof[prof.length - 1].x, rimY = prof[prof.length - 1].y;
+    for (let i = 1; i <= 10; i++){ const a = i / 10 * Math.PI; prof.push(new THREE.Vector2(rimR - .045 + Math.cos(a) * .045, rimY + Math.sin(a) * .03)); }
+    for (let i = 40; i >= 0; i--){ const [r, y] = outer(i / 40); prof.push(new THREE.Vector2(Math.max(0, r - .09), y + .1 - i / 40 * .02)); }
+    prof.push(new THREE.Vector2(0, .1));
+    const bowlGeo = new THREE.LatheGeometry(prof, 160);
+    bowlGeo.computeVertexNormals();
+    // turned lines from the lathe + two engraved bands under the rim
+    const turned = tex(8, 512, (g, w, h) => { for (let y = 0; y < h; y++){ const v = 1 - y / h; let l = 232 + Math.random() * 18 + Math.sin(y * .9) * 4; if (Math.abs(v - .56) < .003 || Math.abs(v - .58) < .002) l = 150; g.fillStyle = `rgb(${l},${l},${l})`; g.fillRect(0, y, w, 1); } });
+    const rough = tex(8, 512, (g, w, h) => { for (let y = 0; y < h; y++){ const l = 60 + Math.random() * 40; g.fillStyle = `rgb(${l},${l},${l})`; g.fillRect(0, y, w, 1); } });
+    [turned, rough].forEach(t => { t.wrapS = t.wrapT = THREE.RepeatWrapping; });
+    turned.encoding = THREE.sRGBEncoding;
+    const bowlMat = new THREE.MeshStandardMaterial({metalness:1, roughness:.32, map:turned, roughnessMap:rough, bumpMap:rough, bumpScale:.002, envMapIntensity:1.5});
+    const bowl = new THREE.Mesh(bowlGeo, bowlMat);
+    const bowlG = new THREE.Group(); bowlG.add(bowl); bowlG.position.y = .5; world.add(bowlG);
+
+    /* --- water inside the bowl, rippling from the centre when the bowl sings --- */
+    const wU = {uT:{value:0}, uAmp:{value:.2}, uC:{value:new THREE.Color()}, uH:{value:new THREE.Color()}};
+    const water = new THREE.Mesh(new THREE.CircleGeometry(1.0, 96), new THREE.ShaderMaterial({uniforms:wU, transparent:true,
+      vertexShader:'varying vec2 vUv; varying vec3 vW; void main(){ vUv = uv; vW = (modelMatrix * vec4(position,1.)).xyz; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+      fragmentShader:`uniform float uT; uniform float uAmp; uniform vec3 uC; uniform vec3 uH; varying vec2 vUv; varying vec3 vW;
+        void main(){ vec2 p = vUv - .5; float r = length(p) * 2.;
+          float w = sin(r * 38. - uT * 5.) * exp(-r * 1.6) * uAmp + sin(atan(p.y, p.x) * 6. + r * 14. - uT * 2.) * .05 * uAmp;
+          float spec = smoothstep(.55, 1., w * 2.2 + .35) * (1. - r * .6);
+          float edge = smoothstep(.82, 1., r);
+          vec3 c = mix(uC, uH, spec * .85) + uH * edge * .25;
+          gl_FragColor = vec4(c, .9); }`}));
+    water.rotation.x = -Math.PI / 2; water.position.y = .62; water.scale.setScalar(.96); bowlG.add(water);
+
+    /* --- round meditation cushion (zafu) with stitched seams --- */
+    const seams = tex(512, 64, (g, w, h) => { g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); g.fillStyle = 'rgba(0,0,0,.18)'; for (let i = 0; i < 12; i++){ const x = i * w / 12; g.fillRect(x, 0, 3, h); } for (let i = 0; i < 6000; i++){ g.fillStyle = `rgba(0,0,0,${Math.random() * .05})`; g.fillRect(Math.random() * w, Math.random() * h, 2, 2); } });
+    seams.wrapS = THREE.RepeatWrapping; seams.encoding = THREE.sRGBEncoding;
+    const cushMat = new THREE.MeshStandardMaterial({roughness:.9, metalness:0, map:seams, envMapIntensity:.3});
+    const cushion = new THREE.Mesh(new THREE.TorusGeometry(1.05, .42, 48, 160), cushMat);
+    cushion.rotation.x = Math.PI / 2; cushion.scale.set(1, 1, .62); cushion.position.y = .18; world.add(cushion);
+    const cushTop = new THREE.Mesh(new THREE.CylinderGeometry(1.08, 1.08, .3, 96), cushMat); cushTop.position.y = .14; world.add(cushTop);
+
+    /* --- wooden striker with a suede-wrapped head, resting on the cushion --- */
+    const wood = new THREE.MeshStandardMaterial({color:new THREE.Color(0x7a4d2c).convertSRGBToLinear(), roughness:.5, metalness:0});
+    const suede = new THREE.MeshStandardMaterial({roughness:1, metalness:0});
+    const striker = new THREE.Group();
+    const stick = new THREE.Mesh(new THREE.CylinderGeometry(.055, .065, 1.7, 32), wood); striker.add(stick);
+    const head = new THREE.Mesh(new THREE.CylinderGeometry(.08, .08, .32, 32), suede); head.position.y = .62; striker.add(head);
+    [-.84, .85].forEach(y => { const cap = new THREE.Mesh(new THREE.SphereGeometry(.058, 24, 12), wood); cap.position.y = y; striker.add(cap); });
+    striker.rotation.set(0, .5, Math.PI / 2 - .12); striker.position.set(.55, .5, 1.25); world.add(striker);
+
+    /* --- floor: soft contact shadow + sound rings travelling outwards --- */
+    const shadow = new THREE.Mesh(new THREE.PlaneGeometry(4.6, 4.6), new THREE.MeshBasicMaterial({transparent:true, depthWrite:false, map:tex(256, 256, (g) => { const r = g.createRadialGradient(128, 128, 0, 128, 128, 128); r.addColorStop(0, 'rgba(0,0,0,.42)'); r.addColorStop(.45, 'rgba(0,0,0,.16)'); r.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = r; g.fillRect(0, 0, 256, 256); })}));
+    shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.08; world.add(shadow);
+    const rU = {uT:{value:0}, uStrike:{value:-10}, uC:{value:new THREE.Color()}, uA:{value:.7}};
+    const rings = new THREE.Mesh(new THREE.PlaneGeometry(12, 12), new THREE.ShaderMaterial({uniforms:rU, transparent:true, depthWrite:false,
+      vertexShader:'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }',
+      fragmentShader:`uniform float uT; uniform float uStrike; uniform vec3 uC; uniform float uA; varying vec2 vUv;
+        void main(){ float r = length(vUv - .5) * 12.; float a = 0.;
+          for (int i = 0; i < 4; i++){ float age = uT - uStrike - float(i) * .55; if (age > 0.){ float R = 1.4 + age * 1.05; a += smoothstep(.05, 0., abs(r - R)) * exp(-age * .32) * (1. - float(i) * .2); } }
+          float idle = smoothstep(.025, 0., abs(fract((r - uT * .18) * .55) - .5) * 2. - .96) * smoothstep(1.4, 2., r) * smoothstep(5.8, 3., r) * .18;
+          a = (a + idle) * smoothstep(1.3, 1.6, r) * smoothstep(6., 4., r);
+          gl_FragColor = vec4(uC, a * uA); }`}));
+    rings.rotation.x = -Math.PI / 2; rings.position.y = -.07; world.add(rings);
+
+    /* --- warm halo behind the bowl --- */
+    const haloTex = tex(256, 256, () => {});
+    const drawHalo = col => { const c = haloTex.image, g = c.getContext('2d'); g.clearRect(0, 0, 256, 256); const r = g.createRadialGradient(128, 128, 0, 128, 128, 128); r.addColorStop(0, col.replace(')', ',.75)').replace('rgb', 'rgba')); r.addColorStop(.4, col.replace(')', ',.22)').replace('rgb', 'rgba')); r.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = r; g.fillRect(0, 0, 256, 256); haloTex.needsUpdate = true; };
+    const halo = new THREE.Sprite(new THREE.SpriteMaterial({map:haloTex, transparent:true, depthWrite:false, opacity:.8}));
+    halo.scale.set(4.2, 4.2, 1); halo.position.set(0, 1.25, -2.4); world.add(halo);
+
+    /* --- light motes rising out of the bowl like sound made visible --- */
+    const N = 260, mPos = new Float32Array(N * 3), mSeed = new Float32Array(N * 4);
+    for (let i = 0; i < N; i++){ mSeed.set([Math.random() * Math.PI * 2, Math.random(), .15 + Math.random() * .35, Math.random()], i * 4); }
+    const mGeo = new THREE.BufferGeometry(); mGeo.setAttribute('position', new THREE.BufferAttribute(mPos, 3));
+    const sizes = new Float32Array(N); for (let i = 0; i < N; i++) sizes[i] = Math.random();
+    mGeo.setAttribute('aS', new THREE.BufferAttribute(sizes, 1));
+    const mU = {uC:{value:new THREE.Color()}, uPx:{value:1}};
+    const motes = new THREE.Points(mGeo, new THREE.ShaderMaterial({uniforms:mU, transparent:true, depthWrite:false,
+      vertexShader:'attribute float aS; uniform float uPx; varying float vA; void main(){ vec4 mv = modelViewMatrix * vec4(position,1.); vA = clamp(1. - (position.y - .9) / 3.4, 0., 1.) * smoothstep(.8, 1.1, position.y); gl_PointSize = (7. + aS * 12.) * uPx * (6. / -mv.z); gl_Position = projectionMatrix * mv; }',
+      fragmentShader:'uniform vec3 uC; varying float vA; void main(){ float d = length(gl_PointCoord - .5); float a = smoothstep(.5, 0., d); gl_FragColor = vec4(uC + a * .2, a * a * vA); }'}));
+    world.add(motes);
+
+    /* --- light --- */
+    const hemi = new THREE.HemisphereLight(0xfff4e6, 0x3a3a3a, .3); scene.add(hemi);
+    const key = new THREE.DirectionalLight(0xffefd8, 1.4); key.position.set(-4, 6, 4); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xffffff, .7); rim.position.set(5, 3, -4); scene.add(rim);
+
+    /* --- colours follow the active theme --- */
     function setColors(){
-      const c1 = cssVar('--orb1'), c2 = cssVar('--orb2'), c3 = cssVar('--orb3'), gold = cssVar('--gold'), acc = cssVar('--accent');
-      orbUniforms.uC1.value.set(c1); orbUniforms.uC2.value.set(c2); orbUniforms.uC3.value.set(c3);
-      shellMat.color.set(gold); shell2.material.color.set(cssVar('--primary'));
-      rings.forEach((r, i) => r.ring.material.color.set(i === 1 ? acc : gold));
-      beads.forEach((b, i) => b.bead.material.color.set(i === 1 ? gold : acc));
-      pMat.color.set(gold);
-      const gc = new THREE.Color(c1);
-      drawGlow(`rgb(${Math.round(gc.r*255)},${Math.round(gc.g*255)},${Math.round(gc.b*255)})`); glowTex.needsUpdate = true;
+      const gold = cssVar('--gold'), prim = cssVar('--primary'), acc = cssVar('--accent'), o1 = cssVar('--orb1'), o2 = cssVar('--orb2'), o3 = cssVar('--orb3');
       const dark = DARK.has(root.dataset.theme);
-      glow.material.opacity = dark ? .7 : .45;
-      pMat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending; pMat.needsUpdate = true;
+      const brass = new THREE.Color('#d7a65a').lerp(new THREE.Color(o2), .08);
+      bowlMat.color.copy(brass).convertSRGBToLinear();
+      if (dark) cushMat.color.set(o3).lerp(new THREE.Color(o1), .3).convertSRGBToLinear().multiplyScalar(.4); else cushMat.color.set(prim).convertSRGBToLinear().multiplyScalar(1.15);
+      suede.color.set(acc).lerp(new THREE.Color('#7a3b2a'), .4).convertSRGBToLinear();
+      wU.uC.value.set(o3).lerp(new THREE.Color(prim), .4).multiplyScalar(.75); wU.uH.value.set(o2);
+      rU.uC.value.set(dark ? o2 : gold); rU.uA.value = dark ? .85 : .75;
+      mU.uC.value.set(dark ? o2 : gold);
+      motes.material.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending; motes.material.needsUpdate = true;
+      const hc = new THREE.Color(dark ? o1 : o2); drawHalo(`rgb(${Math.round(hc.r * 255)},${Math.round(hc.g * 255)},${Math.round(hc.b * 255)})`);
+      halo.material.opacity = dark ? .55 : .7;
+      shadow.material.opacity = dark ? .5 : .55;
+      hemi.groundColor.set(dark ? 0x101018 : 0x6b5a48);
+      buildEnv(new THREE.Color(o2).lerp(new THREE.Color('#ffffff'), .35), new THREE.Color(o3));
     }
     hero3d.setColors = setColors; setColors();
 
-    // Size
+    /* --- size --- */
     function resize(){
       const w = wrap.clientWidth, h = wrap.clientHeight; if (!w || !h) return;
       renderer.setSize(w, h, false); camera.aspect = w / h;
-      camera.position.z = w < 500 ? 10.5 : 9.6;
+      const d = w < 500 ? 12.5 : 10.8;
+      camera.position.set(0, d * .42, d); camera.lookAt(target);
       camera.updateProjectionMatrix();
+      mU.uPx.value = renderer.getPixelRatio() * (h / 700);
     }
     new ResizeObserver(resize).observe(wrap); resize();
 
-    // Interaction: pointer parallax + drag to spin
-    let tx = 0, ty = 0, rx = 0, ry = 0, dragging = false, lastX = 0, lastY = 0, spinY = 0, spinX = 0, velY = 0;
+    /* --- interaction: pointer parallax, drag to turn, tap to strike the bowl --- */
+    let tx = 0, ty = 0, rx = 0, ry = 0, dragging = false, moved = 0, lastX = 0, lastY = 0, spinY = 0, velY = 0;
     window.addEventListener('pointermove', e => {
       tx = (e.clientX / window.innerWidth - .5); ty = (e.clientY / window.innerHeight - .5);
-      if (dragging){ velY = (e.clientX - lastX) * .006; spinY += velY; spinX += (e.clientY - lastY) * .004; lastX = e.clientX; lastY = e.clientY; }
+      if (dragging){ velY = (e.clientX - lastX) * .006; spinY += velY; moved += Math.abs(e.clientX - lastX) + Math.abs(e.clientY - lastY); lastX = e.clientX; lastY = e.clientY; }
     }, {passive:true});
-    wrap.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; wrap.style.cursor = 'grabbing'; });
-    window.addEventListener('pointerup', () => { dragging = false; wrap.style.cursor = ''; });
+    wrap.addEventListener('pointerdown', e => { dragging = true; moved = 0; lastX = e.clientX; lastY = e.clientY; wrap.style.cursor = 'grabbing'; });
+    window.addEventListener('pointerup', () => { if (dragging && moved < 6) strike(); dragging = false; wrap.style.cursor = ''; });
 
-    // Visibility-aware loop
     let visible = true, running = true;
     new IntersectionObserver(([en]) => { visible = en.isIntersecting; }).observe(wrap);
     document.addEventListener('visibilitychange', () => { running = !document.hidden; });
 
     const clock = new THREE.Clock();
+    let lastStrike = -10, nextStrike = 1.2;
+    function strike(){ lastStrike = clock.getElapsedTime(); rU.uStrike.value = lastStrike; nextStrike = lastStrike + 7.5; }
+    function place(t){
+      const since = t - lastStrike, sing = Math.exp(-since * .45);
+      wU.uT.value = t; wU.uAmp.value = .12 + sing * .9;
+      rU.uT.value = t;
+      bowlG.position.y = .5 + Math.sin(since * 38) * .004 * sing;
+      bowlG.rotation.z = Math.sin(t * .5) * .012; bowlG.rotation.x = Math.cos(t * .4) * .01;
+      for (let i = 0; i < N; i++){
+        const a = mSeed[i * 4], s = mSeed[i * 4 + 1], sp = mSeed[i * 4 + 2], ph = mSeed[i * 4 + 3];
+        const life = (t * sp * .35 + ph) % 1, rr = .15 + s * .75 + life * (.4 + s * .9);
+        const ang = a + life * 1.4 + t * .05;
+        mPos[i * 3] = Math.cos(ang) * rr; mPos[i * 3 + 1] = .95 + life * 3.6; mPos[i * 3 + 2] = Math.sin(ang) * rr;
+      }
+      mGeo.attributes.position.needsUpdate = true;
+      halo.material.opacity = (DARK.has(root.dataset.theme) ? .5 : .62) + sing * .25;
+    }
     function frame(){
       requestAnimationFrame(frame);
       if (!visible || !running) return;
       const t = clock.getElapsedTime();
-      orbUniforms.uTime.value = t;
-      const breathe = 1 + Math.sin(t * .8) * .035;
-      orb.scale.setScalar(breathe);
-      shell.rotation.y = t * .12; shell.rotation.x = t * .07;
-      shell2.rotation.y = -t * .06; shell2.rotation.z = t * .05;
-      rings.forEach(r => { r.ring.rotation.z = t * r.cfg.speed; });
-      beads.forEach(b => { const a = b.a + t * b.cfg.speed * 2.2; b.bead.position.set(Math.cos(a) * b.cfg.r, Math.sin(a) * b.cfg.r, 0); });
-      particles.rotation.y = t * .03; particles.rotation.x = Math.sin(t * .1) * .1;
-      if (!dragging){ velY *= .95; spinY += velY; spinX *= .96; }
-      rx += (ty * .35 + spinX - rx) * .05; ry += (tx * .5 + spinY - ry) * .05;
-      world.rotation.x = rx; world.rotation.y = ry;
-      world.position.y = Math.sin(t * .6) * .08;
+      if (t > nextStrike) strike();
+      place(t);
+      if (!dragging){ velY *= .95; spinY += velY; }
+      rx += (ty * .12 - rx) * .05; ry += (tx * .45 + spinY + t * .04 - ry) * .05;
+      world.rotation.y = ry; world.rotation.x = rx;
+      world.position.y = Math.sin(t * .6) * .04;
       renderer.render(scene, camera);
     }
-    if (reduceMotion){ renderer.render(scene, camera); } else { frame(); }
+    if (reduceMotion){ lastStrike = 0; rU.uStrike.value = 0; place(1.6); rU.uT.value = 1.6; renderer.render(scene, camera); } else { frame(); }
     hero3d.render = () => renderer.render(scene, camera);
   })();
 
